@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Player : Character
 {
-    PlayerInputHandler inputHandler;
     Rigidbody2D rb;
+    PlayerInputHandler inputHandler;
 
     public enum PlayerState
     {
@@ -27,6 +27,8 @@ public class Player : Character
 
     private void Update()
     {
+        Debug.Log(state);
+
         switch (state)
         {
             case PlayerState.Idle:
@@ -52,9 +54,23 @@ public class Player : Character
         switch (state)
         {
             case PlayerState.Idle:
-                HandleMovement(inputHandler.MoveInput);
+
+                // Transition to Move State
+                if (inputHandler.MoveInput != Vector2.zero)
+                {
+                    state = PlayerState.Move;
+                }
+
                 break;
             case PlayerState.Move:
+
+                HandleMovement(inputHandler.MoveInput);
+
+                // Tansition to Idle State
+                if (inputHandler.MoveInput == Vector2.zero)
+                {
+                    state = PlayerState.Idle;
+                }
 
                 break;
             case PlayerState.BasicAttack:
@@ -71,7 +87,7 @@ public class Player : Character
 
     void IdleState()
     {
-
+        
     }
 
     void MoveState()
