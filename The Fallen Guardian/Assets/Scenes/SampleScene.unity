@@ -300,6 +300,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   movementSpeed: 5
+  bodyAnimator: {fileID: 1459991478}
   state: 0
 --- !u!50 &378610494
 Rigidbody2D:

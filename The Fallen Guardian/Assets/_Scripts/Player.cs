@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : Character
 {
+    [SerializeField] Animator bodyAnimator;
     Rigidbody2D rb;
     PlayerInputHandler inputHandler;
 
@@ -87,12 +88,20 @@ public class Player : Character
 
     void IdleState()
     {
-        
+        bodyAnimator.Play("Idle");
     }
 
     void MoveState()
     {
+        bodyAnimator.Play("Move");
 
+        // Set idle Animation after move
+        if (inputHandler.MoveInput != Vector2.zero)
+        {
+            bodyAnimator.SetFloat("Horizontal", inputHandler.MoveInput.x);
+            bodyAnimator.SetFloat("Vertical", inputHandler.MoveInput.y);
+        }
+        bodyAnimator.SetFloat("Speed", inputHandler.MoveInput.sqrMagnitude);
     }
 
     void BasicAttackState()
