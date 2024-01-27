@@ -101,7 +101,6 @@ public class Player : Character
             bodyAnimator.SetFloat("Horizontal", inputHandler.MoveInput.x);
             bodyAnimator.SetFloat("Vertical", inputHandler.MoveInput.y);
         }
-        bodyAnimator.SetFloat("Speed", inputHandler.MoveInput.sqrMagnitude);
     }
 
     void BasicAttackState()
