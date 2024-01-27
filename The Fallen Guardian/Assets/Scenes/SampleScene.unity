@@ -412,6 +412,8 @@ MonoBehaviour:
   maxHealth: 0
   movementSpeed: 5
   bodyAnimator: {fileID: 1459991478}
+  aimer: {fileID: 1416972087}
+  SlideForwardSpeed: 3
   state: 0
 --- !u!50 &378610494
 Rigidbody2D:
@@ -425,9 +427,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 25
+  m_LinearDrag: 2
+  m_AngularDrag: 2
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:

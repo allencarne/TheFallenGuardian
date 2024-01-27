@@ -5,11 +5,20 @@ using UnityEngine;
 
 public class Player : Character
 {
-    protected Animator bodyAnimator;
-    Rigidbody2D rb;
-    PlayerInputHandler inputHandler;
+    [Header("Exposed Components")]
+    [SerializeField] protected Animator bodyAnimator;
+    [SerializeField] protected Transform aimer;
 
-    bool canBasicAttack = true;
+    [Header("Un-Exposed Components")]
+    protected Rigidbody2D rb;
+    protected PlayerInputHandler inputHandler;
+
+    [Header("Exposed Variables")]
+    [SerializeField] protected float SlideForwardSpeed;
+
+    [Header("Un-Exposed Variables")]
+    protected bool canBasicAttack = true;
+    protected bool canSlide = false;
 
     public enum PlayerState
     {
@@ -30,7 +39,7 @@ public class Player : Character
 
     private void Update()
     {
-        Debug.Log(state);
+        Debug.Log(canSlide);
 
         switch (state)
         {
@@ -78,6 +87,8 @@ public class Player : Character
                 break;
             case PlayerState.BasicAttack:
 
+                SlideForward();
+
                 break;
             case PlayerState.BasicAttack2:
 
@@ -106,6 +117,30 @@ public class Player : Character
             bodyAnimator.SetFloat("Horizontal", inputHandler.MoveInput.x);
             bodyAnimator.SetFloat("Vertical", inputHandler.MoveInput.y);
         }
+
+        // Transitions
+        HandleAttack(inputHandler.BasicAttackInput);
+    }
+
+    void HandleMovement(Vector2 moveInput)
+    {
+        Vector2 movement = moveInput.normalized * movementSpeed;
+        rb.velocity = movement;
+    }
+
+    protected void SlideForward()
+    {
+        if (canSlide)
+        {
+            canSlide = false;
+
+            rb.velocity = Vector2.zero;
+
+            // Use the rotation of the Aimer to determine the slide direction
+            Vector2 slideDirection = Quaternion.Euler(0f, 0f, aimer.rotation.eulerAngles.z) * Vector2.right;
+
+            rb.velocity = slideDirection * SlideForwardSpeed;
+        }
     }
 
     protected virtual void BasicAttackState()
@@ -121,12 +156,6 @@ public class Player : Character
     protected virtual void BasicAttack3State()
     {
 
-    }
-
-    void HandleMovement(Vector2 moveInput)
-    {
-        Vector2 movement = moveInput.normalized * movementSpeed;
-        rb.velocity = movement;
     }
 
     void HandleAttack(bool attackInput)
