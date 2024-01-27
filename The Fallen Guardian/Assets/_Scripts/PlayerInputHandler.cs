@@ -18,7 +18,7 @@ public class PlayerInputHandler : MonoBehaviour
             MoveInput = Vector2.zero;
         }
     }
-    /*
+    
     public void OnLook(InputAction.CallbackContext context)
     {
         LookInput = context.ReadValue<Vector2>();
@@ -38,5 +38,4 @@ public class PlayerInputHandler : MonoBehaviour
             BasicAttackInput = false;
         }
     }
-    */
 }
