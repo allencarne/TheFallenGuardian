@@ -43,9 +43,6 @@ public class Aimer : MonoBehaviour
             // Calculate the rotation angle based on mouse position
             float angle = Mathf.Atan2(mouseWorldPosition.y - transform.position.y, mouseWorldPosition.x - transform.position.x) * Mathf.Rad2Deg;
 
-            // Offset
-            angle += 90f;
-
             // Apply rotation to the Aimer
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }

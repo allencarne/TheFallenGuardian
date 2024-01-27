@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Player : Character
 {
-    [SerializeField] Animator bodyAnimator;
+    protected Animator bodyAnimator;
     Rigidbody2D rb;
     PlayerInputHandler inputHandler;
+
+    bool canBasicAttack = true;
 
     public enum PlayerState
     {
@@ -89,6 +91,9 @@ public class Player : Character
     void IdleState()
     {
         bodyAnimator.Play("Idle");
+
+        // Transitions
+        HandleAttack(inputHandler.BasicAttackInput);
     }
 
     void MoveState()
@@ -103,17 +108,17 @@ public class Player : Character
         }
     }
 
-    void BasicAttackState()
+    protected virtual void BasicAttackState()
     {
 
     }
 
-    void BasicAttack2State()
+    protected virtual void BasicAttack2State()
     {
 
     }
 
-    void BasicAttack3State()
+    protected virtual void BasicAttack3State()
     {
 
     }
@@ -122,5 +127,13 @@ public class Player : Character
     {
         Vector2 movement = moveInput.normalized * movementSpeed;
         rb.velocity = movement;
+    }
+
+    void HandleAttack(bool attackInput)
+    {
+        if (attackInput && canBasicAttack)
+        {
+            state = PlayerState.BasicAttack;
+        }
     }
 }

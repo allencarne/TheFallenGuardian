@@ -1102,7 +1102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d28023ec67ea4341b399ca8154ded75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isControllerInput: 1
+  isControllerInput: 0
 --- !u!212 &1416972089
 SpriteRenderer:
   m_ObjectHideFlags: 0

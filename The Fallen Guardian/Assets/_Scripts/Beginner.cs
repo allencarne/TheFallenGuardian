@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Beginner : Player
 {
-
+    protected override void BasicAttackState()
+    {
+        bodyAnimator.Play("Sword Basic Attack");
+    }
 }
