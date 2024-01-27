@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    public Vector2 MoveInput { get; set; }
-    public Vector2 LookInput { get; set; }
-    public bool BasicAttackInput { get; set; }
+    public Vector2 MoveInput { get; private set; }
+    public Vector2 LookInput { get; private set; }
+    public bool BasicAttackInput { get; private set; }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -18,7 +18,7 @@ public class PlayerInputHandler : MonoBehaviour
             MoveInput = Vector2.zero;
         }
     }
-
+    /*
     public void OnLook(InputAction.CallbackContext context)
     {
         LookInput = context.ReadValue<Vector2>();
@@ -28,7 +28,7 @@ public class PlayerInputHandler : MonoBehaviour
             LookInput = Vector2.zero;
         }
     }
-
+    
     public void OnBasicAttack(InputAction.CallbackContext context)
     {
         BasicAttackInput = context.ReadValueAsButton();
@@ -38,4 +38,5 @@ public class PlayerInputHandler : MonoBehaviour
             BasicAttackInput = false;
         }
     }
+    */
 }

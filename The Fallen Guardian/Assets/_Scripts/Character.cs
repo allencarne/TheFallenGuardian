@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] float health;
-    [SerializeField] float maxHealth;
-    [SerializeField] float movementSpeed;
+    [SerializeField] protected float health;
+    [SerializeField] protected float maxHealth;
+    public float movementSpeed;
+
+    // Take Damage
+
+    // Knockback
 }
