@@ -97,7 +97,7 @@ public class Player : Character
         }
     }
 
-    void IdleState()
+    protected virtual void IdleState()
     {
         bodyAnimator.Play("Idle");
 
@@ -105,7 +105,7 @@ public class Player : Character
         HandleAttack(inputHandler.BasicAttackInput);
     }
 
-    void MoveState()
+    protected virtual void MoveState()
     {
         bodyAnimator.Play("Move");
 
@@ -139,7 +139,7 @@ public class Player : Character
         }
     }
 
-    protected void FaceAttackingDirection()
+    protected void FaceAttackingDirection(Animator animator)
     {
         // Use Aimer rotation for setting animator parameters
         float angle = aimer.rotation.eulerAngles.z;
@@ -147,8 +147,8 @@ public class Player : Character
         // Convert angle to a normalized vector for animation parameters
         Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
 
-        bodyAnimator.SetFloat("Horizontal", direction.x);
-        bodyAnimator.SetFloat("Vertical", direction.y);
+        animator.SetFloat("Horizontal", direction.x);
+        animator.SetFloat("Vertical", direction.y);
     }
 
     protected virtual void BasicAttackState()

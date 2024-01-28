@@ -4,6 +4,32 @@ using UnityEngine;
 
 public class Beginner : Player
 {
+    [SerializeField] GameObject Club;
+    [SerializeField] Animator clubAnimator;
+
+    [SerializeField] bool isClubEquipt;
+
+    protected override void IdleState()
+    {
+        base.IdleState();
+
+        clubAnimator.Play("Idle");
+    }
+
+    protected override void MoveState()
+    {
+        base.MoveState();
+
+        clubAnimator.Play("Move");
+
+        // Set idle Animation after move
+        if (inputHandler.MoveInput != Vector2.zero)
+        {
+            clubAnimator.SetFloat("Horizontal", inputHandler.MoveInput.x);
+            clubAnimator.SetFloat("Vertical", inputHandler.MoveInput.y);
+        }
+    }
+
     protected override void BasicAttackState()
     {
         if (canBasicAttack)
@@ -11,10 +37,12 @@ public class Beginner : Player
             canBasicAttack = false;
 
             bodyAnimator.Play("Sword Basic Attack");
+            clubAnimator.Play("Basic Attack");
 
             canSlideForward = true;
 
-            FaceAttackingDirection();
+            FaceAttackingDirection(bodyAnimator);
+            FaceAttackingDirection(clubAnimator);
 
             StartCoroutine(DurationOfBasicAttack());
         }
