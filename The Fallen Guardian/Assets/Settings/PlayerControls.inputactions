@@ -1,5 +1,5 @@
 {
-    "name": "PlayerActions",
+    "name": "PlayerControls",
     "maps": [
         {
             "name": "Player",
@@ -27,6 +27,15 @@
                     "name": "Basic Attack",
                     "type": "Button",
                     "id": "1c9b49c6-1913-4e97-a844-b8078546f639",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Inventory",
+                    "type": "Button",
+                    "id": "d244f77e-cf21-4239-b943-db31ef746fab",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -141,6 +150,28 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Basic Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bbddd91a-a057-456f-8fee-bdb486c38667",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b81e0b66-e27c-45b6-8968-969567c8c0d7",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

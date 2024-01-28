@@ -8,6 +8,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 MoveInput { get; private set; }
     public Vector2 LookInput { get; private set; }
     public bool BasicAttackInput { get; private set; }
+    public bool OnInventoryInput { get; private set; }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -36,6 +37,14 @@ public class PlayerInputHandler : MonoBehaviour
         if (context.canceled)
         {
             BasicAttackInput = false;
+        }
+    }
+
+    public void OnInventory(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            OnInventoryInput = true;
         }
     }
 }
