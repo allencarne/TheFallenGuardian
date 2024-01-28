@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Beginner : Player
 {
-
     protected override void BasicAttackState()
     {
         if (canBasicAttack)
@@ -13,7 +12,9 @@ public class Beginner : Player
 
             bodyAnimator.Play("Sword Basic Attack");
 
-            canSlide = true;
+            canSlideForward = true;
+
+            FaceAttackingDirection();
 
             StartCoroutine(DurationOfBasicAttack());
         }

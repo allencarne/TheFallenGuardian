@@ -18,7 +18,7 @@ public class Player : Character
 
     [Header("Un-Exposed Variables")]
     protected bool canBasicAttack = true;
-    protected bool canSlide = false;
+    protected bool canSlideForward = false;
 
     public enum PlayerState
     {
@@ -39,7 +39,7 @@ public class Player : Character
 
     private void Update()
     {
-        Debug.Log(canSlide);
+        Debug.Log(canSlideForward);
 
         switch (state)
         {
@@ -130,17 +130,27 @@ public class Player : Character
 
     protected void SlideForward()
     {
-        if (canSlide)
+        if (canSlideForward)
         {
-            canSlide = false;
-
-            rb.velocity = Vector2.zero;
+            canSlideForward = false;
 
             // Use the rotation of the Aimer to determine the slide direction
             Vector2 slideDirection = Quaternion.Euler(0f, 0f, aimer.rotation.eulerAngles.z) * Vector2.right;
 
             rb.velocity = slideDirection * SlideForwardSpeed;
         }
+    }
+
+    protected void FaceAttackingDirection()
+    {
+        // Use Aimer rotation for setting animator parameters
+        float angle = aimer.rotation.eulerAngles.z;
+
+        // Convert angle to a normalized vector for animation parameters
+        Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+
+        bodyAnimator.SetFloat("Horizontal", direction.x);
+        bodyAnimator.SetFloat("Vertical", direction.y);
     }
 
     protected virtual void BasicAttackState()
@@ -162,6 +172,9 @@ public class Player : Character
     {
         if (attackInput && canBasicAttack)
         {
+            // Prevents Unwanted Slide
+            rb.velocity = Vector2.zero;
+
             state = PlayerState.BasicAttack;
         }
     }
