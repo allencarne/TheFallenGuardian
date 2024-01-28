@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Player_Idle_Up_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: -0.516129}
+    pivot: {x: 0.8571429, y: -2.1428573}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 10
-      height: 31
+      width: 14
+      height: 14
     spriteID: b5d5e7e114ebe4249b3e498393838615
     spriteBone: []
     spriteOutline: []
@@ -143,15 +143,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Player_Idle_Up_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: -0.516129}
+    pivot: {x: 0.8571429, y: -2.1428573}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 43
-      width: 10
-      height: 31
+      y: 26
+      width: 14
+      height: 14
     spriteID: eeec8d59db9a5d940b41ffdc3a02c804
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 43}
+    uvTransform: {x: 4, y: 26}
   - name: Player_Idle_Up_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: -0.516129}
+    pivot: {x: 0.8571429, y: -2.1428573}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 82
-      width: 10
-      height: 31
+      y: 48
+      width: 14
+      height: 14
     spriteID: be0352ed7b35e7b4093f23ef6142b2d1
     spriteBone: []
     spriteOutline: []
@@ -180,18 +180,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 82}
+    uvTransform: {x: 4, y: 48}
   - name: Player_Idle_Up_Frame_3
     originalName: 
-    pivot: {x: 0.5, y: -0.53333336}
+    pivot: {x: 0.8571429, y: -2.0714288}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 22
-      y: 43
-      width: 10
-      height: 30
+      x: 4
+      y: 70
+      width: 14
+      height: 14
     spriteID: 09f65cdd52e8fb74c9d9bb6ca8172fc0
     spriteBone: []
     spriteOutline: []
@@ -200,18 +200,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 22, y: 43}
+    uvTransform: {x: 4, y: 70}
   - name: Player_Idle_Up_Frame_4
     originalName: 
-    pivot: {x: 0.5, y: -0.53333336}
+    pivot: {x: 0.8571429, y: -2}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 22
-      y: 81
-      width: 10
-      height: 30
+      x: 4
+      y: 92
+      width: 14
+      height: 14
     spriteID: 6f3c72767334d1b43a8ddd0040fe0c5c
     spriteBone: []
     spriteOutline: []
@@ -220,18 +220,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 22, y: 81}
+    uvTransform: {x: 4, y: 92}
   - name: Player_Idle_Up_Frame_5
     originalName: 
-    pivot: {x: 0.5, y: -0.53333336}
+    pivot: {x: 0.8571429, y: -2}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 40
+      x: 26
       y: 4
-      width: 10
-      height: 30
+      width: 14
+      height: 14
     spriteID: 23c0bb7f8c2e4af43b0a99e3b0a4e4c7
     spriteBone: []
     spriteOutline: []
@@ -240,18 +240,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 40, y: 4}
+    uvTransform: {x: 26, y: 4}
   - name: Player_Idle_Up_Frame_6
     originalName: 
-    pivot: {x: 0.5, y: -0.53333336}
+    pivot: {x: 0.8571429, y: -2}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 40
-      y: 42
-      width: 10
-      height: 30
+      x: 26
+      y: 26
+      width: 14
+      height: 14
     spriteID: 41db84f84453d0c4ea27d7d83a9e933d
     spriteBone: []
     spriteOutline: []
@@ -260,18 +260,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 40, y: 42}
+    uvTransform: {x: 26, y: 26}
   - name: Player_Idle_Up_Frame_7
     originalName: 
-    pivot: {x: 0.5, y: -0.516129}
+    pivot: {x: 0.8571429, y: -2.0714288}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 22
-      y: 4
-      width: 10
-      height: 31
+      x: 26
+      y: 48
+      width: 14
+      height: 14
     spriteID: 62dbe077366f6c24a94eb53ded92a504
     spriteBone: []
     spriteOutline: []
@@ -280,7 +280,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 22, y: 4}
+    uvTransform: {x: 26, y: 48}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -293,66 +293,66 @@ ScriptedImporter:
     - name: Player_Idle_Up_Frame_0
       frameIndex: 0
       cellRect:
-        x: 27
-        y: 16
-        width: 10
-        height: 31
+        x: 20
+        y: 30
+        width: 14
+        height: 14
       spriteId: b5d5e7e114ebe4249b3e498393838615
     - name: Player_Idle_Up_Frame_1
       frameIndex: 1
       cellRect:
-        x: 27
-        y: 16
-        width: 10
-        height: 31
+        x: 20
+        y: 30
+        width: 14
+        height: 14
       spriteId: eeec8d59db9a5d940b41ffdc3a02c804
     - name: Player_Idle_Up_Frame_2
       frameIndex: 2
       cellRect:
-        x: 27
-        y: 16
-        width: 10
-        height: 31
+        x: 20
+        y: 30
+        width: 14
+        height: 14
       spriteId: be0352ed7b35e7b4093f23ef6142b2d1
     - name: Player_Idle_Up_Frame_3
       frameIndex: 3
       cellRect:
-        x: 27
-        y: 16
-        width: 10
-        height: 30
+        x: 20
+        y: 29
+        width: 14
+        height: 14
       spriteId: 09f65cdd52e8fb74c9d9bb6ca8172fc0
     - name: Player_Idle_Up_Frame_4
       frameIndex: 4
       cellRect:
-        x: 27
-        y: 16
-        width: 10
-        height: 30
+        x: 20
+        y: 28
+        width: 14
+        height: 14
       spriteId: 6f3c72767334d1b43a8ddd0040fe0c5c
     - name: Player_Idle_Up_Frame_5
       frameIndex: 5
       cellRect:
-        x: 27
-        y: 16
-        width: 10
-        height: 30
+        x: 20
+        y: 28
+        width: 14
+        height: 14
       spriteId: 23c0bb7f8c2e4af43b0a99e3b0a4e4c7
     - name: Player_Idle_Up_Frame_6
       frameIndex: 6
       cellRect:
-        x: 27
-        y: 16
-        width: 10
-        height: 30
+        x: 20
+        y: 28
+        width: 14
+        height: 14
       spriteId: 41db84f84453d0c4ea27d7d83a9e933d
     - name: Player_Idle_Up_Frame_7
       frameIndex: 7
       cellRect:
-        x: 27
-        y: 16
-        width: 10
-        height: 31
+        x: 20
+        y: 29
+        width: 14
+        height: 14
       spriteId: 62dbe077366f6c24a94eb53ded92a504
     linkedCells: []
     parentIndex: -1
