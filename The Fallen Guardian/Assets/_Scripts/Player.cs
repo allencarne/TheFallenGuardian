@@ -39,8 +39,6 @@ public class Player : Character
 
     private void Update()
     {
-        Debug.Log(canSlideForward);
-
         switch (state)
         {
             case PlayerState.Idle:
