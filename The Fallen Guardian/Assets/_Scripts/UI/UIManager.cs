@@ -8,6 +8,6 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(inventory);
+        //Debug.Log(inventory);
     }
 }

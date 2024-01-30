@@ -24,6 +24,7 @@ public class Player : Character
     {
         Idle,
         Move,
+        Hurt,
         BasicAttack,
         BasicAttack2,
         BasicAttack3,
@@ -39,6 +40,8 @@ public class Player : Character
 
     private void Update()
     {
+        Debug.Log(state);
+
         switch (state)
         {
             case PlayerState.Idle:
@@ -46,6 +49,9 @@ public class Player : Character
                 break;
             case PlayerState.Move:
                 MoveState();
+                break;
+            case PlayerState.Hurt:
+                HurtState();
                 break;
             case PlayerState.BasicAttack:
                 BasicAttackState();
@@ -56,6 +62,11 @@ public class Player : Character
             case PlayerState.BasicAttack3:
                 BasicAttack3State();
                 break;
+        }
+
+        if (Input.GetKey(KeyCode.X))
+        {
+            state = PlayerState.Hurt;
         }
     }
 
@@ -149,6 +160,11 @@ public class Player : Character
 
         animator.SetFloat("Horizontal", direction.x);
         animator.SetFloat("Vertical", direction.y);
+    }
+
+    protected virtual void HurtState()
+    {
+        //bodyAnimator.Play("Hurt");
     }
 
     protected virtual void BasicAttackState()

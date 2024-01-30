@@ -30,6 +30,21 @@ public class Beginner : Player
         }
     }
 
+    protected override void HurtState()
+    {
+        bodyAnimator.Play("Hurt");
+        clubAnimator.Play("Hurt");
+
+        StartCoroutine(HurtDuration());
+    }
+
+    IEnumerator HurtDuration()
+    {
+        yield return new WaitForSeconds(.8f);
+
+        state = PlayerState.Idle;
+    }
+
     protected override void BasicAttackState()
     {
         if (canBasicAttack)
