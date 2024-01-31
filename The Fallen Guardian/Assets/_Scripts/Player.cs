@@ -20,6 +20,8 @@ public class Player : Character
     protected bool canBasicAttack = true;
     protected bool canSlideForward = false;
 
+    bool canHurt = true;
+
     public enum PlayerState
     {
         Idle,
@@ -40,7 +42,7 @@ public class Player : Character
 
     private void Update()
     {
-        Debug.Log(state);
+        //Debug.Log(state);
 
         switch (state)
         {
@@ -64,7 +66,7 @@ public class Player : Character
                 break;
         }
 
-        if (Input.GetKey(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             state = PlayerState.Hurt;
         }
@@ -164,7 +166,26 @@ public class Player : Character
 
     protected virtual void HurtState()
     {
-        //bodyAnimator.Play("Hurt");
+        if (canHurt)
+        {
+            canHurt = false;
+
+            // Prevents Unwanted Slide
+            rb.velocity = Vector2.zero;
+
+            bodyAnimator.Play("Hurt");
+
+            StartCoroutine(HurtDuration());
+        }
+    }
+
+    IEnumerator HurtDuration()
+    {
+        yield return new WaitForSeconds(.8f);
+
+        state = PlayerState.Idle;
+
+        canHurt = true;
     }
 
     protected virtual void BasicAttackState()
