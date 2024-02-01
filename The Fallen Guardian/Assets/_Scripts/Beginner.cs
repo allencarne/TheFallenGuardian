@@ -9,6 +9,8 @@ public class Beginner : Player
 
     [SerializeField] bool isClubEquipt;
 
+    [SerializeField] GameObject clubSlash;
+
     protected override void IdleState()
     {
         base.IdleState();
@@ -45,20 +47,34 @@ public class Beginner : Player
             bodyAnimator.Play("Sword Basic Attack");
             clubAnimator.Play("Basic Attack");
 
-            canSlideForward = true;
-
             FaceAttackingDirection(bodyAnimator);
             FaceAttackingDirection(clubAnimator);
 
+            StartCoroutine(AttackImpact());
             StartCoroutine(DurationOfBasicAttack());
         }
+    }
+
+    IEnumerator AttackImpact()
+    {
+        yield return new WaitForSeconds(.3f);
+
+        Debug.Log("hi");
+
+        Instantiate(clubSlash, transform.position, aimer.rotation);
+
+        canSlideForward = true;
     }
 
     IEnumerator DurationOfBasicAttack()
     {
         yield return new WaitForSeconds(.8f);
 
-        state = PlayerState.Idle;
+        // If we are interrupted this should prevent issues with state changes
+        if (state == PlayerState.BasicAttack)
+        {
+            state = PlayerState.Idle;
+        }
 
         canBasicAttack = true;
     }

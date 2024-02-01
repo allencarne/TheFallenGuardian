@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    [SerializeField] protected bool isInterruptable;
+
     [SerializeField] protected float health;
     [SerializeField] protected float maxHealth;
-    public float movementSpeed;
+    [SerializeField] protected float movementSpeed;
 
     // Take Damage
 

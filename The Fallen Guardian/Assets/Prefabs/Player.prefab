@@ -726,6 +726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66346dc9a144a0f42afd1d66e196703d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInterruptable: 0
   health: 0
   maxHealth: 0
   movementSpeed: 5
@@ -736,6 +737,7 @@ MonoBehaviour:
   Club: {fileID: 779979196637992106}
   clubAnimator: {fileID: 2069075175374440247}
   isClubEquipt: 0
+  clubSlash: {fileID: 6528315205038188619, guid: 86cb815f87f45ab408e9356759abf6a5, type: 3}
 --- !u!114 &2234033605008486945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,7 +834,7 @@ GameObject:
   - component: {fileID: 4815103173389180176}
   - component: {fileID: 9046386434577128461}
   m_Layer: 5
-  m_Name: GameUI
+  m_Name: PlayerUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
