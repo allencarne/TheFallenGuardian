@@ -106516,7 +106516,6 @@ GameObject:
   - component: {fileID: 1847182971}
   - component: {fileID: 1847182974}
   - component: {fileID: 1847182973}
-  - component: {fileID: 1847182972}
   m_Layer: 5
   m_Name: LocalMultiPlayer Panel
   m_TagString: Untagged
@@ -106545,30 +106544,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1847182972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1847182970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 225, y: 265}
-  m_Spacing: {x: 68.1, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
 --- !u!114 &1847182973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107383,6 +107358,9 @@ MonoBehaviour:
   gameModePanel: {fileID: 1119722599}
   singlePlayerPanel: {fileID: 242351604}
   localMultiplayerPanel: {fileID: 1847182970}
+  playerPanel: {fileID: 242351604}
+  player1Panel: {fileID: 1193009703}
+  player2Panel: {fileID: 1337182709}
 --- !u!1 &2133314224
 GameObject:
   m_ObjectHideFlags: 0
@@ -111220,30 +111198,6 @@ RectTransform:
   m_AnchoredPosition: {x: 28, y: -48}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5076867396511489475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5266282190485303171}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ComponentVersion: 1
-  m_AssetsPPU: 16
-  m_RefResolutionX: 640
-  m_RefResolutionY: 360
-  m_CropFrame: 0
-  m_GridSnapping: 0
-  m_FilterMode: 0
-  m_UpscaleRT: 0
-  m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
 --- !u!222 &5085567080197650874
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -111360,7 +111314,7 @@ GameObject:
   - component: {fileID: 6325823990736995345}
   - component: {fileID: 8820489551899812531}
   - component: {fileID: 7899449242878777961}
-  - component: {fileID: 5076867396511489475}
+  - component: {fileID: 8820489551899812532}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -114107,7 +114061,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 6325823990736995345}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -114253,6 +114207,18 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5266282190485303171}
   m_Enabled: 1
+--- !u!114 &8820489551899812532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5266282190485303171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19bcceb90672aed4aaaeae34854fbc74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8835691085772903952
 GameObject:
   m_ObjectHideFlags: 0

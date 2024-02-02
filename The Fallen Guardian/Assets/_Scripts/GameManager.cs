@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     public GameObject playerInstance;
     public GameObject player2Instance;
 
+    public event System.Action OnPlayerJoin;
+    public event System.Action OnPlayer2Join;
+
     public enum GameMode
     {
         None,
@@ -81,10 +84,14 @@ public class GameManager : MonoBehaviour
         if (playerInstance == null)
         {
             playerInstance = playerInput.gameObject;
+
+            OnPlayerJoin?.Invoke();
         }
         else
         {
             player2Instance = playerInput.gameObject;
+
+            OnPlayer2Join?.Invoke();
         }
     }
 
