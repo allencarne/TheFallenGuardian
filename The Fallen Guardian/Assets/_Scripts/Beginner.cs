@@ -59,8 +59,6 @@ public class Beginner : Player
     {
         yield return new WaitForSeconds(.3f);
 
-        Debug.Log("hi");
-
         Instantiate(clubSlash, transform.position, aimer.rotation);
 
         canSlideForward = true;

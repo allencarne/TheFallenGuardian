@@ -9,6 +9,8 @@ public class SelectGameMode : MonoBehaviour
     [SerializeField] GameObject singlePlayerPanel;
     [SerializeField] GameObject localMultiplayerPanel;
 
+    public event System.Action<int> OnGameModeSelected;
+
     private void Start()
     {
         gameModePanel.SetActive(true);
@@ -19,26 +21,26 @@ public class SelectGameMode : MonoBehaviour
 
     public void SinglePlayer()
     {
-        GameManager.instance.gameMode = GameManager.GameMode.Singleplayer;
-
         gameModePanel.SetActive(false);
 
         singlePlayerPanel.SetActive(true);
+
+        OnGameModeSelected?.Invoke(1);
     }
 
     public void LocalMultiPlayer()
     {
-        GameManager.instance.gameMode = GameManager.GameMode.LocalMultiplayer;
-
         gameModePanel.SetActive(false);
 
         localMultiplayerPanel.SetActive(true);
+
+        OnGameModeSelected?.Invoke(2);
     }
 
     public void OnlineMultiPlayer()
     {
-        GameManager.instance.gameMode = GameManager.GameMode.OnlineMultiplayer;
-
         //gameModePanel.SetActive(false);
+
+        //OnGameModeSelected?.Invoke(3);
     }
 }

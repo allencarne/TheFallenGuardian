@@ -22,6 +22,12 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    [SerializeField] SelectGameMode selectGameMode;
+    [SerializeField] PlayerInputManager playerInputManager;
+
+    public GameObject playerInstance;
+    public GameObject player2Instance;
+
     public enum GameMode
     {
         None,
@@ -32,13 +38,65 @@ public class GameManager : MonoBehaviour
 
     public GameMode gameMode = GameMode.None;
 
-    private void Start()
+    private void OnEnable()
     {
-
+        selectGameMode.OnGameModeSelected += HandleGameModeSelected;
     }
 
-    private void Update()
+    private void OnDisable()
     {
-        Debug.Log(gameMode);
+        selectGameMode.OnGameModeSelected -= HandleGameModeSelected;
+    }
+
+    private void HandleGameModeSelected(int selectedMode)
+    {
+        // Set the game mode based on the integer value
+        switch (selectedMode)
+        {
+            case 1:
+                gameMode = GameMode.Singleplayer;
+                SinglePlayer();
+                break;
+            case 2:
+                gameMode = GameMode.LocalMultiplayer;
+                LocalMultiplayer();
+                break;
+            case 3:
+                gameMode = GameMode.OnlineMultiplayer;
+                OnlineMultiplayer();
+                break;
+            default:
+                Debug.LogWarning("Invalid game mode selected.");
+                break;
+        }
+    }
+
+    void SinglePlayer()
+    {
+        playerInputManager.EnableJoining();
+    }
+
+    void OnPlayerJoined(PlayerInput playerInput)
+    {
+        if (playerInstance == null)
+        {
+            playerInstance = playerInput.gameObject;
+        }
+        else
+        {
+            player2Instance = playerInput.gameObject;
+        }
+    }
+
+
+    void LocalMultiplayer()
+    {
+        playerInputManager.EnableJoining();
+    }
+
+    void OnlineMultiplayer()
+    {
+        // Implement OnlineMultiplayer logic
+        Debug.Log("OnlineMultiplayer selected");
     }
 }
