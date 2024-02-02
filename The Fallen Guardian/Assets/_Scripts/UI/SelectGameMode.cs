@@ -19,40 +19,26 @@ public class SelectGameMode : MonoBehaviour
 
     public void SinglePlayer()
     {
-        PlayerPrefs.SetInt("SelectedGameMode", 0);
+        GameManager.instance.gameMode = GameManager.GameMode.Singleplayer;
 
-        ModeSelected();
+        gameModePanel.SetActive(false);
+
+        singlePlayerPanel.SetActive(true);
     }
 
     public void LocalMultiPlayer()
     {
-        PlayerPrefs.SetInt("SelectedGameMode", 1);
+        GameManager.instance.gameMode = GameManager.GameMode.LocalMultiplayer;
 
-        ModeSelected();
+        gameModePanel.SetActive(false);
+
+        localMultiplayerPanel.SetActive(true);
     }
 
     public void OnlineMultiPlayer()
     {
-        PlayerPrefs.SetInt("SelectedGameMode", 2);
+        GameManager.instance.gameMode = GameManager.GameMode.OnlineMultiplayer;
 
-        ModeSelected();
-    }
-
-    void ModeSelected()
-    {
-        gameModePanel.SetActive(false);
-
-        switch (PlayerPrefs.GetInt("SelectedGameMode"))
-        {
-            case 0:
-                singlePlayerPanel.SetActive(true);
-                break;
-            case 1:
-                localMultiplayerPanel.SetActive(true);
-                break;
-            case 2:
-                // Online Mulitplayer
-                break;
-        }
+        //gameModePanel.SetActive(false);
     }
 }

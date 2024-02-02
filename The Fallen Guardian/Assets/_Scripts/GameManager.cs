@@ -5,24 +5,32 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject player1Instance;
-    [SerializeField] GameObject player2Instance;
+    #region Singleton
 
-    PlayerInputManager playerInputManager;
+    public static GameManager instance;
 
-    enum GameMode
+    private void Awake()
     {
+        if (instance != null)
+        {
+            Debug.LogWarning("More than once instance of GameManager found!");
+            return;
+        }
+
+        instance = this;
+    }
+
+    #endregion
+
+    public enum GameMode
+    {
+        None,
         Singleplayer,
         LocalMultiplayer,
         OnlineMultiplayer
     }
 
-    GameMode gameMode;
-
-    private void Awake()
-    {
-        playerInputManager = GetComponent<PlayerInputManager>();
-    }
+    public GameMode gameMode = GameMode.None;
 
     private void Start()
     {
@@ -32,18 +40,5 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         Debug.Log(gameMode);
-
-        switch (PlayerPrefs.GetInt("SelectedGameMode"))
-        {
-            case 0:
-                gameMode = GameMode.Singleplayer;
-                break;
-            case 1:
-                gameMode = GameMode.LocalMultiplayer;
-                break;
-            case 2:
-                gameMode = GameMode.OnlineMultiplayer;
-                break;
-        }
     }
 }
