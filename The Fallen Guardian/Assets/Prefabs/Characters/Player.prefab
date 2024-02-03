@@ -561,11 +561,13 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   movementSpeed: 7
+  PlayerIndex: 0
   bodyAnimator: {fileID: 7406391039671905879}
   aimer: {fileID: 1333201046459341400}
   SlideForwardSpeed: 8
   slideRange: 3.5
   slideDuration: 0.1
+  attackDir: {x: 0, y: 0, z: 0, w: 0}
   state: 0
   Club: {fileID: 2679163447953009308}
   clubAnimator: {fileID: 7437577949069865287}

@@ -52,7 +52,7 @@ public class Player : Character
 
     private void Update()
     {
-        Debug.Log(canSlideForward);
+        //Debug.Log(canSlideForward);
 
         switch (state)
         {
