@@ -8,6 +8,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 MoveInput { get; private set; }
     public Vector2 LookInput { get; private set; }
     public bool BasicAttackInput { get; private set; }
+    public Vector2 MousePosition { get; private set; }
     public bool OnInventoryInput { get; private set; }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -38,6 +39,11 @@ public class PlayerInputHandler : MonoBehaviour
         {
             BasicAttackInput = false;
         }
+    }
+
+    public void OnMousePos(InputAction.CallbackContext context)
+    {
+        MousePosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
     }
 
     public void OnInventory(InputAction.CallbackContext context)

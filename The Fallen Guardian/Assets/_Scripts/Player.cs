@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : Character
 {
@@ -15,6 +16,7 @@ public class Player : Character
 
     [Header("Exposed Variables")]
     [SerializeField] protected float SlideForwardSpeed;
+    [SerializeField] float slideRange;
 
     [Header("Un-Exposed Variables")]
     protected bool canSpawn = true;
@@ -44,7 +46,7 @@ public class Player : Character
 
     private void Update()
     {
-        //Debug.Log(state);
+        Debug.Log(inputHandler.MousePosition);
 
         switch (state)
         {
@@ -170,15 +172,38 @@ public class Player : Character
 
     protected void SlideForward()
     {
-        if (canSlideForward)
+        // Calculate the distance between the player and the mouse position
+        float distance = Vector3.Distance(transform.position, inputHandler.MousePosition);
+
+        // Check if the distance is greater than the slide range
+        if (distance > slideRange)
         {
-            canSlideForward = false;
+            if (canSlideForward)
+            {
+                canSlideForward = false;
 
-            // Use the rotation of the Aimer to determine the slide direction
-            Vector2 slideDirection = Quaternion.Euler(0f, 0f, aimer.rotation.eulerAngles.z) * Vector2.right;
+                // Use the rotation of the Aimer to determine the slide direction
+                Vector2 slideDirection = Quaternion.Euler(0f, 0f, aimer.rotation.eulerAngles.z) * Vector2.right;
 
-            rb.velocity = slideDirection * SlideForwardSpeed;
+                // Apply the slide velocity
+                rb.velocity = slideDirection * SlideForwardSpeed;
+            }
         }
+        
+        // Slide If Movement Key/button is pressed
+        if (inputHandler.MoveInput != Vector2.zero)
+        {
+            if (canSlideForward)
+            {
+                canSlideForward = false;
+
+                // Use the rotation of the Aimer to determine the slide direction
+                Vector2 slideDirection = Quaternion.Euler(0f, 0f, aimer.rotation.eulerAngles.z) * Vector2.right;
+
+                rb.velocity = slideDirection * SlideForwardSpeed;
+            }
+        }
+        
     }
 
     protected void FaceAttackingDirection(Animator animator)
@@ -241,5 +266,11 @@ public class Player : Character
 
             state = PlayerState.BasicAttack;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, slideRange);
     }
 }

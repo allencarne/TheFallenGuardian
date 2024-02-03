@@ -524,6 +524,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d244f77e-cf21-4239-b943-db31ef746fab
     m_ActionName: Player/Inventory[/XInputControllerWindows/dpad/up,/Keyboard/i]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 754719381540065433}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnMousePos
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 557e7d7b-49bc-4c1e-b349-65b7648a660a
+    m_ActionName: Player/MousePosition[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -548,6 +564,7 @@ MonoBehaviour:
   bodyAnimator: {fileID: 7406391039671905879}
   aimer: {fileID: 1333201046459341400}
   SlideForwardSpeed: 8
+  slideRange: 3
   state: 0
   Club: {fileID: 2679163447953009308}
   clubAnimator: {fileID: 7437577949069865287}
