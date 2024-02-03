@@ -17,6 +17,7 @@ public class Player : Character
     [SerializeField] protected float SlideForwardSpeed;
 
     [Header("Un-Exposed Variables")]
+    protected bool canSpawn = true;
     protected bool canBasicAttack = true;
     protected bool canSlideForward = false;
 
@@ -24,6 +25,7 @@ public class Player : Character
 
     public enum PlayerState
     {
+        Spawn,
         Idle,
         Move,
         Hurt,
@@ -46,6 +48,9 @@ public class Player : Character
 
         switch (state)
         {
+            case PlayerState.Spawn:
+                SpawnState();
+                break;
             case PlayerState.Idle:
                 IdleState();
                 break;
@@ -108,6 +113,25 @@ public class Player : Character
 
                 break;
         }
+    }
+
+    protected virtual void SpawnState()
+    {
+        if (canSpawn)
+        {
+            canSpawn = false;
+
+            StartCoroutine(SpawnDuration());
+        }
+    }
+
+    IEnumerator SpawnDuration()
+    {
+        yield return new WaitForSeconds(.6f);
+
+        state = PlayerState.Idle;
+
+        canSpawn = true;
     }
 
     protected virtual void IdleState()
