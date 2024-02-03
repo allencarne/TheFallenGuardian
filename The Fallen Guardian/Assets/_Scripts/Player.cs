@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 
 public class Player : Character
 {
+    public int PlayerIndex;
+
     [Header("Exposed Components")]
     [SerializeField] protected Animator bodyAnimator;
     [SerializeField] protected Transform aimer;

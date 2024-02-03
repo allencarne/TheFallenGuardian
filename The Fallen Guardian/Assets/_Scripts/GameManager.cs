@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject playerInstance;
     public GameObject player2Instance;
+    public Camera player2Camera;
 
     public event System.Action OnPlayerJoin;
     public event System.Action OnPlayer2Join;
@@ -85,11 +86,15 @@ public class GameManager : MonoBehaviour
         {
             playerInstance = playerInput.gameObject;
 
+            playerInstance.GetComponent<Player>().PlayerIndex = 1;
+
             OnPlayerJoin?.Invoke();
         }
         else
         {
             player2Instance = playerInput.gameObject;
+
+            player2Instance.GetComponent<Player>().PlayerIndex = 2;
 
             OnPlayer2Join?.Invoke();
         }

@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class Aimer : MonoBehaviour
 {
     PlayerInputHandler inputHandler;
-    Camera mainCamera;
     public bool isControllerInput;
     PlayerInput playerInput;
 
@@ -14,7 +13,6 @@ public class Aimer : MonoBehaviour
     {
         inputHandler = GetComponentInParent<PlayerInputHandler>();
         playerInput = GetComponentInParent<PlayerInput>();
-        mainCamera = Camera.main;
     }
 
     private void Update()
@@ -35,10 +33,8 @@ public class Aimer : MonoBehaviour
 
     void RotateOnKeyboard()
     {
-        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCamera.nearClipPlane));
-
         // Calculate the rotation angle based on mouse position
-        float angle = Mathf.Atan2(mouseWorldPosition.y - transform.position.y, mouseWorldPosition.x - transform.position.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(inputHandler.MousePosition.y - transform.position.y, inputHandler.MousePosition.x - transform.position.x) * Mathf.Rad2Deg;
 
         // Apply rotation to the Aimer
         transform.rotation = Quaternion.Euler(0f, 0f, angle);

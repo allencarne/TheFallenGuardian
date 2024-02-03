@@ -7,7 +7,6 @@ public class CameraFollow : MonoBehaviour
     private Transform playerTransform;
     public float smoothSpeed;
 
-    [SerializeField] Camera player2Camera;
     private Transform player2Transform;
 
     [SerializeField] GameObject playerUI;
@@ -38,7 +37,7 @@ public class CameraFollow : MonoBehaviour
     void HandlePlayer2Join()
     {
         // Spawn Second Camrea
-        player2Camera = Instantiate(player2Camera);
+        GameManager.instance.player2Camera = Instantiate(GameManager.instance.player2Camera);
 
         // Set Player 1 Camrea viewport rect y = .5
         Camera mainCamera = Camera.main;
@@ -51,7 +50,7 @@ public class CameraFollow : MonoBehaviour
         player2UI = Instantiate(playerUI, playerUI.transform.parent);
 
         // Assign Player 2 UI to Player 2 Camera
-        player2UI.GetComponent<Canvas>().worldCamera = player2Camera;
+        player2UI.GetComponent<Canvas>().worldCamera = GameManager.instance.player2Camera;
     }
 
     private void LateUpdate()
@@ -67,9 +66,9 @@ public class CameraFollow : MonoBehaviour
         if (player2Transform != null)
         {
             Vector3 desiredPosition = player2Transform.position;
-            desiredPosition.z = player2Camera.transform.position.z;
-            Vector3 smoothedPosition = Vector3.Lerp(player2Camera.transform.position, desiredPosition, smoothSpeed);
-            player2Camera.transform.position = smoothedPosition;
+            desiredPosition.z = GameManager.instance.player2Camera.transform.position.z;
+            Vector3 smoothedPosition = Vector3.Lerp(GameManager.instance.player2Camera.transform.position, desiredPosition, smoothSpeed);
+            GameManager.instance.player2Camera.transform.position = smoothedPosition;
         }
     }
 }
