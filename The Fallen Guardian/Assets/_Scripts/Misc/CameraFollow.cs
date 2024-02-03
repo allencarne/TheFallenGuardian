@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     private Transform playerTransform;
+    public float smoothSpeed;
 
     private void OnEnable()
     {
@@ -25,9 +26,11 @@ public class CameraFollow : MonoBehaviour
     {
         if (playerTransform != null)
         {
-            Vector3 playerPos = playerTransform.position;
-            playerPos.z = transform.position.z;
-            transform.position = playerPos;
+            // Use Vector3.Lerp for smooth camera movement
+            Vector3 desiredPosition = playerTransform.position;
+            desiredPosition.z = transform.position.z; // Keep the camera's original z position
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+            transform.position = smoothedPosition;
         }
     }
 }
