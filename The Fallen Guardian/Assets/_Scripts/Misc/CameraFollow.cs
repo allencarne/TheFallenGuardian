@@ -7,14 +7,19 @@ public class CameraFollow : MonoBehaviour
     private Transform playerTransform;
     public float smoothSpeed;
 
+    [SerializeField] Camera player2Camera;
+    private Transform player2Transform;
+
     private void OnEnable()
     {
         GameManager.instance.OnPlayerJoin += HandlePlayerJoin;
+        GameManager.instance.OnPlayer2Join += HandlePlayer2Join;
     }
 
     private void OnDisable()
     {
         GameManager.instance.OnPlayerJoin -= HandlePlayerJoin;
+        GameManager.instance.OnPlayer2Join -= HandlePlayer2Join;
     }
 
     void HandlePlayerJoin()
@@ -22,15 +27,34 @@ public class CameraFollow : MonoBehaviour
         playerTransform = GameManager.instance.playerInstance.transform;
     }
 
+    void HandlePlayer2Join()
+    {
+        // Spawn Second Camrea
+        player2Camera = Instantiate(player2Camera);
+
+        // Set Player 1 Camrea viewport rect y = .5
+        Camera mainCamera = Camera.main;
+        mainCamera.rect = new Rect(0f, .5f, 1f, 1f);
+
+        player2Transform = GameManager.instance.player2Instance.transform;
+    }
+
     private void LateUpdate()
     {
         if (playerTransform != null)
         {
-            // Use Vector3.Lerp for smooth camera movement
             Vector3 desiredPosition = playerTransform.position;
-            desiredPosition.z = transform.position.z; // Keep the camera's original z position
+            desiredPosition.z = transform.position.z;
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
             transform.position = smoothedPosition;
+        }
+
+        if (player2Transform != null)
+        {
+            Vector3 desiredPosition = player2Transform.position;
+            desiredPosition.z = player2Camera.transform.position.z;
+            Vector3 smoothedPosition = Vector3.Lerp(player2Camera.transform.position, desiredPosition, smoothSpeed);
+            player2Camera.transform.position = smoothedPosition;
         }
     }
 }
