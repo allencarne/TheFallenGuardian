@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,11 +18,14 @@ public class Player : Character
     [Header("Exposed Variables")]
     [SerializeField] protected float SlideForwardSpeed;
     [SerializeField] float slideRange;
+    [SerializeField] float slideDuration;
 
     [Header("Un-Exposed Variables")]
     protected bool canSpawn = true;
     protected bool canBasicAttack = true;
     protected bool canSlideForward = false;
+
+    [SerializeField] protected Quaternion attackDir;
 
     bool canHurt = true;
 
@@ -46,7 +50,7 @@ public class Player : Character
 
     private void Update()
     {
-        Debug.Log(inputHandler.MousePosition);
+        Debug.Log(canSlideForward);
 
         switch (state)
         {
@@ -108,7 +112,12 @@ public class Player : Character
                 break;
             case PlayerState.BasicAttack:
 
-                SlideForward();
+                if (canSlideForward)
+                {
+                    StartCoroutine(SlideDuration());
+
+                    SlideForward(attackDir.eulerAngles.z);
+                }
 
                 break;
             case PlayerState.BasicAttack2:
@@ -170,40 +179,42 @@ public class Player : Character
         rb.velocity = movement;
     }
 
-    protected void SlideForward()
+    protected void HandleSlideForward(float rotation)
     {
-        // Calculate the distance between the player and the mouse position
-        float distance = Vector3.Distance(transform.position, inputHandler.MousePosition);
+        PlayerInput controlScheme = GetComponent<PlayerInput>();
 
-        // Check if the distance is greater than the slide range
-        if (distance > slideRange)
+        if (controlScheme.currentControlScheme == "Keyboard")
         {
-            if (canSlideForward)
+            // Calculate the distance between the player and the mouse position
+            float distance = Vector3.Distance(transform.position, inputHandler.MousePosition);
+
+            // Check if the distance is greater than the slide range
+            if (distance > slideRange)
             {
-                canSlideForward = false;
-
-                // Use the rotation of the Aimer to determine the slide direction
-                Vector2 slideDirection = Quaternion.Euler(0f, 0f, aimer.rotation.eulerAngles.z) * Vector2.right;
-
-                // Apply the slide velocity
-                rb.velocity = slideDirection * SlideForwardSpeed;
+                canSlideForward = true;
             }
         }
-        
+
         // Slide If Movement Key/button is pressed
         if (inputHandler.MoveInput != Vector2.zero)
         {
-            if (canSlideForward)
-            {
-                canSlideForward = false;
-
-                // Use the rotation of the Aimer to determine the slide direction
-                Vector2 slideDirection = Quaternion.Euler(0f, 0f, aimer.rotation.eulerAngles.z) * Vector2.right;
-
-                rb.velocity = slideDirection * SlideForwardSpeed;
-            }
+            canSlideForward = true;
         }
-        
+    }
+
+    protected void SlideForward(float rotation)
+    {
+        // Use the rotation of the Aimer to determine the slide direction
+        Vector2 slideDirection = Quaternion.Euler(0f, 0f, rotation) * Vector2.right;
+
+        rb.velocity = slideDirection * SlideForwardSpeed;
+    }
+
+    IEnumerator SlideDuration()
+    {
+        yield return new WaitForSeconds(slideDuration);
+
+        canSlideForward = false;
     }
 
     protected void FaceAttackingDirection(Animator animator)

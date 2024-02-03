@@ -43,12 +43,12 @@
                 },
                 {
                     "name": "MousePosition",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "557e7d7b-49bc-4c1e-b349-65b7648a660a",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [

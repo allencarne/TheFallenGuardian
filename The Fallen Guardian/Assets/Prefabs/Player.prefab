@@ -540,7 +540,7 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 557e7d7b-49bc-4c1e-b349-65b7648a660a
     m_ActionName: Player/MousePosition[/Mouse/position]
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
@@ -564,7 +564,8 @@ MonoBehaviour:
   bodyAnimator: {fileID: 7406391039671905879}
   aimer: {fileID: 1333201046459341400}
   SlideForwardSpeed: 8
-  slideRange: 3
+  slideRange: 3.5
+  slideDuration: 0.1
   state: 0
   Club: {fileID: 2679163447953009308}
   clubAnimator: {fileID: 7437577949069865287}

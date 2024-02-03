@@ -42,9 +42,9 @@ public class Beginner : Player
     {
         if (canBasicAttack)
         {
-            canBasicAttack = false;
+            attackDir = aimer.rotation;
 
-            canSlideForward = true;
+            canBasicAttack = false;
 
             bodyAnimator.Play("Sword Basic Attack");
             clubAnimator.Play("Basic Attack");
@@ -63,7 +63,9 @@ public class Beginner : Player
 
         if (state == PlayerState.BasicAttack)
         {
-            Instantiate(clubSlash, transform.position, aimer.rotation);
+            Instantiate(clubSlash, transform.position, attackDir);
+
+            HandleSlideForward(attackDir.eulerAngles.z);
         }
     }
 
