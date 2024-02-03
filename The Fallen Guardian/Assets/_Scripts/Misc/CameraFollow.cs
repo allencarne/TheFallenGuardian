@@ -10,6 +10,9 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] Camera player2Camera;
     private Transform player2Transform;
 
+    [SerializeField] GameObject playerUI;
+    [SerializeField] GameObject player2UI;
+
     private void OnEnable()
     {
         GameManager.instance.OnPlayerJoin += HandlePlayerJoin;
@@ -20,6 +23,11 @@ public class CameraFollow : MonoBehaviour
     {
         GameManager.instance.OnPlayerJoin -= HandlePlayerJoin;
         GameManager.instance.OnPlayer2Join -= HandlePlayer2Join;
+    }
+
+    private void Start()
+    {
+        playerUI = GameObject.Find("PlayerUI");
     }
 
     void HandlePlayerJoin()
@@ -36,7 +44,14 @@ public class CameraFollow : MonoBehaviour
         Camera mainCamera = Camera.main;
         mainCamera.rect = new Rect(0f, .5f, 1f, 1f);
 
+        // Set Tranforms to Player2 Instance
         player2Transform = GameManager.instance.player2Instance.transform;
+
+        // Spawn Player2 UI
+        player2UI = Instantiate(playerUI, playerUI.transform.parent);
+
+        // Assign Player 2 UI to Player 2 Camera
+        player2UI.GetComponent<Canvas>().worldCamera = player2Camera;
     }
 
     private void LateUpdate()
