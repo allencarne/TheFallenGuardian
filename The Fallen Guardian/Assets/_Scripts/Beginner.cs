@@ -44,6 +44,8 @@ public class Beginner : Player
         {
             canBasicAttack = false;
 
+            canSlideForward = true;
+
             bodyAnimator.Play("Sword Basic Attack");
             clubAnimator.Play("Basic Attack");
 
@@ -59,9 +61,10 @@ public class Beginner : Player
     {
         yield return new WaitForSeconds(.3f);
 
-        Instantiate(clubSlash, transform.position, aimer.rotation);
-
-        canSlideForward = true;
+        if (state == PlayerState.BasicAttack)
+        {
+            Instantiate(clubSlash, transform.position, aimer.rotation);
+        }
     }
 
     IEnumerator DurationOfBasicAttack()

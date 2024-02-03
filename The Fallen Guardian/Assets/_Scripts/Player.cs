@@ -73,7 +73,10 @@ public class Player : Character
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            state = PlayerState.Hurt;
+            if (isInterruptable)
+            {
+                state = PlayerState.Hurt;
+            }
         }
     }
 
@@ -136,6 +139,8 @@ public class Player : Character
 
     protected virtual void IdleState()
     {
+        isInterruptable = true;
+
         bodyAnimator.Play("Idle");
 
         // Transitions

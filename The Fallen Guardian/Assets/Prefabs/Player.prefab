@@ -547,7 +547,7 @@ MonoBehaviour:
   movementSpeed: 7
   bodyAnimator: {fileID: 7406391039671905879}
   aimer: {fileID: 1333201046459341400}
-  SlideForwardSpeed: 3
+  SlideForwardSpeed: 8
   state: 0
   Club: {fileID: 2679163447953009308}
   clubAnimator: {fileID: 7437577949069865287}
