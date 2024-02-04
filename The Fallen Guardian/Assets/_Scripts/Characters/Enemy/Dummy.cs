@@ -39,12 +39,22 @@ public class Dummy : Enemy
 
     protected override void HurtState()
     {
-        if (isEnemyHurt)
+        if (isHurt)
         {
-            isEnemyHurt = false;
-            enemyAnimator.Play("Hurt", -1, 0f);
-        }
+            isHurt = false;
 
-        idleTime = 0;
+            enemyAnimator.Play("Hurt", -1, 0f);
+
+            idleTime = 0;
+
+            StartCoroutine(HurtDuration());
+        }
+    }
+
+    IEnumerator HurtDuration()
+    {
+        yield return new WaitForSeconds(.4f);
+
+        enemyState = EnemyState.Idle;
     }
 }

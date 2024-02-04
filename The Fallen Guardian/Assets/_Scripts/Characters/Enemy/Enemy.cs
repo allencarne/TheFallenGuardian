@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    [SerializeField] protected Animator enemyAnimator;
-    [SerializeField] protected Rigidbody2D enemyRB;
+    protected Animator enemyAnimator;
+    protected Rigidbody2D enemyRB;
     protected Vector2 startingPosition;
 
     protected float idleTime;
 
-    protected bool isEnemyHurt = false;
     bool canSpawn = true;
 
     protected enum EnemyState 
@@ -28,6 +27,22 @@ public class Enemy : Character
     }
 
     protected EnemyState enemyState = EnemyState.Spawn;
+
+    private void OnEnable()
+    {
+        OnHurt += HurtState;
+    }
+
+    private void OnDisable()
+    {
+        OnHurt -= HurtState;
+    }
+
+    private void Awake()
+    {
+        enemyAnimator = GetComponentInChildren<Animator>();
+        enemyRB = GetComponent<Rigidbody2D>();
+    }
 
     private void Start()
     {
@@ -68,6 +83,11 @@ public class Enemy : Character
             case EnemyState.Death:
                 DeathState();
                 break;
+        }
+
+        if (isHurt)
+        {
+            enemyState = EnemyState.Hurt;
         }
     }
 

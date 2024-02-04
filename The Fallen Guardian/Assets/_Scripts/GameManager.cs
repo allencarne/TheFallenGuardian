@@ -22,11 +22,13 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    [SerializeField] SelectGameMode selectGameMode;
-    [SerializeField] PlayerInputManager playerInputManager;
-
+    [Header("Players")]
     public GameObject playerInstance;
     public GameObject player2Instance;
+
+    [Header("Components")]
+    [SerializeField] SelectGameMode selectGameMode;
+    [SerializeField] PlayerInputManager playerInputManager;
     public Camera player2Camera;
 
     public event System.Action OnPlayerJoin;

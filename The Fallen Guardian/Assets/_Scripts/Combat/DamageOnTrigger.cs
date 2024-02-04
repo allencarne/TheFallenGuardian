@@ -13,8 +13,6 @@ public class DamageOnTrigger : MonoBehaviour
         if (damageable != null)
         {
             damageable.TakeDamage(amountofDamage);
-
-            Destroy(gameObject);
         }
     }
 }
