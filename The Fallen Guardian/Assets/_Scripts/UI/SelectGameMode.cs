@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SelectGameMode : MonoBehaviour
 {
+    public UnityEvent OnSingleplayerSelected;
+    public UnityEvent OnLocalMultiplayerSelected;
+    public UnityEvent OnOnlineMultiplayerSelected;
+
     [SerializeField] GameObject gameModePanel;
 
-    [SerializeField] GameObject singlePlayerPanel;
+    [SerializeField] GameObject singleplayerPanel;
     [SerializeField] GameObject localMultiplayerPanel;
 
     [SerializeField] GameObject playerPanel;
@@ -32,31 +37,37 @@ public class SelectGameMode : MonoBehaviour
     {
         gameModePanel.SetActive(true);
 
-        singlePlayerPanel.SetActive(false);
+        singleplayerPanel.SetActive(false);
         localMultiplayerPanel.SetActive(false);
     }
 
-    public void SinglePlayer()
+    public void Singleplayer()
     {
+        OnSingleplayerSelected.Invoke();
+
         gameModePanel.SetActive(false);
 
-        singlePlayerPanel.SetActive(true);
+        singleplayerPanel.SetActive(true);
 
-        OnGameModeSelected?.Invoke(1);
+        //OnGameModeSelected?.Invoke(1);
     }
 
     public void LocalMultiPlayer()
     {
+        OnLocalMultiplayerSelected.Invoke();
+
         gameModePanel.SetActive(false);
 
         localMultiplayerPanel.SetActive(true);
 
-        OnGameModeSelected?.Invoke(2);
+        //OnGameModeSelected?.Invoke(2);
     }
 
     public void OnlineMultiPlayer()
     {
-        //gameModePanel.SetActive(false);
+        OnOnlineMultiplayerSelected.Invoke();
+
+        gameModePanel.SetActive(false);
 
         //OnGameModeSelected?.Invoke(3);
     }

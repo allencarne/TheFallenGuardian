@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void SinglePlayer()
+    public void SinglePlayer()
     {
         playerInputManager.EnableJoining();
     }
@@ -103,12 +103,12 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void LocalMultiplayer()
+    public void LocalMultiplayer()
     {
         playerInputManager.EnableJoining();
     }
 
-    void OnlineMultiplayer()
+    public void OnlineMultiplayer()
     {
         // Implement OnlineMultiplayer logic
         Debug.Log("OnlineMultiplayer selected");
