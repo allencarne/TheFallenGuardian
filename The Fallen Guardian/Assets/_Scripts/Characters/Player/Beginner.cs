@@ -63,7 +63,8 @@ public class Beginner : Player
 
         if (state == PlayerState.BasicAttack)
         {
-            Instantiate(clubSlash, transform.position, attackDir);
+            GameObject slash = Instantiate(clubSlash, transform.position, attackDir);
+            Physics2D.IgnoreCollision(slash.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
 
             HandleSlideForward(attackDir.eulerAngles.z);
         }

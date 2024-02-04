@@ -123,7 +123,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Club_Slash_Frame_0
     originalName: 
-    pivot: {x: -0.46153846, y: -0.3}
+    pivot: {x: 0.07692308, y: -0.8333334}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -131,7 +131,7 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 39
-      height: 80
+      height: 48
     spriteID: 4d5fb6f0605ebda4fb7b87f59c8ab3eb
     spriteBone: []
     spriteOutline: []
@@ -143,15 +143,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Club_Slash_Frame_1
     originalName: 
-    pivot: {x: -0.43589744, y: -0.36842105}
+    pivot: {x: 0.102564104, y: -1.6969697}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 92
+      y: 60
       width: 39
-      height: 76
+      height: 33
     spriteID: 90271ee66d657a14c9b6d0ba460d9611
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 92}
+    uvTransform: {x: 4, y: 60}
   - name: Club_Slash_Frame_2
     originalName: 
-    pivot: {x: -0.41025642, y: -0.625}
+    pivot: {x: 0.15151516, y: -4.625}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 176
-      width: 39
-      height: 64
+      y: 101
+      width: 33
+      height: 16
     spriteID: 63877bc92eda4654b8ebd143bccfc828
     spriteBone: []
     spriteOutline: []
@@ -180,18 +180,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 176}
+    uvTransform: {x: 4, y: 101}
   - name: Club_Slash_Frame_3
     originalName: 
-    pivot: {x: -0.3846154, y: -1.888889}
+    pivot: {x: 0.27272728, y: -14.166667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 51
       y: 4
-      width: 39
-      height: 36
+      width: 22
+      height: 6
     spriteID: 60d815b5484b6aa4b8d12c4d23b256d1
     spriteBone: []
     spriteOutline: []
@@ -203,15 +203,15 @@ ScriptedImporter:
     uvTransform: {x: 51, y: 4}
   - name: Club_Slash_Frame_4
     originalName: 
-    pivot: {x: -0.4827586, y: -6.4285717}
+    pivot: {x: 0.5833334, y: -45}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 51
-      y: 48
-      width: 29
-      height: 14
+      y: 18
+      width: 12
+      height: 2
     spriteID: 22267ce4582a70049a47e637cb0706d4
     spriteBone: []
     spriteOutline: []
@@ -220,7 +220,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 51, y: 48}
+    uvTransform: {x: 51, y: 18}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -233,42 +233,42 @@ ScriptedImporter:
     - name: Club_Slash_Frame_0
       frameIndex: 0
       cellRect:
-        x: 82
-        y: 24
+        x: 61
+        y: 40
         width: 39
-        height: 80
+        height: 48
       spriteId: 4d5fb6f0605ebda4fb7b87f59c8ab3eb
     - name: Club_Slash_Frame_1
       frameIndex: 1
       cellRect:
-        x: 81
-        y: 28
+        x: 60
+        y: 56
         width: 39
-        height: 76
+        height: 33
       spriteId: 90271ee66d657a14c9b6d0ba460d9611
     - name: Club_Slash_Frame_2
       frameIndex: 2
       cellRect:
-        x: 80
-        y: 40
-        width: 39
-        height: 64
+        x: 59
+        y: 74
+        width: 33
+        height: 16
       spriteId: 63877bc92eda4654b8ebd143bccfc828
     - name: Club_Slash_Frame_3
       frameIndex: 3
       cellRect:
-        x: 79
-        y: 68
-        width: 39
-        height: 36
+        x: 58
+        y: 85
+        width: 22
+        height: 6
       spriteId: 60d815b5484b6aa4b8d12c4d23b256d1
     - name: Club_Slash_Frame_4
       frameIndex: 4
       cellRect:
-        x: 78
+        x: 57
         y: 90
-        width: 29
-        height: 14
+        width: 12
+        height: 2
       spriteId: 22267ce4582a70049a47e637cb0706d4
     linkedCells: []
     parentIndex: -1

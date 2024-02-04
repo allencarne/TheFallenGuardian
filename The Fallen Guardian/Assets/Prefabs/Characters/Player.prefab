@@ -945,7 +945,7 @@ GameObject:
   - component: {fileID: 3843920219548125749}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1164,7 +1164,7 @@ MonoBehaviour:
   bodyAnimator: {fileID: 7406391039671905879}
   aimer: {fileID: 1333201046459341400}
   SlideForwardSpeed: 8
-  slideRange: 3.5
+  slideRange: 2.3
   slideDuration: 0.1
   attackDir: {x: 0, y: 0, z: 0, w: 0}
   state: 0

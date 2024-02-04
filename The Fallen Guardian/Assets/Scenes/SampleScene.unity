@@ -764,10 +764,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6caf4ab3a458eb4a8120ac97d021174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectGameMode: {fileID: 2109475646}
-  playerInputManager: {fileID: 167009425}
   playerInstance: {fileID: 0}
   player2Instance: {fileID: 0}
+  selectGameMode: {fileID: 2109475646}
+  playerInputManager: {fileID: 167009425}
   player2Camera: {fileID: 3221719079696952778, guid: bf6be731701e2d240af8c7f16c4c48ce, type: 3}
   gameMode: 0
 --- !u!1 &212017965
@@ -1747,7 +1747,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000087adadd561db16a8
+  m_ApplyToSortingLayers: 0000000087adadd561db16a86b9534d9
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2276,8 +2276,6 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   movementSpeed: 0
-  enemyAnimator: {fileID: 504803930}
-  enemyRB: {fileID: 945035510}
 --- !u!1 &945871799
 GameObject:
   m_ObjectHideFlags: 0
@@ -3899,7 +3897,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710038137
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -17063,7 +17061,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -710038137
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

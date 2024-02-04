@@ -28,16 +28,6 @@ public class Enemy : Character
 
     protected EnemyState enemyState = EnemyState.Spawn;
 
-    private void OnEnable()
-    {
-        OnHurt += HurtState;
-    }
-
-    private void OnDisable()
-    {
-        OnHurt -= HurtState;
-    }
-
     private void Awake()
     {
         enemyAnimator = GetComponentInChildren<Animator>();
