@@ -14,14 +14,14 @@ public class CameraFollow : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.instance.OnPlayerJoin += HandlePlayerJoin;
-        GameManager.instance.OnPlayer2Join += HandlePlayer2Join;
+        //GameManager.instance.OnPlayerJoin += HandlePlayerJoin;
+        //GameManager.instance.OnPlayer2Join += HandlePlayer2Join;
     }
 
     private void OnDisable()
     {
-        GameManager.instance.OnPlayerJoin -= HandlePlayerJoin;
-        GameManager.instance.OnPlayer2Join -= HandlePlayer2Join;
+        //GameManager.instance.OnPlayerJoin -= HandlePlayerJoin;
+        //GameManager.instance.OnPlayer2Join -= HandlePlayer2Join;
     }
 
     private void Start()

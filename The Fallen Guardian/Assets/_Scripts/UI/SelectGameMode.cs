@@ -19,20 +19,6 @@ public class SelectGameMode : MonoBehaviour
     [SerializeField] GameObject player1Panel;
     [SerializeField] GameObject player2Panel;
 
-    public event System.Action<int> OnGameModeSelected;
-
-    private void OnEnable()
-    {
-        GameManager.instance.OnPlayerJoin += PlayerPanel;
-        GameManager.instance.OnPlayer2Join += Player2Panel;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.instance.OnPlayerJoin -= PlayerPanel;
-        GameManager.instance.OnPlayer2Join -= Player2Panel;
-    }
-
     private void Start()
     {
         gameModePanel.SetActive(true);
@@ -48,8 +34,6 @@ public class SelectGameMode : MonoBehaviour
         gameModePanel.SetActive(false);
 
         singleplayerPanel.SetActive(true);
-
-        //OnGameModeSelected?.Invoke(1);
     }
 
     public void LocalMultiPlayer()
@@ -59,8 +43,6 @@ public class SelectGameMode : MonoBehaviour
         gameModePanel.SetActive(false);
 
         localMultiplayerPanel.SetActive(true);
-
-        //OnGameModeSelected?.Invoke(2);
     }
 
     public void OnlineMultiPlayer()
@@ -68,21 +50,12 @@ public class SelectGameMode : MonoBehaviour
         OnOnlineMultiplayerSelected.Invoke();
 
         gameModePanel.SetActive(false);
-
-        //OnGameModeSelected?.Invoke(3);
     }
 
-    public void PlayerPanel()
+    public void Player1Panel()
     {
-        if (GameManager.instance.gameMode == GameManager.GameMode.Singleplayer)
-        {
-            playerPanel.SetActive(false);
-        }
-
-        if (GameManager.instance.gameMode == GameManager.GameMode.LocalMultiplayer)
-        {
-            player1Panel.SetActive(false);
-        }
+        playerPanel.SetActive(false);
+        player1Panel.SetActive(false);
     }
 
     public void Player2Panel()

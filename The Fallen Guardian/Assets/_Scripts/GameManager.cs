@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
@@ -22,6 +23,9 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    public UnityEvent OnPlayerJoin;
+    public UnityEvent OnPlayer2Join;
+
     [Header("Players")]
     public GameObject playerInstance;
     public GameObject player2Instance;
@@ -30,9 +34,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] SelectGameMode selectGameMode;
     [SerializeField] PlayerInputManager playerInputManager;
     public Camera player2Camera;
-
-    public event System.Action OnPlayerJoin;
-    public event System.Action OnPlayer2Join;
 
     public enum GameMode
     {
@@ -43,39 +44,6 @@ public class GameManager : MonoBehaviour
     }
 
     public GameMode gameMode = GameMode.None;
-
-    private void OnEnable()
-    {
-        selectGameMode.OnGameModeSelected += HandleGameModeSelected;
-    }
-
-    private void OnDisable()
-    {
-        selectGameMode.OnGameModeSelected -= HandleGameModeSelected;
-    }
-
-    private void HandleGameModeSelected(int selectedMode)
-    {
-        // Set the game mode based on the integer value
-        switch (selectedMode)
-        {
-            case 1:
-                gameMode = GameMode.Singleplayer;
-                SinglePlayer();
-                break;
-            case 2:
-                gameMode = GameMode.LocalMultiplayer;
-                LocalMultiplayer();
-                break;
-            case 3:
-                gameMode = GameMode.OnlineMultiplayer;
-                OnlineMultiplayer();
-                break;
-            default:
-                Debug.LogWarning("Invalid game mode selected.");
-                break;
-        }
-    }
 
     public void SinglePlayer()
     {
@@ -90,7 +58,7 @@ public class GameManager : MonoBehaviour
 
             playerInstance.GetComponent<Player>().PlayerIndex = 1;
 
-            OnPlayerJoin?.Invoke();
+            OnPlayerJoin.Invoke();
         }
         else
         {
@@ -98,7 +66,7 @@ public class GameManager : MonoBehaviour
 
             player2Instance.GetComponent<Player>().PlayerIndex = 2;
 
-            OnPlayer2Join?.Invoke();
+            OnPlayer2Join.Invoke();
         }
     }
 
