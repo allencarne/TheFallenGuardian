@@ -21,20 +21,9 @@ public class CameraFollow : MonoBehaviour
         playerUI = GameObject.Find("PlayerUI");
     }
 
-    private void Update()
-    {
-        if (playerTransform == null && playerReference.items.Count > 0)
-        {
-            playerTransform = playerReference.GetItemIndex(0).transform;
-        }
-    }
-
     public void HandlePlayerJoin()
     {
-        Debug.Log("HandlePlayerJoin");
-        //playerTransform = playerReference.GetItemIndex(0).transform;
-        //playerTransform = playerData.playerInstance.transform;
-        //playerTransform = GameManager.instance.playerInstance.transform;
+        playerTransform = playerReference.GetItemIndex(0).transform;
     }
 
     public void HandlePlayer2Join()
