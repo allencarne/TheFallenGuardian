@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnPlayer2Join;
 
     [Header("Players")]
-    public PlayerData playerData;
+
     public GameObject playerInstance;
     //public GameObject player2Instance;
 
@@ -57,9 +57,11 @@ public class GameManager : MonoBehaviour
     {
         if (playerInstance == null)
         {
-            playerInstance = playerInput.gameObject;
+            //playerData.playerInstance = playerInput.gameObject;
 
-            playerData.playerInstance.GetComponent<Player>().PlayerIndex = 1;
+            //playerInstance = playerInput.gameObject;
+
+            //playerData.playerInstance.GetComponent<Player>().PlayerIndex = 1;
 
             OnPlayerJoin.Invoke();
         }

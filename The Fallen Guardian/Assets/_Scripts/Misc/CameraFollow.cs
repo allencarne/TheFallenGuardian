@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [Header("Data")]
-    PlayerData playerData;
+    public GameObjectRuntimeSet playerReference;
     public float smoothSpeed;
 
     [Header("Transforms")]
@@ -21,10 +21,19 @@ public class CameraFollow : MonoBehaviour
         playerUI = GameObject.Find("PlayerUI");
     }
 
+    private void Update()
+    {
+        if (playerTransform == null && playerReference.items.Count > 0)
+        {
+            playerTransform = playerReference.GetItemIndex(0).transform;
+        }
+    }
+
     public void HandlePlayerJoin()
     {
-        Debug.Log("test");
-        //playerTransform = playerData.playerInstanceName;
+        Debug.Log("HandlePlayerJoin");
+        //playerTransform = playerReference.GetItemIndex(0).transform;
+        //playerTransform = playerData.playerInstance.transform;
         //playerTransform = GameManager.instance.playerInstance.transform;
     }
 
