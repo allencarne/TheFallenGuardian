@@ -794,12 +794,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  playerInstance: {fileID: 0}
-  player2Instance: {fileID: 0}
+  playerData: {fileID: 11400000, guid: 068e86a03aaf31b4497f4b3fe20b60cc, type: 2}
+  playerRegistry: {fileID: 11400000, guid: c5b7598b3d5832247b27bcfea9dc3f6d, type: 2}
   selectGameMode: {fileID: 2109475646}
   playerInputManager: {fileID: 167009425}
   player2Camera: {fileID: 3221719079696952778, guid: bf6be731701e2d240af8c7f16c4c48ce, type: 3}
-  gameMode: 0
 --- !u!1 &212017965
 GameObject:
   m_ObjectHideFlags: 0
@@ -3947,6 +3946,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2109475646}
         m_TargetAssemblyTypeName: SelectGameMode, Assembly-CSharp
         m_MethodName: Player1Panel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8820489551899812532}
+        m_TargetAssemblyTypeName: CameraFollow, Assembly-CSharp
+        m_MethodName: HandlePlayerJoin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

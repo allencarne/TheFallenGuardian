@@ -9,13 +9,16 @@ public class SelectGameMode : MonoBehaviour
     public UnityEvent OnLocalMultiplayerSelected;
     public UnityEvent OnOnlineMultiplayerSelected;
 
+    [Header("Game Mode")]
     [SerializeField] GameObject gameModePanel;
 
+    [Header("Game Mode Options")]
     [SerializeField] GameObject singleplayerPanel;
     [SerializeField] GameObject localMultiplayerPanel;
+    //[SerializeField] GameObject OnlineMultiplayerPanel;
 
+    [Header("Player Panels")]
     [SerializeField] GameObject playerPanel;
-
     [SerializeField] GameObject player1Panel;
     [SerializeField] GameObject player2Panel;
 

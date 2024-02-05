@@ -1160,6 +1160,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 0
   movementSpeed: 7
+  playerData: {fileID: 11400000, guid: 068e86a03aaf31b4497f4b3fe20b60cc, type: 2}
   PlayerIndex: 0
   bodyAnimator: {fileID: 7406391039671905879}
   aimer: {fileID: 1333201046459341400}

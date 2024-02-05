@@ -4,37 +4,31 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    private Transform playerTransform;
+    [Header("Data")]
+    PlayerData playerData;
     public float smoothSpeed;
 
+    [Header("Transforms")]
+    private Transform playerTransform;
     private Transform player2Transform;
 
+    [Header("UI")]
     [SerializeField] GameObject playerUI;
     [SerializeField] GameObject player2UI;
-
-    private void OnEnable()
-    {
-        //GameManager.instance.OnPlayerJoin += HandlePlayerJoin;
-        //GameManager.instance.OnPlayer2Join += HandlePlayer2Join;
-    }
-
-    private void OnDisable()
-    {
-        //GameManager.instance.OnPlayerJoin -= HandlePlayerJoin;
-        //GameManager.instance.OnPlayer2Join -= HandlePlayer2Join;
-    }
 
     private void Start()
     {
         playerUI = GameObject.Find("PlayerUI");
     }
 
-    void HandlePlayerJoin()
+    public void HandlePlayerJoin()
     {
-        playerTransform = GameManager.instance.playerInstance.transform;
+        Debug.Log("test");
+        //playerTransform = playerData.playerInstanceName;
+        //playerTransform = GameManager.instance.playerInstance.transform;
     }
 
-    void HandlePlayer2Join()
+    public void HandlePlayer2Join()
     {
         // Spawn Second Camrea
         GameManager.instance.player2Camera = Instantiate(GameManager.instance.player2Camera);
@@ -44,7 +38,7 @@ public class CameraFollow : MonoBehaviour
         mainCamera.rect = new Rect(0f, .5f, 1f, 1f);
 
         // Set Tranforms to Player2 Instance
-        player2Transform = GameManager.instance.player2Instance.transform;
+        //player2Transform = GameManager.instance.player2Instance.transform;
 
         // Spawn Player2 UI
         player2UI = Instantiate(playerUI, playerUI.transform.parent);
