@@ -10,11 +10,16 @@ public class PlayerInputHandler : MonoBehaviour
     public bool BasicAttackInput { get; private set; }
     public Vector2 MousePosition { get; private set; }
     public bool OnInventoryInput { get; private set; }
-    Player player;
+
+    GameObjectRuntimeSet playerReference;
+    Camera player1Camera;
+    Camera player2Camera;
 
     private void Awake()
     {
-        player = GetComponent<Player>();
+        playerReference = GetComponent<AddGameObjectToRuntimeSet>().gameObjectRuntimeSet;
+        //player = GetComponent<Player>();
+        player1Camera = Camera.main;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -49,14 +54,21 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnMousePos(InputAction.CallbackContext context)
     {
+        if (playerReference.GetItemIndex(0))
+        {
+            MousePosition = player1Camera.ScreenToWorldPoint(context.ReadValue<Vector2>());
+        }
+
+        /*
         if (player.PlayerIndex == 1)
         {
-            MousePosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+            MousePosition = player1Camera.ScreenToWorldPoint(context.ReadValue<Vector2>());
         }
         else
         {
-            MousePosition = GameManager.instance.player2Camera.ScreenToWorldPoint(context.ReadValue<Vector2>());
+            //MousePosition = GameManager.instance.player2Camera.ScreenToWorldPoint(context.ReadValue<Vector2>());
         }
+        */
     }
 
     public void OnInventory(InputAction.CallbackContext context)

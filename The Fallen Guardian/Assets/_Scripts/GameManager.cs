@@ -6,36 +6,16 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    #region Singleton
-
-    public static GameManager instance;
-
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            Debug.LogWarning("More than once instance of GameManager found!");
-            return;
-        }
-
-        instance = this;
-    }
-
-    #endregion
+    bool isPlayer1 = true;
+    [SerializeField] GameObjectRuntimeSet playerReference;
 
     [Header("Events")]
     public UnityEvent OnPlayerJoin;
     public UnityEvent OnPlayer2Join;
 
-    [Header("Players")]
-
-    public GameObject playerInstance;
-    //public GameObject player2Instance;
-
     [Header("Components")]
     [SerializeField] SelectGameMode selectGameMode;
     [SerializeField] PlayerInputManager playerInputManager;
-    public Camera player2Camera;
 
     public void SinglePlayer()
     {
@@ -49,21 +29,30 @@ public class GameManager : MonoBehaviour
 
     public void OnlineMultiplayer()
     {
-        // Implement OnlineMultiplayer logic
         Debug.Log("OnlineMultiplayer selected");
     }
 
     void OnPlayerJoined(PlayerInput playerInput)
     {
-        if (playerInstance == null)
+        if (playerReference.items.Count == 0)
         {
-            //playerData.playerInstance = playerInput.gameObject;
-
-            //playerInstance = playerInput.gameObject;
-
-            //playerData.playerInstance.GetComponent<Player>().PlayerIndex = 1;
+            OnPlayerJoin.Invoke();
+        }
+        else
+        {
+            OnPlayer2Join.Invoke();
+        }
+        /*
+        if (isPlayer1)
+        {
+            isPlayer1 = false;
 
             OnPlayerJoin.Invoke();
         }
+        else
+        {
+            OnPlayer2Join.Invoke();
+        }
+        */
     }
 }

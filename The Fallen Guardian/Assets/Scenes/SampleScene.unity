@@ -764,6 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6caf4ab3a458eb4a8120ac97d021174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerReference: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
   OnPlayerJoin:
     m_PersistentCalls:
       m_Calls:
@@ -794,10 +795,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  playerInstance: {fileID: 0}
   selectGameMode: {fileID: 2109475646}
   playerInputManager: {fileID: 167009425}
-  player2Camera: {fileID: 3221719079696952778, guid: bf6be731701e2d240af8c7f16c4c48ce, type: 3}
 --- !u!1 &212017965
 GameObject:
   m_ObjectHideFlags: 0
@@ -3876,6 +3875,8 @@ GameObject:
   - component: {fileID: 1484444577}
   - component: {fileID: 1484444579}
   - component: {fileID: 1484444578}
+  - component: {fileID: 1484444580}
+  - component: {fileID: 1484444581}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -3954,9 +3955,53 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1484444580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484444576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18163c6a93aa4874ea5fe5e857e67121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 1a966914af4b6aa4482d66fe6110374b, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 8820489551899812532}
         m_TargetAssemblyTypeName: CameraFollow, Assembly-CSharp
         m_MethodName: HandlePlayerJoin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1484444581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484444576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18163c6a93aa4874ea5fe5e857e67121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 39ae3d3c4dcd03746a4ab5074e045f6c, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8820489551899812532}
+        m_TargetAssemblyTypeName: CameraFollow, Assembly-CSharp
+        m_MethodName: OnCameraAdded
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -115018,8 +115063,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19bcceb90672aed4aaaeae34854fbc74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player2Camera: {fileID: 3221719079696952778, guid: bf6be731701e2d240af8c7f16c4c48ce, type: 3}
+  cameraReference: {fileID: 11400000, guid: 4f1c96352959d2d4fb68b31195ed5521, type: 2}
   playerReference: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
   smoothSpeed: 0.02
+  playerTransform: {fileID: 0}
+  player2Transform: {fileID: 0}
   playerUI: {fileID: 0}
   player2UI: {fileID: 0}
 --- !u!114 &8876421907712128789
