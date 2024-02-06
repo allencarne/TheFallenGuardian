@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnPlayer2Join;
 
     [Header("Components")]
+    [SerializeField] Camera player2CameraPrefab;
     [SerializeField] SelectGameMode selectGameMode;
     [SerializeField] PlayerInputManager playerInputManager;
 
@@ -36,10 +37,16 @@ public class GameManager : MonoBehaviour
         if (playerReference.items.Count == 0)
         {
             OnPlayerJoin.Invoke();
+
+            playerInput.gameObject.GetComponent<Player>().PlayerIndex = 1;
         }
         else
         {
             OnPlayer2Join.Invoke();
+
+            playerInput.gameObject.GetComponent<Player>().PlayerIndex = 2;
+
+            Instantiate(player2CameraPrefab);
         }
     }
 }

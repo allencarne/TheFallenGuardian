@@ -11,21 +11,23 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 MousePosition { get; private set; }
     public bool OnInventoryInput { get; private set; }
 
-    [SerializeField] GameObjectRuntimeSet playerReference;
-    [SerializeField] GameObjectRuntimeSet player2CameraRefrence;
-    Camera player1Camera;
+    public GameObjectRuntimeSet cameraReference;
     Camera player2Camera;
+
+    Camera player1Camera;
+    Player player;
 
     private void Awake()
     {
         player1Camera = Camera.main;
+        player = GetComponent<Player>();
     }
 
-    public void OnCamera2Added()
+    private void Start()
     {
-        if (player2CameraRefrence.items.Count > 0)
+        if (cameraReference.items.Count > 0)
         {
-            player2Camera = player2CameraRefrence.GetItemIndex(0).GetComponent<Camera>();
+            player2Camera = cameraReference.GetItemIndex(0).GetComponent<Camera>();
         }
     }
 
@@ -61,7 +63,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnMousePos(InputAction.CallbackContext context)
     {
-        if (player2Camera == null)
+        if (player.PlayerIndex == 1)
         {
             MousePosition = player1Camera.ScreenToWorldPoint(context.ReadValue<Vector2>());
         }
