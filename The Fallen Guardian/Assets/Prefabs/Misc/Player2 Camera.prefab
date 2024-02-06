@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8660857446913082878}
   - component: {fileID: 3221719079696952778}
   - component: {fileID: 861665210560833924}
-  - component: {fileID: 7915353294029287668}
+  - component: {fileID: 7192549660817990681}
   m_Layer: 0
   m_Name: Player2 Camera
   m_TagString: Untagged
@@ -129,7 +129,7 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!114 &7915353294029287668
+--- !u!114 &7192549660817990681
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,10 +138,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8409832952531382555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2147c665fcdeaa340b5294015572f3a7, type: 3}
+  m_Script: {fileID: 11500000, guid: da512fd895cf7f14caa0348a1fe0d7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnCameraAdded:
+  OnObjectAdded:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 39ae3d3c4dcd03746a4ab5074e045f6c, type: 2}
@@ -156,4 +156,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  cameraRuntimeSet: {fileID: 11400000, guid: 4f1c96352959d2d4fb68b31195ed5521, type: 2}
+  gameObjectRuntimeSet: {fileID: 11400000, guid: d6d021038851cf04b82e7e406847a163, type: 2}

@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    bool isPlayer1 = true;
     [SerializeField] GameObjectRuntimeSet playerReference;
 
     [Header("Events")]
@@ -42,17 +41,5 @@ public class GameManager : MonoBehaviour
         {
             OnPlayer2Join.Invoke();
         }
-        /*
-        if (isPlayer1)
-        {
-            isPlayer1 = false;
-
-            OnPlayerJoin.Invoke();
-        }
-        else
-        {
-            OnPlayer2Join.Invoke();
-        }
-        */
     }
 }

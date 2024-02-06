@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31c1c48cb185196498fed9a0af5bcc93, type: 3}
-  m_Name: CameraReference
+  m_Script: {fileID: 11500000, guid: 2edd1dde60b30d2448ceba40f5c1b07a, type: 3}
+  m_Name: Player2Camera
   m_EditorClassIdentifier: 
   items: []

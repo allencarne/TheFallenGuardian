@@ -1185,7 +1185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e57615e79bff14186d56c2cb06440f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerReference: {fileID: 0}
+  playerReference: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
+  player2CameraRefrence: {fileID: 11400000, guid: d6d021038851cf04b82e7e406847a163, type: 2}
 --- !u!70 &3843920219548125749
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
