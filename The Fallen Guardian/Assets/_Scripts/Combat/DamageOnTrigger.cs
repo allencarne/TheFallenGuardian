@@ -12,10 +12,6 @@ public class DamageOnTrigger : MonoBehaviour
 
         if (damageable != null)
         {
-            if (collision.CompareTag("Player"))
-            {
-
-            }
             damageable.TakeDamage(amountofDamage);
         }
     }

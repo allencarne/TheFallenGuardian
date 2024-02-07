@@ -1157,6 +1157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66346dc9a144a0f42afd1d66e196703d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 6348204392684985540}
   isInterruptable: 0
   health: 0
   maxHealth: 0
