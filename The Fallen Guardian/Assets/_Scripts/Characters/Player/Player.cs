@@ -9,6 +9,8 @@ public class Player : Character
 {
     public int PlayerIndex;
 
+    [SerializeField] PlayerStats playerStats;
+
     [Header("Exposed Components")]
     [SerializeField] protected Animator bodyAnimator;
     [SerializeField] protected Transform aimer;
@@ -50,6 +52,11 @@ public class Player : Character
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        playerStats.health = playerStats.maxHealth;
+    }
+
     private void Update()
     {
         //Debug.Log(canSlideForward);
@@ -81,7 +88,7 @@ public class Player : Character
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            if (isInterruptable)
+            if (canBeInterrupted)
             {
                 state = PlayerState.Hurt;
             }
@@ -152,8 +159,6 @@ public class Player : Character
 
     protected virtual void IdleState()
     {
-        isInterruptable = true;
-
         bodyAnimator.Play("Idle");
 
         // Transitions
@@ -177,7 +182,7 @@ public class Player : Character
 
     void HandleMovement(Vector2 moveInput)
     {
-        Vector2 movement = moveInput.normalized * movementSpeed;
+        Vector2 movement = moveInput.normalized * playerStats.movementSpeed;
         rb.velocity = movement;
     }
 

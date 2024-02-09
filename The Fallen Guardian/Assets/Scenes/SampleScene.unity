@@ -2346,10 +2346,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 504803931}
-  isInterruptable: 0
-  health: 0
-  maxHealth: 0
-  movementSpeed: 0
+  canBeInterrupted: 0
+  canBeImmobilized: 0
+  canBeForceMoved: 0
+  canBeSilenced: 0
+  canBeDisarmed: 0
+  health: {fileID: 11400000, guid: 9814a9473dbbe7e45bab99084218e790, type: 2}
+  maxHealth: {fileID: 11400000, guid: 8ff0878c2e287624c9592c03cc3c9139, type: 2}
+  movementSpeed: {fileID: 11400000, guid: eda90ab440f52204f9fbd9cb5d008c3d, type: 2}
 --- !u!1 &945871799
 GameObject:
   m_ObjectHideFlags: 0

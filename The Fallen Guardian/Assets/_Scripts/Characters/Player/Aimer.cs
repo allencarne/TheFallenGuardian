@@ -8,6 +8,7 @@ public class Aimer : MonoBehaviour
     PlayerInputHandler inputHandler;
     public bool isControllerInput;
     PlayerInput playerInput;
+    private float lastAngle;
 
     private void Awake()
     {
@@ -46,10 +47,16 @@ public class Aimer : MonoBehaviour
         float horizontalLook = inputHandler.LookInput.x;
         float verticalLook = inputHandler.LookInput.y;
 
-        // Calculate the rotation angle based on input
-        float angle = Mathf.Atan2(verticalLook, horizontalLook) * Mathf.Rad2Deg;
+        // Check if there is input from the right stick
+        if (horizontalLook != 0 || verticalLook != 0)
+        {
+            // Calculate the rotation angle based on input
+            lastAngle = Mathf.Atan2(verticalLook, horizontalLook) * Mathf.Rad2Deg;
+        }
 
         // Apply rotation to the Aimer
-        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        transform.rotation = Quaternion.Euler(0f, 0f, lastAngle);
+
+        Debug.Log(lastAngle);
     }
 }

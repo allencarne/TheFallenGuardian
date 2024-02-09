@@ -7,12 +7,13 @@ public class Character : MonoBehaviour, IDamageable, IKnockbackable
     [SerializeField] SpriteRenderer spriteRenderer;
     float flashDuration = 0.1f;
 
-    [SerializeField] protected bool isInterruptable;
-    protected bool isHurt;
+    [SerializeField] protected bool canBeInterrupted;
+    [SerializeField] protected bool canBeImmobilized;
+    [SerializeField] protected bool canBeForceMoved;
+    [SerializeField] protected bool canBeSilenced;
+    [SerializeField] protected bool canBeDisarmed;
 
-    [SerializeField] protected float health;
-    [SerializeField] protected float maxHealth;
-    [SerializeField] protected float movementSpeed;
+    protected bool isHurt;
 
     public void TakeDamage(int damage)
     {
