@@ -6,14 +6,18 @@ using UnityEngine.InputSystem;
 public class Aimer : MonoBehaviour
 {
     PlayerInputHandler inputHandler;
-    public bool isControllerInput;
     PlayerInput playerInput;
+
     private float lastAngle;
+
+
+    Player player;
 
     private void Awake()
     {
         inputHandler = GetComponentInParent<PlayerInputHandler>();
         playerInput = GetComponentInParent<PlayerInput>();
+        player = GetComponentInParent<Player>();
     }
 
     private void Update()
@@ -34,11 +38,20 @@ public class Aimer : MonoBehaviour
 
     void RotateOnKeyboard()
     {
-        // Calculate the rotation angle based on mouse position
-        float angle = Mathf.Atan2(inputHandler.MousePosition.y - transform.position.y, inputHandler.MousePosition.x - transform.position.x) * Mathf.Rad2Deg;
+        // Use the correct camera reference based on the player's index
+        Camera currentCamera = player.PlayerIndex == 1 ? inputHandler.player1Camera : inputHandler.player2Camera;
 
-        // Apply rotation to the Aimer
-        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        // Convert the mouse position to world space using the correct camera
+        Vector3 mouseWorldPos = currentCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, currentCamera.nearClipPlane));
+
+        // Calculate the direction from the Aimer to the mouse position
+        Vector3 directionToMouse = mouseWorldPos - transform.position;
+
+        // Calculate the rotation angle needed to face the mouse position
+        float rotZ = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
+
+        // Apply the calculated rotation to the Aimer
+        transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
     }
 
     void RotateOnGamePad()

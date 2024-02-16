@@ -12,9 +12,9 @@ public class PlayerInputHandler : MonoBehaviour
     public bool OnInventoryInput { get; private set; }
 
     public GameObjectRuntimeSet cameraReference;
-    Camera player2Camera;
+    public Camera player2Camera;
 
-    Camera player1Camera;
+    public Camera player1Camera;
     Player player;
 
     private void Awake()
