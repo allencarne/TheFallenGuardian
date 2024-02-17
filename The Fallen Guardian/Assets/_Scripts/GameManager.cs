@@ -39,21 +39,51 @@ public class GameManager : MonoBehaviour
 
         if (playerReference.items.Count == 0)
         {
+            // Event for Handling the SelectGameMode UI
             OnPlayerJoin.Invoke();
 
+            // Assign Player Index for Camrea Tracking
             player.PlayerIndex = 1;
 
-            player.playerStats = playerStatsList[playerReference.items.Count];
+            // Create a New ScriptableObject PlayerStats - Assigns Default Values in Method
+            PlayerStats newPlayerStats = CreateNewPlayerStats();
+
+            // Add New ScriptableObject to List
+            playerStatsList.Add(newPlayerStats);
+
+            // Assign ScriptableObject to Instantiated Player
+            player.playerStats = newPlayerStats;
         }
         else
         {
+            // Event for Handling the SelectGameMode UI
             OnPlayer2Join.Invoke();
 
+            // Assign Player Index for Camrea Tracking
             player.PlayerIndex = 2;
 
-            player.playerStats = playerStatsList[playerReference.items.Count];
+            // Create a New ScriptableObject PlayerStats - Assigns Default Values in Method
+            PlayerStats newPlayer2Stats = CreateNewPlayerStats();
 
+            // Add New ScriptableObject to List
+            playerStatsList.Add(newPlayer2Stats);
+
+            // Assign ScriptableObject to Instantiated Player
+            player.playerStats = newPlayer2Stats;
+
+            // Spawn Second Camera
             Instantiate(player2CameraPrefab);
         }
+    }
+
+    // Method to create a new PlayerStats asset
+    PlayerStats CreateNewPlayerStats()
+    {
+        PlayerStats newPlayerStats = ScriptableObject.CreateInstance<PlayerStats>();
+         newPlayerStats.health = 10f;
+         newPlayerStats.maxHealth = 10f;
+         newPlayerStats.movementSpeed = 8f;
+         newPlayerStats.playerClass = PlayerClass.Beginner;
+        return newPlayerStats;
     }
 }
