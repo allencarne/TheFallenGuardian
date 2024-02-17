@@ -4,6 +4,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Player;
 
 public class Player : Character
 {
@@ -87,9 +88,11 @@ public class Player : Character
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            if (canBeInterrupted)
+            if (PlayerIndex == 1)
             {
-                state = PlayerState.Hurt;
+                playerStats.health -= 1;
+
+                TakeDamage(1);
             }
         }
     }

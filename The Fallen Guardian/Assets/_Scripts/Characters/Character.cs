@@ -17,11 +17,7 @@ public class Character : MonoBehaviour, IDamageable, IKnockbackable
 
     public void TakeDamage(int damage)
     {
-        /*
-        Debug.Log("Damage Taken " + damage);
-
-        isHurt = true;
-        */
+        
 
         StartCoroutine(FlashOnDamage());
     }

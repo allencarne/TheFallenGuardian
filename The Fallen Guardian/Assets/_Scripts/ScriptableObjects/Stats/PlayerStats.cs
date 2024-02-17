@@ -8,6 +8,7 @@ public class PlayerStats : ScriptableObject
     public float health;
     public float maxHealth;
     public float movementSpeed;
+    public float damage;
     public PlayerClass playerClass;
 
     // Current EXP

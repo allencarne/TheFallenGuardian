@@ -1163,12 +1163,8 @@ MonoBehaviour:
   canBeForceMoved: 0
   canBeSilenced: 0
   canBeDisarmed: 0
-  health: 0
-  maxHealth: 0
-  movementSpeed: 0
   PlayerIndex: 0
   playerStats: {fileID: 11400000, guid: 113fb450059ffc54a83b62b15c6bc809, type: 2}
-  player2Stats: {fileID: 11400000, guid: fef2ecd941f2e314c94680dfe467ac96, type: 2}
   bodyAnimator: {fileID: 7406391039671905879}
   aimer: {fileID: 1333201046459341400}
   SlideForwardSpeed: 8
@@ -1193,6 +1189,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraReference: {fileID: 11400000, guid: d6d021038851cf04b82e7e406847a163, type: 2}
+  player2Camera: {fileID: 0}
+  player1Camera: {fileID: 0}
 --- !u!70 &3843920219548125749
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1265,6 +1263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1361071663261445160}
+  - component: {fileID: 160897457560773673}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -1293,6 +1292,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &160897457560773673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8324031750687829038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269e4786cba320c41a3558f8ccc73ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1093105287261256944}
+  healthBarFront: {fileID: 4430670412122056503}
+  healthBarBack: {fileID: 4716448829981364878}
+  playerUI: {fileID: 6977538944838425483}
+  chipSpeed: 2
+  lerpTimer: 0
 --- !u!1 &8727468340536375276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,4 +1407,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d28023ec67ea4341b399ca8154ded75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isControllerInput: 0
