@@ -1,15 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static Player;
 
 public class Player : Character
 {
     public int PlayerIndex;
-    public PlayerStats playerStats;
 
     [Header("Exposed Components")]
     [SerializeField] protected Animator bodyAnimator;
@@ -54,7 +50,7 @@ public class Player : Character
 
     private void Start()
     {
-        playerStats.health = playerStats.maxHealth;
+        characterStats.health = characterStats.maxHealth;
     }
 
     private void Update()
@@ -90,7 +86,7 @@ public class Player : Character
         {
             if (PlayerIndex == 1)
             {
-                playerStats.health -= 1;
+                characterStats.health -= 1;
 
                 TakeDamage(1);
             }
@@ -184,7 +180,7 @@ public class Player : Character
 
     void HandleMovement(Vector2 moveInput)
     {
-        Vector2 movement = moveInput.normalized * playerStats.movementSpeed;
+        Vector2 movement = moveInput.normalized * characterStats.movementSpeed;
         rb.velocity = movement;
     }
 

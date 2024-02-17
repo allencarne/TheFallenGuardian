@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObjectRuntimeSet playerReference;
-    [SerializeField] List<PlayerStats> playerStatsList;
+    [SerializeField] List<CharacterStats> characterStatsList;
 
     [Header("Events")]
     public UnityEvent OnPlayerJoin;
@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     void OnPlayerJoined(PlayerInput playerInput)
     {
+        Character character = playerInput.gameObject.GetComponent<Character>();
         Player player = playerInput.gameObject.GetComponent<Player>();
 
         if (playerReference.items.Count == 0)
@@ -46,13 +47,13 @@ public class GameManager : MonoBehaviour
             player.PlayerIndex = 1;
 
             // Create a New ScriptableObject PlayerStats - Assigns Default Values in Method
-            PlayerStats newPlayerStats = CreateNewPlayerStats();
+            CharacterStats newCharacterStats = CreateNewCharacterStats();
 
             // Add New ScriptableObject to List
-            playerStatsList.Add(newPlayerStats);
+            characterStatsList.Add(newCharacterStats);
 
             // Assign ScriptableObject to Instantiated Player
-            player.playerStats = newPlayerStats;
+            character.characterStats = newCharacterStats;
         }
         else
         {
@@ -63,13 +64,13 @@ public class GameManager : MonoBehaviour
             player.PlayerIndex = 2;
 
             // Create a New ScriptableObject PlayerStats - Assigns Default Values in Method
-            PlayerStats newPlayer2Stats = CreateNewPlayerStats();
+            CharacterStats newPlayer2Stats = CreateNewCharacterStats();
 
             // Add New ScriptableObject to List
-            playerStatsList.Add(newPlayer2Stats);
+            characterStatsList.Add(newPlayer2Stats);
 
             // Assign ScriptableObject to Instantiated Player
-            player.playerStats = newPlayer2Stats;
+            character.characterStats = newPlayer2Stats;
 
             // Spawn Second Camera
             Instantiate(player2CameraPrefab);
@@ -77,13 +78,14 @@ public class GameManager : MonoBehaviour
     }
 
     // Method to create a new PlayerStats asset
-    PlayerStats CreateNewPlayerStats()
+    CharacterStats CreateNewCharacterStats()
     {
-        PlayerStats newPlayerStats = ScriptableObject.CreateInstance<PlayerStats>();
-         newPlayerStats.health = 10f;
-         newPlayerStats.maxHealth = 10f;
-         newPlayerStats.movementSpeed = 8f;
-         newPlayerStats.playerClass = PlayerClass.Beginner;
-        return newPlayerStats;
+        CharacterStats newCharacterStats = ScriptableObject.CreateInstance<CharacterStats>();
+        newCharacterStats.health = 10f;
+        newCharacterStats.maxHealth = 10f;
+        newCharacterStats.movementSpeed = 8f;
+        newCharacterStats.damage = 1f; // Temp, will be 0
+        newCharacterStats.playerClass = PlayerClass.Beginner;
+        return newCharacterStats;
     }
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, IDamageable, IKnockbackable
 {
+    public CharacterStats characterStats;
+
+
     [SerializeField] SpriteRenderer spriteRenderer;
     float flashDuration = 0.1f;
 
@@ -17,8 +20,6 @@ public class Character : MonoBehaviour, IDamageable, IKnockbackable
 
     public void TakeDamage(int damage)
     {
-        
-
         StartCoroutine(FlashOnDamage());
     }
 

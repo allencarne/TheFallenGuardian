@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Player player;
-    PlayerStats playerStats;
+    CharacterStats characterStats;
 
     [SerializeField] Image healthBarFront;
     [SerializeField] Image healthBarBack;
@@ -16,14 +16,14 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        playerStats = player.playerStats;
+        characterStats = player.characterStats;
     }
 
     public void Update()
     {
-        if (playerStats != null)
+        if (characterStats != null)
         {
-            playerStats.health = Mathf.Clamp(playerStats.health, 0, playerStats.maxHealth);
+            characterStats.health = Mathf.Clamp(characterStats.health, 0, characterStats.maxHealth);
             UpdateHealthUI();
         }
     }
@@ -32,7 +32,7 @@ public class HealthBar : MonoBehaviour
     {
         float fillFront = healthBarFront.fillAmount;
         float fillBack = healthBarBack.fillAmount;
-        float healthFraction = playerStats.health / playerStats.maxHealth;
+        float healthFraction = characterStats.health / characterStats.maxHealth;
 
         if (fillBack > healthFraction)
         {
