@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8145127e5b792874a9847d4c86c35263
+guid: f6ae91ed575f19143863cbf49cfb0fb7
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -120,20 +120,48 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  animatedSpriteImportData: []
+  animatedSpriteImportData:
+  - name: Campfire
+    originalName: 
+    pivot: {x: 0.5, y: -0.47619048}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 24
+      height: 21
+    spriteID: 28e79dbb66e32354ab0ce71fb77e4002
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1182013994
-    name: TileTest
+    guid: -15356245
+    name: Campfire
     layerFlags: 0
     layerType: 0
     blendMode: 0
-    cells: []
+    cells:
+    - name: Campfire
+      frameIndex: 0
+      cellRect:
+        x: 4
+        y: 10
+        width: 24
+        height: 21
+      spriteId: 28e79dbb66e32354ab0ce71fb77e4002
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 96, y: 80}
+  canvasSize: {x: 32, y: 32}
