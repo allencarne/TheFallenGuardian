@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObjectRuntimeSet playerReference;
+    [SerializeField] List<PlayerStats> playerStatsList;
 
     [Header("Events")]
     public UnityEvent OnPlayerJoin;
@@ -34,17 +35,23 @@ public class GameManager : MonoBehaviour
 
     void OnPlayerJoined(PlayerInput playerInput)
     {
+        Player player = playerInput.gameObject.GetComponent<Player>();
+
         if (playerReference.items.Count == 0)
         {
             OnPlayerJoin.Invoke();
 
-            playerInput.gameObject.GetComponent<Player>().PlayerIndex = 1;
+            player.PlayerIndex = 1;
+
+            player.playerStats = playerStatsList[playerReference.items.Count];
         }
         else
         {
             OnPlayer2Join.Invoke();
 
-            playerInput.gameObject.GetComponent<Player>().PlayerIndex = 2;
+            player.PlayerIndex = 2;
+
+            player.playerStats = playerStatsList[playerReference.items.Count];
 
             Instantiate(player2CameraPrefab);
         }

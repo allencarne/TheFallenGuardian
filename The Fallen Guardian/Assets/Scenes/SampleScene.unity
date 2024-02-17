@@ -933,6 +933,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerReference: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
+  playerStatsList:
+  - {fileID: 11400000, guid: 113fb450059ffc54a83b62b15c6bc809, type: 2}
+  - {fileID: 11400000, guid: fef2ecd941f2e314c94680dfe467ac96, type: 2}
   OnPlayerJoin:
     m_PersistentCalls:
       m_Calls:
@@ -3380,6 +3383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1237097838}
   - component: {fileID: 1237097837}
+  - component: {fileID: 1237097839}
   m_Layer: 0
   m_Name: BeachHut
   m_TagString: Untagged
@@ -3438,7 +3442,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &1237097838
 Transform:
   m_ObjectHideFlags: 0
@@ -3448,13 +3452,48 @@ Transform:
   m_GameObject: {fileID: 1237097836}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.9, y: 16.72, z: 0}
+  m_LocalPosition: {x: -5.54, y: 2.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5753661}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &1237097839
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237097836}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000018557091, y: 0.44331872}
+  m_Size: {x: 4.20162, y: 1.2898822}
+  m_Direction: 1
 --- !u!1 &1251568155
 GameObject:
   m_ObjectHideFlags: 0

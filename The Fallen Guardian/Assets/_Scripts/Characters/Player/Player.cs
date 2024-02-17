@@ -8,8 +8,7 @@ using UnityEngine.InputSystem;
 public class Player : Character
 {
     public int PlayerIndex;
-
-    [SerializeField] PlayerStats playerStats;
+    public PlayerStats playerStats;
 
     [Header("Exposed Components")]
     [SerializeField] protected Animator bodyAnimator;
