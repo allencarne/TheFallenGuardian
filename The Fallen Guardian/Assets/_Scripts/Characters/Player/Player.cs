@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Player : Character
 {
+    public int PlayerIndex;
+
+    /*
     public PlayerClass currentPlayerClass;
 
     public void SetPlayerClass(PlayerClass newClass)
@@ -19,8 +22,6 @@ public class Player : Character
             currentPlayerClass.UseBasicAttack();
         }
     }
-
-    public int PlayerIndex;
 
     [Header("Exposed Components")]
     [SerializeField] protected Animator bodyAnimator;
@@ -77,8 +78,6 @@ public class Player : Character
 
     private void Update()
     {
-        //Debug.Log(canSlideForward);
-
         switch (state)
         {
             case PlayerState.Spawn:
@@ -103,7 +102,7 @@ public class Player : Character
                 BasicAttack3State();
                 break;
         }
-
+        
         if (Input.GetKeyDown(KeyCode.X))
         {
             if (PlayerIndex == 1)
@@ -364,4 +363,5 @@ public class Player : Character
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, slideRange);
     }
+    */
 }

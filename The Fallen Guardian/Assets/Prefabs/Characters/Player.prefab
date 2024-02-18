@@ -944,6 +944,8 @@ GameObject:
   - component: {fileID: 3843920219548125749}
   - component: {fileID: 6967247431417826392}
   - component: {fileID: 7150002324481854805}
+  - component: {fileID: 4059563979879986888}
+  - component: {fileID: 239699257640095505}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1253,8 +1255,35 @@ MonoBehaviour:
   clubAnimator: {fileID: 7437577949069865287}
   isClubEquipt: 1
   clubSlash: {fileID: 6528315205038188619, guid: 86cb815f87f45ab408e9356759abf6a5, type: 3}
-  playerClass: 0
   state: 1
+--- !u!114 &4059563979879986888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63dba9b52d198d34a95180da3c441585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 7150002324481854805}
+  rb: {fileID: 5663583307712945941}
+  bodyAnimator: {fileID: 7406391039671905879}
+  abilities: {fileID: 239699257640095505}
+--- !u!114 &239699257640095505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e4f0acfd565354d9c97144f4ce6f6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8324031750687829038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,7 +1334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269e4786cba320c41a3558f8ccc73ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 7150002324481854805}
   healthBarFront: {fileID: 4430670412122056503}
   healthBarBack: {fileID: 4716448829981364878}
   playerUI: {fileID: 6977538944838425483}
