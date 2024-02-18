@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerSpawnState : PlayerState
 {
-
     public PlayerSpawnState(PlayerStateMachine playerStateMachine): base(playerStateMachine)
     {
 

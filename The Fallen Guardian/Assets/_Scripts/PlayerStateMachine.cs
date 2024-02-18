@@ -5,8 +5,12 @@ using UnityEngine;
 public class PlayerStateMachine : MonoBehaviour
 {
     [Header("Components")]
-    [SerializeField] Player player;
+
     PlayerState state;
+
+    [Header("Player")]
+    [SerializeField] Player player;
+    public Player Player => player;
 
     [Header("RigidBody")]
     [SerializeField] Rigidbody2D rb;
@@ -15,8 +19,11 @@ public class PlayerStateMachine : MonoBehaviour
     [Header("Animator")]
     [SerializeField] Animator bodyAnimator;
     public Animator BodyAnimator => bodyAnimator;
-
     // Club Animator Here?
+
+    [Header("InputHandler")]
+    [SerializeField] PlayerInputHandler inputHandler;
+    public PlayerInputHandler InputHandler => inputHandler;
 
     [Header("Abilities")]
     [SerializeField] PlayerAbilities abilities;
@@ -30,6 +37,11 @@ public class PlayerStateMachine : MonoBehaviour
     void Update()
     {
         state.Update();
+    }
+
+    private void FixedUpdate()
+    {
+        state.FixedUpdate();
     }
 
     public void SetState(PlayerState newState) => state = newState;

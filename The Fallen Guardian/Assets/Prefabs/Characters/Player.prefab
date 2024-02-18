@@ -1245,17 +1245,6 @@ MonoBehaviour:
   canBeSilenced: 0
   canBeDisarmed: 0
   PlayerIndex: 0
-  bodyAnimator: {fileID: 7406391039671905879}
-  aimer: {fileID: 1333201046459341400}
-  SlideForwardSpeed: 8
-  slideRange: 2.3
-  slideDuration: 0.1
-  attackDir: {x: 0, y: 0, z: 0, w: 0}
-  Club: {fileID: 2679163447953009308}
-  clubAnimator: {fileID: 7437577949069865287}
-  isClubEquipt: 1
-  clubSlash: {fileID: 6528315205038188619, guid: 86cb815f87f45ab408e9356759abf6a5, type: 3}
-  state: 1
 --- !u!114 &4059563979879986888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1268,6 +1257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63dba9b52d198d34a95180da3c441585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputHandler: {fileID: 754719381540065433}
   player: {fileID: 7150002324481854805}
   rb: {fileID: 5663583307712945941}
   bodyAnimator: {fileID: 7406391039671905879}
