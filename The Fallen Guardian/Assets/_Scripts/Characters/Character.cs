@@ -20,7 +20,11 @@ public class Character : MonoBehaviour, IDamageable, IKnockbackable
 
     public void TakeDamage(int damage)
     {
+        characterStats.health =- damage;
+
         StartCoroutine(FlashOnDamage());
+
+        Debug.Log("TakeDamage" + damage);
     }
 
     private IEnumerator FlashOnDamage()

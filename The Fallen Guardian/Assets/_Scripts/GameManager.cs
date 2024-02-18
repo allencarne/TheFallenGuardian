@@ -81,10 +81,10 @@ public class GameManager : MonoBehaviour
     CharacterStats CreateNewCharacterStats()
     {
         CharacterStats newCharacterStats = ScriptableObject.CreateInstance<CharacterStats>();
-        newCharacterStats.health = 10f;
-        newCharacterStats.maxHealth = 10f;
+        newCharacterStats.health = 10;
+        newCharacterStats.maxHealth = 10;
         newCharacterStats.movementSpeed = 8f;
-        newCharacterStats.damage = 1f; // Temp, will be 0
+        newCharacterStats.damage = 1; // Temp, will be 0
         newCharacterStats.playerClass = PlayerClass.Beginner;
         return newCharacterStats;
     }

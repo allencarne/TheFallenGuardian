@@ -65,6 +65,8 @@ public class Beginner : Player
         {
             GameObject slash = Instantiate(clubSlash, transform.position, attackDir);
             Physics2D.IgnoreCollision(slash.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+            slash.GetComponent<DamageOnTrigger>().playerDamage = 1;
+            slash.GetComponent<DamageOnTrigger>().abilityDamage = 1;
 
             HandleSlideForward(attackDir.eulerAngles.z);
         }
