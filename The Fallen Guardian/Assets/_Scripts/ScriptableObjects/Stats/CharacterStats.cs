@@ -9,12 +9,4 @@ public class CharacterStats : ScriptableObject
     public int maxHealth;
     public float movementSpeed;
     public int damage;
-    public PlayerClass playerClass; // Possibly move this out of the characterstats and into the player
-}
-
-public enum PlayerClass
-{
-    Beginner,
-    Warrior,
-    Mage
 }

@@ -5,6 +5,21 @@ using UnityEngine.InputSystem;
 
 public class Player : Character
 {
+    public PlayerClass currentPlayerClass;
+
+    public void SetPlayerClass(PlayerClass newClass)
+    {
+        currentPlayerClass = newClass;
+    }
+
+    public void UseBasicAttack()
+    {
+        if (currentPlayerClass != null)
+        {
+            currentPlayerClass.UseBasicAttack();
+        }
+    }
+
     public int PlayerIndex;
 
     [Header("Exposed Components")]
@@ -29,6 +44,12 @@ public class Player : Character
 
     bool canHurt = true;
 
+    [Header("Beginner")]
+    [SerializeField] GameObject Club;
+    [SerializeField] Animator clubAnimator;
+    [SerializeField] bool isClubEquipt;
+    [SerializeField] GameObject clubSlash;
+
     public enum PlayerState
     {
         Spawn,
@@ -38,6 +59,7 @@ public class Player : Character
         BasicAttack,
         BasicAttack2,
         BasicAttack3,
+        WarriorBasicAttack,
     }
 
     public PlayerState state = PlayerState.Idle;
@@ -158,6 +180,7 @@ public class Player : Character
     protected virtual void IdleState()
     {
         bodyAnimator.Play("Idle");
+        clubAnimator.Play("Idle");
 
         // Transitions
         HandleAttack(inputHandler.BasicAttackInput);
@@ -165,6 +188,15 @@ public class Player : Character
 
     protected virtual void MoveState()
     {
+        clubAnimator.Play("Move");
+
+        // Set idle Animation after move
+        if (inputHandler.MoveInput != Vector2.zero)
+        {
+            clubAnimator.SetFloat("Horizontal", inputHandler.MoveInput.x);
+            clubAnimator.SetFloat("Vertical", inputHandler.MoveInput.y);
+        }
+
         bodyAnimator.Play("Move");
 
         // Set idle Animation after move
@@ -244,6 +276,7 @@ public class Player : Character
             rb.velocity = Vector2.zero;
 
             bodyAnimator.Play("Hurt");
+            clubAnimator.Play("Hurt");
 
             StartCoroutine(HurtDuration());
         }
@@ -260,7 +293,49 @@ public class Player : Character
 
     protected virtual void BasicAttackState()
     {
+        if (canBasicAttack)
+        {
+            attackDir = aimer.rotation;
 
+            canBasicAttack = false;
+
+            bodyAnimator.Play("Sword Basic Attack");
+            clubAnimator.Play("Basic Attack");
+
+            FaceAttackingDirection(bodyAnimator);
+            FaceAttackingDirection(clubAnimator);
+
+            StartCoroutine(AttackImpact());
+            StartCoroutine(DurationOfBasicAttack());
+        }
+    }
+
+    IEnumerator AttackImpact()
+    {
+        yield return new WaitForSeconds(.3f);
+
+        if (state == PlayerState.BasicAttack)
+        {
+            GameObject slash = Instantiate(clubSlash, transform.position, attackDir);
+            Physics2D.IgnoreCollision(slash.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+            slash.GetComponent<DamageOnTrigger>().playerDamage = 1;
+            slash.GetComponent<DamageOnTrigger>().abilityDamage = 1;
+
+            HandleSlideForward(attackDir.eulerAngles.z);
+        }
+    }
+
+    IEnumerator DurationOfBasicAttack()
+    {
+        yield return new WaitForSeconds(.8f);
+
+        // If we are interrupted this should prevent issues with state changes
+        if (state == PlayerState.BasicAttack)
+        {
+            state = PlayerState.Idle;
+        }
+
+        canBasicAttack = true;
     }
 
     protected virtual void BasicAttack2State()

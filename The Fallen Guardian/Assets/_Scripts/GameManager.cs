@@ -85,7 +85,6 @@ public class GameManager : MonoBehaviour
         newCharacterStats.maxHealth = 10;
         newCharacterStats.movementSpeed = 8f;
         newCharacterStats.damage = 1; // Temp, will be 0
-        newCharacterStats.playerClass = PlayerClass.Beginner;
         return newCharacterStats;
     }
 }

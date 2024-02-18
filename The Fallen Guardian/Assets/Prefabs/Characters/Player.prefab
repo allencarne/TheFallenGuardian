@@ -940,10 +940,10 @@ GameObject:
   - component: {fileID: 2133646207742848838}
   - component: {fileID: 5663583307712945941}
   - component: {fileID: 1202709710546688595}
-  - component: {fileID: 1093105287261256944}
   - component: {fileID: 754719381540065433}
   - component: {fileID: 3843920219548125749}
   - component: {fileID: 6967247431417826392}
+  - component: {fileID: 7150002324481854805}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1145,37 +1145,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1093105287261256944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7550517957279444385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66346dc9a144a0f42afd1d66e196703d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 6348204392684985540}
-  canBeInterrupted: 0
-  canBeImmobilized: 0
-  canBeForceMoved: 0
-  canBeSilenced: 0
-  canBeDisarmed: 0
-  PlayerIndex: 0
-  playerStats: {fileID: 11400000, guid: 113fb450059ffc54a83b62b15c6bc809, type: 2}
-  bodyAnimator: {fileID: 7406391039671905879}
-  aimer: {fileID: 1333201046459341400}
-  SlideForwardSpeed: 8
-  slideRange: 2.3
-  slideDuration: 0.1
-  attackDir: {x: 0, y: 0, z: 0, w: 0}
-  state: 0
-  Club: {fileID: 2679163447953009308}
-  clubAnimator: {fileID: 7437577949069865287}
-  isClubEquipt: 0
-  clubSlash: {fileID: 6528315205038188619, guid: 86cb815f87f45ab408e9356759abf6a5, type: 3}
 --- !u!114 &754719381540065433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1254,6 +1223,38 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   gameObjectRuntimeSet: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
+--- !u!114 &7150002324481854805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bcb8f508ff6cf14ebaf06005d1964c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterStats: {fileID: 0}
+  spriteRenderer: {fileID: 6348204392684985540}
+  canBeInterrupted: 0
+  canBeImmobilized: 0
+  canBeForceMoved: 0
+  canBeSilenced: 0
+  canBeDisarmed: 0
+  PlayerIndex: 0
+  bodyAnimator: {fileID: 7406391039671905879}
+  aimer: {fileID: 1333201046459341400}
+  SlideForwardSpeed: 8
+  slideRange: 2.3
+  slideDuration: 0.1
+  attackDir: {x: 0, y: 0, z: 0, w: 0}
+  Club: {fileID: 2679163447953009308}
+  clubAnimator: {fileID: 7437577949069865287}
+  isClubEquipt: 1
+  clubSlash: {fileID: 6528315205038188619, guid: 86cb815f87f45ab408e9356759abf6a5, type: 3}
+  playerClass: 0
+  state: 1
 --- !u!1 &8324031750687829038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,7 +1305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269e4786cba320c41a3558f8ccc73ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1093105287261256944}
+  player: {fileID: 0}
   healthBarFront: {fileID: 4430670412122056503}
   healthBarBack: {fileID: 4716448829981364878}
   playerUI: {fileID: 6977538944838425483}
