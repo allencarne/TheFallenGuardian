@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerStateMachine : MonoBehaviour
 {
     [Header("Components")]
-
     PlayerState state;
 
     [Header("Player")]

@@ -20,8 +20,6 @@ public class PlayerIdleState : PlayerState
 
     public override void FixedUpdate()
     {
-        Debug.Log("HUH");
-
         // Transition to Move State
         if (stateMachine.InputHandler.MoveInput != Vector2.zero)
         {

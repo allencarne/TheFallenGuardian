@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Player : Character
 {
     public int PlayerIndex;
+    public PlayerStats playerStats;
 
     /*
     public PlayerClass currentPlayerClass;
