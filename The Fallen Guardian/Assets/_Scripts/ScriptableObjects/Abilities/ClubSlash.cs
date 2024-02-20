@@ -7,8 +7,13 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class ClubSlash : ScriptableObject, IBasicAttackBehaviour
 {
     [SerializeField] GameObject clubSlash;
+
     [SerializeField] int damage;
-    [SerializeField] float slideRange;
+    [SerializeField] float coolDown;
+
+    [SerializeField] float rangeBeforeSlide;
+    [SerializeField] float slideForce;
+    [SerializeField] float slideDuration;
 
     public void BehaviourUpdate(PlayerStateMachine stateMachine)
     {
@@ -31,34 +36,19 @@ public class ClubSlash : ScriptableObject, IBasicAttackBehaviour
 
     IEnumerator AttackImpact(PlayerStateMachine stateMachine)
     {
+        // .3 seconds is the amout of Anticipation time before Impact
         yield return new WaitForSeconds(.3f);
 
         GameObject slash = Instantiate(clubSlash, stateMachine.transform.position, stateMachine.AttackDir);
         Physics2D.IgnoreCollision(slash.GetComponent<Collider2D>(), stateMachine.gameObject.GetComponent<Collider2D>());
-        /*
-        if (state == PlayerState.BasicAttack)
-        {
-            GameObject slash = Instantiate(clubSlash, stateMachine.transform.position, stateMachine.AttackDir);
-            Physics2D.IgnoreCollision(slash.GetComponent<Collider2D>(), stateMachine.gameObject.GetComponent<Collider2D>());
-            //slash.GetComponent<DamageOnTrigger>().playerDamage = 1;
-            //slash.GetComponent<DamageOnTrigger>().abilityDamage = 1;
-
-            //stateMachine.HandleSlideForward(attackDir.eulerAngles.z);
-        }
-        */
+        stateMachine.HandleSlideForward(stateMachine.AttackDir.eulerAngles.z, rangeBeforeSlide);
+        slash.GetComponent<DamageOnTrigger>().abilityDamage = damage;
+        slash.GetComponent<DamageOnTrigger>().playerDamage = stateMachine.Player.playerStats.damage;
     }
 
     IEnumerator DurationOfBasicAttack(PlayerStateMachine stateMachine)
     {
-        yield return new WaitForSeconds(.8f);
-
-        /*
-        // If we are interrupted this should prevent issues with state changes
-        if (state == PlayerState.BasicAttack)
-        {
-            state = PlayerState.Idle;
-        }
-        */
+        yield return new WaitForSeconds(coolDown);
 
         stateMachine.SetState(new PlayerIdleState(stateMachine));
 

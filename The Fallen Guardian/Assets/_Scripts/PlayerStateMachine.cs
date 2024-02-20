@@ -29,6 +29,7 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Transform aimer;
     public Transform Aimer => aimer;
 
+    bool canSlideForward = false;
 
     [Header("Basic Attack")]
     public bool CanBasicAttack = true;
@@ -47,9 +48,18 @@ public class PlayerStateMachine : MonoBehaviour
     private void FixedUpdate()
     {
         state.FixedUpdate();
+
+        if (canSlideForward)
+        {
+            StartCoroutine(SlideDuration());
+
+            SlideForward(AttackDir.eulerAngles.z);
+        }
     }
 
     public void SetState(PlayerState newState) => state = newState;
+
+    #region Attack
 
     public void TransitionToBasicAttack(bool attackInput)
     {
@@ -73,8 +83,12 @@ public class PlayerStateMachine : MonoBehaviour
         animator.SetFloat("Horizontal", direction.x);
         animator.SetFloat("Vertical", direction.y);
     }
-    /*
-    public  void HandleSlideForward(float rotation)
+
+    #endregion
+
+    #region SlideForward
+
+    public void HandleSlideForward(float rotation, float slideRange)
     {
         PlayerInput controlScheme = GetComponent<PlayerInput>();
 
@@ -96,5 +110,21 @@ public class PlayerStateMachine : MonoBehaviour
             canSlideForward = true;
         }
     }
-    */
+
+    protected void SlideForward(float rotation)
+    {
+        // Use the rotation of the Aimer to determine the slide direction
+        Vector2 slideDirection = Quaternion.Euler(0f, 0f, rotation) * Vector2.right;
+
+        rb.velocity = slideDirection * 8;
+    }
+
+    IEnumerator SlideDuration()
+    {
+        yield return new WaitForSeconds(.1f);
+
+        canSlideForward = false;
+    }
+
+    #endregion
 }

@@ -39,6 +39,7 @@ public class Dummy : Enemy
 
     protected override void HurtState()
     {
+        /*
         if (isHurt)
         {
             isHurt = false;
@@ -49,6 +50,7 @@ public class Dummy : Enemy
 
             StartCoroutine(HurtDuration());
         }
+        */
     }
 
     IEnumerator HurtDuration()

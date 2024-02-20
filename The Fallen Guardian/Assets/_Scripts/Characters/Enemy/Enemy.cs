@@ -74,11 +74,6 @@ public class Enemy : Character
                 DeathState();
                 break;
         }
-
-        if (isHurt)
-        {
-            enemyState = EnemyState.Hurt;
-        }
     }
 
     protected virtual void SpawnState()

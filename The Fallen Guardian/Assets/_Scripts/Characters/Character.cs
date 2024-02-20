@@ -7,17 +7,9 @@ public class Character : MonoBehaviour, IDamageable, IKnockbackable
     [SerializeField] SpriteRenderer spriteRenderer;
     float flashDuration = 0.1f;
 
-    [SerializeField] protected bool canBeInterrupted;
-    [SerializeField] protected bool canBeImmobilized;
-    [SerializeField] protected bool canBeForceMoved;
-    [SerializeField] protected bool canBeSilenced;
-    [SerializeField] protected bool canBeDisarmed;
-
-    protected bool isHurt;
-
     public void TakeDamage(int damage)
     {
-        //characterStats.health =- damage;
+        //health =- damage;
 
         StartCoroutine(FlashOnDamage());
 
@@ -26,19 +18,15 @@ public class Character : MonoBehaviour, IDamageable, IKnockbackable
 
     private IEnumerator FlashOnDamage()
     {
-        // Flash red
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(flashDuration / 2);
 
-        // Flash white
         spriteRenderer.color = Color.yellow;
         yield return new WaitForSeconds(flashDuration / 2);
 
-        // Flash red again
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(flashDuration / 2);
 
-        // Flash white again
         spriteRenderer.color = Color.yellow;
         yield return new WaitForSeconds(flashDuration / 2);
 
