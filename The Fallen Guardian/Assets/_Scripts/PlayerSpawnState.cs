@@ -21,6 +21,8 @@ public class PlayerSpawnState : PlayerState
 
             // State Logic
             stateMachine.BodyAnimator.Play("Spawn");
+            stateMachine.ClubAnimator.Play("Spawn");
+
             stateMachine.StartCoroutine(SpawnDuration());
         }
     }

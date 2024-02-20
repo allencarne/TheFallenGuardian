@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class PlayerAbilities : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] ScriptableObject basicAttackBehaviourReference;
+    public IBasicAttackBehaviour basicAttackBehaviour { get; private set; }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        basicAttackBehaviour = (IBasicAttackBehaviour)basicAttackBehaviourReference;
     }
 }

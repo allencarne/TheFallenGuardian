@@ -13,9 +13,10 @@ public class PlayerIdleState : PlayerState
 
         // State Logic Here
         stateMachine.BodyAnimator.Play("Idle");
+        stateMachine.ClubAnimator.Play("Idle");
 
         // Transitions
-
+        stateMachine.TransitionToBasicAttack(stateMachine.InputHandler.BasicAttackInput);
     }
 
     public override void FixedUpdate()

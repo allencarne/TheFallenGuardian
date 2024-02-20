@@ -21,7 +21,17 @@ public class PlayerMoveState : PlayerState
             stateMachine.BodyAnimator.SetFloat("Vertical", stateMachine.InputHandler.MoveInput.y);
         }
 
+        stateMachine.ClubAnimator.Play("Move");
+
+        // Set idle Animation after move
+        if (stateMachine.InputHandler.MoveInput != Vector2.zero)
+        {
+            stateMachine.ClubAnimator.SetFloat("Horizontal", stateMachine.InputHandler.MoveInput.x);
+            stateMachine.ClubAnimator.SetFloat("Vertical", stateMachine.InputHandler.MoveInput.y);
+        }
+
         // Transitions
+        stateMachine.TransitionToBasicAttack(stateMachine.InputHandler.BasicAttackInput);
     }
 
     public override void FixedUpdate()

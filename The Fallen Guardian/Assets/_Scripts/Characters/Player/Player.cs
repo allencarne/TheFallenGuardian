@@ -7,22 +7,28 @@ public class Player : Character
 {
     public int PlayerIndex;
     public PlayerStats playerStats;
+    public PlayerAbilities playerAbilities;
 
-    /*
-    public PlayerClass currentPlayerClass;
-
-    public void SetPlayerClass(PlayerClass newClass)
+    private void Start()
     {
-        currentPlayerClass = newClass;
-    }
-
-    public void UseBasicAttack()
-    {
-        if (currentPlayerClass != null)
+        switch (playerStats.playerClass)
         {
-            currentPlayerClass.UseBasicAttack();
+            case PlayerClass.Beginner:
+                Debug.Log("Hi");
+                break;
+            case PlayerClass.Warrior:
+                //playerAbilities.AttackBehaviour = playerAbilities.WarriorAttackBehaviour;
+                break;
+            case PlayerClass.Magician:
+                break;
+            case PlayerClass.Archer:
+                break;
+            case PlayerClass.Rogue:
+                break;
         }
     }
+
+    /*
 
     [Header("Exposed Components")]
     [SerializeField] protected Animator bodyAnimator;
