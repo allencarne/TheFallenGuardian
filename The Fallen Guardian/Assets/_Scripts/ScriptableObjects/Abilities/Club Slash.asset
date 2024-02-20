@@ -15,5 +15,8 @@ MonoBehaviour:
   clubSlash: {fileID: 6528315205038188619, guid: 86cb815f87f45ab408e9356759abf6a5, type: 3}
   damage: 1
   coolDown: 0.8
+  castTime: 0.3
   rangeBeforeSlide: 2
+  slideForce: 0
   slideDuration: 0
+  knockBackForce: 0
