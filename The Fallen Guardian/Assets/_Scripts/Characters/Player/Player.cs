@@ -11,7 +11,6 @@ public class Player : Character
 
     private void Start()
     {
-        /*
         switch (playerStats.playerClass)
         {
             case PlayerClass.Beginner:
@@ -27,13 +26,7 @@ public class Player : Character
             case PlayerClass.Rogue:
                 break;
         }
-        */
     }
-
-
-
-
-
 
     /*
 

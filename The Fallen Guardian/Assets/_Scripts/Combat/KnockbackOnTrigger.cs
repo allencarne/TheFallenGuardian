@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KnockbackOnTrigger : MonoBehaviour
 {
-    [HideInInspector] public float knockBackForce;
+    [SerializeField] int amountofknockback;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,7 +14,7 @@ public class KnockbackOnTrigger : MonoBehaviour
         {
             Rigidbody2D enemyRB = collision.GetComponent<Rigidbody2D>();
 
-            knockbackable.KnockBack(collision.transform.position, transform.position, enemyRB, knockBackForce);
+            knockbackable.KnockBack(collision.transform.position, transform.position, enemyRB, amountofknockback);
         }
     }
 }

@@ -8,17 +8,12 @@ public class ClubSlash : ScriptableObject, IBasicAttackBehaviour
 {
     [SerializeField] GameObject clubSlash;
 
-    // Standard Variables
     [SerializeField] int damage;
     [SerializeField] float coolDown;
-    [SerializeField] float castTime;
 
-    // Slide Variables
     [SerializeField] float rangeBeforeSlide;
     [SerializeField] float slideForce;
     [SerializeField] float slideDuration;
-
-    [SerializeField] float knockBackForce;
 
     public void BehaviourUpdate(PlayerStateMachine stateMachine)
     {
@@ -42,18 +37,13 @@ public class ClubSlash : ScriptableObject, IBasicAttackBehaviour
     IEnumerator AttackImpact(PlayerStateMachine stateMachine)
     {
         // .3 seconds is the amout of Anticipation time before Impact
-        yield return new WaitForSeconds(castTime);
+        yield return new WaitForSeconds(.3f);
 
         GameObject slash = Instantiate(clubSlash, stateMachine.transform.position, stateMachine.AttackDir);
         Physics2D.IgnoreCollision(slash.GetComponent<Collider2D>(), stateMachine.gameObject.GetComponent<Collider2D>());
         stateMachine.HandleSlideForward(stateMachine.AttackDir.eulerAngles.z, rangeBeforeSlide);
-
-        // Damage
         slash.GetComponent<DamageOnTrigger>().abilityDamage = damage;
-        slash.GetComponent<DamageOnTrigger>().playerDamage = stateMachine.Player.characterStats.damage;
-
-        // Knockback
-        slash.GetComponent<KnockbackOnTrigger>().knockBackForce = knockBackForce;
+        slash.GetComponent<DamageOnTrigger>().playerDamage = stateMachine.Player.playerStats.damage;
     }
 
     IEnumerator DurationOfBasicAttack(PlayerStateMachine stateMachine)

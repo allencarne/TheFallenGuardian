@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, IDamageable, IKnockbackable
 {
-    public CharacterStats characterStats;
-
     [SerializeField] SpriteRenderer spriteRenderer;
     float flashDuration = 0.1f;
 
     public void TakeDamage(int damage)
     {
-        characterStats.health -= damage;
+        //health =- damage;
 
         StartCoroutine(FlashOnDamage());
 
@@ -38,13 +36,10 @@ public class Character : MonoBehaviour, IDamageable, IKnockbackable
 
     public void KnockBack(Vector3 opponentPosition, Vector3 yourPosition, Rigidbody2D opponentRB, float knockBackAmount)
     {
-        // Calculate the direction from the opponent's position to your position and normalize it
+        // Knock Back
         Vector2 direction = (opponentPosition - yourPosition).normalized;
-
-        // Apply the knockback force to the opponent's Rigidbody in the calculated direction
         opponentRB.velocity = direction * knockBackAmount;
 
-        // Start a coroutine to handle the duration of the knockback effect
         StartCoroutine(KnockBackDuration(opponentRB));
     }
 

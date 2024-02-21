@@ -29,10 +29,7 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Transform aimer;
     public Transform Aimer => aimer;
 
-
-    // Slide
     bool canSlideForward = false;
-    [SerializeField] float radiusBeforeSlide;
 
     [Header("Basic Attack")]
     public bool CanBasicAttack = true;
@@ -129,10 +126,5 @@ public class PlayerStateMachine : MonoBehaviour
         canSlideForward = false;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radiusBeforeSlide);
-    }
     #endregion
 }

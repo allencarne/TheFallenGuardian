@@ -47,7 +47,7 @@ public class PlayerMoveState : PlayerState
 
     void HandleMovement(Vector2 moveInput)
     {
-        Vector2 movement = moveInput.normalized * stateMachine.Player.characterStats.movementSpeed;
+        Vector2 movement = moveInput.normalized * stateMachine.Player.playerStats.movementSpeed;
         stateMachine.Rigidbody.velocity = movement;
     }
 }
