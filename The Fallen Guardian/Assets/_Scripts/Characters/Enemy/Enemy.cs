@@ -160,6 +160,8 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     {
         health -= damage;
 
+        idleTime = 0;
+
         StartCoroutine(FlashOnDamage());
 
         Debug.Log("TakeDamage" + damage);

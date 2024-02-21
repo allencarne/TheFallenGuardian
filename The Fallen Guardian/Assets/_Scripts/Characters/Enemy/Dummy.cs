@@ -36,27 +36,4 @@ public class Dummy : Enemy
         enemyRB.position = startingPosition;
         enemyState = EnemyState.Spawn;
     }
-
-    protected override void HurtState()
-    {
-        /*
-        if (isHurt)
-        {
-            isHurt = false;
-
-            enemyAnimator.Play("Hurt", -1, 0f);
-
-            idleTime = 0;
-
-            StartCoroutine(HurtDuration());
-        }
-        */
-    }
-
-    IEnumerator HurtDuration()
-    {
-        yield return new WaitForSeconds(.4f);
-
-        enemyState = EnemyState.Idle;
-    }
 }

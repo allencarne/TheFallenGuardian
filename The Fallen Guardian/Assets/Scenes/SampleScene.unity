@@ -2762,7 +2762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  maxHealth: 10
+  maxHealth: 100
   moveSpeed: 0
   maxMoveSpeed: 0
   damage: 0
@@ -2782,9 +2782,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarFront: {fileID: 1294604927}
   healthBarBack: {fileID: 1581998556}
-  EnemyUI: {fileID: 212339716}
-  chipSpeed: 2
-  lerpTimer: 0
 --- !u!1 &945871799
 GameObject:
   m_ObjectHideFlags: 0

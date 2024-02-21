@@ -9,9 +9,8 @@ public class EnemyHealthBar : MonoBehaviour
 
     [SerializeField] Image healthBarFront;
     [SerializeField] Image healthBarBack;
-    [SerializeField] Canvas EnemyUI;
-    [HideInInspector] public float chipSpeed = 2f;
-    [HideInInspector] public float lerpTimer;
+    float chipSpeed = 2f;
+    float lerpTimer;
 
     public void Awake()
     {
