@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 {
@@ -11,6 +12,8 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     public float maxMoveSpeed;
     public float damage;
     public float expToGive;
+
+    public UnityEvent OnPlayerTakeDamage;
 
     [SerializeField] SpriteRenderer spriteRenderer;
     float flashDuration = 0.1f;
@@ -163,6 +166,10 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         idleTime = 0;
 
         StartCoroutine(FlashOnDamage());
+
+
+
+        OnPlayerTakeDamage.Invoke();
 
         Debug.Log("TakeDamage" + damage);
     }

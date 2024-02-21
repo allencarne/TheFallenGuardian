@@ -28,7 +28,7 @@ public class HealthBar : MonoBehaviour
         }
     }
 
-    void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
         float fillFront = healthBarFront.fillAmount;
         float fillBack = healthBarBack.fillAmount;

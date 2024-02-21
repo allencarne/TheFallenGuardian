@@ -24,13 +24,15 @@ public class EnemyHealthBar : MonoBehaviour
 
     public void Update()
     {
-        enemy.health = Mathf.Clamp(enemy.health, 0, enemy.maxHealth);
+        //enemy.health = Mathf.Clamp(enemy.health, 0, enemy.maxHealth);
 
-        UpdateHealthUI();
+        //UpdateHealthUI();
     }
 
-    void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
+        enemy.health = Mathf.Clamp(enemy.health, 0, enemy.maxHealth);
+
         float fillFront = healthBarFront.fillAmount;
         float fillBack = healthBarBack.fillAmount;
         float healthFraction = enemy.health / enemy.maxHealth;
