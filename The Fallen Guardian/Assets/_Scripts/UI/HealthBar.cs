@@ -5,34 +5,27 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public Player player;
-    PlayerStats playerStats;
+    public PlayerStats stats;
 
     [SerializeField] Image healthBarFront;
     [SerializeField] Image healthBarBack;
-    [SerializeField] Canvas playerUI;
     [HideInInspector] public float chipSpeed = 2f;
     [HideInInspector] public float lerpTimer;
 
-    private void Start()
+    private void Update()
     {
-        playerStats = player.playerStats;
-    }
+        stats.health = Mathf.Clamp(stats.health, 0, stats.maxHealth);
 
-    public void Update()
-    {
-        if (playerStats != null)
-        {
-            playerStats.health = Mathf.Clamp(playerStats.health, 0, playerStats.maxHealth);
-            UpdateHealthUI();
-        }
+        UpdateHealthUI();
     }
 
     public void UpdateHealthUI()
     {
+        Debug.Log("Test");
+
         float fillFront = healthBarFront.fillAmount;
         float fillBack = healthBarBack.fillAmount;
-        float healthFraction = playerStats.health / playerStats.maxHealth;
+        float healthFraction = stats.health / stats.maxHealth;
 
         if (fillBack > healthFraction)
         {

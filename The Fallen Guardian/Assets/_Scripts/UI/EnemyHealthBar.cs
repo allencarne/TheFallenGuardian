@@ -17,18 +17,6 @@ public class EnemyHealthBar : MonoBehaviour
         enemy = GetComponent<Enemy>();
     }
 
-    public void Start()
-    {
-        enemy.health = enemy.maxHealth;
-    }
-
-    public void Update()
-    {
-        //enemy.health = Mathf.Clamp(enemy.health, 0, enemy.maxHealth);
-
-        //UpdateHealthUI();
-    }
-
     public void UpdateHealthUI()
     {
         enemy.health = Mathf.Clamp(enemy.health, 0, enemy.maxHealth);

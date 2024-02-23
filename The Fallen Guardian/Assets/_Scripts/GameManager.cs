@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     void OnPlayerJoined(PlayerInput playerInput)
     {
         Player player = playerInput.gameObject.GetComponent<Player>();
+        HealthBar healthBar = player.GetComponent<HealthBar>();
 
         if (playerReference.items.Count == 0)
         {
@@ -53,6 +54,9 @@ public class GameManager : MonoBehaviour
 
             // Assign ScriptableObject to Instantiated Player
             player.playerStats = newPlayerStats;
+
+            // Assign stats to healthbar
+            healthBar.stats = player.playerStats;
         }
         else
         {
@@ -73,6 +77,9 @@ public class GameManager : MonoBehaviour
 
             // Spawn Second Camera
             Instantiate(player2CameraPrefab);
+
+            // Assign stats to healthbar
+            healthBar.stats = player.playerStats;
         }
     }
 

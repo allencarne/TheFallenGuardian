@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     public float damage;
     public float expToGive;
 
-    public UnityEvent OnPlayerTakeDamage;
+    public UnityEvent OnEnemyTakeDamage;
 
     [SerializeField] SpriteRenderer spriteRenderer;
     float flashDuration = 0.1f;
@@ -169,7 +169,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
 
 
-        OnPlayerTakeDamage.Invoke();
+        OnEnemyTakeDamage.Invoke();
 
         Debug.Log("TakeDamage" + damage);
     }
