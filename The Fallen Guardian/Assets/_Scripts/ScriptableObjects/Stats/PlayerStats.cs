@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/PlayerStats")]
 public class PlayerStats : ScriptableObject
 {
-    public int health;
-    public int maxHealth;
+    public float health;
+    public float maxHealth;
     public float movementSpeed;
     public int damage;
     public PlayerClass playerClass;
