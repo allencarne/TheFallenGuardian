@@ -13,16 +13,15 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     public float damage;
     public float expToGive;
 
-    public UnityEvent OnEnemyTakeDamage;
-
     [SerializeField] SpriteRenderer spriteRenderer;
     float flashDuration = 0.1f;
     protected Animator enemyAnimator;
     protected Rigidbody2D enemyRB;
     protected Vector2 startingPosition;
 
-    protected float idleTime;
+    EnemyHealthBar healthBar;
 
+    protected float idleTime;
     bool canSpawn = true;
 
     protected enum EnemyState 
@@ -43,6 +42,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
     private void Awake()
     {
+        healthBar = GetComponent<EnemyHealthBar>();
         enemyAnimator = GetComponentInChildren<Animator>();
         enemyRB = GetComponent<Rigidbody2D>();
     }
@@ -159,7 +159,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
 
@@ -167,11 +167,20 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
         StartCoroutine(FlashOnDamage());
 
-
-
-        OnEnemyTakeDamage.Invoke();
-
         Debug.Log("TakeDamage" + damage);
+
+        // Healthbar Lerp
+        healthBar.lerpTimer = 0f;
+    }
+
+    public void Heal(float heal)
+    {
+        health += heal;
+
+        idleTime = 0;
+
+        // Healthbar Lerp
+        healthBar.lerpTimer = 0f;
     }
 
     private IEnumerator FlashOnDamage()
@@ -179,13 +188,13 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(flashDuration / 2);
 
-        spriteRenderer.color = Color.yellow;
+        spriteRenderer.color = Color.white;
         yield return new WaitForSeconds(flashDuration / 2);
 
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(flashDuration / 2);
 
-        spriteRenderer.color = Color.yellow;
+        spriteRenderer.color = Color.white;
         yield return new WaitForSeconds(flashDuration / 2);
 
         // Reset to original color

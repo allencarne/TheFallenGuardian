@@ -7,14 +7,19 @@ public class EnemyHealthBar : MonoBehaviour
 {
     Enemy enemy;
 
+    [HideInInspector] public float lerpTimer;
     [SerializeField] Image healthBarFront;
     [SerializeField] Image healthBarBack;
     float chipSpeed = 2f;
-    float lerpTimer;
 
     public void Awake()
     {
         enemy = GetComponent<Enemy>();
+    }
+
+    private void Update()
+    {
+        UpdateHealthUI();
     }
 
     public void UpdateHealthUI()

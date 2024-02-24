@@ -9,6 +9,12 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
     public int PlayerIndex;
     public PlayerStats playerStats;
     public PlayerAbilities playerAbilities;
+    HealthBar healthBar;
+
+    private void Awake()
+    {
+        healthBar = GetComponent<HealthBar>();
+    }
 
     private void Start()
     {
@@ -32,16 +38,56 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (GetComponent<PlayerInput>().currentControlScheme == "Keyboard")
+            {
+                TakeDamage(1);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (GetComponent<PlayerInput>().currentControlScheme == "Keyboard")
+            {
+                Heal(1);
+            }
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (GetComponent<PlayerInput>().currentControlScheme == "Gamepad")
+            {
+                TakeDamage(1);
+            }
+        }
+    }
+
     [SerializeField] SpriteRenderer spriteRenderer;
     float flashDuration = 0.1f;
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         playerStats.health -= damage;
 
         StartCoroutine(FlashOnDamage());
 
         Debug.Log("TakeDamage" + damage);
+
+        // Healthbar Lerp
+        healthBar.lerpTimer = 0f;
+    }
+
+    public void Heal(float health)
+    {
+        playerStats.health += health;
+
+        Debug.Log("Healed for " + health);
+
+        // Healthbar Lerp
+        healthBar.lerpTimer = 0f;
     }
 
     private IEnumerator FlashOnDamage()
@@ -49,13 +95,13 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(flashDuration / 2);
 
-        spriteRenderer.color = Color.yellow;
+        spriteRenderer.color = Color.white;
         yield return new WaitForSeconds(flashDuration / 2);
 
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(flashDuration / 2);
 
-        spriteRenderer.color = Color.yellow;
+        spriteRenderer.color = Color.white;
         yield return new WaitForSeconds(flashDuration / 2);
 
         // Reset to original color

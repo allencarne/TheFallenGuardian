@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,21 +8,19 @@ public class HealthBar : MonoBehaviour
 {
     public PlayerStats stats;
 
+    [HideInInspector] public float lerpTimer;
     [SerializeField] Image healthBarFront;
     [SerializeField] Image healthBarBack;
-    [HideInInspector] public float chipSpeed = 2f;
-    [HideInInspector] public float lerpTimer;
+    float chipSpeed = 2f;
 
     private void Update()
     {
-        stats.health = Mathf.Clamp(stats.health, 0, stats.maxHealth);
-
         UpdateHealthUI();
     }
 
     public void UpdateHealthUI()
     {
-        Debug.Log("Test");
+        stats.health = Mathf.Clamp(stats.health, 0, stats.maxHealth);
 
         float fillFront = healthBarFront.fillAmount;
         float fillBack = healthBarBack.fillAmount;
