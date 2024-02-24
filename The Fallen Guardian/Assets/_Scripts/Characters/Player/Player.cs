@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, IDamageable, IKnockbackable
 {
+    [SerializeField] SpriteRenderer spriteRenderer;
     public int PlayerIndex;
     public PlayerStats playerStats;
     public PlayerAbilities playerAbilities;
@@ -68,9 +69,6 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
         }
     }
 
-    [SerializeField] SpriteRenderer spriteRenderer;
-    float flashDuration = 0.1f;
-
     public void TakeDamage(float damage)
     {
         playerStats.health -= damage;
@@ -95,6 +93,8 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
 
     private IEnumerator FlashEffect(Color color)
     {
+        float flashDuration = 0.1f;
+
         spriteRenderer.color = color;
         yield return new WaitForSeconds(flashDuration / 2);
 
@@ -127,10 +127,13 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
 
     public void KnockBack(Vector3 opponentPosition, Vector3 yourPosition, Rigidbody2D opponentRB, float knockBackAmount)
     {
-        // Knock Back
+        // Calculate the direction from your position to the opponent's position and normalize it
         Vector2 direction = (opponentPosition - yourPosition).normalized;
+
+        // Set the opponent's Rigidbody velocity to the knockback direction multiplied by the knockback amount
         opponentRB.velocity = direction * knockBackAmount;
 
+        // Start a coroutine to handle the knockback duration
         StartCoroutine(KnockBackDuration(opponentRB));
     }
 

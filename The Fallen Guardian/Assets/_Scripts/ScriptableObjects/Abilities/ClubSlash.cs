@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/ClubSlash")]
 public class ClubSlash : ScriptableObject, IBasicAttackBehaviour
 {
+    // Icon
     [SerializeField] GameObject clubSlash;
 
     [SerializeField] int damage;
     [SerializeField] float coolDown;
+    [SerializeField] float castTime;
 
     [SerializeField] float rangeBeforeSlide;
     [SerializeField] float slideForce;
     [SerializeField] float slideDuration;
+
+    [SerializeField] float attackRange;
 
     public void BehaviourUpdate(PlayerStateMachine stateMachine)
     {
@@ -36,14 +39,30 @@ public class ClubSlash : ScriptableObject, IBasicAttackBehaviour
 
     IEnumerator AttackImpact(PlayerStateMachine stateMachine)
     {
-        // .3 seconds is the amout of Anticipation time before Impact
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(castTime);
 
-        GameObject slash = Instantiate(clubSlash, stateMachine.transform.position, stateMachine.AttackDir);
+        // Calculate the direction of the attack
+        Vector3 direction = stateMachine.AttackDir * Vector3.right;
+
+        // Calculate the offset based on the attackRange and the direction
+        Vector3 offset = direction * attackRange;
+
+        // Spawn the attack object with the calculated offset
+        GameObject slash = Instantiate(clubSlash, stateMachine.transform.position + offset, stateMachine.AttackDir);
+
+        // Ignore collision between the attack and the player
         Physics2D.IgnoreCollision(slash.GetComponent<Collider2D>(), stateMachine.gameObject.GetComponent<Collider2D>());
-        stateMachine.HandleSlideForward(stateMachine.AttackDir.eulerAngles.z, rangeBeforeSlide);
-        slash.GetComponent<DamageOnTrigger>().abilityDamage = damage;
-        slash.GetComponent<DamageOnTrigger>().playerDamage = stateMachine.Player.playerStats.damage;
+
+        // Handle sliding forward
+        stateMachine.HandleSlideForward(stateMachine.AttackDir.eulerAngles.z, rangeBeforeSlide, slideForce, slideDuration);
+
+        // Set damage values for the attack
+        DamageOnTrigger damageOnTrigger = slash.GetComponent<DamageOnTrigger>();
+        if (damageOnTrigger != null)
+        {
+            damageOnTrigger.abilityDamage = damage;
+            damageOnTrigger.playerDamage = stateMachine.Player.playerStats.damage;
+        }
     }
 
     IEnumerator DurationOfBasicAttack(PlayerStateMachine stateMachine)

@@ -30,6 +30,8 @@ public class PlayerStateMachine : MonoBehaviour
     public Transform Aimer => aimer;
 
     bool canSlideForward = false;
+    float slideForce;
+    float slideDuration;
 
     [Header("Basic Attack")]
     public bool CanBasicAttack = true;
@@ -88,8 +90,11 @@ public class PlayerStateMachine : MonoBehaviour
 
     #region SlideForward
 
-    public void HandleSlideForward(float rotation, float slideRange)
+    public void HandleSlideForward(float rotation, float slideRange, float nSlideForce, float nSlideDuration)
     {
+        slideForce = nSlideForce;
+        slideDuration = nSlideDuration;
+
         PlayerInput controlScheme = GetComponent<PlayerInput>();
 
         if (controlScheme.currentControlScheme == "Keyboard")
@@ -116,12 +121,12 @@ public class PlayerStateMachine : MonoBehaviour
         // Use the rotation of the Aimer to determine the slide direction
         Vector2 slideDirection = Quaternion.Euler(0f, 0f, rotation) * Vector2.right;
 
-        rb.velocity = slideDirection * 8;
+        rb.velocity = slideDirection * slideForce;
     }
 
     IEnumerator SlideDuration()
     {
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(slideDuration);
 
         canSlideForward = false;
     }

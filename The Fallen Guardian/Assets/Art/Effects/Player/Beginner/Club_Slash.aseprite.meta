@@ -123,7 +123,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Club_Slash_Frame_0
     originalName: 
-    pivot: {x: 0.07692308, y: -0.8333334}
+    pivot: {x: 0.51282054, y: -0.8333334}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -143,7 +143,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Club_Slash_Frame_1
     originalName: 
-    pivot: {x: 0.102564104, y: -1.6969697}
+    pivot: {x: 0.53846157, y: -1.6969697}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -163,7 +163,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 60}
   - name: Club_Slash_Frame_2
     originalName: 
-    pivot: {x: 0.15151516, y: -4.625}
+    pivot: {x: 0.6666667, y: -4.625}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -183,7 +183,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 101}
   - name: Club_Slash_Frame_3
     originalName: 
-    pivot: {x: 0.27272728, y: -14.166667}
+    pivot: {x: 1.0454546, y: -14.166667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -203,7 +203,7 @@ ScriptedImporter:
     uvTransform: {x: 51, y: 4}
   - name: Club_Slash_Frame_4
     originalName: 
-    pivot: {x: 0.5833334, y: -45}
+    pivot: {x: 2, y: -45}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -233,7 +233,7 @@ ScriptedImporter:
     - name: Club_Slash_Frame_0
       frameIndex: 0
       cellRect:
-        x: 61
+        x: 44
         y: 40
         width: 39
         height: 48
@@ -241,7 +241,7 @@ ScriptedImporter:
     - name: Club_Slash_Frame_1
       frameIndex: 1
       cellRect:
-        x: 60
+        x: 43
         y: 56
         width: 39
         height: 33
@@ -249,7 +249,7 @@ ScriptedImporter:
     - name: Club_Slash_Frame_2
       frameIndex: 2
       cellRect:
-        x: 59
+        x: 42
         y: 74
         width: 33
         height: 16
@@ -257,7 +257,7 @@ ScriptedImporter:
     - name: Club_Slash_Frame_3
       frameIndex: 3
       cellRect:
-        x: 58
+        x: 41
         y: 85
         width: 22
         height: 6
@@ -265,7 +265,7 @@ ScriptedImporter:
     - name: Club_Slash_Frame_4
       frameIndex: 4
       cellRect:
-        x: 57
+        x: 40
         y: 90
         width: 12
         height: 2
