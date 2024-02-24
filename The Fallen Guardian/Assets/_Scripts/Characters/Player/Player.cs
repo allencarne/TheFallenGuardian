@@ -113,9 +113,11 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
 
     void ShowFloatingText(float amount, Color color)
     {
+        Vector3 offset = new Vector3(0f, 1, 0);
+
         if (floatingText)
         {
-            GameObject textPrefab = Instantiate(floatingText, transform.position, Quaternion.identity);
+            GameObject textPrefab = Instantiate(floatingText, transform.position + offset, Quaternion.identity);
             TextMeshPro textMesh = textPrefab.GetComponentInChildren<TextMeshPro>();
             textMesh.text = amount.ToString();
             textMesh.color = color; // Set the color of the text
