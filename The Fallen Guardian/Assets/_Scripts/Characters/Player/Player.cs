@@ -24,7 +24,7 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
         switch (playerStats.playerClass)
         {
             case PlayerClass.Beginner:
-                Debug.Log("Hi");
+                Debug.Log("Beginner");
                 break;
             case PlayerClass.Warrior:
                 //playerAbilities.AttackBehaviour = playerAbilities.WarriorAttackBehaviour;
@@ -80,16 +80,6 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
         healthBar.lerpTimer = 0f;
     }
 
-    public void Heal(float health)
-    {
-        playerStats.health += health;
-
-        Debug.Log("Healed for " + health);
-
-        // Healthbar Lerp
-        healthBar.lerpTimer = 0f;
-    }
-
     private IEnumerator FlashOnDamage()
     {
         spriteRenderer.color = Color.red;
@@ -99,6 +89,36 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
         yield return new WaitForSeconds(flashDuration / 2);
 
         spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(flashDuration / 2);
+
+        spriteRenderer.color = Color.white;
+        yield return new WaitForSeconds(flashDuration / 2);
+
+        // Reset to original color
+        spriteRenderer.color = Color.white;
+    }
+
+    public void Heal(float health)
+    {
+        playerStats.health += health;
+
+        StartCoroutine(FlashOnHeal());
+
+        Debug.Log("Healed for " + health);
+
+        // Healthbar Lerp
+        healthBar.lerpTimer = 0f;
+    }
+
+    private IEnumerator FlashOnHeal()
+    {
+        spriteRenderer.color = Color.green;
+        yield return new WaitForSeconds(flashDuration / 2);
+
+        spriteRenderer.color = Color.white;
+        yield return new WaitForSeconds(flashDuration / 2);
+
+        spriteRenderer.color = Color.green;
         yield return new WaitForSeconds(flashDuration / 2);
 
         spriteRenderer.color = Color.white;

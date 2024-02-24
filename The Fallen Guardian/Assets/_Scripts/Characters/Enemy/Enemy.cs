@@ -173,16 +173,6 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         healthBar.lerpTimer = 0f;
     }
 
-    public void Heal(float heal)
-    {
-        health += heal;
-
-        idleTime = 0;
-
-        // Healthbar Lerp
-        healthBar.lerpTimer = 0f;
-    }
-
     private IEnumerator FlashOnDamage()
     {
         spriteRenderer.color = Color.red;
@@ -192,6 +182,36 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         yield return new WaitForSeconds(flashDuration / 2);
 
         spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(flashDuration / 2);
+
+        spriteRenderer.color = Color.white;
+        yield return new WaitForSeconds(flashDuration / 2);
+
+        // Reset to original color
+        spriteRenderer.color = Color.white;
+    }
+
+    public void Heal(float heal)
+    {
+        health += heal;
+
+        idleTime = 0;
+
+        StartCoroutine(FlashOnHeal());
+
+        // Healthbar Lerp
+        healthBar.lerpTimer = 0f;
+    }
+
+    private IEnumerator FlashOnHeal()
+    {
+        spriteRenderer.color = Color.green;
+        yield return new WaitForSeconds(flashDuration / 2);
+
+        spriteRenderer.color = Color.white;
+        yield return new WaitForSeconds(flashDuration / 2);
+
+        spriteRenderer.color = Color.green;
         yield return new WaitForSeconds(flashDuration / 2);
 
         spriteRenderer.color = Color.white;
