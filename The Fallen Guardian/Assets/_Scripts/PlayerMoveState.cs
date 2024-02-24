@@ -9,9 +9,6 @@ public class PlayerMoveState : PlayerState
 
     public override void Update()
     {
-        // State Logic
-        Debug.Log("Move State");
-
         stateMachine.BodyAnimator.Play("Move");
 
         // Set idle Animation after move

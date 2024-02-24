@@ -1238,26 +1238,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bcb8f508ff6cf14ebaf06005d1964c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  maxHealth: 10
   PlayerIndex: 0
   playerStats: {fileID: 0}
   playerAbilities: {fileID: 239699257640095505}
-  OnPlayerTakeDamage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: dbee07aa29ce7244dbb0a4f5a3f77d38, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
   spriteRenderer: {fileID: 6348204392684985540}
 --- !u!114 &4059563979879986888
 MonoBehaviour:
@@ -1305,6 +1289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269e4786cba320c41a3558f8ccc73ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+  lerpTimer: 0
   healthBarFront: {fileID: 4430670412122056503}
   healthBarBack: {fileID: 4716448829981364878}
 --- !u!1 &8324031750687829038

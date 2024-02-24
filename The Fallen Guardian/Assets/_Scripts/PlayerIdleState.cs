@@ -9,8 +9,6 @@ public class PlayerIdleState : PlayerState
 
     public override void Update()
     {
-        Debug.Log("Idle State");
-
         // State Logic Here
         stateMachine.BodyAnimator.Play("Idle");
         stateMachine.ClubAnimator.Play("Idle");

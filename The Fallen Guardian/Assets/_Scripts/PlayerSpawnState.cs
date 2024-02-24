@@ -13,8 +13,6 @@ public class PlayerSpawnState : PlayerState
 
     public override void Update()
     {
-        Debug.Log("Spawn State");
-
         if (canSpawn)
         {
             canSpawn = false;

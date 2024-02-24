@@ -2801,6 +2801,7 @@ MonoBehaviour:
   damage: 0
   expToGive: 0
   spriteRenderer: {fileID: 504803931}
+  floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
 --- !u!114 &945035513
 MonoBehaviour:
   m_ObjectHideFlags: 0

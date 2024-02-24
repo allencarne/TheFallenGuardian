@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -9,7 +10,9 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
     public int PlayerIndex;
     public PlayerStats playerStats;
     public PlayerAbilities playerAbilities;
+
     HealthBar healthBar;
+    [SerializeField] GameObject floatingText;
 
     private void Awake()
     {
@@ -72,23 +75,33 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
     {
         playerStats.health -= damage;
 
-        StartCoroutine(FlashOnDamage());
+        StartCoroutine(FlashEffect(Color.red));
 
-        Debug.Log("TakeDamage" + damage);
-
-        // Healthbar Lerp
         healthBar.lerpTimer = 0f;
+
+        ShowFloatingText(damage, Color.red);
     }
 
-    private IEnumerator FlashOnDamage()
+    public void Heal(float heal)
     {
-        spriteRenderer.color = Color.red;
+        playerStats.health += heal;
+
+        StartCoroutine(FlashEffect(Color.green));
+
+        healthBar.lerpTimer = 0f;
+
+        ShowFloatingText(heal,Color.green);
+    }
+
+    private IEnumerator FlashEffect(Color color)
+    {
+        spriteRenderer.color = color;
         yield return new WaitForSeconds(flashDuration / 2);
 
         spriteRenderer.color = Color.white;
         yield return new WaitForSeconds(flashDuration / 2);
 
-        spriteRenderer.color = Color.red;
+        spriteRenderer.color = color;
         yield return new WaitForSeconds(flashDuration / 2);
 
         spriteRenderer.color = Color.white;
@@ -98,34 +111,16 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
         spriteRenderer.color = Color.white;
     }
 
-    public void Heal(float health)
+    void ShowFloatingText(float amount, Color color)
     {
-        playerStats.health += health;
-
-        StartCoroutine(FlashOnHeal());
-
-        Debug.Log("Healed for " + health);
-
-        // Healthbar Lerp
-        healthBar.lerpTimer = 0f;
-    }
-
-    private IEnumerator FlashOnHeal()
-    {
-        spriteRenderer.color = Color.green;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        spriteRenderer.color = Color.white;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        spriteRenderer.color = Color.green;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        spriteRenderer.color = Color.white;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        // Reset to original color
-        spriteRenderer.color = Color.white;
+        if (floatingText)
+        {
+            GameObject textPrefab = Instantiate(floatingText, transform.position, Quaternion.identity);
+            TextMeshPro textMesh = textPrefab.GetComponentInChildren<TextMeshPro>();
+            textMesh.text = amount.ToString();
+            textMesh.color = color; // Set the color of the text
+            Destroy(textPrefab, 1);
+        }
     }
 
     public void KnockBack(Vector3 opponentPosition, Vector3 yourPosition, Rigidbody2D opponentRB, float knockBackAmount)

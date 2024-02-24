@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     protected Vector2 startingPosition;
 
     EnemyHealthBar healthBar;
+    [SerializeField] GameObject floatingText;
 
     protected float idleTime;
     bool canSpawn = true;
@@ -165,30 +167,11 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
         idleTime = 0;
 
-        StartCoroutine(FlashOnDamage());
+        StartCoroutine(FlashEffect(Color.red));
 
-        Debug.Log("TakeDamage" + damage);
-
-        // Healthbar Lerp
         healthBar.lerpTimer = 0f;
-    }
 
-    private IEnumerator FlashOnDamage()
-    {
-        spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        spriteRenderer.color = Color.white;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        spriteRenderer.color = Color.white;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        // Reset to original color
-        spriteRenderer.color = Color.white;
+        ShowFloatingText(damage, Color.red);
     }
 
     public void Heal(float heal)
@@ -197,21 +180,22 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
         idleTime = 0;
 
-        StartCoroutine(FlashOnHeal());
+        StartCoroutine(FlashEffect(Color.green));
 
-        // Healthbar Lerp
         healthBar.lerpTimer = 0f;
+
+        ShowFloatingText(heal, Color.green);
     }
 
-    private IEnumerator FlashOnHeal()
+    private IEnumerator FlashEffect(Color color)
     {
-        spriteRenderer.color = Color.green;
+        spriteRenderer.color = color;
         yield return new WaitForSeconds(flashDuration / 2);
 
         spriteRenderer.color = Color.white;
         yield return new WaitForSeconds(flashDuration / 2);
 
-        spriteRenderer.color = Color.green;
+        spriteRenderer.color = color;
         yield return new WaitForSeconds(flashDuration / 2);
 
         spriteRenderer.color = Color.white;
@@ -219,6 +203,18 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
         // Reset to original color
         spriteRenderer.color = Color.white;
+    }
+
+    void ShowFloatingText(float amount, Color color)
+    {
+        if (floatingText)
+        {
+            GameObject textPrefab = Instantiate(floatingText, transform.position, Quaternion.identity);
+            TextMeshPro textMesh = textPrefab.GetComponentInChildren<TextMeshPro>();
+            textMesh.text = amount.ToString();
+            textMesh.color = color; // Set the color of the text
+            Destroy(textPrefab, 1);
+        }
     }
 
     public void KnockBack(Vector3 opponentPosition, Vector3 yourPosition, Rigidbody2D opponentRB, float knockBackAmount)
