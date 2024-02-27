@@ -20,6 +20,9 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Animator clubAnimator;
     public Animator ClubAnimator => clubAnimator;
 
+    [SerializeField] Animator swordAnimator;
+    public Animator SwordAnimator => swordAnimator;
+
     [SerializeField] PlayerInputHandler inputHandler;
     public PlayerInputHandler InputHandler => inputHandler;
 

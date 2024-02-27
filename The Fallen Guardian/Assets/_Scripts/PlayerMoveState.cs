@@ -23,8 +23,25 @@ public class PlayerMoveState : PlayerState
         // Set idle Animation after move
         if (stateMachine.InputHandler.MoveInput != Vector2.zero)
         {
-            stateMachine.ClubAnimator.SetFloat("Horizontal", stateMachine.InputHandler.MoveInput.x);
-            stateMachine.ClubAnimator.SetFloat("Vertical", stateMachine.InputHandler.MoveInput.y);
+            // Map horizontal and vertical input values to discrete values (-1, 0, 1)
+            float horizontalValue = Mathf.Round(stateMachine.InputHandler.MoveInput.x);
+            float verticalValue = Mathf.Round(stateMachine.InputHandler.MoveInput.y);
+
+            stateMachine.ClubAnimator.SetFloat("Horizontal", horizontalValue);
+            stateMachine.ClubAnimator.SetFloat("Vertical", verticalValue);
+        }
+
+        stateMachine.SwordAnimator.Play("Move");
+
+        // Set idle Animation after move
+        if (stateMachine.InputHandler.MoveInput != Vector2.zero)
+        {
+            // Map horizontal and vertical input values to discrete values (-1, 0, 1)
+            float horizontalValue = Mathf.Round(stateMachine.InputHandler.MoveInput.x);
+            float verticalValue = Mathf.Round(stateMachine.InputHandler.MoveInput.y);
+
+            stateMachine.SwordAnimator.SetFloat("Horizontal", horizontalValue);
+            stateMachine.SwordAnimator.SetFloat("Vertical", verticalValue);
         }
 
         // Transitions
