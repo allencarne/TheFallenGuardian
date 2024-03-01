@@ -26,8 +26,8 @@ public class ClubSlash : ScriptableObject, IBasicAttackBehaviour
 
             stateMachine.CanBasicAttack = false;
 
-            stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player_Sword", "BasicAttack");
-            stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "BasicAttack");
+            stateMachine.HandleAttackAnimation(stateMachine.BodyAnimator, "Player_Sword", "BasicAttack");
+            stateMachine.HandleAttackAnimation(stateMachine.SwordAnimator, "Sword", "BasicAttack");
 
             //stateMachine.BodyAnimator.Play("Sword Basic Attack");
             //stateMachine.ClubAnimator.Play("Basic Attack");
