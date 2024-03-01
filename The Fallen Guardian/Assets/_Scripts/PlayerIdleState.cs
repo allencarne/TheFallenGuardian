@@ -12,7 +12,7 @@ public class PlayerIdleState : PlayerState
         // State Logic Here
         stateMachine.BodyAnimator.Play("Idle");
         stateMachine.ClubAnimator.Play("Idle");
-        stateMachine.SwordAnimator.Play("Idle");
+        stateMachine.HandleAnimation("Sword", "Idle");
 
         // Transitions
         stateMachine.TransitionToBasicAttack(stateMachine.InputHandler.BasicAttackInput);

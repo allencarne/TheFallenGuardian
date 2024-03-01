@@ -9,6 +9,8 @@ public class PlayerMoveState : PlayerState
 
     public override void Update()
     {
+        stateMachine.HandleAnimation("Sword","Move");
+        
         stateMachine.BodyAnimator.Play("Move");
 
         // Set idle Animation after move
@@ -17,7 +19,7 @@ public class PlayerMoveState : PlayerState
             stateMachine.BodyAnimator.SetFloat("Horizontal", stateMachine.InputHandler.MoveInput.x);
             stateMachine.BodyAnimator.SetFloat("Vertical", stateMachine.InputHandler.MoveInput.y);
         }
-
+        /*
         stateMachine.ClubAnimator.Play("Move");
 
         // Set idle Animation after move
@@ -43,7 +45,7 @@ public class PlayerMoveState : PlayerState
             stateMachine.SwordAnimator.SetFloat("Horizontal", horizontalValue);
             stateMachine.SwordAnimator.SetFloat("Vertical", verticalValue);
         }
-
+        */
         // Transitions
         stateMachine.TransitionToBasicAttack(stateMachine.InputHandler.BasicAttackInput);
     }

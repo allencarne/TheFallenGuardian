@@ -135,4 +135,42 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     #endregion
+
+    public void HandleAnimation(string type, string state)
+    {
+        if (InputHandler.MoveInput != Vector2.zero)
+        {
+            string animationName = $"{type}_{state}";
+
+            // Check if the input is moving horizontally
+            if (Mathf.Abs(InputHandler.MoveInput.x) > Mathf.Abs(InputHandler.MoveInput.y))
+            {
+                // Moving horizontally
+                if (InputHandler.MoveInput.x > 0)
+                {
+                    // Moving right
+                    swordAnimator.Play($"{animationName}_Right");
+                }
+                else
+                {
+                    // Moving left
+                    swordAnimator.Play($"{animationName}_Left");
+                }
+            }
+            else
+            {
+                // Moving vertically
+                if (InputHandler.MoveInput.y > 0)
+                {
+                    // Moving up
+                    swordAnimator.Play($"{animationName}_Up");
+                }
+                else
+                {
+                    // Moving down
+                    swordAnimator.Play($"{animationName}_Down");
+                }
+            }
+        }
+    }
 }
