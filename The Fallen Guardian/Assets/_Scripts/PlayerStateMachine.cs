@@ -185,4 +185,16 @@ public class PlayerStateMachine : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        ItemPickup item = collision.GetComponent<ItemPickup>();
+        if (item != null)
+        {
+            if (inputHandler.PickupInput)
+            {
+                item.PickUp();
+            }
+        }
+    }
 }

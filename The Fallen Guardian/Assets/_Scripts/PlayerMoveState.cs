@@ -20,7 +20,7 @@ public class PlayerMoveState : PlayerState
     {
         HandleMovement(stateMachine.InputHandler.MoveInput);
 
-        // Tansition to Idle State
+        // If we are no longer moving - Transition to Idle State
         if (stateMachine.InputHandler.MoveInput == Vector2.zero)
         {
             stateMachine.SetState(new PlayerIdleState(stateMachine));

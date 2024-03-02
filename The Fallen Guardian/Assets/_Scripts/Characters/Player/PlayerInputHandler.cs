@@ -10,6 +10,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 LookInput { get; private set; }
     public bool BasicAttackInput { get; private set; }
     public Vector2 MousePosition { get; private set; }
+    public bool PickupInput { get; private set; }
 
     public GameObjectRuntimeSet cameraReference;
     public Camera player2Camera;
@@ -73,6 +74,16 @@ public class PlayerInputHandler : MonoBehaviour
         else
         {
             MousePosition = player2Camera.ScreenToWorldPoint(context.ReadValue<Vector2>());
+        }
+    }
+
+    public void OnPickupInput(InputAction.CallbackContext context)
+    {
+        PickupInput = context.ReadValueAsButton();
+
+        if (context.canceled)
+        {
+            PickupInput = false;
         }
     }
 

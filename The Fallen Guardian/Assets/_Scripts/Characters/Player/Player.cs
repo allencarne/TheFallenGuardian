@@ -69,7 +69,7 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
             Time.timeScale = 0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (GetComponent<PlayerInput>().currentControlScheme == "Keyboard")
             {
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (GetComponent<PlayerInput>().currentControlScheme == "Keyboard")
             {
