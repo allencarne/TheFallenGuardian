@@ -52,6 +52,8 @@ public class PlayerStateMachine : MonoBehaviour
     void Update()
     {
         state.Update();
+
+        Debug.Log(lastMoveDirection);
     }
 
     private void FixedUpdate()
@@ -140,164 +142,42 @@ public class PlayerStateMachine : MonoBehaviour
 
     #endregion
 
-    public void HandleAnimation(Animator animator, string type, string state)
+    public void HandleAnimation(Animator animator, string type, string state, Vector2 direction)
     {
         string animationName = $"{type}_{state}";
 
-        if (InputHandler.MoveInput != Vector2.zero)
+        if (direction != Vector2.zero)
         {
-            // Character is moving
-            lastMoveDirection = InputHandler.MoveInput.normalized;
+            // Update last move direction
+            lastMoveDirection = direction.normalized;
 
-            // Determine animation direction based on current move input
-            if (Mathf.Abs(InputHandler.MoveInput.x) > Mathf.Abs(InputHandler.MoveInput.y))
+            // Character is moving or attacking
+            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             {
                 // Moving horizontally
-                if (InputHandler.MoveInput.x > 0)
-                {
-                    // Moving right
-                    animator.Play($"{animationName}_Right");
-                }
-                else
-                {
-                    // Moving left
-                    animator.Play($"{animationName}_Left");
-                }
+                animator.Play($"{animationName}_{(direction.x > 0 ? "Right" : "Left")}");
             }
             else
             {
                 // Moving vertically
-                if (InputHandler.MoveInput.y > 0)
-                {
-                    // Moving up
-                    animator.Play($"{animationName}_Up");
-                }
-                else
-                {
-                    // Moving down
-                    animator.Play($"{animationName}_Down");
-                }
+                animator.Play($"{animationName}_{(direction.y > 0 ? "Up" : "Down")}");
             }
         }
         else
         {
-            // Character is not moving, play idle animation based on last move direction
+            // Character is not moving or attacking, play idle animation
             if (lastMoveDirection != Vector2.zero)
             {
                 // Determine idle animation direction based on last move direction
                 if (Mathf.Abs(lastMoveDirection.x) > Mathf.Abs(lastMoveDirection.y))
                 {
                     // Last move was horizontal
-                    if (lastMoveDirection.x > 0)
-                    {
-                        // Last move was right
-                        animator.Play($"{animationName}_Right");
-                    }
-                    else
-                    {
-                        // Last move was left
-                        animator.Play($"{animationName}_Left");
-                    }
+                    animator.Play($"{animationName}_{(lastMoveDirection.x > 0 ? "Right" : "Left")}");
                 }
                 else
                 {
                     // Last move was vertical
-                    if (lastMoveDirection.y > 0)
-                    {
-                        // Last move was up
-                        animator.Play($"{animationName}_Up");
-                    }
-                    else
-                    {
-                        // Last move was down
-                        animator.Play($"{animationName}_Down");
-                    }
-                }
-            }
-            else
-            {
-                // Character is idle and last move direction is zero, play default idle animation
-                animator.Play($"{animationName}_Down");
-            }
-        }
-    }
-
-    public void HandleAttackAnimation(Animator animator, string type, string state)
-    {
-        string animationName = $"{type}_{state}";
-
-        // Calculate direction based on Aimer rotation
-        float angle = aimer.rotation.eulerAngles.z;
-        Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
-
-        if (direction != Vector2.zero)
-        {
-            // Character is moving
-            lastAttackDirection = direction;
-
-            // Determine animation direction based on direction
-            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-            {
-                // Moving horizontally
-                if (direction.x > 0)
-                {
-                    // Moving right
-                    animator.Play($"{animationName}_Right");
-                }
-                else
-                {
-                    // Moving left
-                    animator.Play($"{animationName}_Left");
-                }
-            }
-            else
-            {
-                // Moving vertically
-                if (direction.y > 0)
-                {
-                    // Moving up
-                    animator.Play($"{animationName}_Up");
-                }
-                else
-                {
-                    // Moving down
-                    animator.Play($"{animationName}_Down");
-                }
-            }
-        }
-        else
-        {
-            // Character is not moving, play idle animation based on last move direction
-            if (lastAttackDirection != Vector2.zero)
-            {
-                // Determine idle animation direction based on last move direction
-                if (Mathf.Abs(lastAttackDirection.x) > Mathf.Abs(lastAttackDirection.y))
-                {
-                    // Last move was horizontal
-                    if (lastAttackDirection.x > 0)
-                    {
-                        // Last move was right
-                        animator.Play($"{animationName}_Right");
-                    }
-                    else
-                    {
-                        // Last move was left
-                        animator.Play($"{animationName}_Left");
-                    }
-                }
-                else
-                {
-                    // Last move was vertical
-                    if (lastAttackDirection.y > 0)
-                    {
-                        // Last move was up
-                        animator.Play($"{animationName}_Up");
-                    }
-                    else
-                    {
-                        // Last move was down
-                        animator.Play($"{animationName}_Down");
-                    }
+                    animator.Play($"{animationName}_{(lastMoveDirection.y > 0 ? "Up" : "Down")}");
                 }
             }
             else

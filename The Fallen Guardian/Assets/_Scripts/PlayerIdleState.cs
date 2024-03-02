@@ -10,8 +10,8 @@ public class PlayerIdleState : PlayerState
     public override void Update()
     {
         // State Logic Here
-        stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player", "Idle");
-        stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Idle");
+        stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player", "Idle", stateMachine.InputHandler.MoveInput.normalized);
+        stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Idle", stateMachine.InputHandler.MoveInput.normalized);
 
         // Transitions
         stateMachine.TransitionToBasicAttack(stateMachine.InputHandler.BasicAttackInput);

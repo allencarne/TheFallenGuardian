@@ -24,16 +24,15 @@ public class ClubSlash : ScriptableObject, IBasicAttackBehaviour
         {
             stateMachine.AttackDir = stateMachine.Aimer.rotation;
 
+            // Calculate direction based on Aimer rotation
+            float angle = stateMachine.Aimer.rotation.eulerAngles.z * Mathf.Deg2Rad;
+            Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+
             stateMachine.CanBasicAttack = false;
 
-            stateMachine.HandleAttackAnimation(stateMachine.BodyAnimator, "Player_Sword", "BasicAttack");
-            stateMachine.HandleAttackAnimation(stateMachine.SwordAnimator, "Sword", "BasicAttack");
-
-            //stateMachine.BodyAnimator.Play("Sword Basic Attack");
-            //stateMachine.ClubAnimator.Play("Basic Attack");
-
-            //stateMachine.FaceAttackingDirection(stateMachine.BodyAnimator);
-            //stateMachine.FaceAttackingDirection(stateMachine.ClubAnimator);
+            // Use the calculated direction for handling animations
+            stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player_Sword", "BasicAttack", direction);
+            stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "BasicAttack", direction);
 
             stateMachine.StartCoroutine(AttackImpact(stateMachine));
             stateMachine.StartCoroutine(DurationOfBasicAttack(stateMachine));
