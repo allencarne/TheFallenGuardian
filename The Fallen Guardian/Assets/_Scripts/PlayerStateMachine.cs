@@ -52,8 +52,6 @@ public class PlayerStateMachine : MonoBehaviour
     void Update()
     {
         state.Update();
-
-        Debug.Log(lastMoveDirection);
     }
 
     private void FixedUpdate()

@@ -41,17 +41,20 @@ public class Aimer : MonoBehaviour
         // Use the correct camera reference based on the player's index
         Camera currentCamera = player.PlayerIndex == 1 ? inputHandler.player1Camera : inputHandler.player2Camera;
 
-        // Convert the mouse position to world space using the correct camera
-        Vector3 mouseWorldPos = currentCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, currentCamera.nearClipPlane));
+        if (currentCamera != null)
+        {
+            // Convert the mouse position to world space using the correct camera
+            Vector3 mouseWorldPos = currentCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, currentCamera.nearClipPlane));
 
-        // Calculate the direction from the Aimer to the mouse position
-        Vector3 directionToMouse = mouseWorldPos - transform.position;
+            // Calculate the direction from the Aimer to the mouse position
+            Vector3 directionToMouse = mouseWorldPos - transform.position;
 
-        // Calculate the rotation angle needed to face the mouse position
-        float rotZ = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
+            // Calculate the rotation angle needed to face the mouse position
+            float rotZ = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
 
-        // Apply the calculated rotation to the Aimer
-        transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+            // Apply the calculated rotation to the Aimer
+            transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+        }
     }
 
     void RotateOnGamePad()

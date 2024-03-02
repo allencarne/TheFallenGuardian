@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
@@ -9,13 +10,15 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 LookInput { get; private set; }
     public bool BasicAttackInput { get; private set; }
     public Vector2 MousePosition { get; private set; }
-    public bool OnInventoryInput { get; private set; }
 
     public GameObjectRuntimeSet cameraReference;
     public Camera player2Camera;
 
     public Camera player1Camera;
     Player player;
+
+    public UnityEvent OnInventoryUI;
+    public UnityEvent OnInventory2UI;
 
     private void Awake()
     {
@@ -77,7 +80,14 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.started)
         {
-            OnInventoryInput = true;
+            if (player.PlayerIndex == 1)
+            {
+                OnInventoryUI.Invoke();
+            }
+            else
+            {
+                OnInventory2UI.Invoke();
+            }
         }
     }
 }

@@ -19,7 +19,7 @@ public class CameraFollow : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] GameObject playerUI;
-    [SerializeField] GameObject player2UI;
+    public GameObject player2UI;
 
     private void Start()
     {
