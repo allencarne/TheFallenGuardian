@@ -193,7 +193,14 @@ public class PlayerStateMachine : MonoBehaviour
         {
             if (inputHandler.PickupInput)
             {
-                item.PickUp();
+                if (player.PlayerIndex == 1)
+                {
+                    item.PickUp();
+                }
+                else
+                {
+                    item.PickUp2();
+                }
             }
         }
     }
