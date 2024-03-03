@@ -23,9 +23,6 @@ public class InventoryUI : MonoBehaviour
 
     public void UpdateUI()
     {
-        Debug.Log("yes");
-
-        /*
         for (int i = 0; i < iSlots.Length; i++)
         {
             if (i < inventory.items.Count)
@@ -37,6 +34,5 @@ public class InventoryUI : MonoBehaviour
                 iSlots[i].ClearSlot();
             }
         }
-        */
     }
 }
