@@ -5639,6 +5639,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7289170284616358260}
+        m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
+        m_MethodName: OnPlayer2UICreated
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1484444579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5658,6 +5670,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2109475646}
         m_TargetAssemblyTypeName: SelectGameMode, Assembly-CSharp
         m_MethodName: Player1Panel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7289170284616358260}
+        m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
+        m_MethodName: OnPlayer1UICreated
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -115051,6 +115075,7 @@ GameObject:
   - component: {fileID: 6826688558733912937}
   - component: {fileID: 7289170284616358260}
   - component: {fileID: 7289170284616358261}
+  - component: {fileID: 7289170284616358262}
   m_Layer: 5
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -118108,6 +118133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1552c29121ccfd548aaab348b0e63c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerUIReference: {fileID: 11400000, guid: 92d957784b615e0499fc41bc59672c20, type: 2}
   playerInventoryReference: {fileID: 11400000, guid: 09a75a1ec2d9d014d8b913e82b23b14f, type: 2}
   inventoryUI: {fileID: 3795855905507038154}
   inventory2UI: {fileID: 0}
@@ -118123,6 +118149,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142fe2b9b1f65a04faeb5e46bc508b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7289170284616358262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2751014520056669918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da512fd895cf7f14caa0348a1fe0d7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnObjectAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  gameObjectRuntimeSet: {fileID: 11400000, guid: 92d957784b615e0499fc41bc59672c20, type: 2}
 --- !u!1 &7292837755609648665
 GameObject:
   m_ObjectHideFlags: 0
