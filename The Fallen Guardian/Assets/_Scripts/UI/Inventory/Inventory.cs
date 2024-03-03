@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 public class Inventory : MonoBehaviour
 {
-    public UnityEvent OnItemChanged;
-
     public int inventorySlots;
     public List<Item> items = new List<Item>();
+
+    public UnityEvent OnItemChanged;
 
     public bool Add(Item item)
     {

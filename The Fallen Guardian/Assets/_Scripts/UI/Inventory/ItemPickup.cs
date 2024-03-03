@@ -5,18 +5,22 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     [SerializeField] GameObjectRuntimeSet playerInventoryReference;
+    [SerializeField] Inventory inventory;
 
     [SerializeField] Item item;
+
+    private void Start()
+    {
+        // Store Reference to Inventory
+        inventory = playerInventoryReference.GetItemIndex(0).GetComponent<Inventory>();
+    }
 
     public void PickUp()
     {
         Debug.Log("Picking up item " + item.name);
 
-        // Store Reference to Inventory
-        Inventory playerInv = playerInventoryReference.GetItemIndex(0).GetComponent<Inventory>();
-
         // Add Item to Inventory if we have enough space
-        bool wasPickedUp = playerInv.Add(item);
+        bool wasPickedUp = inventory.Add(item);
 
         // Destroy item if it was collected
         if (wasPickedUp)
