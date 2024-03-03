@@ -7,6 +7,7 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField] GameObjectRuntimeSet playerInventoryReference;
     [SerializeField] Inventory inventory;
+    [SerializeField] Inventory player2Inventory;
 
     [Header("Inventory")]
     public Transform itemsParent;
@@ -19,6 +20,7 @@ public class InventoryUI : MonoBehaviour
     {
         iSlots = itemsParent.GetComponentsInChildren<InventorySlot>();
         inventory = playerInventoryReference.GetItemIndex(0).GetComponent<Inventory>();
+        player2Inventory = playerInventoryReference.GetItemIndex(1).GetComponent<Inventory>();
     }
 
     public void UpdateUI()

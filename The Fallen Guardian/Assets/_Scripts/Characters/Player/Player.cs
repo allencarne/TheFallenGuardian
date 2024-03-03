@@ -84,14 +84,6 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
                 Heal(1);
             }
         }
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (GetComponent<PlayerInput>().currentControlScheme == "Gamepad")
-            {
-                TakeDamage(1);
-            }
-        }
     }
 
     public void TakeDamage(float damage)
