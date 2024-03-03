@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
@@ -57,11 +58,14 @@ public class PlayerInputHandler : MonoBehaviour
     
     public void OnBasicAttack(InputAction.CallbackContext context)
     {
-        BasicAttackInput = context.ReadValueAsButton();
-
-        if (context.canceled)
+        if (!isMouseOverUI())
         {
-            BasicAttackInput = false;
+            BasicAttackInput = context.ReadValueAsButton();
+
+            if (context.canceled)
+            {
+                BasicAttackInput = false;
+            }
         }
     }
 
@@ -100,5 +104,10 @@ public class PlayerInputHandler : MonoBehaviour
                 OnInventory2UI.Invoke();
             }
         }
+    }
+
+    bool isMouseOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
     }
 }

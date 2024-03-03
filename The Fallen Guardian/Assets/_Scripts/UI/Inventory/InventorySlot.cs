@@ -1,11 +1,20 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
-    public Image icon;
+    [SerializeField] GameObjectRuntimeSet playerInventoryReference;
+    Inventory inventory;
 
+    public Image icon;
     Item item;
+
+    private void Start()
+    {
+        inventory = playerInventoryReference.GetItemIndex(0).GetComponent<Inventory>();
+    }
 
     public void AddItem(Item newItem)
     {
@@ -29,5 +38,10 @@ public class InventorySlot : MonoBehaviour
         {
             item.Use();
         }
+    }
+
+    public void RemoveItem()
+    {
+        inventory.Remove(item);
     }
 }

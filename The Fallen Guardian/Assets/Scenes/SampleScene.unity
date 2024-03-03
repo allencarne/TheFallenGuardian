@@ -114410,6 +114410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 6897769136804548158}
 --- !u!224 &1537888060531341163
 RectTransform:
@@ -114674,6 +114675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2505346297853380734}
+  - component: {fileID: 2505346297853380735}
   m_Layer: 5
   m_Name: Shoulder Slot
   m_TagString: Untagged
@@ -114883,6 +114885,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3716588644032351560}
+  - component: {fileID: 3716588644032351561}
   m_Layer: 5
   m_Name: Ring Slot
   m_TagString: Untagged
@@ -114975,6 +114978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 2272830948549762007}
 --- !u!114 &2201727187817106151
 MonoBehaviour:
@@ -115318,6 +115322,19 @@ RectTransform:
   m_AnchoredPosition: {x: 39, y: 0}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2505346297853380735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821165731669569564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891891f62ecc0c64a9b8d2c7c4878787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 8670006881550673325}
 --- !u!114 &2597802957487142709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115518,6 +115535,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7186097609191278459}
+  - component: {fileID: 7186097609191278460}
   m_Layer: 5
   m_Name: Weapon Slot
   m_TagString: Untagged
@@ -115663,6 +115681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 7502913808032380757}
 --- !u!222 &3025821029424687349
 CanvasRenderer:
@@ -116004,6 +116023,19 @@ RectTransform:
   m_AnchoredPosition: {x: -10, y: -23}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3716588644032351561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027402060055389564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891891f62ecc0c64a9b8d2c7c4878787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 283835788137982968}
 --- !u!1 &3772168770055886950
 GameObject:
   m_ObjectHideFlags: 0
@@ -116129,6 +116161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 2627084022736173781}
 --- !u!224 &3909943056479862763
 RectTransform:
@@ -116205,6 +116238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2231749975704322607}
+  - component: {fileID: 4095576603730466474}
   m_Layer: 5
   m_Name: Chest Slot
   m_TagString: Untagged
@@ -116212,6 +116246,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4095576603730466474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4095576603730466473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891891f62ecc0c64a9b8d2c7c4878787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 4921963133987860757}
 --- !u!1 &4118320164424267869
 GameObject:
   m_ObjectHideFlags: 0
@@ -116565,6 +116612,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1697528992439744994}
+  - component: {fileID: 4552740662966069795}
   m_Layer: 5
   m_Name: Neck Slot
   m_TagString: Untagged
@@ -116572,6 +116620,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4552740662966069795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552740662966069794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891891f62ecc0c64a9b8d2c7c4878787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 718474410098002386}
 --- !u!1 &4554613761689869083
 GameObject:
   m_ObjectHideFlags: 0
@@ -116619,6 +116680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 8307191959258676998}
 --- !u!1 &4591259408306164140
 GameObject:
@@ -116780,6 +116842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 9183436421471583233}
 --- !u!224 &4691895809370307745
 RectTransform:
@@ -116813,6 +116876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 602722928301897334}
 --- !u!222 &4722560419875450474
 CanvasRenderer:
@@ -117123,6 +117187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 8988173084755065092}
 --- !u!114 &5076094828176034571
 MonoBehaviour:
@@ -117213,6 +117278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 6452647036488052188}
 --- !u!1 &5113496502256787810
 GameObject:
@@ -117273,6 +117339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 5383742322740542419}
 --- !u!222 &5203882160456284363
 CanvasRenderer:
@@ -117472,6 +117539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 1983386101981446389}
 --- !u!224 &5478959499897418397
 RectTransform:
@@ -117505,6 +117573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 2977831530787027543}
 --- !u!1 &5538985272504840257
 GameObject:
@@ -117535,6 +117604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 2607840515853325190}
 --- !u!224 &5551091633203968536
 RectTransform:
@@ -117564,6 +117634,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4634657921527776525}
+  - component: {fileID: 5597151060933055409}
   m_Layer: 5
   m_Name: Helmet Slot
   m_TagString: Untagged
@@ -117571,6 +117642,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5597151060933055409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5597151060933055408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891891f62ecc0c64a9b8d2c7c4878787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 3378353027250033635}
 --- !u!114 &5602895581151681885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117700,6 +117784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 7212608181192278597}
 --- !u!114 &5952842048045599696
 MonoBehaviour:
@@ -117959,6 +118044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 1506335332245882429}
 --- !u!1 &6130429003770176338
 GameObject:
@@ -117989,6 +118075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 3426346806320137013}
 --- !u!1 &6158601359567964786
 GameObject:
@@ -118019,6 +118106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 4432187583425123160}
 --- !u!224 &6171638917817717458
 RectTransform:
@@ -118089,6 +118177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 1599557936540282510}
 --- !u!1 &6308580620970725956
 GameObject:
@@ -118572,6 +118661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 2436522940556846020}
 --- !u!222 &7096255991876417369
 CanvasRenderer:
@@ -118632,6 +118722,19 @@ RectTransform:
   m_AnchoredPosition: {x: 39, y: 23}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7186097609191278460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2668693302904901182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891891f62ecc0c64a9b8d2c7c4878787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 7240349508243172726}
 --- !u!114 &7191398544841897898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118799,6 +118902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 507782520110539779}
 --- !u!114 &7272966161456335229
 MonoBehaviour:
@@ -118996,6 +119100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 7924157051336014194}
 --- !u!224 &7382534573250780004
 RectTransform:
@@ -119029,6 +119134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 728606591025343920}
 --- !u!1 &7400896402056047062
 GameObject:
@@ -119170,6 +119276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 874238444858879787}
+  - component: {fileID: 7450844156159021398}
   m_Layer: 5
   m_Name: Cape Slot
   m_TagString: Untagged
@@ -119177,6 +119284,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7450844156159021398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7450844156159021397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891891f62ecc0c64a9b8d2c7c4878787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 3444479440906024315}
 --- !u!114 &7457563020991219076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119281,6 +119401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 7570048250107932064}
 --- !u!114 &7502913808032380757
 MonoBehaviour:
@@ -119409,6 +119530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 4201144188664690111}
 --- !u!114 &7691009678308751543
 MonoBehaviour:
@@ -119507,6 +119629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 843451120549518918}
 --- !u!222 &7820052118674974138
 CanvasRenderer:
@@ -119870,6 +119993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 8256745254617721897}
 --- !u!114 &8523611252585104706
 MonoBehaviour:
@@ -119904,6 +120028,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2864868611159948025}
+  - component: {fileID: 8561080327200011727}
   m_Layer: 5
   m_Name: Legs Slot
   m_TagString: Untagged
@@ -119911,6 +120036,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8561080327200011727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8561080327200011726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891891f62ecc0c64a9b8d2c7c4878787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 6927679491957255940}
 --- !u!224 &8579575249844076944
 RectTransform:
   m_ObjectHideFlags: 0
@@ -119943,6 +120081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 1488205861610275957}
 --- !u!224 &8583520764148195833
 RectTransform:
@@ -119976,6 +120115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 7691009678308751543}
 --- !u!114 &8670006881550673325
 MonoBehaviour:
@@ -120258,6 +120398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 5076094828176034571}
 --- !u!224 &9201921478312396059
 RectTransform:
@@ -120291,6 +120432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba082f8e30b301488debc83c801b03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 4595462482187542593}
 --- !u!114 &9205285245680112098
 MonoBehaviour:

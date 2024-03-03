@@ -3,16 +3,21 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName = "ScriptableObjects/Inventory/Item")]
 public class Item : ScriptableObject
 {
+    [SerializeField] GameObjectRuntimeSet playerInventoryReference;
+    Inventory inventory;
+
     new public string name;
     public Sprite icon;
 
     public virtual void Use()
     {
-        //Debug.Log("using " + name);
+        Debug.Log("using " + name);
     }
 
     public void RemoveFromInventory()
     {
-        //Inventory.instance.Remove(this);
+        inventory = playerInventoryReference.GetItemIndex(0).GetComponent<Inventory>();
+
+        inventory.Remove(this);
     }
 }
