@@ -5898,7 +5898,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2109475647}
         m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
         m_MethodName: OnPlayer2UICreated
         m_Mode: 1
@@ -5938,7 +5938,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2109475647}
         m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
         m_MethodName: OnPlayer1UICreated
         m_Mode: 1
