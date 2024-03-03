@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
+    [SerializeField] GameObjectRuntimeSet playerInventoryReference;
+
     [SerializeField] Item item;
 
     public void PickUp()
     {
-        Destroy(gameObject);
+        Debug.Log("Picking up item " + item.name);
 
-        // Event for sounds and other things
-        //OnCoinCollected?.Invoke();
+        // Store Reference to Inventory
+        Inventory playerInv = playerInventoryReference.GetItemIndex(0).GetComponent<Inventory>();
 
-        /*
-         
-        // If inventory space is not full, collect the coin
-        bool wasPickedUp = Inventory.instance.Add(item);
+        // Add Item to Inventory if we have enough space
+        bool wasPickedUp = playerInv.Add(item);
 
-        // Destroy coin if it was collected
+        // Destroy item if it was collected
         if (wasPickedUp)
         {
             Destroy(gameObject);
         }
 
-        */
+        // Event for sounds and other things
+        //OnCoinCollected?.Invoke();
     }
 }

@@ -28,7 +28,7 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
         switch (playerStats.playerClass)
         {
             case PlayerClass.Beginner:
-                Debug.Log("Beginner");
+                //Debug.Log("Beginner");
                 break;
             case PlayerClass.Warrior:
                 //playerAbilities.AttackBehaviour = playerAbilities.WarriorAttackBehaviour;
