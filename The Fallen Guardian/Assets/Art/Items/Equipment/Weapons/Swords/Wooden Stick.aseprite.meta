@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 288a039a069271a4c909ba9c3f84de10
+guid: a7d06acaede0098408621d8f33589d4f
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: CoinIcon
+  - name: Wooden Stick
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.53333336, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 16
-      height: 16
-    spriteID: 7cf3120521428ba40a83353ae7af6ad1
+      width: 15
+      height: 15
+    spriteID: 31b41daee4e1f8f4c8d3f093c67d7455
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,20 +144,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 905503070
-    name: CoinIcon
+    guid: 1416860596
+    name: Wooden Stick
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: CoinIcon
+    - name: Wooden Stick
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
-        width: 16
-        height: 16
-      spriteId: 7cf3120521428ba40a83353ae7af6ad1
+        width: 15
+        height: 15
+      spriteId: 31b41daee4e1f8f4c8d3f093c67d7455
     linkedCells: []
     parentIndex: -1
   platformSettings: []

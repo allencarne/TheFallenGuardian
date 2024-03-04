@@ -5,8 +5,8 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     [SerializeField] GameObjectRuntimeSet playerInventoryReference;
-    [SerializeField] Inventory inventory;
-    [SerializeField] Inventory inventory2;
+    Inventory inventory;
+    Inventory inventory2;
 
     [SerializeField] Item item;
 
