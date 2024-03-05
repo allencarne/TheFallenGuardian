@@ -18,15 +18,25 @@ public class EquipmentUI : MonoBehaviour
 
     void UpdateUI(Equipment newItem, Equipment oldItem)
     {
-        int slotIndex = (int)newItem.equipmentType;
+        // Determine the slot index based on the equipment type of newItem or oldItem
+        int slotIndex = (newItem != null) ? (int)newItem.equipmentType : (int)oldItem.equipmentType;
 
-        if (newItem != null)
+        // Check if the slot index is valid
+        if (slotIndex >= 0 && slotIndex < equipmentSlots.Length)
         {
-            equipmentSlots[slotIndex].AddItem(newItem);
+            // If newItem is not null, add it to the equipment slot; otherwise, clear the slot
+            if (newItem != null)
+            {
+                equipmentSlots[slotIndex].AddItem(newItem);
+            }
+            else
+            {
+                equipmentSlots[slotIndex].ClearSlot();
+            }
         }
         else
         {
-            equipmentSlots[slotIndex].ClearSlot();
+            Debug.LogError("Invalid slot index in EquipmentUI.UpdateUI.");
         }
     }
 }
