@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName = "ScriptableObjects/Inventory/Item")]
 public class Item : ScriptableObject
 {
-    [SerializeField] GameObjectRuntimeSet playerInventoryReference;
+    public GameObjectRuntimeSet playerInventoryReference;
     Inventory inventory;
 
     new public string name;

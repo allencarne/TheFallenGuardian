@@ -14,7 +14,8 @@ public class Equipment : Item
     {
         base.Use();
 
-        //EquipmentManager.instance.Equip(this);
+        EquipmentManager equip = playerInventoryReference.GetItemIndex(0).GetComponent<EquipmentManager>();
+        equip.Equip(this);
         RemoveFromInventory();
     }
 }
