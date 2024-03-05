@@ -3,6 +3,10 @@ using UnityEngine.UI;
 
 public class EquipmentSlot : MonoBehaviour
 {
+    [SerializeField] int index;
+
+    [SerializeField] EquipmentManager equipmentManager;
+
     public Image icon;
 
     Item item;
@@ -27,7 +31,10 @@ public class EquipmentSlot : MonoBehaviour
     {
         if (item != null)
         {
-            item.Use();
+            Debug.Log("test");
+
+            equipmentManager.UnEquip(index);
+            //item.Use();
         }
     }
 }
