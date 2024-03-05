@@ -5,10 +5,11 @@ using UnityEngine.Events;
 
 public class Inventory : MonoBehaviour
 {
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallback;
+
     public int inventorySlots;
     public List<Item> items = new List<Item>();
-
-    public UnityEvent OnItemChanged;
 
     public bool Add(Item item)
     {
@@ -20,7 +21,10 @@ public class Inventory : MonoBehaviour
 
         items.Add(item);
 
-        OnItemChanged.Invoke();
+        if (onItemChangedCallback != null)
+        {
+            onItemChangedCallback.Invoke();
+        }
 
         return true;
     }
@@ -29,6 +33,9 @@ public class Inventory : MonoBehaviour
     {
         items.Remove(item);
 
-        OnItemChanged.Invoke();
+        if (onItemChangedCallback != null)
+        {
+            onItemChangedCallback.Invoke();
+        }
     }
 }

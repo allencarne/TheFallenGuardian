@@ -6,24 +6,22 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] GameObjectRuntimeSet playerInventoryReference;
-    [SerializeField] Inventory inventory;
-    [SerializeField] Inventory player2Inventory;
+    Inventory inventory;
 
     [Header("Inventory")]
     public Transform itemsParent;
-    //public Transform equpmentParent;
 
     InventorySlot[] iSlots;
-    //EquipmentSlot[] eSlots;
 
     private void Start()
     {
-        iSlots = itemsParent.GetComponentsInChildren<InventorySlot>();
         inventory = playerInventoryReference.GetItemIndex(0).GetComponent<Inventory>();
-        player2Inventory = playerInventoryReference.GetItemIndex(1).GetComponent<Inventory>();
+        inventory.onItemChangedCallback += UpdateUI;
+
+        iSlots = itemsParent.GetComponentsInChildren<InventorySlot>();
     }
 
-    public void UpdateUI()
+    void UpdateUI()
     {
         for (int i = 0; i < iSlots.Length; i++)
         {

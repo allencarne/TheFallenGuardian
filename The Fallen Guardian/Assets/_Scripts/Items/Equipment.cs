@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Equipment", menuName = "ScriptableObjects/Inventory/Equipment")]
 public class Equipment : Item
 {
+    EquipmentManager equipmentManager;
     public EquipmentType equipmentType;
 
     public int healthModifier;
@@ -14,8 +15,9 @@ public class Equipment : Item
     {
         base.Use();
 
-        EquipmentManager equip = playerInventoryReference.GetItemIndex(0).GetComponent<EquipmentManager>();
-        equip.Equip(this);
+        equipmentManager = playerInventoryReference.GetItemIndex(0).GetComponent<EquipmentManager>();
+
+        equipmentManager.Equip(this);
         RemoveFromInventory();
     }
 }
