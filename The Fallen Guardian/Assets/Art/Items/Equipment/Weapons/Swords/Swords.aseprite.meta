@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a7d06acaede0098408621d8f33589d4f
+guid: c6db50d3628eb454685b7f50f5b95d91
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -120,46 +120,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  animatedSpriteImportData:
-  - name: Wooden Stick
-    originalName: 
-    pivot: {x: 0.53333336, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 4
-      width: 15
-      height: 15
-    spriteID: 31b41daee4e1f8f4c8d3f093c67d7455
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+  animatedSpriteImportData: []
   spriteSheetImportData: []
-  asepriteLayers:
-  - layerIndex: 0
-    guid: 1416860596
-    name: Wooden Stick
-    layerFlags: 0
-    layerType: 0
-    blendMode: 0
-    cells:
-    - name: Wooden Stick
-      frameIndex: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 15
-        height: 15
-      spriteId: 31b41daee4e1f8f4c8d3f093c67d7455
-    linkedCells: []
-    parentIndex: -1
+  asepriteLayers: []
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []

@@ -31,10 +31,7 @@ public class EquipmentSlot : MonoBehaviour
     {
         if (item != null)
         {
-            Debug.Log("test");
-
             equipmentManager.UnEquip(index);
-            //item.Use();
         }
     }
 }
