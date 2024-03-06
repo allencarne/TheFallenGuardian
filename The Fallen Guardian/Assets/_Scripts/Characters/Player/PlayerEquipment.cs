@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerEquipment : MonoBehaviour
 {
+    public bool IsWeaponEquipt = false;
+
     [SerializeField] GameObjectRuntimeSet playerInventoryReference;
     EquipmentManager equipmentManager;
 
@@ -38,6 +40,7 @@ public class PlayerEquipment : MonoBehaviour
                 case WeaponType.Sword:
                     Debug.Log("Sword is equipt");
                     // Sword is Equipped
+                    IsWeaponEquipt = true;
                     Sword.enabled = true;
                     SwordAnimator.enabled = true;
                     Sword.sprite = equippedWeapon.weaponSprite;

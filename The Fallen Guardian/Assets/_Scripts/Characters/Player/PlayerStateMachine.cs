@@ -11,6 +11,8 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Player player;
     public Player Player => player;
 
+    [SerializeField] PlayerEquipment equipment;
+
     [SerializeField] Rigidbody2D rb;
     public Rigidbody2D Rigidbody => rb;
 
@@ -72,7 +74,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void TransitionToBasicAttack(bool attackInput)
     {
-        if (attackInput && CanBasicAttack)
+        if (attackInput && CanBasicAttack && equipment.IsWeaponEquipt)
         {
             // Prevents Unwanted Slide
             rb.velocity = Vector2.zero;
