@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Yellow Wooden Stick
   m_EditorClassIdentifier: 
   playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
-  name: Wooden Stick 2
+  name: Yellow Wooden Stick
   icon: {fileID: 21300000, guid: 9f82c0928afb7444f8317d4e2d055db4, type: 3}
   equipmentType: 5
   healthModifier: 0
