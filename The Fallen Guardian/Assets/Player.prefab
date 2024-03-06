@@ -1054,6 +1054,7 @@ GameObject:
   - component: {fileID: 4059563979879986888}
   - component: {fileID: 239699257640095505}
   - component: {fileID: 7051921129711624444}
+  - component: {fileID: 7237820433538653136}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1447,6 +1448,21 @@ MonoBehaviour:
   lerpTimer: 0
   healthBarFront: {fileID: 4430670412122056503}
   healthBarBack: {fileID: 4716448829981364878}
+--- !u!114 &7237820433538653136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2767d1431d71bea498d33cecd14c4615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
+  Sword: {fileID: 9193951340240387399}
+  SwordAnimator: {fileID: 7796180083115903274}
 --- !u!1 &8324031750687829038
 GameObject:
   m_ObjectHideFlags: 0

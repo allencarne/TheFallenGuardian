@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfa90ba55e1f22b4486f98d2fcd309a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5205a3dc319b5df47af95f288b4966b1, type: 3}
   m_Name: Yellow Wooden Stick
   m_EditorClassIdentifier: 
   playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
@@ -18,3 +18,4 @@ MonoBehaviour:
   equipmentType: 5
   healthModifier: 0
   damageModifier: 0
+  weaponType: 0

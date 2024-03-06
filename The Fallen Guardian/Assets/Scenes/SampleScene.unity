@@ -2341,7 +2341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
-  item: {fileID: 11400000, guid: 0e68bbe7b7f38cb46886698b21d8eb6f, type: 2}
+  item: {fileID: 11400000, guid: 8e578f76866adde42bb69aaa0f39b5a4, type: 2}
 --- !u!58 &246578902
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7597,7 +7597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
-  item: {fileID: 11400000, guid: 8debdfefc213d1246a1bd3bb57d61708, type: 2}
+  item: {fileID: 11400000, guid: 601eff0dc1478d042acc39462d58a2d2, type: 2}
 --- !u!58 &1067102029
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7755,7 +7755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
-  item: {fileID: 11400000, guid: 91776d6a2f83fa9418622ac7a7adf9ac, type: 2}
+  item: {fileID: 11400000, guid: 3b8a779f6dfffa74b8281fa83cbd2180, type: 2}
 --- !u!58 &1083963898
 CircleCollider2D:
   m_ObjectHideFlags: 0
