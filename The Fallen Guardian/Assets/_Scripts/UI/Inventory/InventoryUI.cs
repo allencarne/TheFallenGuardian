@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-    [SerializeField] GameObjectRuntimeSet playerInventoryReference;
-    Inventory inventory;
+    [SerializeField] Inventory inventory;
 
     [Header("Inventory")]
     public Transform itemsParent;
@@ -15,7 +14,6 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-        inventory = playerInventoryReference.GetItemIndex(0).GetComponent<Inventory>();
         inventory.onItemChangedCallback += UpdateUI;
 
         iSlots = itemsParent.GetComponentsInChildren<InventorySlot>();
