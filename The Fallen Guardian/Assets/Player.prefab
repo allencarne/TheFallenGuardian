@@ -1432,7 +1432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e4f0acfd565354d9c97144f4ce6f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicAttackBehaviourReference: {fileID: 11400000, guid: 2b5b56dbc46f47d489a261e34bb75a9e, type: 2}
+  basicAttackBehaviourReference: {fileID: 11400000, guid: 8c7e93cb4772efc44a9ce7fd50839af5, type: 2}
 --- !u!114 &7051921129711624444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1464,6 +1464,9 @@ MonoBehaviour:
   IsWeaponEquipt: 0
   playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   Sword: {fileID: 9193951340240387399}
+  Staff: {fileID: 0}
+  Bow: {fileID: 0}
+  Dagger: {fileID: 0}
 --- !u!1 &8324031750687829038
 GameObject:
   m_ObjectHideFlags: 0

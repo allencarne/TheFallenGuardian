@@ -51,12 +51,12 @@ public class AbilityBar : MonoBehaviour
     {
         if (playerAbilities)
         {
-            ClubSlash clubSlash = playerAbilities.basicAttackBehaviourReference as ClubSlash;
-            if (clubSlash != null)
+            FrailSlash frailSlash = playerAbilities.basicAttackBehaviourReference as FrailSlash;
+            if (frailSlash != null)
             {
                 Ability1.enabled = true;
 
-                Sprite icon = clubSlash.icon;
+                Sprite icon = frailSlash.icon;
                 Ability1.sprite = icon;
             }
         }

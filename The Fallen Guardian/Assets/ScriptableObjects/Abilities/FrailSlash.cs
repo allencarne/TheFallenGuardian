@@ -1,0 +1,78 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "ScriptableObjects/Abilities/FrailSlash")]
+public class FrailSlash : ScriptableObject, IBasicAttackBehaviour
+{
+    public Sprite icon;
+    [SerializeField] GameObject SlashPrefab;
+
+    [SerializeField] int damage;
+    [SerializeField] float coolDown;
+    [SerializeField] float castTime;
+
+    [SerializeField] float rangeBeforeSlide;
+    [SerializeField] float slideForce;
+    [SerializeField] float slideDuration;
+
+    [SerializeField] float attackRange;
+
+    public void BehaviourUpdate(PlayerStateMachine stateMachine)
+    {
+        if (stateMachine.CanBasicAttack)
+        {
+            stateMachine.AttackDir = stateMachine.Aimer.rotation;
+
+            // Calculate direction based on Aimer rotation
+            float angle = stateMachine.Aimer.rotation.eulerAngles.z * Mathf.Deg2Rad;
+            Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+
+            stateMachine.CanBasicAttack = false;
+
+            // Use the calculated direction for handling animations
+            stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player_Sword", "BasicAttack", direction);
+            stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "BasicAttack", direction);
+
+            stateMachine.StartCoroutine(AttackImpact(stateMachine));
+            stateMachine.StartCoroutine(DurationOfBasicAttack(stateMachine));
+        }
+    }
+
+    IEnumerator AttackImpact(PlayerStateMachine stateMachine)
+    {
+        yield return new WaitForSeconds(castTime);
+
+        // Calculate the direction of the attack
+        Vector3 direction = stateMachine.AttackDir * Vector3.right;
+
+        // Calculate the offset based on the attackRange and the direction
+        Vector3 offset = direction * attackRange;
+
+        // Spawn the attack object with the calculated offset
+        GameObject slash = Instantiate(SlashPrefab, stateMachine.transform.position + offset, stateMachine.AttackDir);
+
+        // Ignore collision between the attack and the player
+        Physics2D.IgnoreCollision(slash.GetComponent<Collider2D>(), stateMachine.gameObject.GetComponent<Collider2D>());
+
+        // Handle sliding forward
+        stateMachine.HandleSlideForward(stateMachine.AttackDir.eulerAngles.z, rangeBeforeSlide, slideForce, slideDuration);
+
+        // Set damage values for the attack
+        DamageOnTrigger damageOnTrigger = slash.GetComponent<DamageOnTrigger>();
+        if (damageOnTrigger != null)
+        {
+            damageOnTrigger.abilityDamage = damage;
+            damageOnTrigger.playerDamage = stateMachine.Player.playerStats.damage;
+        }
+    }
+
+    IEnumerator DurationOfBasicAttack(PlayerStateMachine stateMachine)
+    {
+        yield return new WaitForSeconds(coolDown);
+
+        stateMachine.SetState(new PlayerIdleState(stateMachine));
+
+        stateMachine.CanBasicAttack = true;
+    }
+}
