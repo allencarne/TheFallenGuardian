@@ -369,7 +369,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3083054713131864048}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 2fbd9702391a24d4684fccb784dddb9e, type: 2}
   m_CullingMode: 0
@@ -1464,7 +1464,6 @@ MonoBehaviour:
   IsWeaponEquipt: 0
   playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   Sword: {fileID: 9193951340240387399}
-  SwordAnimator: {fileID: 7796180083115903274}
 --- !u!1 &8324031750687829038
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/ClubSlash")]
 public class ClubSlash : ScriptableObject, IBasicAttackBehaviour
 {
-    // Icon
+    public Sprite icon;
     [SerializeField] GameObject clubSlash;
 
     [SerializeField] int damage;

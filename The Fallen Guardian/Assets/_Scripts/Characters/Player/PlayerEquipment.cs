@@ -11,14 +11,9 @@ public class PlayerEquipment : MonoBehaviour
     EquipmentManager equipmentManager;
 
     [SerializeField] SpriteRenderer Sword;
-    //[SerializeField] SpriteRenderer Staff;
-    //[SerializeField] SpriteRenderer Bow;
-    //[SerializeField] SpriteRenderer Dagger;
-
-    [SerializeField] Animator SwordAnimator;
-    //[SerializeField] Animator StaffAnimator;
-    //[SerializeField] Animator BowAnimator;
-    //[SerializeField] Animator DaggerAnimator;
+    [SerializeField] SpriteRenderer Staff;
+    [SerializeField] SpriteRenderer Bow;
+    [SerializeField] SpriteRenderer Dagger;
 
     private void Start()
     {
@@ -38,33 +33,55 @@ public class PlayerEquipment : MonoBehaviour
             switch (equippedWeapon.weaponType)
             {
                 case WeaponType.Sword:
-                    Debug.Log("Sword is equipt");
-                    // Sword is Equipped
+
+                    // Player can Only Attack if a Weapon is Equipt
                     IsWeaponEquipt = true;
+
+                    // Enabled the Sprite
                     Sword.enabled = true;
-                    SwordAnimator.enabled = true;
+
+                    // Set Player Weapon Sprite
                     Sword.sprite = equippedWeapon.weaponSprite;
+
                     // Disable other weapon sprites and animators
                     break;
                 case WeaponType.Staff:
-                    Debug.Log("Staff is equipt");
-                    // Staff is Equipped
-                    //Staff.enabled = true;
-                    //StaffAnimator.enabled = true;
+
+                    // Player can Only Attack if a Weapon is Equipt
+                    IsWeaponEquipt = true;
+
+                    // Enabled the Sprite
+                    Staff.enabled = true;
+
+                    // Set Player Weapon Sprite
+                    Staff.sprite = equippedWeapon.weaponSprite;
+
                     // Disable other weapon sprites and animators
                     break;
                 case WeaponType.Bow:
-                    Debug.Log("Bow is equipt");
-                    // Bow is Equipped
-                    //Bow.enabled = true;
-                    //BowAnimator.enabled = true;
+
+                    // Player can Only Attack if a Weapon is Equipt
+                    IsWeaponEquipt = true;
+
+                    // Enabled the Sprite
+                    Bow.enabled = true;
+
+                    // Set Player Weapon Sprite
+                    Bow.sprite = equippedWeapon.weaponSprite;
+
                     // Disable other weapon sprites and animators
                     break;
                 case WeaponType.Dagger:
-                    Debug.Log("Dagger is equipt");
-                    // Dagger is Equipped
-                    //Dagger.enabled = true;
-                    //DaggerAnimator.enabled = true;
+
+                    // Player can Only Attack if a Weapon is Equipt
+                    IsWeaponEquipt = true;
+
+                    // Enabled the Sprite
+                    Dagger.enabled = true;
+
+                    // Set Player Weapon Sprite
+                    Dagger.sprite = equippedWeapon.weaponSprite;
+
                     // Disable other weapon sprites and animators
                     break;
             }

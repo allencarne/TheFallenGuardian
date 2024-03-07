@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4391074662c2fb44e93c2ca79fa39605, type: 3}
   m_Name: Club Slash
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 2cff0bb85114d444e8d0381f238fd68d, type: 3}
   clubSlash: {fileID: 6528315205038188619, guid: 86cb815f87f45ab408e9356759abf6a5, type: 3}
   damage: 1
   coolDown: 0.8
