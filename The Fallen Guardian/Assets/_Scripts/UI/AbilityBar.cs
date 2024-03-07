@@ -54,6 +54,8 @@ public class AbilityBar : MonoBehaviour
             ClubSlash clubSlash = playerAbilities.basicAttackBehaviourReference as ClubSlash;
             if (clubSlash != null)
             {
+                Ability1.enabled = true;
+
                 Sprite icon = clubSlash.icon;
                 Ability1.sprite = icon;
             }
