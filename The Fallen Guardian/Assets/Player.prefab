@@ -1351,6 +1351,21 @@ MonoBehaviour:
   cameraReference: {fileID: 11400000, guid: d6d021038851cf04b82e7e406847a163, type: 2}
   player2Camera: {fileID: 0}
   player1Camera: {fileID: 0}
+  OnPauseUI:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 84f8a605e9c122e4b9d88fc106333ca2, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnInventoryUI:
     m_PersistentCalls:
       m_Calls:

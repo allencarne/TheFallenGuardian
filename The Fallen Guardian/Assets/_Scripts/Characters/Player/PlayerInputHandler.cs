@@ -13,14 +13,13 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 MousePosition { get; private set; }
     public bool PickupInput { get; private set; }
 
-    public bool PauseInput { get; private set; }
-
     public GameObjectRuntimeSet cameraReference;
     public Camera player2Camera;
 
     public Camera player1Camera;
     Player player;
 
+    public UnityEvent OnPauseUI;
     public UnityEvent OnInventoryUI;
     public UnityEvent OnStatsUI;
     public UnityEvent OnAbilityUI;
@@ -129,11 +128,9 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnPause(InputAction.CallbackContext context)
     {
-        PauseInput = context.ReadValueAsButton();
-
-        if (context.canceled)
+        if (context.started)
         {
-            PauseInput = false;
+            OnPauseUI.Invoke();
         }
     }
 
