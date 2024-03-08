@@ -13,6 +13,8 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 MousePosition { get; private set; }
     public bool PickupInput { get; private set; }
 
+    public bool PauseInput { get; private set; }
+
     public GameObjectRuntimeSet cameraReference;
     public Camera player2Camera;
 
@@ -20,7 +22,9 @@ public class PlayerInputHandler : MonoBehaviour
     Player player;
 
     public UnityEvent OnInventoryUI;
-    public UnityEvent OnInventory2UI;
+    public UnityEvent OnStatsUI;
+    public UnityEvent OnAbilityUI;
+    public UnityEvent OnMapUI;
 
     private void Awake()
     {
@@ -81,7 +85,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
-    public void OnPickupInput(InputAction.CallbackContext context)
+    public void OnPickup(InputAction.CallbackContext context)
     {
         PickupInput = context.ReadValueAsButton();
 
@@ -91,18 +95,45 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
-    public void OnInventory(InputAction.CallbackContext context)
+    public void OnInventoryInput(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            if (player.PlayerIndex == 1)
-            {
-                OnInventoryUI.Invoke();
-            }
-            else
-            {
-                OnInventory2UI.Invoke();
-            }
+            OnInventoryUI.Invoke();
+        }
+    }
+
+    public void OnStatsInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            OnStatsUI.Invoke();
+        }
+    }
+
+    public void OnAbilityInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            OnAbilityUI.Invoke();
+        }
+    }
+
+    public void OnMapInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            OnMapUI.Invoke();
+        }
+    }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        PauseInput = context.ReadValueAsButton();
+
+        if (context.canceled)
+        {
+            PauseInput = false;
         }
     }
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e11b9f8b76df63245b18935f6d73eb30
+guid: a70b7e96ca79e7f4e91741d2dbc20fd9
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,7 +121,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Beginner Skill Tree
+  - name: Ability Tree
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 4
       width: 124
       height: 224
-    spriteID: 9c5609cc805ec8944adb1a8f564da88b
+    spriteID: ad57934d14bed2140a7c4258d0d9e8a2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,20 +144,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -172264431
-    name: Beginner Skill Tree
+    guid: -2089959772
+    name: Ability Tree
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Beginner Skill Tree
+    - name: Ability Tree
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
         width: 124
         height: 224
-      spriteId: 9c5609cc805ec8944adb1a8f564da88b
+      spriteId: ad57934d14bed2140a7c4258d0d9e8a2
     linkedCells: []
     parentIndex: -1
   platformSettings: []
