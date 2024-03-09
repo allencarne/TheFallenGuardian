@@ -22,62 +22,83 @@ public class PlayerEquipment : MonoBehaviour
 
     void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
     {
-        if (oldItem != null && oldItem is Weapon)
+        // Equipped a new item
+        if (newItem != null)
         {
-            IsWeaponEquipt = false;
-        }
-        else if (newItem != null)
-        {
-            Weapon equippedWeapon = newItem as Weapon;
-
-            if (equippedWeapon != null)
+            Weapon newWeapon = newItem as Weapon;
+            if (newWeapon != null)
             {
+                // If a weapon is equipped
                 IsWeaponEquipt = true;
 
-                switch (equippedWeapon.weaponType)
-                {
-                    case WeaponType.Sword:
-
-                        // Enabled the Sprite
-                        Sword.enabled = true;
-
-                        // Set Player Weapon Sprite
-                        Sword.sprite = equippedWeapon.weaponSprite;
-
-                        // Disable other weapon sprites and animators
-                        break;
-                    case WeaponType.Staff:
-
-                        // Enabled the Sprite
-                        Staff.enabled = true;
-
-                        // Set Player Weapon Sprite
-                        Staff.sprite = equippedWeapon.weaponSprite;
-
-                        // Disable other weapon sprites and animators
-                        break;
-                    case WeaponType.Bow:
-
-                        // Enabled the Sprite
-                        Bow.enabled = true;
-
-                        // Set Player Weapon Sprite
-                        Bow.sprite = equippedWeapon.weaponSprite;
-
-                        // Disable other weapon sprites and animators
-                        break;
-                    case WeaponType.Dagger:
-
-                        // Enabled the Sprite
-                        Dagger.enabled = true;
-
-                        // Set Player Weapon Sprite
-                        Dagger.sprite = equippedWeapon.weaponSprite;
-
-                        // Disable other weapon sprites and animators
-                        break;
-                }
+                UpdateWeaponSprite(newWeapon);
             }
+        }
+        else
+        {
+            // Unequipped the current item
+            IsWeaponEquipt = false;
+        }
+
+        // Re-equipping a new item
+        if (oldItem != null && oldItem is Weapon && newItem != null)
+        {
+            Weapon oldWeapon = oldItem as Weapon;
+            Weapon newWeapon = newItem as Weapon;
+            if (oldWeapon != null && newWeapon != null)
+            {
+                // If both the old and new items are weapons, consider it as re-equipping
+                IsWeaponEquipt = true;
+
+                UpdateWeaponSprite(newWeapon);
+            }
+        }
+    }
+
+    void UpdateWeaponSprite(Weapon equippedWeapon)
+    {
+        switch (equippedWeapon.weaponType)
+        {
+            case WeaponType.Sword:
+
+                // Enabled the Sprite
+                Sword.enabled = true;
+
+                // Set Player Weapon Sprite
+                Sword.sprite = equippedWeapon.weaponSprite;
+
+                // Disable other weapon sprites and animators
+                break;
+            case WeaponType.Staff:
+
+                // Enabled the Sprite
+                Staff.enabled = true;
+
+                // Set Player Weapon Sprite
+                Staff.sprite = equippedWeapon.weaponSprite;
+
+                // Disable other weapon sprites and animators
+                break;
+            case WeaponType.Bow:
+
+                // Enabled the Sprite
+                Bow.enabled = true;
+
+                // Set Player Weapon Sprite
+                Bow.sprite = equippedWeapon.weaponSprite;
+
+                // Disable other weapon sprites and animators
+                break;
+            case WeaponType.Dagger:
+
+                // Enabled the Sprite
+                Dagger.enabled = true;
+
+                // Set Player Weapon Sprite
+                Dagger.sprite = equippedWeapon.weaponSprite;
+
+                // Disable other weapon sprites and animators
+                break;
         }
     }
 }

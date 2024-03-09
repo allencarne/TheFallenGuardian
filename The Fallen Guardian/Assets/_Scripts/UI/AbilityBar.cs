@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +9,7 @@ public class AbilityBar : MonoBehaviour
 
     [SerializeField] GameObjectRuntimeSet playerReference;
     PlayerEquipment playerEquipment;
+    PlayerAbilities playerAbilities;
 
     [SerializeField] GameObjectRuntimeSet inventoryReference;
     EquipmentManager equipmentManager;
@@ -33,6 +33,7 @@ public class AbilityBar : MonoBehaviour
         if (playerReference.items.Count > 0)
         {
             playerEquipment = playerReference.GetItemIndex(0).GetComponent<PlayerEquipment>();
+            playerAbilities = playerReference.GetItemIndex(0).GetComponent<PlayerAbilities>();
 
         }
 
@@ -45,7 +46,12 @@ public class AbilityBar : MonoBehaviour
 
     public void UpdateAbility1()
     {
-        if (playerEquipment != null)
+        if (!playerAbilities.basicAttackBehaviourReference)
+        {
+            Ability1.enabled = false;
+        }
+
+        if (playerAbilities.basicAttackBehaviourReference)
         {
             if (playerEquipment.IsWeaponEquipt)
             {
@@ -60,29 +66,7 @@ public class AbilityBar : MonoBehaviour
 
     void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
     {
-        if (oldItem != null && oldItem is Weapon)
-        {
-            Debug.Log("Weapon Un-Equipped");
-
-            if (Ability1.enabled == true)
-            {
-                DimSprite();
-            }
-        }
-        else if (newItem != null)
-        {
-            Weapon equippedWeapon = newItem as Weapon;
-
-            if (equippedWeapon != null)
-            {
-                Debug.Log("Weapon Equipped");
-
-                if (Ability1.enabled == true)
-                {
-                    LitSprite();
-                }
-            }
-        }
+        UpdateAbility1();
     }
 
     void LitSprite()
@@ -96,9 +80,10 @@ public class AbilityBar : MonoBehaviour
     {
         Ability1.enabled = true;
         Ability1.sprite = AbilityTree.level1AbilityImage.sprite;
+
         // Set Sprite transparency to half
         Color spriteColor = Ability1.color;
-        spriteColor.a = 0.5f; // 0 is completely transparent, 1 is completely opaque
+        spriteColor.a = 0.3f;
         Ability1.color = spriteColor;
     }
 }
