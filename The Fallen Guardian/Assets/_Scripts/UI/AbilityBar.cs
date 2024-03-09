@@ -5,11 +5,10 @@ using UnityEngine.UI;
 
 public class AbilityBar : MonoBehaviour
 {
+    [SerializeField] BeginnerAbilityTree AbilityTree;
+
     [SerializeField] GameObjectRuntimeSet playerReference;
     PlayerAbilities playerAbilities;
-
-    [SerializeField] GameObjectRuntimeSet playerInventoryReference;
-    EquipmentManager equipmentManager;
 
     [SerializeField] Image Ability1;
     [SerializeField] Image Ability2;
@@ -17,12 +16,6 @@ public class AbilityBar : MonoBehaviour
     [SerializeField] Image Ability4;
     [SerializeField] Image Ability5;
     [SerializeField] Image Ability6;
-
-    private void Start()
-    {
-        equipmentManager = playerInventoryReference.GetItemIndex(0).GetComponent<EquipmentManager>();
-        equipmentManager.onEquipmentChangedCallback += OnEquipmentChanged;
-    }
 
     public void OnPlayerJoin()
     {
@@ -39,24 +32,9 @@ public class AbilityBar : MonoBehaviour
         }
     }
 
-    void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
+    public void UpdateAbility1()
     {
-        if (newItem == null)
-            return;
-    }
-
-    private void Update()
-    {
-        if (playerAbilities)
-        {
-            FrailSlash frailSlash = playerAbilities.basicAttackBehaviourReference as FrailSlash;
-            if (frailSlash != null)
-            {
-                Ability1.enabled = true;
-
-                Sprite icon = frailSlash.icon;
-                Ability1.sprite = icon;
-            }
-        }
+        Ability1.enabled = true;
+        Ability1.sprite = AbilityTree.level1AbilityImage.sprite;
     }
 }

@@ -74,7 +74,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void TransitionToBasicAttack(bool attackInput)
     {
-        if (attackInput && CanBasicAttack && equipment.IsWeaponEquipt)
+        if (attackInput && CanBasicAttack && equipment.IsWeaponEquipt && abilities.basicAttackBehaviourReference != null)
         {
             // Prevents Unwanted Slide
             rb.velocity = Vector2.zero;

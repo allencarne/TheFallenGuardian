@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class BeginnerAbilityTree : MonoBehaviour
@@ -10,7 +11,8 @@ public class BeginnerAbilityTree : MonoBehaviour
 
     [Header("Level 1")]
     [SerializeField] ScriptableObject level1Ability;
-    [SerializeField] Image level1AbilityImage;
+    public Image level1AbilityImage;
+    public UnityEvent OnLevel1Ability;
 
     [Header("Level 5")]
     [SerializeField] ScriptableObject level5Ability;
@@ -49,11 +51,13 @@ public class BeginnerAbilityTree : MonoBehaviour
         }
     }
 
-    public void OnFrailSlashSelected()
+    public void OnLevel1AbilitySelected()
     {
         if (playerAbilities.basicAttackBehaviourReference == null)
         {
             playerAbilities.basicAttackBehaviourReference = level1Ability;
+
+            OnLevel1Ability.Invoke();
         }
     }
 }

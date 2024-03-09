@@ -4809,7 +4809,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1450295407}
         m_TargetAssemblyTypeName: BeginnerAbilityTree, Assembly-CSharp
-        m_MethodName: OnFrailSlashSelected
+        m_MethodName: OnLevel1AbilitySelected
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13210,6 +13210,7 @@ GameObject:
   - component: {fileID: 1336774928}
   - component: {fileID: 1336774927}
   - component: {fileID: 1336774929}
+  - component: {fileID: 1336774930}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -13335,6 +13336,34 @@ MonoBehaviour:
       - m_Target: {fileID: 2109475647}
         m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
         m_MethodName: OnPauseUIOpened
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1336774930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336774924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18163c6a93aa4874ea5fe5e857e67121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 773f065d0865b48419fc1dae35bcfeae, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7289170284616358266}
+        m_TargetAssemblyTypeName: AbilityBar, Assembly-CSharp
+        m_MethodName: UpdateAbility1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14327,6 +14356,21 @@ MonoBehaviour:
   playerReference: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
   level1Ability: {fileID: 11400000, guid: 8c7e93cb4772efc44a9ce7fd50839af5, type: 2}
   level1AbilityImage: {fileID: 402061443}
+  OnLevel1Ability:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 773f065d0865b48419fc1dae35bcfeae, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   level5Ability: {fileID: 0}
   level5Ability2: {fileID: 0}
 --- !u!1 &1453635962
@@ -127182,8 +127226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 900634adaedddc143a1adb3234d6575f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AbilityTree: {fileID: 1450295407}
   playerReference: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
-  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   Ability1: {fileID: 1321794788}
   Ability2: {fileID: 592615600}
   Ability3: {fileID: 2117233519}
