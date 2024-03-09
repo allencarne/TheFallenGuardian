@@ -13,7 +13,7 @@ public class PlayerMoveState : PlayerState
         stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Move", stateMachine.InputHandler.MoveInput.normalized);
 
         // Transitions
-        stateMachine.TransitionToBasicAttack(stateMachine.InputHandler.BasicAttackInput);
+        stateMachine.TransitionToBasicAttack(stateMachine.InputHandler.BasicAbilityInput);
     }
 
     public override void FixedUpdate()

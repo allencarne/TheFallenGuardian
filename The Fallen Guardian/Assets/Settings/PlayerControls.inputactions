@@ -24,9 +24,54 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Basic Attack",
+                    "name": "Basic Ability",
                     "type": "Button",
                     "id": "1c9b49c6-1913-4e97-a844-b8078546f639",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Offensive Ability",
+                    "type": "Button",
+                    "id": "7b98e6f8-8f6f-4df5-b5db-7c0eb6bb17cf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Mobility Ability",
+                    "type": "Button",
+                    "id": "9b1842ec-a1e4-424b-8c2f-223d850c4128",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Defensive Ability",
+                    "type": "Button",
+                    "id": "913c510e-6b66-4b9c-89ed-92ee67006fcb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Utlility Ability",
+                    "type": "Button",
+                    "id": "9b719e6b-1aad-4ae6-92d2-16a439b2af73",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ultimate Ability",
+                    "type": "Button",
+                    "id": "f633760f-5b87-48fe-acd5-a4b94272723b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -192,7 +237,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Basic Attack",
+                    "action": "Basic Ability",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -203,7 +248,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard",
-                    "action": "Basic Attack",
+                    "action": "Basic Ability",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -347,6 +392,116 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Map",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7b7f738a-60fa-47fe-b5d6-94644e35153d",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Offensive Ability",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd404c0d-6fa7-441c-b0c9-f45e0ac5a727",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Offensive Ability",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6173baa5-ed07-4e0e-8502-8045763c0b3f",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Ultimate Ability",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "289b83b6-10db-464e-8a36-b1c0e9eea4c3",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Ultimate Ability",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "de1d8b4e-e3d1-44dd-a980-eacc4f3199f6",
+                    "path": "<Gamepad>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Mobility Ability",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f09ef2a-0736-4659-9789-5dec36d96c34",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Mobility Ability",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "069c72b7-7bba-44bc-ac6e-b62c1a8366bd",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Defensive Ability",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c1d04c6f-a76b-4d5c-ace5-42b78f832486",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Defensive Ability",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7ee7e1d3-7f8e-4a5b-931f-74104f9a071d",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Utlility Ability",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "067c5c6e-9429-4c85-a57c-cc29bee1dd94",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Utlility Ability",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

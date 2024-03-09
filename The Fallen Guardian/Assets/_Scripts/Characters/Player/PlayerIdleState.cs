@@ -14,7 +14,7 @@ public class PlayerIdleState : PlayerState
         stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Idle", stateMachine.InputHandler.MoveInput.normalized);
 
         // Transitions
-        stateMachine.TransitionToBasicAttack(stateMachine.InputHandler.BasicAttackInput);
+        stateMachine.TransitionToBasicAttack(stateMachine.InputHandler.BasicAbilityInput);
     }
 
     public override void FixedUpdate()
