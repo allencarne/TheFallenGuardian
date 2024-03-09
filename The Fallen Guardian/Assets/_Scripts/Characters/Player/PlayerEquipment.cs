@@ -22,67 +22,61 @@ public class PlayerEquipment : MonoBehaviour
 
     void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
     {
-        if (newItem == null)
-            return;
-
-        Weapon equippedWeapon = newItem as Weapon;
-
-        if (equippedWeapon != null)
+        if (oldItem != null && oldItem is Weapon)
         {
-            switch (equippedWeapon.weaponType)
+            IsWeaponEquipt = false;
+        }
+        else if (newItem != null)
+        {
+            Weapon equippedWeapon = newItem as Weapon;
+
+            if (equippedWeapon != null)
             {
-                case WeaponType.Sword:
+                IsWeaponEquipt = true;
 
-                    // Player can Only Attack if a Weapon is Equipt
-                    IsWeaponEquipt = true;
+                switch (equippedWeapon.weaponType)
+                {
+                    case WeaponType.Sword:
 
-                    // Enabled the Sprite
-                    Sword.enabled = true;
+                        // Enabled the Sprite
+                        Sword.enabled = true;
 
-                    // Set Player Weapon Sprite
-                    Sword.sprite = equippedWeapon.weaponSprite;
+                        // Set Player Weapon Sprite
+                        Sword.sprite = equippedWeapon.weaponSprite;
 
-                    // Disable other weapon sprites and animators
-                    break;
-                case WeaponType.Staff:
+                        // Disable other weapon sprites and animators
+                        break;
+                    case WeaponType.Staff:
 
-                    // Player can Only Attack if a Weapon is Equipt
-                    IsWeaponEquipt = true;
+                        // Enabled the Sprite
+                        Staff.enabled = true;
 
-                    // Enabled the Sprite
-                    Staff.enabled = true;
+                        // Set Player Weapon Sprite
+                        Staff.sprite = equippedWeapon.weaponSprite;
 
-                    // Set Player Weapon Sprite
-                    Staff.sprite = equippedWeapon.weaponSprite;
+                        // Disable other weapon sprites and animators
+                        break;
+                    case WeaponType.Bow:
 
-                    // Disable other weapon sprites and animators
-                    break;
-                case WeaponType.Bow:
+                        // Enabled the Sprite
+                        Bow.enabled = true;
 
-                    // Player can Only Attack if a Weapon is Equipt
-                    IsWeaponEquipt = true;
+                        // Set Player Weapon Sprite
+                        Bow.sprite = equippedWeapon.weaponSprite;
 
-                    // Enabled the Sprite
-                    Bow.enabled = true;
+                        // Disable other weapon sprites and animators
+                        break;
+                    case WeaponType.Dagger:
 
-                    // Set Player Weapon Sprite
-                    Bow.sprite = equippedWeapon.weaponSprite;
+                        // Enabled the Sprite
+                        Dagger.enabled = true;
 
-                    // Disable other weapon sprites and animators
-                    break;
-                case WeaponType.Dagger:
+                        // Set Player Weapon Sprite
+                        Dagger.sprite = equippedWeapon.weaponSprite;
 
-                    // Player can Only Attack if a Weapon is Equipt
-                    IsWeaponEquipt = true;
-
-                    // Enabled the Sprite
-                    Dagger.enabled = true;
-
-                    // Set Player Weapon Sprite
-                    Dagger.sprite = equippedWeapon.weaponSprite;
-
-                    // Disable other weapon sprites and animators
-                    break;
+                        // Disable other weapon sprites and animators
+                        break;
+                }
             }
         }
     }
