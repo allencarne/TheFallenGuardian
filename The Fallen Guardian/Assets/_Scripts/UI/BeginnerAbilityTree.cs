@@ -10,18 +10,18 @@ public class BeginnerAbilityTree : MonoBehaviour
     PlayerAbilities playerAbilities;
 
     [Header("Level 1")]
-    [SerializeField] ScriptableObject level1Ability;
-    public Image level1AbilityImage;
-    public UnityEvent OnLevel1Ability;
+    [SerializeField] ScriptableObject basicAbility;
+    public Image basicAbilityImage;
+    public UnityEvent onBasicAbilitySelected;
 
     [Header("Level 5")]
-    [SerializeField] ScriptableObject level5Ability;
-    [SerializeField] ScriptableObject level5Ability2;
+    [SerializeField] ScriptableObject offensiveAbility;
+    [SerializeField] ScriptableObject offensiveAbility2;
 
     private void Start()
     {
         // Set the level1Ability Icon to level1AbilityImage
-        SetAbilityIcon(level1Ability, level1AbilityImage);
+        SetAbilityIcon(basicAbility, basicAbilityImage);
 
         InitializePlayerReference();
     }
@@ -55,9 +55,9 @@ public class BeginnerAbilityTree : MonoBehaviour
     {
         if (playerAbilities.basicAttackBehaviourReference == null)
         {
-            playerAbilities.basicAttackBehaviourReference = level1Ability;
+            playerAbilities.basicAttackBehaviourReference = basicAbility;
 
-            OnLevel1Ability.Invoke();
+            onBasicAbilitySelected.Invoke();
         }
     }
 }

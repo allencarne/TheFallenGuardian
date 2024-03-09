@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5bcb1984af9bd148afa3fde59c48fd3, type: 3}
-  m_Name: OnLevel1Ability
+  m_Name: OnBasicAbilitySelected
   m_EditorClassIdentifier: 

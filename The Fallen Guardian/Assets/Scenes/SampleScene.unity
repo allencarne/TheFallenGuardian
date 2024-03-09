@@ -2216,13 +2216,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200598942}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1437342398}
-  m_Father: {fileID: 1994590421}
+  m_Father: {fileID: 1450295404}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4580,7 +4580,7 @@ GameObject:
   - component: {fileID: 382666777}
   - component: {fileID: 382666779}
   m_Layer: 5
-  m_Name: Level 5 Ability
+  m_Name: Offensive Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4700,7 +4700,7 @@ GameObject:
   - component: {fileID: 402061443}
   - component: {fileID: 402061445}
   m_Layer: 5
-  m_Name: Level 1 Ability
+  m_Name: Basic Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5947,7 +5947,7 @@ GameObject:
   - component: {fileID: 487460644}
   - component: {fileID: 487460643}
   m_Layer: 5
-  m_Name: Ability 5
+  m_Name: Utility Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7067,7 +7067,7 @@ GameObject:
   - component: {fileID: 592615601}
   - component: {fileID: 592615600}
   m_Layer: 5
-  m_Name: Ability 2
+  m_Name: Offensive Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11901,7 +11901,7 @@ GameObject:
   - component: {fileID: 1186165207}
   - component: {fileID: 1186165206}
   m_Layer: 5
-  m_Name: Ability 6
+  m_Name: Ultimate Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12782,7 +12782,7 @@ GameObject:
   - component: {fileID: 1321794789}
   - component: {fileID: 1321794788}
   m_Layer: 5
-  m_Name: Ability 1
+  m_Name: Basic Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13363,7 +13363,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7289170284616358266}
         m_TargetAssemblyTypeName: AbilityBar, Assembly-CSharp
-        m_MethodName: UpdateAbility1
+        m_MethodName: OnBasicAbilitySelected
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14296,6 +14296,7 @@ RectTransform:
   - {fileID: 402061442}
   - {fileID: 262954549}
   - {fileID: 382666776}
+  - {fileID: 200598946}
   m_Father: {fileID: 1994590421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -14354,9 +14355,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerReference: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
-  level1Ability: {fileID: 11400000, guid: 8c7e93cb4772efc44a9ce7fd50839af5, type: 2}
-  level1AbilityImage: {fileID: 402061443}
-  OnLevel1Ability:
+  basicAbility: {fileID: 11400000, guid: 8c7e93cb4772efc44a9ce7fd50839af5, type: 2}
+  basicAbilityImage: {fileID: 402061443}
+  onBasicAbilitySelected:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 773f065d0865b48419fc1dae35bcfeae, type: 2}
@@ -14371,8 +14372,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  level5Ability: {fileID: 0}
-  level5Ability2: {fileID: 0}
+  offensiveAbility: {fileID: 0}
+  offensiveAbility2: {fileID: 0}
 --- !u!1 &1453635962
 GameObject:
   m_ObjectHideFlags: 0
@@ -120571,7 +120572,7 @@ GameObject:
   - component: {fileID: 1758353958}
   - component: {fileID: 1758353957}
   m_Layer: 5
-  m_Name: Ability 4
+  m_Name: Defensive Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123524,7 +123525,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1450295404}
-  - {fileID: 200598946}
   m_Father: {fileID: 188493276069802670}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -124720,7 +124720,7 @@ GameObject:
   - component: {fileID: 2117233520}
   - component: {fileID: 2117233519}
   m_Layer: 5
-  m_Name: Ability 3
+  m_Name: Mobility Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127226,15 +127226,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 900634adaedddc143a1adb3234d6575f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AbilityTree: {fileID: 1450295407}
+  beginnerAbilityTree: {fileID: 1450295407}
   playerReference: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
   inventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
-  Ability1: {fileID: 1321794788}
-  Ability2: {fileID: 592615600}
-  Ability3: {fileID: 2117233519}
-  Ability4: {fileID: 1758353957}
-  Ability5: {fileID: 487460643}
-  Ability6: {fileID: 1186165206}
+  basicAbilityImage: {fileID: 1321794788}
+  offensiveAbilityImage: {fileID: 592615600}
+  mobilityAbilityImage: {fileID: 2117233519}
+  defensiveAbilityImage: {fileID: 1758353957}
+  utilityAbilityImage: {fileID: 487460643}
+  ultimateAbilityImage: {fileID: 1186165206}
 --- !u!1 &7292837755609648665
 GameObject:
   m_ObjectHideFlags: 0
