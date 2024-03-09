@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/Abilities/FrailSlash")]
+[CreateAssetMenu(menuName = "ScriptableObjects/Abilities/Beginner/FrailSlash")]
 public class FrailSlash : ScriptableObject, IBasicAttackBehaviour
 {
     public Sprite icon;

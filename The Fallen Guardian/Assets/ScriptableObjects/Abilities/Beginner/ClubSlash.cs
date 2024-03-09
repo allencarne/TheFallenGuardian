@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObjects/Abilities/ClubSlash")]
+[CreateAssetMenu(menuName = "ScriptableObjects/Abilities/Beginner/ClubSlash")]
 public class ClubSlash : ScriptableObject, IBasicAttackBehaviour
 {
     public Sprite icon;

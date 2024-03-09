@@ -58,11 +58,31 @@ public class AbilityBar : MonoBehaviour
         {
             if (playerEquipment.IsWeaponEquipt)
             {
-                LitSprite();
+                LitSprite(basicAbilityImage, beginnerAbilityTree.basicAbilityImage.sprite);
             }
             else
             {
-                DimSprite();
+                DimSprite(basicAbilityImage, beginnerAbilityTree.basicAbilityImage.sprite);
+            }
+        }
+    }
+
+    public void OnOffensiveAbilitySelected()
+    {
+        if (!playerAbilities.offensiveAbilityReference)
+        {
+            offensiveAbilityImage.enabled = false;
+        }
+
+        if (playerAbilities.offensiveAbilityReference)
+        {
+            if (playerEquipment.IsWeaponEquipt)
+            {
+                LitSprite(offensiveAbilityImage, beginnerAbilityTree.offensiveAbilityImage.sprite);
+            }
+            else
+            {
+                DimSprite(offensiveAbilityImage, beginnerAbilityTree.offensiveAbilityImage.sprite);
             }
         }
     }
@@ -70,25 +90,22 @@ public class AbilityBar : MonoBehaviour
     void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
     {
         OnBasicAbilitySelected();
+        OnOffensiveAbilitySelected();
     }
 
-    void LitSprite()
+    void LitSprite(Image image, Sprite sprite)
     {
-        basicAbilityImage.enabled = true;
-        basicAbilityImage.sprite = beginnerAbilityTree.basicAbilityImage.sprite;
-
-        // Reset color in case it was previously changed
-        basicAbilityImage.color = Color.white;
+        image.enabled = true;
+        image.sprite = sprite;
+        image.color = Color.white; // Reset color in case it was previously changed
     }
 
-    void DimSprite()
+    void DimSprite(Image image, Sprite sprite)
     {
-        basicAbilityImage.enabled = true;
-        basicAbilityImage.sprite = beginnerAbilityTree.basicAbilityImage.sprite;
-
-        // Set Sprite transparency to half
-        Color spriteColor = basicAbilityImage.color;
-        spriteColor.a = 0.3f;
-        basicAbilityImage.color = spriteColor;
+        image.enabled = true;
+        image.sprite = sprite;
+        Color spriteColor = image.color;
+        spriteColor.a = 0.3f; // Set Sprite transparency to half
+        image.color = spriteColor;
     }
 }
