@@ -1,6 +1,5 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.Analytics;
 using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
