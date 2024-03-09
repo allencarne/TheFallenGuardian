@@ -13,6 +13,9 @@ public class PlayerBasicAttackState : PlayerState
 
     public override void Update()
     {
-        behaviour.BehaviourUpdate(stateMachine);
+        if (behaviour != null)
+        {
+            behaviour.BehaviourUpdate(stateMachine);
+        }
     }
 }
