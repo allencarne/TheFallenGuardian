@@ -6,6 +6,7 @@ public class KnockbackOnTrigger : MonoBehaviour
 {
     [HideInInspector] public float KnockBackForce;
     [HideInInspector] public float KnockBackDuration;
+    [HideInInspector] public Vector2 KnockBackDirection;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,7 +16,7 @@ public class KnockbackOnTrigger : MonoBehaviour
         {
             Rigidbody2D enemyRB = collision.GetComponent<Rigidbody2D>();
 
-            knockbackable.KnockBack(collision.transform.position, transform.position, enemyRB, KnockBackForce, KnockBackDuration);
+            knockbackable.KnockBack(collision.transform.position, transform.position, enemyRB, KnockBackForce, KnockBackDuration, KnockBackDirection);
         }
     }
 }

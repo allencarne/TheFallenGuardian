@@ -79,6 +79,7 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
         {
             knockbackOnTrigger.KnockBackForce = knockBackForce;
             knockbackOnTrigger.KnockBackDuration = knockBackDuration;
+            knockbackOnTrigger.KnockBackDirection = direction;
         }
     }
 

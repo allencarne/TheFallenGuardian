@@ -220,13 +220,10 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         }
     }
 
-    public void KnockBack(Vector3 opponentPosition, Vector3 yourPosition, Rigidbody2D opponentRB, float knockBackAmount, float knockBackDuration)
+    public void KnockBack(Vector3 opponentPosition, Vector3 yourPosition, Rigidbody2D opponentRB, float knockBackAmount, float knockBackDuration, Vector2 knockBackDirection)
     {
-        // Calculate the direction from your position to the opponent's position and normalize it
-        Vector2 direction = (opponentPosition - yourPosition).normalized;
-
-        // Set the opponent's Rigidbody velocity to the knockback direction multiplied by the knockback amount
-        opponentRB.velocity = direction * knockBackAmount;
+        // Use the passed knockBackDirection for applying the knockback force
+        opponentRB.velocity = knockBackDirection * knockBackAmount;
 
         // Start a coroutine to handle the knockback duration
         StartCoroutine(KnockBackDuration(opponentRB, knockBackDuration));
