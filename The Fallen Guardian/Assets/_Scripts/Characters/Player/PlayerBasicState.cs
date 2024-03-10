@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBasicAttackState : PlayerState
+public class PlayerBasicState : PlayerState
 {
     IAbilityBehaviour behaviour;
 
-    public PlayerBasicAttackState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
+    public PlayerBasicState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
         behaviour = stateMachine.Abilities.basicAbility;
     }

@@ -79,7 +79,7 @@ public class PlayerStateMachine : MonoBehaviour
             // Prevents Unwanted Slide
             rb.velocity = Vector2.zero;
 
-            SetState(new PlayerBasicAttackState(this));
+            SetState(new PlayerBasicState(this));
         }
     }
 
