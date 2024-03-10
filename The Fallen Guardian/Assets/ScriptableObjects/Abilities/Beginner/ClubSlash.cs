@@ -20,15 +20,15 @@ public class ClubSlash : ScriptableObject, IBasicAttackBehaviour
 
     public void BehaviourUpdate(PlayerStateMachine stateMachine)
     {
-        if (stateMachine.CanBasicAttack)
+        if (stateMachine.CanBasicAbility)
         {
-            stateMachine.AttackDir = stateMachine.Aimer.rotation;
+            stateMachine.AbilityDir = stateMachine.Aimer.rotation;
 
             // Calculate direction based on Aimer rotation
             float angle = stateMachine.Aimer.rotation.eulerAngles.z * Mathf.Deg2Rad;
             Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
 
-            stateMachine.CanBasicAttack = false;
+            stateMachine.CanBasicAbility = false;
 
             // Use the calculated direction for handling animations
             stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player_Sword", "BasicAttack", direction);
@@ -44,19 +44,19 @@ public class ClubSlash : ScriptableObject, IBasicAttackBehaviour
         yield return new WaitForSeconds(castTime);
 
         // Calculate the direction of the attack
-        Vector3 direction = stateMachine.AttackDir * Vector3.right;
+        Vector3 direction = stateMachine.AbilityDir * Vector3.right;
 
         // Calculate the offset based on the attackRange and the direction
         Vector3 offset = direction * attackRange;
 
         // Spawn the attack object with the calculated offset
-        GameObject slash = Instantiate(clubSlash, stateMachine.transform.position + offset, stateMachine.AttackDir);
+        GameObject slash = Instantiate(clubSlash, stateMachine.transform.position + offset, stateMachine.AbilityDir);
 
         // Ignore collision between the attack and the player
         Physics2D.IgnoreCollision(slash.GetComponent<Collider2D>(), stateMachine.gameObject.GetComponent<Collider2D>());
 
         // Handle sliding forward
-        stateMachine.HandleSlideForward(stateMachine.AttackDir.eulerAngles.z, rangeBeforeSlide, slideForce, slideDuration);
+        stateMachine.HandleSlideForward(stateMachine.AbilityDir.eulerAngles.z, rangeBeforeSlide, slideForce, slideDuration);
 
         // Set damage values for the attack
         DamageOnTrigger damageOnTrigger = slash.GetComponent<DamageOnTrigger>();
@@ -73,6 +73,6 @@ public class ClubSlash : ScriptableObject, IBasicAttackBehaviour
 
         stateMachine.SetState(new PlayerIdleState(stateMachine));
 
-        stateMachine.CanBasicAttack = true;
+        stateMachine.CanBasicAbility = true;
     }
 }

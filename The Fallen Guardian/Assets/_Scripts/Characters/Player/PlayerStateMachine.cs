@@ -35,16 +35,18 @@ public class PlayerStateMachine : MonoBehaviour
     public Transform Aimer => aimer;
 
     private Vector2 lastMoveDirection = Vector2.zero;
-    private Vector2 lastAttackDirection = Vector2.zero;
 
     [Header("Slide")]
     bool canSlideForward = false;
     float slideForce;
     float slideDuration;
 
-    [Header("Basic Attack")]
-    public bool CanBasicAttack = true;
-    public Quaternion AttackDir;
+    [Header("Basic Ability")]
+    public bool CanBasicAbility = true;
+    public Quaternion AbilityDir;
+
+    [Header("Offensive Ability")]
+    public bool canOffensiveAbility = true;
 
     private void Awake()
     {
@@ -64,17 +66,15 @@ public class PlayerStateMachine : MonoBehaviour
         {
             StartCoroutine(SlideDuration());
 
-            SlideForward(AttackDir.eulerAngles.z);
+            SlideForward(AbilityDir.eulerAngles.z);
         }
     }
 
     public void SetState(PlayerState newState) => state = newState;
 
-    #region Attack
-
-    public void TransitionToBasicAttack(bool attackInput)
+    public void BasicAbility(bool abilityInput)
     {
-        if (attackInput && CanBasicAttack && equipment.IsWeaponEquipt && abilities.basicAttackBehaviourReference != null)
+        if (abilityInput && CanBasicAbility && equipment.IsWeaponEquipt && abilities.basicAttackBehaviourReference != null)
         {
             // Prevents Unwanted Slide
             rb.velocity = Vector2.zero;
@@ -83,19 +83,16 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
 
-    public void FaceAttackingDirection(Animator animator)
+    public void OffensiveAbility(bool abilityInput)
     {
-        // Use Aimer rotation for setting animator parameters
-        float angle = aimer.rotation.eulerAngles.z;
+        if (abilityInput && canOffensiveAbility && equipment.IsWeaponEquipt && abilities.offensiveAbilityReference != null)
+        {
+            // Prevents Unwanted Slide
+            rb.velocity = Vector2.zero;
 
-        // Convert angle to a normalized vector for animation parameters
-        Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
-
-        animator.SetFloat("Horizontal", direction.x);
-        animator.SetFloat("Vertical", direction.y);
+            SetState(new PlayerOffensiveState(this));
+        }
     }
-
-    #endregion
 
     #region SlideForward
 

@@ -2,10 +2,7 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerState
 {
-    public PlayerIdleState(PlayerStateMachine stateMachine) : base(stateMachine)
-    {
-
-    }
+    public PlayerIdleState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Update()
     {
@@ -14,7 +11,8 @@ public class PlayerIdleState : PlayerState
         stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Idle", stateMachine.InputHandler.MoveInput.normalized);
 
         // Transitions
-        stateMachine.TransitionToBasicAttack(stateMachine.InputHandler.BasicAbilityInput);
+        stateMachine.BasicAbility(stateMachine.InputHandler.BasicAbilityInput);
+        stateMachine.OffensiveAbility(stateMachine.InputHandler.OffensiveAbilityInput);
     }
 
     public override void FixedUpdate()

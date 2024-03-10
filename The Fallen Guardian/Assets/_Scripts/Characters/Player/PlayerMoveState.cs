@@ -2,10 +2,7 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerState
 {
-    public PlayerMoveState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
-    {
-
-    }
+    public PlayerMoveState(PlayerStateMachine playerStateMachine) : base(playerStateMachine) { }
 
     public override void Update()
     {
@@ -13,7 +10,8 @@ public class PlayerMoveState : PlayerState
         stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Move", stateMachine.InputHandler.MoveInput.normalized);
 
         // Transitions
-        stateMachine.TransitionToBasicAttack(stateMachine.InputHandler.BasicAbilityInput);
+        stateMachine.BasicAbility(stateMachine.InputHandler.BasicAbilityInput);
+        stateMachine.OffensiveAbility(stateMachine.InputHandler.OffensiveAbilityInput);
     }
 
     public override void FixedUpdate()

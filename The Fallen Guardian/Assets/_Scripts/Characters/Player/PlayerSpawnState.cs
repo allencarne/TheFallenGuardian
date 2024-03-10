@@ -6,10 +6,7 @@ public class PlayerSpawnState : PlayerState
 {
     bool canSpawn = true;
 
-    public PlayerSpawnState(PlayerStateMachine playerStateMachine): base(playerStateMachine)
-    {
-
-    }
+    public PlayerSpawnState(PlayerStateMachine playerStateMachine): base(playerStateMachine) { }
 
     public override void Update()
     {
