@@ -74,7 +74,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void BasicAbility(bool abilityInput)
     {
-        if (abilityInput && CanBasicAbility && equipment.IsWeaponEquipt && abilities.basicAttackBehaviourReference != null)
+        if (abilityInput && CanBasicAbility && equipment.IsWeaponEquipt && abilities.basicAbilityReference != null)
         {
             // Prevents Unwanted Slide
             rb.velocity = Vector2.zero;

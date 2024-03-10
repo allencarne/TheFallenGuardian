@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerBasicAttackState : PlayerState
 {
-    IBasicAttackBehaviour behaviour;
+    IAbilityBehaviour behaviour;
 
     public PlayerBasicAttackState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
-        behaviour = stateMachine.Abilities.basicAttackBehaviour;
+        behaviour = stateMachine.Abilities.basicAbility;
     }
 
     public override void Update()

@@ -58,9 +58,9 @@ public class BeginnerAbilityTree : MonoBehaviour
 
     public void OnBasicAbilitySelected()
     {
-        if (playerAbilities.basicAttackBehaviourReference == null)
+        if (playerAbilities.basicAbilityReference == null)
         {
-            playerAbilities.basicAttackBehaviourReference = basicAbility;
+            playerAbilities.basicAbilityReference = basicAbility;
 
             onBasicAbilitySelected.Invoke();
         }

@@ -5,17 +5,17 @@ using UnityEngine;
 public class PlayerAbilities : MonoBehaviour
 {
     #region Basic Ability
-    public ScriptableObject basicAttackBehaviourReference
+    public ScriptableObject basicAbilityReference
     {
-        get => _basicAttackBehaviourReference;
+        get => _basicAbilityReference;
         set
         {
-            _basicAttackBehaviourReference = value;
-            basicAttackBehaviour = (IBasicAttackBehaviour)_basicAttackBehaviourReference;
+            _basicAbilityReference = value;
+            basicAbility = (IAbilityBehaviour)_basicAbilityReference;
         }
     }
-    private ScriptableObject _basicAttackBehaviourReference;
-    public IBasicAttackBehaviour basicAttackBehaviour { get; private set; }
+    private ScriptableObject _basicAbilityReference;
+    public IAbilityBehaviour basicAbility { get; private set; }
     #endregion
 
     #region Offensive Ability
@@ -25,16 +25,16 @@ public class PlayerAbilities : MonoBehaviour
         set
         {
             _offensiveAbilityReference = value;
-            offensiveAbility = (IBasicAttackBehaviour)_offensiveAbilityReference;
+            offensiveAbility = (IAbilityBehaviour)_offensiveAbilityReference;
         }
     }
     private ScriptableObject _offensiveAbilityReference;
-    public IBasicAttackBehaviour offensiveAbility { get; private set; }
+    public IAbilityBehaviour offensiveAbility { get; private set; }
     #endregion
 
     private void Awake()
     {
-        basicAttackBehaviour = (IBasicAttackBehaviour)basicAttackBehaviourReference;
-        offensiveAbility = (IBasicAttackBehaviour)offensiveAbilityReference;
+        basicAbility = (IAbilityBehaviour)basicAbilityReference;
+        offensiveAbility = (IAbilityBehaviour)offensiveAbilityReference;
     }
 }

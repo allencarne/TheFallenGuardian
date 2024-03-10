@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/Beginner/FrailSlash")]
-public class FrailSlash : ScriptableObject, IBasicAttackBehaviour
+public class FrailSlash : ScriptableObject, IAbilityBehaviour
 {
     public Sprite icon;
     [SerializeField] GameObject SlashPrefab;

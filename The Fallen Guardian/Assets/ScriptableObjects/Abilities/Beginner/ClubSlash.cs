@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/Beginner/ClubSlash")]
-public class ClubSlash : ScriptableObject, IBasicAttackBehaviour
+public class ClubSlash : ScriptableObject, IAbilityBehaviour
 {
     public Sprite icon;
     [SerializeField] GameObject clubSlash;

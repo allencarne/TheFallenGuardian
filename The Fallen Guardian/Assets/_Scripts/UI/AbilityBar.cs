@@ -49,12 +49,12 @@ public class AbilityBar : MonoBehaviour
     // This Method is Called From An Event - BeginnerAbilityTree
     public void OnBasicAbilitySelected()
     {
-        if (!playerAbilities.basicAttackBehaviourReference)
+        if (!playerAbilities.basicAbilityReference)
         {
             basicAbilityImage.enabled = false;
         }
 
-        if (playerAbilities.basicAttackBehaviourReference)
+        if (playerAbilities.basicAbilityReference)
         {
             if (playerEquipment.IsWeaponEquipt)
             {

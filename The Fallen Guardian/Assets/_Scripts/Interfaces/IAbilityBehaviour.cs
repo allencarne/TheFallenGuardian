@@ -1,5 +1,5 @@
 
-public interface IBasicAttackBehaviour
+public interface IAbilityBehaviour
 {
     public void BehaviourUpdate(PlayerStateMachine stateMachine);
 }
