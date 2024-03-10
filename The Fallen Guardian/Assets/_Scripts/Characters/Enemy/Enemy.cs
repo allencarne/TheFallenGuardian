@@ -220,7 +220,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         }
     }
 
-    public void KnockBack(Vector3 opponentPosition, Vector3 yourPosition, Rigidbody2D opponentRB, float knockBackAmount, float knockBackDuration, Vector2 knockBackDirection)
+    public void KnockBack(Rigidbody2D opponentRB, float knockBackAmount, float knockBackDuration, Vector2 knockBackDirection)
     {
         // Use the passed knockBackDirection for applying the knockback force
         opponentRB.velocity = knockBackDirection * knockBackAmount;
