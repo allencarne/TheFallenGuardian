@@ -73,6 +73,13 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
             damageOnTrigger.playerDamage = stateMachine.Player.playerStats.damage;
             damageOnTrigger.hitEffect = hitEffect;
         }
+
+        KnockbackOnTrigger knockbackOnTrigger = slash.GetComponent<KnockbackOnTrigger>();
+        if (knockbackOnTrigger != null)
+        {
+            knockbackOnTrigger.KnockBackForce = knockBackForce;
+            knockbackOnTrigger.KnockBackDuration = knockBackDuration;
+        }
     }
 
     IEnumerator DurationOfBasicAttack(PlayerStateMachine stateMachine)
