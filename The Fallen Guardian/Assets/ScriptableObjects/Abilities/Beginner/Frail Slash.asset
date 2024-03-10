@@ -22,5 +22,5 @@ MonoBehaviour:
   slideForce: 15
   slideDuration: 0
   rangeBeforeSlide: 2
-  knockBackForce: 20
-  knockBackDuration: 1
+  knockBackForce: 10
+  knockBackDuration: 0.3

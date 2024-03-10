@@ -234,8 +234,17 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
     IEnumerator KnockBackDuration(Rigidbody2D opponentRB, float duration)
     {
-        yield return new WaitForSeconds(duration);
+        float elapsedTime = 0f;
+        Vector2 initialVelocity = opponentRB.velocity;
 
-        opponentRB.velocity = Vector2.zero;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / duration; // Normalized time
+            opponentRB.velocity = Vector2.Lerp(initialVelocity, Vector2.zero, t);
+            yield return null; // Wait for the next frame
+        }
+
+        opponentRB.velocity = Vector2.zero; // Ensure the velocity is exactly zero at the end
     }
 }
