@@ -19,8 +19,8 @@ MonoBehaviour:
   coolDown: 0.8
   castTime: 0.3
   attackRange: 1
-  slideForce: 15
-  slideDuration: 0
+  slideForce: 30
+  slideDuration: 0.1
   rangeBeforeSlide: 2
   knockBackForce: 10
   knockBackDuration: 0.3

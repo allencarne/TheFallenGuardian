@@ -64,9 +64,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         if (canSlideForward)
         {
-            StartCoroutine(SlideDuration());
-
-            SlideForward(AbilityDir.eulerAngles.z);
+            StartCoroutine(SlideDuration(AbilityDir.eulerAngles.z));
         }
     }
 
@@ -76,9 +74,6 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (abilityInput && CanBasicAbility && equipment.IsWeaponEquipt && abilities.basicAbilityReference != null)
         {
-            // Prevents Unwanted Slide
-            rb.velocity = Vector2.zero;
-
             SetState(new PlayerBasicState(this));
         }
     }
@@ -87,9 +82,6 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (abilityInput && canOffensiveAbility && equipment.IsWeaponEquipt && abilities.offensiveAbilityReference != null)
         {
-            // Prevents Unwanted Slide
-            rb.velocity = Vector2.zero;
-
             SetState(new PlayerOffensiveState(this));
         }
     }
@@ -105,17 +97,13 @@ public class PlayerStateMachine : MonoBehaviour
 
         if (controlScheme.currentControlScheme == "Keyboard")
         {
-            // Calculate the distance between the player and the mouse position
             float distance = Vector3.Distance(transform.position, inputHandler.MousePosition);
-
-            // Check if the distance is greater than the slide range
             if (distance > slideRange)
             {
                 canSlideForward = true;
             }
         }
 
-        // Slide If Movement Key/button is pressed
         if (inputHandler.MoveInput != Vector2.zero)
         {
             canSlideForward = true;
@@ -124,16 +112,24 @@ public class PlayerStateMachine : MonoBehaviour
 
     protected void SlideForward(float rotation)
     {
-        // Use the rotation of the Aimer to determine the slide direction
         Vector2 slideDirection = Quaternion.Euler(0f, 0f, rotation) * Vector2.right;
-
         rb.velocity = slideDirection * slideForce;
     }
 
-    IEnumerator SlideDuration()
+    IEnumerator SlideDuration(float rotation)
     {
-        yield return new WaitForSeconds(slideDuration);
+        float elapsedTime = 0f;
+        float initialSlideForce = slideForce;
 
+        while (elapsedTime < slideDuration)
+        {
+            elapsedTime += Time.fixedDeltaTime;
+            slideForce = Mathf.Lerp(initialSlideForce, 0, elapsedTime / slideDuration);
+            SlideForward(rotation);
+            yield return new WaitForFixedUpdate();
+        }
+
+        slideForce = 0;
         canSlideForward = false;
     }
 
