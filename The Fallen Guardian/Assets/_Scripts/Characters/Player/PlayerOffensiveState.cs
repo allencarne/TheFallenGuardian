@@ -8,7 +8,7 @@ public class PlayerOffensiveState : PlayerState
 
     public PlayerOffensiveState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
-        behaviour = stateMachine.Abilities.basicAbility;
+        behaviour = stateMachine.Abilities.offensiveAbility;
     }
 
     public override void Update()
