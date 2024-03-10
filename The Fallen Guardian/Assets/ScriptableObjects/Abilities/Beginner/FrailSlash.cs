@@ -5,18 +5,25 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/Beginner/FrailSlash")]
 public class FrailSlash : ScriptableObject, IAbilityBehaviour
 {
+    [Header("Setup")]
     public Sprite icon;
     [SerializeField] GameObject SlashPrefab;
+    [SerializeField] GameObject hitEffect;
 
+    [Header("Stats")]
     [SerializeField] int damage;
     [SerializeField] float coolDown;
     [SerializeField] float castTime;
+    [SerializeField] float attackRange;
 
-    [SerializeField] float rangeBeforeSlide;
+    [Header("Slide")]
     [SerializeField] float slideForce;
     [SerializeField] float slideDuration;
+    [SerializeField] float rangeBeforeSlide;
 
-    [SerializeField] float attackRange;
+    [Header("Knockback")]
+    [SerializeField] float knockBackForce;
+    [SerializeField] float knockBackDuration;
 
     public void BehaviourUpdate(PlayerStateMachine stateMachine)
     {
@@ -64,6 +71,7 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
         {
             damageOnTrigger.abilityDamage = damage;
             damageOnTrigger.playerDamage = stateMachine.Player.playerStats.damage;
+            damageOnTrigger.hitEffect = hitEffect;
         }
     }
 
