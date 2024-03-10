@@ -38,6 +38,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     [Header("Slide")]
     bool canSlideForward = false;
+    bool isSliding = false;
     float slideForce;
     float slideDuration;
 
@@ -62,7 +63,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         state.FixedUpdate();
 
-        if (canSlideForward)
+        if (canSlideForward && !isSliding)
         {
             StartCoroutine(SlideDuration(AbilityDir.eulerAngles.z));
         }
@@ -118,6 +119,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     IEnumerator SlideDuration(float rotation)
     {
+        isSliding = true; // Set the flag to true when the Coroutine starts
         float elapsedTime = 0f;
         float initialSlideForce = slideForce;
 
@@ -131,6 +133,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         slideForce = 0;
         canSlideForward = false;
+        isSliding = false; // Set the flag back to false when the Coroutine completes
     }
 
     #endregion
