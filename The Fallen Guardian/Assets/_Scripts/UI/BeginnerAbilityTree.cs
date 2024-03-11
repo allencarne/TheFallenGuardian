@@ -21,12 +21,15 @@ public class BeginnerAbilityTree : MonoBehaviour
 
     [Header("Offensive2")]
     [SerializeField] ScriptableObject offensiveAbility2;
+    public Image offensiveAbility2Image;
+    public UnityEvent onOffensiveAbility2Selected;
 
     private void Start()
     {
         // Set the level1Ability Icon to level1AbilityImage
         SetAbilityIcon(basicAbility, basicAbilityImage);
         SetAbilityIcon(offensiveAbility, offensiveAbilityImage);
+        SetAbilityIcon(offensiveAbility2, offensiveAbility2Image);
 
         InitializePlayerReference();
     }
@@ -73,6 +76,16 @@ public class BeginnerAbilityTree : MonoBehaviour
             playerAbilities.offensiveAbilityReference = offensiveAbility;
 
             onOffensiveAbilitySelected.Invoke();
+        }
+    }
+
+    public void OnOffensiveAbility2Selected()
+    {
+        if (playerAbilities.offensiveAbilityReference == null)
+        {
+            playerAbilities.offensiveAbilityReference = offensiveAbility2;
+
+            onOffensiveAbility2Selected.Invoke();
         }
     }
 }

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eca207e8ec49f74fab001c772bbdab4, type: 3}
+  m_Name: Splitting Swing
+  m_EditorClassIdentifier: 
+  icon: {fileID: 158528910, guid: 65fa1bf13e57dbe4481387393b1b04ad, type: 3}
+  SlashPrefab: {fileID: 1266080243454318042, guid: 0bec8708b337bd54d9e755926d9f0242, type: 3}
+  hitEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
+  damage: 1
+  coolDown: 0.8
+  castTime: 0.3
+  attackRange: 0.5
+  slideForce: 0
+  slideDuration: 0
+  rangeBeforeSlide: 0
+  knockBackForce: 0
+  knockBackDuration: 0
