@@ -87,6 +87,26 @@ public class AbilityBar : MonoBehaviour
         }
     }
 
+    public void OnOffensiveAbility2Selected()
+    {
+        if (!playerAbilities.offensiveAbilityReference)
+        {
+            offensiveAbilityImage.enabled = false;
+        }
+
+        if (playerAbilities.offensiveAbilityReference)
+        {
+            if (playerEquipment.IsWeaponEquipt)
+            {
+                LitSprite(offensiveAbilityImage, beginnerAbilityTree.offensiveAbility2Image.sprite);
+            }
+            else
+            {
+                DimSprite(offensiveAbilityImage, beginnerAbilityTree.offensiveAbility2Image.sprite);
+            }
+        }
+    }
+
     void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
     {
         OnBasicAbilitySelected();
