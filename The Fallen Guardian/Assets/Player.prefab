@@ -1595,8 +1595,9 @@ MonoBehaviour:
   inputHandler: {fileID: 754719381540065433}
   abilities: {fileID: 239699257640095505}
   aimer: {fileID: 1333201046459341400}
-  CanBasicAttack: 1
-  AttackDir: {x: 0, y: 0, z: 0, w: 0}
+  CanBasicAbility: 1
+  AbilityDir: {x: 0, y: 0, z: 0, w: 0}
+  canOffensiveAbility: 1
 --- !u!114 &239699257640095505
 MonoBehaviour:
   m_ObjectHideFlags: 0

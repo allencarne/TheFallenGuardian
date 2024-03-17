@@ -18,5 +18,5 @@ MonoBehaviour:
   equipmentType: 5
   healthModifier: 0
   damageModifier: 0
-  weaponSprite: {fileID: 21300000, guid: 6e981afbe9550fa48a87bdf1ac291dfa, type: 3}
+  weaponSprite: {fileID: 21300000, guid: 3b77858ca8d70a845a1a8389dbb0f9dc, type: 3}
   weaponType: 0
