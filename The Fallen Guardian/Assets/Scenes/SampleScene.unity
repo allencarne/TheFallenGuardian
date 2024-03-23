@@ -2531,7 +2531,7 @@ GameObject:
   - component: {fileID: 212339716}
   - component: {fileID: 212339715}
   - component: {fileID: 212339714}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12616,7 +12616,7 @@ GameObject:
   - component: {fileID: 1251568156}
   - component: {fileID: 1251568158}
   - component: {fileID: 1251568157}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12691,7 +12691,7 @@ GameObject:
   - component: {fileID: 1294604926}
   - component: {fileID: 1294604928}
   - component: {fileID: 1294604927}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Front Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29957,7 +29957,7 @@ GameObject:
   - component: {fileID: 1581998555}
   - component: {fileID: 1581998557}
   - component: {fileID: 1581998556}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Back Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125503,7 +125503,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2121101068}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

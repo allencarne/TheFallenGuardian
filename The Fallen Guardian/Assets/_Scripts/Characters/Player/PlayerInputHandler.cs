@@ -18,6 +18,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 MousePosition { get; private set; }
     public bool PickupInput { get; private set; }
 
+    LayerMask ignoredLayers;
     public GameObjectRuntimeSet cameraReference;
     public Camera player2Camera;
 
@@ -34,6 +35,9 @@ public class PlayerInputHandler : MonoBehaviour
     {
         player1Camera = Camera.main;
         player = GetComponent<Player>();
+
+        // Initialize ignoredLayers
+        ignoredLayers = 1 << LayerMask.NameToLayer("IgnoredUI");
     }
 
     private void Start()
@@ -66,7 +70,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnBasicAbility(InputAction.CallbackContext context)
     {
-        if (!isMouseOverUI() || !context.ReadValueAsButton())
+        if (!isMouseOverUI(ignoredLayers))
         {
             BasicAbilityInput = context.ReadValueAsButton();
         }
@@ -78,7 +82,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnOffensiveAbility(InputAction.CallbackContext context)
     {
-        if (!isMouseOverUI() || !context.ReadValueAsButton())
+        if (!isMouseOverUI(ignoredLayers))
         {
             OffensiveAbilityInput = context.ReadValueAsButton();
         }
@@ -90,7 +94,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnMobilityAbility(InputAction.CallbackContext context)
     {
-        if (!isMouseOverUI() || !context.ReadValueAsButton())
+        if (!isMouseOverUI(ignoredLayers))
         {
             MobilityAbilityInput = context.ReadValueAsButton();
         }
@@ -102,7 +106,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnDefensiveAbility(InputAction.CallbackContext context)
     {
-        if (!isMouseOverUI() || !context.ReadValueAsButton())
+
+        if (!isMouseOverUI(ignoredLayers))
         {
             DefensiveAbilityInput = context.ReadValueAsButton();
         }
@@ -114,7 +119,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnUtilityAbility(InputAction.CallbackContext context)
     {
-        if (!isMouseOverUI() || !context.ReadValueAsButton())
+
+        if (!isMouseOverUI(ignoredLayers))
         {
             UtilityAbilityInput = context.ReadValueAsButton();
         }
@@ -126,7 +132,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnUltimateAbility(InputAction.CallbackContext context)
     {
-        if (!isMouseOverUI() || !context.ReadValueAsButton())
+
+        if (!isMouseOverUI(ignoredLayers))
         {
             UltimateAbilityInput = context.ReadValueAsButton();
         }
@@ -198,8 +205,29 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
-    bool isMouseOverUI()
+    bool isMouseOverUI(LayerMask ignoredLayers)
     {
-        return EventSystem.current.IsPointerOverGameObject();
+        // Create a new PointerEventData
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
+
+        // Create a list to store the results of the raycast
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        // Perform the raycast
+        EventSystem.current.RaycastAll(eventData, results);
+
+        // Check if any of the hit objects are not on the ignored layers
+        foreach (RaycastResult result in results)
+        {
+            if ((ignoredLayers & (1 << result.gameObject.layer)) == 0)
+            {
+                // If the hit object is not on the ignored layers, return true
+                return true;
+            }
+        }
+
+        // If none of the hit objects are not on the ignored layers, return false
+        return false;
     }
 }

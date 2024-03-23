@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 8461007270179848029}
   - component: {fileID: 6840793380569695535}
   - component: {fileID: 5709352083387614229}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 760106863139569174}
   - component: {fileID: 2501826669012582448}
   - component: {fileID: 4716448829981364878}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Back FIll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 4680371891473262492}
   - component: {fileID: 5888347471574443550}
   - component: {fileID: 4430670412122056503}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Front Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,7 +838,7 @@ GameObject:
   - component: {fileID: 4324658275438630779}
   - component: {fileID: 6629051131994639317}
   - component: {fileID: 9134760330706367091}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -972,7 +972,7 @@ GameObject:
   - component: {fileID: 703476059654161705}
   - component: {fileID: 2615718276914024850}
   - component: {fileID: 1719222858471744267}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1653,7 +1653,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1361071663261445160}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
