@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Player_HealthBar_Border
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.4615385, y: -0.27272728}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 48
-      height: 17
+      width: 39
+      height: 11
     spriteID: adfb8ef89f4261d4eb8ec442172697d9
     spriteBone: []
     spriteOutline: []
@@ -153,10 +153,10 @@ ScriptedImporter:
     - name: Player_HealthBar_Border
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 48
-        height: 17
+        x: 6
+        y: 3
+        width: 39
+        height: 11
       spriteId: adfb8ef89f4261d4eb8ec442172697d9
     linkedCells: []
     parentIndex: -1
