@@ -63,82 +63,76 @@ public class PlayerInputHandler : MonoBehaviour
             LookInput = Vector2.zero;
         }
     }
-    
+
     public void OnBasicAbility(InputAction.CallbackContext context)
     {
-        if (!isMouseOverUI())
+        if (!isMouseOverUI() || !context.ReadValueAsButton())
         {
             BasicAbilityInput = context.ReadValueAsButton();
-
-            if (context.canceled)
-            {
-                BasicAbilityInput = false;
-            }
+        }
+        else
+        {
+            BasicAbilityInput = false;
         }
     }
 
     public void OnOffensiveAbility(InputAction.CallbackContext context)
     {
-        if (!isMouseOverUI())
+        if (!isMouseOverUI() || !context.ReadValueAsButton())
         {
             OffensiveAbilityInput = context.ReadValueAsButton();
-
-            if (context.canceled)
-            {
-                OffensiveAbilityInput = false;
-            }
+        }
+        else
+        {
+            OffensiveAbilityInput = false;
         }
     }
 
     public void OnMobilityAbility(InputAction.CallbackContext context)
     {
-        if (!isMouseOverUI())
+        if (!isMouseOverUI() || !context.ReadValueAsButton())
         {
             MobilityAbilityInput = context.ReadValueAsButton();
-
-            if (context.canceled)
-            {
-                MobilityAbilityInput = false;
-            }
+        }
+        else
+        {
+            MobilityAbilityInput = false;
         }
     }
 
     public void OnDefensiveAbility(InputAction.CallbackContext context)
     {
-        if (!isMouseOverUI())
+        if (!isMouseOverUI() || !context.ReadValueAsButton())
         {
             DefensiveAbilityInput = context.ReadValueAsButton();
-
-            if (context.canceled)
-            {
-                DefensiveAbilityInput = false;
-            }
+        }
+        else
+        {
+            DefensiveAbilityInput = false;
         }
     }
 
     public void OnUtilityAbility(InputAction.CallbackContext context)
     {
-        if (!isMouseOverUI())
+        if (!isMouseOverUI() || !context.ReadValueAsButton())
         {
             UtilityAbilityInput = context.ReadValueAsButton();
-
-            if (context.canceled)
-            {
-                UtilityAbilityInput = false;
-            }
+        }
+        else
+        {
+            UtilityAbilityInput = false;
         }
     }
 
     public void OnUltimateAbility(InputAction.CallbackContext context)
     {
-        if (!isMouseOverUI())
+        if (!isMouseOverUI() || !context.ReadValueAsButton())
         {
             UltimateAbilityInput = context.ReadValueAsButton();
-
-            if (context.canceled)
-            {
-                UltimateAbilityInput = false;
-            }
+        }
+        else
+        {
+            UltimateAbilityInput = false;
         }
     }
 
