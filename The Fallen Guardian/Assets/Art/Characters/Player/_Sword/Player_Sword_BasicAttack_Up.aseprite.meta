@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Player_Sword_BasicAttack_Up_Frame_0
     originalName: 
-    pivot: {x: 0.5714286, y: -0.44444445}
+    pivot: {x: 0.5714286, y: -0.42105263}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 62
-      y: 53
+      x: 64
+      y: 52
       width: 21
-      height: 36
+      height: 38
     spriteID: 8cefd502a1860cb4e923a74a59be3b99
     spriteBone: []
     spriteOutline: []
@@ -140,18 +140,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 62, y: 53}
+    uvTransform: {x: 64, y: 52}
   - name: Player_Sword_BasicAttack_Up_Frame_1
     originalName: 
-    pivot: {x: 0.5714286, y: -0.45714286}
+    pivot: {x: 0.5714286, y: -0.42105263}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 62
-      y: 97
+      x: 64
+      y: 98
       width: 21
-      height: 35
+      height: 38
     spriteID: 51710d415d86f924299dbf9be5b8095f
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 62, y: 97}
+    uvTransform: {x: 64, y: 98}
   - name: Player_Sword_BasicAttack_Up_Frame_2
     originalName: 
-    pivot: {x: 0.52380955, y: -0.5}
+    pivot: {x: 0.5714286, y: -0.42105263}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 62
-      y: 140
+      x: 64
+      y: 144
       width: 21
-      height: 34
+      height: 38
     spriteID: f82732a9332f5dd47a398ca3287f2c6d
     spriteBone: []
     spriteOutline: []
@@ -180,18 +180,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 62, y: 140}
+    uvTransform: {x: 64, y: 144}
   - name: Player_Sword_BasicAttack_Up_Frame_3
     originalName: 
-    pivot: {x: 0.35999998, y: -0.10344827}
+    pivot: {x: 0.11111111, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
-      width: 50
-      height: 58
+      y: 70
+      width: 36
+      height: 64
     spriteID: c0d46024d538c584b8468d92fcbc8322
     spriteBone: []
     spriteOutline: []
@@ -200,18 +200,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 4, y: 70}
   - name: Player_Sword_BasicAttack_Up_Frame_4
     originalName: 
-    pivot: {x: 0.8, y: -0.074074075}
+    pivot: {x: 0.55769235, y: -0.06896552}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 70
-      width: 40
-      height: 54
+      y: 4
+      width: 52
+      height: 58
     spriteID: 3e18fedad145c664bad922d74e918641
     spriteBone: []
     spriteOutline: []
@@ -220,18 +220,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 70}
+    uvTransform: {x: 4, y: 4}
   - name: Player_Sword_BasicAttack_Up_Frame_5
     originalName: 
-    pivot: {x: 0.44186047, y: 0}
+    pivot: {x: 0.8571429, y: -0.125}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 132
-      width: 43
-      height: 45
+      y: 142
+      width: 28
+      height: 40
     spriteID: 9e4dbe0c905b61646a41325884c2b2fe
     spriteBone: []
     spriteOutline: []
@@ -240,18 +240,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 132}
+    uvTransform: {x: 4, y: 142}
   - name: Player_Sword_BasicAttack_Up_Frame_6
     originalName: 
-    pivot: {x: 0.25, y: -0.09756097}
+    pivot: {x: 0.8571429, y: -0.125}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 185
-      width: 32
-      height: 41
+      y: 190
+      width: 28
+      height: 40
     spriteID: 24fe997afe8bcae4d94f9ab74e98097b
     spriteBone: []
     spriteOutline: []
@@ -260,18 +260,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 185}
+    uvTransform: {x: 4, y: 190}
   - name: Player_Sword_BasicAttack_Up_Frame_7
     originalName: 
-    pivot: {x: 0.25, y: -0.09756097}
+    pivot: {x: 0.8571429, y: -0.125}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 62
+      x: 64
       y: 4
-      width: 32
-      height: 41
+      width: 28
+      height: 40
     spriteID: c13d355a34ab2fa44aeb8670119719a8
     spriteBone: []
     spriteOutline: []
@@ -280,7 +280,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 62, y: 4}
+    uvTransform: {x: 64, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -296,7 +296,7 @@ ScriptedImporter:
         x: 20
         y: 16
         width: 21
-        height: 36
+        height: 38
       spriteId: 8cefd502a1860cb4e923a74a59be3b99
     - name: Player_Sword_BasicAttack_Up_Frame_1
       frameIndex: 1
@@ -304,55 +304,55 @@ ScriptedImporter:
         x: 20
         y: 16
         width: 21
-        height: 35
+        height: 38
       spriteId: 51710d415d86f924299dbf9be5b8095f
     - name: Player_Sword_BasicAttack_Up_Frame_2
       frameIndex: 2
       cellRect:
-        x: 21
-        y: 17
+        x: 20
+        y: 16
         width: 21
-        height: 34
+        height: 38
       spriteId: f82732a9332f5dd47a398ca3287f2c6d
     - name: Player_Sword_BasicAttack_Up_Frame_3
       frameIndex: 3
       cellRect:
-        x: 14
-        y: 6
-        width: 50
-        height: 58
+        x: 28
+        y: 0
+        width: 36
+        height: 64
       spriteId: c0d46024d538c584b8468d92fcbc8322
     - name: Player_Sword_BasicAttack_Up_Frame_4
       frameIndex: 4
       cellRect:
-        x: 0
+        x: 3
         y: 4
-        width: 40
-        height: 54
+        width: 52
+        height: 58
       spriteId: 3e18fedad145c664bad922d74e918641
     - name: Player_Sword_BasicAttack_Up_Frame_5
       frameIndex: 5
       cellRect:
-        x: 13
-        y: 0
-        width: 43
-        height: 45
+        x: 8
+        y: 5
+        width: 28
+        height: 40
       spriteId: 9e4dbe0c905b61646a41325884c2b2fe
     - name: Player_Sword_BasicAttack_Up_Frame_6
       frameIndex: 6
       cellRect:
-        x: 24
-        y: 4
-        width: 32
-        height: 41
+        x: 8
+        y: 5
+        width: 28
+        height: 40
       spriteId: 24fe997afe8bcae4d94f9ab74e98097b
     - name: Player_Sword_BasicAttack_Up_Frame_7
       frameIndex: 7
       cellRect:
-        x: 24
-        y: 4
-        width: 32
-        height: 41
+        x: 8
+        y: 5
+        width: 28
+        height: 40
       spriteId: c13d355a34ab2fa44aeb8670119719a8
     linkedCells: []
     parentIndex: -1
