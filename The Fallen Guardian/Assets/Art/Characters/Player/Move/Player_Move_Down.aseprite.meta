@@ -163,7 +163,7 @@ ScriptedImporter:
     uvTransform: {x: 23, y: 4}
   - name: Player_Move_Down_Frame_2
     originalName: 
-    pivot: {x: 0.54545456, y: -0.4848485}
+    pivot: {x: 0.45454547, y: -0.4848485}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -243,7 +243,7 @@ ScriptedImporter:
     uvTransform: {x: 23, y: 42}
   - name: Player_Move_Down_Frame_6
     originalName: 
-    pivot: {x: 0.45454547, y: -0.4848485}
+    pivot: {x: 0.54545456, y: -0.4848485}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -309,7 +309,7 @@ ScriptedImporter:
     - name: Player_Move_Down_Frame_2
       frameIndex: 2
       cellRect:
-        x: 26
+        x: 27
         y: 16
         width: 11
         height: 33
@@ -341,7 +341,7 @@ ScriptedImporter:
     - name: Player_Move_Down_Frame_6
       frameIndex: 6
       cellRect:
-        x: 27
+        x: 26
         y: 16
         width: 11
         height: 33
