@@ -38,8 +38,8 @@ public class SplittingSwing : ScriptableObject, IAbilityBehaviour
             stateMachine.CanBasicAbility = false;
 
             // Use the calculated direction for handling animations
-            stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player_Sword", "BasicAttack", direction);
-            stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "BasicAttack", direction);
+            stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player_Sword", "Attack", direction);
+            stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Attack", direction);
 
             stateMachine.StartCoroutine(AttackImpact(stateMachine));
             stateMachine.StartCoroutine(DurationOfBasicAttack(stateMachine));
