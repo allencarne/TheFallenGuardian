@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_Sword_BasicAttack_Right_0
+      name: Player_Sword_Attack_Right_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75eaa3bf66486cd40969865e85a94925
-      internalID: -703703491
+      spriteID: 54a6ec7d47271144baf5841f423e2e9c
+      internalID: -202179018
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Sword_BasicAttack_Right_1
+      name: Player_Sword_Attack_Right_1
       rect:
         serializedVersion: 2
         x: 64
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f12ae25178a804e48a0ae74f64e6f261
-      internalID: 701565818
+      spriteID: 4167402bd34828147945ab80422d735e
+      internalID: -2040070546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Sword_BasicAttack_Right_2
+      name: Player_Sword_Attack_Right_2
       rect:
         serializedVersion: 2
         x: 128
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e45dfa3b877b3ef4b9b02ebd5dd138e7
-      internalID: 610884764
+      spriteID: adde75a36a20aca45ba8158c49a66f4e
+      internalID: 1944294473
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Sword_BasicAttack_Right_3
+      name: Player_Sword_Attack_Right_3
       rect:
         serializedVersion: 2
         x: 192
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7be13f127cd78584d8c761ea3158c01f
-      internalID: 511963470
+      spriteID: a4c709a913d1a3b459868c8ac928cb8d
+      internalID: -1275866170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Sword_BasicAttack_Right_4
+      name: Player_Sword_Attack_Right_4
       rect:
         serializedVersion: 2
         x: 256
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81af0cc8742f3bd43a4096ae924b4bd0
-      internalID: 2104368441
+      spriteID: c30fcc22c291ef249ad954a606b5fe91
+      internalID: -1555345771
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Sword_BasicAttack_Right_5
+      name: Player_Sword_Attack_Right_5
       rect:
         serializedVersion: 2
         x: 320
@@ -242,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b56e36fb6f6c70048b09549160d51d71
-      internalID: 2135475343
+      spriteID: 20de0e7c199532346a228b098282bee1
+      internalID: 745138621
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Sword_BasicAttack_Right_6
+      name: Player_Sword_Attack_Right_6
       rect:
         serializedVersion: 2
         x: 384
@@ -263,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 527ca7eabc8085745a41c13e685cce70
-      internalID: 1408254045
+      spriteID: 5f974d9b82abfe24da18434044439f63
+      internalID: 1795043660
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Sword_BasicAttack_Right_7
+      name: Player_Sword_Attack_Right_7
       rect:
         serializedVersion: 2
         x: 448
@@ -284,8 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e35b7cbca8b2fca47b8b8579dd5a78ee
-      internalID: -240049966
+      spriteID: 68147337e17ce284786d3aaf745b6a6a
+      internalID: 197155820
       vertices: []
       indices: 
       edges: []
@@ -301,14 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player_Sword_BasicAttack_Right_0: -703703491
-      Player_Sword_BasicAttack_Right_1: 701565818
-      Player_Sword_BasicAttack_Right_2: 610884764
-      Player_Sword_BasicAttack_Right_3: 511963470
-      Player_Sword_BasicAttack_Right_4: 2104368441
-      Player_Sword_BasicAttack_Right_5: 2135475343
-      Player_Sword_BasicAttack_Right_6: 1408254045
-      Player_Sword_BasicAttack_Right_7: -240049966
+      Player_Sword_Attack_Right_0: -202179018
+      Player_Sword_Attack_Right_1: -2040070546
+      Player_Sword_Attack_Right_2: 1944294473
+      Player_Sword_Attack_Right_3: -1275866170
+      Player_Sword_Attack_Right_4: -1555345771
+      Player_Sword_Attack_Right_5: 745138621
+      Player_Sword_Attack_Right_6: 1795043660
+      Player_Sword_Attack_Right_7: 197155820
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
