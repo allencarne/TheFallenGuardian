@@ -13556,7 +13556,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8820489551899812532}
         m_TargetAssemblyTypeName: CameraFollow, Assembly-CSharp
-        m_MethodName: HandlePlayerJoin
+        m_MethodName: OnPlayerJoin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
     public Transform playerTransform;
     public float smoothSpeed;
 
-    public void HandlePlayerJoin()
+    public void OnPlayerJoin()
     {
         if (playerTransform == null)
         {
