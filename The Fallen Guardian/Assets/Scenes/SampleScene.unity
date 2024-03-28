@@ -122666,7 +122666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerReference: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
   playerTransform: {fileID: 0}
-  smoothSpeed: 0.02
+  smoothSpeed: 0.95
 --- !u!114 &8876421907712128789
 MonoBehaviour:
   m_ObjectHideFlags: 0
