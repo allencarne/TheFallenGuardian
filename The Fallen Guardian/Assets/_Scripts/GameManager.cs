@@ -11,30 +11,25 @@ public class GameManager : MonoBehaviour
 
     [Header("Events")]
     public UnityEvent OnPlayerJoin;
-    public UnityEvent OnPlayer2Join;
+    //public UnityEvent OnPlayer2Join;
 
     [Header("Components")]
-    [SerializeField] Camera player2CameraPrefab;
-    [SerializeField] SelectGameMode selectGameMode;
+    [SerializeField] GameObject playerSelectPanel;
+    //[SerializeField] Camera player2CameraPrefab;
+    //[SerializeField] SelectGameMode selectGameMode;
     [SerializeField] PlayerInputManager playerInputManager;
 
-    public void SinglePlayer()
+    private void Start()
     {
-        playerInputManager.EnableJoining();
-    }
+        playerSelectPanel.SetActive(true);
 
-    public void LocalMultiplayer()
-    {
         playerInputManager.EnableJoining();
-    }
-
-    public void OnlineMultiplayer()
-    {
-        Debug.Log("OnlineMultiplayer selected");
     }
 
     void OnPlayerJoined(PlayerInput playerInput)
     {
+        playerSelectPanel.SetActive(false);
+
         Player player = playerInput.gameObject.GetComponent<Player>();
         HealthBar healthBar = player.GetComponent<HealthBar>();
 
@@ -54,29 +49,6 @@ public class GameManager : MonoBehaviour
 
             // Assign ScriptableObject to Instantiated Player
             player.playerStats = newPlayerStats;
-
-            // Assign stats to healthbar
-            healthBar.stats = player.playerStats;
-        }
-        else
-        {
-            // Event for Handling the SelectGameMode UI
-            OnPlayer2Join.Invoke();
-
-            // Assign Player Index for Camrea Tracking
-            player.PlayerIndex = 2;
-
-            // Create a New ScriptableObject PlayerStats - Assigns Default Values in Method
-            PlayerStats newPlayer2Stats = CreateNewPlayerStats();
-
-            // Add New ScriptableObject to List
-            playerStatsList.Add(newPlayer2Stats);
-
-            // Assign ScriptableObject to Instantiated Player
-            player.playerStats = newPlayer2Stats;
-
-            // Spawn Second Camera
-            Instantiate(player2CameraPrefab);
 
             // Assign stats to healthbar
             healthBar.stats = player.playerStats;
