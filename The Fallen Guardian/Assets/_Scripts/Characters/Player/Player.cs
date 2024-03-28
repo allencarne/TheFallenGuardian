@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour, IDamageable, IKnockbackable
 {
     [SerializeField] SpriteRenderer spriteRenderer;
-    public int PlayerIndex;
     public PlayerStats playerStats;
     public PlayerAbilities playerAbilities;
 

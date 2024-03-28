@@ -6,17 +6,10 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
+    public UnityEvent OnPlayerJoin;
     [SerializeField] GameObjectRuntimeSet playerReference;
     [SerializeField] List<PlayerStats> playerStatsList;
-
-    [Header("Events")]
-    public UnityEvent OnPlayerJoin;
-    //public UnityEvent OnPlayer2Join;
-
-    [Header("Components")]
     [SerializeField] GameObject playerSelectPanel;
-    //[SerializeField] Camera player2CameraPrefab;
-    //[SerializeField] SelectGameMode selectGameMode;
     [SerializeField] PlayerInputManager playerInputManager;
 
     private void Start()
@@ -37,9 +30,6 @@ public class GameManager : MonoBehaviour
         {
             // Event for Handling the SelectGameMode UI
             OnPlayerJoin.Invoke();
-
-            // Assign Player Index for Camrea Tracking
-            player.PlayerIndex = 1;
 
             // Create a New ScriptableObject PlayerStats - Assigns Default Values in Method
             PlayerStats newPlayerStats = CreateNewPlayerStats();

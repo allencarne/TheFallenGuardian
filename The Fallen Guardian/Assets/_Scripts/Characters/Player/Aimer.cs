@@ -10,14 +10,10 @@ public class Aimer : MonoBehaviour
 
     private float lastAngle;
 
-
-    Player player;
-
     private void Awake()
     {
         inputHandler = GetComponentInParent<PlayerInputHandler>();
         playerInput = GetComponentInParent<PlayerInput>();
-        player = GetComponentInParent<Player>();
     }
 
     private void Update()
@@ -39,7 +35,7 @@ public class Aimer : MonoBehaviour
     void RotateOnKeyboard()
     {
         // Use the correct camera reference based on the player's index
-        Camera currentCamera = player.PlayerIndex == 1 ? inputHandler.player1Camera : inputHandler.player2Camera;
+        Camera currentCamera = Camera.main;
 
         if (currentCamera != null)
         {

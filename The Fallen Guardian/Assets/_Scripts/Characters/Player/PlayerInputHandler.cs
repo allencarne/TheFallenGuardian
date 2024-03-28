@@ -19,11 +19,6 @@ public class PlayerInputHandler : MonoBehaviour
     public bool PickupInput { get; private set; }
 
     LayerMask ignoredLayers;
-    public GameObjectRuntimeSet cameraReference;
-    public Camera player2Camera;
-
-    public Camera player1Camera;
-    Player player;
 
     public UnityEvent OnPauseUI;
     public UnityEvent OnInventoryUI;
@@ -33,19 +28,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Awake()
     {
-        player1Camera = Camera.main;
-        player = GetComponent<Player>();
-
         // Initialize ignoredLayers
         ignoredLayers = 1 << LayerMask.NameToLayer("IgnoredUI");
-    }
-
-    private void Start()
-    {
-        if (cameraReference.items.Count > 0)
-        {
-            player2Camera = cameraReference.GetItemIndex(0).GetComponent<Camera>();
-        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -145,14 +129,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnMousePos(InputAction.CallbackContext context)
     {
-        if (player.PlayerIndex == 1)
-        {
-            MousePosition = player1Camera.ScreenToWorldPoint(context.ReadValue<Vector2>());
-        }
-        else
-        {
-            MousePosition = player2Camera.ScreenToWorldPoint(context.ReadValue<Vector2>());
-        }
+        MousePosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
     }
 
     public void OnPickup(InputAction.CallbackContext context)
