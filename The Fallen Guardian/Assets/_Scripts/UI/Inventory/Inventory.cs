@@ -13,26 +13,31 @@ public class Inventory : MonoBehaviour
 
     public bool Add(Item item)
     {
+        // Check if there's enough room in the inventory for the new item
         if (items.Count >= inventorySlots)
         {
             Debug.Log("Not enough room.");
-            return false;
+            return false; // Return false if there's no room
         }
 
+        // Add the item to the inventory list
         items.Add(item);
 
+        // If there's a callback registered for when items change, invoke it
         if (onItemChangedCallback != null)
         {
             onItemChangedCallback.Invoke();
         }
 
-        return true;
+        return true; // Return true to indicate the item was successfully added
     }
 
     public void Remove(Item item)
     {
+        // Remove the specified item from the inventory list
         items.Remove(item);
 
+        // If there's a callback registered for when items change, invoke it
         if (onItemChangedCallback != null)
         {
             onItemChangedCallback.Invoke();
