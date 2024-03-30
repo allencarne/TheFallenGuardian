@@ -15,3 +15,5 @@ MonoBehaviour:
   playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   name: Coin
   icon: {fileID: 21300000, guid: 6df6c382d89735d488f07a9a6e21373f, type: 3}
+  quantity: 1
+  isStackable: 1

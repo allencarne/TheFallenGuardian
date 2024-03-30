@@ -9,6 +9,7 @@ public class Item : ScriptableObject
     new public string name;
     public Sprite icon;
     public int quantity;
+    public bool isStackable;
 
     public virtual void Use()
     {

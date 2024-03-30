@@ -29,19 +29,23 @@ public class Inventory : MonoBehaviour
         int emptySlotIndex = Array.FindIndex(items, x => x == null);
         if (emptySlotIndex != -1)
         {
-            // Check if the item already exists in the inventory
-            int existingItemIndex = Array.FindIndex(items, x => x == item);
-            if (existingItemIndex != -1)
+            // Check if the item is stackable
+            if (item.isStackable)
             {
-                // If the item exists, increase its quantity
-                items[existingItemIndex].quantity++;
+                // Check if the item already exists in the inventory
+                int existingItemIndex = Array.FindIndex(items, x => x == item);
+                if (existingItemIndex != -1)
+                {
+                    // If the item exists, increase its quantity
+                    items[existingItemIndex].quantity++;
+                    onItemChangedCallback?.Invoke();
+                    return true; // Item added successfully
+                }
             }
-            else
-            {
-                // If the item is new, add it to the empty slot with a quantity of 1
-                item.quantity = 1;
-                items[emptySlotIndex] = item;
-            }
+
+            // If the item is not stackable or doesn't exist in the inventory, add it to an empty slot
+            item.quantity = 1;
+            items[emptySlotIndex] = item;
         }
         else
         {
@@ -51,7 +55,6 @@ public class Inventory : MonoBehaviour
 
         // Invoke the callback to notify listeners that an item has been added
         onItemChangedCallback?.Invoke();
-
         return true; // Return true to indicate the item was successfully added
     }
 
