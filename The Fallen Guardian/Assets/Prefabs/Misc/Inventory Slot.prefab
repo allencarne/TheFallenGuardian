@@ -348,7 +348,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   icon: {fileID: 3952977548616727540}
-  amount: {fileID: 2445220959061466426}
+  amountText: {fileID: 2445220959061466426}
+  slotIndex: 0
 --- !u!114 &2804034712354131691
 MonoBehaviour:
   m_ObjectHideFlags: 0

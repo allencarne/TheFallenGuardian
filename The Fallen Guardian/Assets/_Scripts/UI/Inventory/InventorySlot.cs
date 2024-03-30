@@ -11,7 +11,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
     public Image icon;
     Item item;
-    public TextMeshProUGUI amount;
+    public TextMeshProUGUI amountText;
     public int slotIndex; // Index of this slot in the inventory array
 
     private void Start()
@@ -25,6 +25,16 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         inventory.items[slotIndex] = newItem; // Update the inventory array
         icon.sprite = newItem.icon;
         icon.enabled = true;
+
+        // Update the stack amount text if available
+        if (amountText != null && newItem.quantity > 1)
+        {
+            amountText.text = newItem.quantity.ToString();
+        }
+        else
+        {
+            amountText.text = ""; // Clear the text if quantity is 1 or less
+        }
     }
 
     public void ClearSlot()

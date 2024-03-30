@@ -27,7 +27,27 @@ public class Inventory : MonoBehaviour
 
         // Find the first empty slot in the inventory
         int emptySlotIndex = Array.FindIndex(items, x => x == null);
-        items[emptySlotIndex] = item;
+        if (emptySlotIndex != -1)
+        {
+            // Check if the item already exists in the inventory
+            int existingItemIndex = Array.FindIndex(items, x => x == item);
+            if (existingItemIndex != -1)
+            {
+                // If the item exists, increase its quantity
+                items[existingItemIndex].quantity++;
+            }
+            else
+            {
+                // If the item is new, add it to the empty slot with a quantity of 1
+                item.quantity = 1;
+                items[emptySlotIndex] = item;
+            }
+        }
+        else
+        {
+            Debug.Log("Inventory is full.");
+            return false; // Return false if no empty slot is found
+        }
 
         // Invoke the callback to notify listeners that an item has been added
         onItemChangedCallback?.Invoke();

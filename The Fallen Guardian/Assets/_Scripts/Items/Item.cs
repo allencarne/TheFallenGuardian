@@ -8,6 +8,7 @@ public class Item : ScriptableObject
 
     new public string name;
     public Sprite icon;
+    public int quantity;
 
     public virtual void Use()
     {
