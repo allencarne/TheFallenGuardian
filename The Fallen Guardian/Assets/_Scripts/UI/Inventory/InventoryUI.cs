@@ -21,15 +21,28 @@ public class InventoryUI : MonoBehaviour
     void UpdateUI()
     {
         // Loop through all inventory slots
-        for (var i = 0; i < iSlots.Length; i++)
+        for (int i = 0; i < iSlots.Length; i++)
         {
             // If there are items in the inventory to display
             if (i < inventory.items.Count)
             {
                 // Add the item to the corresponding slot
                 iSlots[i].AddItem(inventory.items.ElementAt(i).Key);
-                // Display the quantity of the item in the slot
-                iSlots[i].amount.text = inventory.items.ElementAt(i).Value.ToString();
+
+                // Get the quantity of the item in the slot
+                int stackSize = inventory.items.ElementAt(i).Value;
+
+                // Check if stack size is greater than 1
+                if (stackSize > 1)
+                {
+                    // Display the quantity of the item in the slot
+                    iSlots[i].amount.text = stackSize.ToString();
+                }
+                else
+                {
+                    // Hide the quantity display
+                    iSlots[i].amount.text = "";
+                }
             }
             // If there are no items to display in the slot
             else
