@@ -25,5 +25,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
+        transform.localPosition = Vector3.zero; // Reset position in case drop was unsuccessful
     }
 }
