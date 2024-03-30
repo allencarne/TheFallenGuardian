@@ -489,6 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySlots: 30
+  items: []
 --- !u!114 &39152905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3009,6 +3010,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1343861815304848246}
     m_Modifications:
+    - target: {fileID: 702128478929560390, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
+      propertyPath: slotIndex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 881402167070891595, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4594,6 +4599,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1343861815304848246}
     m_Modifications:
+    - target: {fileID: 702128478929560390, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
+      propertyPath: slotIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 881402167070891595, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6237,6 +6246,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1343861815304848246}
     m_Modifications:
+    - target: {fileID: 702128478929560390, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
+      propertyPath: slotIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 881402167070891595, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8052,6 +8065,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1343861815304848246}
     m_Modifications:
+    - target: {fileID: 702128478929560390, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
+      propertyPath: slotIndex
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 881402167070891595, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -118552,6 +118569,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1343861815304848246}
     m_Modifications:
+    - target: {fileID: 702128478929560390, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
+      propertyPath: slotIndex
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 881402167070891595, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

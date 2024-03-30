@@ -11,11 +11,17 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-        // Subscribe to the inventory's item changed event
-        inventory.onItemChangedCallback += UpdateUI;
-
         // Get all inventory slots from the itemsParent
         iSlots = itemsParent.GetComponentsInChildren<InventorySlot>();
+
+        // Assign slot indices to each slot
+        for (int i = 0; i < iSlots.Length; i++)
+        {
+            iSlots[i].slotIndex = i; // Assign slot index based on position in array
+        }
+
+        // Subscribe to the inventory's item changed event
+        inventory.onItemChangedCallback += UpdateUI;
     }
 
     void UpdateUI()
@@ -23,34 +29,16 @@ public class InventoryUI : MonoBehaviour
         // Loop through all inventory slots
         for (int i = 0; i < iSlots.Length; i++)
         {
-            // If there are items in the inventory to display
-            if (i < inventory.items.Count)
+            // If there's an item in the corresponding slot
+            if (i < inventory.items.Length && inventory.items[i] != null)
             {
-                // Add the item to the corresponding slot
-                iSlots[i].AddItem(inventory.items.ElementAt(i).Key);
-
-                // Get the quantity of the item in the slot
-                int stackSize = inventory.items.ElementAt(i).Value;
-
-                // Check if stack size is greater than 1
-                if (stackSize > 1)
-                {
-                    // Display the quantity of the item in the slot
-                    iSlots[i].amount.text = stackSize.ToString();
-                }
-                else
-                {
-                    // Hide the quantity display
-                    iSlots[i].amount.text = "";
-                }
+                // Add the item to the slot
+                iSlots[i].AddItem(inventory.items[i]);
             }
-            // If there are no items to display in the slot
             else
             {
-                // Clear the slot
+                // Clear the slot if it's empty
                 iSlots[i].ClearSlot();
-                // Clear the quantity display
-                iSlots[i].amount.text = "";
             }
         }
     }
