@@ -1,6 +1,7 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventorySlot : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class InventorySlot : MonoBehaviour
 
     public Image icon;
     Item item;
+    public TextMeshProUGUI amount;
 
     private void Start()
     {

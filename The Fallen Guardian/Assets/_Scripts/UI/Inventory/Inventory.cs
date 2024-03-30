@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
     public OnItemChanged onItemChangedCallback;
 
     public int inventorySlots;
-    public List<Item> items = new List<Item>();
+    public Dictionary<Item, int> items = new Dictionary<Item, int>();
 
     public bool Add(Item item)
     {
@@ -20,27 +20,23 @@ public class Inventory : MonoBehaviour
             return false; // Return false if there's no room
         }
 
-        // Add the item to the inventory list
-        items.Add(item);
-
-        // If there's a callback registered for when items change, invoke it
+        if (items.ContainsKey(item))
+            items[item]++;
+        else
+            items.Add(item, 1);
         if (onItemChangedCallback != null)
-        {
             onItemChangedCallback.Invoke();
-        }
 
         return true; // Return true to indicate the item was successfully added
     }
 
     public void Remove(Item item)
     {
-        // Remove the specified item from the inventory list
-        items.Remove(item);
-
-        // If there's a callback registered for when items change, invoke it
+        if (items[item] > 1)
+            items[item]--;
+        else
+            items.Remove(item);
         if (onItemChangedCallback != null)
-        {
             onItemChangedCallback.Invoke();
-        }
     }
 }
