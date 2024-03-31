@@ -12257,14 +12257,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6547088362551683294, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.00009918213
-      objectReference: {fileID: 0}
-    - target: {fileID: 6547088362551683294, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1.1085014
-      objectReference: {fileID: 0}
     - target: {fileID: 6947844077763212886, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
       propertyPath: m_Name
       value: Inventory Slot

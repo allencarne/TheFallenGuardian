@@ -10,7 +10,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     Inventory inventory;
 
     public Image icon;
-    Item item;
     public TextMeshProUGUI amountText;
     public int slotIndex; // Index of this slot in the inventory array
     InventoryItem invenItem;
@@ -24,7 +23,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
     public void AddItem(Item newItem)
     {
-        item = newItem; // Assign the new item to the slot
         invenItem.item = newItem;
 
         inventory.items[slotIndex] = newItem; // Update the inventory array
@@ -45,7 +43,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
     public void ClearSlot()
     {
-        item = null; // Clear the item in the slot
         invenItem.item = null;
 
         inventory.items[slotIndex] = null; // Update the inventory array
@@ -62,15 +59,15 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
     public void UseItem()
     {
-        if (item != null)
+        if (invenItem.item != null)
         {
-            item.Use();
+            invenItem.item.Use();
         }
     }
 
     public void RemoveItem()
     {
-        inventory.Remove(item);
+        inventory.Remove(invenItem.item);
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -81,13 +78,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         {
             // Get the InventorySlot component of the original slot
             InventorySlot originalSlot = inventoryItem.parentAfterDrag.GetComponent<InventorySlot>();
-            Debug.Log("Item dropped: " + inventoryItem.name);
 
             // If the slot is empty, move the item to this slot
-            if (item == null)
+            if (invenItem.item == null)
             {
-                Debug.Log("Item is Null");
-
                 // Set the parent of the dragged item to this slot
                 inventoryItem.transform.SetParent(transform);
                 // Reset the local position of the dragged item
@@ -105,15 +99,13 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             // If the slot already contains an item, swap them
             else
             {
-                Debug.Log("Item is Not Null");
-
                 // Get the InventorySlot component of the slot where the item is being dropped
                 InventorySlot otherSlot = inventoryItem.parentAfterDrag.GetComponent<InventorySlot>();
                 // Get the item currently in the other slot
-                Item otherItem = otherSlot.item;
+                Item otherItem = otherSlot.invenItem.item;
 
                 // Add the current item of this slot to the other slot
-                otherSlot.AddItem(item);
+                otherSlot.AddItem(invenItem.item);
                 // Add the other item to this slot
                 AddItem(otherItem);
 
