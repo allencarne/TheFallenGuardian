@@ -13,15 +13,20 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     Item item;
     public TextMeshProUGUI amountText;
     public int slotIndex; // Index of this slot in the inventory array
+    InventoryItem invenItem;
 
     private void Start()
     {
+        invenItem = GetComponentInChildren<InventoryItem>();
+
         inventory = playerInventoryReference.GetItemIndex(0).GetComponent<Inventory>();
     }
 
     public void AddItem(Item newItem)
     {
         item = newItem; // Assign the new item to the slot
+        invenItem.item = newItem;
+
         inventory.items[slotIndex] = newItem; // Update the inventory array
         icon.sprite = newItem.icon;
         icon.enabled = true;
@@ -40,9 +45,17 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public void ClearSlot()
     {
         item = null; // Clear the item in the slot
+        invenItem.item = null;
+
         inventory.items[slotIndex] = null; // Update the inventory array
         icon.sprite = null;
-        icon.enabled = false;
+        icon.enabled = true; // Ensure the Image component is always enabled
+
+        // Clear the stack amount text if available
+        if (amountText != null)
+        {
+            amountText.text = "";
+        }
     }
 
     public void UseItem()
@@ -66,22 +79,32 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         {
             // Get the InventorySlot component of the original slot
             InventorySlot originalSlot = inventoryItem.parentAfterDrag.GetComponent<InventorySlot>();
+            Debug.Log("Item dropped: " + inventoryItem.name);
 
             // If the slot is empty, move the item to this slot
             if (item == null)
             {
-                // Clear the original slot (if any item exists in it)
-                originalSlot.ClearSlot();
+                Debug.Log("Item is Null");
+
                 // Set the parent of the dragged item to this slot
                 inventoryItem.transform.SetParent(transform);
                 // Reset the local position of the dragged item
                 inventoryItem.transform.localPosition = Vector3.zero;
-                // Add the dragged item to this slot's inventory
-                AddItem(inventoryItem.GetComponent<Item>());
+
+                // Add the dragged item to this slot's inventory only if it's not null
+                if (inventoryItem.item != null)
+                {
+                    AddItem(inventoryItem.item);
+                }
+
+                // Clear the original slot (if any item exists in it)
+                originalSlot.ClearSlot();
             }
             // If the slot already contains an item, swap them
             else
             {
+                Debug.Log("Item is Not Null");
+
                 // Get the InventorySlot component of the slot where the item is being dropped
                 InventorySlot otherSlot = inventoryItem.parentAfterDrag.GetComponent<InventorySlot>();
                 // Get the item currently in the other slot

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Image image;
+    public Item item;
     [HideInInspector] public Transform parentAfterDrag;
 
     public void OnBeginDrag(PointerEventData eventData)
