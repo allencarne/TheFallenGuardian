@@ -6922,7 +6922,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000087adadd561db16a86b9534d9
+  m_ApplyToSortingLayers: 0000000087adadd561db16a86b9534d9217abc5e
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -121242,7 +121242,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: -1474897055
+  m_SortingLayerID: 1589410337
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &2109475645
@@ -124144,7 +124144,7 @@ Canvas:
   m_GameObject: {fileID: 2751014520056669918}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 6325823990736995345}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -124155,7 +124155,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: -1474897055
+  m_SortingLayerID: 1589410337
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &7289170284616358263

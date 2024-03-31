@@ -28,7 +28,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition;
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(
+            (RectTransform)transform.parent, eventData.position, eventData.pressEventCamera, out Vector3 worldPoint);
+
+        transform.position = worldPoint;
     }
 
     public void OnEndDrag(PointerEventData eventData)
