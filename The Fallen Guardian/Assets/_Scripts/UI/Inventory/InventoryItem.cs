@@ -10,11 +10,20 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public Item item;
     [HideInInspector] public Transform parentAfterDrag;
 
+    public Image dropArea;
+
+    public void Start()
+    {
+        dropArea = GameObject.FindGameObjectWithTag("Drop Area").GetComponent<Image>();
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         image.raycastTarget = false;
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
+
+        dropArea.color = new Color(dropArea.color.r, dropArea.color.g, dropArea.color.b, .5f);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -48,5 +57,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 originalSlot.RemoveItem();
             }
         }
+
+        dropArea.color = new Color(dropArea.color.r, dropArea.color.g, dropArea.color.b, .0f);
     }
 }
