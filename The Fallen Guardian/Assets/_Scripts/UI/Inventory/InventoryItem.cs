@@ -27,5 +27,19 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
         transform.localPosition = Vector3.zero; // Reset position in case drop was unsuccessful
+
+        // Check if the drop target has the "Ground" tag
+        if (eventData.pointerEnter != null && eventData.pointerEnter.CompareTag("Drop Area"))
+        {
+            Debug.Log("Drop item");
+
+            Camera mainCamera = Camera.main;
+
+            // Calculate the center of the camera's view in world space
+            Vector3 cameraCenter = mainCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, mainCamera.nearClipPlane));
+
+            // Instantiate the item prefab at the calculated position
+            Instantiate(item.prefab, cameraCenter, Quaternion.identity);
+        }
     }
 }
