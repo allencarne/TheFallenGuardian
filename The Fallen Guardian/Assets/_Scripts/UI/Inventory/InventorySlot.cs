@@ -30,6 +30,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         inventory.items[slotIndex] = newItem; // Update the inventory array
         icon.sprite = newItem.icon;
         icon.enabled = true;
+        icon.color = new Color(icon.color.r, icon.color.g, icon.color.b, 1f); // Make the icon fully opaque
 
         // Update the stack amount text if available
         if (amountText != null && newItem.quantity > 1)
@@ -50,6 +51,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         inventory.items[slotIndex] = null; // Update the inventory array
         icon.sprite = null;
         icon.enabled = true; // Ensure the Image component is always enabled
+        icon.color = new Color(icon.color.r, icon.color.g, icon.color.b, 0f);
 
         // Clear the stack amount text if available
         if (amountText != null)
