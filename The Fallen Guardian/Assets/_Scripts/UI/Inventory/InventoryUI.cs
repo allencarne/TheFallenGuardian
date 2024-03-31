@@ -18,6 +18,7 @@ public class InventoryUI : MonoBehaviour
         for (int i = 0; i < iSlots.Length; i++)
         {
             iSlots[i].slotIndex = i; // Assign slot index based on position in array
+            iSlots[i].inventory = inventory; // Assign inventory reference to each slot
         }
 
         // Subscribe to the inventory's item changed event

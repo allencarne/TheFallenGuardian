@@ -6,20 +6,12 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
-    [SerializeField] GameObjectRuntimeSet playerInventoryReference;
-    Inventory inventory;
+    public Inventory inventory;
+    public InventoryItem invenItem;
 
     public Image icon;
     public TextMeshProUGUI amountText;
     public int slotIndex; // Index of this slot in the inventory array
-    InventoryItem invenItem;
-
-    private void Start()
-    {
-        invenItem = GetComponentInChildren<InventoryItem>();
-
-        inventory = playerInventoryReference.GetItemIndex(0).GetComponent<Inventory>();
-    }
 
     public void AddItem(Item newItem)
     {
