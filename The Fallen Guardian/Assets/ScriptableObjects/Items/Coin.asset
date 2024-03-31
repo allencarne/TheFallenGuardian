@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Coin
   m_EditorClassIdentifier: 
   playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
+  prefab: {fileID: 1362635029312417765, guid: d6dd294bca4c8794b8a61fe2b28a121a, type: 3}
   name: Coin
   icon: {fileID: 21300000, guid: 6df6c382d89735d488f07a9a6e21373f, type: 3}
   quantity: 1

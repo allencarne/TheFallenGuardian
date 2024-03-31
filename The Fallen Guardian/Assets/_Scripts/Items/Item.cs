@@ -5,6 +5,7 @@ public class Item : ScriptableObject
 {
     public GameObjectRuntimeSet playerInventoryReference;
     Inventory inventory;
+    public GameObject prefab;
 
     new public string name;
     public Sprite icon;

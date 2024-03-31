@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Yellow Wooden Stick
   m_EditorClassIdentifier: 
   playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
+  prefab: {fileID: 8045606708459288870, guid: adebd166f737de54e83c319c347a96e9, type: 3}
   name: Yellow Wooden Stick
   icon: {fileID: 21300000, guid: 9f82c0928afb7444f8317d4e2d055db4, type: 3}
+  quantity: 0
+  isStackable: 0
   equipmentType: 5
   healthModifier: 0
   damageModifier: 0
