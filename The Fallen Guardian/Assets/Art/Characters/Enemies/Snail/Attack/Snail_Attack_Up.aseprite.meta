@@ -1,0 +1,475 @@
+fileFormatVersion: 2
+guid: 3762464ac92102c458045b4f690f5ed5
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Snail_Attack_Up_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: -1.3529412}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 50
+      width: 8
+      height: 17
+    spriteID: f73521a4245d5d84a8468e8499ca1ec4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 50}
+  - name: Snail_Attack_Up_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: -1.3529412}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 75
+      width: 8
+      height: 17
+    spriteID: d65c371b422369545a066ab4b0cc9747
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 75}
+  - name: Snail_Attack_Up_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: -1.3529412}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 100
+      width: 8
+      height: 17
+    spriteID: 86e47a12b4bfcac4f9b7e5a47af05cda
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 100}
+  - name: Snail_Attack_Up_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 20
+      y: 102
+      width: 8
+      height: 18
+    spriteID: 266d646be70dfae449db2235796b3da4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 20, y: 102}
+  - name: Snail_Attack_Up_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: -1.1052631}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 102
+      width: 8
+      height: 19
+    spriteID: c0eac82b60a04214a8e0d1e86b53db20
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 102}
+  - name: Snail_Attack_Up_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: -1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 43
+      y: 82
+      width: 8
+      height: 20
+    spriteID: 464c851993ba11a43b3000c53379c725
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 43, y: 82}
+  - name: Snail_Attack_Up_Frame_6
+    originalName: 
+    pivot: {x: 0.516129, y: -0.65789473}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 43
+      y: 4
+      width: 31
+      height: 38
+    spriteID: 9b214166693fa38429a1017d755e8bf7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 43, y: 4}
+  - name: Snail_Attack_Up_Frame_7
+    originalName: 
+    pivot: {x: 0.516129, y: -0.6}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 54
+      width: 31
+      height: 40
+    spriteID: 9f8034d69d484b944b38f5592f2dcfc8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 54}
+  - name: Snail_Attack_Up_Frame_8
+    originalName: 
+    pivot: {x: 0.516129, y: -0.54761904}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 31
+      height: 42
+    spriteID: e403341a4ce6c5f4d99e70f5cce6bd4f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Snail_Attack_Up_Frame_9
+    originalName: 
+    pivot: {x: 0.5, y: -0.9583334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 43
+      y: 50
+      width: 8
+      height: 24
+    spriteID: 90988d5335ce2ba498d788c198e1de48
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 43, y: 50}
+  - name: Snail_Attack_Up_Frame_10
+    originalName: 
+    pivot: {x: 0.5, y: -1.4705882}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 82
+      y: 4
+      width: 8
+      height: 17
+    spriteID: 1a8eb84e3f61d49489bc641fddfd238e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 82, y: 4}
+  - name: Snail_Attack_Up_Frame_11
+    originalName: 
+    pivot: {x: 0.5, y: -1.6666667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 82
+      y: 29
+      width: 8
+      height: 15
+    spriteID: ceeacd5f4cc89034abc0fb82697be5cc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 82, y: 29}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 981236368
+    name: Snail_Attack_Up
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Snail_Attack_Up_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 28
+        y: 23
+        width: 8
+        height: 17
+      spriteId: f73521a4245d5d84a8468e8499ca1ec4
+    - name: Snail_Attack_Up_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 28
+        y: 23
+        width: 8
+        height: 17
+      spriteId: d65c371b422369545a066ab4b0cc9747
+    - name: Snail_Attack_Up_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 28
+        y: 23
+        width: 8
+        height: 17
+      spriteId: 86e47a12b4bfcac4f9b7e5a47af05cda
+    - name: Snail_Attack_Up_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 28
+        y: 22
+        width: 8
+        height: 18
+      spriteId: 266d646be70dfae449db2235796b3da4
+    - name: Snail_Attack_Up_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 28
+        y: 21
+        width: 8
+        height: 19
+      spriteId: c0eac82b60a04214a8e0d1e86b53db20
+    - name: Snail_Attack_Up_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 28
+        y: 20
+        width: 8
+        height: 20
+      spriteId: 464c851993ba11a43b3000c53379c725
+    - name: Snail_Attack_Up_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 16
+        y: 25
+        width: 31
+        height: 38
+      spriteId: 9b214166693fa38429a1017d755e8bf7
+    - name: Snail_Attack_Up_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 16
+        y: 24
+        width: 31
+        height: 40
+      spriteId: 9f8034d69d484b944b38f5592f2dcfc8
+    - name: Snail_Attack_Up_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 16
+        y: 23
+        width: 31
+        height: 42
+      spriteId: e403341a4ce6c5f4d99e70f5cce6bd4f
+    - name: Snail_Attack_Up_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 28
+        y: 23
+        width: 8
+        height: 24
+      spriteId: 90988d5335ce2ba498d788c198e1de48
+    - name: Snail_Attack_Up_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 28
+        y: 25
+        width: 8
+        height: 17
+      spriteId: 1a8eb84e3f61d49489bc641fddfd238e
+    - name: Snail_Attack_Up_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 28
+        y: 25
+        width: 8
+        height: 15
+      spriteId: ceeacd5f4cc89034abc0fb82697be5cc
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 64, y: 64}

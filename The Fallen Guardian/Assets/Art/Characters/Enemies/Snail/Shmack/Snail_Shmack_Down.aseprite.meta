@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: f4c0cba18909570439bd63a114a8393d
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Snail_Shmack_Down_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: -1.0952381}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 64
+      width: 8
+      height: 21
+    spriteID: c9f2a4b27783fe541b94d58f85127dce
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 64}
+  - name: Snail_Shmack_Down_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: -1.0454546}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 35
+      width: 8
+      height: 22
+    spriteID: 83be20342ba577a4780b0cee1eb1d6a3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 24, y: 35}
+  - name: Snail_Shmack_Down_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: -1.0454546}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 65
+      width: 8
+      height: 22
+    spriteID: e53cb5ea2f5d7ca4e8a92177117b1fb4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 24, y: 65}
+  - name: Snail_Shmack_Down_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: -1.0454546}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 95
+      width: 8
+      height: 22
+    spriteID: 035aeef1e0371b347aa0f270d5487e67
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 24, y: 95}
+  - name: Snail_Shmack_Down_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: -1.0454546}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 4
+      width: 8
+      height: 22
+    spriteID: 56452a8310fcd9447b00e2b50cedf72a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 4}
+  - name: Snail_Shmack_Down_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: -1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 4
+      width: 8
+      height: 23
+    spriteID: 8eef48517bbfd2141977ab028dcff3d6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 24, y: 4}
+  - name: Snail_Shmack_Down_Frame_10
+    originalName: 
+    pivot: {x: 0.5, y: -1.4375}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 4
+      width: 8
+      height: 16
+    spriteID: 164b6a5ce8cee1742a2a4f819a04c91a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 56, y: 4}
+  - name: Snail_Shmack_Down_Frame_11
+    originalName: 
+    pivot: {x: 0.5, y: -1.4375}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 28
+      width: 8
+      height: 16
+    spriteID: af290657342fdcb4a8523df59b7573ad
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 56, y: 28}
+  - name: Snail_Shmack_Down_Frame_12
+    originalName: 
+    pivot: {x: 0.5, y: -1.4375}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 52
+      width: 8
+      height: 16
+    spriteID: 79756413a0ad32344ae86081add1b5df
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 56, y: 52}
+  - name: Snail_Shmack_Down_Frame_13
+    originalName: 
+    pivot: {x: 0.5, y: -1.3529412}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 93
+      width: 8
+      height: 17
+    spriteID: bc160d5cec33bdc4a83d4cf0f9cbc458
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 93}
+  - name: Snail_Shmack_Down_Frame_14
+    originalName: 
+    pivot: {x: 0.5, y: -1.2777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 105
+      width: 8
+      height: 18
+    spriteID: a5adbb5e1890edb4a9c4db80a465beb1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 105}
+  - name: Snail_Shmack_Down_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: -0.03846154}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 12
+      height: 26
+    spriteID: 2bd7b17d1c835ca40bb4d36575b53c8c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Snail_Shmack_Down_Frame_7
+    originalName: 
+    pivot: {x: 0.5, y: -0.07692308}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 38
+      width: 12
+      height: 26
+    spriteID: 861c34cb8ad6ef649bc7ce082c5e55ed
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 38}
+  - name: Snail_Shmack_Down_Frame_8
+    originalName: 
+    pivot: {x: 0.54545456, y: -0.12}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 72
+      width: 11
+      height: 25
+    spriteID: 2401fe3de5ca9294581d9dd349c1aaf0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 72}
+  - name: Snail_Shmack_Down_Frame_9
+    originalName: 
+    pivot: {x: 0.5, y: -0.45454547}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 34
+      width: 8
+      height: 22
+    spriteID: f0db17d4a3a89cb41ab2270db11c5792
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 34}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 1726664996
+    name: Snail_Shmack_Down
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Snail_Shmack_Down_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 28
+        y: 23
+        width: 8
+        height: 21
+      spriteId: c9f2a4b27783fe541b94d58f85127dce
+    - name: Snail_Shmack_Down_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 28
+        y: 23
+        width: 8
+        height: 22
+      spriteId: 83be20342ba577a4780b0cee1eb1d6a3
+    - name: Snail_Shmack_Down_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 28
+        y: 23
+        width: 8
+        height: 22
+      spriteId: e53cb5ea2f5d7ca4e8a92177117b1fb4
+    - name: Snail_Shmack_Down_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 28
+        y: 23
+        width: 8
+        height: 22
+      spriteId: 035aeef1e0371b347aa0f270d5487e67
+    - name: Snail_Shmack_Down_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 28
+        y: 23
+        width: 8
+        height: 22
+      spriteId: 56452a8310fcd9447b00e2b50cedf72a
+    - name: Snail_Shmack_Down_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 28
+        y: 23
+        width: 8
+        height: 23
+      spriteId: 8eef48517bbfd2141977ab028dcff3d6
+    - name: Snail_Shmack_Down_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 28
+        y: 23
+        width: 8
+        height: 16
+      spriteId: 164b6a5ce8cee1742a2a4f819a04c91a
+    - name: Snail_Shmack_Down_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 28
+        y: 23
+        width: 8
+        height: 16
+      spriteId: af290657342fdcb4a8523df59b7573ad
+    - name: Snail_Shmack_Down_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 28
+        y: 23
+        width: 8
+        height: 16
+      spriteId: 79756413a0ad32344ae86081add1b5df
+    - name: Snail_Shmack_Down_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 28
+        y: 23
+        width: 8
+        height: 17
+      spriteId: bc160d5cec33bdc4a83d4cf0f9cbc458
+    - name: Snail_Shmack_Down_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 28
+        y: 23
+        width: 8
+        height: 18
+      spriteId: a5adbb5e1890edb4a9c4db80a465beb1
+    - name: Snail_Shmack_Down_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 26
+        y: 1
+        width: 12
+        height: 26
+      spriteId: 2bd7b17d1c835ca40bb4d36575b53c8c
+    - name: Snail_Shmack_Down_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 26
+        y: 2
+        width: 12
+        height: 26
+      spriteId: 861c34cb8ad6ef649bc7ce082c5e55ed
+    - name: Snail_Shmack_Down_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 26
+        y: 3
+        width: 11
+        height: 25
+      spriteId: 2401fe3de5ca9294581d9dd349c1aaf0
+    - name: Snail_Shmack_Down_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 28
+        y: 10
+        width: 8
+        height: 22
+      spriteId: f0db17d4a3a89cb41ab2270db11c5792
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 64, y: 64}
