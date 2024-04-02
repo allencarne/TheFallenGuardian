@@ -110,6 +110,9 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
             // Apply the desired velocity to the rigidbody
             enemyRB.velocity = desiredVelocity;
+
+            enemyAnimator.SetFloat("Horizontal", moveDirection.x);
+            enemyAnimator.SetFloat("Vertical", moveDirection.y);
         }
     }
 
@@ -142,8 +145,6 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
         if (idleTime >= 5)
         {
-            Debug.Log(attemptsCount);
-
             int maxAttempts = 3; // Maximum number of consecutive failed attempts
             int consecutiveFailures = Mathf.Min(attemptsCount, maxAttempts);
 
@@ -169,6 +170,8 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         if (canWander)
         {
             canWander = false;
+
+            enemyAnimator.Play("Wander");
 
             attemptsCount = 0;
 
