@@ -123,13 +123,13 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Snail_Attack_Up_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: -1.3529412}
+    pivot: {x: 0.5, y: -1.2352941}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 59
-      y: 50
+      y: 76
       width: 8
       height: 17
     spriteID: f73521a4245d5d84a8468e8499ca1ec4
@@ -140,16 +140,16 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 59, y: 50}
+    uvTransform: {x: 59, y: 76}
   - name: Snail_Attack_Up_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: -1.3529412}
+    pivot: {x: 0.5, y: -1.2352941}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 59
-      y: 75
+      y: 101
       width: 8
       height: 17
     spriteID: d65c371b422369545a066ab4b0cc9747
@@ -160,16 +160,16 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 59, y: 75}
+    uvTransform: {x: 59, y: 101}
   - name: Snail_Attack_Up_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: -1.3529412}
+    pivot: {x: 0.5, y: -1.2352941}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 59
-      y: 100
+      x: 82
+      y: 4
       width: 8
       height: 17
     spriteID: 86e47a12b4bfcac4f9b7e5a47af05cda
@@ -180,16 +180,16 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 59, y: 100}
+    uvTransform: {x: 82, y: 4}
   - name: Snail_Attack_Up_Frame_3
     originalName: 
-    pivot: {x: 0.5, y: -1.2222222}
+    pivot: {x: 0.5, y: -1.1111112}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 20
-      y: 102
+      x: 59
+      y: 50
       width: 8
       height: 18
     spriteID: 266d646be70dfae449db2235796b3da4
@@ -200,10 +200,10 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 20, y: 102}
+    uvTransform: {x: 59, y: 50}
   - name: Snail_Attack_Up_Frame_4
     originalName: 
-    pivot: {x: 0.5, y: -1.1052631}
+    pivot: {x: 0.5, y: -1}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -223,7 +223,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 102}
   - name: Snail_Attack_Up_Frame_5
     originalName: 
-    pivot: {x: 0.5, y: -1}
+    pivot: {x: 0.5, y: -0.90000004}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -323,15 +323,15 @@ ScriptedImporter:
     uvTransform: {x: 43, y: 50}
   - name: Snail_Attack_Up_Frame_10
     originalName: 
-    pivot: {x: 0.5, y: -1.4705882}
+    pivot: {x: 0.5, y: -1.2105263}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 82
-      y: 4
+      x: 20
+      y: 102
       width: 8
-      height: 17
+      height: 19
     spriteID: 1a8eb84e3f61d49489bc641fddfd238e
     spriteBone: []
     spriteOutline: []
@@ -340,10 +340,10 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 82, y: 4}
+    uvTransform: {x: 20, y: 102}
   - name: Snail_Attack_Up_Frame_11
     originalName: 
-    pivot: {x: 0.5, y: -1.6666667}
+    pivot: {x: 0.5, y: -1.3529412}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -351,7 +351,7 @@ ScriptedImporter:
       x: 82
       y: 29
       width: 8
-      height: 15
+      height: 17
     spriteID: ceeacd5f4cc89034abc0fb82697be5cc
     spriteBone: []
     spriteOutline: []
@@ -374,7 +374,7 @@ ScriptedImporter:
       frameIndex: 0
       cellRect:
         x: 28
-        y: 23
+        y: 21
         width: 8
         height: 17
       spriteId: f73521a4245d5d84a8468e8499ca1ec4
@@ -382,7 +382,7 @@ ScriptedImporter:
       frameIndex: 1
       cellRect:
         x: 28
-        y: 23
+        y: 21
         width: 8
         height: 17
       spriteId: d65c371b422369545a066ab4b0cc9747
@@ -390,7 +390,7 @@ ScriptedImporter:
       frameIndex: 2
       cellRect:
         x: 28
-        y: 23
+        y: 21
         width: 8
         height: 17
       spriteId: 86e47a12b4bfcac4f9b7e5a47af05cda
@@ -398,7 +398,7 @@ ScriptedImporter:
       frameIndex: 3
       cellRect:
         x: 28
-        y: 22
+        y: 20
         width: 8
         height: 18
       spriteId: 266d646be70dfae449db2235796b3da4
@@ -406,7 +406,7 @@ ScriptedImporter:
       frameIndex: 4
       cellRect:
         x: 28
-        y: 21
+        y: 19
         width: 8
         height: 19
       spriteId: c0eac82b60a04214a8e0d1e86b53db20
@@ -414,7 +414,7 @@ ScriptedImporter:
       frameIndex: 5
       cellRect:
         x: 28
-        y: 20
+        y: 18
         width: 8
         height: 20
       spriteId: 464c851993ba11a43b3000c53379c725
@@ -454,17 +454,17 @@ ScriptedImporter:
       frameIndex: 10
       cellRect:
         x: 28
-        y: 25
+        y: 23
         width: 8
-        height: 17
+        height: 19
       spriteId: 1a8eb84e3f61d49489bc641fddfd238e
     - name: Snail_Attack_Up_Frame_11
       frameIndex: 11
       cellRect:
         x: 28
-        y: 25
+        y: 23
         width: 8
-        height: 15
+        height: 17
       spriteId: ceeacd5f4cc89034abc0fb82697be5cc
     linkedCells: []
     parentIndex: -1

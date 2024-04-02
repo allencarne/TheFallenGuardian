@@ -18,12 +18,15 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     protected Animator enemyAnimator;
     protected Rigidbody2D enemyRB;
     protected Vector2 startingPosition;
+    public float wanderRadius = 5f;
+    Vector2 newWanderPosition;
 
     EnemyHealthBar healthBar;
     [SerializeField] GameObject floatingText;
 
     protected float idleTime;
     bool canSpawn = true;
+    bool canWander = true;
 
     protected enum EnemyState 
     { 
@@ -94,6 +97,21 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         }
     }
 
+    protected virtual void FixedUpdate()
+    {
+        if (enemyState == EnemyState.Wander)
+        {
+            // Calculate the direction towards the newWanderPosition
+            Vector2 moveDirection = (newWanderPosition - (Vector2)transform.position).normalized;
+
+            // Calculate the desired velocity to reach the new wander position
+            Vector2 desiredVelocity = moveDirection * moveSpeed;
+
+            // Apply the desired velocity to the rigidbody
+            enemyRB.velocity = desiredVelocity;
+        }
+    }
+
     protected virtual void SpawnState()
     {
         if (canSpawn)
@@ -117,12 +135,69 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
     protected virtual void IdleState()
     {
+        enemyAnimator.Play("Idle");
 
+        idleTime += 1 * Time.deltaTime;
+
+        if (idleTime >= 5)
+        {
+            int choice = Random.Range(0, 2);
+            switch (choice)
+            {
+                case 0:
+                    enemyState = EnemyState.Wander;
+                    idleTime = 0;
+                    break;
+                case 1:
+                    idleTime = 0;
+                    break;
+            }
+        }
     }
 
     protected virtual void WanderState()
     {
+        if (canWander)
+        {
+            canWander = false;
 
+            // Generate a newWanderPosition
+            newWanderPosition = GetRandomPointInCircle(startingPosition, wanderRadius);
+
+            // Check if the enemy has reached the new wander position
+            StartCoroutine(CheckReachedDestination());
+        }
+    }
+
+    IEnumerator CheckReachedDestination()
+    {
+        while (Vector2.Distance(transform.position, newWanderPosition) > 0.1f)
+        {
+            yield return null;
+        }
+
+        // If enemy position is near the newWanderPosition - Set State to Idle
+        enemyState = EnemyState.Idle;
+
+        canWander = true;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        // Draw a wire sphere gizmo to visualize the wander radius
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(startingPosition, wanderRadius);
+    }
+
+    private Vector2 GetRandomPointInCircle(Vector2 center, float radius)
+    {
+        // Generate a random angle
+        float angle = Random.Range(0f, Mathf.PI * 2f);
+        // Generate a random point within the circle
+        float randomRadius = Random.Range(0f, radius);
+        // Calculate the position
+        Vector2 randomPoint = center + new Vector2(Mathf.Cos(angle) * randomRadius, Mathf.Sin(angle) * randomRadius);
+        return randomPoint;
     }
 
     protected virtual void ChaseState()
