@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     protected Vector2 startingPosition;
     public float wanderRadius = 5f;
     Vector2 newWanderPosition;
+    int attemptsCount;
 
     EnemyHealthBar healthBar;
     [SerializeField] GameObject floatingText;
@@ -137,21 +138,29 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     {
         enemyAnimator.Play("Idle");
 
-        idleTime += 1 * Time.deltaTime;
+        idleTime += Time.deltaTime;
 
         if (idleTime >= 5)
         {
-            int choice = Random.Range(0, 2);
-            switch (choice)
+            Debug.Log(attemptsCount);
+
+            int maxAttempts = 3; // Maximum number of consecutive failed attempts
+            int consecutiveFailures = Mathf.Min(attemptsCount, maxAttempts);
+
+            // Calculate the probability of transitioning to the wander state based on the number of consecutive failures
+            float wanderProbability = Mathf.Min(0.5f + 0.25f * consecutiveFailures, 1.0f);
+
+            // Check if the enemy will transition to the wander state based on the calculated probability
+            if (Random.value < wanderProbability)
             {
-                case 0:
-                    enemyState = EnemyState.Wander;
-                    idleTime = 0;
-                    break;
-                case 1:
-                    idleTime = 0;
-                    break;
+                idleTime = 0;
+                
+                enemyState = EnemyState.Wander;
             }
+
+            // Reset the idle time and update the attempts count
+            idleTime = 0;
+            attemptsCount++;
         }
     }
 
@@ -160,6 +169,8 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         if (canWander)
         {
             canWander = false;
+
+            attemptsCount = 0;
 
             // Generate a newWanderPosition
             newWanderPosition = GetRandomPointInCircle(startingPosition, wanderRadius);
