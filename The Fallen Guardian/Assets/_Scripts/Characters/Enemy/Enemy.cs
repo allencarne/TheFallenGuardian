@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     [Header("Radius")]
     public float wanderRadius;
     public float attackRadius;
+    public float deAggroRadius;
 
     [Header("Components")]
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -235,6 +236,9 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(startingPosition, deAggroRadius);
     }
 
     private Vector2 GetRandomPointInCircle(Vector2 center, float radius)
@@ -260,6 +264,11 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         {
             // Target is within attack radius, transition to attack state
             enemyState = EnemyState.Attack;
+        }
+        else if (distanceToTarget >= deAggroRadius)
+        {
+            // Target is outside DeAggro radius, transition to idle state
+            enemyState = EnemyState.Idle;
         }
     }
 
@@ -288,8 +297,10 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         yield return new WaitForSeconds(durationOfAttack);
 
         canAttack = true;
-
-        enemyState = EnemyState.Idle;
+        if (enemyState == EnemyState.Attack)
+        {
+            enemyState = EnemyState.Idle;
+        }
     }
 
     protected virtual void MobilityState()
@@ -415,8 +426,8 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     {
         if (other.CompareTag("Player"))
         {
-            target = null;
-            playerInRange = false;
+            //target = null;
+            //playerInRange = false;
         }
     }
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 03edef3789445d048bbd56a53dbac895
+guid: fc9f3b0cded6ecc46a11123a01084e3f
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Chest
+  - name: Tattered Headband Icon
     originalName: 
-    pivot: {x: 0.5, y: -0.33333334}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 10
-      height: 9
-    spriteID: d24c7d86b36fa0a42a472fbdab5e856d
+      width: 16
+      height: 16
+    spriteID: d8e4be83aa8a8d547b87e7586c3f4bb7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,20 +144,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1797307959
-    name: Chest
+    guid: -1394799287
+    name: Tattered Headband Icon
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Chest
+    - name: Tattered Headband Icon
       frameIndex: 0
       cellRect:
-        x: 3
-        y: 3
-        width: 10
-        height: 9
-      spriteId: d24c7d86b36fa0a42a472fbdab5e856d
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      spriteId: d8e4be83aa8a8d547b87e7586c3f4bb7
     linkedCells: []
     parentIndex: -1
   platformSettings: []

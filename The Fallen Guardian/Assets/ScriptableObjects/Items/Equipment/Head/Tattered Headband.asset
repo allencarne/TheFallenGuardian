@@ -15,7 +15,7 @@ MonoBehaviour:
   playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   prefab: {fileID: 7086044739819504598, guid: 445d1a32b95db3a48b53ad7d3fca7c4e, type: 3}
   name: Tattered Headband
-  icon: {fileID: 21300000, guid: 0af8df9992e3b7642908ae840636bedc, type: 3}
+  icon: {fileID: 21300000, guid: 5e7f6dbb78b4d8445a6402e257797069, type: 3}
   quantity: 0
   isStackable: 0
   equipmentType: 0

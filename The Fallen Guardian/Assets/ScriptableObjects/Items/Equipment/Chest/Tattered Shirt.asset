@@ -15,7 +15,7 @@ MonoBehaviour:
   playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   prefab: {fileID: 4624318701830884224, guid: 0b398200dd2229144b672029713393c9, type: 3}
   name: Tattered Shirt
-  icon: {fileID: 21300000, guid: 0d75f715e024a894b8c13082476ce76c, type: 3}
+  icon: {fileID: 21300000, guid: 4df140b398381bf488b133f10bad472d, type: 3}
   quantity: 1
   isStackable: 0
   equipmentType: 1
