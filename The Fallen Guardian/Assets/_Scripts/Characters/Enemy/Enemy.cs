@@ -1,10 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
-using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 {
@@ -18,6 +15,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
     [Header("Radius")]
     public float wanderRadius;
+    public float attackRadius;
 
     [Header("Components")]
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -38,9 +36,13 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     Transform target;
     bool playerInRange;
 
+    // Attack
+    public float durationOfAttack;
+
     // Bools
     bool canSpawn = true;
     bool canWander = true;
+    bool canAttack = true;
 
     protected enum EnemyState 
     { 
@@ -230,6 +232,9 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(startingPosition, wanderRadius);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
 
     private Vector2 GetRandomPointInCircle(Vector2 center, float radius)
@@ -245,12 +250,46 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
     protected virtual void ChaseState()
     {
+        enemyAnimator.Play("Chase");
 
+        // Calculate the distance between the enemy and the target
+        float distanceToTarget = Vector2.Distance(transform.position, target.position);
+
+        // Check if the target is inside the attack radius
+        if (distanceToTarget <= attackRadius)
+        {
+            // Target is within attack radius, transition to attack state
+            enemyState = EnemyState.Attack;
+        }
     }
 
     protected virtual void AttackState()
     {
+        if (canAttack)
+        {
+            canAttack = false;
 
+            // Play attack animation
+            enemyAnimator.Play("Attack");
+
+            // Calculate the direction from the enemy to the target
+            Vector2 directionToTarget = (target.position - transform.position).normalized;
+
+            // Set animator parameters based on the direction
+            enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
+            enemyAnimator.SetFloat("Vertical", directionToTarget.y);
+
+            StartCoroutine(DurationOfAttack());
+        }
+    }
+
+    IEnumerator DurationOfAttack()
+    {
+        yield return new WaitForSeconds(durationOfAttack);
+
+        canAttack = true;
+
+        enemyState = EnemyState.Idle;
     }
 
     protected virtual void MobilityState()

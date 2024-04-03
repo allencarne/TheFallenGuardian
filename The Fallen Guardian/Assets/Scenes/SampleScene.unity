@@ -9098,8 +9098,10 @@ MonoBehaviour:
   damage: 0
   expToGive: 0
   wanderRadius: 5
+  attackRadius: 0
   spriteRenderer: {fileID: 504803931}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
+  durationOfAttack: 0
 --- !u!114 &945035513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124338,13 +124340,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
+      propertyPath: durationOfAttack
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2701073800946075481, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.93
+      value: 15.67
       objectReference: {fileID: 0}
     - target: {fileID: 2701073800946075481, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.49
+      value: 7.77
       objectReference: {fileID: 0}
     - target: {fileID: 2701073800946075481, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
       propertyPath: m_LocalPosition.z
