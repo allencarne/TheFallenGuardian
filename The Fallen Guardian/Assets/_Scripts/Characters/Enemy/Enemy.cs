@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 {
@@ -14,18 +16,29 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     public float damage;
     public float expToGive;
 
+    [Header("Radius")]
+    public float wanderRadius;
+
+    [Header("Components")]
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] GameObject floatingText;
+    EnemyHealthBar healthBar;
     protected Animator enemyAnimator;
     protected Rigidbody2D enemyRB;
+
+    // Idle
+    protected float idleTime;
     protected Vector2 startingPosition;
-    public float wanderRadius = 5f;
-    Vector2 newWanderPosition;
     int attemptsCount;
 
-    EnemyHealthBar healthBar;
-    [SerializeField] GameObject floatingText;
+    // Wander
+    Vector2 newWanderPosition;
 
-    protected float idleTime;
+    // Chase
+    Transform target;
+    bool playerInRange;
+
+    // Bools
     bool canSpawn = true;
     bool canWander = true;
 
@@ -114,6 +127,18 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
             enemyAnimator.SetFloat("Horizontal", moveDirection.x);
             enemyAnimator.SetFloat("Vertical", moveDirection.y);
         }
+
+        if (enemyState == EnemyState.Chase)
+        {
+            Vector2 moveDirection = (target.position - transform.position).normalized;
+
+            Vector2 desiredVelocity = moveDirection * moveSpeed;
+
+            enemyRB.velocity = desiredVelocity;
+
+            enemyAnimator.SetFloat("Horizontal", moveDirection.x);
+            enemyAnimator.SetFloat("Vertical", moveDirection.y);
+        }
     }
 
     protected virtual void SpawnState()
@@ -163,6 +188,11 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
             idleTime = 0;
             attemptsCount++;
         }
+
+        if (playerInRange)
+        {
+            enemyState = EnemyState.Chase;
+        }
     }
 
     protected virtual void WanderState()
@@ -198,7 +228,6 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
     private void OnDrawGizmosSelected()
     {
-        // Draw a wire sphere gizmo to visualize the wander radius
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(startingPosition, wanderRadius);
     }
@@ -332,5 +361,23 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         }
 
         opponentRB.velocity = Vector2.zero; // Ensure the velocity is exactly zero at the end
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            target = other.transform;
+            playerInRange = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            target = null;
+            playerInRange = false;
+        }
     }
 }
