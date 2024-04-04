@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Dummy : Enemy
 {
-    [SerializeField] Image patienceBar;
+    //[SerializeField] Image patienceBar;
 
     protected override void IdleState()
     {

@@ -9101,10 +9101,10 @@ MonoBehaviour:
   wanderRadius: 5
   attackRadius: 0
   deAggroRadius: 0
+  patienceBar: {fileID: 1977674868}
   spriteRenderer: {fileID: 504803931}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
   patience: 5
-  patienceBar: {fileID: 1977674868}
 --- !u!114 &945035513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116962,6 +116962,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628267966}
   m_CullTransparentMesh: 1
+--- !u!114 &1644599082 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3853848659867538028, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
+  m_PrefabInstance: {fileID: 7486113653806297788}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1668354771
 GameObject:
   m_ObjectHideFlags: 0
@@ -124422,6 +124433,10 @@ PrefabInstance:
       propertyPath: attackRange
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
+      propertyPath: patienceBar
+      value: 
+      objectReference: {fileID: 1644599082}
     - target: {fileID: 2701073800946075481, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.67
@@ -124461,6 +124476,10 @@ PrefabInstance:
     - target: {fileID: 2701073800946075481, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853848659867538028, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5504511316471867309, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
       propertyPath: m_Name

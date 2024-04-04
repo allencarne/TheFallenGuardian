@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 {
@@ -19,6 +20,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     public float deAggroRadius;
 
     [Header("Components")]
+    [SerializeField] protected Image patienceBar;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] GameObject floatingText;
     EnemyHealthBar healthBar;
@@ -37,6 +39,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     protected Transform target;
     bool playerInRange;
     public float patience;
+    float patienceTime;
 
     // Bools
     bool canSpawn = true;
@@ -276,9 +279,6 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         return randomPoint;
     }
 
-    // Boolean flag to track if the coroutine is already running
-    private bool isPatienceDelayRunning = false;
-
     protected virtual void ChaseState()
     {
         enemyAnimator.Play("Chase");
@@ -293,41 +293,27 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
             enemyState = EnemyState.Attack;
         }
 
+        UpdatePatienceBar();
+
         // Calculate the distance between the starting Position and the target
         float distanceToStartingPosition = Vector2.Distance(startingPosition, target.position);
 
         // Check if the target is outside the deAggro radius
-        if (distanceToStartingPosition >= deAggroRadius && !isPatienceDelayRunning)
-        {
-            Debug.Log("Start Coroutine");
-            StartCoroutine(Patience());
-        }
-    }
-
-    IEnumerator Patience()
-    {
-        // Set the flag to true to indicate that the coroutine is running
-        isPatienceDelayRunning = true;
-
-        yield return new WaitForSeconds(patience);
-
-        // Calculate the distance between the starting Position and the target
-        float distanceToStartingPosition = Vector2.Distance(startingPosition, target.position);
-
         if (distanceToStartingPosition >= deAggroRadius)
         {
-            // Player is still outside deAggro radius after 3 seconds
-            if (enemyState == EnemyState.Chase)
-            {
-                Debug.Log("After 3 seconds, Outside Range, & In Chase State");
+            patienceTime += Time.deltaTime;
 
+            if (patienceTime >= patience)
+            {
+                patienceTime = 0;
                 playerInRange = false;
                 enemyState = EnemyState.Reset;
             }
         }
-
-        // Reset the flag to indicate that the coroutine has finished running
-        isPatienceDelayRunning = false;
+        else
+        {
+            patienceTime = 0;
+        }
     }
 
     protected virtual void AttackState()
@@ -347,6 +333,8 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
     protected virtual void ResetState()
     {
+        UpdatePatienceBar();
+
         if (canReset)
         {
             canReset = false;
@@ -357,13 +345,6 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
             // Check if the enemy has reached the destination
             StartCoroutine(CheckReachedDestination(startingPosition));
-        }
-
-        if (playerInRange)
-        {
-            attemptsCount = 0;
-            idleTime = 0;
-            enemyState = EnemyState.Chase;
         }
     }
 
@@ -460,6 +441,18 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         }
 
         opponentRB.velocity = Vector2.zero; // Ensure the velocity is exactly zero at the end
+    }
+
+    private void UpdatePatienceBar()
+    {
+        if (patienceBar != null)
+        {
+            // Calculate the fill amount
+            float fillAmount = Mathf.Clamp01(patienceTime / patience);
+
+            // Update the patience bar fill amount
+            patienceBar.fillAmount = fillAmount;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
