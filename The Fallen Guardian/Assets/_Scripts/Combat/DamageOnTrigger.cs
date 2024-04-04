@@ -5,7 +5,7 @@ using UnityEngine;
 public class DamageOnTrigger : MonoBehaviour
 {
     [HideInInspector] public GameObject hitEffect;
-    [HideInInspector] public int playerDamage;
+    [HideInInspector] public int characterDamage;
     [HideInInspector] public int abilityDamage;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -14,7 +14,7 @@ public class DamageOnTrigger : MonoBehaviour
 
         if (damageable != null)
         {
-            damageable.TakeDamage(playerDamage + abilityDamage);
+            damageable.TakeDamage(characterDamage + abilityDamage);
 
             if (hitEffect)
             {

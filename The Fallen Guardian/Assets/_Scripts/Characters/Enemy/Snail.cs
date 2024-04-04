@@ -52,7 +52,7 @@ public class Snail : Enemy
             if (damageOnTrigger != null)
             {
                 damageOnTrigger.abilityDamage = attackDamage;
-                damageOnTrigger.playerDamage = damage;
+                damageOnTrigger.characterDamage = damage;
                 damageOnTrigger.hitEffect = attackHitEffect;
             }
         }
