@@ -6,6 +6,8 @@ public class Snail : Enemy
 {
     [Header("Attack")]
     [SerializeField] GameObject attackPrefab;
+    [SerializeField] GameObject attackHitEffect;
+    public int attackDamage;
     public float durationOfAttack;
     public float castTime;
     public float attackRange;
@@ -41,7 +43,18 @@ public class Snail : Enemy
             // Calculate the position for the attackPrefab
             Vector2 attackPosition = (Vector2)transform.position + directionToTarget * attackRange;
 
-            Instantiate(attackPrefab, attackPosition, Quaternion.identity);
+            GameObject attack = Instantiate(attackPrefab, attackPosition, Quaternion.identity);
+
+            // Ignore collision between the attack and the caster
+            Physics2D.IgnoreCollision(attack.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+
+            DamageOnTrigger damageOnTrigger = attack.GetComponent<DamageOnTrigger>();
+            if (damageOnTrigger != null)
+            {
+                damageOnTrigger.abilityDamage = attackDamage;
+                damageOnTrigger.playerDamage = damage;
+                damageOnTrigger.hitEffect = attackHitEffect;
+            }
         }
     }
 

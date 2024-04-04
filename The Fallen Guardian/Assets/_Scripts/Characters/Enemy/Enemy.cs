@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     public float maxHealth;
     public float moveSpeed;
     public float maxMoveSpeed;
-    public float damage;
+    public int damage;
     public float expToGive;
 
     [Header("Radius")]
