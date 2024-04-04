@@ -194,6 +194,8 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
         if (playerInRange)
         {
+            attemptsCount = 0;
+            idleTime = 0;
             enemyState = EnemyState.Chase;
         }
     }
@@ -213,6 +215,13 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
             // Check if the enemy has reached the new wander position
             StartCoroutine(CheckReachedDestination());
+        }
+
+        if (playerInRange)
+        {
+            attemptsCount = 0;
+            idleTime = 0;
+            enemyState = EnemyState.Chase;
         }
     }
 
@@ -265,9 +274,14 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
             // Target is within attack radius, transition to attack state
             enemyState = EnemyState.Attack;
         }
-        else if (distanceToTarget >= deAggroRadius)
+
+        // Calculate the distance between the starting Position and the target
+        float distanceToStartingPosition = Vector2.Distance(startingPosition, target.position);
+
+        // Check if the target is outside the deAggro radius
+        if (distanceToStartingPosition >= deAggroRadius)
         {
-            // Target is outside DeAggro radius, transition to idle state
+            playerInRange = false;
             enemyState = EnemyState.Idle;
         }
     }
