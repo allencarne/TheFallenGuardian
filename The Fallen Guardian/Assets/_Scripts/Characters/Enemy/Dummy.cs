@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dummy : Enemy
 {
+    [SerializeField] Image patienceBar;
+
     protected override void IdleState()
     {
         enemyAnimator.Play("Idle");
@@ -13,7 +16,9 @@ public class Dummy : Enemy
             idleTime += 1 * Time.deltaTime;
         }
 
-        if (idleTime >= 5)
+        UpdatePatienceBar();
+
+        if (idleTime >= patience)
         {
             enemyState = EnemyState.Reset;
         }
@@ -26,6 +31,8 @@ public class Dummy : Enemy
 
         idleTime = 0;
 
+        UpdatePatienceBar();
+
         StartCoroutine(ResetDuration());
     }
 
@@ -35,5 +42,15 @@ public class Dummy : Enemy
 
         enemyRB.position = startingPosition;
         enemyState = EnemyState.Spawn;
+    }
+
+    void UpdatePatienceBar()
+    {
+        if (patienceBar != null)
+        {
+            float fillAmount = Mathf.Clamp01(idleTime / patience);
+
+            patienceBar.fillAmount = fillAmount;
+        }
     }
 }

@@ -34,17 +34,14 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     Vector2 newWanderPosition;
 
     // Chase
-    Transform target;
+    protected Transform target;
     bool playerInRange;
     public float patience;
-
-    // Attack
-    public float durationOfAttack;
 
     // Bools
     bool canSpawn = true;
     bool canWander = true;
-    bool canAttack = true;
+    protected bool canAttack = true;
     bool canReset = true;
 
     protected enum EnemyState 
@@ -335,33 +332,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
     protected virtual void AttackState()
     {
-        if (canAttack)
-        {
-            canAttack = false;
 
-            // Play attack animation
-            enemyAnimator.Play("Attack");
-
-            // Calculate the direction from the enemy to the target
-            Vector2 directionToTarget = (target.position - transform.position).normalized;
-
-            // Set animator parameters based on the direction
-            enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
-            enemyAnimator.SetFloat("Vertical", directionToTarget.y);
-
-            StartCoroutine(DurationOfAttack());
-        }
-    }
-
-    IEnumerator DurationOfAttack()
-    {
-        yield return new WaitForSeconds(durationOfAttack);
-
-        canAttack = true;
-        if (enemyState == EnemyState.Attack)
-        {
-            enemyState = EnemyState.Idle;
-        }
     }
 
     protected virtual void MobilityState()

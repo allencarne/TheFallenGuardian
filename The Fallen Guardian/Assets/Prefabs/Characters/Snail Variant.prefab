@@ -128,15 +128,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   maxHealth: 10
-  moveSpeed: 5
-  maxMoveSpeed: 5
+  moveSpeed: 3
+  maxMoveSpeed: 3
   damage: 1
   expToGive: 1
   wanderRadius: 5
   attackRadius: 1
+  deAggroRadius: 12
   spriteRenderer: {fileID: 3441835576944637314}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
+  patience: 3
+  attackPrefab: {fileID: 7461344068309084465, guid: 2efb12dae9b87624a968e92eeb7f102f, type: 3}
   durationOfAttack: 1.2
+  castTime: 0.6
+  attackRange: 0
 --- !u!1 &5899974318618201015 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 989500593750718045, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
