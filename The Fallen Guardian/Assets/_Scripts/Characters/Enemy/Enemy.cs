@@ -261,6 +261,9 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         return randomPoint;
     }
 
+    // Boolean flag to track if the coroutine is already running
+    private bool isDeAggroDelayRunning = false;
+
     protected virtual void ChaseState()
     {
         enemyAnimator.Play("Chase");
@@ -279,11 +282,37 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         float distanceToStartingPosition = Vector2.Distance(startingPosition, target.position);
 
         // Check if the target is outside the deAggro radius
+        if (distanceToStartingPosition >= deAggroRadius && !isDeAggroDelayRunning)
+        {
+            Debug.Log("Start Coroutine");
+            StartCoroutine(deAggroDelay());
+        }
+    }
+
+    IEnumerator deAggroDelay()
+    {
+        // Set the flag to true to indicate that the coroutine is running
+        isDeAggroDelayRunning = true;
+
+        yield return new WaitForSeconds(3);
+
+        // Calculate the distance between the starting Position and the target
+        float distanceToStartingPosition = Vector2.Distance(startingPosition, target.position);
+
         if (distanceToStartingPosition >= deAggroRadius)
         {
-            playerInRange = false;
-            enemyState = EnemyState.Idle;
+            // Player is still outside deAggro radius after 3 seconds
+            if (enemyState == EnemyState.Chase)
+            {
+                Debug.Log("After 3 seconds, Outside Range, & In Chase State");
+
+                playerInRange = false;
+                enemyState = EnemyState.Idle;
+            }
         }
+
+        // Reset the flag to indicate that the coroutine has finished running
+        isDeAggroDelayRunning = false;
     }
 
     protected virtual void AttackState()
