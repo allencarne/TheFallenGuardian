@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     // Chase
     Transform target;
     bool playerInRange;
+    public float patience;
 
     // Attack
     public float durationOfAttack;
@@ -44,6 +45,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     bool canSpawn = true;
     bool canWander = true;
     bool canAttack = true;
+    bool canReset = true;
 
     protected enum EnemyState 
     { 
@@ -118,7 +120,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     {
         if (enemyState == EnemyState.Wander)
         {
-            // Calculate the direction towards the newWanderPosition
+            // Calculate the direction
             Vector2 moveDirection = (newWanderPosition - (Vector2)transform.position).normalized;
 
             // Calculate the desired velocity to reach the new wander position
@@ -137,6 +139,21 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
             Vector2 desiredVelocity = moveDirection * moveSpeed;
 
+            enemyRB.velocity = desiredVelocity;
+
+            enemyAnimator.SetFloat("Horizontal", moveDirection.x);
+            enemyAnimator.SetFloat("Vertical", moveDirection.y);
+        }
+
+        if (enemyState == EnemyState.Reset)
+        {
+            // Calculate the direction
+            Vector2 moveDirection = (startingPosition - (Vector2)transform.position).normalized;
+
+            // Calculate the desired velocity to reach the new wander position
+            Vector2 desiredVelocity = moveDirection * moveSpeed;
+
+            // Apply the desired velocity to the rigidbody
             enemyRB.velocity = desiredVelocity;
 
             enemyAnimator.SetFloat("Horizontal", moveDirection.x);
@@ -214,7 +231,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
             newWanderPosition = GetRandomPointInCircle(startingPosition, wanderRadius);
 
             // Check if the enemy has reached the new wander position
-            StartCoroutine(CheckReachedDestination());
+            StartCoroutine(CheckReachedDestination(newWanderPosition));
         }
 
         if (playerInRange)
@@ -225,9 +242,9 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         }
     }
 
-    IEnumerator CheckReachedDestination()
+    IEnumerator CheckReachedDestination(Vector2 newPos)
     {
-        while (Vector2.Distance(transform.position, newWanderPosition) > 0.1f)
+        while (Vector2.Distance(transform.position, newPos) > 0.1f)
         {
             yield return null;
         }
@@ -236,6 +253,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         enemyState = EnemyState.Idle;
 
         canWander = true;
+        canReset = true;
     }
 
     private void OnDrawGizmosSelected()
@@ -262,7 +280,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     }
 
     // Boolean flag to track if the coroutine is already running
-    private bool isDeAggroDelayRunning = false;
+    private bool isPatienceDelayRunning = false;
 
     protected virtual void ChaseState()
     {
@@ -282,19 +300,19 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         float distanceToStartingPosition = Vector2.Distance(startingPosition, target.position);
 
         // Check if the target is outside the deAggro radius
-        if (distanceToStartingPosition >= deAggroRadius && !isDeAggroDelayRunning)
+        if (distanceToStartingPosition >= deAggroRadius && !isPatienceDelayRunning)
         {
             Debug.Log("Start Coroutine");
-            StartCoroutine(deAggroDelay());
+            StartCoroutine(Patience());
         }
     }
 
-    IEnumerator deAggroDelay()
+    IEnumerator Patience()
     {
         // Set the flag to true to indicate that the coroutine is running
-        isDeAggroDelayRunning = true;
+        isPatienceDelayRunning = true;
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(patience);
 
         // Calculate the distance between the starting Position and the target
         float distanceToStartingPosition = Vector2.Distance(startingPosition, target.position);
@@ -307,12 +325,12 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
                 Debug.Log("After 3 seconds, Outside Range, & In Chase State");
 
                 playerInRange = false;
-                enemyState = EnemyState.Idle;
+                enemyState = EnemyState.Reset;
             }
         }
 
         // Reset the flag to indicate that the coroutine has finished running
-        isDeAggroDelayRunning = false;
+        isPatienceDelayRunning = false;
     }
 
     protected virtual void AttackState()
@@ -358,7 +376,24 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
     protected virtual void ResetState()
     {
+        if (canReset)
+        {
+            canReset = false;
 
+            enemyAnimator.Play("Wander");
+
+            attemptsCount = 0;
+
+            // Check if the enemy has reached the destination
+            StartCoroutine(CheckReachedDestination(startingPosition));
+        }
+
+        if (playerInRange)
+        {
+            attemptsCount = 0;
+            idleTime = 0;
+            enemyState = EnemyState.Chase;
+        }
     }
 
     protected virtual void HurtState()

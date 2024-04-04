@@ -9102,6 +9102,7 @@ MonoBehaviour:
   deAggroRadius: 0
   spriteRenderer: {fileID: 504803931}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
+  patience: 0
   durationOfAttack: 0
 --- !u!114 &945035513
 MonoBehaviour:
@@ -124341,6 +124342,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
+      propertyPath: patience
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
       propertyPath: moveSpeed
       value: 3
