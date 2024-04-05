@@ -8566,6 +8566,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842863218}
   m_CullTransparentMesh: 1
+--- !u!1 &847238757 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5504511316471867309, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
+  m_PrefabInstance: {fileID: 7486113653806297788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &847238763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847238757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866dd1af28e491546b199bfa9941e9ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &853595903 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6135136605258851180, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
@@ -8994,6 +9011,7 @@ GameObject:
   - component: {fileID: 945035511}
   - component: {fileID: 945035512}
   - component: {fileID: 945035513}
+  - component: {fileID: 945035514}
   m_Layer: 0
   m_Name: Dummy
   m_TagString: Untagged
@@ -9120,6 +9138,18 @@ MonoBehaviour:
   lerpTimer: 0
   healthBarFront: {fileID: 1294604927}
   healthBarBack: {fileID: 1581998556}
+--- !u!114 &945035514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945035507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866dd1af28e491546b199bfa9941e9ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &961044270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124492,7 +124522,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5504511316471867309, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 847238763}
   m_SourcePrefab: {fileID: 100100000, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
 --- !u!224 &7522069337229076469
 RectTransform:

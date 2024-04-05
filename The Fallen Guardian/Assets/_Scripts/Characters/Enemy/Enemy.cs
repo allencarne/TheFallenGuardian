@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
+public class Enemy : MonoBehaviour, IDamageable
 {
     [Header("Stats")]
     public float health;
@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
     EnemyHealthBar healthBar;
     protected Animator enemyAnimator;
     protected Rigidbody2D enemyRB;
+    CrowdControl crowdControl;
 
     // Idle
     protected float idleTime;
@@ -68,6 +69,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         healthBar = GetComponent<EnemyHealthBar>();
         enemyAnimator = GetComponentInChildren<Animator>();
         enemyRB = GetComponent<Rigidbody2D>();
+        crowdControl = GetComponent<CrowdControl>();
     }
 
     private void Start()
@@ -118,7 +120,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
 
     protected virtual void FixedUpdate()
     {
-        if (enemyState == EnemyState.Wander)
+        if (enemyState == EnemyState.Wander && !crowdControl.isImmobilized)
         {
             // Calculate the direction
             Vector2 moveDirection = (newWanderPosition - (Vector2)transform.position).normalized;
@@ -133,7 +135,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
             enemyAnimator.SetFloat("Vertical", moveDirection.y);
         }
 
-        if (enemyState == EnemyState.Chase)
+        if (enemyState == EnemyState.Chase && !crowdControl.isImmobilized)
         {
             Vector2 moveDirection = (target.position - transform.position).normalized;
 
@@ -145,7 +147,7 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
             enemyAnimator.SetFloat("Vertical", moveDirection.y);
         }
 
-        if (enemyState == EnemyState.Reset)
+        if (enemyState == EnemyState.Reset && !crowdControl.isImmobilized)
         {
             // Calculate the direction
             Vector2 moveDirection = (startingPosition - (Vector2)transform.position).normalized;
@@ -418,29 +420,16 @@ public class Enemy : MonoBehaviour, IDamageable, IKnockbackable
         }
     }
 
-    public void KnockBack(Rigidbody2D opponentRB, float knockBackAmount, float knockBackDuration, Vector2 knockBackDirection)
+    bool Immobilized = false;
+
+    public void Immobilize()
     {
-        // Use the passed knockBackDirection for applying the knockback force
-        opponentRB.velocity = knockBackDirection * knockBackAmount;
-
-        // Start a coroutine to handle the knockback duration
-        StartCoroutine(KnockBackDuration(opponentRB, knockBackDuration));
-    }
-
-    IEnumerator KnockBackDuration(Rigidbody2D opponentRB, float duration)
-    {
-        float elapsedTime = 0f;
-        Vector2 initialVelocity = opponentRB.velocity;
-
-        while (elapsedTime < duration)
+        if (Immobilized)
         {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / duration; // Normalized time
-            opponentRB.velocity = Vector2.Lerp(initialVelocity, Vector2.zero, t);
-            yield return null; // Wait for the next frame
-        }
+            enemyRB.velocity = Vector2.zero;
 
-        opponentRB.velocity = Vector2.zero; // Ensure the velocity is exactly zero at the end
+            Immobilized = true;
+        }
     }
 
     private void UpdatePatienceBar()

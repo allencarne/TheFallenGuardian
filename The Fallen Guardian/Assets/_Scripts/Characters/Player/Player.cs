@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour, IDamageable, IKnockbackable
+public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     public PlayerStats playerStats;
@@ -138,30 +138,5 @@ public class Player : MonoBehaviour, IDamageable, IKnockbackable
             textMesh.color = color; // Set the color of the text
             Destroy(textPrefab, 1);
         }
-    }
-
-    public void KnockBack(Rigidbody2D opponentRB, float knockBackAmount, float knockBackDuration, Vector2 knockBackDirection)
-    {
-        // Use the passed knockBackDirection for applying the knockback force
-        opponentRB.velocity = knockBackDirection * knockBackAmount;
-
-        // Start a coroutine to handle the knockback duration
-        StartCoroutine(KnockBackDuration(opponentRB, knockBackDuration));
-    }
-
-    IEnumerator KnockBackDuration(Rigidbody2D opponentRB, float duration)
-    {
-        float elapsedTime = 0f;
-        Vector2 initialVelocity = opponentRB.velocity;
-
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / duration; // Normalized time
-            opponentRB.velocity = Vector2.Lerp(initialVelocity, Vector2.zero, t);
-            yield return null; // Wait for the next frame
-        }
-
-        opponentRB.velocity = Vector2.zero; // Ensure the velocity is exactly zero at the end
     }
 }
