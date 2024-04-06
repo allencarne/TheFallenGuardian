@@ -35,6 +35,7 @@ public class PlayerStateMachine : MonoBehaviour
     public Transform Aimer => aimer;
 
     [SerializeField] CrowdControl crowdControl;
+    public CrowdControl CrowdControl => crowdControl;
 
     private Vector2 lastMoveDirection = Vector2.zero;
 

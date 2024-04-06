@@ -17,7 +17,10 @@ public class PlayerMoveState : PlayerState
 
     public override void FixedUpdate()
     {
-        HandleMovement(stateMachine.InputHandler.MoveInput);
+        if (!stateMachine.CrowdControl.isImmobilized)
+        {
+            HandleMovement(stateMachine.InputHandler.MoveInput);
+        }
 
         // If we are no longer moving - Transition to Idle State
         if (stateMachine.InputHandler.MoveInput == Vector2.zero)
