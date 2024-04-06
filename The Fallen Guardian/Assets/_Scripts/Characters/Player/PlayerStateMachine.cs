@@ -49,6 +49,9 @@ public class PlayerStateMachine : MonoBehaviour
     [Header("Offensive Ability")]
     public bool canOffensiveAbility = true;
 
+    [Header("Mobility Ability")]
+    public bool canMobilityAbility = true;
+
     private void Awake()
     {
         SetState(new PlayerSpawnState(this));
@@ -84,6 +87,14 @@ public class PlayerStateMachine : MonoBehaviour
         if (abilityInput && canOffensiveAbility && equipment.IsWeaponEquipt && abilities.offensiveAbilityReference != null)
         {
             SetState(new PlayerOffensiveState(this));
+        }
+    }
+
+    public void MobilityAbility(bool abilityInput)
+    {
+        if (abilityInput && canMobilityAbility && equipment.IsWeaponEquipt && abilities.mobilityAbilityReference != null)
+        {
+            SetState(new PlayerMobilityState(this));
         }
     }
 

@@ -24,12 +24,18 @@ public class BeginnerAbilityTree : MonoBehaviour
     public Image offensiveAbility2Image;
     public UnityEvent onOffensiveAbility2Selected;
 
+    [Header("Mobility")]
+    [SerializeField] ScriptableObject mobilityAbility;
+    public Image mobilityAbilityImage;
+    public UnityEvent onMobilityAbilitySelected;
+
     private void Start()
     {
         // Set the level1Ability Icon to level1AbilityImage
         SetAbilityIcon(basicAbility, basicAbilityImage);
         SetAbilityIcon(offensiveAbility, offensiveAbilityImage);
         SetAbilityIcon(offensiveAbility2, offensiveAbility2Image);
+        SetAbilityIcon(mobilityAbility, mobilityAbilityImage);
 
         InitializePlayerReference();
     }
@@ -81,5 +87,15 @@ public class BeginnerAbilityTree : MonoBehaviour
         playerAbilities.offensiveAbilityReference = offensiveAbility2;
 
         onOffensiveAbility2Selected.Invoke();
+    }
+
+    public void OnMobilityAbilitySelected()
+    {
+        if (playerAbilities.mobilityAbilityReference == null)
+        {
+            playerAbilities.mobilityAbilityReference = mobilityAbility;
+
+            onMobilityAbilitySelected.Invoke();
+        }
     }
 }

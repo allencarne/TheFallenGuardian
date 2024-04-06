@@ -107,6 +107,26 @@ public class AbilityBar : MonoBehaviour
         }
     }
 
+    public void OnMobilitySelected()
+    {
+        if (!playerAbilities.mobilityAbilityReference)
+        {
+            mobilityAbilityImage.enabled = false;
+        }
+
+        if (playerAbilities.mobilityAbilityReference)
+        {
+            if (playerEquipment.IsWeaponEquipt)
+            {
+                LitSprite(mobilityAbilityImage, beginnerAbilityTree.mobilityAbilityImage.sprite);
+            }
+            else
+            {
+                DimSprite(mobilityAbilityImage, beginnerAbilityTree.mobilityAbilityImage.sprite);
+            }
+        }
+    }
+
     void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
     {
         OnBasicAbilitySelected();

@@ -32,9 +32,24 @@ public class PlayerAbilities : MonoBehaviour
     public IAbilityBehaviour offensiveAbility { get; private set; }
     #endregion
 
+    #region Mobility Ability
+    public ScriptableObject mobilityAbilityReference
+    {
+        get => _mobilityAbilityReference;
+        set
+        {
+            _mobilityAbilityReference = value;
+            mobilityAbility = (IAbilityBehaviour)_mobilityAbilityReference;
+        }
+    }
+    private ScriptableObject _mobilityAbilityReference;
+    public IAbilityBehaviour mobilityAbility { get; private set; }
+    #endregion
+
     private void Awake()
     {
         basicAbility = (IAbilityBehaviour)basicAbilityReference;
         offensiveAbility = (IAbilityBehaviour)offensiveAbilityReference;
+        mobilityAbility = (IAbilityBehaviour)mobilityAbilityReference;
     }
 }
