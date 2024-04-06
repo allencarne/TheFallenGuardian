@@ -50,14 +50,25 @@ public class Snail : Enemy
         {
             if (crowdControl.isInterrupted)
             {
+                // Change color to red briefly
+                castBar.color = Color.red;
+                yield return new WaitForSeconds(0.2f); // Brief pause for visibility
+                castBar.color = Color.yellow;
                 UpdateCastBar(0f); // Reset the cast bar
                 yield break; // Exit the coroutine
             }
 
             remainingCastTime -= Time.deltaTime;
-            UpdateCastBar(remainingCastTime / castTime); // Update the cast bar
+            float progress = 1 - (remainingCastTime / castTime);
+            UpdateCastBar(progress); // Update the cast bar
             yield return null;
         }
+
+        // Cast successful, change color to green briefly
+        castBar.color = Color.green;
+        yield return new WaitForSeconds(0.2f); // Brief pause for visibility
+        castBar.color = Color.yellow;
+        UpdateCastBar(0f); // Reset the cast bar
 
         if (enemyState == EnemyState.Attack)
         {
@@ -94,12 +105,7 @@ public class Snail : Enemy
     {
         if (castBar != null)
         {
-            castBar.fillAmount = 1 - Mathf.Clamp01(fillAmount);
-        }
-
-        if (castBar.fillAmount == 1)
-        {
-            castBar.fillAmount = 0;
+            castBar.fillAmount = fillAmount; // Directly set the fillAmount
         }
     }
 }
