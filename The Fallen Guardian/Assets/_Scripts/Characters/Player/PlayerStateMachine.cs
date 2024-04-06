@@ -34,6 +34,8 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Transform aimer;
     public Transform Aimer => aimer;
 
+    [SerializeField] CrowdControl crowdControl;
+
     private Vector2 lastMoveDirection = Vector2.zero;
 
     [Header("Slide")]
@@ -78,7 +80,10 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (abilityInput && CanBasicAbility && equipment.IsWeaponEquipt && abilities.basicAbilityReference != null)
         {
-            SetState(new PlayerBasicState(this));
+            if (!crowdControl.isDisarmed)
+            {
+                SetState(new PlayerBasicState(this));
+            }
         }
     }
 

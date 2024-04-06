@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Bson;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,39 +7,55 @@ public class CrowdControl : MonoBehaviour, IKnockbackable
 {
     public bool isImmobilized;
     public bool isInterrupted;
+    public bool isDisarmed;
 
     public void Interrupt()
     {
-        isInterrupted = true;
-
         StartCoroutine(InterruptDelay());
     }
 
     IEnumerator InterruptDelay()
     {
+        isInterrupted = true;
+
         yield return new WaitForSeconds(.3f);
 
         isInterrupted = false;
     }
 
-    public void Immobilize(float Duration)
+    public void Immobilize(float duration)
     {
-        StartCoroutine(ImmobilizeDuration(Duration));
+        StartCoroutine(ImmobilizeDuration(duration));
     }
 
-    IEnumerator ImmobilizeDuration(float Duration)
+    IEnumerator ImmobilizeDuration(float duration)
     {
         isImmobilized = true;
 
-        yield return new WaitForSeconds(Duration);
+        yield return new WaitForSeconds(duration);
 
         isImmobilized = false;
+    }
+
+    public void Disarm(float duration)
+    {
+        StartCoroutine(DisarmDuration(duration));
+    }
+
+    IEnumerator DisarmDuration(float duration)
+    {
+        isDisarmed = true;
+
+        yield return new WaitForSeconds(duration);
+
+        isDisarmed = false;
     }
 
     public void KnockBack(Rigidbody2D opponentRB, float knockBackAmount, float knockBackDuration, Vector2 knockBackDirection)
     {
         Interrupt();
         Immobilize(knockBackDuration);
+        Disarm(knockBackDuration);
 
         // Use the passed knockBackDirection for applying the knockback force
         opponentRB.velocity = knockBackDirection * knockBackAmount;

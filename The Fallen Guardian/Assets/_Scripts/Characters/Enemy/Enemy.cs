@@ -289,7 +289,7 @@ public class Enemy : MonoBehaviour, IDamageable
         float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
         // Check if the target is inside the attack radius
-        if (distanceToTarget <= attackRadius)
+        if (distanceToTarget <= attackRadius && !crowdControl.isDisarmed)
         {
             // Target is within attack radius, transition to attack state
             enemyState = EnemyState.Attack;
