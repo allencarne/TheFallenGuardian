@@ -8566,23 +8566,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842863218}
   m_CullTransparentMesh: 1
---- !u!1 &847238757 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5504511316471867309, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
-  m_PrefabInstance: {fileID: 7486113653806297788}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &847238763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847238757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 866dd1af28e491546b199bfa9941e9ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &853595903 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6135136605258851180, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
@@ -9150,6 +9133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866dd1af28e491546b199bfa9941e9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isImmobilized: 0
+  isInterrupted: 0
 --- !u!1001 &961044270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -116992,17 +116977,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628267966}
   m_CullTransparentMesh: 1
---- !u!114 &1644599082 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3853848659867538028, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
-  m_PrefabInstance: {fileID: 7486113653806297788}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1668354771
 GameObject:
   m_ObjectHideFlags: 0
@@ -124459,18 +124433,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
-      propertyPath: attackRange
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
-      propertyPath: patienceBar
-      value: 
-      objectReference: {fileID: 1644599082}
-    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
-      propertyPath: attackDamage
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2701073800946075481, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.67
@@ -124511,10 +124473,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3853848659867538028, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5504511316471867309, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
       propertyPath: m_Name
       value: Snail
@@ -124522,10 +124480,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5504511316471867309, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 847238763}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
 --- !u!224 &7522069337229076469
 RectTransform:

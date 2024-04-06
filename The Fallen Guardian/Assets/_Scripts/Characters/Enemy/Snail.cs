@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Snail : Enemy
 {
+    [SerializeField] Image castBar;
+
     [Header("Attack")]
     [SerializeField] GameObject attackPrefab;
     [SerializeField] GameObject attackHitEffect;
@@ -17,7 +20,6 @@ public class Snail : Enemy
     {
         if (crowdControl.isInterrupted)
         {
-            //crowdControl.isInterrupted = false;
             enemyState = EnemyState.Idle;
             return;
         }
@@ -43,7 +45,19 @@ public class Snail : Enemy
 
     IEnumerator CastTime(Vector2 directionToTarget)
     {
-        yield return new WaitForSeconds(castTime);
+        float remainingCastTime = castTime;
+        while (remainingCastTime > 0)
+        {
+            if (crowdControl.isInterrupted)
+            {
+                UpdateCastBar(0f); // Reset the cast bar
+                yield break; // Exit the coroutine
+            }
+
+            remainingCastTime -= Time.deltaTime;
+            UpdateCastBar(remainingCastTime / castTime); // Update the cast bar
+            yield return null;
+        }
 
         if (enemyState == EnemyState.Attack)
         {
@@ -73,6 +87,19 @@ public class Snail : Enemy
         if (enemyState == EnemyState.Attack)
         {
             enemyState = EnemyState.Idle;
+        }
+    }
+
+    private void UpdateCastBar(float fillAmount)
+    {
+        if (castBar != null)
+        {
+            castBar.fillAmount = 1 - Mathf.Clamp01(fillAmount);
+        }
+
+        if (castBar.fillAmount == 1)
+        {
+            castBar.fillAmount = 0;
         }
     }
 }
