@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Snail : Enemy
 {
-    [SerializeField] Image castBar;
-
     [Header("Attack")]
     [SerializeField] GameObject attackPrefab;
     [SerializeField] GameObject attackHitEffect;
@@ -98,14 +96,6 @@ public class Snail : Enemy
         if (enemyState == EnemyState.Attack)
         {
             enemyState = EnemyState.Idle;
-        }
-    }
-
-    private void UpdateCastBar(float fillAmount)
-    {
-        if (castBar != null)
-        {
-            castBar.fillAmount = fillAmount; // Directly set the fillAmount
         }
     }
 }

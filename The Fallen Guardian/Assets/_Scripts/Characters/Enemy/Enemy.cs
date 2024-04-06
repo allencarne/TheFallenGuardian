@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     [Header("Components")]
     [SerializeField] protected Image patienceBar;
+    [SerializeField] protected Image castBar;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] GameObject floatingText;
     EnemyHealthBar healthBar;
@@ -459,6 +460,14 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             //target = null;
             //playerInRange = false;
+        }
+    }
+
+    public void UpdateCastBar(float fillAmount)
+    {
+        if (castBar != null)
+        {
+            castBar.fillAmount = fillAmount; // Directly set the fillAmount
         }
     }
 }

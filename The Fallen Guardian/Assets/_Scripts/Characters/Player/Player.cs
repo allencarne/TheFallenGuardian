@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] SpriteRenderer spriteRenderer;
     public PlayerStats playerStats;
     public PlayerAbilities playerAbilities;
+
+    public Image CastBar;
 
     HealthBar healthBar;
     [SerializeField] GameObject floatingText;
@@ -137,6 +140,14 @@ public class Player : MonoBehaviour, IDamageable
             textMesh.text = amount.ToString();
             textMesh.color = color; // Set the color of the text
             Destroy(textPrefab, 1);
+        }
+    }
+
+    public void UpdateCastBar(float fillAmount)
+    {
+        if (CastBar != null)
+        {
+            CastBar.fillAmount = fillAmount;
         }
     }
 }
