@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour, IDamageable
     EnemyHealthBar healthBar;
     protected Animator enemyAnimator;
     protected Rigidbody2D enemyRB;
-    CrowdControl crowdControl;
+    protected CrowdControl crowdControl;
 
     // Idle
     protected float idleTime;

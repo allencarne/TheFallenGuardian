@@ -15,6 +15,13 @@ public class Snail : Enemy
 
     protected override void AttackState()
     {
+        if (crowdControl.isInterrupted)
+        {
+            //crowdControl.isInterrupted = false;
+            enemyState = EnemyState.Idle;
+            return;
+        }
+
         if (canAttack)
         {
             canAttack = false;

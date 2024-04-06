@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 0}
-  playerDamage: 0
+  characterDamage: 0
   abilityDamage: 0
 --- !u!58 &2841019924254600302
 CircleCollider2D:
