@@ -13,13 +13,12 @@ public class LightDash : ScriptableObject, IAbilityBehaviour
 
     [SerializeField] float dashForce;
     [SerializeField] float dashDuration;
+    [SerializeField] float rangeBeforeSlide;
 
     public void BehaviourUpdate(PlayerStateMachine stateMachine)
     {
         if (stateMachine.canMobilityAbility)
-        {
-            Debug.Log("Test");
-
+        {   
             stateMachine.AbilityDir = stateMachine.Aimer.rotation;
 
             // Calculate direction based on Aimer rotation
@@ -28,20 +27,28 @@ public class LightDash : ScriptableObject, IAbilityBehaviour
 
             stateMachine.canMobilityAbility = false;
 
-            // Use the calculated direction for handling animations
-            //stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player_Sword", "Attack", direction);
-            //stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Attack", direction);
+            stateMachine.HandleSlideForward(stateMachine.AbilityDir.eulerAngles.z, rangeBeforeSlide, dashForce, dashDuration);
 
-            stateMachine.StartCoroutine(DurationOfBasicAttack(stateMachine));
+            // Use the calculated direction for handling animations
+            stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player", "Move", direction);
+            stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Move", direction);
+
+            stateMachine.StartCoroutine(DurationOfDash(stateMachine));
+            stateMachine.StartCoroutine(DashCoolDown(stateMachine));
         }
     }
 
-    IEnumerator DurationOfBasicAttack(PlayerStateMachine stateMachine)
+    IEnumerator DurationOfDash(PlayerStateMachine stateMachine)
+    {
+        yield return new WaitForSeconds(dashDuration);
+
+        stateMachine.SetState(new PlayerIdleState(stateMachine));
+    }
+
+    IEnumerator DashCoolDown(PlayerStateMachine stateMachine)
     {
         yield return new WaitForSeconds(coolDown);
 
-        stateMachine.SetState(new PlayerIdleState(stateMachine));
-
-        stateMachine.CanBasicAbility = true;
+        stateMachine.canMobilityAbility = true;
     }
 }

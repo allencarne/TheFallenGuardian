@@ -13,6 +13,7 @@ public class PlayerIdleState : PlayerState
         // Transitions
         stateMachine.BasicAbility(stateMachine.InputHandler.BasicAbilityInput);
         stateMachine.OffensiveAbility(stateMachine.InputHandler.OffensiveAbilityInput);
+        stateMachine.MobilityAbility(stateMachine.InputHandler.MobilityAbilityInput);
     }
 
     public override void FixedUpdate()
