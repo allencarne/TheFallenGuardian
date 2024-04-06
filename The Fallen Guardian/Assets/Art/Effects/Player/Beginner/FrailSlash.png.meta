@@ -206,6 +206,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: FrailSlash_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20bea751acf855548b811226ab309f0a
+      internalID: 1216964274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -221,6 +242,7 @@ TextureImporter:
       FrailSlash_1: -29302444
       FrailSlash_2: -1517613015
       FrailSlash_3: 223110336
+      FrailSlash_4: 1216964274
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
