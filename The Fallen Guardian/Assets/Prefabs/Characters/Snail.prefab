@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1168808411849726535, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: m_Name
-      value: Snail Variant
+      value: Snail
       objectReference: {fileID: 0}
     - target: {fileID: 6220495270013819316, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: m_Name
@@ -175,6 +175,8 @@ MonoBehaviour:
   expToGive: 1
   wanderRadius: 5
   attackRadius: 1
+  mobilityRadius: 1.5
+  specialRadius: 5
   deAggroRadius: 12
   patienceBar: {fileID: 3853848659867538028}
   castBar: {fileID: 2803776170586669871}
@@ -186,9 +188,23 @@ MonoBehaviour:
   attackHitEffect: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
   attackDamage: 1
   durationOfAttack: 1.2
-  castTime: 0.6
+  attackCastTime: 0.6
   attackRange: 1
-  attackCoolDown: 0
+  attackCoolDown: 1.4
+  mobilityPrefab: {fileID: 8215458080498781041, guid: bd0bfc28234901745ae9f0c63e3a2633, type: 3}
+  mobilityHitEffect: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
+  mobilityDamage: 0
+  durationOfMobility: 0.3
+  mobilityCastTime: 0
+  mobilityRange: 10
+  mobilityCoolDown: 5
+  specialPrefab: {fileID: 9178998900622273337, guid: 1139518a2dda7ca4797a6df28c79efd9, type: 3}
+  specialHitEffect: {fileID: 0}
+  aspecialDamage: 0
+  durationOfSpecial: 1.2
+  specialCastTime: 0.6
+  specialRange: 10
+  specialCoolDown: 7
 --- !u!114 &113936693040300668
 MonoBehaviour:
   m_ObjectHideFlags: 0

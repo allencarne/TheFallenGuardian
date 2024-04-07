@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public float wanderRadius;
     public float attackRadius;
     public float mobilityRadius;
+    public float specialRadius;
     public float deAggroRadius;
 
     [Header("Components")]
@@ -50,6 +51,7 @@ public class Enemy : MonoBehaviour, IDamageable
     bool canWander = true;
     protected bool canAttack = true;
     protected bool canMobility = true;
+    protected bool canSpecial = true;
     bool canReset = true;
 
     protected enum EnemyState 
@@ -276,6 +278,9 @@ public class Enemy : MonoBehaviour, IDamageable
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, mobilityRadius);
 
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, specialRadius);
+
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(startingPosition, deAggroRadius);
     }
@@ -310,11 +315,20 @@ public class Enemy : MonoBehaviour, IDamageable
             }
 
             // Transition to Mobility
-            if (distanceToTarget <= mobilityRadius && !crowdControl.isDisarmed)
+            if (distanceToTarget <= mobilityRadius)
             {
                 if (canMobility)
                 {
                     enemyState = EnemyState.Mobility;
+                }
+            }
+
+            // Transition to Special
+            if (distanceToTarget <= specialRadius)
+            {
+                if (canSpecial)
+                {
+                    enemyState = EnemyState.Special;
                 }
             }
 

@@ -24,6 +24,15 @@ public class Snail : Enemy
 
     private Vector2 dashDirection;
 
+    [Header("Special")]
+    [SerializeField] GameObject specialPrefab;
+    [SerializeField] GameObject specialHitEffect;
+    public int specialDamage;
+    public float durationOfSpecial;
+    public float specialCastTime;
+    public float specialRange;
+    public float specialCoolDown;
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -129,7 +138,7 @@ public class Snail : Enemy
             // Store the dash direction and angle
             dashDirection = directionToTarget;
 
-            var trail = Instantiate(mobilityPrefab, transform.position, rotation);
+            GameObject trail = Instantiate(mobilityPrefab, transform.position, rotation);
 
             Destroy(trail, 3f);
 
@@ -152,5 +161,67 @@ public class Snail : Enemy
         yield return new WaitForSeconds(mobilityCoolDown);
 
         canMobility = true;
+    }
+
+    protected override void SpecialState()
+    {
+        if (canSpecial)
+        {
+            canSpecial = false;
+
+            enemyAnimator.Play("Special");
+
+            StartCoroutine(SpecialCastTime());
+            StartCoroutine (DurationOfSpecial());
+            StartCoroutine(SpecialCoolDown());
+        }
+    }
+
+    IEnumerator SpecialCastTime()
+    {
+        yield return new WaitForSeconds(specialCastTime);
+
+        // Calculate the direction from the enemy to the target
+        Vector2 directionToTarget = (target.position - transform.position).normalized;
+
+        // Set animator parameters based on the direction
+        enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
+        enemyAnimator.SetFloat("Vertical", directionToTarget.y);
+
+        // Store the dash direction and angle
+        dashDirection = directionToTarget;
+
+        GameObject shell = Instantiate(specialPrefab, transform.position, Quaternion.identity);
+
+        Rigidbody2D shellRB = shell.GetComponent<Rigidbody2D>();
+
+        shellRB.AddForce(directionToTarget * specialRange, ForceMode2D.Impulse);
+
+        Destroy(shell, 1.5f);
+
+        // Ignore collision between the attack and the caster
+        Physics2D.IgnoreCollision(shell.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+
+        DamageOnTrigger damageOnTrigger = shell.GetComponent<DamageOnTrigger>();
+        if (damageOnTrigger != null)
+        {
+            damageOnTrigger.abilityDamage = specialDamage;
+            damageOnTrigger.characterDamage = damage;
+            damageOnTrigger.hitEffect = specialHitEffect;
+        }
+    }
+
+    IEnumerator DurationOfSpecial()
+    {
+        yield return new WaitForSeconds(durationOfSpecial);
+
+        enemyState = EnemyState.Idle;
+    }
+
+    IEnumerator SpecialCoolDown()
+    {
+        yield return new WaitForSeconds(specialCoolDown);
+
+        canSpecial = true;
     }
 }

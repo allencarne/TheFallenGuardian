@@ -9231,6 +9231,7 @@ MonoBehaviour:
   wanderRadius: 5
   attackRadius: 0
   mobilityRadius: 0
+  specialRadius: 0
   deAggroRadius: 0
   patienceBar: {fileID: 1977674868}
   castBar: {fileID: 0}
@@ -124852,37 +124853,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
-      propertyPath: mobilityRange
-      value: 10
+      propertyPath: specialDamage
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
-      propertyPath: attackCastTime
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
-      propertyPath: attackCoolDown
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
-      propertyPath: mobilityPrefab
-      value: 
-      objectReference: {fileID: 8215458080498781041, guid: bd0bfc28234901745ae9f0c63e3a2633, type: 3}
-    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
-      propertyPath: mobilityRadius
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
-      propertyPath: mobilityCoolDown
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
-      propertyPath: mobilityHitEffect
+      propertyPath: specialHitEffect
       value: 
       objectReference: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
-    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
-      propertyPath: durationOfMobility
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 2701073800946075481, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.67
