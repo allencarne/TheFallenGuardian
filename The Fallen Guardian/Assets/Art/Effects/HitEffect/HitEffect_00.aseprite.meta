@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2a9af7550ab80f944bd2d458c047e9ce
+guid: f2742798510a30d4ab34737aa7d9816a
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Snail_Death_Frame_0
+  - name: HitEffect_00_Frame_0
     originalName: 
-    pivot: {x: 0.40000004, y: -0.7692308}
+    pivot: {x: 0.25, y: -1}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 33
-      y: 31
-      width: 15
-      height: 13
-    spriteID: 603b22e3dea4c9b4093db09549c42d18
+      x: 40
+      y: 50
+      width: 12
+      height: 9
+    spriteID: 83152ed4a986c0c438295a4df880d99f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,19 +140,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 33, y: 31}
-  - name: Snail_Death_Frame_1
+    uvTransform: {x: 40, y: 50}
+  - name: HitEffect_00_Frame_1
     originalName: 
-    pivot: {x: 0.4, y: -0.923077}
+    pivot: {x: 0.3125, y: -0.5714286}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 73
-      y: 4
-      width: 20
-      height: 13
-    spriteID: 403dcea8d87b6b747ba73af7550385c7
+      x: 40
+      y: 28
+      width: 16
+      height: 14
+    spriteID: 03c8fb345ebc91746bf4b130dd9692e4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,19 +160,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 73, y: 4}
-  - name: Snail_Death_Frame_2
+    uvTransform: {x: 40, y: 28}
+  - name: HitEffect_00_Frame_2
     originalName: 
-    pivot: {x: 0.4814815, y: -0.64705884}
+    pivot: {x: 0.40909094, y: -0.4666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 38
       y: 4
-      width: 27
-      height: 17
-    spriteID: 0c970277e5370cf4f803025cbddea43f
+      width: 22
+      height: 15
+    spriteID: 4e2932aaaf641484886ab08fcce346a6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -181,9 +181,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 38, y: 4}
-  - name: Snail_Death_Frame_3
+  - name: HitEffect_00_Frame_3
     originalName: 
-    pivot: {x: 0.4615385, y: -0.57894737}
+    pivot: {x: 0.42307693, y: -0.375}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -191,8 +191,8 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 26
-      height: 19
-    spriteID: 068843ff4e4d0dd4d9bf1e1b84935af5
+      height: 16
+    spriteID: 451f2d0253995f643a0ab0abe9c1b3d8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -201,38 +201,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Snail_Death_Frame_4
+  - name: HitEffect_00_Frame_4
     originalName: 
-    pivot: {x: 0.7647059, y: -1.0666667}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 101
-      y: 4
-      width: 17
-      height: 15
-    spriteID: 72c981ea47306ce489b06b6b5943ed48
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 101, y: 4}
-  - name: Snail_Death_Frame_5
-    originalName: 
-    pivot: {x: 0.7619048, y: -0.40909094}
+    pivot: {x: 0.46428573, y: -0.6666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 31
-      width: 21
-      height: 22
-    spriteID: b84ac91c542ef374cbfd7628dfcd100c
+      y: 28
+      width: 28
+      height: 12
+    spriteID: 2a4c0bc8a95cb614dbcbd0c1d31b43bc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -240,19 +220,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 31}
-  - name: Snail_Death_Frame_6
+    uvTransform: {x: 4, y: 28}
+  - name: HitEffect_00_Frame_5
     originalName: 
-    pivot: {x: 14, y: -31}
+    pivot: {x: 0.35999998, y: -5.666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 56
-      y: 31
-      width: 1
-      height: 1
-    spriteID: 79ccaa2214660594791a8c1b7b18cd91
+      x: 4
+      y: 48
+      width: 25
+      height: 3
+    spriteID: b6783a54905896d41a2b6f4a55311b8c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -260,72 +240,64 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 56, y: 31}
+    uvTransform: {x: 4, y: 48}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1130643594
-    name: Snail_Death
+    guid: -465237623
+    name: HitEffect_00
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Snail_Death_Frame_0
+    - name: HitEffect_00_Frame_0
       frameIndex: 0
       cellRect:
-        x: 10
-        y: 10
-        width: 15
-        height: 13
-      spriteId: 603b22e3dea4c9b4093db09549c42d18
-    - name: Snail_Death_Frame_1
+        x: 13
+        y: 9
+        width: 12
+        height: 9
+      spriteId: 83152ed4a986c0c438295a4df880d99f
+    - name: HitEffect_00_Frame_1
       frameIndex: 1
       cellRect:
-        x: 8
-        y: 12
-        width: 20
-        height: 13
-      spriteId: 403dcea8d87b6b747ba73af7550385c7
-    - name: Snail_Death_Frame_2
+        x: 11
+        y: 8
+        width: 16
+        height: 14
+      spriteId: 03c8fb345ebc91746bf4b130dd9692e4
+    - name: HitEffect_00_Frame_2
       frameIndex: 2
       cellRect:
-        x: 3
-        y: 11
-        width: 27
-        height: 17
-      spriteId: 0c970277e5370cf4f803025cbddea43f
-    - name: Snail_Death_Frame_3
+        x: 7
+        y: 7
+        width: 22
+        height: 15
+      spriteId: 4e2932aaaf641484886ab08fcce346a6
+    - name: HitEffect_00_Frame_3
       frameIndex: 3
       cellRect:
-        x: 4
-        y: 11
+        x: 5
+        y: 6
         width: 26
-        height: 19
-      spriteId: 068843ff4e4d0dd4d9bf1e1b84935af5
-    - name: Snail_Death_Frame_4
+        height: 16
+      spriteId: 451f2d0253995f643a0ab0abe9c1b3d8
+    - name: HitEffect_00_Frame_4
       frameIndex: 4
       cellRect:
         x: 3
-        y: 16
-        width: 17
-        height: 15
-      spriteId: 72c981ea47306ce489b06b6b5943ed48
-    - name: Snail_Death_Frame_5
+        y: 8
+        width: 28
+        height: 12
+      spriteId: 2a4c0bc8a95cb614dbcbd0c1d31b43bc
+    - name: HitEffect_00_Frame_5
       frameIndex: 5
       cellRect:
-        x: 0
-        y: 9
-        width: 21
-        height: 22
-      spriteId: b84ac91c542ef374cbfd7628dfcd100c
-    - name: Snail_Death_Frame_6
-      frameIndex: 6
-      cellRect:
-        x: 2
-        y: 31
-        width: 1
-        height: 1
-      spriteId: 79ccaa2214660594791a8c1b7b18cd91
+        x: 7
+        y: 17
+        width: 25
+        height: 3
+      spriteId: b6783a54905896d41a2b6f4a55311b8c
     linkedCells: []
     parentIndex: -1
   platformSettings: []

@@ -358,7 +358,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected virtual void DeathState()
     {
-
+        enemyAnimator.Play("Death");
     }
 
     public void TakeDamage(float damage)
@@ -372,6 +372,11 @@ public class Enemy : MonoBehaviour, IDamageable
         healthBar.lerpTimer = 0f;
 
         ShowFloatingText(damage, Color.red);
+
+        if (health <= 0)
+        {
+            enemyState = EnemyState.Death;
+        }
     }
 
     public void Heal(float heal)
