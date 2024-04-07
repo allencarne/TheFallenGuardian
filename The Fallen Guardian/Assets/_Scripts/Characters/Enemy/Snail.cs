@@ -25,7 +25,6 @@ public class Snail : Enemy
     public float mobilityCoolDown;
 
     private Vector2 dashDirection;
-    private float dashAngle;
 
     protected override void FixedUpdate()
     {
@@ -154,7 +153,6 @@ public class Snail : Enemy
 
             // Store the dash direction and angle
             dashDirection = directionToTarget;
-            dashAngle = angle;
 
             var trail = Instantiate(mobilityPrefab, transform.position, rotation);
 
