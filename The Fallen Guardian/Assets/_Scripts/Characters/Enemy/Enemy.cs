@@ -20,14 +20,15 @@ public class Enemy : MonoBehaviour, IDamageable
     public float deAggroRadius;
 
     [Header("Components")]
+    EnemyHealthBar healthBar;
     [SerializeField] protected Image patienceBar;
     [SerializeField] protected Image castBar;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] GameObject floatingText;
-    EnemyHealthBar healthBar;
+    protected CrowdControl crowdControl;
     protected Animator enemyAnimator;
     protected Rigidbody2D enemyRB;
-    protected CrowdControl crowdControl;
+    [SerializeField] Collider2D enemyCollider2D;
 
     // Idle
     protected float idleTime;
@@ -359,6 +360,17 @@ public class Enemy : MonoBehaviour, IDamageable
     protected virtual void DeathState()
     {
         enemyAnimator.Play("Death");
+        enemyCollider2D.enabled = false;
+        healthBar.enabled = false;
+
+        StartCoroutine(DeathDelay());
+    }
+
+    IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(.8f);
+
+        Destroy(gameObject);
     }
 
     public void TakeDamage(float damage)

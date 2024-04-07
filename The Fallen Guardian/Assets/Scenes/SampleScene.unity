@@ -8727,6 +8727,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842863218}
   m_CullTransparentMesh: 1
+--- !u!70 &847238766 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7949850666712048347, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
+  m_PrefabInstance: {fileID: 7486113653806297788}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &853595903 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6135136605258851180, guid: 475b7c58a8afb1c4982199f60fe3292e, type: 3}
@@ -9267,6 +9272,7 @@ MonoBehaviour:
   castBar: {fileID: 0}
   spriteRenderer: {fileID: 504803931}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
+  enemyCollider2D: {fileID: 0}
   patience: 5
 --- !u!114 &945035513
 MonoBehaviour:
@@ -124885,6 +124891,10 @@ PrefabInstance:
       propertyPath: attackHitEffect
       value: 
       objectReference: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
+    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
+      propertyPath: enemyCollider2D
+      value: 
+      objectReference: {fileID: 847238766}
     - target: {fileID: 2701073800946075481, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.67
