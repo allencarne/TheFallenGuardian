@@ -16,6 +16,8 @@ public class Player : MonoBehaviour, IDamageable
     HealthBar healthBar;
     [SerializeField] GameObject floatingText;
 
+    public bool isPlayerOutOfHealth;
+
     private void Awake()
     {
         healthBar = GetComponent<HealthBar>();
@@ -96,6 +98,11 @@ public class Player : MonoBehaviour, IDamageable
         healthBar.lerpTimer = 0f;
 
         ShowFloatingText(damage, Color.red);
+
+        if (playerStats.health <= 0)
+        {
+            isPlayerOutOfHealth = true;
+        }
     }
 
     public void Heal(float heal)

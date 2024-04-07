@@ -63,6 +63,20 @@ public class PlayerStateMachine : MonoBehaviour
     void Update()
     {
         state.Update();
+
+        if (player.isPlayerOutOfHealth)
+        {
+            StartCoroutine(DeathDelay());
+
+            SetState(new PlayerDeathState(this));
+        }
+    }
+
+    IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(.8f);
+
+        Destroy(gameObject);
     }
 
     private void FixedUpdate()

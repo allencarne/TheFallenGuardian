@@ -139,14 +139,17 @@ public class Enemy : MonoBehaviour, IDamageable
 
         if (enemyState == EnemyState.Chase && !crowdControl.isImmobilized)
         {
-            Vector2 moveDirection = (target.position - transform.position).normalized;
+            if (target != null)
+            {
+                Vector2 moveDirection = (target.position - transform.position).normalized;
 
-            Vector2 desiredVelocity = moveDirection * moveSpeed;
+                Vector2 desiredVelocity = moveDirection * moveSpeed;
 
-            enemyRB.velocity = desiredVelocity;
+                enemyRB.velocity = desiredVelocity;
 
-            enemyAnimator.SetFloat("Horizontal", moveDirection.x);
-            enemyAnimator.SetFloat("Vertical", moveDirection.y);
+                enemyAnimator.SetFloat("Horizontal", moveDirection.x);
+                enemyAnimator.SetFloat("Vertical", moveDirection.y);
+            }
         }
 
         if (enemyState == EnemyState.Reset && !crowdControl.isImmobilized)
@@ -287,36 +290,39 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         enemyAnimator.Play("Chase");
 
-        // Calculate the distance between the enemy and the target
-        float distanceToTarget = Vector2.Distance(transform.position, target.position);
-
-        // Check if the target is inside the attack radius
-        if (distanceToTarget <= attackRadius && !crowdControl.isDisarmed)
+        if (target != null)
         {
-            // Target is within attack radius, transition to attack state
-            enemyState = EnemyState.Attack;
-        }
+            // Calculate the distance between the enemy and the target
+            float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
-        UpdatePatienceBar();
+            // Check if the target is inside the attack radius
+            if (distanceToTarget <= attackRadius && !crowdControl.isDisarmed)
+            {
+                // Target is within attack radius, transition to attack state
+                enemyState = EnemyState.Attack;
+            }
 
-        // Calculate the distance between the starting Position and the target
-        float distanceToStartingPosition = Vector2.Distance(startingPosition, target.position);
+            UpdatePatienceBar();
 
-        // Check if the target is outside the deAggro radius
-        if (distanceToStartingPosition >= deAggroRadius)
-        {
-            patienceTime += Time.deltaTime;
+            // Calculate the distance between the starting Position and the target
+            float distanceToStartingPosition = Vector2.Distance(startingPosition, target.position);
 
-            if (patienceTime >= patience)
+            // Check if the target is outside the deAggro radius
+            if (distanceToStartingPosition >= deAggroRadius)
+            {
+                patienceTime += Time.deltaTime;
+
+                if (patienceTime >= patience)
+                {
+                    patienceTime = 0;
+                    playerInRange = false;
+                    enemyState = EnemyState.Reset;
+                }
+            }
+            else
             {
                 patienceTime = 0;
-                playerInRange = false;
-                enemyState = EnemyState.Reset;
             }
-        }
-        else
-        {
-            patienceTime = 0;
         }
     }
 
