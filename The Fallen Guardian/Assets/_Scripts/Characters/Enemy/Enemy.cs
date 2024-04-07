@@ -126,7 +126,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected virtual void FixedUpdate()
     {
-        if (enemyState == EnemyState.Wander && !crowdControl.isImmobilized)
+        if (enemyState == EnemyState.Wander && !crowdControl.IsImmobilized)
         {
             // Calculate the direction
             Vector2 moveDirection = (newWanderPosition - (Vector2)transform.position).normalized;
@@ -141,7 +141,7 @@ public class Enemy : MonoBehaviour, IDamageable
             enemyAnimator.SetFloat("Vertical", moveDirection.y);
         }
 
-        if (enemyState == EnemyState.Chase && !crowdControl.isImmobilized)
+        if (enemyState == EnemyState.Chase && !crowdControl.IsImmobilized)
         {
             if (target != null)
             {
@@ -156,7 +156,7 @@ public class Enemy : MonoBehaviour, IDamageable
             }
         }
 
-        if (enemyState == EnemyState.Reset && !crowdControl.isImmobilized)
+        if (enemyState == EnemyState.Reset && !crowdControl.IsImmobilized)
         {
             // Calculate the direction
             Vector2 moveDirection = (startingPosition - (Vector2)transform.position).normalized;
@@ -306,7 +306,7 @@ public class Enemy : MonoBehaviour, IDamageable
             float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
             // Transition to Attack
-            if (distanceToTarget <= attackRadius && !crowdControl.isDisarmed)
+            if (distanceToTarget <= attackRadius && !crowdControl.IsDisarmed)
             {
                 if (canAttack)
                 {

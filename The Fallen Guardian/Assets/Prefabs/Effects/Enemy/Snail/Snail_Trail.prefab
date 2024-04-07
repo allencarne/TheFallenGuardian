@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7287990735410486947}
   - component: {fileID: 6138599511395671800}
   - component: {fileID: 2010745519699181692}
+  - component: {fileID: 89798453032738352}
   m_Layer: 0
   m_Name: Snail_Trail
   m_TagString: Untagged
@@ -152,3 +153,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.6875, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &89798453032738352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8215458080498781041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f06e954fe064fc4a9c9741e84961f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SlowAmount: 0
+  SlowDuration: 0

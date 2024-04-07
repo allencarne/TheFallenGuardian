@@ -80,7 +80,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1604867668990069386, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -199,8 +200,8 @@ MonoBehaviour:
   mobilityRange: 10
   mobilityCoolDown: 5
   specialPrefab: {fileID: 9178998900622273337, guid: 1139518a2dda7ca4797a6df28c79efd9, type: 3}
-  specialHitEffect: {fileID: 0}
-  aspecialDamage: 0
+  specialHitEffect: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
+  specialDamage: 2
   durationOfSpecial: 1.2
   specialCastTime: 0.6
   specialRange: 10
@@ -217,9 +218,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866dd1af28e491546b199bfa9941e9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isImmobilized: 0
-  isInterrupted: 0
-  isDisarmed: 0
+  IsImmobilized: 0
+  IsInterrupted: 0
+  IsDisarmed: 0
 --- !u!1 &5899974318618201015 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 989500593750718045, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}

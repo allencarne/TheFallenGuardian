@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Dummy : Enemy
 {
-    //[SerializeField] Image patienceBar;
-
     protected override void IdleState()
     {
         enemyAnimator.Play("Idle");

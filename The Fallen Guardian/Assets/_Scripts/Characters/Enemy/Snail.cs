@@ -23,6 +23,8 @@ public class Snail : Enemy
     public float mobilityCoolDown;
 
     private Vector2 dashDirection;
+    public float mobilitySlowAmount;
+    public float mobilitySlowDuration;
 
     [Header("Special")]
     [SerializeField] GameObject specialPrefab;
@@ -49,7 +51,7 @@ public class Snail : Enemy
 
     protected override void AttackState()
     {
-        if (crowdControl.isInterrupted)
+        if (crowdControl.IsInterrupted)
         {
             enemyState = EnemyState.Idle;
             return;
@@ -139,6 +141,13 @@ public class Snail : Enemy
             dashDirection = directionToTarget;
 
             GameObject trail = Instantiate(mobilityPrefab, transform.position, rotation);
+
+            SlowOnTrigger slowOnTrigger = trail.GetComponent<SlowOnTrigger>();
+            if (slowOnTrigger != null)
+            {
+                slowOnTrigger.SlowAmount = mobilitySlowAmount;
+                slowOnTrigger.SlowDuration = mobilitySlowDuration;
+            }
 
             Destroy(trail, 3f);
 

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class CrowdControl : MonoBehaviour, IKnockbackable
 {
-    public bool isImmobilized;
-    public bool isInterrupted;
-    public bool isDisarmed;
+    public bool IsImmobilized;
+    public bool IsInterrupted;
+    public bool IsDisarmed;
 
     // KnockBack
     private Vector2 knockBackVelocity;
@@ -21,11 +21,11 @@ public class CrowdControl : MonoBehaviour, IKnockbackable
 
     IEnumerator InterruptDelay()
     {
-        isInterrupted = true;
+        IsInterrupted = true;
 
         yield return new WaitForSeconds(.3f);
 
-        isInterrupted = false;
+        IsInterrupted = false;
     }
 
     public void Immobilize(float duration)
@@ -35,11 +35,11 @@ public class CrowdControl : MonoBehaviour, IKnockbackable
 
     IEnumerator ImmobilizeDuration(float duration)
     {
-        isImmobilized = true;
+        IsImmobilized = true;
 
         yield return new WaitForSeconds(duration);
 
-        isImmobilized = false;
+        IsImmobilized = false;
     }
 
     public void Disarm(float duration)
@@ -49,11 +49,11 @@ public class CrowdControl : MonoBehaviour, IKnockbackable
 
     IEnumerator DisarmDuration(float duration)
     {
-        isDisarmed = true;
+        IsDisarmed = true;
 
         yield return new WaitForSeconds(duration);
 
-        isDisarmed = false;
+        IsDisarmed = false;
     }
 
     public void KnockBack(Rigidbody2D opponentRB, float knockBackAmount, float knockBackDuration, Vector2 knockBackDirection)

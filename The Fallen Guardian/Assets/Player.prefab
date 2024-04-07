@@ -950,6 +950,7 @@ GameObject:
   - component: {fileID: 7051921129711624444}
   - component: {fileID: 7237820433538653136}
   - component: {fileID: 4879207451902047104}
+  - component: {fileID: 3668015608117301615}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1466,6 +1467,7 @@ MonoBehaviour:
   playerAbilities: {fileID: 239699257640095505}
   CastBar: {fileID: 2187327653616484548}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
+  isPlayerOutOfHealth: 0
 --- !u!114 &4059563979879986888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1482,12 +1484,12 @@ MonoBehaviour:
   equipment: {fileID: 7237820433538653136}
   rb: {fileID: 5663583307712945941}
   bodyAnimator: {fileID: 7406391039671905879}
-  clubAnimator: {fileID: 0}
   swordAnimator: {fileID: 7796180083115903274}
   inputHandler: {fileID: 754719381540065433}
   abilities: {fileID: 239699257640095505}
   aimer: {fileID: 1333201046459341400}
   crowdControl: {fileID: 4879207451902047104}
+  debuffs: {fileID: 3668015608117301615}
   CanBasicAbility: 1
   AbilityDir: {x: 0, y: 0, z: 0, w: 0}
   canOffensiveAbility: 1
@@ -1550,9 +1552,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866dd1af28e491546b199bfa9941e9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isImmobilized: 0
-  isInterrupted: 0
-  isDisarmed: 0
+  IsImmobilized: 0
+  IsInterrupted: 0
+  IsDisarmed: 0
+--- !u!114 &3668015608117301615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3ecd92225a07147be91f7344d5999e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsSlowed: 0
+  SlowAmount: 0
 --- !u!1 &8027861156446152564
 GameObject:
   m_ObjectHideFlags: 0

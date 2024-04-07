@@ -17,7 +17,7 @@ public class PlayerMoveState : PlayerState
 
     public override void FixedUpdate()
     {
-        if (!stateMachine.CrowdControl.isImmobilized)
+        if (!stateMachine.CrowdControl.IsImmobilized)
         {
             HandleMovement(stateMachine.InputHandler.MoveInput);
         }
@@ -31,7 +31,16 @@ public class PlayerMoveState : PlayerState
 
     void HandleMovement(Vector2 moveInput)
     {
-        Vector2 movement = moveInput.normalized * stateMachine.Player.playerStats.movementSpeed;
-        stateMachine.Rigidbody.velocity = movement;
+        if (!stateMachine.Debuffs.IsSlowed)
+        {
+            Vector2 movement = moveInput.normalized * stateMachine.Player.playerStats.movementSpeed;
+            stateMachine.Rigidbody.velocity = movement;
+        }
+        else
+        {
+            // Slowed behaviour
+            Vector2 movement = moveInput.normalized * (stateMachine.Player.playerStats.movementSpeed - stateMachine.Debuffs.SlowAmount);
+            stateMachine.Rigidbody.velocity = movement;
+        }
     }
 }
