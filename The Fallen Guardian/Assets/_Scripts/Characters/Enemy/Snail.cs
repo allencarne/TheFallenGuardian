@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class Snail : Enemy
 {
@@ -70,30 +68,7 @@ public class Snail : Enemy
 
     IEnumerator CastTime(Vector2 directionToTarget)
     {
-        float remainingCastTime = attackCastTime;
-        while (remainingCastTime > 0)
-        {
-            if (crowdControl.isInterrupted)
-            {
-                // Change color to red briefly
-                castBar.color = Color.red;
-                yield return new WaitForSeconds(0.2f); // Brief pause for visibility
-                castBar.color = Color.yellow;
-                UpdateCastBar(0f); // Reset the cast bar
-                yield break; // Exit the coroutine
-            }
-
-            remainingCastTime -= Time.deltaTime;
-            float progress = 1 - (remainingCastTime / attackCastTime);
-            UpdateCastBar(progress); // Update the cast bar
-            yield return null;
-        }
-
-        // Cast successful, change color to green briefly
-        castBar.color = Color.green;
-        yield return new WaitForSeconds(0.2f); // Brief pause for visibility
-        castBar.color = Color.yellow;
-        UpdateCastBar(0f); // Reset the cast bar
+        yield return new WaitForSeconds(attackCastTime);
 
         if (enemyState == EnemyState.Attack)
         {

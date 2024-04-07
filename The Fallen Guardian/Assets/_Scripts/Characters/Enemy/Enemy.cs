@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("Radius")]
     public float wanderRadius;
     public float attackRadius;
+    public float mobilityRadius;
     public float deAggroRadius;
 
     [Header("Components")]
@@ -272,6 +273,9 @@ public class Enemy : MonoBehaviour, IDamageable
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
 
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, mobilityRadius);
+
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(startingPosition, deAggroRadius);
     }
@@ -296,13 +300,20 @@ public class Enemy : MonoBehaviour, IDamageable
             // Calculate the distance between the enemy and the target
             float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
-            // Check if the target is inside the attack radius
+            // Transition to Attack
             if (distanceToTarget <= attackRadius && !crowdControl.isDisarmed)
+            {
+                if (canAttack)
+                {
+                    enemyState = EnemyState.Attack;
+                }
+            }
+
+            // Transition to Mobility
+            if (distanceToTarget <= mobilityRadius && !crowdControl.isDisarmed)
             {
                 if (canMobility)
                 {
-                    // Target is within attack radius, transition to attack state
-                    //enemyState = EnemyState.Attack;
                     enemyState = EnemyState.Mobility;
                 }
             }
