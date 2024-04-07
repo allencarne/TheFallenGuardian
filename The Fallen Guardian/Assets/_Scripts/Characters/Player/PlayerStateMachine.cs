@@ -8,31 +8,15 @@ public class PlayerStateMachine : MonoBehaviour
     PlayerState state;
 
     [Header("Components")]
-    [SerializeField] Player player;
-    public Player Player => player;
-
-    [SerializeField] PlayerEquipment equipment;
-
-    [SerializeField] Rigidbody2D rb;
-    public Rigidbody2D Rigidbody => rb;
-
-    [SerializeField] Animator bodyAnimator;
-    public Animator BodyAnimator => bodyAnimator;
-
-    [SerializeField] Animator swordAnimator;
-    public Animator SwordAnimator => swordAnimator;
-
-    [SerializeField] PlayerInputHandler inputHandler;
-    public PlayerInputHandler InputHandler => inputHandler;
-
-    [SerializeField] PlayerAbilities abilities;
-    public PlayerAbilities Abilities => abilities;
-
-    [SerializeField] Transform aimer;
-    public Transform Aimer => aimer;
-
-    [SerializeField] CrowdControl crowdControl;
-    public CrowdControl CrowdControl => crowdControl;
+    [SerializeField] Player player; public Player Player => player;
+    [SerializeField] PlayerEquipment equipment; public PlayerEquipment Equipment => equipment;
+    [SerializeField] Rigidbody2D rb; public Rigidbody2D Rigidbody => rb;
+    [SerializeField] Animator bodyAnimator; public Animator BodyAnimator => bodyAnimator;
+    [SerializeField] Animator swordAnimator; public Animator SwordAnimator => swordAnimator;
+    [SerializeField] PlayerInputHandler inputHandler; public PlayerInputHandler InputHandler => inputHandler;
+    [SerializeField] PlayerAbilities abilities; public PlayerAbilities Abilities => abilities;
+    [SerializeField] Transform aimer; public Transform Aimer => aimer;
+    [SerializeField] CrowdControl crowdControl; public CrowdControl CrowdControl => crowdControl;
 
     private Vector2 lastMoveDirection = Vector2.zero;
 
@@ -83,7 +67,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void BasicAbility(bool abilityInput)
     {
-        if (abilityInput && CanBasicAbility && equipment.IsWeaponEquipt && abilities.basicAbilityReference != null)
+        if (abilityInput && CanBasicAbility && Equipment.IsWeaponEquipt && abilities.basicAbilityReference != null)
         {
             if (!crowdControl.isDisarmed)
             {
@@ -94,7 +78,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void OffensiveAbility(bool abilityInput)
     {
-        if (abilityInput && canOffensiveAbility && equipment.IsWeaponEquipt && abilities.offensiveAbilityReference != null)
+        if (abilityInput && canOffensiveAbility && Equipment.IsWeaponEquipt && abilities.offensiveAbilityReference != null)
         {
             SetState(new PlayerOffensiveState(this));
         }
@@ -102,7 +86,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void MobilityAbility(bool abilityInput)
     {
-        if (abilityInput && canMobilityAbility && equipment.IsWeaponEquipt && abilities.mobilityAbilityReference != null)
+        if (abilityInput && canMobilityAbility && Equipment.IsWeaponEquipt && abilities.mobilityAbilityReference != null)
         {
             SetState(new PlayerMobilityState(this));
         }
