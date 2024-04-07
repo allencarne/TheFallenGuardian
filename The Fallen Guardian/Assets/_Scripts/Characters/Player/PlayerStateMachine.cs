@@ -19,9 +19,6 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Animator bodyAnimator;
     public Animator BodyAnimator => bodyAnimator;
 
-    [SerializeField] Animator clubAnimator;
-    public Animator ClubAnimator => clubAnimator;
-
     [SerializeField] Animator swordAnimator;
     public Animator SwordAnimator => swordAnimator;
 

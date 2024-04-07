@@ -29,6 +29,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8329506289662085224, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329506289662085224, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329506289662085224, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -176397717, guid: f18b7aa5a334b094498ccb33f932a44b, type: 3}
@@ -169,12 +177,13 @@ MonoBehaviour:
   attackRadius: 1
   deAggroRadius: 12
   patienceBar: {fileID: 3853848659867538028}
+  castBar: {fileID: 2803776170586669871}
   spriteRenderer: {fileID: 3441835576944637314}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
+  enemyCollider2D: {fileID: 7949850666712048347}
   patience: 3
-  castBar: {fileID: 2803776170586669871}
   attackPrefab: {fileID: 7461344068309084465, guid: 2efb12dae9b87624a968e92eeb7f102f, type: 3}
-  attackHitEffect: {fileID: 0}
+  attackHitEffect: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
   attackDamage: 1
   durationOfAttack: 1.2
   castTime: 0.6
@@ -194,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isImmobilized: 0
   isInterrupted: 0
+  isDisarmed: 0
 --- !u!1 &5899974318618201015 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 989500593750718045, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
@@ -234,3 +244,8 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 4
+--- !u!70 &7949850666712048347 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3605142366507294513, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+  m_PrefabInstance: {fileID: 6655056833195474410}
+  m_PrefabAsset: {fileID: 0}
