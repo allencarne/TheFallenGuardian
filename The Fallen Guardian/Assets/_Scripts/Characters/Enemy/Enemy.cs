@@ -483,6 +483,20 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            target = other.transform;
+
+            if (other.GetComponent<Player>().isPlayerOutOfHealth)
+            {
+                target = null;
+                playerInRange = false;
+            }
+        }
+    }
+
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))

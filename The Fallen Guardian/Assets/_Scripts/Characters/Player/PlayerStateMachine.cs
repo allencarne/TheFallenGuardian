@@ -66,17 +66,10 @@ public class PlayerStateMachine : MonoBehaviour
 
         if (player.isPlayerOutOfHealth)
         {
-            StartCoroutine(DeathDelay());
+            player.isPlayerOutOfHealth = false;
 
             SetState(new PlayerDeathState(this));
         }
-    }
-
-    IEnumerator DeathDelay()
-    {
-        yield return new WaitForSeconds(.8f);
-
-        Destroy(gameObject);
     }
 
     private void FixedUpdate()
