@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] GameObject floatingText;
     protected CrowdControl crowdControl;
+    protected Debuffs debuffs;
     protected Animator enemyAnimator;
     protected Rigidbody2D enemyRB;
     [SerializeField] Collider2D enemyCollider2D;
@@ -76,6 +77,7 @@ public class Enemy : MonoBehaviour, IDamageable
         enemyAnimator = GetComponentInChildren<Animator>();
         enemyRB = GetComponent<Rigidbody2D>();
         crowdControl = GetComponent<CrowdControl>();
+        debuffs = GetComponent<Debuffs>();
     }
 
     private void Start()
@@ -128,31 +130,62 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (enemyState == EnemyState.Wander && !crowdControl.IsImmobilized)
         {
-            // Calculate the direction
-            Vector2 moveDirection = (newWanderPosition - (Vector2)transform.position).normalized;
+            if (!debuffs.IsSlowed)
+            {
+                // Calculate the direction
+                Vector2 moveDirection = (newWanderPosition - (Vector2)transform.position).normalized;
 
-            // Calculate the desired velocity to reach the new wander position
-            Vector2 desiredVelocity = moveDirection * moveSpeed;
+                // Calculate the desired velocity to reach the new wander position
+                Vector2 desiredVelocity = moveDirection * moveSpeed;
 
-            // Apply the desired velocity to the rigidbody
-            enemyRB.velocity = desiredVelocity;
+                // Apply the desired velocity to the rigidbody
+                enemyRB.velocity = desiredVelocity;
 
-            enemyAnimator.SetFloat("Horizontal", moveDirection.x);
-            enemyAnimator.SetFloat("Vertical", moveDirection.y);
+                enemyAnimator.SetFloat("Horizontal", moveDirection.x);
+                enemyAnimator.SetFloat("Vertical", moveDirection.y);
+            }
+            else
+            {
+                // Calculate the direction
+                Vector2 moveDirection = (newWanderPosition - (Vector2)transform.position).normalized;
+
+                // Calculate the desired velocity to reach the new wander position
+                Vector2 desiredVelocity = moveDirection * (moveSpeed - debuffs.SlowAmount);
+
+                // Apply the desired velocity to the rigidbody
+                enemyRB.velocity = desiredVelocity;
+
+                enemyAnimator.SetFloat("Horizontal", moveDirection.x);
+                enemyAnimator.SetFloat("Vertical", moveDirection.y);
+            }
         }
 
         if (enemyState == EnemyState.Chase && !crowdControl.IsImmobilized)
         {
             if (target != null)
             {
-                Vector2 moveDirection = (target.position - transform.position).normalized;
+                if (!debuffs.IsSlowed)
+                {
+                    Vector2 moveDirection = (target.position - transform.position).normalized;
 
-                Vector2 desiredVelocity = moveDirection * moveSpeed;
+                    Vector2 desiredVelocity = moveDirection * moveSpeed;
 
-                enemyRB.velocity = desiredVelocity;
+                    enemyRB.velocity = desiredVelocity;
 
-                enemyAnimator.SetFloat("Horizontal", moveDirection.x);
-                enemyAnimator.SetFloat("Vertical", moveDirection.y);
+                    enemyAnimator.SetFloat("Horizontal", moveDirection.x);
+                    enemyAnimator.SetFloat("Vertical", moveDirection.y);
+                }
+                else
+                {
+                    Vector2 moveDirection = (target.position - transform.position).normalized;
+
+                    Vector2 desiredVelocity = moveDirection * (moveSpeed - debuffs.SlowAmount);
+
+                    enemyRB.velocity = desiredVelocity;
+
+                    enemyAnimator.SetFloat("Horizontal", moveDirection.x);
+                    enemyAnimator.SetFloat("Vertical", moveDirection.y);
+                }
             }
         }
 

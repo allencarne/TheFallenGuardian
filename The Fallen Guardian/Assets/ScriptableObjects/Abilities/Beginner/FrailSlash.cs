@@ -25,6 +25,10 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
     [SerializeField] float knockBackForce;
     [SerializeField] float knockBackDuration;
 
+    [Header("Slow")]
+    [SerializeField] float slowAmount;
+    [SerializeField] float slowDuration;
+
     public void BehaviourUpdate(PlayerStateMachine stateMachine)
     {
         if (stateMachine.CanBasicAbility)
@@ -80,6 +84,13 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
             knockbackOnTrigger.KnockBackForce = knockBackForce;
             knockbackOnTrigger.KnockBackDuration = knockBackDuration;
             knockbackOnTrigger.KnockBackDirection = direction;
+        }
+
+        SlowOnTrigger slowOnTrigger = slash.GetComponent<SlowOnTrigger>();
+        if (slowOnTrigger != null)
+        {
+            slowOnTrigger.SlowAmount = slowAmount;
+            slowOnTrigger.SlowDuration = slowDuration;
         }
     }
 

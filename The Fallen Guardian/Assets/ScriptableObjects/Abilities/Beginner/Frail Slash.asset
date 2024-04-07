@@ -24,3 +24,5 @@ MonoBehaviour:
   rangeBeforeSlide: 2
   knockBackForce: 5
   knockBackDuration: 0.2
+  slowAmount: 2
+  slowDuration: 10
