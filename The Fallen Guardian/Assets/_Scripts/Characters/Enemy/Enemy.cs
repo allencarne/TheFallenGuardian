@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour, IDamageable
     bool canSpawn = true;
     bool canWander = true;
     protected bool canAttack = true;
+    protected bool canMobility = true;
     bool canReset = true;
 
     protected enum EnemyState 
@@ -298,8 +299,12 @@ public class Enemy : MonoBehaviour, IDamageable
             // Check if the target is inside the attack radius
             if (distanceToTarget <= attackRadius && !crowdControl.isDisarmed)
             {
-                // Target is within attack radius, transition to attack state
-                enemyState = EnemyState.Attack;
+                if (canMobility)
+                {
+                    // Target is within attack radius, transition to attack state
+                    //enemyState = EnemyState.Attack;
+                    enemyState = EnemyState.Mobility;
+                }
             }
 
             UpdatePatienceBar();

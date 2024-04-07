@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Snail : Enemy
 {
@@ -10,9 +11,34 @@ public class Snail : Enemy
     [SerializeField] GameObject attackHitEffect;
     public int attackDamage;
     public float durationOfAttack;
-    public float castTime;
+    public float attackCastTime;
     public float attackRange;
     public float attackCoolDown;
+
+    [Header("Mobility")]
+    [SerializeField] GameObject mobilityPrefab;
+    [SerializeField] GameObject mobilityHitEffect;
+    public int mobilityDamage;
+    public float durationOfMobility;
+    public float mobilityCastTime;
+    public float mobilityRange;
+    public float mobilityCoolDown;
+
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+
+        if (enemyState == EnemyState.Mobility)
+        {
+            // Disable collision between enemy and player
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), true);
+
+            // Calculate the direction from the enemy to the player
+            Vector2 directionToPlayer = (target.position - transform.position).normalized;
+
+            enemyRB.velocity = directionToPlayer * mobilityRange;
+        }
+    }
 
     protected override void AttackState()
     {
@@ -38,12 +64,13 @@ public class Snail : Enemy
 
             StartCoroutine(CastTime(directionToTarget));
             StartCoroutine(DurationOfAttack());
+            StartCoroutine(AttackCoolDown());
         }
     }
 
     IEnumerator CastTime(Vector2 directionToTarget)
     {
-        float remainingCastTime = castTime;
+        float remainingCastTime = attackCastTime;
         while (remainingCastTime > 0)
         {
             if (crowdControl.isInterrupted)
@@ -57,7 +84,7 @@ public class Snail : Enemy
             }
 
             remainingCastTime -= Time.deltaTime;
-            float progress = 1 - (remainingCastTime / castTime);
+            float progress = 1 - (remainingCastTime / attackCastTime);
             UpdateCastBar(progress); // Update the cast bar
             yield return null;
         }
@@ -92,10 +119,61 @@ public class Snail : Enemy
     {
         yield return new WaitForSeconds(durationOfAttack);
 
-        canAttack = true;
         if (enemyState == EnemyState.Attack)
         {
             enemyState = EnemyState.Idle;
         }
+    }
+
+    IEnumerator AttackCoolDown()
+    {
+        yield return new WaitForSeconds(attackCoolDown);
+
+        canAttack = true;
+    }
+
+    protected override void MobilityState()
+    {
+        if (canMobility)
+        {
+            canMobility = false;
+
+            enemyAnimator.Play("Chase");
+
+            // Calculate the direction from the enemy to the target
+            Vector2 directionToTarget = (target.position - transform.position).normalized;
+
+            // Set animator parameters based on the direction
+            enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
+            enemyAnimator.SetFloat("Vertical", directionToTarget.y);
+
+            // Calculate the rotation towards the target
+            // Calculate the rotation towards the target
+            float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            var trail = Instantiate(mobilityPrefab, transform.position, rotation);
+
+            Destroy(trail, 3f);
+
+            StartCoroutine(DurationOfMobility());
+            StartCoroutine(MobilityCoolDown());
+        }
+    }
+
+    IEnumerator DurationOfMobility()
+    {
+        yield return new WaitForSeconds(durationOfMobility);
+
+        enemyState = EnemyState.Idle;
+
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
+    }
+
+    IEnumerator MobilityCoolDown()
+    {
+        yield return new WaitForSeconds(mobilityCoolDown);
+
+        canMobility = true;
     }
 }

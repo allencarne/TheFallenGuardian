@@ -124850,6 +124850,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
+      propertyPath: mobilityRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
+      propertyPath: mobilityPrefab
+      value: 
+      objectReference: {fileID: 8215458080498781041, guid: bd0bfc28234901745ae9f0c63e3a2633, type: 3}
+    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
+      propertyPath: mobilityCoolDown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
+      propertyPath: mobilityHitEffect
+      value: 
+      objectReference: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
+    - target: {fileID: 415464689696531612, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
+      propertyPath: durationOfMobility
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2701073800946075481, guid: 4ca5bbcc17d14c146ac5dc5ce5fb8160, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.67
