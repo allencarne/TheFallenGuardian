@@ -24,6 +24,9 @@ public class Snail : Enemy
     public float mobilityRange;
     public float mobilityCoolDown;
 
+    private Vector2 dashDirection;
+    private float dashAngle;
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -33,10 +36,8 @@ public class Snail : Enemy
             // Disable collision between enemy and player
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), true);
 
-            // Calculate the direction from the enemy to the player
-            Vector2 directionToPlayer = (target.position - transform.position).normalized;
-
-            enemyRB.velocity = directionToPlayer * mobilityRange;
+            // Use the stored dash direction for the enemy's velocity
+            enemyRB.velocity = dashDirection * mobilityRange;
         }
     }
 
@@ -148,9 +149,12 @@ public class Snail : Enemy
             enemyAnimator.SetFloat("Vertical", directionToTarget.y);
 
             // Calculate the rotation towards the target
-            // Calculate the rotation towards the target
             float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            // Store the dash direction and angle
+            dashDirection = directionToTarget;
+            dashAngle = angle;
 
             var trail = Instantiate(mobilityPrefab, transform.position, rotation);
 
