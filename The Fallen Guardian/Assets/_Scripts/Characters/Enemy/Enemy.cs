@@ -324,6 +324,12 @@ public class Enemy : MonoBehaviour, IDamageable
                 patienceTime = 0;
             }
         }
+        else
+        {
+            patienceTime = 0;
+            playerInRange = false;
+            enemyState = EnemyState.Reset;
+        }
     }
 
     protected virtual void AttackState()
