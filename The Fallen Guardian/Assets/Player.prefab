@@ -1585,7 +1585,7 @@ MonoBehaviour:
   levelUpEffect: {fileID: 2649293616300078610, guid: 81f73a68418411e47954b7897eb79351, type: 3}
   stats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
   levelText: {fileID: 5709352083387614229}
-  additionMultiplier: 1
+  additionMultiplier: 10
   powerMultiplier: 2
   divisionMultiplier: 7
 --- !u!1 &8027861156446152564

@@ -29,7 +29,7 @@ public class Player : MonoBehaviour, IDamageable
         playerStats.health = playerStats.maxHealth;
 
         playerStats.currentExperience = 0;
-        playerStats.requiredExperience = 0;
+        playerStats.requiredExperience = 130;
         playerStats.playerLevel = 1;
 
         switch (playerStats.playerClass)

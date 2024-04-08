@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e553fb1b75905944c9920ac950afc13d, type: 3}
   m_Name: Player Stats
   m_EditorClassIdentifier: 
-  health: 7
+  health: 2
   maxHealth: 10
   movementSpeed: 8
   damage: 1
   playerClass: 0
-  currentExperience: 0
-  requiredExperience: 0
-  playerLevel: 1
+  currentExperience: 5
+  requiredExperience: 15
+  playerLevel: 4
