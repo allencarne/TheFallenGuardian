@@ -49,10 +49,10 @@ public class LevelSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Equals))
         {
-            GainExperienceFlatRate(20);
+            GainExperienceFlatRate(5);
         }
 
-        if (stats.currentExperience > stats.requiredExperience)
+        if (stats.currentExperience >= stats.requiredExperience)
         {
             LevelUp();
         }
