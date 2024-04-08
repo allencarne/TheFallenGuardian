@@ -173,7 +173,7 @@ MonoBehaviour:
   moveSpeed: 3
   maxMoveSpeed: 3
   damage: 1
-  expToGive: 25
+  expToGive: 3
   wanderRadius: 5
   attackRadius: 1
   mobilityRadius: 1.5

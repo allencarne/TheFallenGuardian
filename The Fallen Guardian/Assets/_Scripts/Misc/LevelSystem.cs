@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class LevelSystem : MonoBehaviour
 {
+    [SerializeField] GameObject levelUpEffect;
     [SerializeField] PlayerStats stats;
 
     private float lerpTimer;
@@ -97,6 +98,8 @@ public class LevelSystem : MonoBehaviour
         stats.requiredExperience = CalculateRequiredXp();
 
         levelText.text = stats.playerLevel.ToString();
+
+        Instantiate(levelUpEffect, transform.position, transform.rotation);
     }
 
     private int CalculateRequiredXp()
