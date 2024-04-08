@@ -19,5 +19,5 @@ MonoBehaviour:
   quantity: 0
   isStackable: 0
   equipmentType: 0
-  healthModifier: 0
+  healthModifier: 1
   damageModifier: 0

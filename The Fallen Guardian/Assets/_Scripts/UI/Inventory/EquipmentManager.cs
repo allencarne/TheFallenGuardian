@@ -9,6 +9,7 @@ public class EquipmentManager : MonoBehaviour
     public OnEquipmentChanged onEquipmentChangedCallback;
 
     [SerializeField] Inventory inventory;
+    [SerializeField] PlayerStats playerStats;
 
     // Array of all the items we currently have equipt
     public Equipment[] currentEquipment;
@@ -36,6 +37,9 @@ public class EquipmentManager : MonoBehaviour
             inventory.Add(oldItem);
         }
 
+        playerStats.MaxHealth += newItem.healthModifier;
+        playerStats.Might += newItem.damageModifier;
+
         if (onEquipmentChangedCallback != null)
         {
             onEquipmentChangedCallback.Invoke(newItem, oldItem);
@@ -51,6 +55,9 @@ public class EquipmentManager : MonoBehaviour
         {
             Equipment oldItem = currentEquipment[slotIndex];
             inventory.Add(oldItem);
+
+            playerStats.MaxHealth -= oldItem.healthModifier;
+            playerStats.Might -= oldItem.damageModifier;
 
             currentEquipment[slotIndex] = null;
 

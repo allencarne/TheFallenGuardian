@@ -20,6 +20,6 @@ MonoBehaviour:
   isStackable: 0
   equipmentType: 5
   healthModifier: 0
-  damageModifier: 0
+  damageModifier: 1
   weaponSprite: {fileID: 21300000, guid: 9d2200a3acc61c3448828595be5b189a, type: 3}
   weaponType: 0
