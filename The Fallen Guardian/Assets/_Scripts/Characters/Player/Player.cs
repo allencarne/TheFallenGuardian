@@ -28,6 +28,10 @@ public class Player : MonoBehaviour, IDamageable
         // Set Health
         playerStats.health = playerStats.maxHealth;
 
+        playerStats.currentExperience = 0;
+        playerStats.requiredExperience = 0;
+        playerStats.playerLevel = 1;
+
         switch (playerStats.playerClass)
         {
             case PlayerClass.Beginner:

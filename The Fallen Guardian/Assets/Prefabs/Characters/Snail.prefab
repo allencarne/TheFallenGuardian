@@ -173,7 +173,7 @@ MonoBehaviour:
   moveSpeed: 3
   maxMoveSpeed: 3
   damage: 1
-  expToGive: 1
+  expToGive: 25
   wanderRadius: 5
   attackRadius: 1
   mobilityRadius: 1.5
@@ -184,6 +184,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3441835576944637314}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
   enemyCollider2D: {fileID: 7949850666712048347}
+  EnemySpawner: {fileID: 0}
   patience: 3
   attackPrefab: {fileID: 7461344068309084465, guid: 2efb12dae9b87624a968e92eeb7f102f, type: 3}
   attackHitEffect: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}

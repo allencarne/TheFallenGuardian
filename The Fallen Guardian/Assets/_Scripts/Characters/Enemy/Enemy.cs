@@ -470,6 +470,15 @@ public class Enemy : MonoBehaviour, IDamageable
                 EnemySpawner.DecreaseEnemyCount();
             }
 
+            if (target != null)
+            {
+                LevelSystem levelSystem = target.GetComponent<LevelSystem>();
+                if (levelSystem)
+                {
+                    levelSystem.GainExperienceFlatRate(expToGive);
+                }
+            }
+
             enemyState = EnemyState.Death;
         }
     }

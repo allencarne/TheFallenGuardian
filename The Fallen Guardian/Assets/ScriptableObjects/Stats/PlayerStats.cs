@@ -10,6 +10,10 @@ public class PlayerStats : ScriptableObject
     public float movementSpeed;
     public int damage;
     public PlayerClass playerClass;
+
+    public float currentExperience;
+    public float requiredExperience;
+    public int playerLevel;
 }
 
 public enum PlayerClass 

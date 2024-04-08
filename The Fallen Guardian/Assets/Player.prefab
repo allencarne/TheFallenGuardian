@@ -951,6 +951,7 @@ GameObject:
   - component: {fileID: 7237820433538653136}
   - component: {fileID: 4879207451902047104}
   - component: {fileID: 3668015608117301615}
+  - component: {fileID: 4447316120299245786}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1569,6 +1570,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsSlowed: 0
   SlowAmount: 0
+--- !u!114 &4447316120299245786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdfedb59a8f359249b2a8fcd77778952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
+  levelText: {fileID: 5709352083387614229}
+  additionMultiplier: 1
+  powerMultiplier: 2
+  divisionMultiplier: 7
 --- !u!1 &8027861156446152564
 GameObject:
   m_ObjectHideFlags: 0
