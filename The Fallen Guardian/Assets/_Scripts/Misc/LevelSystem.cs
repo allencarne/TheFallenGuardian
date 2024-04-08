@@ -126,8 +126,9 @@ public class LevelSystem : MonoBehaviour
             GameObject textPrefab = Instantiate(floatingText, transform.position + offset, Quaternion.identity);
             TextMeshPro textMesh = textPrefab.GetComponentInChildren<TextMeshPro>();
             textMesh.text = "+" + amount.ToString() + " Exp";
+            textMesh.fontSize = 4;
             textMesh.color = color; // Set the color of the text
-            Destroy(textPrefab, 1);
+            Destroy(textPrefab, 1.5f);
         }
     }
 
@@ -141,7 +142,7 @@ public class LevelSystem : MonoBehaviour
             TextMeshPro textMesh = textPrefab.GetComponentInChildren<TextMeshPro>();
             textMesh.text = "Level Up";
             textMesh.color = color;
-            Destroy(textPrefab, 1);
+            Destroy(textPrefab, 2f);
         }
     }
 }

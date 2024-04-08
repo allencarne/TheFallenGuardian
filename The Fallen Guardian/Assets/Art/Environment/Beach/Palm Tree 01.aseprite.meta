@@ -123,14 +123,14 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Palm Tree 01
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.516129, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
-      width: 58
+      y: 238
+      width: 62
       height: 70
     spriteID: 1d01468709d6c7b47b3b593084b86729
     spriteBone: []
@@ -140,7 +140,227 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
+    uvTransform: {x: 4, y: 238}
+  - name: Palm Tree 01_Frame_1
+    originalName: 
+    pivot: {x: 0.53225803, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 316
+      width: 62
+      height: 70
+    spriteID: cb554449a41bc6b46b7881a2f7e96817
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 316}
+  - name: Palm Tree 01_Frame_2
+    originalName: 
+    pivot: {x: 0.5409836, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 75
+      y: 238
+      width: 61
+      height: 70
+    spriteID: d0b3bac73b8861b4397e14f3fddee984
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 75, y: 238}
+  - name: Palm Tree 01_Frame_3
+    originalName: 
+    pivot: {x: 0.5409836, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 75
+      y: 316
+      width: 61
+      height: 70
+    spriteID: 32720b6effb2f754b814637eca4edd77
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 75, y: 316}
+  - name: Palm Tree 01_Frame_4
+    originalName: 
+    pivot: {x: 0.5245902, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 75
+      y: 394
+      width: 61
+      height: 70
+    spriteID: fa9d61b7d5f40414ca2631021f02b20c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 75, y: 394}
+  - name: Palm Tree 01_Frame_5
+    originalName: 
+    pivot: {x: 0.49999997, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 394
+      width: 62
+      height: 70
+    spriteID: d69561b89b9679c48ad853b3d5901620
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 394}
+  - name: Palm Tree 01_Frame_6
+    originalName: 
+    pivot: {x: 0.48387095, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 75
+      y: 4
+      width: 62
+      height: 70
+    spriteID: 78ba775bd8144494b8bf5153c30ebae6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 75, y: 4}
+  - name: Palm Tree 01_Frame_7
+    originalName: 
+    pivot: {x: 0.46774194, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 75
+      y: 82
+      width: 62
+      height: 70
+    spriteID: 0b5a3f7188df10741b78669754845273
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 75, y: 82}
+  - name: Palm Tree 01_Frame_8
+    originalName: 
+    pivot: {x: 0.4603175, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 63
+      height: 70
+    spriteID: 5eb6b16c7dd21744d8d85351b0e8b729
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Palm Tree 01_Frame_9
+    originalName: 
+    pivot: {x: 0.4603175, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 82
+      width: 63
+      height: 70
+    spriteID: a58a48785dc8eb84fba776a8d1dbf7af
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 82}
+  - name: Palm Tree 01_Frame_10
+    originalName: 
+    pivot: {x: 0.4761905, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 160
+      width: 63
+      height: 70
+    spriteID: eb3514042fde04445a4cd8a9e8417781
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 160}
+  - name: Palm Tree 01_Frame_11
+    originalName: 
+    pivot: {x: 0.49999997, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 75
+      y: 160
+      width: 62
+      height: 70
+    spriteID: 8a5a00bff4d6317418efb2e081877f8a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 75, y: 160}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -150,18 +370,106 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Palm Tree 01
+    - name: Palm Tree 01_Frame_0
       frameIndex: 0
       cellRect:
-        x: 0
+        x: 8
         y: 0
-        width: 58
+        width: 62
         height: 70
       spriteId: 1d01468709d6c7b47b3b593084b86729
+    - name: Palm Tree 01_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 7
+        y: 0
+        width: 62
+        height: 70
+      spriteId: cb554449a41bc6b46b7881a2f7e96817
+    - name: Palm Tree 01_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 7
+        y: 0
+        width: 61
+        height: 70
+      spriteId: d0b3bac73b8861b4397e14f3fddee984
+    - name: Palm Tree 01_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 7
+        y: 0
+        width: 61
+        height: 70
+      spriteId: 32720b6effb2f754b814637eca4edd77
+    - name: Palm Tree 01_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 8
+        y: 0
+        width: 61
+        height: 70
+      spriteId: fa9d61b7d5f40414ca2631021f02b20c
+    - name: Palm Tree 01_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 9
+        y: 0
+        width: 62
+        height: 70
+      spriteId: d69561b89b9679c48ad853b3d5901620
+    - name: Palm Tree 01_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 10
+        y: 0
+        width: 62
+        height: 70
+      spriteId: 78ba775bd8144494b8bf5153c30ebae6
+    - name: Palm Tree 01_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 11
+        y: 0
+        width: 62
+        height: 70
+      spriteId: 0b5a3f7188df10741b78669754845273
+    - name: Palm Tree 01_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 11
+        y: 0
+        width: 63
+        height: 70
+      spriteId: 5eb6b16c7dd21744d8d85351b0e8b729
+    - name: Palm Tree 01_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 11
+        y: 0
+        width: 63
+        height: 70
+      spriteId: a58a48785dc8eb84fba776a8d1dbf7af
+    - name: Palm Tree 01_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 10
+        y: 0
+        width: 63
+        height: 70
+      spriteId: eb3514042fde04445a4cd8a9e8417781
+    - name: Palm Tree 01_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 9
+        y: 0
+        width: 62
+        height: 70
+      spriteId: 8a5a00bff4d6317418efb2e081877f8a
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 58, y: 70}
+  canvasSize: {x: 80, y: 80}
