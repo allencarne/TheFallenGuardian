@@ -586,11 +586,15 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void UpdateCastBar(float fillAmount)
+    public void UpdateCastBar(float castTime, float attackCastTime)
     {
         if (castBar != null)
         {
-            castBar.fillAmount = fillAmount; // Directly set the fillAmount
+            // Calculate the percentage of the cast time that has elapsed
+            float fillAmount = Mathf.Clamp01(castTime / attackCastTime);
+
+            // Set the fillAmount of the cast bar
+            castBar.fillAmount = fillAmount;
         }
     }
 }

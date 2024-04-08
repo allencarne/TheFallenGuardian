@@ -35,6 +35,10 @@ public class Snail : Enemy
     public float specialRange;
     public float specialCoolDown;
 
+    float castTime = 0;
+    Vector2 directionToTarget;
+    bool canAttackImpact = true;
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -51,70 +55,88 @@ public class Snail : Enemy
 
     protected override void AttackState()
     {
+        castTime += Time.deltaTime;
+        UpdateCastBar(castTime, attackCastTime);
+
         if (crowdControl.IsInterrupted)
         {
-            enemyState = EnemyState.Idle;
-            return;
+            if (castBar.color != Color.green)
+            {
+                // ResetCast Time
+                castTime = 0;
+
+                // Set Cast Bar Color
+                castBar.color = Color.red;
+
+                // State Transition
+                enemyState = EnemyState.Idle;
+                return;
+            }
         }
 
         if (canAttack)
         {
             canAttack = false;
 
+            castBar.color = Color.yellow;
+
             // Play attack animation
-            enemyAnimator.Play("Attack");
+            enemyAnimator.Play("Attack Cast");
 
             // Calculate the direction from the enemy to the target
-            Vector2 directionToTarget = (target.position - transform.position).normalized;
+            directionToTarget = (target.position - transform.position).normalized;
 
             // Set animator parameters based on the direction
             enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
             enemyAnimator.SetFloat("Vertical", directionToTarget.y);
 
-            StartCoroutine(CastTime(directionToTarget));
-            StartCoroutine(DurationOfAttack());
+            // Start Cooldown
             StartCoroutine(AttackCoolDown());
         }
-    }
 
-    IEnumerator CastTime(Vector2 directionToTarget)
-    {
-        yield return new WaitForSeconds(attackCastTime);
-
-        if (enemyState == EnemyState.Attack)
+        if (castTime > attackCastTime)
         {
-            // Calculate the position for the attackPrefab
-            Vector2 attackPosition = (Vector2)transform.position + directionToTarget * attackRange;
-
-            GameObject attack = Instantiate(attackPrefab, attackPosition, Quaternion.identity);
-
-            // Ignore collision between the attack and the caster
-            Physics2D.IgnoreCollision(attack.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
-
-            DamageOnTrigger damageOnTrigger = attack.GetComponent<DamageOnTrigger>();
-            if (damageOnTrigger != null)
+            if (canAttackImpact)
             {
-                damageOnTrigger.abilityDamage = attackDamage;
-                damageOnTrigger.characterDamage = damage;
-                damageOnTrigger.hitEffect = attackHitEffect;
+                castBar.color = Color.green;
+
+                canAttackImpact = false;
+
+                // Calculate the position for the attackPrefab
+                Vector2 attackPosition = (Vector2)transform.position + directionToTarget * attackRange;
+
+                GameObject attack = Instantiate(attackPrefab, attackPosition, Quaternion.identity);
+
+                // Ignore collision between the attack and the caster
+                Physics2D.IgnoreCollision(attack.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+
+                DamageOnTrigger damageOnTrigger = attack.GetComponent<DamageOnTrigger>();
+                if (damageOnTrigger != null)
+                {
+                    damageOnTrigger.abilityDamage = attackDamage;
+                    damageOnTrigger.characterDamage = damage;
+                    damageOnTrigger.hitEffect = attackHitEffect;
+                }
+
+                enemyAnimator.Play("Attack Impact");
             }
         }
-    }
 
-    IEnumerator DurationOfAttack()
-    {
-        yield return new WaitForSeconds(durationOfAttack);
-
-        if (enemyState == EnemyState.Attack)
+        if (castTime > durationOfAttack)
         {
+            castBar.color = Color.yellow;
+            castTime = 0;
+            UpdateCastBar(0, attackCastTime);
+
+            // State Transition
             enemyState = EnemyState.Idle;
         }
     }
-
     IEnumerator AttackCoolDown()
     {
         yield return new WaitForSeconds(attackCoolDown);
 
+        canAttackImpact = true;
         canAttack = true;
     }
 

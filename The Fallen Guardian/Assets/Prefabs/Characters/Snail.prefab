@@ -200,7 +200,7 @@ MonoBehaviour:
   mobilityCastTime: 0
   mobilityRange: 10
   mobilityCoolDown: 5
-  mobilitySlowAmount: 5
+  mobilitySlowAmount: 1
   mobilitySlowDuration: 1
   specialPrefab: {fileID: 9178998900622273337, guid: 1139518a2dda7ca4797a6df28c79efd9, type: 3}
   specialHitEffect: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
