@@ -597,4 +597,14 @@ public class Enemy : MonoBehaviour, IDamageable
             castBar.fillAmount = fillAmount;
         }
     }
+
+    public IEnumerator ResetCastBar()
+    {
+        if (castBar != null)
+        {
+            yield return new WaitForSeconds(.2f);
+            castBar.color = Color.yellow;
+            castBar.fillAmount = 0;
+        }
+    }
 }

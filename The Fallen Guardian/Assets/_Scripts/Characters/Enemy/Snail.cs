@@ -70,6 +70,8 @@ public class Snail : Enemy
 
                 // State Transition
                 enemyState = EnemyState.Idle;
+
+                StartCoroutine(ResetCastBar());
                 return;
             }
         }
@@ -132,6 +134,7 @@ public class Snail : Enemy
             enemyState = EnemyState.Idle;
         }
     }
+
     IEnumerator AttackCoolDown()
     {
         yield return new WaitForSeconds(attackCoolDown);
