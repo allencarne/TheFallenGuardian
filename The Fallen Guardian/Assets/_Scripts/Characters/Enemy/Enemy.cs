@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour, IDamageable
@@ -32,6 +33,8 @@ public class Enemy : MonoBehaviour, IDamageable
     protected Animator enemyAnimator;
     protected Rigidbody2D enemyRB;
     [SerializeField] Collider2D enemyCollider2D;
+
+    public EnemySpawner EnemySpawner;
 
     // Idle
     protected float idleTime;
@@ -462,6 +465,11 @@ public class Enemy : MonoBehaviour, IDamageable
 
         if (health <= 0)
         {
+            if (EnemySpawner != null)
+            {
+                EnemySpawner.DecreaseEnemyCount();
+            }
+
             enemyState = EnemyState.Death;
         }
     }
