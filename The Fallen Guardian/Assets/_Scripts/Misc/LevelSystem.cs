@@ -16,7 +16,9 @@ public class LevelSystem : MonoBehaviour
     Image frontXpBar;
     Image backXpBar;
     public TextMeshProUGUI levelText;
+
     TextMeshProUGUI experienceText;
+    [SerializeField] GameObject floatingText;
 
     [Header("Multipliers")]
     [Range(1f, 300f)]
@@ -79,6 +81,8 @@ public class LevelSystem : MonoBehaviour
 
     public void GainExperienceFlatRate(float xpGained)
     {
+        ShowFloatingText(xpGained, Color.yellow);
+
         stats.currentExperience += xpGained;
         lerpTimer = 0f;
         delayTimer = 0f;
@@ -99,7 +103,8 @@ public class LevelSystem : MonoBehaviour
 
         levelText.text = stats.playerLevel.ToString();
 
-        Instantiate(levelUpEffect, transform.position, transform.rotation);
+        ShowLevelUpText(Color.white);
+        Instantiate(levelUpEffect, transform.position, Quaternion.identity, transform);
     }
 
     private int CalculateRequiredXp()
@@ -110,5 +115,33 @@ public class LevelSystem : MonoBehaviour
             solveForRequiredXp += (int)Mathf.Floor(levelCycle + additionMultiplier * Mathf.Pow(powerMultiplier, levelCycle / divisionMultiplier));
         }
         return solveForRequiredXp / 4;
+    }
+
+    void ShowFloatingText(float amount, Color color)
+    {
+        Vector3 offset = new Vector3(0f, 1, 0);
+
+        if (floatingText)
+        {
+            GameObject textPrefab = Instantiate(floatingText, transform.position + offset, Quaternion.identity);
+            TextMeshPro textMesh = textPrefab.GetComponentInChildren<TextMeshPro>();
+            textMesh.text = "+" + amount.ToString() + " Exp";
+            textMesh.color = color; // Set the color of the text
+            Destroy(textPrefab, 1);
+        }
+    }
+
+    void ShowLevelUpText(Color color)
+    {
+        Vector3 offset = new Vector3(0f, 2, 0);
+
+        if (floatingText)
+        {
+            GameObject textPrefab = Instantiate(floatingText, transform.position + offset, Quaternion.identity);
+            TextMeshPro textMesh = textPrefab.GetComponentInChildren<TextMeshPro>();
+            textMesh.text = "Level Up";
+            textMesh.color = color;
+            Destroy(textPrefab, 1);
+        }
     }
 }

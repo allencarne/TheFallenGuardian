@@ -1582,9 +1582,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfedb59a8f359249b2a8fcd77778952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelUpEffect: {fileID: 2649293616300078610, guid: 81f73a68418411e47954b7897eb79351, type: 3}
+  levelUpEffect: {fileID: 3661200886135729816, guid: fea5548eacf583e4f9f24e1235d73cbf, type: 3}
   stats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
   levelText: {fileID: 5709352083387614229}
+  floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
   additionMultiplier: 10
   powerMultiplier: 2
   divisionMultiplier: 7
