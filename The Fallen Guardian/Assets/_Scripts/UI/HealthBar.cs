@@ -2,15 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HealthBar : MonoBehaviour
 {
     public PlayerStats stats;
 
+    [SerializeField] TextMeshProUGUI playerName;
+
     [HideInInspector] public float lerpTimer;
     [SerializeField] Image healthBarFront;
     [SerializeField] Image healthBarBack;
     float chipSpeed = 2f;
+
+    private void Start()
+    {
+        playerName.text = stats.PlayerName;
+    }
 
     private void Update()
     {
