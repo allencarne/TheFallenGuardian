@@ -70,7 +70,7 @@ public class SpinningSlash : ScriptableObject, IAbilityBehaviour
         if (damageOnTrigger != null)
         {
             damageOnTrigger.abilityDamage = damage;
-            damageOnTrigger.characterDamage = stateMachine.Player.playerStats.damage;
+            damageOnTrigger.characterDamage = stateMachine.Player.Stats.Might;
             damageOnTrigger.hitEffect = hitEffect;
         }
 

@@ -1,19 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/PlayerStats")]
 public class PlayerStats : ScriptableObject
 {
-    public float health;
-    public float maxHealth;
-    public float movementSpeed;
-    public int damage;
-    public PlayerClass playerClass;
+    [Header("Player")]
+    public string PlayerName;
+    public int PlayerLevel;
+    public float CurrentExperience;
+    public float RequiredExperience;
+    public PlayerClass PlayerClass;
 
-    public float currentExperience;
-    public float requiredExperience;
-    public int playerLevel;
+    [Header("Character")]
+    public float Health;
+    public float MaxHealth;
+
+    [Header("Stats")]
+    public int Might; // Increase Attack Damage
+    public float Haste; // Increase Movment Speed
+    public float Agility; // Increase Attack Speed
+    public float Alacrity; // Increase Cool Down Reduction
+    public float Protection; // Increase Max Health / Reduce Incoming Damage
 }
 
 public enum PlayerClass 

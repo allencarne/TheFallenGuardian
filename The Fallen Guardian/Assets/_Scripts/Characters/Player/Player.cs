@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] SpriteRenderer spriteRenderer;
-    public PlayerStats playerStats;
+    public PlayerStats Stats;
     public PlayerAbilities playerAbilities;
 
     public Image CastBar;
@@ -25,14 +25,21 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        // *Temporary* Player Stats
+        Stats.PlayerLevel = 1;
+        Stats.CurrentExperience = 0;
+        Stats.RequiredExperience = 130;
+
+        // *Temporary* Character Stats
+        Stats.MaxHealth = 10;
+        Stats.Might = 1;
+        Stats.Haste = 8;
+
+
         // Set Health
-        playerStats.health = playerStats.maxHealth;
+        Stats.Health = Stats.MaxHealth;
 
-        playerStats.currentExperience = 0;
-        playerStats.requiredExperience = 130;
-        playerStats.playerLevel = 1;
-
-        switch (playerStats.playerClass)
+        switch (Stats.PlayerClass)
         {
             case PlayerClass.Beginner:
                 //Debug.Log("Beginner");
@@ -95,7 +102,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        playerStats.health -= damage;
+        Stats.Health -= damage;
 
         StartCoroutine(FlashEffect(Color.red));
 
@@ -103,7 +110,7 @@ public class Player : MonoBehaviour, IDamageable
 
         ShowFloatingText(damage, Color.red);
 
-        if (playerStats.health <= 0)
+        if (Stats.Health <= 0)
         {
             isPlayerOutOfHealth = true;
         }
@@ -111,7 +118,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Heal(float heal)
     {
-        playerStats.health += heal;
+        Stats.Health += heal;
 
         StartCoroutine(FlashEffect(Color.green));
 

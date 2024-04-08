@@ -19,11 +19,11 @@ public class HealthBar : MonoBehaviour
 
     public void UpdateHealthUI()
     {
-        stats.health = Mathf.Clamp(stats.health, 0, stats.maxHealth);
+        stats.Health = Mathf.Clamp(stats.Health, 0, stats.MaxHealth);
 
         float fillFront = healthBarFront.fillAmount;
         float fillBack = healthBarBack.fillAmount;
-        float healthFraction = stats.health / stats.maxHealth;
+        float healthFraction = stats.Health / stats.MaxHealth;
 
         if (fillBack > healthFraction)
         {

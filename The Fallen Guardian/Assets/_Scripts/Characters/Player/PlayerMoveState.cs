@@ -33,13 +33,13 @@ public class PlayerMoveState : PlayerState
     {
         if (!stateMachine.Debuffs.IsSlowed)
         {
-            Vector2 movement = moveInput.normalized * stateMachine.Player.playerStats.movementSpeed;
+            Vector2 movement = moveInput.normalized * stateMachine.Player.Stats.Haste;
             stateMachine.Rigidbody.velocity = movement;
         }
         else
         {
             // Slowed behaviour
-            Vector2 movement = moveInput.normalized * (stateMachine.Player.playerStats.movementSpeed - stateMachine.Debuffs.SlowAmount);
+            Vector2 movement = moveInput.normalized * (stateMachine.Player.Stats.Haste - stateMachine.Debuffs.SlowAmount);
             stateMachine.Rigidbody.velocity = movement;
         }
     }

@@ -6,19 +6,22 @@ using UnityEngine.UI;
 
 public class LevelSystem : MonoBehaviour
 {
+    // Effects
     [SerializeField] GameObject levelUpEffect;
-    [SerializeField] PlayerStats stats;
+    [SerializeField] GameObject floatingText;
 
-    private float lerpTimer;
-    private float delayTimer;
+    // Player
+    [SerializeField] PlayerStats stats;
+    [SerializeField] Player player;
 
     [Header("UI")]
     Image frontXpBar;
     Image backXpBar;
     public TextMeshProUGUI levelText;
-
     TextMeshProUGUI experienceText;
-    [SerializeField] GameObject floatingText;
+    private float lerpTimer;
+    private float delayTimer;
+
 
     [Header("Multipliers")]
     [Range(1f, 300f)]
@@ -37,12 +40,12 @@ public class LevelSystem : MonoBehaviour
 
     void Start()
     {
-        frontXpBar.fillAmount = stats.currentExperience / stats.requiredExperience;
-        backXpBar.fillAmount = stats.currentExperience / stats.requiredExperience;
+        frontXpBar.fillAmount = stats.CurrentExperience / stats.RequiredExperience;
+        backXpBar.fillAmount = stats.CurrentExperience / stats.RequiredExperience;
 
-        stats.requiredExperience = CalculateRequiredXp();
+        stats.RequiredExperience = CalculateRequiredXp();
 
-        levelText.text = stats.playerLevel.ToString();
+        levelText.text = stats.PlayerLevel.ToString();
     }
 
     void Update()
@@ -54,7 +57,7 @@ public class LevelSystem : MonoBehaviour
             GainExperienceFlatRate(5);
         }
 
-        if (stats.currentExperience >= stats.requiredExperience)
+        if (stats.CurrentExperience >= stats.RequiredExperience)
         {
             LevelUp();
         }
@@ -62,7 +65,7 @@ public class LevelSystem : MonoBehaviour
 
     public void UpdateXpUI()
     {
-        float xpFraction = stats.currentExperience / stats.requiredExperience;
+        float xpFraction = stats.CurrentExperience / stats.RequiredExperience;
         float FXP = frontXpBar.fillAmount;
         if (FXP < xpFraction)
         {
@@ -76,33 +79,39 @@ public class LevelSystem : MonoBehaviour
             }
         }
 
-        experienceText.text = stats.currentExperience + "/" + stats.requiredExperience;
+        experienceText.text = stats.CurrentExperience + "/" + stats.RequiredExperience;
     }
 
     public void GainExperienceFlatRate(float xpGained)
     {
         ShowFloatingText(xpGained, Color.yellow);
 
-        stats.currentExperience += xpGained;
+        stats.CurrentExperience += xpGained;
         lerpTimer = 0f;
         delayTimer = 0f;
     }
 
     public void LevelUp()
     {
-        stats.playerLevel++;
+        // Increase Player Level
+        stats.PlayerLevel++;
+        levelText.text = stats.PlayerLevel.ToString();
 
-        // Inrease Player Stats
+        // Increase Player Health
+        stats.MaxHealth++;
+        float missingHealth = stats.MaxHealth - stats.PlayerLevel;
+        player.Heal(missingHealth);
 
+        // Increase Player Damage
+        stats.Might++;
+
+        // Update Bar
         frontXpBar.fillAmount = 0f;
         backXpBar.fillAmount = 0f;
+        stats.CurrentExperience = Mathf.RoundToInt(stats.CurrentExperience - stats.RequiredExperience);
+        stats.RequiredExperience = CalculateRequiredXp();
 
-        stats.currentExperience = Mathf.RoundToInt(stats.currentExperience - stats.requiredExperience);
-
-        stats.requiredExperience = CalculateRequiredXp();
-
-        levelText.text = stats.playerLevel.ToString();
-
+        // Effects
         ShowLevelUpText(Color.white);
         Instantiate(levelUpEffect, transform.position, Quaternion.identity, transform);
     }
@@ -110,7 +119,7 @@ public class LevelSystem : MonoBehaviour
     private int CalculateRequiredXp()
     {
         int solveForRequiredXp = 0;
-        for (int levelCycle = 1; levelCycle <= stats.playerLevel; levelCycle++)
+        for (int levelCycle = 1; levelCycle <= stats.PlayerLevel; levelCycle++)
         {
             solveForRequiredXp += (int)Mathf.Floor(levelCycle + additionMultiplier * Mathf.Pow(powerMultiplier, levelCycle / divisionMultiplier));
         }

@@ -22,7 +22,7 @@ public class PlayerDeathState : PlayerState
         stateMachine.transform.position = Vector2.zero;
 
         // Reset Player Health
-        stateMachine.Player.playerStats.health = stateMachine.Player.playerStats.maxHealth;
+        stateMachine.Player.Stats.Health = stateMachine.Player.Stats.MaxHealth;
 
         stateMachine.SetState(new PlayerSpawnState(stateMachine));
     }
