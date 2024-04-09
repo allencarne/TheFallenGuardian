@@ -37,7 +37,7 @@ public class Snail : Enemy
     float castTime = 0;
     Vector2 directionToTarget;
     bool canAttackImpact = true;
-    bool canAttackRecovery = true;
+    bool canAttackRecovery = false;
 
     protected override void FixedUpdate()
     {
