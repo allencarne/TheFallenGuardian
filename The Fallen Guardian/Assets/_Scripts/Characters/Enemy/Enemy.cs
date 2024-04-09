@@ -58,6 +58,9 @@ public class Enemy : MonoBehaviour, IDamageable
     protected bool canSpecial = true;
     bool canReset = true;
 
+    // Events
+    public UnityEvent OnEnemyDamaged;
+
     protected enum EnemyState 
     { 
         Spawn,
@@ -408,7 +411,6 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         enemyAnimator.Play("Death");
         enemyCollider2D.enabled = false;
-        healthBar.enabled = false;
 
         StartCoroutine(DeathDelay());
     }
@@ -417,6 +419,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         yield return new WaitForSeconds(.8f);
 
+        //healthBar.enabled = false;
         Destroy(gameObject);
     }
 
@@ -425,12 +428,12 @@ public class Enemy : MonoBehaviour, IDamageable
         health -= damage;
 
         idleTime = 0;
-
-        StartCoroutine(FlashEffect(Color.red));
-
         healthBar.lerpTimer = 0f;
 
+        StartCoroutine(FlashEffect(Color.red));
         ShowFloatingText(damage, Color.red);
+
+        OnEnemyDamaged?.Invoke();
 
         if (health <= 0)
         {

@@ -5358,7 +5358,7 @@ GameObject:
   - component: {fileID: 440548513}
   - component: {fileID: 440548514}
   m_Layer: 0
-  m_Name: Snail Spawner (1)
+  m_Name: Snail Spawner 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

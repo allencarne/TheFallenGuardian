@@ -169,6 +169,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2364857461768768887 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8974033289640554653, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+  m_PrefabInstance: {fileID: 6655056833195474410}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5504511316471867309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98fb6605a41c0a2409b6522673b94f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2803776170586669871 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8841271389989174981, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
@@ -231,6 +242,21 @@ MonoBehaviour:
   enemyCollider2D: {fileID: 7949850666712048347}
   EnemySpawner: {fileID: 0}
   patience: 3
+  OnEnemyDamaged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2364857461768768887}
+        m_TargetAssemblyTypeName: EnemyHealthBar, Assembly-CSharp
+        m_MethodName: UpdateHealthUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   attackPrefab: {fileID: 7461344068309084465, guid: 2efb12dae9b87624a968e92eeb7f102f, type: 3}
   attackHitEffect: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
   attackDamage: 1
