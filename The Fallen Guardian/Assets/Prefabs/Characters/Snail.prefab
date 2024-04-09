@@ -42,11 +42,11 @@ PrefabInstance:
       objectReference: {fileID: -176397717, guid: f18b7aa5a334b094498ccb33f932a44b, type: 3}
     - target: {fileID: 8730129615905340083, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.67
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8730129615905340083, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.77
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8730129615905340083, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -97,6 +97,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6220495270013819316, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2351145017860122857}
+    - targetCorrespondingSourceObject: {fileID: 6220495270013819316, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3990002118056720550}
   m_SourcePrefab: {fileID: 100100000, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
 --- !u!1 &722864657962706014 stripped
 GameObject:
@@ -124,6 +127,48 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3990002118056720550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722864657962706014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f80b8fd3924c5445b0182b14d373280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnImpactEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 415464689696531612}
+        m_TargetAssemblyTypeName: Snail, Assembly-CSharp
+        m_MethodName: AE_EndOfImpact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnRecoveryEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 415464689696531612}
+        m_TargetAssemblyTypeName: Snail, Assembly-CSharp
+        m_MethodName: AE_EndOfRecovery
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2803776170586669871 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8841271389989174981, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
@@ -189,7 +234,6 @@ MonoBehaviour:
   attackPrefab: {fileID: 7461344068309084465, guid: 2efb12dae9b87624a968e92eeb7f102f, type: 3}
   attackHitEffect: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
   attackDamage: 1
-  durationOfAttack: 1.2
   attackCastTime: 0.6
   attackRange: 1
   attackCoolDown: 1.4
@@ -201,7 +245,7 @@ MonoBehaviour:
   mobilityRange: 10
   mobilityCoolDown: 5
   mobilitySlowAmount: 0
-  mobilitySlowDuration: 1
+  mobilitySlowDuration: 0
   specialPrefab: {fileID: 9178998900622273337, guid: 1139518a2dda7ca4797a6df28c79efd9, type: 3}
   specialHitEffect: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
   specialDamage: 2

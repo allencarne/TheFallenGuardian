@@ -13,6 +13,7 @@ public class SlowOnTrigger : MonoBehaviour
 
         if (slowable != null)
         {
+            Debug.Log("Slow");
             slowable.Slow(SlowAmount, SlowDuration);
         }
     }

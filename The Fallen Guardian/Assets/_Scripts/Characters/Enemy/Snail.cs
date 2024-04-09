@@ -8,7 +8,6 @@ public class Snail : Enemy
     [SerializeField] GameObject attackPrefab;
     [SerializeField] GameObject attackHitEffect;
     public int attackDamage;
-    public float durationOfAttack;
     public float attackCastTime;
     public float attackRange;
     public float attackCoolDown;
@@ -38,6 +37,7 @@ public class Snail : Enemy
     float castTime = 0;
     Vector2 directionToTarget;
     bool canAttackImpact = true;
+    bool canAttackRecovery = true;
 
     protected override void FixedUpdate()
     {
@@ -100,9 +100,10 @@ public class Snail : Enemy
         {
             if (canAttackImpact)
             {
-                castBar.color = Color.green;
-
                 canAttackImpact = false;
+
+                castBar.color = Color.green;
+                enemyAnimator.Play("Attack Impact");
 
                 // Calculate the position for the attackPrefab
                 Vector2 attackPosition = (Vector2)transform.position + directionToTarget * attackRange;
@@ -119,20 +120,30 @@ public class Snail : Enemy
                     damageOnTrigger.characterDamage = damage;
                     damageOnTrigger.hitEffect = attackHitEffect;
                 }
-
-                enemyAnimator.Play("Attack Impact");
             }
         }
 
-        if (castTime > durationOfAttack)
+        if (canAttackRecovery)
         {
-            castBar.color = Color.yellow;
-            castTime = 0;
-            UpdateCastBar(0, attackCastTime);
+            canAttackRecovery = false;
 
-            // State Transition
-            enemyState = EnemyState.Idle;
+            enemyAnimator.Play("Attack Recovery");
         }
+    }
+
+    public void AE_EndOfImpact()
+    {
+        canAttackRecovery = true;
+    }
+
+    public void AE_EndOfRecovery()
+    {
+        castBar.color = Color.yellow;
+        castTime = 0;
+        UpdateCastBar(0, attackCastTime);
+
+        // State Transition
+        enemyState = EnemyState.Idle;
     }
 
     IEnumerator AttackCoolDown()
@@ -165,7 +176,11 @@ public class Snail : Enemy
             // Store the dash direction and angle
             dashDirection = directionToTarget;
 
+            // Instantiate
             GameObject trail = Instantiate(mobilityPrefab, transform.position, rotation);
+
+            // Ignore collision between the attack and the caster
+            Physics2D.IgnoreCollision(trail.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
 
             SlowOnTrigger slowOnTrigger = trail.GetComponent<SlowOnTrigger>();
             if (slowOnTrigger != null)
