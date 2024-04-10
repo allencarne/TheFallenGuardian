@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyHealthBar : MonoBehaviour
 {
-    Enemy enemy;
-
+    [SerializeField] Enemy enemy;
     [SerializeField] GameObject healthBar;
     [SerializeField] Image healthBarFront;
     [SerializeField] Image healthBarBack;
@@ -14,11 +13,6 @@ public class EnemyHealthBar : MonoBehaviour
     Coroutine lerpingCoroutine;
     float chipSpeed = .5f;
     bool isLerping = false;
-
-    public void Awake()
-    {
-        enemy = GetComponent<Enemy>();
-    }
 
     public void UpdateHealthUI()
     {

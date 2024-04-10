@@ -9426,7 +9426,6 @@ GameObject:
   - component: {fileID: 945035510}
   - component: {fileID: 945035511}
   - component: {fileID: 945035512}
-  - component: {fileID: 945035513}
   - component: {fileID: 945035514}
   - component: {fileID: 945035515}
   m_Layer: 0
@@ -9548,7 +9547,7 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 945035513}
+      - m_Target: {fileID: 2121101069}
         m_TargetAssemblyTypeName: EnemyHealthBar, Assembly-CSharp
         m_MethodName: UpdateHealthUI
         m_Mode: 1
@@ -9560,21 +9559,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &945035513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945035507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98fb6605a41c0a2409b6522673b94f19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 2121101067}
-  healthBarFront: {fileID: 1294604927}
-  healthBarBack: {fileID: 1581998556}
 --- !u!114 &945035514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122375,6 +122359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2121101068}
+  - component: {fileID: 2121101069}
   m_Layer: 3
   m_Name: HealthBar
   m_TagString: Untagged
@@ -122405,6 +122390,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2121101069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121101067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98fb6605a41c0a2409b6522673b94f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 945035512}
+  healthBar: {fileID: 2121101067}
+  healthBarFront: {fileID: 1294604927}
+  healthBarBack: {fileID: 1581998556}
 --- !u!1 &2124952063
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snail
       objectReference: {fileID: 0}
+    - target: {fileID: 4712730711871785507, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 415464689696531612}
     - target: {fileID: 6220495270013819316, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: m_Name
       value: Body
@@ -80,17 +84,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1604867668990069386, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1168808411849726535, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       insertIndex: 3
       addedObject: {fileID: 415464689696531612}
-    - targetCorrespondingSourceObject: {fileID: 1168808411849726535, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 113936693040300668}
     - targetCorrespondingSourceObject: {fileID: 989500593750718045, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8894059137336976080}
@@ -169,12 +169,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2364857461768768887 stripped
+--- !u!114 &2106973735601305545 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8974033289640554653, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4712730711871785507, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
   m_PrefabInstance: {fileID: 6655056833195474410}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5504511316471867309}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98fb6605a41c0a2409b6522673b94f19, type: 3}
@@ -245,7 +245,7 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2364857461768768887}
+      - m_Target: {fileID: 2106973735601305545}
         m_TargetAssemblyTypeName: EnemyHealthBar, Assembly-CSharp
         m_MethodName: UpdateHealthUI
         m_Mode: 1
@@ -279,21 +279,6 @@ MonoBehaviour:
   specialCastTime: 0.6
   specialRange: 10
   specialCoolDown: 7
---- !u!114 &113936693040300668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5504511316471867309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 866dd1af28e491546b199bfa9941e9ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsImmobilized: 0
-  IsInterrupted: 0
-  IsDisarmed: 0
 --- !u!1 &5899974318618201015 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 989500593750718045, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
