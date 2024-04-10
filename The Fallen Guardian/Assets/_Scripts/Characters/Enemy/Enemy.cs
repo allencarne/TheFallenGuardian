@@ -29,8 +29,11 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected Image castBar;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] GameObject floatingText;
-    protected CrowdControl crowdControl;
+
+    protected Buffs buffs;
     protected Debuffs debuffs;
+    protected CrowdControl crowdControl;
+
     protected Animator enemyAnimator;
     protected Rigidbody2D enemyRB;
     [SerializeField] Collider2D enemyCollider2D;
@@ -83,8 +86,10 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         enemyAnimator = GetComponentInChildren<Animator>();
         enemyRB = GetComponent<Rigidbody2D>();
-        crowdControl = GetComponent<CrowdControl>();
+
+        buffs = GetComponent<Buffs>();
         debuffs = GetComponent<Debuffs>();
+        crowdControl = GetComponent<CrowdControl>();
     }
 
     private void Start()

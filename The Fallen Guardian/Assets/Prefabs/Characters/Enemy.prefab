@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 8413884468638432037}
   - component: {fileID: 3605142366507294513}
   - component: {fileID: 8644066537717050504}
+  - component: {fileID: 4616942287934324812}
   - component: {fileID: 5245249597603853144}
   m_Layer: 0
   m_Name: Enemy
@@ -285,7 +286,25 @@ MonoBehaviour:
   OnSlowed:
     m_PersistentCalls:
       m_Calls: []
+  OnSlowEnd:
+    m_PersistentCalls:
+      m_Calls: []
   SlowAmount: 0
+--- !u!114 &4616942287934324812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168808411849726535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1059353b9a0da6643accb0d977b3f7f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffBar: {fileID: 493039623141738153}
+  buff_Immovable: {fileID: 2852665012809533500, guid: 241180ef6e6c05b4bacfd7411bc15870, type: 3}
+  IsImmovable: 0
 --- !u!114 &5245249597603853144
 MonoBehaviour:
   m_ObjectHideFlags: 0
