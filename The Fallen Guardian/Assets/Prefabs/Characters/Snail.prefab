@@ -266,8 +266,8 @@ MonoBehaviour:
   mobilityPrefab: {fileID: 8215458080498781041, guid: bd0bfc28234901745ae9f0c63e3a2633, type: 3}
   mobilityHitEffect: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
   mobilityDamage: 0
-  durationOfMobility: 0.3
-  mobilityCastTime: 0
+  durationOfMobility: 0.6
+  mobilityCastTime: 0.3
   mobilityRange: 10
   mobilityCoolDown: 5
   mobilitySlowAmount: 4

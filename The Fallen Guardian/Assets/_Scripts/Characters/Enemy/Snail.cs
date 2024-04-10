@@ -21,7 +21,7 @@ public class Snail : Enemy
     public float mobilityRange;
     public float mobilityCoolDown;
 
-    private Vector2 dashDirection;
+    [Header("Slow")]
     public float mobilitySlowAmount;
     public float mobilitySlowDuration;
 
@@ -35,9 +35,10 @@ public class Snail : Enemy
     public float specialCoolDown;
 
     float castTime = 0;
+    bool canImpact = true;
+    bool canRecovery = false;
     Vector2 directionToTarget;
-    bool canAttackImpact = true;
-    bool canAttackRecovery = false;
+    Vector2 dashDirection;
 
     protected override void FixedUpdate()
     {
@@ -45,11 +46,14 @@ public class Snail : Enemy
 
         if (enemyState == EnemyState.Mobility)
         {
-            // Disable collision between enemy and player
-            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), true);
+            if (castTime > mobilityCastTime)
+            {
+                // Disable collision between enemy and player
+                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), true);
 
-            // Use the stored dash direction for the enemy's velocity
-            enemyRB.velocity = dashDirection * mobilityRange;
+                // Use the stored dash direction for the enemy's velocity
+                enemyRB.velocity = dashDirection * mobilityRange;
+            }
         }
     }
 
@@ -98,9 +102,9 @@ public class Snail : Enemy
 
         if (castTime > attackCastTime)
         {
-            if (canAttackImpact)
+            if (canImpact)
             {
-                canAttackImpact = false;
+                canImpact = false;
 
                 castBar.color = Color.green;
                 enemyAnimator.Play("Attack Impact");
@@ -123,9 +127,9 @@ public class Snail : Enemy
             }
         }
 
-        if (canAttackRecovery)
+        if (canRecovery)
         {
-            canAttackRecovery = false;
+            canRecovery = false;
 
             enemyAnimator.Play("Attack Recovery");
         }
@@ -133,11 +137,13 @@ public class Snail : Enemy
 
     public void AE_EndOfImpact()
     {
-        canAttackRecovery = true;
+        canRecovery = true;
     }
 
     public void AE_EndOfRecovery()
     {
+        canImpact = true;
+
         castBar.color = Color.yellow;
         castTime = 0;
         UpdateCastBar(0, attackCastTime);
@@ -150,49 +156,85 @@ public class Snail : Enemy
     {
         yield return new WaitForSeconds(attackCoolDown);
 
-        canAttackImpact = true;
         canAttack = true;
     }
 
     protected override void MobilityState()
     {
+        castTime += Time.deltaTime;
+        UpdateCastBar(castTime, mobilityCastTime);
+
+        if (crowdControl.IsInterrupted)
+        {
+            if (castBar.color != Color.green)
+            {
+                // ResetCast Time
+                castTime = 0;
+
+                // Set Cast Bar Color
+                castBar.color = Color.red;
+
+                // State Transition
+                enemyState = EnemyState.Idle;
+
+                StartCoroutine(ResetCastBar());
+                return;
+            }
+        }
+
         if (canMobility)
         {
             canMobility = false;
 
+            castBar.color = Color.yellow;
+
+            // Play attack animation
             enemyAnimator.Play("Chase");
 
             // Calculate the direction from the enemy to the target
-            Vector2 directionToTarget = (target.position - transform.position).normalized;
+            directionToTarget = (target.position - transform.position).normalized;
 
             // Set animator parameters based on the direction
             enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
             enemyAnimator.SetFloat("Vertical", directionToTarget.y);
 
-            // Calculate the rotation towards the target
-            float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-            // Store the dash direction and angle
-            dashDirection = directionToTarget;
-
-            // Instantiate
-            GameObject trail = Instantiate(mobilityPrefab, transform.position, rotation);
-
-            // Ignore collision between the attack and the caster
-            Physics2D.IgnoreCollision(trail.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
-
-            SlowOnTrigger slowOnTrigger = trail.GetComponent<SlowOnTrigger>();
-            if (slowOnTrigger != null)
-            {
-                slowOnTrigger.SlowAmount = mobilitySlowAmount;
-                slowOnTrigger.SlowDuration = mobilitySlowDuration;
-            }
-
-            Destroy(trail, 3f);
-
             StartCoroutine(DurationOfMobility());
             StartCoroutine(MobilityCoolDown());
+        }
+
+        if (castTime > mobilityCastTime)
+        {
+            if (canImpact)
+            {
+                canImpact = false;
+
+                castBar.color = Color.green;
+
+                // Calculate the direction from the enemy to the target
+                Vector2 directionToTarget = (target.position - transform.position).normalized;
+
+                // Calculate the rotation towards the target
+                float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+                Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+                // Store the dash direction and angle
+                dashDirection = directionToTarget;
+
+                // Instantiate
+                GameObject trail = Instantiate(mobilityPrefab, transform.position, rotation);
+
+                // Ignore collision between the attack and the caster
+                Physics2D.IgnoreCollision(trail.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+
+                SlowOnTrigger slowOnTrigger = trail.GetComponent<SlowOnTrigger>();
+                if (slowOnTrigger != null)
+                {
+                    slowOnTrigger.SlowAmount = mobilitySlowAmount;
+                    slowOnTrigger.SlowDuration = mobilitySlowDuration;
+                }
+
+                Destroy(trail, 3f);
+            }
         }
     }
 
@@ -200,9 +242,15 @@ public class Snail : Enemy
     {
         yield return new WaitForSeconds(durationOfMobility);
 
-        enemyState = EnemyState.Idle;
+        canImpact = true;
+
+        castBar.color = Color.yellow;
+        castTime = 0;
+        UpdateCastBar(0, mobilityCastTime);
 
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
+
+        enemyState = EnemyState.Idle;
     }
 
     IEnumerator MobilityCoolDown()
