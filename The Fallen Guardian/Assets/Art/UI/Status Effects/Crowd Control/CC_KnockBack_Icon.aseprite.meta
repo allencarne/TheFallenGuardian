@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 22201bd9515e21a47b1c7278136aa226
+guid: cdae11d00c1e81440bd42e762fd07c57
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638483503478341911
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,7 +121,27 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: EnemyHealthBarFill
+  - name: CC_KnockBack_Icon_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 19
+      y: 4
+      width: 6
+      height: 6
+    spriteID: b8ae74fd6e5f8864ab86f2582f66f466
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 19, y: 4}
+  - name: CC_KnockBack_Icon_Frame_1
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -129,10 +149,30 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
+      y: 18
+      width: 6
+      height: 6
+    spriteID: dba3a55dd4bf2434a926a0394bf244ad
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 18}
+  - name: CC_KnockBack_Icon_Frame_2
+    originalName: 
+    pivot: {x: 0.42857143, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
       y: 4
-      width: 34
-      height: 2
-    spriteID: edce81f036c1b12418823d7f1d149d5e
+      width: 7
+      height: 6
+    spriteID: c3506f896315bad4d83293f349786c8c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,24 +184,88 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1509917876
-    name: EnemyHealthBarFill
+    guid: -1159029792
+    name: CC_KnockBack_Icon
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: EnemyHealthBarFill
+    - name: CC_KnockBack_Icon_Frame_0
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
-        width: 34
-        height: 2
-      spriteId: edce81f036c1b12418823d7f1d149d5e
+        width: 6
+        height: 6
+      spriteId: b8ae74fd6e5f8864ab86f2582f66f466
+    - name: CC_KnockBack_Icon_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 0
+        y: 0
+        width: 6
+        height: 6
+      spriteId: dba3a55dd4bf2434a926a0394bf244ad
+    - name: CC_KnockBack_Icon_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 0
+        y: 0
+        width: 7
+        height: 6
+      spriteId: c3506f896315bad4d83293f349786c8c
     linkedCells: []
     parentIndex: -1
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 34, y: 2}
+  canvasSize: {x: 6, y: 6}

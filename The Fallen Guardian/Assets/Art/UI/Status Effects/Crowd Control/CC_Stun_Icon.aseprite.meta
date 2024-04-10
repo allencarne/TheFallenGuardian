@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 22201bd9515e21a47b1c7278136aa226
+guid: c72b8bbbc0079f845953d583651bb570
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,7 +121,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: EnemyHealthBarFill
+  - name: CC_Stun_Icon_Frame_0
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -130,9 +130,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 34
-      height: 2
-    spriteID: edce81f036c1b12418823d7f1d149d5e
+      width: 6
+      height: 6
+    spriteID: a750b5619d8bedd49b8fac2e6de9913d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,27 +141,83 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: CC_Stun_Icon_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 18
+      width: 6
+      height: 6
+    spriteID: d347bfaf5b0754247bbbc07cb79d98d6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 18}
+  - name: CC_Stun_Icon_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 18
+      y: 4
+      width: 6
+      height: 6
+    spriteID: fe7b04d5ed1f9fd48b39b7ed65f90e47
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 18, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1509917876
-    name: EnemyHealthBarFill
+    guid: 146722611
+    name: CC_Stun_Icon
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: EnemyHealthBarFill
+    - name: CC_Stun_Icon_Frame_0
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
-        width: 34
-        height: 2
-      spriteId: edce81f036c1b12418823d7f1d149d5e
+        width: 6
+        height: 6
+      spriteId: a750b5619d8bedd49b8fac2e6de9913d
+    - name: CC_Stun_Icon_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 0
+        y: 0
+        width: 6
+        height: 6
+      spriteId: d347bfaf5b0754247bbbc07cb79d98d6
+    - name: CC_Stun_Icon_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 0
+        y: 0
+        width: 6
+        height: 6
+      spriteId: fe7b04d5ed1f9fd48b39b7ed65f90e47
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 34, y: 2}
+  canvasSize: {x: 6, y: 6}

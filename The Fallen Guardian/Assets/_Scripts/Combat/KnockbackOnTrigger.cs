@@ -14,9 +14,9 @@ public class KnockbackOnTrigger : MonoBehaviour
 
         if (knockbackable != null)
         {
-            Rigidbody2D enemyRB = collision.GetComponent<Rigidbody2D>();
+            Rigidbody2D opponentRB = collision.GetComponent<Rigidbody2D>();
 
-            knockbackable.KnockBack(enemyRB, KnockBackForce, KnockBackDuration, KnockBackDirection);
+            knockbackable.KnockBack(opponentRB, KnockBackForce, KnockBackDuration, KnockBackDirection);
         }
     }
 }

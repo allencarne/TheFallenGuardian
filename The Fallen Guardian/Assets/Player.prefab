@@ -943,7 +943,6 @@ GameObject:
   - component: {fileID: 7150002324481854805}
   - component: {fileID: 4059563979879986888}
   - component: {fileID: 239699257640095505}
-  - component: {fileID: 7051921129711624444}
   - component: {fileID: 7237820433538653136}
   - component: {fileID: 4879207451902047104}
   - component: {fileID: 3668015608117301615}
@@ -1468,7 +1467,7 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7051921129711624444}
+      - m_Target: {fileID: 6699961322957047184}
         m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
         m_MethodName: UpdateHealthUI
         m_Mode: 1
@@ -1518,23 +1517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e4f0acfd565354d9c97144f4ce6f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7051921129711624444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7550517957279444385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 269e4786cba320c41a3558f8ccc73ebc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
-  healthBar: {fileID: 8324031750687829038}
-  playerName: {fileID: 9134760330706367091}
-  healthBarFront: {fileID: 4430670412122056503}
-  healthBarBack: {fileID: 4716448829981364878}
 --- !u!114 &7237820433538653136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1686,6 +1668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1361071663261445160}
+  - component: {fileID: 6699961322957047184}
   m_Layer: 3
   m_Name: HealthBar
   m_TagString: Untagged
@@ -1718,6 +1701,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6699961322957047184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8324031750687829038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269e4786cba320c41a3558f8ccc73ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
+  healthBar: {fileID: 8324031750687829038}
+  playerName: {fileID: 9134760330706367091}
+  healthBarFront: {fileID: 4430670412122056503}
+  healthBarBack: {fileID: 4716448829981364878}
 --- !u!1 &8727468340536375276
 GameObject:
   m_ObjectHideFlags: 0

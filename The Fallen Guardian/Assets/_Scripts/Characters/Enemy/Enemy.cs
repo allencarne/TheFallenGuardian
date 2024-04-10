@@ -10,8 +10,10 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("Stats")]
     public float health;
     public float maxHealth;
-    public float moveSpeed;
-    public float maxMoveSpeed;
+
+    public float baseSpeed; 
+    private float currentSpeed;
+
     public int damage;
     public float expToGive;
 
@@ -23,7 +25,6 @@ public class Enemy : MonoBehaviour, IDamageable
     public float deAggroRadius;
 
     [Header("Components")]
-    EnemyHealthBar healthBar;
     [SerializeField] protected Image patienceBar;
     [SerializeField] protected Image castBar;
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -80,7 +81,6 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        healthBar = GetComponent<EnemyHealthBar>();
         enemyAnimator = GetComponentInChildren<Animator>();
         enemyRB = GetComponent<Rigidbody2D>();
         crowdControl = GetComponent<CrowdControl>();
@@ -94,6 +94,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
         // Set Starting Position
         startingPosition = transform.position;
+
+        // Set Speed
+        currentSpeed = baseSpeed;
     }
 
     private void Update()
@@ -141,7 +144,7 @@ public class Enemy : MonoBehaviour, IDamageable
             Vector2 moveDirection = (newWanderPosition - (Vector2)transform.position).normalized;
 
             // Calculate the desired velocity to reach the new wander position
-            Vector2 desiredVelocity = moveDirection * moveSpeed;
+            Vector2 desiredVelocity = moveDirection * currentSpeed;
 
             // Apply the desired velocity to the rigidbody
             enemyRB.velocity = desiredVelocity;
@@ -156,7 +159,7 @@ public class Enemy : MonoBehaviour, IDamageable
             {
                 Vector2 moveDirection = (target.position - transform.position).normalized;
 
-                Vector2 desiredVelocity = moveDirection * moveSpeed;
+                Vector2 desiredVelocity = moveDirection * currentSpeed;
 
                 enemyRB.velocity = desiredVelocity;
 
@@ -171,7 +174,7 @@ public class Enemy : MonoBehaviour, IDamageable
             Vector2 moveDirection = (startingPosition - (Vector2)transform.position).normalized;
 
             // Calculate the desired velocity to reach the new wander position
-            Vector2 desiredVelocity = moveDirection * moveSpeed;
+            Vector2 desiredVelocity = moveDirection * currentSpeed;
 
             // Apply the desired velocity to the rigidbody
             enemyRB.velocity = desiredVelocity;
@@ -516,6 +519,17 @@ public class Enemy : MonoBehaviour, IDamageable
 
             Immobilized = true;
         }
+    }
+
+    public void HandleSlow()
+    {
+        // Calculate the final speed, ensuring it doesn't drop below 0
+        currentSpeed = Mathf.Max(baseSpeed - debuffs.SlowAmount, 0);
+    }
+
+    public void HandleSlowEnd()
+    {
+        currentSpeed = baseSpeed;
     }
 
     private void UpdatePatienceBar()

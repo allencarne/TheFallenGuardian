@@ -9571,6 +9571,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866dd1af28e491546b199bfa9941e9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ccBar: {fileID: 0}
+  cc_KnockBack: {fileID: 0}
+  cc_Stun: {fileID: 0}
   IsImmobilized: 0
   IsInterrupted: 0
   IsDisarmed: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 22201bd9515e21a47b1c7278136aa226
+guid: 6c0b4cda255315e45ba3b4cc53197ffd
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,7 +121,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: EnemyHealthBarFill
+  - name: Debuff_Slow_Icon_Frame_0
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -130,9 +130,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 34
-      height: 2
-    spriteID: edce81f036c1b12418823d7f1d149d5e
+      width: 6
+      height: 7
+    spriteID: 62fd528afe7d17b45b823036d3312629
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,27 +141,83 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Debuff_Slow_Icon_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 19
+      width: 6
+      height: 6
+    spriteID: 2ac7518da6bad3541b2a0a709a5e1748
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 19}
+  - name: Debuff_Slow_Icon_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 18
+      y: 4
+      width: 6
+      height: 7
+    spriteID: 2f1b2f895f765ea41aa3426e2e5631d5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 18, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1509917876
-    name: EnemyHealthBarFill
+    guid: 1810357496
+    name: Debuff_Slow_Icon
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: EnemyHealthBarFill
+    - name: Debuff_Slow_Icon_Frame_0
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
-        width: 34
-        height: 2
-      spriteId: edce81f036c1b12418823d7f1d149d5e
+        width: 6
+        height: 7
+      spriteId: 62fd528afe7d17b45b823036d3312629
+    - name: Debuff_Slow_Icon_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 0
+        y: 0
+        width: 6
+        height: 6
+      spriteId: 2ac7518da6bad3541b2a0a709a5e1748
+    - name: Debuff_Slow_Icon_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 0
+        y: 0
+        width: 6
+        height: 7
+      spriteId: 2f1b2f895f765ea41aa3426e2e5631d5
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 34, y: 2}
+  canvasSize: {x: 6, y: 6}

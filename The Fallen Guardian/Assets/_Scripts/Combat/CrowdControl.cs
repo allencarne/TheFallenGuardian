@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class CrowdControl : MonoBehaviour, IKnockbackable
 {
+    [Header("CC Bar")]
+    [SerializeField] GameObject ccBar;
+
+    [Header("CC")]
+    [SerializeField] GameObject cc_KnockBack;
+    [SerializeField] GameObject cc_Stun;
+
+    [Header("Bools")]
     public bool IsImmobilized;
     public bool IsInterrupted;
     public bool IsDisarmed;
@@ -68,8 +76,13 @@ public class CrowdControl : MonoBehaviour, IKnockbackable
         Immobilize(knockBackDuration);
         Disarm(knockBackDuration);
 
+        // Icon
+        GameObject ccIcon = Instantiate(cc_KnockBack);
+        ccIcon.transform.SetParent(ccBar.transform);
+        ccIcon.transform.localScale = new Vector3(1,1,1);
+
         // Start a coroutine to handle the knockback duration
-        StartCoroutine(KnockBackDuration(knockBackDuration));
+        StartCoroutine(KnockBackDuration(knockBackDuration, ccIcon));
     }
 
     private void FixedUpdate()
@@ -81,7 +94,7 @@ public class CrowdControl : MonoBehaviour, IKnockbackable
         }
     }
 
-    IEnumerator KnockBackDuration(float duration)
+    IEnumerator KnockBackDuration(float duration, GameObject ccIcon)
     {
         float elapsedTime = 0f;
 
@@ -92,6 +105,8 @@ public class CrowdControl : MonoBehaviour, IKnockbackable
             opponentRB.velocity = Vector2.Lerp(knockBackVelocity, Vector2.zero, t);
             yield return null; // Wait for the next frame
         }
+
+        Destroy(ccIcon);
 
         // Ensure the velocity is exactly zero at the end
         opponentRB.velocity = Vector2.zero;
