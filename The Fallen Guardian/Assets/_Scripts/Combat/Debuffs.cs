@@ -12,18 +12,25 @@ public class Debuffs : MonoBehaviour, ISlowable
     [Header("Debuff")]
     [SerializeField] GameObject debuff_Slow;
 
-    [Header("Bools")]
+    [Header("Slow")]
     public bool IsSlowed;
-
     public UnityEvent OnSlowed;
     public UnityEvent OnSlowEnd;
-    [HideInInspector] public float SlowAmount;
+    public float SlowAmount;
+    float currentSlowDuration = 0f;
 
     public void Slow(float amount, float duration)
     {
         SlowAmount = amount;
 
-        StartCoroutine(SlowDuration(duration));
+        if (IsSlowed)
+        {
+            currentSlowDuration += duration;
+        }
+        else
+        {
+            StartCoroutine(SlowDuration(duration));
+        }
     }
 
     IEnumerator SlowDuration(float duration)
@@ -43,5 +50,7 @@ public class Debuffs : MonoBehaviour, ISlowable
         OnSlowEnd?.Invoke();
 
         IsSlowed = false;
+
+        currentSlowDuration = 0f;
     }
 }
