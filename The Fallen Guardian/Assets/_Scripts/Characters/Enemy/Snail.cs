@@ -191,13 +191,6 @@ public class Snail : Enemy
             // Play attack animation
             enemyAnimator.Play("Chase");
 
-            // Calculate the direction from the enemy to the target
-            directionToTarget = (target.position - transform.position).normalized;
-
-            // Set animator parameters based on the direction
-            enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
-            enemyAnimator.SetFloat("Vertical", directionToTarget.y);
-
             StartCoroutine(DurationOfMobility());
             StartCoroutine(MobilityCoolDown());
         }
@@ -211,7 +204,7 @@ public class Snail : Enemy
                 castBar.color = Color.green;
 
                 // Calculate the direction from the enemy to the target
-                Vector2 directionToTarget = (target.position - transform.position).normalized;
+                directionToTarget = (target.position - transform.position).normalized;
 
                 // Calculate the rotation towards the target
                 float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
@@ -219,6 +212,10 @@ public class Snail : Enemy
 
                 // Store the dash direction and angle
                 dashDirection = directionToTarget;
+
+                // Set animator parameters based on the direction
+                enemyAnimator.SetFloat("Horizontal", dashDirection.x);
+                enemyAnimator.SetFloat("Vertical", dashDirection.y);
 
                 // Instantiate
                 GameObject trail = Instantiate(mobilityPrefab, transform.position, rotation);
