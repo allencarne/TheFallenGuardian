@@ -242,7 +242,7 @@ MonoBehaviour:
   enemyCollider2D: {fileID: 7949850666712048347}
   EnemySpawner: {fileID: 0}
   patience: 3
-  OnEnemyDamaged:
+  OnHealthChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2364857461768768887}

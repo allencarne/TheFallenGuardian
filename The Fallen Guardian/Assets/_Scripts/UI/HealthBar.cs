@@ -8,14 +8,14 @@ public class HealthBar : MonoBehaviour
 {
     public PlayerStats stats;
 
+    [SerializeField] GameObject healthBar;
     [SerializeField] TextMeshProUGUI playerName;
-
     [SerializeField] Image healthBarFront;
     [SerializeField] Image healthBarBack;
-    float chipSpeed = .5f;
 
-    bool isLerping = false;
     Coroutine lerpingCoroutine;
+    float chipSpeed = .5f;
+    bool isLerping = false;
 
     private void Start()
     {
@@ -31,6 +31,11 @@ public class HealthBar : MonoBehaviour
         }
 
         lerpingCoroutine = StartCoroutine(LerpHealthBar());
+
+        if (stats.Health <= 0)
+        {
+            healthBar.SetActive(false);
+        }
     }
 
     IEnumerator LerpHealthBar()

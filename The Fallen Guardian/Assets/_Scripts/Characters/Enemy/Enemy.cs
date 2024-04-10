@@ -57,9 +57,10 @@ public class Enemy : MonoBehaviour, IDamageable
     protected bool canMobility = true;
     protected bool canSpecial = true;
     bool canReset = true;
+    bool canDeath = true;
 
     // Events
-    public UnityEvent OnEnemyDamaged;
+    public UnityEvent OnHealthChanged;
 
     protected enum EnemyState 
     { 
@@ -409,33 +410,13 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected virtual void DeathState()
     {
-        enemyAnimator.Play("Death");
-        enemyCollider2D.enabled = false;
-
-        StartCoroutine(DeathDelay());
-    }
-
-    IEnumerator DeathDelay()
-    {
-        yield return new WaitForSeconds(.8f);
-
-        //healthBar.enabled = false;
-        Destroy(gameObject);
-    }
-
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-
-        idleTime = 0;
-
-        StartCoroutine(FlashEffect(Color.red));
-        ShowFloatingText(damage, Color.red);
-
-        OnEnemyDamaged?.Invoke();
-
-        if (health <= 0)
+        if (canDeath)
         {
+            canDeath = false;
+
+            enemyAnimator.Play("Death");
+            enemyCollider2D.enabled = false;
+
             if (EnemySpawner != null)
             {
                 EnemySpawner.DecreaseEnemyCount();
@@ -450,6 +431,30 @@ public class Enemy : MonoBehaviour, IDamageable
                 }
             }
 
+            StartCoroutine(DeathDelay());
+        }
+    }
+
+    IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(.8f);
+
+        Destroy(gameObject);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+
+        idleTime = 0;
+
+        StartCoroutine(FlashEffect(Color.red));
+        ShowFloatingText(damage, Color.red);
+
+        OnHealthChanged?.Invoke();
+
+        if (health <= 0)
+        {
             enemyState = EnemyState.Death;
         }
     }
@@ -464,7 +469,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
         ShowFloatingText(heal, Color.green);
 
-        OnEnemyDamaged?.Invoke();
+        OnHealthChanged?.Invoke();
     }
 
     private IEnumerator FlashEffect(Color color)
