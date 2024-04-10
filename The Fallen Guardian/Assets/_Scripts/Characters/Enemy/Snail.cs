@@ -262,57 +262,94 @@ public class Snail : Enemy
 
     protected override void SpecialState()
     {
+        castTime += Time.deltaTime;
+        UpdateCastBar(castTime, mobilityCastTime);
+
+        if (crowdControl.IsInterrupted)
+        {
+            if (castBar.color != Color.green)
+            {
+                // ResetCast Time
+                castTime = 0;
+
+                // Set Cast Bar Color
+                castBar.color = Color.red;
+
+                // State Transition
+                enemyState = EnemyState.Idle;
+
+                StartCoroutine(ResetCastBar());
+                return;
+            }
+        }
+
         if (canSpecial)
         {
             canSpecial = false;
 
-            enemyAnimator.Play("Special");
+            castBar.color = Color.yellow;
 
-            StartCoroutine(SpecialCastTime());
-            StartCoroutine (DurationOfSpecial());
+            enemyAnimator.Play("Attack Cast");
+
+            // Calculate the direction from the enemy to the target
+            directionToTarget = (target.position - transform.position).normalized;
+
+            // Set animator parameters based on the direction
+            enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
+            enemyAnimator.SetFloat("Vertical", directionToTarget.y);
+
+            //StartCoroutine(SpecialCastTime());
+            //StartCoroutine (DurationOfSpecial());
             StartCoroutine(SpecialCoolDown());
         }
-    }
 
-    IEnumerator SpecialCastTime()
-    {
-        yield return new WaitForSeconds(specialCastTime);
-
-        // Calculate the direction from the enemy to the target
-        Vector2 directionToTarget = (target.position - transform.position).normalized;
-
-        // Set animator parameters based on the direction
-        enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
-        enemyAnimator.SetFloat("Vertical", directionToTarget.y);
-
-        // Store the dash direction and angle
-        dashDirection = directionToTarget;
-
-        GameObject shell = Instantiate(specialPrefab, transform.position, Quaternion.identity);
-
-        Rigidbody2D shellRB = shell.GetComponent<Rigidbody2D>();
-
-        shellRB.AddForce(directionToTarget * specialRange, ForceMode2D.Impulse);
-
-        Destroy(shell, 1.5f);
-
-        // Ignore collision between the attack and the caster
-        Physics2D.IgnoreCollision(shell.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
-
-        DamageOnTrigger damageOnTrigger = shell.GetComponent<DamageOnTrigger>();
-        if (damageOnTrigger != null)
+        if (castTime > specialCastTime)
         {
-            damageOnTrigger.abilityDamage = specialDamage;
-            damageOnTrigger.characterDamage = damage;
-            damageOnTrigger.hitEffect = specialHitEffect;
+            if (canImpact)
+            {
+                canImpact = false;
+
+                castBar.color = Color.green;
+
+                enemyAnimator.Play("Attack Impact");
+
+                // Calculate the direction from the enemy to the target
+                Vector2 directionToTarget = (target.position - transform.position).normalized;
+
+                // Set animator parameters based on the direction
+                enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
+                enemyAnimator.SetFloat("Vertical", directionToTarget.y);
+
+                // Store the dash direction and angle
+                dashDirection = directionToTarget;
+
+                GameObject shell = Instantiate(specialPrefab, transform.position, Quaternion.identity);
+
+                Rigidbody2D shellRB = shell.GetComponent<Rigidbody2D>();
+
+                shellRB.AddForce(directionToTarget * specialRange, ForceMode2D.Impulse);
+
+                Destroy(shell, 1.5f);
+
+                // Ignore collision between the attack and the caster
+                Physics2D.IgnoreCollision(shell.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+
+                DamageOnTrigger damageOnTrigger = shell.GetComponent<DamageOnTrigger>();
+                if (damageOnTrigger != null)
+                {
+                    damageOnTrigger.abilityDamage = specialDamage;
+                    damageOnTrigger.characterDamage = damage;
+                    damageOnTrigger.hitEffect = specialHitEffect;
+                }
+            }
         }
-    }
 
-    IEnumerator DurationOfSpecial()
-    {
-        yield return new WaitForSeconds(durationOfSpecial);
+        if (canRecovery)
+        {
+            canRecovery = false;
 
-        enemyState = EnemyState.Idle;
+            enemyAnimator.Play("Attack Recovery");
+        }
     }
 
     IEnumerator SpecialCoolDown()
