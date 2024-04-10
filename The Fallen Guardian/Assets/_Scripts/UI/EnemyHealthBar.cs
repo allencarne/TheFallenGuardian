@@ -7,12 +7,12 @@ public class EnemyHealthBar : MonoBehaviour
 {
     Enemy enemy;
 
-    [HideInInspector] public float lerpTimer;
     [SerializeField] Image healthBarFront;
     [SerializeField] Image healthBarBack;
     float chipSpeed = .5f;
 
     bool isLerping = false;
+    Coroutine lerpingCoroutine;
 
     public void Awake()
     {
@@ -22,9 +22,12 @@ public class EnemyHealthBar : MonoBehaviour
     public void UpdateHealthUI()
     {
         if (isLerping)
-            return;
+        {
+            StopCoroutine(lerpingCoroutine);
+            isLerping = false;
+        }
 
-        StartCoroutine(LerpHealthBar());
+        lerpingCoroutine = StartCoroutine(LerpHealthBar());
     }
 
     IEnumerator LerpHealthBar()

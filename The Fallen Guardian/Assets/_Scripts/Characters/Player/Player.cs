@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -13,15 +14,12 @@ public class Player : MonoBehaviour, IDamageable
 
     public Image CastBar;
 
-    HealthBar healthBar;
     [SerializeField] GameObject floatingText;
 
     public bool isPlayerOutOfHealth;
 
-    private void Awake()
-    {
-        healthBar = GetComponent<HealthBar>();
-    }
+    // Events
+    public UnityEvent OnHealthChanged;
 
     private void Start()
     {
@@ -105,10 +103,9 @@ public class Player : MonoBehaviour, IDamageable
         Stats.Health -= damage;
 
         StartCoroutine(FlashEffect(Color.red));
-
-        healthBar.lerpTimer = 0f;
-
         ShowFloatingText(damage, Color.red);
+
+        OnHealthChanged?.Invoke();
 
         if (Stats.Health <= 0)
         {
@@ -121,10 +118,9 @@ public class Player : MonoBehaviour, IDamageable
         Stats.Health += heal;
 
         StartCoroutine(FlashEffect(Color.green));
-
-        healthBar.lerpTimer = 0f;
-
         ShowFloatingText(heal,Color.green);
+
+        OnHealthChanged?.Invoke();
     }
 
     private IEnumerator FlashEffect(Color color)

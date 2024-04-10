@@ -428,7 +428,6 @@ public class Enemy : MonoBehaviour, IDamageable
         health -= damage;
 
         idleTime = 0;
-        healthBar.lerpTimer = 0f;
 
         StartCoroutine(FlashEffect(Color.red));
         ShowFloatingText(damage, Color.red);
@@ -463,9 +462,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
         StartCoroutine(FlashEffect(Color.green));
 
-        healthBar.lerpTimer = 0f;
-
         ShowFloatingText(heal, Color.green);
+
+        OnEnemyDamaged?.Invoke();
     }
 
     private IEnumerator FlashEffect(Color color)

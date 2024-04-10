@@ -10,24 +10,32 @@ public class HealthBar : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI playerName;
 
-    [HideInInspector] public float lerpTimer;
     [SerializeField] Image healthBarFront;
     [SerializeField] Image healthBarBack;
-    float chipSpeed = 2f;
+    float chipSpeed = .5f;
+
+    bool isLerping = false;
+    Coroutine lerpingCoroutine;
 
     private void Start()
     {
         playerName.text = stats.PlayerName;
     }
 
-    private void Update()
-    {
-        UpdateHealthUI();
-    }
-
     public void UpdateHealthUI()
     {
-        stats.Health = Mathf.Clamp(stats.Health, 0, stats.MaxHealth);
+        if (isLerping)
+        {
+            StopCoroutine(lerpingCoroutine);
+            isLerping = false;
+        }
+
+        lerpingCoroutine = StartCoroutine(LerpHealthBar());
+    }
+
+    IEnumerator LerpHealthBar()
+    {
+        isLerping = true;
 
         float fillFront = healthBarFront.fillAmount;
         float fillBack = healthBarBack.fillAmount;
@@ -37,20 +45,36 @@ public class HealthBar : MonoBehaviour
         {
             healthBarFront.fillAmount = healthFraction;
             healthBarBack.color = Color.white;
-            lerpTimer += Time.deltaTime;
-            float percentComplete = lerpTimer / chipSpeed;
-            percentComplete = percentComplete * percentComplete;
-            healthBarBack.fillAmount = Mathf.Lerp(fillBack, healthFraction, percentComplete);
+
+            float elapsedTime = 0;
+
+            while (elapsedTime < chipSpeed)
+            {
+                elapsedTime += Time.deltaTime;
+                float percentComplete = elapsedTime / chipSpeed;
+                percentComplete = percentComplete * percentComplete;
+                healthBarBack.fillAmount = Mathf.Lerp(fillBack, healthFraction, percentComplete);
+                yield return null;
+            }
         }
 
         if (fillFront < healthFraction)
         {
             healthBarBack.color = Color.green;
             healthBarBack.fillAmount = healthFraction;
-            lerpTimer += Time.deltaTime;
-            float percentComplete = lerpTimer / chipSpeed;
-            percentComplete = percentComplete * percentComplete;
-            healthBarFront.fillAmount = Mathf.Lerp(fillFront, healthBarBack.fillAmount, percentComplete);
+
+            float elapsedTime = 0;
+
+            while (elapsedTime < chipSpeed)
+            {
+                elapsedTime += Time.deltaTime;
+                float percentComplete = elapsedTime / chipSpeed;
+                percentComplete = percentComplete * percentComplete;
+                healthBarFront.fillAmount = Mathf.Lerp(fillFront, healthBarBack.fillAmount, percentComplete);
+                yield return null;
+            }
         }
+
+        isLerping = false;
     }
 }
