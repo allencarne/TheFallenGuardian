@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Snail_Special_Right_Frame_0
     originalName: 
-    pivot: {x: 0.45000002, y: -0.4666667}
+    pivot: {x: 0.45000002, y: -0.33333334}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 32
+      y: 60
       width: 20
-      height: 15
+      height: 21
     spriteID: 36643c08e16ec7149bd8cd9c3f63860f
     spriteBone: []
     spriteOutline: []
@@ -140,18 +140,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 32}
+    uvTransform: {x: 4, y: 60}
   - name: Snail_Special_Right_Frame_1
     originalName: 
-    pivot: {x: 0.45000002, y: -0.4666667}
+    pivot: {x: 0.45000002, y: -0.33333334}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 55
+      y: 89
       width: 20
-      height: 15
+      height: 21
     spriteID: 32830e25e41ec38448bc2312e009d410
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 55}
+    uvTransform: {x: 4, y: 89}
   - name: Snail_Special_Right_Frame_2
     originalName: 
-    pivot: {x: 0.45000002, y: -0.4666667}
+    pivot: {x: 0.45000002, y: -0.33333334}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 78
+      y: 118
       width: 20
-      height: 15
+      height: 21
     spriteID: 61c5be640149178459660656a1826023
     spriteBone: []
     spriteOutline: []
@@ -180,18 +180,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 78}
+    uvTransform: {x: 4, y: 118}
   - name: Snail_Special_Right_Frame_3
     originalName: 
-    pivot: {x: 0.45000002, y: -0.4666667}
+    pivot: {x: 0.45000002, y: -0.33333334}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 101
+      y: 147
       width: 20
-      height: 15
+      height: 21
     spriteID: 02d03caa51b548049a9a3dc7c69c0eb1
     spriteBone: []
     spriteOutline: []
@@ -200,18 +200,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 101}
+    uvTransform: {x: 4, y: 147}
   - name: Snail_Special_Right_Frame_4
     originalName: 
-    pivot: {x: 0.45000002, y: -0.4666667}
+    pivot: {x: 0.45000002, y: -0.33333334}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 34
-      y: 4
+      x: 4
+      y: 176
       width: 20
-      height: 15
+      height: 21
     spriteID: 77d266c51cb42004ca1fe004b73d5892
     spriteBone: []
     spriteOutline: []
@@ -220,8 +220,28 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 34, y: 4}
+    uvTransform: {x: 4, y: 176}
   - name: Snail_Special_Right_Frame_5
+    originalName: 
+    pivot: {x: 0.45000002, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 205
+      width: 20
+      height: 21
+    spriteID: 8295e0c69a7401d46b732cc1bcf25ec7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 205}
+  - name: Snail_Special_Right_Frame_6
     originalName: 
     pivot: {x: 0.27272728, y: -0.35}
     alignment: 9
@@ -232,26 +252,6 @@ ScriptedImporter:
       y: 4
       width: 22
       height: 20
-    spriteID: 8295e0c69a7401d46b732cc1bcf25ec7
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
-  - name: Snail_Special_Right_Frame_6
-    originalName: 
-    pivot: {x: 0.27272728, y: -0.7777778}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 34
-      y: 47
-      width: 22
-      height: 9
     spriteID: 2dc6237c5729da148b40ccb3a69184d7
     spriteBone: []
     spriteOutline: []
@@ -260,7 +260,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 34, y: 47}
+    uvTransform: {x: 4, y: 4}
   - name: Snail_Special_Right_Frame_7
     originalName: 
     pivot: {x: 0.27272728, y: -0.7777778}
@@ -268,8 +268,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 34
-      y: 64
+      x: 62
+      y: 4
       width: 22
       height: 9
     spriteID: 2364ff5e1fb3ed24cbad4823f61faa24
@@ -280,7 +280,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 34, y: 64}
+    uvTransform: {x: 62, y: 4}
   - name: Snail_Special_Right_Frame_8
     originalName: 
     pivot: {x: 0.27272728, y: -0.7777778}
@@ -288,8 +288,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 34
-      y: 81
+      x: 62
+      y: 21
       width: 22
       height: 9
     spriteID: 96e4fbad980cdb74da3ba97d4d42ce2b
@@ -300,7 +300,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 34, y: 81}
+    uvTransform: {x: 62, y: 21}
   - name: Snail_Special_Right_Frame_9
     originalName: 
     pivot: {x: 0.27272728, y: -0.875}
@@ -308,8 +308,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 34
-      y: 115
+      x: 62
+      y: 106
       width: 22
       height: 8
     spriteID: 42b68c87756cbfe43adb0e5676826eef
@@ -320,7 +320,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 34, y: 115}
+    uvTransform: {x: 62, y: 106}
   - name: Snail_Special_Right_Frame_10
     originalName: 
     pivot: {x: 0.27272728, y: -0.7777778}
@@ -328,8 +328,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 34
-      y: 98
+      x: 62
+      y: 38
       width: 22
       height: 9
     spriteID: 2b522685b2163a942a26b1fad381c3ac
@@ -340,7 +340,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 34, y: 98}
+    uvTransform: {x: 62, y: 38}
   - name: Snail_Special_Right_Frame_11
     originalName: 
     pivot: {x: 0.3529412, y: -0.5833334}
@@ -348,8 +348,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 34
-      y: 27
+      x: 4
+      y: 234
       width: 17
       height: 12
     spriteID: 15b09b01c91ec5b4fb6819bf16d511ee
@@ -360,7 +360,247 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 34, y: 27}
+    uvTransform: {x: 4, y: 234}
+  - name: Snail_Special_Right_Frame_13
+    originalName: 
+    pivot: {x: 0.45000002, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 34
+      y: 4
+      width: 20
+      height: 21
+    spriteID: 543031ad4db7d1c488cb02322c3b1876
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 34, y: 4}
+  - name: Snail_Special_Right_Frame_14
+    originalName: 
+    pivot: {x: 0.45000002, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 34
+      y: 33
+      width: 20
+      height: 21
+    spriteID: 7c779190efcfa3e42bd67939fd42ff8b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 34, y: 33}
+  - name: Snail_Special_Right_Frame_15
+    originalName: 
+    pivot: {x: 0.45000002, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 34
+      y: 62
+      width: 20
+      height: 21
+    spriteID: 45c2fdd3cfd50cf46a5a02279e6796ac
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 34, y: 62}
+  - name: Snail_Special_Right_Frame_16
+    originalName: 
+    pivot: {x: 0.45000002, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 34
+      y: 91
+      width: 20
+      height: 21
+    spriteID: 2267cb00320efad4ebf2c17ce13deb49
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 34, y: 91}
+  - name: Snail_Special_Right_Frame_17
+    originalName: 
+    pivot: {x: 0.45000002, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 34
+      y: 120
+      width: 20
+      height: 21
+    spriteID: a99c0a1d6821dd24f8067803df8403d3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 34, y: 120}
+  - name: Snail_Special_Right_Frame_18
+    originalName: 
+    pivot: {x: 0.45000002, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 34
+      y: 149
+      width: 20
+      height: 21
+    spriteID: 5b1f97ec8cc3d464e9c5128c29bb4f4d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 34, y: 149}
+  - name: Snail_Special_Right_Frame_19
+    originalName: 
+    pivot: {x: 0.27272728, y: -0.35}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 32
+      width: 22
+      height: 20
+    spriteID: ccb3c1ff8b5270b41b53b45cb895f97e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 32}
+  - name: Snail_Special_Right_Frame_20
+    originalName: 
+    pivot: {x: 0.27272728, y: -0.7777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 62
+      y: 55
+      width: 22
+      height: 9
+    spriteID: 30a9ab0081c9cac4092ca4a19a3918ec
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 62, y: 55}
+  - name: Snail_Special_Right_Frame_21
+    originalName: 
+    pivot: {x: 0.27272728, y: -0.7777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 62
+      y: 72
+      width: 22
+      height: 9
+    spriteID: a582d24302bf3f241bf82b5cb053d938
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 62, y: 72}
+  - name: Snail_Special_Right_Frame_22
+    originalName: 
+    pivot: {x: 0.27272728, y: -0.875}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 62
+      y: 122
+      width: 22
+      height: 8
+    spriteID: e521c1e60ef9b1045b3858cc5c64ead9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 62, y: 122}
+  - name: Snail_Special_Right_Frame_23
+    originalName: 
+    pivot: {x: 0.27272728, y: -0.7777778}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 62
+      y: 89
+      width: 22
+      height: 9
+    spriteID: d64722a387d550f40b4525a7c1b9c8ee
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 62, y: 89}
+  - name: Snail_Special_Right_Frame_24
+    originalName: 
+    pivot: {x: 0.3529412, y: -0.5833334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 34
+      y: 178
+      width: 17
+      height: 12
+    spriteID: 8dffec0899d6e354fb149ca564684c62
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 34, y: 178}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -376,7 +616,7 @@ ScriptedImporter:
         x: 7
         y: 7
         width: 20
-        height: 15
+        height: 21
       spriteId: 36643c08e16ec7149bd8cd9c3f63860f
     - name: Snail_Special_Right_Frame_1
       frameIndex: 1
@@ -384,7 +624,7 @@ ScriptedImporter:
         x: 7
         y: 7
         width: 20
-        height: 15
+        height: 21
       spriteId: 32830e25e41ec38448bc2312e009d410
     - name: Snail_Special_Right_Frame_2
       frameIndex: 2
@@ -392,7 +632,7 @@ ScriptedImporter:
         x: 7
         y: 7
         width: 20
-        height: 15
+        height: 21
       spriteId: 61c5be640149178459660656a1826023
     - name: Snail_Special_Right_Frame_3
       frameIndex: 3
@@ -400,7 +640,7 @@ ScriptedImporter:
         x: 7
         y: 7
         width: 20
-        height: 15
+        height: 21
       spriteId: 02d03caa51b548049a9a3dc7c69c0eb1
     - name: Snail_Special_Right_Frame_4
       frameIndex: 4
@@ -408,15 +648,15 @@ ScriptedImporter:
         x: 7
         y: 7
         width: 20
-        height: 15
+        height: 21
       spriteId: 77d266c51cb42004ca1fe004b73d5892
     - name: Snail_Special_Right_Frame_5
       frameIndex: 5
       cellRect:
-        x: 10
+        x: 7
         y: 7
-        width: 22
-        height: 20
+        width: 20
+        height: 21
       spriteId: 8295e0c69a7401d46b732cc1bcf25ec7
     - name: Snail_Special_Right_Frame_6
       frameIndex: 6
@@ -424,7 +664,7 @@ ScriptedImporter:
         x: 10
         y: 7
         width: 22
-        height: 9
+        height: 20
       spriteId: 2dc6237c5729da148b40ccb3a69184d7
     - name: Snail_Special_Right_Frame_7
       frameIndex: 7
@@ -466,6 +706,102 @@ ScriptedImporter:
         width: 17
         height: 12
       spriteId: 15b09b01c91ec5b4fb6819bf16d511ee
+    - name: Snail_Special_Right_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 7
+        y: 7
+        width: 20
+        height: 21
+      spriteId: 543031ad4db7d1c488cb02322c3b1876
+    - name: Snail_Special_Right_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 7
+        y: 7
+        width: 20
+        height: 21
+      spriteId: 7c779190efcfa3e42bd67939fd42ff8b
+    - name: Snail_Special_Right_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 7
+        y: 7
+        width: 20
+        height: 21
+      spriteId: 45c2fdd3cfd50cf46a5a02279e6796ac
+    - name: Snail_Special_Right_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 7
+        y: 7
+        width: 20
+        height: 21
+      spriteId: 2267cb00320efad4ebf2c17ce13deb49
+    - name: Snail_Special_Right_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 7
+        y: 7
+        width: 20
+        height: 21
+      spriteId: a99c0a1d6821dd24f8067803df8403d3
+    - name: Snail_Special_Right_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 7
+        y: 7
+        width: 20
+        height: 21
+      spriteId: 5b1f97ec8cc3d464e9c5128c29bb4f4d
+    - name: Snail_Special_Right_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 10
+        y: 7
+        width: 22
+        height: 20
+      spriteId: ccb3c1ff8b5270b41b53b45cb895f97e
+    - name: Snail_Special_Right_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 10
+        y: 7
+        width: 22
+        height: 9
+      spriteId: 30a9ab0081c9cac4092ca4a19a3918ec
+    - name: Snail_Special_Right_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 10
+        y: 7
+        width: 22
+        height: 9
+      spriteId: a582d24302bf3f241bf82b5cb053d938
+    - name: Snail_Special_Right_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 10
+        y: 7
+        width: 22
+        height: 8
+      spriteId: e521c1e60ef9b1045b3858cc5c64ead9
+    - name: Snail_Special_Right_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 10
+        y: 7
+        width: 22
+        height: 9
+      spriteId: d64722a387d550f40b4525a7c1b9c8ee
+    - name: Snail_Special_Right_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 10
+        y: 7
+        width: 17
+        height: 12
+      spriteId: 8dffec0899d6e354fb149ca564684c62
     linkedCells: []
     parentIndex: -1
   platformSettings: []

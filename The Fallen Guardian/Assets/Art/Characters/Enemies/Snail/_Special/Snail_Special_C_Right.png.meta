@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ddad0c41d6c0b8c49a16ab7774647168
+guid: d975b538bf90a6f4898ceb724fbb84d3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,253 +123,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Snail_Attack_Right_0
+      name: Snail_Special_C_Right_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.359375}
+      pivot: {x: 0.5, y: 0.21875}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8414a3bc2b20603478823230ecf44103
-      internalID: -1259260001
+      spriteID: 23fc7953c2dd6e747a77668f58459c18
+      internalID: -845175760
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snail_Attack_Right_1
+      name: Snail_Special_C_Right_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.21875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 009cc757838b6614dbd87c3f9b34eae8
+      internalID: 594519320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snail_Special_C_Right_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.359375}
+      pivot: {x: 0.5, y: 0.21875}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32d15f787cdb5c74083120995623178a
-      internalID: -137923227
+      spriteID: a7f57f05f184ca84fb0d2963191d8363
+      internalID: 1995075183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snail_Attack_Right_2
+      name: Snail_Special_C_Right_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.21875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 354c4282f1716f64aaa52ce71b6d9865
+      internalID: 784041739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snail_Special_C_Right_4
       rect:
         serializedVersion: 2
         x: 128
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.359375}
+      pivot: {x: 0.5, y: 0.21875}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90c84518f987e5940abe66bc898fc98d
-      internalID: 724776514
+      spriteID: 25454932a9707864b99dcbbc05a52ded
+      internalID: -14482241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Snail_Attack_Right_3
+      name: Snail_Special_C_Right_5
       rect:
         serializedVersion: 2
-        x: 192
+        x: 160
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.359375}
+      pivot: {x: 0.5, y: 0.21875}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5049cc8a8d9c28d46bee0e2d724a0a97
-      internalID: 1138027632
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Snail_Attack_Right_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.359375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5aeb4953c3040ce44bda7f554dc68280
-      internalID: 747522813
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Snail_Attack_Right_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.359375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a67b0cc7a4932294c81f20036bd4aa86
-      internalID: -1529571326
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Snail_Attack_Right_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.359375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 91daecbf25fc70a418a6f8e5ea3eaf71
-      internalID: -927202292
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Snail_Attack_Right_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.359375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e1bd26b4c9d1fb143b5a2a83eb556104
-      internalID: -1198391213
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Snail_Attack_Right_8
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.359375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eadcb45639882d74f8c3e6529d5e6c61
-      internalID: -1454472977
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Snail_Attack_Right_9
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.359375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9ce176d015c76f1489309ab61d12d66f
-      internalID: 2036628045
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Snail_Attack_Right_10
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.359375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b43c0ad69bad770468d3eae1c3c5fffb
-      internalID: 1352374180
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Snail_Attack_Right_11
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.359375}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3f0f048ce44053a49bd955335650fc33
-      internalID: 894906281
+      spriteID: 50e2c2c4ac9207c459259e18fad7d327
+      internalID: 213357693
       vertices: []
       indices: 
       edges: []
@@ -385,18 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Snail_Attack_Right_0: -1259260001
-      Snail_Attack_Right_1: -137923227
-      Snail_Attack_Right_10: 1352374180
-      Snail_Attack_Right_11: 894906281
-      Snail_Attack_Right_2: 724776514
-      Snail_Attack_Right_3: 1138027632
-      Snail_Attack_Right_4: 747522813
-      Snail_Attack_Right_5: -1529571326
-      Snail_Attack_Right_6: -927202292
-      Snail_Attack_Right_7: -1198391213
-      Snail_Attack_Right_8: -1454472977
-      Snail_Attack_Right_9: 2036628045
+      Snail_Special_C_Right_0: -845175760
+      Snail_Special_C_Right_1: 594519320
+      Snail_Special_C_Right_2: 1995075183
+      Snail_Special_C_Right_3: 784041739
+      Snail_Special_C_Right_4: -14482241
+      Snail_Special_C_Right_5: 213357693
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

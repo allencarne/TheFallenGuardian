@@ -289,7 +289,7 @@ public class Snail : Enemy
 
             castBar.color = Color.yellow;
 
-            enemyAnimator.Play("Attack Cast");
+            enemyAnimator.Play("Special Cast");
 
             // Calculate the direction from the enemy to the target
             directionToTarget = (target.position - transform.position).normalized;
@@ -311,7 +311,7 @@ public class Snail : Enemy
 
                 castBar.color = Color.green;
 
-                enemyAnimator.Play("Attack Impact");
+                enemyAnimator.Play("Special Impact");
 
                 // Calculate the direction from the enemy to the target
                 Vector2 directionToTarget = (target.position - transform.position).normalized;
@@ -348,7 +348,7 @@ public class Snail : Enemy
         {
             canRecovery = false;
 
-            enemyAnimator.Play("Attack Recovery");
+            enemyAnimator.Play("Special Recovery");
         }
     }
 
