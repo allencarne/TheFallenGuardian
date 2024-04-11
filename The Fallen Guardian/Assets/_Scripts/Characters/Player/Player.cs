@@ -128,6 +128,12 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Heal(float heal)
     {
+        if (Stats.Health >= Stats.MaxHealth)
+        {
+            ShowFloatingText(0, Color.green);
+
+            return;
+        }
         Stats.Health += heal;
 
         StartCoroutine(FlashEffect(Color.green));

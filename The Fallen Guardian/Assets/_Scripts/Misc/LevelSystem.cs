@@ -99,7 +99,7 @@ public class LevelSystem : MonoBehaviour
 
         // Increase Player Health
         stats.MaxHealth++;
-        float missingHealth = stats.MaxHealth - stats.PlayerLevel;
+        float missingHealth = stats.MaxHealth - stats.Health;
         player.Heal(missingHealth);
 
         // Increase Player Damage
