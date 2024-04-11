@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -8,8 +9,8 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour, IDamageable
 {
     [Header("Stats")]
-    public float health;
-    public float maxHealth;
+    public float Health;
+    public float MaxHealth;
 
     public float baseSpeed; 
     private float currentSpeed;
@@ -95,7 +96,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private void Start()
     {
         // Set Health
-        health = maxHealth;
+        Health = MaxHealth;
 
         // Set Starting Position
         startingPosition = transform.position;
@@ -452,7 +453,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        Health -= damage;
 
         idleTime = 0;
 
@@ -461,7 +462,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
         OnHealthChanged?.Invoke();
 
-        if (health <= 0)
+        if (Health <= 0)
         {
             enemyState = EnemyState.Death;
         }
@@ -469,15 +470,38 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void Heal(float heal)
     {
-        health += heal;
+        if (Health >= MaxHealth)
+        {
+            ShowFloatingText(0, Color.green);
 
-        idleTime = 0;
+            return;
+        }
 
-        StartCoroutine(FlashEffect(Color.green));
+        float newHealth = Health + heal;
 
-        ShowFloatingText(heal, Color.green);
+        if (newHealth <= MaxHealth)
+        {
+            Health += heal;
 
-        OnHealthChanged?.Invoke();
+            idleTime = 0;
+
+            StartCoroutine(FlashEffect(Color.green));
+            ShowFloatingText(heal, Color.green);
+
+            OnHealthChanged?.Invoke();
+        }
+        else
+        {
+            float overheal = newHealth - MaxHealth;
+            Health += overheal;
+
+            idleTime = 0;
+
+            StartCoroutine(FlashEffect(Color.green));
+            ShowFloatingText(overheal, Color.green);
+
+            OnHealthChanged?.Invoke();
+        }
     }
 
     private IEnumerator FlashEffect(Color color)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -106,7 +107,7 @@ public class Player : MonoBehaviour, IDamageable
         {
             if (GetComponent<PlayerInput>().currentControlScheme == "Keyboard")
             {
-                Heal(1);
+                Heal(2);
             }
         }
     }
@@ -134,12 +135,28 @@ public class Player : MonoBehaviour, IDamageable
 
             return;
         }
-        Stats.Health += heal;
 
-        StartCoroutine(FlashEffect(Color.green));
-        ShowFloatingText(heal,Color.green);
+        float newHealth = Stats.Health + heal;
 
-        OnHealthChanged?.Invoke();
+        if (newHealth <= Stats.MaxHealth)
+        {
+            Stats.Health += heal;
+
+            StartCoroutine(FlashEffect(Color.green));
+            ShowFloatingText(heal, Color.green);
+
+            OnHealthChanged?.Invoke();
+        }
+        else
+        {
+            float overheal = newHealth - Stats.MaxHealth;
+            Stats.Health += overheal;
+
+            StartCoroutine(FlashEffect(Color.green));
+            ShowFloatingText(overheal, Color.green);
+
+            OnHealthChanged?.Invoke();
+        }
     }
 
     private IEnumerator FlashEffect(Color color)

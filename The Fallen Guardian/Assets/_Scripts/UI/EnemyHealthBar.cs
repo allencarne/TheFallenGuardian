@@ -24,7 +24,7 @@ public class EnemyHealthBar : MonoBehaviour
 
         lerpingCoroutine = StartCoroutine(LerpHealthBar());
 
-        if (enemy.health <= 0)
+        if (enemy.Health <= 0)
         {
             healthBar.SetActive(false);
         }
@@ -36,7 +36,7 @@ public class EnemyHealthBar : MonoBehaviour
 
         float fillFront = healthBarFront.fillAmount;
         float fillBack = healthBarBack.fillAmount;
-        float healthFraction = enemy.health / enemy.maxHealth;
+        float healthFraction = enemy.Health / enemy.MaxHealth;
 
         if (fillBack > healthFraction)
         {
