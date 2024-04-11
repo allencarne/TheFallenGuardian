@@ -9608,6 +9608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866dd1af28e491546b199bfa9941e9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buffs: {fileID: 945035516}
   ccBar: {fileID: 1833802485}
   cc_KnockBack: {fileID: 8932589641119965354, guid: 641893366e9ca9345aa051bca3d8deb9, type: 3}
   cc_Stun: {fileID: 8932589641119965354, guid: 641893366e9ca9345aa051bca3d8deb9, type: 3}

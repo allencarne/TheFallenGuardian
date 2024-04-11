@@ -317,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866dd1af28e491546b199bfa9941e9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buffs: {fileID: 4616942287934324812}
   ccBar: {fileID: 4584005647302555774}
   cc_KnockBack: {fileID: 8932589641119965354, guid: 641893366e9ca9345aa051bca3d8deb9, type: 3}
   cc_Stun: {fileID: 7936525235414805521, guid: ffa19195fb4a84b4c84df0228c81d195, type: 3}

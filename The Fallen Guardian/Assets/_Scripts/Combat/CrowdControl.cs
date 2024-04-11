@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CrowdControl : MonoBehaviour, IKnockbackable
 {
+    [SerializeField] Buffs buffs;
+
     [Header("CC Bar")]
     [SerializeField] GameObject ccBar;
 
@@ -66,6 +68,11 @@ public class CrowdControl : MonoBehaviour, IKnockbackable
 
     public void KnockBack(Rigidbody2D opponentRB, float knockBackAmount, float knockBackDuration, Vector2 knockBackDirection)
     {
+        if (buffs.IsImmovable)
+        {
+            return;
+        }
+
         // Assign Variables
         this.opponentRB = opponentRB;
         this.knockBackDuration = knockBackDuration;
