@@ -118,9 +118,6 @@ public class Snail : Enemy
 
                 GameObject attack = Instantiate(attackPrefab, attackPosition, Quaternion.identity);
 
-                // Ignore collision between the attack and the caster
-                Physics2D.IgnoreCollision(attack.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
-
                 DamageOnTrigger damageOnTrigger = attack.GetComponent<DamageOnTrigger>();
                 if (damageOnTrigger != null)
                 {
@@ -227,9 +224,6 @@ public class Snail : Enemy
                 // Instantiate
                 GameObject trail = Instantiate(mobilityPrefab, transform.position, rotation);
 
-                // Ignore collision between the attack and the caster
-                Physics2D.IgnoreCollision(trail.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
-
                 SlowOnTrigger slowOnTrigger = trail.GetComponent<SlowOnTrigger>();
                 if (slowOnTrigger != null)
                 {
@@ -252,6 +246,7 @@ public class Snail : Enemy
         castTime = 0;
         UpdateCastBar(0, mobilityCastTime);
 
+        // Turn Back on collisions between enemy and player
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
 
         enemyState = EnemyState.Idle;
@@ -334,9 +329,6 @@ public class Snail : Enemy
                 shellRB.AddForce(directionToTarget * specialRange, ForceMode2D.Impulse);
 
                 Destroy(shell, 1.5f);
-
-                // Ignore collision between the attack and the caster
-                Physics2D.IgnoreCollision(shell.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
 
                 DamageOnTrigger damageOnTrigger = shell.GetComponent<DamageOnTrigger>();
                 if (damageOnTrigger != null)

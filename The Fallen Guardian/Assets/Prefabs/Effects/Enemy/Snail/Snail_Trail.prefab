@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6138599511395671800}
   - component: {fileID: 2010745519699181692}
   - component: {fileID: 89798453032738352}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Snail_Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

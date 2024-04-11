@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8367450828983173966}
   - component: {fileID: 6067382599765147842}
   - component: {fileID: 2841019924254600302}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Snail_Shmack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,9 +133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df57bfcc2937a3849aa0c5c8e9c95b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffect: {fileID: 0}
-  characterDamage: 0
-  abilityDamage: 0
+  HitEffect: {fileID: 0}
+  CharacterDamage: 0
+  AbilityDamage: 0
+  DestroyAfterDamage: 0
 --- !u!58 &2841019924254600302
 CircleCollider2D:
   m_ObjectHideFlags: 0
