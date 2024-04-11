@@ -6,17 +6,24 @@ public class PlayerDeathState : PlayerState
 {
     public PlayerDeathState(PlayerStateMachine stateMachine) : base(stateMachine) { }
 
+    bool hasExecuted = false;
+
     public override void Update()
     {
-        Debug.Log("Death State");
+        if (!hasExecuted)
+        {
+            hasExecuted = true;
 
-        stateMachine.BodyAnimator.Play("Death");
-        stateMachine.StartCoroutine(DeathDelay());
+            stateMachine.BodyAnimator.Play("Death");
+            stateMachine.StartCoroutine(DeathDelay());
+        }
     }
 
     IEnumerator DeathDelay()
     {
         yield return new WaitForSeconds(.8f);
+
+        hasExecuted = false;
 
         // Reset Player Position
         stateMachine.transform.position = Vector2.zero;
