@@ -9564,12 +9564,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bbc24dd4e91961458b80ec2beedc26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 9999
-  maxHealth: 9999
+  Health: 9999
+  MaxHealth: 9999
   baseSpeed: 0
   damage: 0
   expToGive: 0
-  wanderRadius: 5
+  wanderRadius: 0
   attackRadius: 0
   mobilityRadius: 0
   specialRadius: 0
@@ -9578,6 +9578,7 @@ MonoBehaviour:
   castBar: {fileID: 0}
   spriteRenderer: {fileID: 504803931}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
+  shadow: {fileID: 1842983177}
   enemyCollider2D: {fileID: 945035511}
   EnemySpawner: {fileID: 0}
   patience: 5

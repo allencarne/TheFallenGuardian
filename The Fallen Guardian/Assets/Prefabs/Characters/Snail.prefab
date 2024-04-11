@@ -294,6 +294,7 @@ MonoBehaviour:
   castBar: {fileID: 2803776170586669871}
   spriteRenderer: {fileID: 3441835576944637314}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
+  shadow: {fileID: 7976263011152865437}
   enemyCollider2D: {fileID: 7949850666712048347}
   EnemySpawner: {fileID: 0}
   patience: 3
@@ -379,5 +380,10 @@ CircleCollider2D:
 --- !u!70 &7949850666712048347 stripped
 CapsuleCollider2D:
   m_CorrespondingSourceObject: {fileID: 3605142366507294513, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+  m_PrefabInstance: {fileID: 6655056833195474410}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7976263011152865437 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3668993459831461239, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
   m_PrefabInstance: {fileID: 6655056833195474410}
   m_PrefabAsset: {fileID: 0}

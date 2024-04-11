@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected Image castBar;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] GameObject floatingText;
+    [SerializeField] GameObject shadow;
 
     protected Buffs buffs;
     protected Debuffs debuffs;
@@ -421,10 +422,13 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (canDeath)
         {
+            Debug.Log("Test");
+
             canDeath = false;
 
             enemyAnimator.Play("Death");
             enemyCollider2D.enabled = false;
+            shadow.SetActive(false);
 
             if (EnemySpawner != null)
             {
@@ -440,6 +444,11 @@ public class Enemy : MonoBehaviour, IDamageable
                 }
             }
 
+            target = null;
+            playerInRange = false;
+
+            this.enabled = false;
+
             StartCoroutine(DeathDelay());
         }
     }
@@ -453,6 +462,11 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        if (enemyState == EnemyState.Death)
+        {
+            return;
+        }
+
         Health -= damage;
 
         idleTime = 0;
@@ -579,20 +593,6 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             target = other.transform;
             playerInRange = true;
-        }
-    }
-
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            target = other.transform;
-
-            if (other.GetComponent<Player>().isPlayerOutOfHealth)
-            {
-                target = null;
-                playerInRange = false;
-            }
         }
     }
 

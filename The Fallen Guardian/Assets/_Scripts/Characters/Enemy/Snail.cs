@@ -246,8 +246,11 @@ public class Snail : Enemy
         castTime = 0;
         UpdateCastBar(0, mobilityCastTime);
 
-        // Turn Back on collisions between enemy and player
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
+        if (target != null)
+        {
+            // Turn Back on collisions between enemy and player
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
+        }
 
         enemyState = EnemyState.Idle;
     }
