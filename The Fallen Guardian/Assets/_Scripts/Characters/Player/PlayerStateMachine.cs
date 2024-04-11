@@ -16,8 +16,6 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] PlayerInputHandler inputHandler; public PlayerInputHandler InputHandler => inputHandler;
     [SerializeField] PlayerAbilities abilities; public PlayerAbilities Abilities => abilities;
     [SerializeField] Transform aimer; public Transform Aimer => aimer;
-    [SerializeField] CrowdControl crowdControl; public CrowdControl CrowdControl => crowdControl;
-    [SerializeField] Debuffs debuffs; public Debuffs Debuffs => debuffs;
 
     private Vector2 lastMoveDirection = Vector2.zero;
 
@@ -70,7 +68,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (abilityInput && CanBasicAbility && Equipment.IsWeaponEquipt && abilities.basicAbilityReference != null)
         {
-            if (!crowdControl.IsDisarmed)
+            if (!Player.CrowdControl.IsDisarmed)
             {
                 SetState(new PlayerBasicState(this));
             }

@@ -70,7 +70,7 @@ public class SplittingSwing : ScriptableObject, IAbilityBehaviour
         if (damageOnTrigger != null)
         {
             damageOnTrigger.abilityDamage = damage;
-            damageOnTrigger.characterDamage = stateMachine.Player.Stats.Might;
+            damageOnTrigger.characterDamage = stateMachine.Player.Stats.BaseDamage;
             damageOnTrigger.hitEffect = hitEffect;
         }
 

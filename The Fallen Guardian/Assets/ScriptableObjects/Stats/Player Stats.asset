@@ -19,8 +19,16 @@ MonoBehaviour:
   PlayerClass: 0
   Health: 15
   MaxHealth: 15
-  Might: 6
-  Haste: 8
+  BaseSpeed: 8
+  CurrentSpeed: 0
+  BaseDamage: 1
+  CurrentDamage: 0
+  BaseAttackSpeed: 1
+  CurrentAttackSpeed: 0
+  BaseCoolDown: 1
+  CurrentCoolDown: 0
+  Might: 0
+  Haste: 0
   Agility: 0
   Alacrity: 0
   Protection: 0

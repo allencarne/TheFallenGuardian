@@ -13,13 +13,23 @@ public class Player : MonoBehaviour, IDamageable
     public PlayerAbilities playerAbilities;
 
     public Image CastBar;
-
     [SerializeField] GameObject floatingText;
-
     public bool isPlayerOutOfHealth;
 
     // Events
     public UnityEvent OnHealthChanged;
+
+    // Status Effects
+    Buffs buffs;
+    Debuffs debuffs;
+    public CrowdControl CrowdControl;
+
+    private void Awake()
+    {
+        buffs = GetComponent<Buffs>();
+        debuffs = GetComponent<Debuffs>();
+        CrowdControl = GetComponent<CrowdControl>();
+    }
 
     private void Start()
     {
@@ -30,12 +40,15 @@ public class Player : MonoBehaviour, IDamageable
 
         // *Temporary* Character Stats
         Stats.MaxHealth = 10;
-        Stats.Might = 1;
-        Stats.Haste = 8;
+        Stats.BaseDamage = 1;
+        Stats.BaseSpeed = 8;
 
 
         // Set Health
         Stats.Health = Stats.MaxHealth;
+
+        // Set Speed
+        Stats.CurrentSpeed = Stats.BaseSpeed;
 
         switch (Stats.PlayerClass)
         {
@@ -163,5 +176,16 @@ public class Player : MonoBehaviour, IDamageable
         {
             CastBar.fillAmount = fillAmount;
         }
+    }
+
+    public void HandleSlow()
+    {
+        // Calculate the final speed, ensuring it doesn't drop below 0
+        Stats.CurrentSpeed = Mathf.Max(Stats.BaseSpeed - debuffs.SlowAmount, 0);
+    }
+
+    public void HandleSlowEnd()
+    {
+        Stats.CurrentSpeed = Stats.BaseSpeed;
     }
 }

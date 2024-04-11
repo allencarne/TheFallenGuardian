@@ -103,7 +103,7 @@ public class LevelSystem : MonoBehaviour
         player.Heal(missingHealth);
 
         // Increase Player Damage
-        stats.Might++;
+        stats.BaseDamage++;
 
         // Update Bar
         frontXpBar.fillAmount = 0f;

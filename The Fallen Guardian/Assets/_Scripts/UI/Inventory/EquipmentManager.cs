@@ -38,7 +38,7 @@ public class EquipmentManager : MonoBehaviour
         }
 
         playerStats.MaxHealth += newItem.healthModifier;
-        playerStats.Might += newItem.damageModifier;
+        playerStats.BaseDamage += newItem.damageModifier;
 
         if (onEquipmentChangedCallback != null)
         {
@@ -57,7 +57,7 @@ public class EquipmentManager : MonoBehaviour
             inventory.Add(oldItem);
 
             playerStats.MaxHealth -= oldItem.healthModifier;
-            playerStats.Might -= oldItem.damageModifier;
+            playerStats.BaseDamage -= oldItem.damageModifier;
 
             currentEquipment[slotIndex] = null;
 

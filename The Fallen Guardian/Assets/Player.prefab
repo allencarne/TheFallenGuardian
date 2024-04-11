@@ -1637,6 +1637,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  CrowdControl: {fileID: 0}
 --- !u!114 &4059563979879986888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1657,8 +1658,6 @@ MonoBehaviour:
   inputHandler: {fileID: 754719381540065433}
   abilities: {fileID: 239699257640095505}
   aimer: {fileID: 1333201046459341400}
-  crowdControl: {fileID: 4879207451902047104}
-  debuffs: {fileID: 3668015608117301615}
   CanBasicAbility: 1
   AbilityDir: {x: 0, y: 0, z: 0, w: 0}
   canOffensiveAbility: 1
@@ -1725,10 +1724,34 @@ MonoBehaviour:
   IsSlowed: 0
   OnSlowed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7150002324481854805}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: HandleSlow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnSlowEnd:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7150002324481854805}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: HandleSlowEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   SlowAmount: 0
 --- !u!114 &4879207451902047104
 MonoBehaviour:

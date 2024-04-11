@@ -13,13 +13,29 @@ public class PlayerStats : ScriptableObject
     public float RequiredExperience;
     public PlayerClass PlayerClass;
 
-    [Header("Character")]
+    [Header("Health")]
     public float Health;
     public float MaxHealth;
 
+    [Header("Movement Speed")]
+    public float BaseSpeed;
+    public float CurrentSpeed;
+
+    [Header("Attack Damage")]
+    public int BaseDamage;
+    public int CurrentDamage;
+
+    [Header("Attack Speed")]
+    public float BaseAttackSpeed;
+    public float CurrentAttackSpeed;
+
+    [Header("Cool Down Reduction")]
+    public float BaseCoolDown;
+    public float CurrentCoolDown;
+
     [Header("Stats")]
-    public int Might; // Increase Attack Damage
-    public float Haste; // Increase Movment Speed
+    public float Might;
+    public float Haste;
     public float Agility; // Increase Attack Speed
     public float Alacrity; // Increase Cool Down Reduction
     public float Protection; // Increase Max Health / Reduce Incoming Damage
