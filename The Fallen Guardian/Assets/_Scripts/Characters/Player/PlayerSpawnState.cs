@@ -19,6 +19,8 @@ public class PlayerSpawnState : PlayerState
             //stateMachine.ClubAnimator.Play("Spawn");
             stateMachine.SwordAnimator.Play("Spawn");
 
+            stateMachine.Player.OnHealthChanged?.Invoke();
+
             stateMachine.StartCoroutine(SpawnDuration());
         }
     }

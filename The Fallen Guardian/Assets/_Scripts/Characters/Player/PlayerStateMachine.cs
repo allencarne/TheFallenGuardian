@@ -43,13 +43,11 @@ public class PlayerStateMachine : MonoBehaviour
     void Update()
     {
         state.Update();
+    }
 
-        if (player.isPlayerOutOfHealth)
-        {
-            player.isPlayerOutOfHealth = false;
-
-            SetState(new PlayerDeathState(this));
-        }
+    public void OnPlayerDeath()
+    {
+        SetState(new PlayerDeathState(this));
     }
 
     private void FixedUpdate()

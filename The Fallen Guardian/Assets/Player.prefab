@@ -1621,7 +1621,6 @@ MonoBehaviour:
   playerAbilities: {fileID: 239699257640095505}
   CastBar: {fileID: 2187327653616484548}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
-  isPlayerOutOfHealth: 0
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1637,6 +1636,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlayerDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4059563979879986888}
+        m_TargetAssemblyTypeName: PlayerStateMachine, Assembly-CSharp
+        m_MethodName: OnPlayerDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Buffs: {fileID: 0}
   CrowdControl: {fileID: 0}
 --- !u!114 &4059563979879986888
 MonoBehaviour:

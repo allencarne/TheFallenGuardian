@@ -15,10 +15,11 @@ public class Player : MonoBehaviour, IDamageable
 
     public Image CastBar;
     [SerializeField] GameObject floatingText;
-    public bool isPlayerOutOfHealth;
+    //public bool isPlayerOutOfHealth;
 
     // Events
     public UnityEvent OnHealthChanged;
+    public UnityEvent OnPlayerDeath;
 
     // Status Effects
     public Buffs Buffs;
@@ -123,7 +124,7 @@ public class Player : MonoBehaviour, IDamageable
 
         if (Stats.Health <= 0)
         {
-            isPlayerOutOfHealth = true;
+            OnPlayerDeath?.Invoke();
         }
     }
 

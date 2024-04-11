@@ -31,11 +31,6 @@ public class HealthBar : MonoBehaviour
         }
 
         lerpingCoroutine = StartCoroutine(LerpHealthBar());
-
-        if (stats.Health <= 0)
-        {
-            healthBar.SetActive(false);
-        }
     }
 
     IEnumerator LerpHealthBar()
