@@ -35,6 +35,9 @@ public class LightDash : ScriptableObject, IAbilityBehaviour
 
             stateMachine.StartCoroutine(DurationOfDash(stateMachine));
             stateMachine.StartCoroutine(DashCoolDown(stateMachine));
+
+            // Buff
+            stateMachine.Player.Buffs.Immovable(dashDuration);
         }
     }
 

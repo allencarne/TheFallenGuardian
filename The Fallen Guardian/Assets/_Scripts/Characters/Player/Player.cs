@@ -21,13 +21,13 @@ public class Player : MonoBehaviour, IDamageable
     public UnityEvent OnHealthChanged;
 
     // Status Effects
-    Buffs buffs;
+    public Buffs Buffs;
     Debuffs debuffs;
     public CrowdControl CrowdControl;
 
     private void Awake()
     {
-        buffs = GetComponent<Buffs>();
+        Buffs = GetComponent<Buffs>();
         debuffs = GetComponent<Debuffs>();
         CrowdControl = GetComponent<CrowdControl>();
     }
