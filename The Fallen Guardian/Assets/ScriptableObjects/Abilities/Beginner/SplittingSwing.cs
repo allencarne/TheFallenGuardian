@@ -69,9 +69,9 @@ public class SplittingSwing : ScriptableObject, IAbilityBehaviour
         DamageOnTrigger damageOnTrigger = slash.GetComponent<DamageOnTrigger>();
         if (damageOnTrigger != null)
         {
-            damageOnTrigger.abilityDamage = damage;
-            damageOnTrigger.characterDamage = stateMachine.Player.Stats.BaseDamage;
-            damageOnTrigger.hitEffect = hitEffect;
+            damageOnTrigger.AbilityDamage = damage;
+            damageOnTrigger.CharacterDamage = stateMachine.Player.Stats.BaseDamage;
+            damageOnTrigger.HitEffect = hitEffect;
         }
 
         KnockbackOnTrigger knockbackOnTrigger = slash.GetComponent<KnockbackOnTrigger>();

@@ -34,6 +34,10 @@ public class Snail : Enemy
     public float specialRange;
     public float specialCoolDown;
 
+    [Header("KnockBack")]
+    [SerializeField] float knockBackForce;
+    [SerializeField] float knockBackDuration;
+
     float castTime = 0;
     bool canImpact = true;
     bool canRecovery = false;
@@ -120,9 +124,9 @@ public class Snail : Enemy
                 DamageOnTrigger damageOnTrigger = attack.GetComponent<DamageOnTrigger>();
                 if (damageOnTrigger != null)
                 {
-                    damageOnTrigger.abilityDamage = attackDamage;
-                    damageOnTrigger.characterDamage = damage;
-                    damageOnTrigger.hitEffect = attackHitEffect;
+                    damageOnTrigger.AbilityDamage = attackDamage;
+                    damageOnTrigger.CharacterDamage = damage;
+                    damageOnTrigger.HitEffect = attackHitEffect;
                 }
             }
         }
@@ -314,7 +318,7 @@ public class Snail : Enemy
                 enemyAnimator.Play("Special Impact");
 
                 // Calculate the direction from the enemy to the target
-                Vector2 directionToTarget = (target.position - transform.position).normalized;
+                directionToTarget = (target.position - transform.position).normalized;
 
                 // Set animator parameters based on the direction
                 enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
@@ -337,9 +341,19 @@ public class Snail : Enemy
                 DamageOnTrigger damageOnTrigger = shell.GetComponent<DamageOnTrigger>();
                 if (damageOnTrigger != null)
                 {
-                    damageOnTrigger.abilityDamage = specialDamage;
-                    damageOnTrigger.characterDamage = damage;
-                    damageOnTrigger.hitEffect = specialHitEffect;
+                    damageOnTrigger.AbilityDamage = specialDamage;
+                    damageOnTrigger.CharacterDamage = damage;
+                    damageOnTrigger.HitEffect = specialHitEffect;
+
+                    damageOnTrigger.DestroyAfterDamage = true;
+                }
+
+                KnockbackOnTrigger knockbackOnTrigger = shell.GetComponent<KnockbackOnTrigger>();
+                if (knockbackOnTrigger != null)
+                {
+                    knockbackOnTrigger.KnockBackForce = knockBackForce;
+                    knockbackOnTrigger.KnockBackDuration = knockBackDuration;
+                    knockbackOnTrigger.KnockBackDirection = directionToTarget;
                 }
             }
         }

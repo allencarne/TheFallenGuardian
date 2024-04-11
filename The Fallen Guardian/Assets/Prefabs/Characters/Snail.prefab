@@ -334,6 +334,8 @@ MonoBehaviour:
   specialCastTime: 0.6
   specialRange: 10
   specialCoolDown: 7
+  knockBackForce: 10
+  knockBackDuration: 0.3
 --- !u!1 &5899974318618201015 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 989500593750718045, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}

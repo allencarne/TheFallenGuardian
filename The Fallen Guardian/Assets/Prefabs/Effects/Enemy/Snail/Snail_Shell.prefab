@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 234128966543946059}
   - component: {fileID: 8677472369047748134}
   - component: {fileID: 6110092973362048063}
+  - component: {fileID: 7018560274398936399}
   m_Layer: 0
   m_Name: Snail_Shell
   m_TagString: Untagged
@@ -249,3 +250,18 @@ MonoBehaviour:
   hitEffect: {fileID: 0}
   characterDamage: 0
   abilityDamage: 0
+--- !u!114 &7018560274398936399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9178998900622273337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3175905ea4c67154eb9ab8fa11a06243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KnockBackForce: 0
+  KnockBackDuration: 0
+  KnockBackDirection: {x: 0, y: 0}

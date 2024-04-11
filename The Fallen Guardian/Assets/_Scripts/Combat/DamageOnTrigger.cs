@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class DamageOnTrigger : MonoBehaviour
 {
-    [HideInInspector] public GameObject hitEffect;
-    [HideInInspector] public int characterDamage;
-    [HideInInspector] public int abilityDamage;
+    [HideInInspector] public GameObject HitEffect;
+    [HideInInspector] public int CharacterDamage;
+    [HideInInspector] public int AbilityDamage;
+
+    [HideInInspector] public bool DestroyAfterDamage = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,12 +16,20 @@ public class DamageOnTrigger : MonoBehaviour
 
         if (damageable != null)
         {
-            damageable.TakeDamage(characterDamage + abilityDamage);
+            damageable.TakeDamage(CharacterDamage + AbilityDamage);
 
-            if (hitEffect)
+            if (HitEffect)
             {
-                Instantiate(hitEffect, collision.transform.position, collision.transform.rotation);
+                Instantiate(HitEffect, collision.transform.position, collision.transform.rotation);
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (DestroyAfterDamage)
+        {
+            Destroy(gameObject);
         }
     }
 }
