@@ -84,7 +84,7 @@ public class Snail : Enemy
             }
         }
 
-        if (canAttack)
+        if (canAttack && target != null)
         {
             canAttack = false;
 
@@ -201,17 +201,14 @@ public class Snail : Enemy
 
         if (castTime > mobilityCastTime)
         {
-            if (canImpact)
+            if (canImpact && target != null)
             {
                 canImpact = false;
 
                 castBar.color = Color.green;
 
-                if (target != null)
-                {
-                    // Calculate the direction from the enemy to the target
-                    directionToTarget = (target.position - transform.position).normalized;
-                }
+                // Calculate the direction from the enemy to the target
+                directionToTarget = (target.position - transform.position).normalized;
 
                 // Calculate the rotation towards the target
                 float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
@@ -288,7 +285,7 @@ public class Snail : Enemy
             }
         }
 
-        if (canSpecial)
+        if (canSpecial && target != null)
         {
             canSpecial = false;
 
@@ -310,7 +307,7 @@ public class Snail : Enemy
 
         if (castTime > specialCastTime)
         {
-            if (canImpact)
+            if (canImpact && target != null)
             {
                 canImpact = false;
 

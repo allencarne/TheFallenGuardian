@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour
     public GameObject floatingText;
     public Image CastBar;
 
-    private void Start()
+    private void Awake()
     {
         playerName.text = stats.PlayerName;
 
@@ -37,6 +37,11 @@ public class HealthBar : MonoBehaviour
         stats.MaxHealth = 10;
         stats.BaseDamage = 1;
         stats.BaseSpeed = 8;
+    }
+
+    private void Start()
+    {
+        UpdateHealthUI();
     }
 
     public void UpdateHealthUI()
