@@ -75,12 +75,4 @@ public class EquipmentManager : MonoBehaviour
             UnEquip(i);
         }
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Equals))
-        {
-            UnequipAll();
-        }
-    }
 }

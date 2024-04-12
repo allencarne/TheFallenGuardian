@@ -1093,11 +1093,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2133646207742848838}
   - component: {fileID: 5663583307712945941}
+  - component: {fileID: 3843920219548125749}
   - component: {fileID: 1202709710546688595}
   - component: {fileID: 754719381540065433}
-  - component: {fileID: 3843920219548125749}
-  - component: {fileID: 6967247431417826392}
   - component: {fileID: 7150002324481854805}
+  - component: {fileID: 6798618369645326226}
+  - component: {fileID: 6967247431417826392}
   - component: {fileID: 4059563979879986888}
   - component: {fileID: 239699257640095505}
   - component: {fileID: 7237820433538653136}
@@ -1156,6 +1157,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!70 &3843920219548125749
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.0000001, y: 0.3698478}
+  m_Direction: 1
 --- !u!114 &1202709710546688595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1541,69 +1577,6 @@ MonoBehaviour:
   OnMapUI:
     m_PersistentCalls:
       m_Calls: []
---- !u!70 &3843920219548125749
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7550517957279444385}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.0000001, y: 0.3698478}
-  m_Direction: 1
---- !u!114 &6967247431417826392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7550517957279444385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da512fd895cf7f14caa0348a1fe0d7c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnObjectAdded:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 1a966914af4b6aa4482d66fe6110374b, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  gameObjectRuntimeSet: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
 --- !u!114 &7150002324481854805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1655,6 +1628,46 @@ MonoBehaviour:
   debuffs: {fileID: 0}
   CrowdControl: {fileID: 0}
   InCombat: 0
+--- !u!114 &6798618369645326226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04108bb53224e914e97c3c32ac35404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6967247431417826392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da512fd895cf7f14caa0348a1fe0d7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnObjectAdded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 1a966914af4b6aa4482d66fe6110374b, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameObjectRuntimeSet: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
 --- !u!114 &4059563979879986888
 MonoBehaviour:
   m_ObjectHideFlags: 0
