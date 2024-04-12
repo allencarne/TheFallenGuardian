@@ -3,25 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 public class HealthBar : MonoBehaviour
 {
-    public PlayerStats stats;
+    [Header("Stats")]
+    [SerializeField] PlayerStats stats;
 
+    [Header("Healthbar")]
     [SerializeField] GameObject healthBar;
-    [SerializeField] TextMeshProUGUI playerName;
     [SerializeField] Image healthBarFront;
     [SerializeField] Image healthBarBack;
 
-    [SerializeField] SpriteRenderer bodySprite;
-
+    [Header("Variables")]
     Coroutine lerpingCoroutine;
     float chipSpeed = .5f;
     bool isLerping = false;
 
+    [Header("Components")]
+    [SerializeField] TextMeshProUGUI playerName;
+    [SerializeField] SpriteRenderer bodySprite;
+    public GameObject floatingText;
+
     private void Start()
     {
         playerName.text = stats.PlayerName;
+
+        // *Temporary* Player Stats
+        stats.PlayerLevel = 1;
+        stats.CurrentExperience = 0;
+        stats.RequiredExperience = 3;
+
+        stats.MaxHealth = 10;
+        stats.BaseDamage = 1;
+        stats.BaseSpeed = 8;
     }
 
     public void UpdateHealthUI()
@@ -98,5 +113,19 @@ public class HealthBar : MonoBehaviour
 
         // Reset to original color
         bodySprite.color = Color.white;
+    }
+
+    public void ShowFloatingText(float amount, Color color)
+    {
+        Vector3 offset = new Vector3(0f, -1f, 0);
+
+        if (floatingText)
+        {
+            GameObject textPrefab = Instantiate(floatingText, transform.position + offset, Quaternion.identity);
+            TextMeshPro textMesh = textPrefab.GetComponentInChildren<TextMeshPro>();
+            textMesh.text = amount.ToString();
+            textMesh.color = color; // Set the color of the text
+            Destroy(textPrefab, 1);
+        }
     }
 }

@@ -11,11 +11,10 @@ public class Player : MonoBehaviour, IDamageable
     public PlayerStats Stats;
     public PlayerAbilities playerAbilities;
 
-    public Image CastBar;
-    [SerializeField] GameObject floatingText;
 
     // Healthbar
     [SerializeField] HealthBar healthBar;
+    public Image CastBar;
 
     // Events
     public UnityEvent OnHealthChanged;
@@ -26,8 +25,6 @@ public class Player : MonoBehaviour, IDamageable
     [HideInInspector] public Debuffs debuffs;
     [HideInInspector] public CrowdControl CrowdControl;
 
-    public bool InCombat;
-
     private void Awake()
     {
         Buffs = GetComponent<Buffs>();
@@ -37,17 +34,6 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        // *Temporary* Player Stats
-        Stats.PlayerLevel = 1;
-        Stats.CurrentExperience = 0;
-        Stats.RequiredExperience = 130;
-
-        // *Temporary* Character Stats
-        Stats.MaxHealth = 10;
-        Stats.BaseDamage = 1;
-        Stats.BaseSpeed = 8;
-
-
         // Set Health
         Stats.Health = Stats.MaxHealth;
 
@@ -60,7 +46,7 @@ public class Player : MonoBehaviour, IDamageable
         Stats.Health -= damage;
 
         StartCoroutine(healthBar.FlashEffect(Color.red));
-        ShowFloatingText(damage, Color.red);
+        healthBar.ShowFloatingText(damage, Color.red);
 
         OnHealthChanged?.Invoke();
 
@@ -74,7 +60,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (Stats.Health >= Stats.MaxHealth)
         {
-            ShowFloatingText(0, Color.green);
+            healthBar.ShowFloatingText(0, Color.green);
 
             return;
         }
@@ -86,7 +72,7 @@ public class Player : MonoBehaviour, IDamageable
             Stats.Health += heal;
 
             StartCoroutine(healthBar.FlashEffect(Color.green));
-            ShowFloatingText(heal, Color.green);
+            healthBar.ShowFloatingText(heal, Color.green);
 
             OnHealthChanged?.Invoke();
         }
@@ -96,23 +82,9 @@ public class Player : MonoBehaviour, IDamageable
             Stats.Health += overheal;
 
             StartCoroutine(healthBar.FlashEffect(Color.green));
-            ShowFloatingText(overheal, Color.green);
+            healthBar.ShowFloatingText(overheal, Color.green);
 
             OnHealthChanged?.Invoke();
-        }
-    }
-
-    void ShowFloatingText(float amount, Color color)
-    {
-        Vector3 offset = new Vector3(0f, 1, 0);
-
-        if (floatingText)
-        {
-            GameObject textPrefab = Instantiate(floatingText, transform.position + offset, Quaternion.identity);
-            TextMeshPro textMesh = textPrefab.GetComponentInChildren<TextMeshPro>();
-            textMesh.text = amount.ToString();
-            textMesh.color = color; // Set the color of the text
-            Destroy(textPrefab, 1);
         }
     }
 
