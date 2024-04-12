@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -9,21 +8,25 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour, IDamageable
 {
-    [SerializeField] SpriteRenderer spriteRenderer;
     public PlayerStats Stats;
     public PlayerAbilities playerAbilities;
 
     public Image CastBar;
     [SerializeField] GameObject floatingText;
 
+    // Healthbar
+    [SerializeField] HealthBar healthBar;
+
     // Events
     public UnityEvent OnHealthChanged;
     public UnityEvent OnPlayerDeath;
 
     // Status Effects
-    public Buffs Buffs;
-    Debuffs debuffs;
-    public CrowdControl CrowdControl;
+    [HideInInspector] public Buffs Buffs;
+    [HideInInspector] public Debuffs debuffs;
+    [HideInInspector] public CrowdControl CrowdControl;
+
+    public bool InCombat;
 
     private void Awake()
     {
@@ -50,22 +53,6 @@ public class Player : MonoBehaviour, IDamageable
 
         // Set Speed
         Stats.CurrentSpeed = Stats.BaseSpeed;
-
-        switch (Stats.PlayerClass)
-        {
-            case PlayerClass.Beginner:
-                //Debug.Log("Beginner");
-                break;
-            case PlayerClass.Warrior:
-                //playerAbilities.AttackBehaviour = playerAbilities.WarriorAttackBehaviour;
-                break;
-            case PlayerClass.Magician:
-                break;
-            case PlayerClass.Archer:
-                break;
-            case PlayerClass.Rogue:
-                break;
-        }
     }
 
     private void Update()
@@ -116,7 +103,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         Stats.Health -= damage;
 
-        StartCoroutine(FlashEffect(Color.red));
+        StartCoroutine(healthBar.FlashEffect(Color.red));
         ShowFloatingText(damage, Color.red);
 
         OnHealthChanged?.Invoke();
@@ -142,7 +129,7 @@ public class Player : MonoBehaviour, IDamageable
         {
             Stats.Health += heal;
 
-            StartCoroutine(FlashEffect(Color.green));
+            StartCoroutine(healthBar.FlashEffect(Color.green));
             ShowFloatingText(heal, Color.green);
 
             OnHealthChanged?.Invoke();
@@ -152,31 +139,11 @@ public class Player : MonoBehaviour, IDamageable
             float overheal = newHealth - Stats.MaxHealth;
             Stats.Health += overheal;
 
-            StartCoroutine(FlashEffect(Color.green));
+            StartCoroutine(healthBar.FlashEffect(Color.green));
             ShowFloatingText(overheal, Color.green);
 
             OnHealthChanged?.Invoke();
         }
-    }
-
-    private IEnumerator FlashEffect(Color color)
-    {
-        float flashDuration = 0.1f;
-
-        spriteRenderer.color = color;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        spriteRenderer.color = Color.white;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        spriteRenderer.color = color;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        spriteRenderer.color = Color.white;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        // Reset to original color
-        spriteRenderer.color = Color.white;
     }
 
     void ShowFloatingText(float amount, Color color)

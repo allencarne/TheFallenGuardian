@@ -295,6 +295,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3441835576944637314}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
   shadow: {fileID: 7976263011152865437}
+  healthBar: {fileID: 2106973735601305545}
   enemyCollider2D: {fileID: 7949850666712048347}
   EnemySpawner: {fileID: 0}
   patience: 3

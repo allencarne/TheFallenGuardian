@@ -419,6 +419,7 @@ MonoBehaviour:
   healthBar: {fileID: 2076958311455022564}
   healthBarFront: {fileID: 1807412682409367898}
   healthBarBack: {fileID: 8304957375955149610}
+  bodySprite: {fileID: 8329506289662085224}
 --- !u!1 &3668993459831461239
 GameObject:
   m_ObjectHideFlags: 0

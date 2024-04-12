@@ -26,11 +26,13 @@ public class Enemy : MonoBehaviour, IDamageable
     public float deAggroRadius;
 
     [Header("Components")]
+    [HideInInspector] public EnemySpawner EnemySpawner;
     [SerializeField] protected Image patienceBar;
     [SerializeField] protected Image castBar;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] GameObject floatingText;
     [SerializeField] GameObject shadow;
+    [SerializeField] EnemyHealthBar healthBar;
 
     protected Buffs buffs;
     protected Debuffs debuffs;
@@ -40,7 +42,6 @@ public class Enemy : MonoBehaviour, IDamageable
     protected Rigidbody2D enemyRB;
     [SerializeField] Collider2D enemyCollider2D;
 
-    public EnemySpawner EnemySpawner;
 
     // Idle
     protected float idleTime;
@@ -142,6 +143,7 @@ public class Enemy : MonoBehaviour, IDamageable
                 break;
         }
 
+        // Temporary Solution - Could be bugs if the Delay isn't long enough
         if (target != null)
         {
             Player player = target.GetComponent<Player>();
@@ -444,8 +446,6 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (canDeath)
         {
-            Debug.Log("Test");
-
             canDeath = false;
 
             enemyAnimator.Play("Death");
@@ -493,7 +493,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
         idleTime = 0;
 
-        StartCoroutine(FlashEffect(Color.red));
+        StartCoroutine(healthBar.FlashEffect(Color.red));
         ShowFloatingText(damage, Color.red);
 
         OnHealthChanged?.Invoke();
@@ -521,7 +521,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
             idleTime = 0;
 
-            StartCoroutine(FlashEffect(Color.green));
+            StartCoroutine(healthBar.FlashEffect(Color.green));
             ShowFloatingText(heal, Color.green);
 
             OnHealthChanged?.Invoke();
@@ -533,31 +533,11 @@ public class Enemy : MonoBehaviour, IDamageable
 
             idleTime = 0;
 
-            StartCoroutine(FlashEffect(Color.green));
+            StartCoroutine(healthBar.FlashEffect(Color.green));
             ShowFloatingText(overheal, Color.green);
 
             OnHealthChanged?.Invoke();
         }
-    }
-
-    private IEnumerator FlashEffect(Color color)
-    {
-        float flashDuration = 0.1f;
-
-        spriteRenderer.color = color;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        spriteRenderer.color = Color.white;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        spriteRenderer.color = color;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        spriteRenderer.color = Color.white;
-        yield return new WaitForSeconds(flashDuration / 2);
-
-        // Reset to original color
-        spriteRenderer.color = Color.white;
     }
 
     void ShowFloatingText(float amount, Color color)

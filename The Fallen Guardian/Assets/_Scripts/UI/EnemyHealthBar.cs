@@ -10,6 +10,8 @@ public class EnemyHealthBar : MonoBehaviour
     [SerializeField] Image healthBarFront;
     [SerializeField] Image healthBarBack;
 
+    [SerializeField] SpriteRenderer bodySprite;
+
     Coroutine lerpingCoroutine;
     float chipSpeed = .5f;
     bool isLerping = false;
@@ -73,5 +75,25 @@ public class EnemyHealthBar : MonoBehaviour
         }
 
         isLerping = false;
+    }
+
+    public IEnumerator FlashEffect(Color color)
+    {
+        float flashDuration = 0.1f;
+
+        bodySprite.color = color;
+        yield return new WaitForSeconds(flashDuration / 2);
+
+        bodySprite.color = Color.white;
+        yield return new WaitForSeconds(flashDuration / 2);
+
+        bodySprite.color = color;
+        yield return new WaitForSeconds(flashDuration / 2);
+
+        bodySprite.color = Color.white;
+        yield return new WaitForSeconds(flashDuration / 2);
+
+        // Reset to original color
+        bodySprite.color = Color.white;
     }
 }

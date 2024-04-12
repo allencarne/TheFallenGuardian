@@ -9579,6 +9579,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 504803931}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
   shadow: {fileID: 1842983177}
+  healthBar: {fileID: 2121101069}
   enemyCollider2D: {fileID: 945035511}
   EnemySpawner: {fileID: 0}
   patience: 5
@@ -122616,6 +122617,7 @@ MonoBehaviour:
   healthBar: {fileID: 2121101067}
   healthBarFront: {fileID: 1294604927}
   healthBarBack: {fileID: 1581998556}
+  bodySprite: {fileID: 504803931}
 --- !u!1 &2124952063
 GameObject:
   m_ObjectHideFlags: 0
