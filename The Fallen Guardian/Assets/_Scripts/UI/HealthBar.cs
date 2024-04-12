@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 public class HealthBar : MonoBehaviour
 {
@@ -24,6 +23,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] TextMeshProUGUI playerName;
     [SerializeField] SpriteRenderer bodySprite;
     public GameObject floatingText;
+    public Image CastBar;
 
     private void Start()
     {
@@ -126,6 +126,14 @@ public class HealthBar : MonoBehaviour
             textMesh.text = amount.ToString();
             textMesh.color = color; // Set the color of the text
             Destroy(textPrefab, 1);
+        }
+    }
+
+    public void UpdateCastBar(float fillAmount)
+    {
+        if (CastBar != null)
+        {
+            CastBar.fillAmount = fillAmount;
         }
     }
 }

@@ -8,13 +8,12 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour, IDamageable
 {
+    // Stats
     public PlayerStats Stats;
     public PlayerAbilities playerAbilities;
 
-
     // Healthbar
     [SerializeField] HealthBar healthBar;
-    public Image CastBar;
 
     // Events
     public UnityEvent OnHealthChanged;
@@ -85,14 +84,6 @@ public class Player : MonoBehaviour, IDamageable
             healthBar.ShowFloatingText(overheal, Color.green);
 
             OnHealthChanged?.Invoke();
-        }
-    }
-
-    public void UpdateCastBar(float fillAmount)
-    {
-        if (CastBar != null)
-        {
-            CastBar.fillAmount = fillAmount;
         }
     }
 
