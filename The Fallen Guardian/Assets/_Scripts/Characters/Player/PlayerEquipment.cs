@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerEquipment : MonoBehaviour
 {
-    public bool IsWeaponEquipt = false;
+    [HideInInspector] public bool IsWeaponEquipt = false;
 
     [SerializeField] GameObjectRuntimeSet playerInventoryReference;
     EquipmentManager equipmentManager;

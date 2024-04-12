@@ -8,15 +8,18 @@ public class PlayerStateMachine : MonoBehaviour
     PlayerState state;
 
     [Header("Components")]
-    [SerializeField] Player player; public Player Player => player;
-    [SerializeField] PlayerEquipment equipment; public PlayerEquipment Equipment => equipment;
-    [SerializeField] Rigidbody2D rb; public Rigidbody2D Rigidbody => rb;
-    [SerializeField] Animator bodyAnimator; public Animator BodyAnimator => bodyAnimator;
     [SerializeField] Animator swordAnimator; public Animator SwordAnimator => swordAnimator;
-    [SerializeField] PlayerInputHandler inputHandler; public PlayerInputHandler InputHandler => inputHandler;
-    [SerializeField] PlayerAbilities abilities; public PlayerAbilities Abilities => abilities;
+    [SerializeField] Animator bodyAnimator; public Animator BodyAnimator => bodyAnimator;
+    [SerializeField] Rigidbody2D rb; public Rigidbody2D Rigidbody => rb;
     [SerializeField] Transform aimer; public Transform Aimer => aimer;
 
+    [Header("Scripts")]
+    [SerializeField] PlayerInputHandler inputHandler; public PlayerInputHandler InputHandler => inputHandler;
+    [SerializeField] PlayerEquipment equipment; public PlayerEquipment Equipment => equipment;
+    [SerializeField] PlayerAbilities abilities; public PlayerAbilities Abilities => abilities;
+    [SerializeField] Player player; public Player Player => player;
+
+    // Variables
     private Vector2 lastMoveDirection = Vector2.zero;
 
     [Header("Slide")]
@@ -26,14 +29,14 @@ public class PlayerStateMachine : MonoBehaviour
     float slideDuration;
 
     [Header("Basic Ability")]
-    public bool CanBasicAbility = true;
-    public Quaternion AbilityDir;
+    [HideInInspector] public bool CanBasicAbility = true;
+    [HideInInspector] public Quaternion AbilityDir;
 
     [Header("Offensive Ability")]
-    public bool canOffensiveAbility = true;
+    [HideInInspector] public bool canOffensiveAbility = true;
 
     [Header("Mobility Ability")]
-    public bool canMobilityAbility = true;
+    [HideInInspector] public bool canMobilityAbility = true;
 
     private void Awake()
     {

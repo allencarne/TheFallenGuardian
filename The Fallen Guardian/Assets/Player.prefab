@@ -1096,16 +1096,16 @@ GameObject:
   - component: {fileID: 3843920219548125749}
   - component: {fileID: 1202709710546688595}
   - component: {fileID: 754719381540065433}
-  - component: {fileID: 6798618369645326226}
   - component: {fileID: 7150002324481854805}
   - component: {fileID: 4059563979879986888}
-  - component: {fileID: 6967247431417826392}
   - component: {fileID: 239699257640095505}
   - component: {fileID: 7237820433538653136}
+  - component: {fileID: 4447316120299245786}
   - component: {fileID: 7868813878733217427}
   - component: {fileID: 3668015608117301615}
   - component: {fileID: 4879207451902047104}
-  - component: {fileID: 4447316120299245786}
+  - component: {fileID: 6967247431417826392}
+  - component: {fileID: 6798618369645326226}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1577,18 +1577,6 @@ MonoBehaviour:
   OnMapUI:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6798618369645326226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7550517957279444385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04108bb53224e914e97c3c32ac35404a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7150002324481854805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1649,46 +1637,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63dba9b52d198d34a95180da3c441585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 7150002324481854805}
-  equipment: {fileID: 7237820433538653136}
-  rb: {fileID: 5663583307712945941}
-  bodyAnimator: {fileID: 7406391039671905879}
   swordAnimator: {fileID: 7796180083115903274}
-  inputHandler: {fileID: 754719381540065433}
-  abilities: {fileID: 239699257640095505}
+  bodyAnimator: {fileID: 7406391039671905879}
+  rb: {fileID: 5663583307712945941}
   aimer: {fileID: 1333201046459341400}
+  inputHandler: {fileID: 754719381540065433}
+  equipment: {fileID: 7237820433538653136}
+  abilities: {fileID: 239699257640095505}
+  player: {fileID: 7150002324481854805}
   CanBasicAbility: 1
   AbilityDir: {x: 0, y: 0, z: 0, w: 0}
   canOffensiveAbility: 1
   canMobilityAbility: 1
---- !u!114 &6967247431417826392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7550517957279444385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da512fd895cf7f14caa0348a1fe0d7c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnObjectAdded:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 1a966914af4b6aa4482d66fe6110374b, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  gameObjectRuntimeSet: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
 --- !u!114 &239699257640095505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1719,6 +1679,26 @@ MonoBehaviour:
   Staff: {fileID: 0}
   Bow: {fileID: 0}
   Dagger: {fileID: 0}
+--- !u!114 &4447316120299245786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdfedb59a8f359249b2a8fcd77778952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
+  player: {fileID: 7150002324481854805}
+  levelUpEffect: {fileID: 3661200886135729816, guid: fea5548eacf583e4f9f24e1235d73cbf, type: 3}
+  floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
+  levelText: {fileID: 5709352083387614229}
+  additionMultiplier: 10
+  powerMultiplier: 2
+  divisionMultiplier: 7
 --- !u!114 &7868813878733217427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1799,7 +1779,7 @@ MonoBehaviour:
   IsImmobilized: 0
   IsInterrupted: 0
   IsDisarmed: 0
---- !u!114 &4447316120299245786
+--- !u!114 &6967247431417826392
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1808,17 +1788,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 7550517957279444385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdfedb59a8f359249b2a8fcd77778952, type: 3}
+  m_Script: {fileID: 11500000, guid: da512fd895cf7f14caa0348a1fe0d7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelUpEffect: {fileID: 3661200886135729816, guid: fea5548eacf583e4f9f24e1235d73cbf, type: 3}
-  floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
-  stats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
-  player: {fileID: 7150002324481854805}
-  levelText: {fileID: 5709352083387614229}
-  additionMultiplier: 10
-  powerMultiplier: 2
-  divisionMultiplier: 7
+  OnObjectAdded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 1a966914af4b6aa4482d66fe6110374b, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameObjectRuntimeSet: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
+--- !u!114 &6798618369645326226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04108bb53224e914e97c3c32ac35404a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8027861156446152564
 GameObject:
   m_ObjectHideFlags: 0

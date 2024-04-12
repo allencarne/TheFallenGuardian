@@ -6,22 +6,23 @@ using UnityEngine.UI;
 
 public class LevelSystem : MonoBehaviour
 {
-    // Effects
-    [SerializeField] GameObject levelUpEffect;
-    [SerializeField] GameObject floatingText;
-
-    // Player
+    [Header("Player")]
     [SerializeField] PlayerStats stats;
     [SerializeField] Player player;
 
+    [Header("Effects")]
+    [SerializeField] GameObject levelUpEffect;
+    [SerializeField] GameObject floatingText;
+
     [Header("UI")]
+    [SerializeField] TextMeshProUGUI levelText;
+    TextMeshProUGUI experienceText;
     Image frontXpBar;
     Image backXpBar;
-    public TextMeshProUGUI levelText;
-    TextMeshProUGUI experienceText;
+
+    [Header("Variables")]
     private float lerpTimer;
     private float delayTimer;
-
 
     [Header("Multipliers")]
     [Range(1f, 300f)]

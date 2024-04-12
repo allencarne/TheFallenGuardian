@@ -207,8 +207,11 @@ public class Snail : Enemy
 
                 castBar.color = Color.green;
 
-                // Calculate the direction from the enemy to the target
-                directionToTarget = (target.position - transform.position).normalized;
+                if (target != null)
+                {
+                    // Calculate the direction from the enemy to the target
+                    directionToTarget = (target.position - transform.position).normalized;
+                }
 
                 // Calculate the rotation towards the target
                 float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
