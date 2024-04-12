@@ -15,7 +15,6 @@ public class Player : MonoBehaviour, IDamageable
 
     public Image CastBar;
     [SerializeField] GameObject floatingText;
-    //public bool isPlayerOutOfHealth;
 
     // Events
     public UnityEvent OnHealthChanged;

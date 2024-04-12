@@ -141,6 +141,28 @@ public class Enemy : MonoBehaviour, IDamageable
                 DeathState();
                 break;
         }
+
+        if (target != null)
+        {
+            Player player = target.GetComponent<Player>();
+            if (player)
+            {
+                if (player.Stats.Health <= 0)
+                {
+                    StartCoroutine(ShortDelay());
+                }
+            }
+        }
+    }
+
+    IEnumerator ShortDelay()
+    {
+        target = null;
+        playerInRange = false;
+
+        yield return new WaitForSeconds(1.5f);
+
+        enemyState = EnemyState.Reset;
     }
 
     protected virtual void FixedUpdate()
