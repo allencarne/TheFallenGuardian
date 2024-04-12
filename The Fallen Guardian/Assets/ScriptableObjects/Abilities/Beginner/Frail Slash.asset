@@ -25,4 +25,4 @@ MonoBehaviour:
   knockBackForce: 5
   knockBackDuration: 0.2
   slowAmount: 2
-  slowDuration: 4
+  slowDuration: 1
