@@ -48,8 +48,6 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        Debug.Log(InCombat);
-
         if (InCombat)
         {
             IdleTime += Time.deltaTime;

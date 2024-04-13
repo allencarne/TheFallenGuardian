@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] int maxEnemyCount;
     [SerializeField] int currentEnemyCount;
+    [SerializeField] float spawnDelay;
 
     bool canSpawn = true;
 
@@ -27,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
     {
         canSpawn = false;
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(spawnDelay);
 
         canSpawn = true;
         SpawnEnemy();
