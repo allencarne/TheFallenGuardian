@@ -69,11 +69,18 @@ public class AbilityBarCoolDowns : MonoBehaviour
             float coolDown = (float)ability.GetType().GetField("coolDown").GetValue(ability);
             float coolDownTime = (float)ability.GetType().GetField("coolDownTime").GetValue(ability);
 
-            Debug.Log(coolDownTime);
-            // Calculate the remaining cooldown and update the UI
-            float remainingCooldown = Mathf.Clamp(coolDownTime - coolDown, 0, coolDownTime);
-            fillImage.fillAmount = remainingCooldown / coolDownTime;
-            cooldownText.text = remainingCooldown.ToString("F1");
+            if (coolDownTime > 0)
+            {
+                // Format cooldown time to show one decimal place if it's greater than 0
+                cooldownText.text = coolDownTime.ToString("F1");
+            }
+            else
+            {
+                // Set text to empty if cooldown time is 0 or less
+                cooldownText.text = "";
+            }
+
+            fillImage.fillAmount = coolDownTime / coolDown;
         }
     }
 }
