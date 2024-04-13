@@ -12,6 +12,7 @@ public class AbilityBar : MonoBehaviour
     [SerializeField] GameObjectRuntimeSet playerReference;
     PlayerEquipment playerEquipment;
     PlayerAbilities playerAbilities;
+    Player player;
     [SerializeField] GameObjectRuntimeSet inventoryReference;
     EquipmentManager equipmentManager;
 
@@ -36,6 +37,7 @@ public class AbilityBar : MonoBehaviour
         {
             playerEquipment = playerReference.GetItemIndex(0).GetComponent<PlayerEquipment>();
             playerAbilities = playerReference.GetItemIndex(0).GetComponent<PlayerAbilities>();
+            player = playerReference.GetItemIndex(0).GetComponent<Player>();
 
         }
 
@@ -131,6 +133,8 @@ public class AbilityBar : MonoBehaviour
     {
         OnBasicAbilitySelected();
         OnOffensiveAbilitySelected();
+        OnOffensiveAbility2Selected();
+        OnMobilitySelected();
     }
 
     void LitSprite(Image image, Sprite sprite)
