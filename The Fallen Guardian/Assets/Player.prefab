@@ -1781,9 +1781,9 @@ MonoBehaviour:
   OnPlayerEnterCombat:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6699961322957047184}
-        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
-        m_MethodName: CombatBorder
+      - m_Target: {fileID: 11400000, guid: 0f01471f669d70e4695a18a31623d578, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1796,9 +1796,9 @@ MonoBehaviour:
   OnPlayerLeaveCombat:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6699961322957047184}
-        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
-        m_MethodName: LeaveCombatBorder
+      - m_Target: {fileID: 11400000, guid: b96bb16da46749c4e8a190ae2d928603, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2138,10 +2138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
   healthBar: {fileID: 8324031750687829038}
-  healthBarBorder: {fileID: 1719222858471744267}
   healthBarFront: {fileID: 4430670412122056503}
   healthBarBack: {fileID: 4716448829981364878}
-  borderColor: {r: 1, g: 0.5896549, b: 0.48584908, a: 1}
   playerName: {fileID: 9134760330706367091}
   bodySprite: {fileID: 6348204392684985540}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}

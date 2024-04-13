@@ -24,6 +24,26 @@ public class AbilityBar : MonoBehaviour
     [SerializeField] Image utilityAbilityImage;
     [SerializeField] Image ultimateAbilityImage;
 
+    [SerializeField] Image abilityBar;
+    [SerializeField] Color abilityBarColor;
+
+    private void Update()
+    {
+        /*
+        if (player != null)
+        {
+            if (player.InCombat)
+            {
+                abilityBar.color = abilityBarColor;
+            }
+            else
+            {
+                abilityBar.color = Color.white;
+            }
+        }
+        */
+    }
+
     public void OnPlayerJoin()
     {
         StartCoroutine(Delay());
@@ -151,5 +171,15 @@ public class AbilityBar : MonoBehaviour
         Color spriteColor = image.color;
         spriteColor.a = 0.3f; // Set Sprite transparency to half
         image.color = spriteColor;
+    }
+
+    public void OnPlayerEnterCombat()
+    {
+        abilityBar.color = abilityBarColor;
+    }
+
+    public void OnPlayerLeaveCombat()
+    {
+        abilityBar.color = Color.white;
     }
 }

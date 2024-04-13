@@ -11,12 +11,10 @@ public class HealthBar : MonoBehaviour
 
     [Header("Healthbar")]
     [SerializeField] GameObject healthBar;
-    [SerializeField] Image healthBarBorder;
     [SerializeField] Image healthBarFront;
     [SerializeField] Image healthBarBack;
 
     [Header("Variables")]
-    [SerializeField] Color borderColor;
     Coroutine lerpingCoroutine;
     float chipSpeed = .5f;
     bool isLerping = false;
@@ -142,15 +140,5 @@ public class HealthBar : MonoBehaviour
         {
             CastBar.fillAmount = fillAmount;
         }
-    }
-
-    public void CombatBorder()
-    {
-        healthBarBorder.color = borderColor;
-    }
-
-    public void LeaveCombatBorder()
-    {
-        healthBarBorder.color = Color.white;
     }
 }
