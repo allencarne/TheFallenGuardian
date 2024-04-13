@@ -1625,6 +1625,39 @@ MonoBehaviour:
   Buffs: {fileID: 0}
   debuffs: {fileID: 0}
   CrowdControl: {fileID: 0}
+  InCombat: 0
+  IdleTime: 0
+  LoseCombatTime: 5
+  OnPlayerEnterCombat:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6699961322957047184}
+        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
+        m_MethodName: CombatBorder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPlayerLeaveCombat:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6699961322957047184}
+        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
+        m_MethodName: LeaveCombatBorder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4059563979879986888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1951,8 +1984,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
   healthBar: {fileID: 8324031750687829038}
+  healthBarBorder: {fileID: 1719222858471744267}
   healthBarFront: {fileID: 4430670412122056503}
   healthBarBack: {fileID: 4716448829981364878}
+  borderColor: {r: 1, g: 0.589617, b: 0, a: 1}
   playerName: {fileID: 9134760330706367091}
   bodySprite: {fileID: 6348204392684985540}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}

@@ -24,6 +24,14 @@ public class Player : MonoBehaviour, IDamageable
     [HideInInspector] public Debuffs debuffs;
     [HideInInspector] public CrowdControl CrowdControl;
 
+    // Combat
+    public bool InCombat = false;
+    public float IdleTime;
+    public float LoseCombatTime;
+
+    public UnityEvent OnPlayerEnterCombat;
+    public UnityEvent OnPlayerLeaveCombat;
+
     private void Awake()
     {
         Buffs = GetComponent<Buffs>();
@@ -40,6 +48,21 @@ public class Player : MonoBehaviour, IDamageable
         Stats.CurrentSpeed = Stats.BaseSpeed;
     }
 
+    private void Update()
+    {
+        Debug.Log(InCombat);
+
+        if (InCombat)
+        {
+            IdleTime += Time.deltaTime;
+
+            if (IdleTime >= LoseCombatTime)
+            {
+                PlayerLeaveCombat();
+            }
+        }
+    }
+
     public void TakeDamage(float damage)
     {
         Stats.Health -= damage;
@@ -48,6 +71,8 @@ public class Player : MonoBehaviour, IDamageable
         healthBar.ShowFloatingText(damage, Color.red);
 
         OnHealthChanged?.Invoke();
+
+        PlayerEnterCombat();
 
         if (Stats.Health <= 0)
         {
@@ -73,6 +98,8 @@ public class Player : MonoBehaviour, IDamageable
             StartCoroutine(healthBar.FlashEffect(Color.green));
             healthBar.ShowFloatingText(heal, Color.green);
 
+            PlayerEnterCombat();
+
             OnHealthChanged?.Invoke();
         }
         else
@@ -82,6 +109,8 @@ public class Player : MonoBehaviour, IDamageable
 
             StartCoroutine(healthBar.FlashEffect(Color.green));
             healthBar.ShowFloatingText(overheal, Color.green);
+
+            PlayerEnterCombat();
 
             OnHealthChanged?.Invoke();
         }
@@ -96,5 +125,23 @@ public class Player : MonoBehaviour, IDamageable
     public void HandleSlowEnd()
     {
         Stats.CurrentSpeed = Stats.BaseSpeed;
+    }
+
+    public void PlayerEnterCombat()
+    {
+        IdleTime = 0;
+
+        InCombat = true;
+
+        OnPlayerEnterCombat?.Invoke();
+    }
+
+    public void PlayerLeaveCombat()
+    {
+        IdleTime = 0;
+
+        InCombat = false;
+
+        OnPlayerLeaveCombat?.Invoke();
     }
 }

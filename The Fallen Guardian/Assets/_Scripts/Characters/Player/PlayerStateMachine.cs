@@ -71,6 +71,8 @@ public class PlayerStateMachine : MonoBehaviour
         {
             if (!Player.CrowdControl.IsDisarmed)
             {
+                player.PlayerEnterCombat();
+
                 SetState(new PlayerBasicState(this));
             }
         }
@@ -80,6 +82,8 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (abilityInput && canOffensiveAbility && Equipment.IsWeaponEquipt && abilities.offensiveAbilityReference != null)
         {
+            player.PlayerEnterCombat();
+
             SetState(new PlayerOffensiveState(this));
         }
     }
@@ -88,6 +92,8 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (abilityInput && canMobilityAbility && Equipment.IsWeaponEquipt && abilities.mobilityAbilityReference != null)
         {
+            player.PlayerEnterCombat();
+
             SetState(new PlayerMobilityState(this));
         }
     }
