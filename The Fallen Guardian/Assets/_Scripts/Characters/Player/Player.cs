@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -26,6 +25,10 @@ public class Player : MonoBehaviour, IDamageable
     public bool InCombat = false;
     public float IdleTime;
     public float LoseCombatTime;
+
+    // Regen
+    private float regenTimer = 0f;
+    private float regenInterval = 3f;
 
     public UnityEvent OnPlayerEnterCombat;
     public UnityEvent OnPlayerLeaveCombat;
@@ -55,6 +58,26 @@ public class Player : MonoBehaviour, IDamageable
             if (IdleTime >= LoseCombatTime)
             {
                 PlayerLeaveCombat();
+            }
+        }
+        else
+        {
+            if (Stats.Health < Stats.MaxHealth)
+            {
+                Buffs.IsRegeneration = true;
+                Buffs.Regeneration();
+                regenTimer += Time.deltaTime;
+
+                if (regenTimer >= regenInterval)
+                {
+                    Regeneration(1); // Heal by 1
+                    regenTimer = 0; // Reset the timer after healing
+                }
+            }
+            else
+            {
+                Buffs.IsRegeneration = false;
+                Buffs.Regeneration();
             }
         }
     }
@@ -122,10 +145,36 @@ public class Player : MonoBehaviour, IDamageable
     {
         Stats.CurrentSpeed = Stats.BaseSpeed;
     }
-
-    public void HandleRegeneration()
+    public void Regeneration(float heal)
     {
+        if (Stats.Health >= Stats.MaxHealth)
+        {
+            healthBar.ShowFloatingText(0, Color.green);
 
+            return;
+        }
+
+        float newHealth = Stats.Health + heal;
+
+        if (newHealth <= Stats.MaxHealth)
+        {
+            Stats.Health += heal;
+
+            StartCoroutine(healthBar.FlashEffect(Color.green));
+            healthBar.ShowFloatingText(heal, Color.green);
+
+            OnHealthChanged?.Invoke();
+        }
+        else
+        {
+            float overheal = newHealth - Stats.MaxHealth;
+            Stats.Health += overheal;
+
+            StartCoroutine(healthBar.FlashEffect(Color.green));
+            healthBar.ShowFloatingText(overheal, Color.green);
+
+            OnHealthChanged?.Invoke();
+        }
     }
 
     public void PlayerEnterCombat()

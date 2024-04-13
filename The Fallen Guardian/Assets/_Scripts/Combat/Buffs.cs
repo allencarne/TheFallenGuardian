@@ -15,7 +15,7 @@ public class Buffs : MonoBehaviour
     float currentImmovableDuration = 0f;
 
     public bool IsRegeneration;
-    float currentRegenerationDuration = 0f;
+    private GameObject currentRegenerationIcon;
 
     public void Immovable(float duration)
     {
@@ -25,44 +25,30 @@ public class Buffs : MonoBehaviour
         }
         else
         {
-            StartCoroutine(BuffDuration(duration, IsImmovable, currentImmovableDuration));
+            StartCoroutine(BuffDuration(duration, IsImmovable, currentImmovableDuration, buff_Immovable));
         }
     }
-    /*
-    IEnumerator ImmovableDuration(float duration)
+
+    public void Regeneration()
     {
-        IsImmovable = true;
-
-        GameObject buffIcon = Instantiate(buff_Immovable);
-        buffIcon.transform.SetParent(buffBar.transform);
-        buffIcon.transform.localScale = new Vector3(1,1,1);
-
-        yield return new WaitForSeconds(duration);
-
-        Destroy(buffIcon);
-
-        IsImmovable = false;
-
-        currentImmovableDuration = 0;
-    }
-    */
-    public void Regeneration(float amount, float duration)
-    {
-        if (IsRegeneration)
+        if (IsRegeneration && currentRegenerationIcon == null)
         {
-            currentRegenerationDuration += duration;
+            currentRegenerationIcon = Instantiate(buff_Regeneration);
+            currentRegenerationIcon.transform.SetParent(buffBar.transform);
+            currentRegenerationIcon.transform.localScale = new Vector3(1, 1, 1);
         }
-        else
+        else if (!IsRegeneration && currentRegenerationIcon != null)
         {
-            StartCoroutine(BuffDuration(duration, IsRegeneration, currentRegenerationDuration));
+            Destroy(currentRegenerationIcon);
+            currentRegenerationIcon = null;
         }
     }
 
-    IEnumerator BuffDuration(float duration, bool buffBool, float currentBuffDuration)
+    IEnumerator BuffDuration(float duration, bool buffBool, float currentBuffDuration, GameObject prefab)
     {
         buffBool = true;
 
-        GameObject buffIcon = Instantiate(buff_Immovable);
+        GameObject buffIcon = Instantiate(prefab);
         buffIcon.transform.SetParent(buffBar.transform);
         buffIcon.transform.localScale = new Vector3(1, 1, 1);
 
