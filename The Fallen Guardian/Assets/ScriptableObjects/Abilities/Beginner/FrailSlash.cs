@@ -12,7 +12,7 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
 
     [Header("Stats")]
     [SerializeField] int damage;
-    [SerializeField] float coolDown;
+    public float coolDown;
     [SerializeField] float castTime;
     [SerializeField] float attackRange;
 

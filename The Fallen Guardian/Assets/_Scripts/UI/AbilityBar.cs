@@ -12,7 +12,6 @@ public class AbilityBar : MonoBehaviour
     [SerializeField] GameObjectRuntimeSet playerReference;
     PlayerEquipment playerEquipment;
     PlayerAbilities playerAbilities;
-    Player player;
     [SerializeField] GameObjectRuntimeSet inventoryReference;
     EquipmentManager equipmentManager;
 
@@ -29,18 +28,15 @@ public class AbilityBar : MonoBehaviour
 
     public void OnPlayerJoin()
     {
-        StartCoroutine(Delay());
+        Invoke("GetPlayer", .5f);
     }
 
-    IEnumerator Delay()
+    void GetPlayer()
     {
-        yield return new WaitForSeconds(.5f);
-
         if (playerReference.items.Count > 0)
         {
             playerEquipment = playerReference.GetItemIndex(0).GetComponent<PlayerEquipment>();
             playerAbilities = playerReference.GetItemIndex(0).GetComponent<PlayerAbilities>();
-            player = playerReference.GetItemIndex(0).GetComponent<Player>();
 
         }
 
