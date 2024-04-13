@@ -13,6 +13,7 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
     [Header("Stats")]
     [SerializeField] int damage;
     public float coolDown;
+    public float coolDownTime;
     [SerializeField] float castTime;
     [SerializeField] float attackRange;
 
@@ -46,7 +47,17 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
             stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Attack", direction);
 
             stateMachine.StartCoroutine(AttackImpact(stateMachine));
-            stateMachine.StartCoroutine(DurationOfBasicAttack(stateMachine));
+        }
+
+        coolDownTime += Time.deltaTime;
+
+        if (coolDownTime >= coolDown)
+        {
+            coolDownTime = 0;
+
+            stateMachine.SetState(new PlayerIdleState(stateMachine));
+
+            stateMachine.CanBasicAbility = true;
         }
     }
 
@@ -92,14 +103,5 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
             slowOnTrigger.SlowAmount = slowAmount;
             slowOnTrigger.SlowDuration = slowDuration;
         }
-    }
-
-    IEnumerator DurationOfBasicAttack(PlayerStateMachine stateMachine)
-    {
-        yield return new WaitForSeconds(coolDown);
-
-        stateMachine.SetState(new PlayerIdleState(stateMachine));
-
-        stateMachine.CanBasicAbility = true;
     }
 }

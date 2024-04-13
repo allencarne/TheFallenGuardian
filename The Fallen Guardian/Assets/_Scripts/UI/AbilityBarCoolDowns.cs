@@ -53,11 +53,27 @@ public class AbilityBarCoolDowns : MonoBehaviour
     {
         if (playerAbilities != null)
         {
-            if (playerAbilities.basicAbilityReference != null)
+            basicAbility = playerAbilities.basicAbilityReference;
+
+            if (basicAbility != null)
             {
-                basicAbility = playerAbilities.basicAbilityReference;
-                float cooldown = (float)basicAbility.GetType().GetField("coolDown").GetValue(basicAbility);
+                UpdateCooldownUI(playerAbilities.basicAbilityReference, basicFill, basicText);
             }
+        }
+    }
+
+    private void UpdateCooldownUI(ScriptableObject ability, Image fillImage, TextMeshProUGUI cooldownText)
+    {
+        if (ability != null)
+        {
+            float coolDown = (float)ability.GetType().GetField("coolDown").GetValue(ability);
+            float coolDownTime = (float)ability.GetType().GetField("coolDownTime").GetValue(ability);
+
+            Debug.Log(coolDownTime);
+            // Calculate the remaining cooldown and update the UI
+            float remainingCooldown = Mathf.Clamp(coolDownTime - coolDown, 0, coolDownTime);
+            fillImage.fillAmount = remainingCooldown / coolDownTime;
+            cooldownText.text = remainingCooldown.ToString("F1");
         }
     }
 }

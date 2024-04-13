@@ -27,9 +27,14 @@ public class DamageOnTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (DestroyAfterDamage)
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+
+        if (damageable != null)
         {
-            Destroy(gameObject);
+            if (DestroyAfterDamage)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
