@@ -66,6 +66,10 @@ public class Enemy : MonoBehaviour, IDamageable
     bool canReset = true;
     bool canDeath = true;
 
+    // Regen
+    private float regenTimer = 0f;
+    private float regenInterval = 3f;
+
     // Events
     public UnityEvent OnHealthChanged;
 
@@ -154,6 +158,25 @@ public class Enemy : MonoBehaviour, IDamageable
                     StartCoroutine(ShortDelay());
                 }
             }
+        }
+
+        if (target == null && Health < MaxHealth)
+        {
+            buffs.IsRegeneration = true;
+            buffs.Regeneration();
+
+            regenTimer += Time.deltaTime;
+
+            if (regenTimer >= regenInterval)
+            {
+                Regeneration(1); // Heal by 1
+                regenTimer = 0; // Reset the timer after healing
+            }
+        }
+        else
+        {
+            buffs.IsRegeneration = false;
+            buffs.Regeneration();
         }
     }
 
@@ -432,6 +455,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
             attemptsCount = 0;
 
+            playerInRange = false;
+            target = null;
+
             // Check if the enemy has reached the destination
             StartCoroutine(CheckReachedDestination(startingPosition));
         }
@@ -532,6 +558,38 @@ public class Enemy : MonoBehaviour, IDamageable
             Health += overheal;
 
             idleTime = 0;
+
+            StartCoroutine(healthBar.FlashEffect(Color.green));
+            ShowFloatingText(overheal, Color.green);
+
+            OnHealthChanged?.Invoke();
+        }
+    }
+
+    public void Regeneration(float heal)
+    {
+        if (Health >= MaxHealth)
+        {
+            ShowFloatingText(0, Color.green);
+
+            return;
+        }
+
+        float newHealth = Health + heal;
+
+        if (newHealth <= MaxHealth)
+        {
+            Health += heal;
+
+            StartCoroutine(healthBar.FlashEffect(Color.green));
+            ShowFloatingText(heal, Color.green);
+
+            OnHealthChanged?.Invoke();
+        }
+        else
+        {
+            float overheal = newHealth - MaxHealth;
+            Health += overheal;
 
             StartCoroutine(healthBar.FlashEffect(Color.green));
             ShowFloatingText(overheal, Color.green);
