@@ -9574,6 +9574,7 @@ MonoBehaviour:
   mobilityRadius: 0
   specialRadius: 0
   deAggroRadius: 0
+  EnemySpawner: {fileID: 0}
   patienceBar: {fileID: 1977674868}
   castBar: {fileID: 0}
   spriteRenderer: {fileID: 504803931}
@@ -9581,7 +9582,6 @@ MonoBehaviour:
   shadow: {fileID: 1842983177}
   healthBar: {fileID: 2121101069}
   enemyCollider2D: {fileID: 945035511}
-  EnemySpawner: {fileID: 0}
   patience: 5
   OnHealthChanged:
     m_PersistentCalls:

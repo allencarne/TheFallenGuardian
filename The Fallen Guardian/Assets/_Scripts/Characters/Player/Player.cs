@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour, IDamageable
 {
@@ -125,6 +123,11 @@ public class Player : MonoBehaviour, IDamageable
     public void HandleSlowEnd()
     {
         Stats.CurrentSpeed = Stats.BaseSpeed;
+    }
+
+    public void HandleRegeneration()
+    {
+
     }
 
     public void PlayerEnterCombat()
