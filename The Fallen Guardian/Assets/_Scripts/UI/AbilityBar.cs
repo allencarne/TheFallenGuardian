@@ -27,23 +27,6 @@ public class AbilityBar : MonoBehaviour
     [SerializeField] Image abilityBar;
     [SerializeField] Color abilityBarColor;
 
-    private void Update()
-    {
-        /*
-        if (player != null)
-        {
-            if (player.InCombat)
-            {
-                abilityBar.color = abilityBarColor;
-            }
-            else
-            {
-                abilityBar.color = Color.white;
-            }
-        }
-        */
-    }
-
     public void OnPlayerJoin()
     {
         StartCoroutine(Delay());
