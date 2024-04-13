@@ -304,7 +304,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffBar: {fileID: 493039623141738153}
   buff_Immovable: {fileID: 2852665012809533500, guid: 241180ef6e6c05b4bacfd7411bc15870, type: 3}
+  buff_Regeneration: {fileID: 1488373734654657567, guid: a3905943ca281ec40bea07389bfa4749, type: 3}
   IsImmovable: 0
+  IsRegeneration: 0
 --- !u!114 &5245249597603853144
 MonoBehaviour:
   m_ObjectHideFlags: 0
