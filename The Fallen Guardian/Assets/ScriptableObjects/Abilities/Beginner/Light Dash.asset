@@ -15,6 +15,7 @@ MonoBehaviour:
   icon: {fileID: 2105995544, guid: 671557a9655025a44948436d2ec515fa, type: 3}
   damage: 0
   coolDown: 0.3
+  coolDownTime: 0
   castTime: 0
   dashForce: 35
   dashDuration: 0.3

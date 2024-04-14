@@ -17,22 +17,27 @@ public class AbilityBarCoolDowns : MonoBehaviour
     [SerializeField] TextMeshProUGUI basicText;
 
     [Header("Offensive")]
+    [SerializeField] ScriptableObject offensiveAbility;
     [SerializeField] Image offensiveFill;
     [SerializeField] TextMeshProUGUI offensiveText;
 
     [Header("Mobility")]
+    [SerializeField] ScriptableObject mobilityAbility;
     [SerializeField] Image mobilityFill;
     [SerializeField] TextMeshProUGUI mobilityText;
 
     [Header("Defensive")]
+    [SerializeField] ScriptableObject defensiveAbility;
     [SerializeField] Image defensiveFill;
     [SerializeField] TextMeshProUGUI defensiveText;
 
     [Header("Utility")]
+    [SerializeField] ScriptableObject utilityAbility;
     [SerializeField] Image utilityFill;
     [SerializeField] TextMeshProUGUI utilityText;
 
     [Header("Ultimate")]
+    [SerializeField] ScriptableObject ultimateAbility;
     [SerializeField] Image ultimateFill;
     [SerializeField] TextMeshProUGUI ultimateText;
 
@@ -58,6 +63,26 @@ public class AbilityBarCoolDowns : MonoBehaviour
             if (basicAbility != null)
             {
                 UpdateCooldownUI(playerAbilities.basicAbilityReference, basicFill, basicText);
+            }
+        }
+
+        if (playerAbilities != null)
+        {
+            offensiveAbility = playerAbilities.offensiveAbilityReference;
+
+            if (offensiveAbility != null)
+            {
+                UpdateCooldownUI(playerAbilities.offensiveAbilityReference, offensiveFill, offensiveText);
+            }
+        }
+
+        if (playerAbilities != null)
+        {
+            mobilityAbility = playerAbilities.mobilityAbilityReference;
+
+            if (mobilityAbility != null)
+            {
+                UpdateCooldownUI(playerAbilities.mobilityAbilityReference, mobilityFill, mobilityText);
             }
         }
     }

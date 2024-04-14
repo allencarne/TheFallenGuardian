@@ -12,7 +12,8 @@ public class SpinningSlash : ScriptableObject, IAbilityBehaviour
 
     [Header("Stats")]
     [SerializeField] int damage;
-    [SerializeField] float coolDown;
+    public float coolDown;
+    public float coolDownTime;
     [SerializeField] float castTime;
     [SerializeField] float attackRange;
 
@@ -42,7 +43,17 @@ public class SpinningSlash : ScriptableObject, IAbilityBehaviour
             stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Attack", direction);
 
             stateMachine.StartCoroutine(AttackImpact(stateMachine));
-            stateMachine.StartCoroutine(DurationOfBasicAttack(stateMachine));
+        }
+
+        coolDownTime += Time.deltaTime;
+
+        if (coolDownTime >= coolDown)
+        {
+            coolDownTime = 0;
+
+            stateMachine.SetState(new PlayerIdleState(stateMachine));
+
+            stateMachine.CanBasicAbility = true;
         }
     }
 
@@ -81,14 +92,5 @@ public class SpinningSlash : ScriptableObject, IAbilityBehaviour
             knockbackOnTrigger.KnockBackDuration = knockBackDuration;
             knockbackOnTrigger.KnockBackDirection = direction;
         }
-    }
-
-    IEnumerator DurationOfBasicAttack(PlayerStateMachine stateMachine)
-    {
-        yield return new WaitForSeconds(coolDown);
-
-        stateMachine.SetState(new PlayerIdleState(stateMachine));
-
-        stateMachine.CanBasicAbility = true;
     }
 }

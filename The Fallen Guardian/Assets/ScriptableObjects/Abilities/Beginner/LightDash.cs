@@ -8,7 +8,8 @@ public class LightDash : ScriptableObject, IAbilityBehaviour
     public Sprite icon;
 
     [SerializeField] int damage;
-    [SerializeField] float coolDown;
+    public float coolDown;
+    public float coolDownTime;
     [SerializeField] float castTime;
 
     [SerializeField] float dashForce;
@@ -33,25 +34,19 @@ public class LightDash : ScriptableObject, IAbilityBehaviour
             stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player", "Move", direction);
             stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Move", direction);
 
-            stateMachine.StartCoroutine(DurationOfDash(stateMachine));
-            stateMachine.StartCoroutine(DashCoolDown(stateMachine));
-
             // Buff
             stateMachine.Player.Buffs.Immovable(dashDuration);
         }
-    }
 
-    IEnumerator DurationOfDash(PlayerStateMachine stateMachine)
-    {
-        yield return new WaitForSeconds(dashDuration);
+        coolDownTime += Time.deltaTime;
 
-        stateMachine.SetState(new PlayerIdleState(stateMachine));
-    }
+        if (coolDownTime >= coolDown)
+        {
+            coolDownTime = 0;
 
-    IEnumerator DashCoolDown(PlayerStateMachine stateMachine)
-    {
-        yield return new WaitForSeconds(coolDown);
+            stateMachine.SetState(new PlayerIdleState(stateMachine));
 
-        stateMachine.canMobilityAbility = true;
+            stateMachine.canMobilityAbility = true;
+        }
     }
 }
