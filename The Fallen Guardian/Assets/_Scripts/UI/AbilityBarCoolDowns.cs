@@ -12,32 +12,32 @@ public class AbilityBarCoolDowns : MonoBehaviour
     PlayerAbilities playerAbilities;
 
     [Header("Basic")]
-    [SerializeField] ScriptableObject basicAbility;
+    ScriptableObject basicAbility;
     [SerializeField] Image basicFill;
     [SerializeField] TextMeshProUGUI basicText;
 
     [Header("Offensive")]
-    [SerializeField] ScriptableObject offensiveAbility;
+    ScriptableObject offensiveAbility;
     [SerializeField] Image offensiveFill;
     [SerializeField] TextMeshProUGUI offensiveText;
 
     [Header("Mobility")]
-    [SerializeField] ScriptableObject mobilityAbility;
+    ScriptableObject mobilityAbility;
     [SerializeField] Image mobilityFill;
     [SerializeField] TextMeshProUGUI mobilityText;
 
     [Header("Defensive")]
-    [SerializeField] ScriptableObject defensiveAbility;
+    ScriptableObject defensiveAbility;
     [SerializeField] Image defensiveFill;
     [SerializeField] TextMeshProUGUI defensiveText;
 
     [Header("Utility")]
-    [SerializeField] ScriptableObject utilityAbility;
+    ScriptableObject utilityAbility;
     [SerializeField] Image utilityFill;
     [SerializeField] TextMeshProUGUI utilityText;
 
     [Header("Ultimate")]
-    [SerializeField] ScriptableObject ultimateAbility;
+    ScriptableObject ultimateAbility;
     [SerializeField] Image ultimateFill;
     [SerializeField] TextMeshProUGUI ultimateText;
 

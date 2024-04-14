@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class LevelSystem : MonoBehaviour
@@ -31,6 +32,8 @@ public class LevelSystem : MonoBehaviour
     public float powerMultiplier = 2;
     [Range(7f, 14f)]
     public float divisionMultiplier = 7;
+
+    public UnityEvent OnPlayerLevelUp;
 
     private void Awake()
     {
@@ -115,6 +118,8 @@ public class LevelSystem : MonoBehaviour
         // Effects
         ShowLevelUpText(Color.white);
         Instantiate(levelUpEffect, transform.position, Quaternion.identity, transform);
+
+        OnPlayerLevelUp?.Invoke();
     }
 
     private int CalculateRequiredXp()
