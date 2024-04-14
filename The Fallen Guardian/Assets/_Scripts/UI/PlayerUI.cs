@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerUI : MonoBehaviour
 {
     [SerializeField] GameObject inventoryUI;
     [SerializeField] GameObject statsUI;
     [SerializeField] GameObject AbilityUI;
+
+    public UnityEvent OnStatsUI;
 
     public void OnInventoryUIOpened()
     {
@@ -15,6 +18,8 @@ public class PlayerUI : MonoBehaviour
 
     public void OnStatsUIOpened()
     {
+        OnStatsUI?.Invoke();
+
         statsUI.SetActive(!statsUI.activeSelf);
     }
 
