@@ -38,21 +38,10 @@ public class Testing : MonoBehaviour
         {
             Time.timeScale = 0f;
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            if (GetComponent<PlayerInput>().currentControlScheme == "Keyboard")
-            {
-                player.TakeDamage(1);
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            if (GetComponent<PlayerInput>().currentControlScheme == "Keyboard")
-            {
-                player.Heal(1);
-            }
-        }
+    public void CheatHeal()
+    {
+        player.Heal(1);
     }
 }
