@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class BeginnerAbilityTree : MonoBehaviour
 {
     [SerializeField] GameObjectRuntimeSet playerReference;
+    [SerializeField] PlayerStats stats;
     PlayerAbilities playerAbilities;
 
     [Header("Basic")]
@@ -17,16 +18,19 @@ public class BeginnerAbilityTree : MonoBehaviour
     [Header("Offensive")]
     [SerializeField] ScriptableObject offensiveAbility;
     public Image offensiveAbilityImage;
+    public Button offensiveAbilityButton;
     public UnityEvent onOffensiveAbilitySelected;
 
     [Header("Offensive2")]
     [SerializeField] ScriptableObject offensiveAbility2;
     public Image offensiveAbility2Image;
+    public Button offensiveAbility2Button;
     public UnityEvent onOffensiveAbility2Selected;
 
     [Header("Mobility")]
     [SerializeField] ScriptableObject mobilityAbility;
     public Image mobilityAbilityImage;
+    public Button mobilityAbilityButton;
     public UnityEvent onMobilityAbilitySelected;
 
     private void Start()
@@ -38,6 +42,34 @@ public class BeginnerAbilityTree : MonoBehaviour
         SetAbilityIcon(mobilityAbility, mobilityAbilityImage);
 
         InitializePlayerReference();
+    }
+
+    private void Update()
+    {
+        UpdateAbilityIcons();
+    }
+
+    public void UpdateAbilityIcons()
+    {
+        if (stats.PlayerLevel < 5)
+        {
+            offensiveAbilityButton.interactable = false;
+            offensiveAbility2Button.interactable = false;
+        }
+        else
+        {
+            offensiveAbilityButton.interactable = true;
+            offensiveAbility2Button.interactable = true;
+        }
+
+        if (stats.PlayerLevel < 10)
+        {
+            mobilityAbilityButton.interactable = false;
+        }
+        else
+        {
+            mobilityAbilityButton.interactable = true;
+        }
     }
 
     private void SetAbilityIcon(ScriptableObject ability, Image abilityImage)
