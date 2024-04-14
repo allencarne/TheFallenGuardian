@@ -12,6 +12,7 @@ public class PlayerStats : ScriptableObject
     public float CurrentExperience;
     public float RequiredExperience;
     public PlayerClass PlayerClass;
+    public Sprite PlayerClassIcon;
 
     [Header("Health")]
     public float Health;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class StatsUI : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class StatsUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI text_PlayerName;
     [SerializeField] TextMeshProUGUI text_PlayerClass;
     [SerializeField] TextMeshProUGUI text_PlayerLevel;
+    [SerializeField] Image image_ClassIcon;
 
     [SerializeField] TextMeshProUGUI text_Health;
     [SerializeField] TextMeshProUGUI text_Damage;
@@ -22,6 +24,7 @@ public class StatsUI : MonoBehaviour
         text_PlayerName.text = stats.PlayerName.ToString();
         text_PlayerClass.text = stats.PlayerClass.ToString();
         text_PlayerLevel.text = stats.PlayerLevel.ToString();
+        image_ClassIcon.sprite = stats.PlayerClassIcon;
 
         text_Health.text = stats.Health.ToString();
         text_Damage.text = stats.CurrentDamage.ToString();
