@@ -6,6 +6,7 @@ public class Item : ScriptableObject
     public GameObjectRuntimeSet playerInventoryReference;
     Inventory inventory;
     public GameObject prefab;
+    public GameObject ToolTip;
 
     new public string name;
     public Sprite icon;
