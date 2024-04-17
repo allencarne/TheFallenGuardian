@@ -30,7 +30,6 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected Image patienceBar;
     [SerializeField] protected Image castBar;
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] GameObject floatingText;
     [SerializeField] GameObject shadow;
     [SerializeField] EnemyHealthBar healthBar;
 
@@ -520,7 +519,7 @@ public class Enemy : MonoBehaviour, IDamageable
         idleTime = 0;
 
         StartCoroutine(healthBar.FlashEffect(Color.red));
-        ShowFloatingText(damage, Color.red);
+        healthBar.ShowFloatingText(damage, Color.red);
 
         OnHealthChanged?.Invoke();
 
@@ -534,7 +533,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (Health >= MaxHealth)
         {
-            ShowFloatingText(0, Color.green);
+            healthBar.ShowFloatingText(0, Color.green);
 
             return;
         }
@@ -548,7 +547,7 @@ public class Enemy : MonoBehaviour, IDamageable
             idleTime = 0;
 
             StartCoroutine(healthBar.FlashEffect(Color.green));
-            ShowFloatingText(heal, Color.green);
+            healthBar.ShowFloatingText(heal, Color.green);
 
             OnHealthChanged?.Invoke();
         }
@@ -560,7 +559,7 @@ public class Enemy : MonoBehaviour, IDamageable
             idleTime = 0;
 
             StartCoroutine(healthBar.FlashEffect(Color.green));
-            ShowFloatingText(overheal, Color.green);
+            healthBar.ShowFloatingText(overheal, Color.green);
 
             OnHealthChanged?.Invoke();
         }
@@ -570,7 +569,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (Health >= MaxHealth)
         {
-            ShowFloatingText(0, Color.green);
+            healthBar.ShowFloatingText(0, Color.green);
 
             return;
         }
@@ -582,7 +581,7 @@ public class Enemy : MonoBehaviour, IDamageable
             Health += heal;
 
             StartCoroutine(healthBar.FlashEffect(Color.green));
-            ShowFloatingText(heal, Color.green);
+            healthBar.ShowFloatingText(heal, Color.green);
 
             OnHealthChanged?.Invoke();
         }
@@ -592,23 +591,9 @@ public class Enemy : MonoBehaviour, IDamageable
             Health += overheal;
 
             StartCoroutine(healthBar.FlashEffect(Color.green));
-            ShowFloatingText(overheal, Color.green);
+            healthBar.ShowFloatingText(overheal, Color.green);
 
             OnHealthChanged?.Invoke();
-        }
-    }
-
-    void ShowFloatingText(float amount, Color color)
-    {
-        Vector3 offset = new Vector3(0f, 1, 0);
-
-        if (floatingText)
-        {
-            GameObject textPrefab = Instantiate(floatingText, transform.position + offset, Quaternion.identity);
-            TextMeshPro textMesh = textPrefab.GetComponentInChildren<TextMeshPro>();
-            textMesh.text = amount.ToString();
-            textMesh.color = color; // Set the color of the text
-            Destroy(textPrefab, 1);
         }
     }
 

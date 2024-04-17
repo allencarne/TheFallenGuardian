@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class EnemyHealthBar : MonoBehaviour
     [SerializeField] Image healthBarBack;
 
     [SerializeField] SpriteRenderer bodySprite;
+    [SerializeField] GameObject floatingText;
 
     Coroutine lerpingCoroutine;
     float chipSpeed = .5f;
@@ -95,5 +97,19 @@ public class EnemyHealthBar : MonoBehaviour
 
         // Reset to original color
         bodySprite.color = Color.white;
+    }
+
+    public void ShowFloatingText(float amount, Color color)
+    {
+        Vector3 offset = new Vector3(0f, 1, 0);
+
+        if (floatingText)
+        {
+            GameObject textPrefab = Instantiate(floatingText, transform.position + offset, Quaternion.identity);
+            TextMeshPro textMesh = textPrefab.GetComponentInChildren<TextMeshPro>();
+            textMesh.text = amount.ToString();
+            textMesh.color = color; // Set the color of the text
+            Destroy(textPrefab, 1);
+        }
     }
 }

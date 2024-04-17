@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1168808411849726535, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: m_Name
-      value: Dummy Variant
+      value: Dummy
       objectReference: {fileID: 0}
     - target: {fileID: 4616942287934324812, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: buff_Regeneration
@@ -39,6 +39,14 @@ PrefabInstance:
     - target: {fileID: 7033479432317929364, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 7575085488464457606, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7575085488464457606, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8329506289662085224, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: m_Sprite
@@ -157,7 +165,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 7501607236292497026}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -283,7 +291,6 @@ MonoBehaviour:
   patienceBar: {fileID: 88677911671152900}
   castBar: {fileID: 1344765896259153991}
   spriteRenderer: {fileID: 1982509487361492714}
-  floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
   shadow: {fileID: 6553285107288546293}
   healthBar: {fileID: 2989804749614204065}
   enemyCollider2D: {fileID: 6490559976150798771}
