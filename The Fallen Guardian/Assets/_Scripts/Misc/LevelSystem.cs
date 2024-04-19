@@ -56,11 +56,6 @@ public class LevelSystem : MonoBehaviour
     {
         UpdateXpUI();
 
-        if (Input.GetKeyDown(KeyCode.Equals))
-        {
-            GainExperienceFlatRate(5);
-        }
-
         if (stats.CurrentExperience >= stats.RequiredExperience)
         {
             LevelUp();

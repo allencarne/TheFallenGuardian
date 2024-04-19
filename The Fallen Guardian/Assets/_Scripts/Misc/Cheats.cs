@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Cheats : MonoBehaviour
 {
@@ -67,5 +68,10 @@ public class Cheats : MonoBehaviour
         }
 
         timeText.text = "Time " + Time.timeScale.ToString("F2");
+    }
+
+    public void OnReloadScenePressed()
+    {
+        SceneManager.LoadScene(0);
     }
 }
