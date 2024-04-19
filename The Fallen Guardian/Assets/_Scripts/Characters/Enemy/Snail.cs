@@ -52,11 +52,14 @@ public class Snail : Enemy
         {
             if (castTime > mobilityCastTime)
             {
-                // Disable collision between enemy and player
-                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), true);
+                if (target != null)
+                {
+                    // Disable collision between enemy and player
+                    Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), true);
 
-                // Use the stored dash direction for the enemy's velocity
-                enemyRB.velocity = dashDirection * mobilityRange;
+                    // Use the stored dash direction for the enemy's velocity
+                    enemyRB.velocity = dashDirection * mobilityRange;
+                }
             }
         }
     }
