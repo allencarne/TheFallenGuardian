@@ -26,14 +26,19 @@ public class Cheats : MonoBehaviour
         }
     }
 
+    public void OnGainEXPPressed()
+    {
+        player.GetComponent<LevelSystem>().GainExperienceFlatRate(1);
+    }
+
     public void OnHealCheatPressed()
     {
-        player.GetComponent<Testing>().CheatHeal();
+        player.Heal(1);
     }
 
     public void OnDamageChatPressed()
     {
-        player.GetComponent<Testing>().ChatDamage();
+        player.TakeDamage(1);
     }
 
     public void OnTimeSlowPressed()
