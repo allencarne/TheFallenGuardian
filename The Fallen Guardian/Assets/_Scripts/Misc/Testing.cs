@@ -44,4 +44,9 @@ public class Testing : MonoBehaviour
     {
         player.Heal(1);
     }
+
+    public void ChatDamage()
+    {
+        player.TakeDamage(1);
+    }
 }

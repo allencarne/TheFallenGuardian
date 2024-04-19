@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class Cheats : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Cheats : MonoBehaviour
     Player player;
 
     [SerializeField] PlayerStats stats;
+
+    [SerializeField] TextMeshProUGUI timeText;
 
     public void OnPlayerJoin()
     {
@@ -26,5 +29,38 @@ public class Cheats : MonoBehaviour
     public void OnHealCheatPressed()
     {
         player.GetComponent<Testing>().CheatHeal();
+    }
+
+    public void OnDamageChatPressed()
+    {
+        player.GetComponent<Testing>().ChatDamage();
+    }
+
+    public void OnTimeSlowPressed()
+    {
+        // Decrease the timescale by 0.10
+        Time.timeScale -= 0.10f;
+
+        // Ensure timescale does not go below a certain threshold, for example, 0.1
+        if (Time.timeScale < 0.1f)
+        {
+            Time.timeScale = 0.1f;
+        }
+
+        timeText.text = "Time " + Time.timeScale.ToString("F2");
+    }
+
+    public void OnTimeSpeedPressed()
+    {
+        // Increase the timescale by 0.10
+        Time.timeScale += 0.10f;
+
+        // Ensure timescale does not go above a certain threshold
+        if (Time.timeScale > 5f)
+        {
+            Time.timeScale = 5f;
+        }
+
+        timeText.text = "Time " + Time.timeScale.ToString("F2");
     }
 }
