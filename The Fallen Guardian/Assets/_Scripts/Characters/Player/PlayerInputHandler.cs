@@ -17,6 +17,7 @@ public class PlayerInputHandler : MonoBehaviour
     public bool UltimateAbilityInput { get; private set; }
     public Vector2 MousePosition { get; private set; }
     public bool PickupInput { get; private set; }
+    public bool InteractInput { get; private set; }
 
     LayerMask ignoredLayers;
 
@@ -139,6 +140,16 @@ public class PlayerInputHandler : MonoBehaviour
         if (context.canceled)
         {
             PickupInput = false;
+        }
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        InteractInput = context.ReadValueAsButton();
+
+        if (context.canceled)
+        {
+            InteractInput = false;
         }
     }
 
