@@ -8,6 +8,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] GameObject inventoryUI;
     [SerializeField] GameObject statsUI;
     [SerializeField] GameObject AbilityUI;
+    [SerializeField] GameObject pauseMenu;
 
     public UnityEvent OnStatsUI;
 
@@ -41,5 +42,29 @@ public class PlayerUI : MonoBehaviour
     public void CloseAbilityUIButton()
     {
         AbilityUI.SetActive(false);
+    }
+
+    public void OnPauseUIOpened()
+    {
+        // If inventory or Stats or Ability UI are open, Close them
+        if (inventoryUI.activeInHierarchy || statsUI.activeInHierarchy || AbilityUI.activeInHierarchy)
+        {
+            inventoryUI.SetActive(false);
+            statsUI.SetActive(false);
+            AbilityUI.SetActive(false);
+
+            return;
+        }
+        else
+        {
+            if (pauseMenu.activeInHierarchy)
+            {
+                pauseMenu.SetActive(false);
+            }
+            else
+            {
+                pauseMenu.SetActive(true);
+            }
+        }
     }
 }

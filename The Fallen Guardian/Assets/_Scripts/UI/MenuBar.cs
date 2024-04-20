@@ -28,7 +28,6 @@ public class MenuBar : MonoBehaviour
 
     public void OnPlayerLevelUp()
     {
-
         if (stats.PlayerLevel == 5 && skillMenu.activeInHierarchy == false)
         {
             image_skillHighlight.enabled = true;
