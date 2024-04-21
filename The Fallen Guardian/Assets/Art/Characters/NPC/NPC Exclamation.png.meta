@@ -128,8 +128,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 15
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +147,10 @@ TextureImporter:
       name: NPC Exclamation_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 15
         y: 0
-        width: 32
-        height: 32
+        width: 15
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: NPC Exclamation_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 30
         y: 0
-        width: 32
-        height: 32
+        width: 15
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,10 +189,10 @@ TextureImporter:
       name: NPC Exclamation_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 45
         y: 0
-        width: 32
-        height: 32
+        width: 15
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,90 +202,6 @@ TextureImporter:
       bones: []
       spriteID: 9db91ee89c32249459078ae38a2ba58a
       internalID: 876407965
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC Exclamation_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1df3495f60adbd6428efe3ddeea6fdee
-      internalID: 1554794199
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC Exclamation_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4f13c821a860dc544abba63b43a3a68a
-      internalID: -1193435330
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC Exclamation_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 03b1c9d44db80a84faa28927d626c46e
-      internalID: -1122300590
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NPC Exclamation_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48c94203d7aff94498e87fd4ee4c0c16
-      internalID: -565201694
       vertices: []
       indices: 
       edges: []
@@ -305,10 +221,6 @@ TextureImporter:
       NPC Exclamation_1: 1934080549
       NPC Exclamation_2: 1905771725
       NPC Exclamation_3: 876407965
-      NPC Exclamation_4: 1554794199
-      NPC Exclamation_5: -1193435330
-      NPC Exclamation_6: -1122300590
-      NPC Exclamation_7: -565201694
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
