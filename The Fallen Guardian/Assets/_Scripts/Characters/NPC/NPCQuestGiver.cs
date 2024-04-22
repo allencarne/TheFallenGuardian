@@ -68,17 +68,17 @@ public class NPCQuestGiver : MonoBehaviour
 
     public void AcceptQuest()
     {
+        isQuestAccepted = true;
+
+        QuestUI.SetActive(false);
+
+        questTrackName.enabled = true;
+        questTrackObjective.enabled = true;
+
+        exclamationAnimator.Play("NPC Question");
+
         if (questIndex == 0)
         {
-            isQuestAccepted = true;
-
-            QuestUI.SetActive(false);
-
-            questTrackName.enabled = true;
-            questTrackObjective.enabled = true;
-
-            exclamationAnimator.Play("NPC Question");
-
             Instantiate(shirt, rewardPosition.position, Quaternion.identity);
             Instantiate(shorts, itemPosition.position, Quaternion.identity);
         }

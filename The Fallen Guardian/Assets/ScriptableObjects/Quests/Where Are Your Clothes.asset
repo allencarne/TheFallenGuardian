@@ -17,7 +17,9 @@ MonoBehaviour:
   QuestDialogue: 'Umm.. why are you naked?
 
     You should probably put some clothes
-    on. There are children here.'
+    on. There are children here.
+
+    Here, put these on.'
   QuestObjective: '- Pick up Clothes
 
     - Open Inventory
