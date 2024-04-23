@@ -6,10 +6,17 @@ using UnityEngine.Events;
 
 public class WhereAreYourClothes : MonoBehaviour
 {
+    [SerializeField] NPCQuestGiver npc;
+
     [Header("References")]
     [SerializeField] GameObjectRuntimeSet inventoryReference;
     EquipmentManager equipmentManager;
     Inventory inventory;
+
+    [SerializeField] GameObject shirt;
+    [SerializeField] GameObject shorts;
+
+    public UnityEvent OnQuestCompleted;
 
     public void OnPlayerJoin()
     {
@@ -79,11 +86,12 @@ public class WhereAreYourClothes : MonoBehaviour
 
     enum questState
     {
+        NotStarted,
         started,
         completed
     }
 
-    questState state = questState.started;
+    questState state = questState.NotStarted;
 
     bool pickupShirt = false;
     bool pickupShorts = false;
@@ -96,36 +104,71 @@ public class WhereAreYourClothes : MonoBehaviour
 
     public void PickUpShirt()
     {
-        pickupShirt = true;
+        if (state == questState.started)
+        {
+            pickupShirt = true;
+        }
     }
 
     public void PickUpShorts()
     {
-        pickupShorts = true;
+        if (state == questState.started)
+        {
+            pickupShorts = true;
+        }
     }
 
     public void OnInventoryUIOpened()
     {
-        inventoryOpened = true;
-    }
-
-    public void EquipShirt()
-    {
-        equipShirt = true;
+        if (state == questState.started)
+        {
+            inventoryOpened = true;
+        }
 
         if (pickupShirt && pickupShorts && equipShirt && equipShorts && inventoryOpened)
         {
             state = questState.completed;
+
+            OnQuestCompleted.Invoke();
+        }
+    }
+
+    public void EquipShirt()
+    {
+        if (state == questState.started)
+        {
+            equipShirt = true;
+
+            if (pickupShirt && pickupShorts && equipShirt && equipShorts && inventoryOpened)
+            {
+                state = questState.completed;
+
+                OnQuestCompleted.Invoke();
+            }
         }
     }
 
     public void EquipShorts()
     {
-        equipShorts = true;
-
-        if (pickupShirt && pickupShorts && equipShirt && equipShorts && inventoryOpened)
+        if (state == questState.started)
         {
-            state = questState.completed;
+            equipShorts = true;
+
+            if (pickupShirt && pickupShorts && equipShirt && equipShorts && inventoryOpened)
+            {
+                state = questState.completed;
+
+                OnQuestCompleted.Invoke();
+            }
         }
+    }
+
+    public void QuestAccepted()
+    {
+        state = questState.started;
+
+        Instantiate(shirt, npc.rewardPosition.position, Quaternion.identity);
+
+        Instantiate(shorts, npc.rewardPosition.position, Quaternion.identity);
     }
 }

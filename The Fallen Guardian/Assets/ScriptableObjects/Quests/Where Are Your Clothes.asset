@@ -28,4 +28,7 @@ MonoBehaviour:
   QuestReward: 'Green Wooden Stick
 
     + 3 EXP'
+  QuestRewardDialogue: Okay that's much better. Thank you.
   QuestRewardPrefab: {fileID: 8154717546460386717, guid: 523d34a0319965540932f78f9b16a6a8, type: 3}
+  EXPReward: 3
+  GoldReward: 0
