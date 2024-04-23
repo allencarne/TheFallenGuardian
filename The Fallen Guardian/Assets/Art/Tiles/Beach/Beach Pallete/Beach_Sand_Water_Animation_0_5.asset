@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Beach Sand And Water_1
+  m_Name: Beach_Sand_Water_Animation_0_5
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 2041094770, guid: 63e60363ac78f0846b9d563b9b9bcecb, type: 3}
+  m_Sprite: {fileID: 2142912518, guid: 616f593e499bac544b63f1cecdeeb0a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
