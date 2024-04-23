@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -85,17 +85,14 @@ public class WhereAreYourClothes : MonoBehaviour
 
     questState state = questState.started;
 
-    public UnityEvent OnPickupShirt;
     bool pickupShirt = false;
-    public UnityEvent OnPickupShorts;
     bool pickupShorts = false;
-
     bool inventoryOpened = false;
-
-    public UnityEvent OnEquipShirt;
     bool equipShirt = false;
-    public UnityEvent OnEquipShorts;
     bool equipShorts = false;
+
+    [SerializeField] TextMeshProUGUI questTrackName;
+    [SerializeField] TextMeshProUGUI[] questTrackObjective;
 
     public void PickUpShirt()
     {

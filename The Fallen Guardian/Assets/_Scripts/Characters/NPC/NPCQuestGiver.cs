@@ -11,9 +11,6 @@ public class NPCQuestGiver : MonoBehaviour
     [SerializeField] GameObject QuestUI;
     public bool isQuestAccepted = false;
 
-    [SerializeField] TextMeshProUGUI questTrackName;
-    [SerializeField] TextMeshProUGUI questTrackObjective;
-
     public Quest[] quests;
     int questIndex = 0;
 
@@ -71,9 +68,6 @@ public class NPCQuestGiver : MonoBehaviour
         isQuestAccepted = true;
 
         QuestUI.SetActive(false);
-
-        questTrackName.enabled = true;
-        questTrackObjective.enabled = true;
 
         exclamationAnimator.Play("NPC Question");
 
