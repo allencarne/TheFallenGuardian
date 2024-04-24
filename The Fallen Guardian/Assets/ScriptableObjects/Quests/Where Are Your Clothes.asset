@@ -20,11 +20,16 @@ MonoBehaviour:
     on. There are children here.
 
     Here, put these on.'
-  QuestObjective: '- Pick up Clothes
+  QuestObjective: '- Pick Up Tattered Shirt
 
-    - Open Inventory
+    - Pick Up Tattered Shorts
 
-    - Equip Clothes'
+    -
+    Open Inventory
+
+    - Equip Tattered Shirt
+
+    - Equip Tattered Shorts'
   QuestReward: 'Green Wooden Stick
 
     + 3 EXP'
