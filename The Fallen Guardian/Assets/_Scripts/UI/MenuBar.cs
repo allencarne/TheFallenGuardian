@@ -1,27 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class MenuBar : MonoBehaviour
 {
     [SerializeField] PlayerStats stats;
-
     [SerializeField] GameObject settingsMenu;
-
     [SerializeField] GameObject mapMenu;
-
     [SerializeField] GameObject statsMenu;
 
     [SerializeField] GameObject skillMenu;
     [SerializeField] Image image_skillHighlight;
 
+
     private void Start()
     {
         // Enable at the start so the player can select their first ability
-        image_skillHighlight.enabled = true;
+        //image_skillHighlight.enabled = true;
     }
 
     public void OnPlayerLevelUp()
