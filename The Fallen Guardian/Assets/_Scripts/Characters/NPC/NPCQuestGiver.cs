@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class NPCQuestGiver : MonoBehaviour
 {
     [Header("NPC")]
+    [SerializeField] GameObject npcExclamation;
     [SerializeField] Animator exclamationAnimator;
     [SerializeField] TextMeshProUGUI interactText;
 
@@ -45,6 +46,18 @@ public class NPCQuestGiver : MonoBehaviour
     public Transform rewardPosition;
     LevelSystem levelSystem;
 
+    private void Start()
+    {
+        if (questIndex >= quests.Length)
+        {
+            npcExclamation.SetActive(false);
+        }
+        else
+        {
+            npcExclamation.SetActive(true);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -64,9 +77,19 @@ public class NPCQuestGiver : MonoBehaviour
             {
                 interactText.text = "";
 
-                SetupQuestUI(questIndex);
-
-                QuestUI.SetActive(true);
+                // Check if there are quests remaining
+                if (questIndex < quests.Length)
+                {
+                    SetupQuestUI(questIndex);
+                    QuestUI.SetActive(true);
+                }
+                else
+                {
+                    // No more quests, you can handle this situation here
+                    Debug.Log("No more quests available.");
+                    // For example, you can deactivate NPC interaction
+                    // gameObject.SetActive(false);
+                }
             }
         }
 
@@ -107,7 +130,7 @@ public class NPCQuestGiver : MonoBehaviour
 
         QuestUI.SetActive(false);
 
-        exclamationAnimator.Play("NPC Question");
+        exclamationAnimator.Play("NPC InProgress");
     }
 
     public void DeclineQuest()
@@ -142,6 +165,20 @@ public class NPCQuestGiver : MonoBehaviour
     public void CompleteQuest()
     {
         isQuestCompleted = true;
+
+        exclamationAnimator.Play("NPC Question");
+    }
+
+    private void CheckQuestAvailability()
+    {
+        if (questIndex >= quests.Length)
+        {
+            npcExclamation.SetActive(false);
+        }
+        else
+        {
+            npcExclamation.SetActive(true);
+        }
     }
 
     public void CompleteButton(int index)
@@ -158,6 +195,9 @@ public class NPCQuestGiver : MonoBehaviour
         isQuestAccepted = false;
         isQuestCompleted = false;
         questIndex++;
+
+        CheckQuestAvailability();
+
         exclamationAnimator.Play("NPC Exclamation");
     }
 
