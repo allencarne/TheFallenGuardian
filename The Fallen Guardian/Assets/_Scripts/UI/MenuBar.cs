@@ -18,8 +18,6 @@ public class MenuBar : MonoBehaviour
     [SerializeField] GameObject skillMenu;
     [SerializeField] Image image_skillHighlight;
 
-    [SerializeField] GameObject inventoryUI;
-
     private void Start()
     {
         // Enable at the start so the player can select their first ability
@@ -70,10 +68,5 @@ public class MenuBar : MonoBehaviour
         {
             image_skillHighlight.enabled = false;
         }
-    }
-
-    public void OnInventoryPressed()
-    {
-        inventoryUI.SetActive(!inventoryUI.activeSelf);
     }
 }

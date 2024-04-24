@@ -11,10 +11,13 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
 
     public UnityEvent OnStatsUI;
+    public UnityEvent OnInventoryUI;
 
     public void OnInventoryUIOpened()
     {
         inventoryUI.SetActive(!inventoryUI.activeSelf);
+
+        OnInventoryUI?.Invoke();
     }
 
     public void OnStatsUIOpened()
