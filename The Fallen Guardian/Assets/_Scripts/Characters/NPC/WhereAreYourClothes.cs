@@ -40,16 +40,10 @@ public class WhereAreYourClothes : MonoBehaviour
         // Check if the new item is not null and its name matches the desired item ("Tattered Shirt" or "Tattered Shorts")
         if (newItem != null && newItem.name == "Tattered Shirt")
         {
-            // Handle the case when the "Tattered Shirt" is equipped
-            Debug.Log("Tattered Shirt equipped");
-            // Add your logic here, such as triggering an event or updating a quest state
             EquipShirt();
         }
         else if (newItem != null && newItem.name == "Tattered Shorts")
         {
-            // Handle the case when the "Tattered Shorts" are equipped
-            Debug.Log("Tattered Shorts equipped");
-            // Add your logic here for the "Tattered Shorts" item
             EquipShorts();
         }
     }
@@ -65,9 +59,8 @@ public class WhereAreYourClothes : MonoBehaviour
                 // Check if the item is not null and its name matches the desired item
                 if (item != null && item.name == "Tattered Shirt")
                 {
-                    Debug.Log("Shirt");
                     PickUpShirt();
-                    break; // Exit the loop since we found the desired item
+                    break;
                 }
             }
 
@@ -76,7 +69,6 @@ public class WhereAreYourClothes : MonoBehaviour
             {
                 if (item != null && item.name == "Tattered Shorts")
                 {
-                    Debug.Log("Shorts");
                     PickUpShorts();
                     break;
                 }

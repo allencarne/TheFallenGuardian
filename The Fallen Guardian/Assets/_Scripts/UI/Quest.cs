@@ -18,6 +18,7 @@ public class Quest : ScriptableObject
     public string QuestRewardDialogue;
 
     public GameObject QuestRewardPrefab;
+    public Sprite QuestRewardIcon;
     public int EXPReward;
     public int GoldReward;
 }

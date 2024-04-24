@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class NPCQuestGiver : MonoBehaviour
 {
@@ -19,14 +20,20 @@ public class NPCQuestGiver : MonoBehaviour
 
     [Header("Quest UI")]
     [SerializeField] GameObject QuestUI;
-    [SerializeField] GameObject QuestRewardUI;
     [SerializeField] TextMeshProUGUI npcName;
     [SerializeField] TextMeshProUGUI questName;
     [SerializeField] TextMeshProUGUI questDialogue;
     [SerializeField] TextMeshProUGUI questObjective;
     [SerializeField] TextMeshProUGUI questReward;
+    [SerializeField] Image questRewardIcon;
 
+    [Header("Quest Reward UI")]
+    [SerializeField] GameObject QuestRewardUI;
+    [SerializeField] TextMeshProUGUI npcRewardName;
+    [SerializeField] TextMeshProUGUI questRewardName;
     [SerializeField] TextMeshProUGUI questRewardDialogue;
+    [SerializeField] TextMeshProUGUI questRewardText;
+    [SerializeField] Image questRewardUIIcon;
 
     [Header("Reward")]
     public Transform rewardPosition;
@@ -111,7 +118,13 @@ public class NPCQuestGiver : MonoBehaviour
         questDialogue.text = quests[index].QuestDialogue;
         questObjective.text = quests[index].QuestObjective;
         questReward.text = quests[index].QuestReward;
+        questRewardIcon.sprite = quests[index].QuestRewardIcon;
+
+        npcRewardName.text = quests[index].NPCName;
+        questRewardName.text = quests[index].QuestName;
         questRewardDialogue.text = quests[index].QuestRewardDialogue;
+        questRewardText.text = quests[index].QuestReward;
+        questRewardUIIcon.sprite = quests[index].QuestRewardIcon;
     }
 
     public void CompleteQuest()
