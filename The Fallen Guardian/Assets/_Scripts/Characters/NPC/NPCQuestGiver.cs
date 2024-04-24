@@ -49,7 +49,7 @@ public class NPCQuestGiver : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            interactText.text = "Press " + "F" + " To Interact";
+            interactText.text = "Press <color=red>F</color> To Interact";
 
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             rb.sleepMode = RigidbodySleepMode2D.NeverSleep;

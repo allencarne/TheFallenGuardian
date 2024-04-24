@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ItemPickup : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class ItemPickup : MonoBehaviour
     Inventory inventory;
 
     [SerializeField] Item item;
+
+    [SerializeField] TextMeshProUGUI pickupText;
 
     private void Start()
     {
@@ -28,5 +31,21 @@ public class ItemPickup : MonoBehaviour
 
         // Event for sounds and other things
         //OnCoinCollected?.Invoke();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            pickupText.text = "Press <color=red>Z</color> To Pickup";
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            pickupText.text = "";
+        }
     }
 }
