@@ -141,7 +141,6 @@ public class NPCQuestGiver : MonoBehaviour
 
     public void CompleteQuest()
     {
-        Debug.Log("Completed?");
         isQuestCompleted = true;
     }
 
