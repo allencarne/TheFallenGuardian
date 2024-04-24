@@ -23,8 +23,14 @@ public class NPCQuestGiver : MonoBehaviour
     [SerializeField] TextMeshProUGUI npcName;
     [SerializeField] TextMeshProUGUI questName;
     [SerializeField] TextMeshProUGUI questDialogue;
-    [SerializeField] TextMeshProUGUI questObjective;
+
+    [SerializeField] TextMeshProUGUI questObjective1;
+    [SerializeField] TextMeshProUGUI questObjective2;
+    [SerializeField] TextMeshProUGUI questObjective3;
+    [SerializeField] TextMeshProUGUI questObjective4;
+    [SerializeField] TextMeshProUGUI questObjective5;
     [SerializeField] TextMeshProUGUI questReward;
+
     [SerializeField] Image questRewardIcon;
 
     [Header("Quest Reward UI")]
@@ -116,7 +122,13 @@ public class NPCQuestGiver : MonoBehaviour
         npcName.text = quests[index].NPCName;
         questName.text = quests[index].QuestName;
         questDialogue.text = quests[index].QuestDialogue;
-        questObjective.text = quests[index].QuestObjective;
+
+        questObjective1.text = quests[index].QuestObjective1;
+        questObjective2.text = quests[index].QuestObjective2;
+        questObjective3.text = quests[index].QuestObjective3;
+        questObjective4.text = quests[index].QuestObjective4;
+        questObjective5.text = quests[index].QuestObjective5;
+
         questReward.text = quests[index].QuestReward;
         questRewardIcon.sprite = quests[index].QuestRewardIcon;
 

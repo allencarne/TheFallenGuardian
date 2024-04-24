@@ -10,8 +10,13 @@ public class Quest : ScriptableObject
     public string QuestName;
     [Multiline]
     public string QuestDialogue;
-    [Multiline]
-    public string QuestObjective;
+
+    public string QuestObjective1;
+    public string QuestObjective2;
+    public string QuestObjective3;
+    public string QuestObjective4;
+    public string QuestObjective5;
+
     [Multiline]
     public string QuestReward;
     [Multiline]

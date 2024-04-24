@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class WhereAreYourClothes : MonoBehaviour
 {
+    [SerializeField] Quest quest;
     [SerializeField] NPCQuestGiver npc;
 
     [Header("References")]
@@ -91,14 +92,20 @@ public class WhereAreYourClothes : MonoBehaviour
     bool equipShirt = false;
     bool equipShorts = false;
 
-    [SerializeField] TextMeshProUGUI questTrackName;
-    [SerializeField] TextMeshProUGUI[] questTrackObjective;
+    [SerializeField] TextMeshProUGUI questNameText;
+    [SerializeField] TextMeshProUGUI questTrack1Text;
+    [SerializeField] TextMeshProUGUI questTrack2Text;
+    [SerializeField] TextMeshProUGUI questTrack3Text;
+    [SerializeField] TextMeshProUGUI questTrack4Text;
+    [SerializeField] TextMeshProUGUI questTrack5Text;
 
     public void PickUpShirt()
     {
         if (state == questState.started)
         {
             pickupShirt = true;
+
+            questTrack1Text.fontStyle |= FontStyles.Strikethrough;
         }
     }
 
@@ -107,6 +114,8 @@ public class WhereAreYourClothes : MonoBehaviour
         if (state == questState.started)
         {
             pickupShorts = true;
+
+            questTrack2Text.fontStyle |= FontStyles.Strikethrough;
         }
     }
 
@@ -115,6 +124,8 @@ public class WhereAreYourClothes : MonoBehaviour
         if (state == questState.started)
         {
             inventoryOpened = true;
+
+            questTrack3Text.fontStyle |= FontStyles.Strikethrough;
         }
 
         if (pickupShirt && pickupShorts && equipShirt && equipShorts && inventoryOpened)
@@ -131,6 +142,8 @@ public class WhereAreYourClothes : MonoBehaviour
         {
             equipShirt = true;
 
+            questTrack4Text.fontStyle |= FontStyles.Strikethrough;
+
             if (pickupShirt && pickupShorts && equipShirt && equipShorts && inventoryOpened)
             {
                 state = questState.completed;
@@ -145,6 +158,8 @@ public class WhereAreYourClothes : MonoBehaviour
         if (state == questState.started)
         {
             equipShorts = true;
+
+            questTrack5Text.fontStyle |= FontStyles.Strikethrough;
 
             if (pickupShirt && pickupShorts && equipShirt && equipShorts && inventoryOpened)
             {
@@ -162,5 +177,12 @@ public class WhereAreYourClothes : MonoBehaviour
         Instantiate(shirt, npc.rewardPosition.position, Quaternion.identity);
 
         Instantiate(shorts, npc.rewardPosition.position, Quaternion.identity);
+
+        questNameText.text = quest.QuestName;
+        questTrack1Text.text = quest.QuestObjective1;
+        questTrack2Text.text = quest.QuestObjective2;
+        questTrack3Text.text = quest.QuestObjective3;
+        questTrack4Text.text = quest.QuestObjective4;
+        questTrack5Text.text = quest.QuestObjective5;
     }
 }
