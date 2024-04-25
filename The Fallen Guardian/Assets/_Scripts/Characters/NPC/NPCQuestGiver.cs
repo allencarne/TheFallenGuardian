@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class NPCQuestGiver : MonoBehaviour
 {
@@ -20,32 +19,11 @@ public class NPCQuestGiver : MonoBehaviour
     public Quest[] quests;
     int questIndex = 0;
 
-    [Header("Quest UI")]
-    [SerializeField] GameObject QuestUI;
-    [SerializeField] TextMeshProUGUI npcName;
-    [SerializeField] TextMeshProUGUI questName;
-    [SerializeField] TextMeshProUGUI questDialogue;
-
-    [SerializeField] TextMeshProUGUI questObjective1;
-    [SerializeField] TextMeshProUGUI questObjective2;
-    [SerializeField] TextMeshProUGUI questObjective3;
-    [SerializeField] TextMeshProUGUI questObjective4;
-    [SerializeField] TextMeshProUGUI questObjective5;
-    [SerializeField] TextMeshProUGUI questReward;
-
-    [SerializeField] Image questRewardIcon;
-
-    [Header("Quest Reward UI")]
-    [SerializeField] GameObject QuestRewardUI;
-    [SerializeField] TextMeshProUGUI npcRewardName;
-    [SerializeField] TextMeshProUGUI questRewardName;
-    [SerializeField] TextMeshProUGUI questRewardDialogue;
-    [SerializeField] TextMeshProUGUI questRewardText;
-    [SerializeField] Image questRewardUIIcon;
-
     [Header("Reward")]
     public Transform rewardPosition;
     LevelSystem levelSystem;
+
+    [SerializeField] NPCQuestUI npcQuestUI;
 
     private void Start()
     {
@@ -74,8 +52,8 @@ public class NPCQuestGiver : MonoBehaviour
                 // Check if there are quests remaining
                 if (questIndex < quests.Length)
                 {
-                    SetupQuestUI(questIndex);
-                    QuestUI.SetActive(true);
+                    npcQuestUI.SetupUI(quests[questIndex]);
+                    npcQuestUI.QuestUI.SetActive(true);
                 }
                 else
                 {
@@ -95,7 +73,7 @@ public class NPCQuestGiver : MonoBehaviour
                 {
                     interactText.text = "";
 
-                    QuestRewardUI.SetActive(true);
+                    npcQuestUI.QuestRewardUI.SetActive(true);
 
                     levelSystem = collision.GetComponent<LevelSystem>();
                 }
@@ -108,8 +86,8 @@ public class NPCQuestGiver : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             interactText.text = "";
-            QuestUI.SetActive(false);
-            QuestRewardUI.SetActive(false);
+            npcQuestUI.QuestUI.SetActive(false);
+            npcQuestUI.QuestRewardUI.SetActive(false);
 
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             rb.sleepMode = RigidbodySleepMode2D.StartAwake;
@@ -122,7 +100,7 @@ public class NPCQuestGiver : MonoBehaviour
 
         isQuestAccepted = true;
 
-        QuestUI.SetActive(false);
+        npcQuestUI.QuestUI.SetActive(false);
 
         exclamationAnimator.Play("NPC InProgress");
     }
@@ -131,29 +109,7 @@ public class NPCQuestGiver : MonoBehaviour
     {
         isQuestAccepted = false;
 
-        QuestUI.SetActive(false);
-    }
-
-    void SetupQuestUI(int index)
-    {
-        npcName.text = quests[index].NPCName;
-        questName.text = quests[index].QuestName;
-        questDialogue.text = quests[index].QuestDialogue;
-
-        questObjective1.text = quests[index].QuestObjective1;
-        questObjective2.text = quests[index].QuestObjective2;
-        questObjective3.text = quests[index].QuestObjective3;
-        questObjective4.text = quests[index].QuestObjective4;
-        questObjective5.text = quests[index].QuestObjective5;
-
-        questReward.text = quests[index].QuestReward;
-        questRewardIcon.sprite = quests[index].QuestRewardIcon;
-
-        npcRewardName.text = quests[index].NPCName;
-        questRewardName.text = quests[index].QuestName;
-        questRewardDialogue.text = quests[index].QuestRewardDialogue;
-        questRewardText.text = quests[index].QuestReward;
-        questRewardUIIcon.sprite = quests[index].QuestRewardIcon;
+        npcQuestUI.QuestUI.SetActive(false);
     }
 
     public void CompleteQuest()
@@ -163,8 +119,6 @@ public class NPCQuestGiver : MonoBehaviour
             isQuestCompleted = true;
 
             exclamationAnimator.Play("NPC Question");
-
-            Debug.Log("Test");
         }
     }
 
@@ -182,7 +136,7 @@ public class NPCQuestGiver : MonoBehaviour
 
     public void CompleteButton(int index)
     {
-        QuestRewardUI.SetActive(false);
+        npcQuestUI.QuestRewardUI.SetActive(false);
 
         if (levelSystem != null)
         {
@@ -203,6 +157,6 @@ public class NPCQuestGiver : MonoBehaviour
 
     public void CancelButton()
     {
-        QuestRewardUI.SetActive(false);
+        npcQuestUI.QuestRewardUI.SetActive(false);
     }
 }
