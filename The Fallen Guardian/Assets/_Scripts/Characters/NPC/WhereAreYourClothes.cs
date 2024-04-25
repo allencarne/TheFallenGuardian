@@ -81,7 +81,8 @@ public class WhereAreYourClothes : MonoBehaviour
     {
         NotStarted,
         started,
-        completed
+        completed,
+        TurnedIn
     }
 
     questState state = questState.NotStarted;
@@ -184,5 +185,15 @@ public class WhereAreYourClothes : MonoBehaviour
         questTrack3Text.text = quest.QuestObjective3;
         questTrack4Text.text = quest.QuestObjective4;
         questTrack5Text.text = quest.QuestObjective5;
+    }
+
+    public void QuestTurnedIn()
+    {
+        questNameText.text = "";
+        questTrack1Text.text = "";
+        questTrack2Text.text = "";
+        questTrack3Text.text = "";
+        questTrack4Text.text = "";
+        questTrack5Text.text = "";
     }
 }

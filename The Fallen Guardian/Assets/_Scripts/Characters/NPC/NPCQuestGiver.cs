@@ -16,6 +16,7 @@ public class NPCQuestGiver : MonoBehaviour
     public bool isQuestAccepted = false;
     public bool isQuestCompleted = false;
     [SerializeField] UnityEvent OnQuestAccepted;
+    [SerializeField] UnityEvent OnQuestCompleted;
     public Quest[] quests;
     int questIndex = 0;
 
@@ -48,14 +49,7 @@ public class NPCQuestGiver : MonoBehaviour
 
     private void Start()
     {
-        if (questIndex >= quests.Length)
-        {
-            npcExclamation.SetActive(false);
-        }
-        else
-        {
-            npcExclamation.SetActive(true);
-        }
+        CheckQuestAvailability();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -164,9 +158,14 @@ public class NPCQuestGiver : MonoBehaviour
 
     public void CompleteQuest()
     {
-        isQuestCompleted = true;
+        if (!isQuestCompleted)
+        {
+            isQuestCompleted = true;
 
-        exclamationAnimator.Play("NPC Question");
+            exclamationAnimator.Play("NPC Question");
+
+            Debug.Log("Test");
+        }
     }
 
     private void CheckQuestAvailability()
@@ -191,14 +190,15 @@ public class NPCQuestGiver : MonoBehaviour
         }
         Instantiate(quests[index].QuestRewardPrefab, rewardPosition);
 
-        //
         isQuestAccepted = false;
         isQuestCompleted = false;
         questIndex++;
 
+        exclamationAnimator.Play("NPC Exclamation");
         CheckQuestAvailability();
 
-        exclamationAnimator.Play("NPC Exclamation");
+
+        OnQuestCompleted?.Invoke();
     }
 
     public void CancelButton()
