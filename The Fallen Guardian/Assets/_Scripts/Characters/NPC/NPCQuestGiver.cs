@@ -6,24 +6,24 @@ using UnityEngine.Events;
 
 public class NPCQuestGiver : MonoBehaviour
 {
-    [Header("NPC")]
+    public Quest[] Quests;
+
+    [Header("Components")]
     [SerializeField] GameObject npcExclamation;
     [SerializeField] Animator exclamationAnimator;
     [SerializeField] TextMeshProUGUI interactText;
-
-    [Header("Quest")]
-    public bool isQuestAccepted = false;
-    public bool isQuestCompleted = false;
-    [SerializeField] UnityEvent OnQuestAccepted;
-    [SerializeField] UnityEvent OnQuestCompleted;
-    public Quest[] quests;
-    int questIndex = 0;
-
-    [Header("Reward")]
+    [SerializeField] NPCQuestUI npcQuestUI;
     public Transform rewardPosition;
     LevelSystem levelSystem;
 
-    [SerializeField] NPCQuestUI npcQuestUI;
+    [Header("Variables")]
+    public bool isQuestAccepted = false;
+    public bool isQuestCompleted = false;
+    int questIndex = 0;
+
+    [Header("Events")]
+    [SerializeField] UnityEvent OnQuestAccepted;
+    [SerializeField] UnityEvent OnQuestCompleted;
 
     private void Start()
     {
@@ -54,10 +54,10 @@ public class NPCQuestGiver : MonoBehaviour
                 interactText.text = "";
 
                 // Check if there are quests remaining
-                if (questIndex < quests.Length)
+                if (questIndex < Quests.Length)
                 {
                     // Sets the QuestUI Text Elements
-                    npcQuestUI.SetupUI(quests[questIndex]);
+                    npcQuestUI.SetupUI(Quests[questIndex]);
                     // Enables the Quest UI
                     npcQuestUI.QuestUI.SetActive(true);
                 }
@@ -129,7 +129,7 @@ public class NPCQuestGiver : MonoBehaviour
 
     private void CheckQuestAvailability()
     {
-        if (questIndex >= quests.Length)
+        if (questIndex >= Quests.Length)
         {
             npcExclamation.SetActive(false);
         }
@@ -142,8 +142,8 @@ public class NPCQuestGiver : MonoBehaviour
     public void CompleteButton(int index)
     {
         npcQuestUI.QuestRewardUI.SetActive(false);
-        levelSystem?.GainExperienceFlatRate(quests[index].EXPReward);
-        Instantiate(quests[index].QuestRewardPrefab, rewardPosition);
+        levelSystem?.GainExperienceFlatRate(Quests[index].EXPReward);
+        Instantiate(Quests[index].QuestRewardPrefab, rewardPosition);
         isQuestAccepted = false;
         isQuestCompleted = false;
         questIndex++;

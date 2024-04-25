@@ -6,18 +6,36 @@ using UnityEngine.Events;
 
 public class WhereAreYourClothes : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] QuestTrackUI questTrackUI;
     [SerializeField] Quest quest;
     [SerializeField] NPCQuestGiver npc;
+    [SerializeField] GameObject shirt;
+    [SerializeField] GameObject shorts;
 
     [Header("References")]
     [SerializeField] GameObjectRuntimeSet inventoryReference;
     EquipmentManager equipmentManager;
     Inventory inventory;
 
-    [SerializeField] GameObject shirt;
-    [SerializeField] GameObject shorts;
+    [Header("Variables")]
+    bool pickupShirt = false;
+    bool pickupShorts = false;
+    bool inventoryOpened = false;
+    bool equipShirt = false;
+    bool equipShorts = false;
 
+    [Header("Events")]
     public UnityEvent OnQuestCompleted;
+
+    enum questState
+    {
+        NotStarted,
+        started,
+        completed,
+    }
+
+    questState state = questState.NotStarted;
 
     public void OnPlayerJoin()
     {
@@ -77,36 +95,14 @@ public class WhereAreYourClothes : MonoBehaviour
         }
     }
 
-    enum questState
-    {
-        NotStarted,
-        started,
-        completed,
-        TurnedIn
-    }
-
-    questState state = questState.NotStarted;
-
-    bool pickupShirt = false;
-    bool pickupShorts = false;
-    bool inventoryOpened = false;
-    bool equipShirt = false;
-    bool equipShorts = false;
-
-    [SerializeField] TextMeshProUGUI questNameText;
-    [SerializeField] TextMeshProUGUI questTrack1Text;
-    [SerializeField] TextMeshProUGUI questTrack2Text;
-    [SerializeField] TextMeshProUGUI questTrack3Text;
-    [SerializeField] TextMeshProUGUI questTrack4Text;
-    [SerializeField] TextMeshProUGUI questTrack5Text;
-
     public void PickUpShirt()
     {
         if (state == questState.started)
         {
             pickupShirt = true;
 
-            questTrack1Text.fontStyle |= FontStyles.Strikethrough;
+            questTrackUI.QuestTrack1Text.fontStyle |= FontStyles.Strikethrough;
+            questTrackUI.QuestTrack1Text.color = Color.black;
         }
     }
 
@@ -116,7 +112,8 @@ public class WhereAreYourClothes : MonoBehaviour
         {
             pickupShorts = true;
 
-            questTrack2Text.fontStyle |= FontStyles.Strikethrough;
+            questTrackUI.QuestTrack2Text.fontStyle |= FontStyles.Strikethrough;
+            questTrackUI.QuestTrack2Text.color = Color.black;
         }
     }
 
@@ -126,7 +123,8 @@ public class WhereAreYourClothes : MonoBehaviour
         {
             inventoryOpened = true;
 
-            questTrack3Text.fontStyle |= FontStyles.Strikethrough;
+            questTrackUI.QuestTrack3Text.fontStyle |= FontStyles.Strikethrough;
+            questTrackUI.QuestTrack3Text.color = Color.black;
         }
 
         if (pickupShirt && pickupShorts && equipShirt && equipShorts && inventoryOpened)
@@ -143,7 +141,8 @@ public class WhereAreYourClothes : MonoBehaviour
         {
             equipShirt = true;
 
-            questTrack4Text.fontStyle |= FontStyles.Strikethrough;
+            questTrackUI.QuestTrack4Text.fontStyle |= FontStyles.Strikethrough;
+            questTrackUI.QuestTrack4Text.color = Color.black;
 
             if (pickupShirt && pickupShorts && equipShirt && equipShorts && inventoryOpened)
             {
@@ -160,7 +159,8 @@ public class WhereAreYourClothes : MonoBehaviour
         {
             equipShorts = true;
 
-            questTrack5Text.fontStyle |= FontStyles.Strikethrough;
+            questTrackUI.QuestTrack5Text.fontStyle |= FontStyles.Strikethrough;
+            questTrackUI.QuestTrack5Text.color = Color.black;
 
             if (pickupShirt && pickupShorts && equipShirt && equipShorts && inventoryOpened)
             {
@@ -179,21 +179,6 @@ public class WhereAreYourClothes : MonoBehaviour
 
         Instantiate(shorts, npc.rewardPosition.position, Quaternion.identity);
 
-        questNameText.text = quest.QuestName;
-        questTrack1Text.text = quest.QuestObjective1;
-        questTrack2Text.text = quest.QuestObjective2;
-        questTrack3Text.text = quest.QuestObjective3;
-        questTrack4Text.text = quest.QuestObjective4;
-        questTrack5Text.text = quest.QuestObjective5;
-    }
-
-    public void QuestTurnedIn()
-    {
-        questNameText.text = "";
-        questTrack1Text.text = "";
-        questTrack2Text.text = "";
-        questTrack3Text.text = "";
-        questTrack4Text.text = "";
-        questTrack5Text.text = "";
+        questTrackUI.SetTrackUI(quest);
     }
 }
