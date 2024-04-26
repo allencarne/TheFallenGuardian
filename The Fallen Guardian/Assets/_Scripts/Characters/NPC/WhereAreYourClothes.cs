@@ -29,6 +29,7 @@ public class WhereAreYourClothes : MonoBehaviour
     bool equipShorts = false;
 
     [Header("Events")]
+    public UnityEvent OnQuestAccepted;
     public UnityEvent OnQuestCompleted;
 
     enum questState
@@ -165,6 +166,8 @@ public class WhereAreYourClothes : MonoBehaviour
             Instantiate(shorts, npc.RewardPosition.position, Quaternion.identity);
 
             questTrackUI.SetTrackUI(quest);
+
+            OnQuestAccepted?.Invoke();
         }
     }
 

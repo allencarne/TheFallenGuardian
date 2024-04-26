@@ -6,15 +6,25 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
+    [Header("Inventory")]
     [SerializeField] GameObject inventoryUI;
     [SerializeField] Image inventoryHighlight;
 
+    [Header("Stats")]
     [SerializeField] GameObject statsUI;
+    [SerializeField] Image statsHighlight;
+
+    [Header("Ability")]
     [SerializeField] GameObject AbilityUI;
+    [SerializeField] Image abilityHighlight;
+
+    [Header("Pause")]
     [SerializeField] GameObject pauseMenu;
 
+    [Header("Events")]
     public UnityEvent OnStatsUI;
     public UnityEvent OnInventoryUI;
+    public UnityEvent OnAbilityUI;
 
     public void OnInventoryUIOpened()
     {
@@ -37,7 +47,14 @@ public class PlayerUI : MonoBehaviour
 
     public void OnAbilityUIOpened()
     {
+        if (abilityHighlight.enabled == true)
+        {
+            abilityHighlight.enabled = false;
+        }
+
         AbilityUI.SetActive(!AbilityUI.activeSelf);
+
+        OnAbilityUI?.Invoke();
     }
 
     public void CloseInventoryUIButton()
@@ -82,5 +99,10 @@ public class PlayerUI : MonoBehaviour
     public void OnQuestAccepted()
     {
         inventoryHighlight.enabled = true;
+    }
+
+    public void OnAbilityQuestAccepted()
+    {
+        abilityHighlight.enabled = true;
     }
 }

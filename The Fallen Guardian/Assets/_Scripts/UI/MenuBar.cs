@@ -6,10 +6,6 @@ using UnityEngine.UI;
 public class MenuBar : MonoBehaviour
 {
     [SerializeField] PlayerStats stats;
-    [SerializeField] GameObject settingsMenu;
-    [SerializeField] GameObject mapMenu;
-    [SerializeField] GameObject statsMenu;
-
     [SerializeField] GameObject skillMenu;
     [SerializeField] Image image_skillHighlight;
 
@@ -39,21 +35,6 @@ public class MenuBar : MonoBehaviour
         {
             image_skillHighlight.enabled = false;
         }
-    }
-
-    public void OnSettingsPressed()
-    {
-        settingsMenu.SetActive(!settingsMenu.activeSelf);
-    }
-
-    public void OnMapPressed()
-    {
-        mapMenu.SetActive(!mapMenu.activeSelf);
-    }
-
-    public void OnStatsPressed()
-    {
-        statsMenu.SetActive(!statsMenu.activeSelf);
     }
 
     public void OnSkillsPressed()

@@ -12,12 +12,17 @@ public class LearnAnAbility : MonoBehaviour
     [SerializeField] Quest quest;
     [SerializeField] NPCQuestGiver npc;
 
+    [Header("References")]
+    [SerializeField] GameObjectRuntimeSet inventoryReference;
+    EquipmentManager equipmentManager;
+
     [Header("Variables")]
     bool stickEquipped = false;
     bool abilityUIOpened = false;
     bool abilitySelected = false;
 
     [Header("Events")]
+    public UnityEvent OnQuestAccepted;
     public UnityEvent OnQuestCompleted;
 
     enum questState
@@ -29,6 +34,29 @@ public class LearnAnAbility : MonoBehaviour
 
     questState state = questState.NotStarted;
 
+    public void OnPlayerJoin()
+    {
+        Invoke("GetPlayer", .5f);
+    }
+
+    void GetPlayer()
+    {
+        if (inventoryReference.items.Count > 0)
+        {
+            equipmentManager = inventoryReference.GetItemIndex(0).GetComponent<EquipmentManager>();
+            equipmentManager.onEquipmentChangedCallback += OnEquipmentChanged;
+        }
+    }
+
+    private void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
+    {
+        // Check if the new item is not null and its name matches the desired item ("Tattered Shirt" or "Tattered Shorts")
+        if (newItem != null && newItem.name == "Green Wooden Stick")
+        {
+            StickEquipped();
+        }
+    }
+
     public void QuestAccepted()
     {
         if (npc.QuestIndex == questNumber)
@@ -36,19 +64,18 @@ public class LearnAnAbility : MonoBehaviour
             state = questState.started;
 
             questTrackUI.SetTrackUI(quest);
+
+            OnQuestAccepted?.Invoke();
         }
     }
 
     public void StickEquipped()
     {
-        if (state == questState.started)
-        {
-            stickEquipped = true;
+        stickEquipped = true;
 
-            questTrackUI.Track1();
+        questTrackUI.Track1();
 
-            QuestCompleted();
-        }
+        QuestCompleted();
     }
 
     public void AbilityUIOpened()
@@ -65,6 +92,8 @@ public class LearnAnAbility : MonoBehaviour
 
     public void AbilitySelected()
     {
+        // Ability can be selected before quest is started
+
         if (state == questState.started)
         {
             abilitySelected = true;
