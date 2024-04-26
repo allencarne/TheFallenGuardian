@@ -13,13 +13,13 @@ public class NPCQuestGiver : MonoBehaviour
     [SerializeField] Animator exclamationAnimator;
     [SerializeField] TextMeshProUGUI interactText;
     [SerializeField] NPCQuestUI npcQuestUI;
-    public Transform rewardPosition;
+    public Transform RewardPosition;
     LevelSystem levelSystem;
 
     [Header("Variables")]
-    public bool isQuestAccepted = false;
-    public bool isQuestCompleted = false;
-    int questIndex = 0;
+    public bool IsQuestAccepted = false;
+    public bool IsQuestCompleted = false;
+    public int QuestIndex = 0;
 
     [Header("Events")]
     [SerializeField] UnityEvent OnQuestAccepted;
@@ -46,7 +46,7 @@ public class NPCQuestGiver : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         // If Quest is Not Accepted
-        if (collision.CompareTag("Player") && !isQuestAccepted)
+        if (collision.CompareTag("Player") && !IsQuestAccepted)
         {
             if (collision.GetComponent<PlayerInputHandler>().InteractInput)
             {
@@ -54,10 +54,10 @@ public class NPCQuestGiver : MonoBehaviour
                 interactText.text = "";
 
                 // Check if there are quests remaining
-                if (questIndex < Quests.Length)
+                if (QuestIndex < Quests.Length)
                 {
                     // Sets the QuestUI Text Elements
-                    npcQuestUI.SetupUI(Quests[questIndex]);
+                    npcQuestUI.SetupUI(Quests[QuestIndex]);
                     // Enables the Quest UI
                     npcQuestUI.QuestUI.SetActive(true);
                 }
@@ -71,7 +71,7 @@ public class NPCQuestGiver : MonoBehaviour
         // If Quest is Accepted && Completed
         if (collision.CompareTag("Player"))
         {
-            if (isQuestAccepted && isQuestCompleted)
+            if (IsQuestAccepted && IsQuestCompleted)
             {
                 if (collision.GetComponent<PlayerInputHandler>().InteractInput)
                 {
@@ -106,22 +106,22 @@ public class NPCQuestGiver : MonoBehaviour
     public void AcceptQuest()
     {
         OnQuestAccepted?.Invoke();
-        isQuestAccepted = true;
+        IsQuestAccepted = true;
         npcQuestUI.QuestUI.SetActive(false);
         exclamationAnimator.Play("NPC InProgress");
     }
 
     public void DeclineQuest()
     {
-        isQuestAccepted = false;
+        IsQuestAccepted = false;
         npcQuestUI.QuestUI.SetActive(false);
     }
 
     public void CompleteQuest()
     {
-        if (!isQuestCompleted)
+        if (!IsQuestCompleted)
         {
-            isQuestCompleted = true;
+            IsQuestCompleted = true;
 
             exclamationAnimator.Play("NPC Question");
         }
@@ -129,7 +129,7 @@ public class NPCQuestGiver : MonoBehaviour
 
     private void CheckQuestAvailability()
     {
-        if (questIndex >= Quests.Length)
+        if (QuestIndex >= Quests.Length)
         {
             npcExclamation.SetActive(false);
         }
@@ -143,10 +143,10 @@ public class NPCQuestGiver : MonoBehaviour
     {
         npcQuestUI.QuestRewardUI.SetActive(false);
         levelSystem?.GainExperienceFlatRate(Quests[index].EXPReward);
-        Instantiate(Quests[index].QuestRewardPrefab, rewardPosition);
-        isQuestAccepted = false;
-        isQuestCompleted = false;
-        questIndex++;
+        Instantiate(Quests[index].QuestRewardPrefab, RewardPosition);
+        IsQuestAccepted = false;
+        IsQuestCompleted = false;
+        QuestIndex++;
         exclamationAnimator.Play("NPC Exclamation");
         CheckQuestAvailability();
         OnQuestCompleted?.Invoke();

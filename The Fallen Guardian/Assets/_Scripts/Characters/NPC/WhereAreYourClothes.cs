@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class WhereAreYourClothes : MonoBehaviour
 {
+    [SerializeField] int questNumber;
+
     [Header("Components")]
     [SerializeField] QuestTrackUI questTrackUI;
     [SerializeField] Quest quest;
@@ -101,8 +104,7 @@ public class WhereAreYourClothes : MonoBehaviour
         {
             pickupShirt = true;
 
-            questTrackUI.QuestTrack1Text.fontStyle |= FontStyles.Strikethrough;
-            questTrackUI.QuestTrack1Text.color = Color.black;
+            questTrackUI.Track1();
         }
     }
 
@@ -112,8 +114,7 @@ public class WhereAreYourClothes : MonoBehaviour
         {
             pickupShorts = true;
 
-            questTrackUI.QuestTrack2Text.fontStyle |= FontStyles.Strikethrough;
-            questTrackUI.QuestTrack2Text.color = Color.black;
+            questTrackUI.Track2();
         }
     }
 
@@ -123,15 +124,9 @@ public class WhereAreYourClothes : MonoBehaviour
         {
             inventoryOpened = true;
 
-            questTrackUI.QuestTrack3Text.fontStyle |= FontStyles.Strikethrough;
-            questTrackUI.QuestTrack3Text.color = Color.black;
-        }
+            questTrackUI.Track3();
 
-        if (pickupShirt && pickupShorts && equipShirt && equipShorts && inventoryOpened)
-        {
-            state = questState.completed;
-
-            OnQuestCompleted.Invoke();
+            QuestCompleted();
         }
     }
 
@@ -141,15 +136,9 @@ public class WhereAreYourClothes : MonoBehaviour
         {
             equipShirt = true;
 
-            questTrackUI.QuestTrack4Text.fontStyle |= FontStyles.Strikethrough;
-            questTrackUI.QuestTrack4Text.color = Color.black;
+            questTrackUI.Track4();
 
-            if (pickupShirt && pickupShorts && equipShirt && equipShorts && inventoryOpened)
-            {
-                state = questState.completed;
-
-                OnQuestCompleted.Invoke();
-            }
+            QuestCompleted();
         }
     }
 
@@ -159,26 +148,39 @@ public class WhereAreYourClothes : MonoBehaviour
         {
             equipShorts = true;
 
-            questTrackUI.QuestTrack5Text.fontStyle |= FontStyles.Strikethrough;
-            questTrackUI.QuestTrack5Text.color = Color.black;
+            questTrackUI.Track5();
 
-            if (pickupShirt && pickupShorts && equipShirt && equipShorts && inventoryOpened)
-            {
-                state = questState.completed;
-
-                OnQuestCompleted.Invoke();
-            }
+            QuestCompleted();
         }
     }
 
     public void QuestAccepted()
     {
-        state = questState.started;
+        if (npc.QuestIndex == questNumber)
+        {
+            state = questState.started;
 
-        Instantiate(shirt, npc.rewardPosition.position, Quaternion.identity);
+            Instantiate(shirt, npc.RewardPosition.position, Quaternion.identity);
 
-        Instantiate(shorts, npc.rewardPosition.position, Quaternion.identity);
+            Instantiate(shorts, npc.RewardPosition.position, Quaternion.identity);
 
-        questTrackUI.SetTrackUI(quest);
+            questTrackUI.SetTrackUI(quest);
+        }
+    }
+
+    public void QuestCompleted()
+    {
+        if (pickupShirt && pickupShorts && equipShirt && equipShorts && inventoryOpened)
+        {
+            state = questState.completed;
+
+            pickupShirt = false;
+            pickupShorts = false;
+            inventoryOpened = false;
+            equipShirt = false;
+            equipShorts = false;
+
+            OnQuestCompleted.Invoke();
+        }
     }
 }

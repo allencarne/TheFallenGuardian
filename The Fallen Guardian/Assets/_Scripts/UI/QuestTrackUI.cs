@@ -18,18 +18,23 @@ public class QuestTrackUI : MonoBehaviour
 
         QuestTrack1Text.text = "";
         QuestTrack1Text.color = Color.white;
+        QuestTrack1Text.fontStyle &= ~FontStyles.Strikethrough;
 
         QuestTrack2Text.text = "";
         QuestTrack2Text.color = Color.white;
+        QuestTrack2Text.fontStyle &= ~FontStyles.Strikethrough;
 
         QuestTrack3Text.text = "";
         QuestTrack3Text.color = Color.white;
+        QuestTrack3Text.fontStyle &= ~FontStyles.Strikethrough;
 
         QuestTrack4Text.text = "";
         QuestTrack4Text.color = Color.white;
+        QuestTrack4Text.fontStyle &= ~FontStyles.Strikethrough;
 
         QuestTrack5Text.text = "";
         QuestTrack5Text.color = Color.white;
+        QuestTrack5Text.fontStyle &= ~FontStyles.Strikethrough;
     }
 
     public void SetTrackUI(Quest quest)
@@ -40,5 +45,35 @@ public class QuestTrackUI : MonoBehaviour
         QuestTrack3Text.text = quest.QuestObjective3;
         QuestTrack4Text.text = quest.QuestObjective4;
         QuestTrack5Text.text = quest.QuestObjective5;
+    }
+
+    public void Track1()
+    {
+        QuestTrack1Text.fontStyle |= FontStyles.Strikethrough;
+        QuestTrack1Text.color = Color.black;
+    }
+
+    public void Track2()
+    {
+        QuestTrack2Text.fontStyle |= FontStyles.Strikethrough;
+        QuestTrack2Text.color = Color.black;
+    }
+
+    public void Track3()
+    {
+        QuestTrack3Text.fontStyle |= FontStyles.Strikethrough;
+        QuestTrack3Text.color = Color.black;
+    }
+
+    public void Track4()
+    {
+        QuestTrack4Text.fontStyle |= FontStyles.Strikethrough;
+        QuestTrack4Text.color = Color.black;
+    }
+
+    public void Track5()
+    {
+        QuestTrack5Text.fontStyle |= FontStyles.Strikethrough;
+        QuestTrack5Text.color = Color.black;
     }
 }

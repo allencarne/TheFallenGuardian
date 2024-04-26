@@ -15,9 +15,9 @@ MonoBehaviour:
   NPCName: Jeff
   QuestName: Learn An Ability
   QuestDialogue: Now that you have clothes and a weapon, You need to learn an ability.
-  QuestObjective1: Open the AbilityUI
-  QuestObjective2: Learn an Ability
-  QuestObjective3: 
+  QuestObjective1: Equip a Green Wooden Stick
+  QuestObjective2: Open the AbilityUI
+  QuestObjective3: Learn an Ability
   QuestObjective4: 
   QuestObjective5: 
   QuestReward: 3 EXP
