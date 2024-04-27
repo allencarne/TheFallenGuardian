@@ -16,6 +16,9 @@ public class LearnAnAbility : MonoBehaviour
     [SerializeField] GameObjectRuntimeSet inventoryReference;
     EquipmentManager equipmentManager;
 
+    [SerializeField] GameObjectRuntimeSet playerReference;
+    PlayerAbilities abilities;
+
     [Header("Variables")]
     bool stickEquipped = false;
     bool abilityUIOpened = false;
@@ -45,6 +48,9 @@ public class LearnAnAbility : MonoBehaviour
         {
             equipmentManager = inventoryReference.GetItemIndex(0).GetComponent<EquipmentManager>();
             equipmentManager.onEquipmentChangedCallback += OnEquipmentChanged;
+
+            abilities = playerReference.GetItemIndex(0).GetComponent<PlayerAbilities>();
+            abilities.OnAbilityChangedCallback += OnAbilityChanged;
         }
     }
 
@@ -55,6 +61,11 @@ public class LearnAnAbility : MonoBehaviour
         {
             StickEquipped();
         }
+    }
+
+    void OnAbilityChanged()
+    {
+        Debug.Log("Test");
     }
 
     public void QuestAccepted()

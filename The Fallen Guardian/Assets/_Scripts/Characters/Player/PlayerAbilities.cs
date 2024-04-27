@@ -52,4 +52,15 @@ public class PlayerAbilities : MonoBehaviour
         offensiveAbility = (IAbilityBehaviour)offensiveAbilityReference;
         mobilityAbility = (IAbilityBehaviour)mobilityAbilityReference;
     }
+
+    // Define delegate and event for ability changes
+    public delegate void OnAbilityChanged();
+    public OnAbilityChanged OnAbilityChangedCallback;
+
+    // Call this method whenever abilities change
+    public void AbilitiesChanged()
+    {
+        // Raise the event to notify listeners
+        OnAbilityChangedCallback?.Invoke();
+    }
 }
