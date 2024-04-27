@@ -36,12 +36,22 @@ public class NPCQuestUI : MonoBehaviour
     [Header("Quest Reward UI")]
     public GameObject QuestRewardUI;
 
+    [Header("Return Quest")]
     public TextMeshProUGUI NpcRewardName;
-    public TextMeshProUGUI QuestRewardName;
-    public TextMeshProUGUI QuestRewardDialogue;
+    public TextMeshProUGUI ReturnQuestName;
+    public TextMeshProUGUI ReturnQuestDialogue;
 
-    public TextMeshProUGUI QuestRewardText;
-    public Image QuestRewardUIIcon;
+    [Header("Return Quest Reward 1")]
+    public TextMeshProUGUI ReturnReward1;
+    public Image ReturnReward1Icon;
+
+    [Header("Return Quest Reward 2")]
+    public TextMeshProUGUI ReturnReward2;
+    public Image ReturnReward2Icon;
+
+    [Header("Return Quest Reward 3")]
+    public TextMeshProUGUI ReturnReward3;
+    public Image ReturnReward3Icon;
 
     public void SetupUI(Quest quest)
     {
@@ -68,17 +78,27 @@ public class NPCQuestUI : MonoBehaviour
         if (quest.QuestReward2Icon == null)
         {
             QuestReward2Icon.enabled = false;
+            ReturnReward2Icon.enabled = false;
         }
 
         if (quest.QuestReward3Icon == null)
         {
             QuestReward3Icon.enabled = false;
+            ReturnReward3Icon.enabled = false;
         }
 
+        // Return Quest
         NpcRewardName.text = quest.NPCName;
-        QuestRewardName.text = quest.QuestName;
-        QuestRewardDialogue.text = quest.QuestRewardDialogue;
-        QuestRewardText.text = quest.QuestReward1;
-        QuestRewardUIIcon.sprite = quest.QuestReward1Icon;
+        ReturnQuestName.text = quest.QuestName;
+        ReturnQuestDialogue.text = quest.QuestRewardDialogue;
+        // Quest Reward 1
+        ReturnReward1.text = quest.QuestReward1;
+        ReturnReward1Icon.sprite = quest.QuestReward1Icon;
+        // Quest Reward 2
+        ReturnReward2.text = quest.QuestReward2;
+        ReturnReward2Icon.sprite = quest.QuestReward2Icon;
+        // Quest Reward 3
+        ReturnReward3.text = quest.QuestReward3;
+        ReturnReward3Icon.sprite = quest.QuestReward3Icon;
     }
 }
