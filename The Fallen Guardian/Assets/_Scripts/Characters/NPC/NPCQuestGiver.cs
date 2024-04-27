@@ -144,9 +144,9 @@ public class NPCQuestGiver : MonoBehaviour
         npcQuestUI.QuestRewardUI.SetActive(false);
         levelSystem?.GainExperienceFlatRate(Quests[QuestIndex].EXPReward);
 
-        if (Quests[QuestIndex].QuestRewardPrefab != null)
+        if (Quests[QuestIndex].QuestReward1Prefab != null)
         {
-            Instantiate(Quests[QuestIndex].QuestRewardPrefab, RewardPosition);
+            Instantiate(Quests[QuestIndex].QuestReward1Prefab, RewardPosition);
         }
 
         IsQuestAccepted = false;

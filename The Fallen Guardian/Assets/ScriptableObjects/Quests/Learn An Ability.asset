@@ -20,9 +20,15 @@ MonoBehaviour:
   QuestObjective3: Learn an Ability
   QuestObjective4: 
   QuestObjective5: 
-  QuestReward: 3 EXP
+  QuestReward1: + 3
+  QuestReward1Prefab: {fileID: 0}
+  QuestReward1Icon: {fileID: 21300000, guid: 4f4b8311ff7e5304cb2e119a627c39d9, type: 3}
+  QuestReward2: 
+  QuestReward2Prefab: {fileID: 0}
+  QuestReward2Icon: {fileID: 0}
+  QuestReward3: 
+  QuestReward3Prefab: {fileID: 0}
+  QuestReward3Icon: {fileID: 0}
   QuestRewardDialogue: Great Job!
-  QuestRewardPrefab: {fileID: 0}
-  QuestRewardIcon: {fileID: 0}
   EXPReward: 3
   GoldReward: 0
