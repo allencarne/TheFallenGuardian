@@ -65,7 +65,7 @@ public class LearnAnAbility : MonoBehaviour
 
     void OnAbilityChanged()
     {
-        Debug.Log("Test");
+        AbilitySelected();
     }
 
     public void QuestAccepted()
@@ -105,14 +105,11 @@ public class LearnAnAbility : MonoBehaviour
     {
         // Ability can be selected before quest is started
 
-        if (state == questState.started)
-        {
-            abilitySelected = true;
+        abilitySelected = true;
 
-            questTrackUI.Track3();
+        questTrackUI.Track3();
 
-            QuestCompleted();
-        }
+        QuestCompleted();
     }
 
     public void QuestCompleted()

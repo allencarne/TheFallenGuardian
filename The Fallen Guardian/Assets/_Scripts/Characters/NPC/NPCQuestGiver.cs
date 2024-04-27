@@ -139,11 +139,16 @@ public class NPCQuestGiver : MonoBehaviour
         }
     }
 
-    public void CompleteButton(int index)
+    public void CompleteButton()
     {
         npcQuestUI.QuestRewardUI.SetActive(false);
-        levelSystem?.GainExperienceFlatRate(Quests[index].EXPReward);
-        Instantiate(Quests[index].QuestRewardPrefab, RewardPosition);
+        levelSystem?.GainExperienceFlatRate(Quests[QuestIndex].EXPReward);
+
+        if (Quests[QuestIndex].QuestRewardPrefab != null)
+        {
+            Instantiate(Quests[QuestIndex].QuestRewardPrefab, RewardPosition);
+        }
+
         IsQuestAccepted = false;
         IsQuestCompleted = false;
         QuestIndex++;

@@ -99,35 +99,29 @@ public class BeginnerAbilityTree : MonoBehaviour
 
     public void OnBasicAbilitySelected()
     {
-        if (playerAbilities.basicAbilityReference == null)
-        {
-            playerAbilities.basicAbilityReference = basicAbility;
+        playerAbilities.SetBasicAbility(basicAbility);
 
-            onBasicAbilitySelected.Invoke();
-        }
+        onBasicAbilitySelected.Invoke();
     }
 
     public void OnOffensiveAbilitySelected()
     {
-        playerAbilities.offensiveAbilityReference = offensiveAbility;
+        playerAbilities.SetOffensiveAbility(offensiveAbility);
 
         onOffensiveAbilitySelected.Invoke();
     }
 
     public void OnOffensiveAbility2Selected()
     {
-        playerAbilities.offensiveAbilityReference = offensiveAbility2;
+        playerAbilities.SetOffensiveAbility(offensiveAbility2);
 
         onOffensiveAbility2Selected.Invoke();
     }
 
     public void OnMobilityAbilitySelected()
     {
-        if (playerAbilities.mobilityAbilityReference == null)
-        {
-            playerAbilities.mobilityAbilityReference = mobilityAbility;
+        playerAbilities.SetMobilityAbility(mobilityAbility);
 
-            onMobilityAbilitySelected.Invoke();
-        }
+        onMobilityAbilitySelected.Invoke();
     }
 }

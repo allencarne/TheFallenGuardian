@@ -63,4 +63,22 @@ public class PlayerAbilities : MonoBehaviour
         // Raise the event to notify listeners
         OnAbilityChangedCallback?.Invoke();
     }
+
+    public void SetBasicAbility(ScriptableObject ability)
+    {
+        basicAbilityReference = ability;
+        AbilitiesChanged();
+    }
+
+    public void SetOffensiveAbility(ScriptableObject ability)
+    {
+        offensiveAbilityReference = ability;
+        AbilitiesChanged();
+    }
+
+    public void SetMobilityAbility(ScriptableObject ability)
+    {
+        mobilityAbilityReference = ability;
+        AbilitiesChanged();
+    }
 }
