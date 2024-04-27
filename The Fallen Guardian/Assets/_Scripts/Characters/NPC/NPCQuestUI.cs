@@ -75,18 +75,6 @@ public class NPCQuestUI : MonoBehaviour
         QuestReward3.text = quest.QuestReward3;
         QuestReward3Icon.sprite = quest.QuestReward3Icon;
 
-        if (quest.QuestReward2Icon == null)
-        {
-            QuestReward2Icon.enabled = false;
-            ReturnReward2Icon.enabled = false;
-        }
-
-        if (quest.QuestReward3Icon == null)
-        {
-            QuestReward3Icon.enabled = false;
-            ReturnReward3Icon.enabled = false;
-        }
-
         // Return Quest
         NpcRewardName.text = quest.NPCName;
         ReturnQuestName.text = quest.QuestName;
@@ -100,5 +88,27 @@ public class NPCQuestUI : MonoBehaviour
         // Quest Reward 3
         ReturnReward3.text = quest.QuestReward3;
         ReturnReward3Icon.sprite = quest.QuestReward3Icon;
+
+        if (quest.QuestReward2Icon == null)
+        {
+            QuestReward2Icon.enabled = false;
+            ReturnReward2Icon.enabled = false;
+        }
+        else
+        {
+            QuestReward2Icon.enabled = enabled;
+            ReturnReward2Icon.enabled = enabled;
+        }
+
+        if (quest.QuestReward3Icon == null)
+        {
+            QuestReward3Icon.enabled = false;
+            ReturnReward3Icon.enabled = false;
+        }
+        else
+        {
+            QuestReward3Icon.enabled = enabled;
+            ReturnReward3Icon.enabled = enabled;
+        }
     }
 }
