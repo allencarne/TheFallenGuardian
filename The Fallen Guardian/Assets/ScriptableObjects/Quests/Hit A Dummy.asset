@@ -29,6 +29,6 @@ MonoBehaviour:
   QuestReward3: 
   QuestReward3Prefab: {fileID: 0}
   QuestReward3Icon: {fileID: 0}
-  QuestRewardDialogue: 
+  QuestRewardDialogue: Now you know how to fight!
   EXPReward: 3
   GoldReward: 1
