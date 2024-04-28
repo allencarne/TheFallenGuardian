@@ -123,14 +123,14 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Beach_Sand_Water_Animation_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5675675, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 96
+      width: 74
       height: 48
     spriteID: a1e41776a675e5948a248c4d75341309
     spriteBone: []
@@ -143,14 +143,14 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Beach_Sand_Water_Animation_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.56164384, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 60
-      width: 96
+      width: 73
       height: 48
     spriteID: 9c1fca05476d5d7499ef55c4d057079b
     spriteBone: []
@@ -163,14 +163,14 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 60}
   - name: Beach_Sand_Water_Animation_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5555556, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 116
-      width: 96
+      width: 72
       height: 48
     spriteID: 8e7cc7b62a8075b44886da549d4f53af
     spriteBone: []
@@ -183,14 +183,14 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 116}
   - name: Beach_Sand_Water_Animation_Frame_3
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5492958, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 172
-      width: 96
+      width: 71
       height: 48
     spriteID: 9cb4673d7bf46d346ac9065b8ddbceca
     spriteBone: []
@@ -213,33 +213,33 @@ ScriptedImporter:
     - name: Beach_Sand_Water_Animation_Frame_0
       frameIndex: 0
       cellRect:
-        x: 0
+        x: 6
         y: 0
-        width: 96
+        width: 74
         height: 48
       spriteId: a1e41776a675e5948a248c4d75341309
     - name: Beach_Sand_Water_Animation_Frame_1
       frameIndex: 1
       cellRect:
-        x: 0
+        x: 7
         y: 0
-        width: 96
+        width: 73
         height: 48
       spriteId: 9c1fca05476d5d7499ef55c4d057079b
     - name: Beach_Sand_Water_Animation_Frame_2
       frameIndex: 2
       cellRect:
-        x: 0
+        x: 8
         y: 0
-        width: 96
+        width: 72
         height: 48
       spriteId: 8e7cc7b62a8075b44886da549d4f53af
     - name: Beach_Sand_Water_Animation_Frame_3
       frameIndex: 3
       cellRect:
-        x: 0
+        x: 9
         y: 0
-        width: 96
+        width: 71
         height: 48
       spriteId: 9cb4673d7bf46d346ac9065b8ddbceca
     linkedCells: []
