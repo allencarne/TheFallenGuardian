@@ -23,6 +23,13 @@ public class DamageOnTrigger : MonoBehaviour
                 Instantiate(HitEffect, collision.transform.position, collision.transform.rotation);
             }
         }
+
+        // For Quest
+        Dummy dummy = collision.GetComponent<Dummy>();
+        if (dummy != null)
+        {
+            dummy.DummyDamaged();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

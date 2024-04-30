@@ -39,4 +39,28 @@ public class HitADummy : MonoBehaviour
             OnQuestAccepted?.Invoke();
         }
     }
+
+    public void DummyHit()
+    {
+        if (state == questState.started)
+        {
+            dummyHit = true;
+
+            questTrackUI.Track1();
+
+            QuestCompleted();
+        }
+    }
+
+    public void QuestCompleted()
+    {
+        if (dummyHit)
+        {
+            state = questState.completed;
+
+            dummyHit = false;
+
+            OnQuestCompleted.Invoke();
+        }
+    }
 }

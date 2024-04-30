@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Dummy : Enemy
 {
+    public UnityEvent OnDummyDammaged;
+
     protected override void IdleState()
     {
         enemyAnimator.Play("Idle");
@@ -50,5 +52,11 @@ public class Dummy : Enemy
 
             patienceBar.fillAmount = fillAmount;
         }
+    }
+
+    public void DummyDamaged()
+    {
+        // For Quest
+        OnDummyDammaged?.Invoke();
     }
 }
