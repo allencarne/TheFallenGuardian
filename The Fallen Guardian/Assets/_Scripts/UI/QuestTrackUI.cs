@@ -47,6 +47,12 @@ public class QuestTrackUI : MonoBehaviour
         QuestTrack5Text.text = quest.QuestObjective5;
     }
 
+    public void SetTrackCounterUI(Quest quest, int count, int amount)
+    {
+        QuestNameText.text = quest.QuestName;
+        QuestTrack1Text.text = quest.QuestObjective1 + " " + count + " / " + amount;
+    }
+
     public void Track1()
     {
         QuestTrack1Text.fontStyle |= FontStyles.Strikethrough;

@@ -14,6 +14,8 @@ public class HitADummy : MonoBehaviour
 
     [Header("Variables")]
     bool dummyHit = false;
+    int count = 0;
+    int amount = 5;
 
     [Header("Events")]
     public UnityEvent OnQuestAccepted;
@@ -34,7 +36,7 @@ public class HitADummy : MonoBehaviour
         {
             state = questState.started;
 
-            questTrackUI.SetTrackUI(quest);
+            questTrackUI.SetTrackCounterUI(quest, count, amount);
 
             OnQuestAccepted?.Invoke();
         }
@@ -44,11 +46,18 @@ public class HitADummy : MonoBehaviour
     {
         if (state == questState.started)
         {
-            dummyHit = true;
+            count ++;
 
-            questTrackUI.Track1();
+            questTrackUI.SetTrackCounterUI(quest, count, amount);
 
-            QuestCompleted();
+            if (count == amount)
+            {
+                dummyHit = true;
+
+                questTrackUI.Track1();
+
+                QuestCompleted();
+            }
         }
     }
 
