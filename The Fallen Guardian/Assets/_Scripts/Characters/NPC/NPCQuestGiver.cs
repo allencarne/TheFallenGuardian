@@ -9,8 +9,6 @@ public class NPCQuestGiver : MonoBehaviour
     public Quest[] Quests;
 
     [Header("Components")]
-    //[SerializeField] GameObject npcExclamation;
-    //[SerializeField] Animator exclamationAnimator;
     [SerializeField] TextMeshProUGUI exclamationText;
 
     [SerializeField] TextMeshProUGUI interactText;
