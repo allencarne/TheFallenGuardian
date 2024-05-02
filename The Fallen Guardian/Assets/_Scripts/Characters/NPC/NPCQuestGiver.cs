@@ -9,8 +9,10 @@ public class NPCQuestGiver : MonoBehaviour
     public Quest[] Quests;
 
     [Header("Components")]
-    [SerializeField] GameObject npcExclamation;
-    [SerializeField] Animator exclamationAnimator;
+    //[SerializeField] GameObject npcExclamation;
+    //[SerializeField] Animator exclamationAnimator;
+    [SerializeField] TextMeshProUGUI exclamationText;
+
     [SerializeField] TextMeshProUGUI interactText;
     [SerializeField] NPCQuestUI npcQuestUI;
     public Transform RewardPosition;
@@ -108,7 +110,8 @@ public class NPCQuestGiver : MonoBehaviour
         OnQuestAccepted?.Invoke();
         IsQuestAccepted = true;
         npcQuestUI.QuestUI.SetActive(false);
-        exclamationAnimator.Play("NPC InProgress");
+        exclamationText.color = Color.gray;
+        exclamationText.text = "?";
     }
 
     public void DeclineQuest()
@@ -123,7 +126,8 @@ public class NPCQuestGiver : MonoBehaviour
         {
             IsQuestCompleted = true;
 
-            exclamationAnimator.Play("NPC Question");
+            exclamationText.color = Color.yellow;
+            exclamationText.text = "?";
         }
     }
 
@@ -131,11 +135,12 @@ public class NPCQuestGiver : MonoBehaviour
     {
         if (QuestIndex >= Quests.Length)
         {
-            npcExclamation.SetActive(false);
+            exclamationText.text = "";
         }
         else
         {
-            npcExclamation.SetActive(true);
+            exclamationText.color = Color.yellow;
+            exclamationText.text = "!";
         }
     }
 
@@ -152,7 +157,8 @@ public class NPCQuestGiver : MonoBehaviour
         IsQuestAccepted = false;
         IsQuestCompleted = false;
         QuestIndex++;
-        exclamationAnimator.Play("NPC Exclamation");
+        exclamationText.color = Color.yellow;
+        exclamationText.text = "!";
         CheckQuestAvailability();
         OnQuestCompleted?.Invoke();
     }
