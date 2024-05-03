@@ -21,7 +21,7 @@ MonoBehaviour:
   QuestObjective4: 
   QuestObjective5: 
   QuestReward1: + 1
-  QuestReward1Prefab: {fileID: 0}
+  QuestReward1Prefab: {fileID: 1362635029312417765, guid: d6dd294bca4c8794b8a61fe2b28a121a, type: 3}
   QuestReward1Icon: {fileID: 21300000, guid: bfd7358b12cab704a905090323a87cb5, type: 3}
   QuestReward2: + 3
   QuestReward2Prefab: {fileID: 0}

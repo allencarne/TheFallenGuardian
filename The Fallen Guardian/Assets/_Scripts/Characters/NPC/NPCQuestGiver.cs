@@ -112,6 +112,12 @@ public class NPCQuestGiver : MonoBehaviour
         exclamationText.text = "?";
     }
 
+    public void AcceptTransferQuest()
+    {
+        Debug.Log("Accept Transfer Quest");
+        IsQuestAccepted = true;
+    }
+
     public void DeclineQuest()
     {
         IsQuestAccepted = false;
