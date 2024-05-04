@@ -2512,7 +2512,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6191640273052542536}
         m_TargetAssemblyTypeName: NPCQuestGiver, Assembly-CSharp
         m_MethodName: CompleteButton
         m_Mode: 1
@@ -5071,7 +5071,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6191640273052542536}
         m_TargetAssemblyTypeName: NPCQuestGiver, Assembly-CSharp
         m_MethodName: CancelButton
         m_Mode: 1
@@ -5504,6 +5504,7 @@ MonoBehaviour:
   interactText: {fileID: 3320664497231019644}
   npcQuestUI: {fileID: 3129705059010087181}
   RewardPosition: {fileID: 8160778272909523342}
+  isQuestAvaliable: 0
   IsQuestAccepted: 0
   IsQuestCompleted: 0
   QuestIndex: 0

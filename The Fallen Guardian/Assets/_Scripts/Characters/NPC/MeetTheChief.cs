@@ -8,6 +8,7 @@ public class MeetTheChief : MonoBehaviour
     [SerializeField] int questNumber;
 
     [Header("Components")]
+    [SerializeField] NPCQuestUI npcQuestUI;
     [SerializeField] QuestTrackUI questTrackUI;
     [SerializeField] Quest quest;
     [SerializeField] NPCQuestGiver npc;
@@ -36,9 +37,15 @@ public class MeetTheChief : MonoBehaviour
             questTrackUI.SetTrackUI(quest);
 
             OnQuestAccepted?.Invoke();
-
-            Debug.Log("Hi");
         }
+    }
+
+    public void Accepted()
+    {
+        npc.isQuestAvaliable = true;
+        npc.IsQuestAccepted = true;
+
+        npcQuestUI.SetupUI(quest);
     }
 
     public void MeetCheif()
@@ -56,5 +63,10 @@ public class MeetTheChief : MonoBehaviour
         state = questState.completed;
 
         OnQuestCompleted.Invoke();
+    }
+
+    public void Test()
+    {
+        Debug.Log("Test");
     }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7254e9835c65dc24da7ca318174ac021, type: 3}
   m_Name: Meet the Cheif
   m_EditorClassIdentifier: 
+  questLevel: 0
   NPCName: Jeff
   QuestName: Meet the Cheif
   QuestDialogue: "Hey now that you are ready, go meet the Cheif. \nHe's located at
@@ -30,6 +31,6 @@ MonoBehaviour:
   QuestReward3: 
   QuestReward3Prefab: {fileID: 0}
   QuestReward3Icon: {fileID: 0}
-  QuestRewardDialogue: 
+  QuestRewardDialogue: Hello
   EXPReward: 3
   GoldReward: 0

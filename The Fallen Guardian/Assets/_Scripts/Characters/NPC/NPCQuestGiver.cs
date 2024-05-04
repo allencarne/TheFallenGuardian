@@ -177,10 +177,16 @@ public class NPCQuestGiver : MonoBehaviour
         IsQuestAccepted = false;
         IsQuestCompleted = false;
         QuestIndex++;
-        exclamationText.color = Color.yellow;
-        exclamationText.text = "!";
         CheckQuestAvailability();
         OnQuestCompleted?.Invoke();
+    }
+
+    public void CompleteHandoff()
+    {
+        IsQuestAccepted = false;
+        IsQuestCompleted = false;
+        QuestIndex++;
+        CheckQuestAvailability();
     }
 
     public void CancelButton()
