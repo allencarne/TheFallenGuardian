@@ -17,6 +17,7 @@ public class NPCQuestGiver : MonoBehaviour
     LevelSystem levelSystem;
 
     [Header("Variables")]
+    public bool isQuestAvaliable = false;
     public bool IsQuestAccepted = false;
     public bool IsQuestCompleted = false;
     public int QuestIndex = 0;
@@ -32,6 +33,11 @@ public class NPCQuestGiver : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!isQuestAvaliable)
+        {
+            return;
+        }
+
         if (collision.CompareTag("Player"))
         {
             // Update Interact Text
@@ -45,6 +51,11 @@ public class NPCQuestGiver : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (!isQuestAvaliable)
+        {
+            return;
+        }
+
         // If Quest is Not Accepted
         if (collision.CompareTag("Player") && !IsQuestAccepted)
         {
@@ -88,6 +99,11 @@ public class NPCQuestGiver : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (!isQuestAvaliable)
+        {
+            return;
+        }
+
         if (collision.CompareTag("Player"))
         {
             // Reset Interact Text
@@ -112,12 +128,6 @@ public class NPCQuestGiver : MonoBehaviour
         exclamationText.text = "?";
     }
 
-    public void AcceptTransferQuest()
-    {
-        Debug.Log("Accept Transfer Quest");
-        IsQuestAccepted = true;
-    }
-
     public void DeclineQuest()
     {
         IsQuestAccepted = false;
@@ -137,6 +147,12 @@ public class NPCQuestGiver : MonoBehaviour
 
     private void CheckQuestAvailability()
     {
+        if (!isQuestAvaliable)
+        {
+            exclamationText.text = "";
+            return;
+        }
+
         if (QuestIndex >= Quests.Length)
         {
             exclamationText.text = "";

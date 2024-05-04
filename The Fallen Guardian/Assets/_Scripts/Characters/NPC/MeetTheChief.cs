@@ -36,6 +36,8 @@ public class MeetTheChief : MonoBehaviour
             questTrackUI.SetTrackUI(quest);
 
             OnQuestAccepted?.Invoke();
+
+            Debug.Log("Hi");
         }
     }
 
