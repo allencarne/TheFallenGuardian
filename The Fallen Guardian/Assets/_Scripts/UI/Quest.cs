@@ -5,9 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Quest", menuName = "ScriptableObjects/Quests")]
 public class Quest : ScriptableObject
 {
-    public int questLevel;
-    public string NPCName;
-
     public string QuestName;
     [Multiline]
     public string QuestDialogue;

@@ -10,7 +10,6 @@ public class NPCQuestUI : MonoBehaviour
     public GameObject QuestUI;
 
     [Header("Quest")]
-    public TextMeshProUGUI NpcName;
     public TextMeshProUGUI QuestName;
     public TextMeshProUGUI QuestDialogue;
 
@@ -37,7 +36,6 @@ public class NPCQuestUI : MonoBehaviour
     public GameObject QuestRewardUI;
 
     [Header("Return Quest")]
-    public TextMeshProUGUI NpcRewardName;
     public TextMeshProUGUI ReturnQuestName;
     public TextMeshProUGUI ReturnQuestDialogue;
 
@@ -56,7 +54,6 @@ public class NPCQuestUI : MonoBehaviour
     public void SetupUI(Quest quest)
     {
         // Quest
-        NpcName.text = quest.NPCName;
         QuestName.text = quest.QuestName;
         QuestDialogue.text = quest.QuestDialogue;
         // Objectives
@@ -76,7 +73,6 @@ public class NPCQuestUI : MonoBehaviour
         QuestReward3Icon.sprite = quest.QuestReward3Icon;
 
         // Return Quest
-        NpcRewardName.text = quest.NPCName;
         ReturnQuestName.text = quest.QuestName;
         ReturnQuestDialogue.text = quest.QuestRewardDialogue;
         // Quest Reward 1
