@@ -29,7 +29,7 @@ public class Cheats : MonoBehaviour
 
     public void OnGainEXPPressed()
     {
-        player.GetComponent<LevelSystem>().GainExperienceFlatRate(1);
+        player.GetComponent<LevelSystem>().GainExperienceFlatRate(10);
     }
 
     public void OnHealCheatPressed()

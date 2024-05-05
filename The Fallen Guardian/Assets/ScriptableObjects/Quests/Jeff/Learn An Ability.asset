@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7254e9835c65dc24da7ca318174ac021, type: 3}
   m_Name: Learn An Ability
   m_EditorClassIdentifier: 
-  NPCName: Jeff
   QuestName: Learn An Ability
-  QuestDialogue: Now that you have clothes and a weapon, You need to learn an ability.
+  QuestDialogue: 'Equip the Stick, it''s a weapon!
+
+    Then we can have you learn
+    your first ability.'
   QuestObjective1: Equip a Green Wooden Stick
   QuestObjective2: Open the AbilityUI
-  QuestObjective3: Learn an Ability
+  QuestObjective3: Learn Frail Slash
   QuestObjective4: 
   QuestObjective5: 
   QuestReward1: + 3
@@ -29,6 +31,6 @@ MonoBehaviour:
   QuestReward3: 
   QuestReward3Prefab: {fileID: 0}
   QuestReward3Icon: {fileID: 0}
-  QuestRewardDialogue: Great Job!
+  QuestRewardDialogue: Great Job! You're a natural.
   EXPReward: 3
   GoldReward: 0

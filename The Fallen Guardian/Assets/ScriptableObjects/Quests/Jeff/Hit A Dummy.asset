@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7254e9835c65dc24da7ca318174ac021, type: 3}
   m_Name: Hit A Dummy
   m_EditorClassIdentifier: 
-  NPCName: Jeff
   QuestName: Hit A Dummy
-  QuestDialogue: Go over there and hit the training dummy
+  QuestDialogue: 'Lets see how well you fight. Just South of me there are a few training
+    dummies.
+
+    Try out the new ability '
   QuestObjective1: Training Dummy Hit
   QuestObjective2: 
   QuestObjective3: 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: Beach Sand And Water Rule TIle
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 2142912518, guid: 616f593e499bac544b63f1cecdeeb0a5, type: 3}
+  m_DefaultSprite: {fileID: -1723894547, guid: 616f593e499bac544b63f1cecdeeb0a5, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules:
