@@ -430,7 +430,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.55}
+  m_AnchoredPosition: {x: 0, y: -0.3251999}
   m_SizeDelta: {x: 2.5557, y: 0.8496}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6390841011953306359
@@ -5193,7 +5193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QuestUI: {fileID: 7023976065665412590}
-  NpcName: {fileID: 0}
   QuestName: {fileID: 8786478619418765081}
   QuestDialogue: {fileID: 1094621928933879373}
   QuestObjective1: {fileID: 3509065885538570678}
@@ -5208,7 +5207,6 @@ MonoBehaviour:
   QuestReward3: {fileID: 7963318575458701822}
   QuestReward3Icon: {fileID: 6701084634633520305}
   QuestRewardUI: {fileID: 1537860000857149279}
-  NpcRewardName: {fileID: 0}
   ReturnQuestName: {fileID: 1869590875266610719}
   ReturnQuestDialogue: {fileID: 1134038895304467704}
   ReturnReward1: {fileID: 886164873561651096}

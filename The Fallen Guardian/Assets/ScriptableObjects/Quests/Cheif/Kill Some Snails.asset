@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7254e9835c65dc24da7ca318174ac021, type: 3}
-  m_Name: New Quest
+  m_Name: Kill Some Snails
   m_EditorClassIdentifier: 
-  QuestName: 
-  QuestDialogue: 
-  QuestObjective1: 
+  QuestName: Kill Some Snails
+  QuestDialogue: Welcome to our home, We need help killing the snails, Will you help
+    us out?
+  QuestObjective1: Kill Snails
   QuestObjective2: 
   QuestObjective3: 
   QuestObjective4: 
   QuestObjective5: 
-  QuestReward1: 
-  QuestReward1Prefab: {fileID: 0}
-  QuestReward1Icon: {fileID: 0}
-  QuestReward2: 
+  QuestReward1: Tattered Headband
+  QuestReward1Prefab: {fileID: 7086044739819504598, guid: 445d1a32b95db3a48b53ad7d3fca7c4e, type: 3}
+  QuestReward1Icon: {fileID: 21300000, guid: 5e7f6dbb78b4d8445a6402e257797069, type: 3}
+  QuestReward2: + 3
   QuestReward2Prefab: {fileID: 0}
-  QuestReward2Icon: {fileID: 0}
+  QuestReward2Icon: {fileID: 21300000, guid: 4f4b8311ff7e5304cb2e119a627c39d9, type: 3}
   QuestReward3: 
   QuestReward3Prefab: {fileID: 0}
   QuestReward3Icon: {fileID: 0}
   QuestRewardDialogue: 
-  EXPReward: 0
+  EXPReward: 3
   GoldReward: 0
