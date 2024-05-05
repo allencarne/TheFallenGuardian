@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa90ba55e1f22b4486f98d2fcd309a8, type: 3}
+  m_Name: Leaf Headband
+  m_EditorClassIdentifier: 
+  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
+  prefab: {fileID: 793749065887867764, guid: 9fd247b9baf0e2645a3f4712874cd245, type: 3}
+  name: Leaf Headband
+  icon: {fileID: 21300000, guid: d029df8203e0de247bd200179e9be37e, type: 3}
+  quantity: 0
+  isStackable: 0
+  equipmentType: 0
+  healthModifier: 2
+  damageModifier: 0

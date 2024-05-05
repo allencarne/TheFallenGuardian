@@ -288,7 +288,7 @@ MonoBehaviour:
   wanderRadius: 5
   attackRadius: 1
   mobilityRadius: 1.5
-  specialRadius: 5
+  specialRadius: 7
   deAggroRadius: 12
   EnemySpawner: {fileID: 0}
   patienceBar: {fileID: 3853848659867538028}

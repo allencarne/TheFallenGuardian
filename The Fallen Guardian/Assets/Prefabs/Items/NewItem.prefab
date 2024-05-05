@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2189859003779995965}
   - component: {fileID: 9095069154933837326}
   m_Layer: 3
-  m_Name: Enemy UI
+  m_Name: Item UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 3157866212979543904}
   - component: {fileID: 6546135428278497524}
   m_Layer: 3
-  m_Name: Text (TMP)
+  m_Name: Text - Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

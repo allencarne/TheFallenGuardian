@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -344,7 +342,7 @@ public class Enemy : MonoBehaviour, IDamageable
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, mobilityRadius);
 
-        Gizmos.color = Color.blue;
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, specialRadius);
 
         Gizmos.color = Color.yellow;
