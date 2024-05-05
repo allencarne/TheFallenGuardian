@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Kill Some Snails
   m_EditorClassIdentifier: 
   QuestName: Kill Some Snails
-  QuestDialogue: Welcome to our home, We need help killing the snails, Will you help
-    us out?
+  QuestDialogue: 'We need help killing the snails, Will you help us out?
+
+    They
+    are Invading our land and have gotten really close recently.
+
+    Just keep heading
+    right, you will see them'
   QuestObjective1: Kill Snails
   QuestObjective2: 
   QuestObjective3: 
@@ -29,6 +34,6 @@ MonoBehaviour:
   QuestReward3: 
   QuestReward3Prefab: {fileID: 0}
   QuestReward3Icon: {fileID: 0}
-  QuestRewardDialogue: 
+  QuestRewardDialogue: You killed them? No Cap? Big ups my guy. What a beast.
   EXPReward: 3
   GoldReward: 0

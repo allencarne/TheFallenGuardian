@@ -4,15 +4,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Image image;
     public Item item;
     [HideInInspector] public Transform parentAfterDrag;
 
     public Image dropArea;
-
-    GameObject tooltipReference;
 
     public void Start()
     {
@@ -64,37 +62,5 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
 
         dropArea.color = new Color(dropArea.color.r, dropArea.color.g, dropArea.color.b, .0f);
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (item != null)
-        {
-            if (item.ToolTip != null)
-            {
-                if (tooltipReference == null)
-                {
-                    Vector3 offset = transform.position + new Vector3(0, 2, 0);
-
-                    tooltipReference = Instantiate(item.ToolTip, offset, Quaternion.identity, transform);
-                    tooltipReference.SetActive(true);
-                }
-            }
-        }
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (item != null)
-        {
-            if (item.ToolTip != null)
-            {
-                if (tooltipReference != null)
-                {
-                    Destroy(tooltipReference);
-                    tooltipReference = null;
-                }
-            }
-        }
     }
 }

@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: Hit A Dummy
   m_EditorClassIdentifier: 
   QuestName: Hit A Dummy
-  QuestDialogue: 'Lets see how well you fight. Just South of me there are a few training
-    dummies.
-
-    Try out the new ability '
+  QuestDialogue: "Lets see how well you fight. \nJust South of me there are a few
+    training dummies.\nTry out your new ability on them."
   QuestObjective1: Training Dummy Hit
   QuestObjective2: 
   QuestObjective3: 
@@ -31,6 +29,6 @@ MonoBehaviour:
   QuestReward3: 
   QuestReward3Prefab: {fileID: 0}
   QuestReward3Icon: {fileID: 0}
-  QuestRewardDialogue: Now you know how to fight!
+  QuestRewardDialogue: Well Done! That was some solid Attacking.
   EXPReward: 3
   GoldReward: 1

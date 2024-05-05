@@ -15,8 +15,8 @@ MonoBehaviour:
   QuestName: Learn An Ability
   QuestDialogue: 'Equip the Stick, it''s a weapon!
 
-    Then we can have you learn
-    your first ability.'
+    Also, Learn your first Ability,
+    You''re ganna need it!'
   QuestObjective1: Equip a Green Wooden Stick
   QuestObjective2: Open the AbilityUI
   QuestObjective3: Learn Frail Slash
