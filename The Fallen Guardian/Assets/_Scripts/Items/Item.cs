@@ -11,6 +11,7 @@ public class Item : ScriptableObject
     public Sprite icon;
     public int quantity;
     public bool isStackable;
+    public int cost;
 
     public virtual void Use()
     {
