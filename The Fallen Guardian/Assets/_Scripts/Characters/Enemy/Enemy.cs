@@ -71,6 +71,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     // Events
     public UnityEvent OnHealthChanged;
+    public UnityEvent OnDeath;
 
     protected enum EnemyState 
     { 
@@ -525,6 +526,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
         if (Health <= 0)
         {
+            OnDeath?.Invoke();
+
             enemyState = EnemyState.Death;
         }
     }

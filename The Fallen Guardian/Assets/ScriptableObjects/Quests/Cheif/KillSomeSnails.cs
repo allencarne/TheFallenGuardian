@@ -42,7 +42,7 @@ public class KillSomeSnails : MonoBehaviour
         }
     }
 
-    public void SnailHit()
+    public void SnailKilled()
     {
         if (state == questState.started)
         {
