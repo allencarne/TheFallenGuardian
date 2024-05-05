@@ -47,6 +47,9 @@ public class Player : MonoBehaviour, IDamageable
 
         // Set Speed
         Stats.CurrentSpeed = Stats.BaseSpeed;
+
+        // Set Damage
+        Stats.CurrentDamage = Stats.BaseDamage;
     }
 
     private void Update()

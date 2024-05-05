@@ -103,6 +103,7 @@ public class LevelSystem : MonoBehaviour
 
         // Increase Player Damage
         stats.BaseDamage++;
+        stats.CurrentDamage++;
 
         // Update Bar
         frontXpBar.fillAmount = 0f;

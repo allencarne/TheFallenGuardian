@@ -37,8 +37,12 @@ public class EquipmentManager : MonoBehaviour
             inventory.Add(oldItem);
         }
 
+        // Health
         playerStats.MaxHealth += newItem.healthModifier;
+        playerStats.Health += newItem.healthModifier;
+        // Damage
         playerStats.BaseDamage += newItem.damageModifier;
+        playerStats.CurrentDamage += newItem.damageModifier;
 
         if (onEquipmentChangedCallback != null)
         {
