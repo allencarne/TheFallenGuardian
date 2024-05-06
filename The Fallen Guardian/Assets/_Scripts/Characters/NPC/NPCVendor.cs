@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class NPCVendor : MonoBehaviour
 {
@@ -10,11 +11,14 @@ public class NPCVendor : MonoBehaviour
 
     [SerializeField] GameObject VendorUI;
     [SerializeField] TextMeshProUGUI interactText;
+    [SerializeField] Transform itemPosition;
 
     [SerializeField] Item[] items;
     [SerializeField] Image[] itemIcons;
     [SerializeField] TextMeshProUGUI[] itemNames;
     [SerializeField] TextMeshProUGUI[] itemPrices;
+
+    public UnityEvent OnItemPurchased;
 
     private void Start()
     {
@@ -96,8 +100,10 @@ public class NPCVendor : MonoBehaviour
 
             if (playerStats.Gold >= selectedItem.cost)
             {
+                Instantiate(selectedItem.prefab, itemPosition);
+                playerStats.Gold -= selectedItem.cost;
 
-                Debug.Log("Player Buys Item");
+                OnItemPurchased?.Invoke();
             }
             else
             {

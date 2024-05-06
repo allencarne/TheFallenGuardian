@@ -48,7 +48,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public void CoinIncreased()
+    public void UpdateCoinTextUI()
     {
         coinText.text = playerStats.Gold.ToString();
     }
