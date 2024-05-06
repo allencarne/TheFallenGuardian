@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   QuestName: Learn A Second Ability
   QuestDialogue: "You are getting stronger. \nIf you haven't already, Learn your
-    second ability.\nThis will increase your strenght even further!"
+    second ability.\nThis will increase your strength even further!"
   QuestObjective1: Open the AbilityUI
   QuestObjective2: Learn a second ability
   QuestObjective3: 
