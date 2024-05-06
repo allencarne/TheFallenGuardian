@@ -5,7 +5,8 @@ using TMPro;
 
 public class ItemPickup : MonoBehaviour
 {
-    [SerializeField] GameObjectRuntimeSet playerInventoryReference;
+    [SerializeField] PlayerStats playerStats;
+    [SerializeField] GameObjectRuntimeSet InventoryReference;
     Inventory inventory;
 
     [SerializeField] Item item;
@@ -15,11 +16,18 @@ public class ItemPickup : MonoBehaviour
     private void Start()
     {
         // Store Reference to Inventory
-        inventory = playerInventoryReference.GetItemIndex(0).GetComponent<Inventory>();
+        inventory = InventoryReference.GetItemIndex(0).GetComponent<Inventory>();
     }
 
     public void PickUp()
     {
+        if (item.isCurrency)
+        {
+            playerStats.Gold += 1;
+            Destroy(gameObject);
+            return;
+        }
+
         // Add Item to Inventory if we have enough space
         bool wasPickedUp = inventory.Add(item);
 

@@ -42,6 +42,8 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        Stats.Gold = 0;
+
         // Set Health
         Stats.Health = Stats.MaxHealth;
 

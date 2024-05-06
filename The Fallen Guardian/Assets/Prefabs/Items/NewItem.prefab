@@ -422,7 +422,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930ae1e8cb47f71438ca8ccefeb47ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
+  playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
+  InventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   item: {fileID: 0}
   pickupText: {fileID: 6546135428278497524}
 --- !u!58 &190140710381136457

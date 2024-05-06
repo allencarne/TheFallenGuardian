@@ -13,6 +13,8 @@ public class Item : ScriptableObject
     public bool isStackable;
     public int cost;
 
+    public bool isCurrency;
+
     public virtual void Use()
     {
         //Debug.Log("using " + name);

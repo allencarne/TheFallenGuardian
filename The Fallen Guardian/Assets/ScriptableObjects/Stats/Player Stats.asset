@@ -23,7 +23,7 @@ MonoBehaviour:
   BaseSpeed: 8
   CurrentSpeed: 8
   BaseDamage: 1
-  CurrentDamage: 0
+  CurrentDamage: 1
   BaseAttackSpeed: 1
   CurrentAttackSpeed: 0
   BaseCoolDown: 1
@@ -33,3 +33,4 @@ MonoBehaviour:
   Agility: 0
   Alacrity: 0
   Protection: 0
+  Gold: 0
