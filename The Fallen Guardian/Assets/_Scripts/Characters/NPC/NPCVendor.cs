@@ -54,10 +54,6 @@ public class NPCVendor : MonoBehaviour
         {
             // Update Interact Text
             interactText.text = "Press <color=red>F</color> To Interact";
-            // Get The Rigid Body of the Player
-            Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-            // Make sure the PlayerRB never sleeps
-            rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
         }
     }
 
@@ -84,10 +80,6 @@ public class NPCVendor : MonoBehaviour
             interactText.text = "";
             // Disable UI
             vendorUI.SetActive(false);
-            // Get Player RB
-            Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-            // Reset Player RB Settings
-            rb.sleepMode = RigidbodySleepMode2D.StartAwake;
         }
     }
 

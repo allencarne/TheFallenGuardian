@@ -42,10 +42,6 @@ public class NPCQuestGiver : MonoBehaviour
         {
             // Update Interact Text
             interactText.text = "Press <color=red>F</color> To Interact";
-            // Get The Rigid Body of the Player
-            Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-            // Make sure the PlayerRB never sleeps
-            rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
         }
     }
 
@@ -112,10 +108,6 @@ public class NPCQuestGiver : MonoBehaviour
             npcQuestUI.QuestUI.SetActive(false);
             // Disabled Quest Reward UI
             npcQuestUI.QuestRewardUI.SetActive(false);
-            // Get Player RB
-            Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-            // Reset Player RB Settings
-            rb.sleepMode = RigidbodySleepMode2D.StartAwake;
         }
     }
 

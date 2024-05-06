@@ -43,12 +43,14 @@ public class LearnASecondAbility : MonoBehaviour
         if (playerReference.items.Count > 0)
         {
             abilities = playerReference.GetItemIndex(0).GetComponent<PlayerAbilities>();
-            abilities.OnAbilityChangedCallback += OnAbilityChanged;
+            abilities.OnOffensiveAbilityChanged += OnAbilityChanged;
         }
     }
 
     void OnAbilityChanged()
     {
+        abilitySelected = true;
+
         AbilitySelected();
     }
 
@@ -61,16 +63,6 @@ public class LearnASecondAbility : MonoBehaviour
             questTrackUI.SetTrackUI(quest);
 
             OnQuestAccepted?.Invoke();
-
-            if (abilitySelected)
-            {
-                abilityUIOpened = true;
-
-                questTrackUI.Track1();
-                questTrackUI.Track2();
-
-                QuestCompleted();
-            }
         }
     }
 
@@ -88,13 +80,12 @@ public class LearnASecondAbility : MonoBehaviour
 
     public void AbilitySelected()
     {
-        // Ability can be selected before quest is started
+        if (state == questState.started)
+        {
+            questTrackUI.Track2();
 
-        abilitySelected = true;
-
-        questTrackUI.Track2();
-
-        QuestCompleted();
+            QuestCompleted();
+        }
     }
 
     public void QuestCompleted()

@@ -195,16 +195,6 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        ItemPickup item = collision.GetComponent<ItemPickup>();
-        if (item != null)
-        {
-            // Set Rigidbody to Never Sleep when entering the item's collider
-            rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
-        }
-    }
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         ItemPickup item = collision.GetComponent<ItemPickup>();
@@ -214,16 +204,6 @@ public class PlayerStateMachine : MonoBehaviour
             {
                 item.PickUp();
             }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        ItemPickup item = collision.GetComponent<ItemPickup>();
-        if (item != null)
-        {
-            // Set Rigidbody back to Start Awake when exiting the item's collider
-            rb.sleepMode = RigidbodySleepMode2D.StartAwake;
         }
     }
 }

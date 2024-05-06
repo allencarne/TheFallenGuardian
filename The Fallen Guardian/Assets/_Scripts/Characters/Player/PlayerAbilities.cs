@@ -55,30 +55,27 @@ public class PlayerAbilities : MonoBehaviour
 
     // Define delegate and event for ability changes
     public delegate void OnAbilityChanged();
-    public OnAbilityChanged OnAbilityChangedCallback;
+    public OnAbilityChanged OnBasicAbilityChanged;
+    public OnAbilityChanged OnOffensiveAbilityChanged;
+    public OnAbilityChanged OnMobilityAbilityChanged;
 
     // Call this method whenever abilities change
-    public void AbilitiesChanged()
-    {
-        // Raise the event to notify listeners
-        OnAbilityChangedCallback?.Invoke();
-    }
 
     public void SetBasicAbility(ScriptableObject ability)
     {
         basicAbilityReference = ability;
-        AbilitiesChanged();
+        OnBasicAbilityChanged?.Invoke();
     }
 
     public void SetOffensiveAbility(ScriptableObject ability)
     {
         offensiveAbilityReference = ability;
-        AbilitiesChanged();
+        OnOffensiveAbilityChanged?.Invoke();
     }
 
     public void SetMobilityAbility(ScriptableObject ability)
     {
         mobilityAbilityReference = ability;
-        AbilitiesChanged();
+        OnMobilityAbilityChanged?.Invoke();
     }
 }

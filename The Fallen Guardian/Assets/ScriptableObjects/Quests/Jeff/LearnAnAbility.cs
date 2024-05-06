@@ -50,7 +50,7 @@ public class LearnAnAbility : MonoBehaviour
             equipmentManager.onEquipmentChangedCallback += OnEquipmentChanged;
 
             abilities = playerReference.GetItemIndex(0).GetComponent<PlayerAbilities>();
-            abilities.OnAbilityChangedCallback += OnAbilityChanged;
+            abilities.OnBasicAbilityChanged += OnAbilityChanged;
         }
     }
 
