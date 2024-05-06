@@ -426,6 +426,21 @@ MonoBehaviour:
   InventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   item: {fileID: 0}
   pickupText: {fileID: 6546135428278497524}
+  OnCoinCollected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 46f26efe976857c4a87058f378a8b1e4, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!58 &190140710381136457
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] Inventory inventory;
     public Transform itemsParent;
     InventorySlot[] iSlots;
+
+    [SerializeField] PlayerStats playerStats;
+    [SerializeField] TextMeshProUGUI coinText;
 
     private void Start()
     {
@@ -42,5 +46,10 @@ public class InventoryUI : MonoBehaviour
                 iSlots[i].ClearSlot();
             }
         }
+    }
+
+    public void CoinIncreased()
+    {
+        coinText.text = playerStats.Gold.ToString();
     }
 }

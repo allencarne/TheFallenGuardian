@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class ItemPickup : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class ItemPickup : MonoBehaviour
     [SerializeField] Item item;
 
     [SerializeField] TextMeshProUGUI pickupText;
+
+    public UnityEvent OnCoinCollected;
 
     private void Start()
     {
@@ -25,6 +28,8 @@ public class ItemPickup : MonoBehaviour
         {
             playerStats.Gold += 1;
             Destroy(gameObject);
+
+            OnCoinCollected?.Invoke();
             return;
         }
 
@@ -36,9 +41,6 @@ public class ItemPickup : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        // Event for sounds and other things
-        //OnCoinCollected?.Invoke();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
