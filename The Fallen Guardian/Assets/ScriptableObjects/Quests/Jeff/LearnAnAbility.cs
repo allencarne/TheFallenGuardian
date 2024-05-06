@@ -77,16 +77,33 @@ public class LearnAnAbility : MonoBehaviour
             questTrackUI.SetTrackUI(quest);
 
             OnQuestAccepted?.Invoke();
+
+            if (stickEquipped)
+            {
+                questTrackUI.Track1();
+            }
+
+            if (abilitySelected)
+            {
+                questTrackUI.Track3();
+            }
         }
     }
 
     public void StickEquipped()
     {
-        stickEquipped = true;
+        if (state == questState.started)
+        {
+            stickEquipped = true;
 
-        questTrackUI.Track1();
+            questTrackUI.Track1();
 
-        QuestCompleted();
+            QuestCompleted();
+        }
+        else
+        {
+            stickEquipped = true;
+        }
     }
 
     public void AbilityUIOpened()
@@ -103,13 +120,18 @@ public class LearnAnAbility : MonoBehaviour
 
     public void AbilitySelected()
     {
-        // Ability can be selected before quest is started
+        if (state == questState.started)
+        {
+            abilitySelected = true;
 
-        abilitySelected = true;
+            questTrackUI.Track3();
 
-        questTrackUI.Track3();
-
-        QuestCompleted();
+            QuestCompleted();
+        }
+        else
+        {
+            abilitySelected = true;
+        }
     }
 
     public void QuestCompleted()

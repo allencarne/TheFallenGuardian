@@ -61,6 +61,11 @@ public class LearnASecondAbility : MonoBehaviour
             questTrackUI.SetTrackUI(quest);
 
             OnQuestAccepted?.Invoke();
+
+            if (abilitySelected)
+            {
+                questTrackUI.Track2();
+            }
         }
     }
 
@@ -78,11 +83,18 @@ public class LearnASecondAbility : MonoBehaviour
 
     public void AbilitySelected()
     {
-        abilitySelected = true;
+        if (state == questState.started)
+        {
+            abilitySelected = true;
 
-        questTrackUI.Track2();
+            questTrackUI.Track2();
 
-        QuestCompleted();
+            QuestCompleted();
+        }
+        else
+        {
+            abilitySelected = true;
+        }
     }
 
     public void QuestCompleted()
