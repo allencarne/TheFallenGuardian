@@ -111,4 +111,9 @@ public class NPCVendor : MonoBehaviour
             }
         }
     }
+
+    public void CloseVendorUIButton()
+    {
+        VendorUI.SetActive(false);
+    }
 }
