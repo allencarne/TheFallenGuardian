@@ -9,7 +9,7 @@ public class NPCVendor : MonoBehaviour
 {
     [SerializeField] PlayerStats playerStats;
 
-    [SerializeField] GameObject VendorUI;
+    [SerializeField] GameObject vendorUI;
     [SerializeField] TextMeshProUGUI interactText;
     [SerializeField] Transform itemPosition;
 
@@ -17,6 +17,10 @@ public class NPCVendor : MonoBehaviour
     [SerializeField] Image[] itemIcons;
     [SerializeField] TextMeshProUGUI[] itemNames;
     [SerializeField] TextMeshProUGUI[] itemPrices;
+
+    [SerializeField] GameObject confirmVendorUI;
+    [SerializeField] TextMeshProUGUI confirmVendorText;
+    Item selectedItem;
 
     public UnityEvent OnItemPurchased;
 
@@ -67,7 +71,7 @@ public class NPCVendor : MonoBehaviour
                 // Reset Interact Text
                 interactText.text = "";
 
-                VendorUI.SetActive(true);
+                vendorUI.SetActive(true);
             }
         }
     }
@@ -79,7 +83,7 @@ public class NPCVendor : MonoBehaviour
             // Reset Interact Text
             interactText.text = "";
             // Disable UI
-            VendorUI.SetActive(false);
+            vendorUI.SetActive(false);
             // Get Player RB
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             // Reset Player RB Settings
@@ -96,14 +100,12 @@ public class NPCVendor : MonoBehaviour
         if (imageIndex >= 0 && imageIndex < items.Length)
         {
             // Retrieve the corresponding item using the index
-            Item selectedItem = items[imageIndex];
+            selectedItem = items[imageIndex];
 
             if (playerStats.Gold >= selectedItem.cost)
             {
-                Instantiate(selectedItem.prefab, itemPosition);
-                playerStats.Gold -= selectedItem.cost;
-
-                OnItemPurchased?.Invoke();
+                confirmVendorText.text = "Are You Sure You Would Like To Purchase " + selectedItem.name + " For " + selectedItem.cost + " Gold ?";
+                confirmVendorUI.SetActive(true);
             }
             else
             {
@@ -112,8 +114,26 @@ public class NPCVendor : MonoBehaviour
         }
     }
 
+    public void YesButton()
+    {
+        if (selectedItem != null)
+        {
+            Instantiate(selectedItem.prefab, itemPosition);
+            playerStats.Gold -= selectedItem.cost;
+
+            OnItemPurchased?.Invoke();
+
+            confirmVendorUI.SetActive(false);
+        }
+    }
+
+    public void NoButton()
+    {
+        confirmVendorUI.SetActive(false);
+    }
+
     public void CloseVendorUIButton()
     {
-        VendorUI.SetActive(false);
+        vendorUI.SetActive(false);
     }
 }
