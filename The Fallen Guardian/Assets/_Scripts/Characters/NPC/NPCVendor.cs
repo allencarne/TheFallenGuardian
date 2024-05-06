@@ -6,6 +6,8 @@ using TMPro;
 
 public class NPCVendor : MonoBehaviour
 {
+    [SerializeField] PlayerStats playerStats;
+
     [SerializeField] GameObject VendorUI;
     [SerializeField] TextMeshProUGUI interactText;
 
@@ -78,6 +80,29 @@ public class NPCVendor : MonoBehaviour
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             // Reset Player RB Settings
             rb.sleepMode = RigidbodySleepMode2D.StartAwake;
+        }
+    }
+
+    public void ButtonPressed(Image clickedImage)
+    {
+        // Determine the index of the clicked image within the array
+        int imageIndex = System.Array.IndexOf(itemIcons, clickedImage);
+
+        // Check if the clicked image is valid and within bounds
+        if (imageIndex >= 0 && imageIndex < items.Length)
+        {
+            // Retrieve the corresponding item using the index
+            Item selectedItem = items[imageIndex];
+
+            if (playerStats.Gold >= selectedItem.cost)
+            {
+
+                Debug.Log("Player Buys Item");
+            }
+            else
+            {
+                Debug.Log("Player does not buy Item");
+            }
         }
     }
 }

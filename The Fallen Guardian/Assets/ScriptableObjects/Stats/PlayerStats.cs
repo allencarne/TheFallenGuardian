@@ -40,6 +40,9 @@ public class PlayerStats : ScriptableObject
     public float Agility; // Increase Attack Speed
     public float Alacrity; // Increase Cool Down Reduction
     public float Protection; // Increase Max Health / Reduce Incoming Damage
+
+    [Header("Currency")]
+    public int Gold;
 }
 
 public enum PlayerClass 
