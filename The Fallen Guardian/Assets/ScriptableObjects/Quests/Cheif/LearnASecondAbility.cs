@@ -49,8 +49,6 @@ public class LearnASecondAbility : MonoBehaviour
 
     void OnAbilityChanged()
     {
-        abilitySelected = true;
-
         AbilitySelected();
     }
 
@@ -80,12 +78,11 @@ public class LearnASecondAbility : MonoBehaviour
 
     public void AbilitySelected()
     {
-        if (state == questState.started)
-        {
-            questTrackUI.Track2();
+        abilitySelected = true;
 
-            QuestCompleted();
-        }
+        questTrackUI.Track2();
+
+        QuestCompleted();
     }
 
     public void QuestCompleted()
