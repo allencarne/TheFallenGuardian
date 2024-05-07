@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7254e9835c65dc24da7ca318174ac021, type: 3}
   m_Name: Where Are Your Clothes
   m_EditorClassIdentifier: 
-  NPCName: Jeff
   QuestName: Where Are Your Clothes?
   QuestDialogue: 'Umm.. why are you naked?
 
@@ -25,6 +24,7 @@ MonoBehaviour:
   QuestObjective3: '- Open Inventory'
   QuestObjective4: '- Equip Tattered Shirt'
   QuestObjective5: '- Equip Tattered Shorts'
+  amountOfObjectives: 5
   QuestReward1: Green Wooden Stick
   QuestReward1Prefab: {fileID: 8154717546460386717, guid: 523d34a0319965540932f78f9b16a6a8, type: 3}
   QuestReward1Icon: {fileID: 21300000, guid: bfd044f154e08194ebb140c89500c445, type: 3}

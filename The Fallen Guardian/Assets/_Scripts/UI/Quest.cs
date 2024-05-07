@@ -15,6 +15,7 @@ public class Quest : ScriptableObject
     public string QuestObjective3;
     public string QuestObjective4;
     public string QuestObjective5;
+    public int amountOfObjectives;
 
     [Header("Quest Reward 1")]
     public string QuestReward1;

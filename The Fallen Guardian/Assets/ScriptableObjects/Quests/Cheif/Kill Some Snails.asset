@@ -25,6 +25,7 @@ MonoBehaviour:
   QuestObjective3: 
   QuestObjective4: 
   QuestObjective5: 
+  amountOfObjectives: 1
   QuestReward1: Tattered Headband
   QuestReward1Prefab: {fileID: 7086044739819504598, guid: 445d1a32b95db3a48b53ad7d3fca7c4e, type: 3}
   QuestReward1Icon: {fileID: 21300000, guid: 5e7f6dbb78b4d8445a6402e257797069, type: 3}
