@@ -1662,7 +1662,7 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8932f4b0-3421-4b1a-82cb-c6c2acf9b7a1
     m_ActionName: Player/Interact[/Keyboard/f]
-  m_NeverAutoSwitchControlSchemes: 1
+  m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1

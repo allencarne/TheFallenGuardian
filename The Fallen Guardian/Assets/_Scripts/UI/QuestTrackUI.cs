@@ -38,6 +38,10 @@ public class QuestTrackUI : MonoBehaviour
         QuestTrack5Text.text = "";
         QuestTrack5Text.color = Color.white;
         QuestTrack5Text.fontStyle &= ~FontStyles.Strikethrough;
+
+        // Set Rect
+        panelRectTransform.anchoredPosition = new Vector2(panelRectTransform.anchoredPosition.x, 0);
+        panelRectTransform.sizeDelta = new Vector2(panelRectTransform.sizeDelta.x, 0);
     }
 
     public void SetTrackUI(Quest quest)
@@ -55,8 +59,6 @@ public class QuestTrackUI : MonoBehaviour
         if (string.IsNullOrEmpty(quest.QuestObjective3)) emptyObjectivesCount++;
         if (string.IsNullOrEmpty(quest.QuestObjective4)) emptyObjectivesCount++;
         if (string.IsNullOrEmpty(quest.QuestObjective5)) emptyObjectivesCount++;
-
-        Debug.Log(emptyObjectivesCount);
 
         switch (emptyObjectivesCount)
         {
