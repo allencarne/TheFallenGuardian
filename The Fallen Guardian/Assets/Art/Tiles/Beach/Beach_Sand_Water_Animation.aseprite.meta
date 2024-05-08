@@ -123,14 +123,14 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Beach_Sand_Water_Animation_Frame_0
     originalName: 
-    pivot: {x: 0.5675675, y: 0}
+    pivot: {x: 0.43661973, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
-      width: 74
+      y: 116
+      width: 71
       height: 48
     spriteID: a1e41776a675e5948a248c4d75341309
     spriteBone: []
@@ -140,17 +140,17 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 4, y: 116}
   - name: Beach_Sand_Water_Animation_Frame_1
     originalName: 
-    pivot: {x: 0.56164384, y: 0}
+    pivot: {x: 0.44444448, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
+      x: 167
       y: 60
-      width: 73
+      width: 72
       height: 48
     spriteID: 9c1fca05476d5d7499ef55c4d057079b
     spriteBone: []
@@ -160,17 +160,17 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 60}
+    uvTransform: {x: 167, y: 60}
   - name: Beach_Sand_Water_Animation_Frame_2
     originalName: 
-    pivot: {x: 0.5555556, y: 0}
+    pivot: {x: 0.4520548, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 116
-      width: 72
+      x: 86
+      y: 60
+      width: 73
       height: 48
     spriteID: 8e7cc7b62a8075b44886da549d4f53af
     spriteBone: []
@@ -180,17 +180,17 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 116}
+    uvTransform: {x: 86, y: 60}
   - name: Beach_Sand_Water_Animation_Frame_3
     originalName: 
-    pivot: {x: 0.5492958, y: 0}
+    pivot: {x: 0.45945945, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 172
-      width: 71
+      y: 60
+      width: 74
       height: 48
     spriteID: 9cb4673d7bf46d346ac9065b8ddbceca
     spriteBone: []
@@ -200,7 +200,67 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 172}
+    uvTransform: {x: 4, y: 60}
+  - name: Beach_Sand_Water_Animation_Frame_4
+    originalName: 
+    pivot: {x: 0.4666667, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 173
+      y: 4
+      width: 75
+      height: 48
+    spriteID: 8375aef33fecb9640be2085e6833a629
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 173, y: 4}
+  - name: Beach_Sand_Water_Animation_Frame_5
+    originalName: 
+    pivot: {x: 0.47368422, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 89
+      y: 4
+      width: 76
+      height: 48
+    spriteID: dbcb2cee057c576408344884352ff962
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 89, y: 4}
+  - name: Beach_Sand_Water_Animation_Frame_6
+    originalName: 
+    pivot: {x: 0.4805195, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 77
+      height: 48
+    spriteID: 124878ef2d777494f827c2438fec0dad
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -213,39 +273,63 @@ ScriptedImporter:
     - name: Beach_Sand_Water_Animation_Frame_0
       frameIndex: 0
       cellRect:
-        x: 6
+        x: 9
         y: 0
-        width: 74
+        width: 71
         height: 48
       spriteId: a1e41776a675e5948a248c4d75341309
     - name: Beach_Sand_Water_Animation_Frame_1
       frameIndex: 1
       cellRect:
-        x: 7
+        x: 8
         y: 0
-        width: 73
+        width: 72
         height: 48
       spriteId: 9c1fca05476d5d7499ef55c4d057079b
     - name: Beach_Sand_Water_Animation_Frame_2
       frameIndex: 2
       cellRect:
-        x: 8
+        x: 7
         y: 0
-        width: 72
+        width: 73
         height: 48
       spriteId: 8e7cc7b62a8075b44886da549d4f53af
     - name: Beach_Sand_Water_Animation_Frame_3
       frameIndex: 3
       cellRect:
-        x: 9
+        x: 6
         y: 0
-        width: 71
+        width: 74
         height: 48
       spriteId: 9cb4673d7bf46d346ac9065b8ddbceca
+    - name: Beach_Sand_Water_Animation_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 5
+        y: 0
+        width: 75
+        height: 48
+      spriteId: 8375aef33fecb9640be2085e6833a629
+    - name: Beach_Sand_Water_Animation_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 4
+        y: 0
+        width: 76
+        height: 48
+      spriteId: dbcb2cee057c576408344884352ff962
+    - name: Beach_Sand_Water_Animation_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 3
+        y: 0
+        width: 77
+        height: 48
+      spriteId: 124878ef2d777494f827c2438fec0dad
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 96, y: 48}
+  canvasSize: {x: 80, y: 48}

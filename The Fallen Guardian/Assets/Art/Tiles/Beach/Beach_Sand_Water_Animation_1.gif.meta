@@ -231,8 +231,8 @@ TextureImporter:
       name: Beach_Sand_Water_Animation_1_5
       rect:
         serializedVersion: 2
-        x: 80
-        y: 32
+        x: 0
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -252,7 +252,7 @@ TextureImporter:
       name: Beach_Sand_Water_Animation_1_6
       rect:
         serializedVersion: 2
-        x: 0
+        x: 16
         y: 16
         width: 16
         height: 16
@@ -273,7 +273,7 @@ TextureImporter:
       name: Beach_Sand_Water_Animation_1_7
       rect:
         serializedVersion: 2
-        x: 16
+        x: 32
         y: 16
         width: 16
         height: 16
@@ -294,7 +294,7 @@ TextureImporter:
       name: Beach_Sand_Water_Animation_1_8
       rect:
         serializedVersion: 2
-        x: 32
+        x: 48
         y: 16
         width: 16
         height: 16
@@ -315,7 +315,7 @@ TextureImporter:
       name: Beach_Sand_Water_Animation_1_9
       rect:
         serializedVersion: 2
-        x: 48
+        x: 64
         y: 16
         width: 16
         height: 16
@@ -336,8 +336,8 @@ TextureImporter:
       name: Beach_Sand_Water_Animation_1_10
       rect:
         serializedVersion: 2
-        x: 64
-        y: 16
+        x: 0
+        y: 0
         width: 16
         height: 16
       alignment: 0
@@ -357,7 +357,7 @@ TextureImporter:
       name: Beach_Sand_Water_Animation_1_11
       rect:
         serializedVersion: 2
-        x: 0
+        x: 16
         y: 0
         width: 16
         height: 16
@@ -378,7 +378,7 @@ TextureImporter:
       name: Beach_Sand_Water_Animation_1_12
       rect:
         serializedVersion: 2
-        x: 16
+        x: 32
         y: 0
         width: 16
         height: 16
@@ -399,7 +399,7 @@ TextureImporter:
       name: Beach_Sand_Water_Animation_1_13
       rect:
         serializedVersion: 2
-        x: 32
+        x: 48
         y: 0
         width: 16
         height: 16
@@ -420,7 +420,7 @@ TextureImporter:
       name: Beach_Sand_Water_Animation_1_14
       rect:
         serializedVersion: 2
-        x: 48
+        x: 64
         y: 0
         width: 16
         height: 16
@@ -433,27 +433,6 @@ TextureImporter:
       bones: []
       spriteID: f10a7e2deacb3f849b1bf9818ad70a11
       internalID: 141571464
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beach_Sand_Water_Animation_1_15
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 76543c4e070afd64db7c6f3ab4c8cbb5
-      internalID: 503940481
       vertices: []
       indices: 
       edges: []
@@ -476,7 +455,6 @@ TextureImporter:
       Beach_Sand_Water_Animation_1_12: 1967555503
       Beach_Sand_Water_Animation_1_13: -1603104308
       Beach_Sand_Water_Animation_1_14: 141571464
-      Beach_Sand_Water_Animation_1_15: 503940481
       Beach_Sand_Water_Animation_1_2: 526509338
       Beach_Sand_Water_Animation_1_3: 1804558973
       Beach_Sand_Water_Animation_1_4: 858868209
