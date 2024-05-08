@@ -451,7 +451,7 @@
                 {
                     "name": "",
                     "id": "de1d8b4e-e3d1-44dd-a980-eacc4f3199f6",
-                    "path": "<Gamepad>/rightStick/down",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -473,7 +473,7 @@
                 {
                     "name": "",
                     "id": "069c72b7-7bba-44bc-ac6e-b62c1a8366bd",
-                    "path": "<Gamepad>/leftStick/down",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -521,6 +521,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2a0f6a9-7ddf-4bf3-8a6e-bd694acd4be1",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
