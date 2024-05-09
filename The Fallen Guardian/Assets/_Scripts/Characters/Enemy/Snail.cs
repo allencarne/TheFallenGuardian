@@ -108,7 +108,7 @@ public class Snail : Enemy
             float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
 
             // Instantiate the telegraph object at the enemy position with the appropriate rotation
-            Instantiate(shmackTelegraph, transform.position, Quaternion.Euler(0f, 0f, angle));
+            Instantiate(shmackTelegraph, transform.position, Quaternion.Euler(0f, 0f, angle), transform);
 
             // Set animator parameters based on the direction
             enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
@@ -314,7 +314,7 @@ public class Snail : Enemy
             float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
 
             // Instantiate the telegraph object at the enemy position with the appropriate rotation
-            Instantiate(specialTelegraph, transform.position, Quaternion.Euler(0f, 0f, angle));
+            Instantiate(specialTelegraph, transform.position, Quaternion.Euler(0f, 0f, angle), transform);
 
             // Set animator parameters based on the direction
             enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
