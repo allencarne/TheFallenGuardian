@@ -9,6 +9,11 @@ public class Buffs : MonoBehaviour, IHasteable
     [SerializeField] GameObject buffBar;
 
     [Header("Buff")]
+    [SerializeField] GameObject buff_Might;
+    [SerializeField] GameObject buff_Haste;
+    [SerializeField] GameObject buff_Agility;
+    [SerializeField] GameObject buff_Alacrity;
+    [SerializeField] GameObject buff_Protection;
     [SerializeField] GameObject buff_Immovable;
     [SerializeField] GameObject buff_Regeneration;
 
@@ -79,23 +84,23 @@ public class Buffs : MonoBehaviour, IHasteable
         }
         else
         {
-            StartCoroutine(SlowDuration(duration));
+            StartCoroutine(HasteDuration(duration));
         }
     }
 
-    IEnumerator SlowDuration(float duration)
+    IEnumerator HasteDuration(float duration)
     {
         OnHasted?.Invoke();
 
         IsHasted = true;
 
-        //GameObject debuffIcon = Instantiate(debuff_Slow);
-        //debuffIcon.transform.SetParent(debuffBar.transform);
-        //debuffIcon.transform.localScale = new Vector3(1, 1, 1);
+        GameObject debuffIcon = Instantiate(buff_Haste);
+        debuffIcon.transform.SetParent(buffBar.transform);
+        debuffIcon.transform.localScale = new Vector3(1, 1, 1);
 
         yield return new WaitForSeconds(duration);
 
-        //Destroy(debuffIcon);
+        Destroy(debuffIcon);
 
         OnHasteEnd?.Invoke();
 

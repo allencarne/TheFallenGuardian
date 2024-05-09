@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 91f71c20fa51f974e8488a6f0aa47f09
+guid: c334988b65b34074987667d1cbccfb40
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,7 +121,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Buff_Blank
+  - name: Buff_Alacrity_Frame_0
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 4
       width: 6
       height: 6
-    spriteID: e7c89fbc9a055694f933d257c9801c8a
+    spriteID: f530f0d63fac3e34a82bdd20b61bac29
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,23 +141,79 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: Buff_Alacrity_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 18
+      width: 6
+      height: 6
+    spriteID: c04ac07ac2d9dff43afb9405b07f7f9f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 18}
+  - name: Buff_Alacrity_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 18
+      y: 4
+      width: 6
+      height: 6
+    spriteID: 50daaffb7a171c3419e449bc8a94707c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 18, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1379585866
-    name: Buff_Blank
+    guid: -1168122147
+    name: Buff_Alacrity
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Buff_Blank
+    - name: Buff_Alacrity_Frame_0
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
         width: 6
         height: 6
-      spriteId: e7c89fbc9a055694f933d257c9801c8a
+      spriteId: f530f0d63fac3e34a82bdd20b61bac29
+    - name: Buff_Alacrity_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 0
+        y: 0
+        width: 6
+        height: 6
+      spriteId: c04ac07ac2d9dff43afb9405b07f7f9f
+    - name: Buff_Alacrity_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 0
+        y: 0
+        width: 6
+        height: 6
+      spriteId: 50daaffb7a171c3419e449bc8a94707c
     linkedCells: []
     parentIndex: -1
   platformSettings: []

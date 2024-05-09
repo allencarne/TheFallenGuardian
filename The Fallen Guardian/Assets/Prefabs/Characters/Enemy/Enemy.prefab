@@ -303,8 +303,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffBar: {fileID: 493039623141738153}
+  buff_Might: {fileID: 4486305157485082496, guid: 33205e44c20730a499ce4a2889fe044c, type: 3}
+  buff_Haste: {fileID: 5898953976647163639, guid: 496a2a4d5d60793418ce9a4a8f1cd41a, type: 3}
+  buff_Agility: {fileID: 7434068705413786477, guid: fc840d70f5921f74e97abd0008873ef4, type: 3}
+  buff_Alacrity: {fileID: 5308563003022945098, guid: 40f461b226a99c945b33070df193e0bb, type: 3}
+  buff_Protection: {fileID: 8627039820005768832, guid: 65e5551e3069e3a46b72d8dd357bef16, type: 3}
   buff_Immovable: {fileID: 2852665012809533500, guid: 241180ef6e6c05b4bacfd7411bc15870, type: 3}
   buff_Regeneration: {fileID: 1488373734654657567, guid: a3905943ca281ec40bea07389bfa4749, type: 3}
+  IsHasted: 0
+  OnHasted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHasteEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  HasteAmount: 0
   IsImmovable: 0
   IsRegeneration: 0
 --- !u!114 &5245249597603853144

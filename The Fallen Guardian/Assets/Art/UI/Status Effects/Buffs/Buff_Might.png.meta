@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0bdb5742b8cd6bc40a741faf6d77ca4c
+guid: a36e0113a6e5b8e419f02527c37bf5e7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Buff_Immovable_0
+      name: Buff_Might_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ef25e56d7b02314aafbb1fcd5395213
-      internalID: 317532290
+      spriteID: ff7bdbed2cf45f444a9e522f123e962c
+      internalID: 1073321380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buff_Immovable_1
+      name: Buff_Might_1
       rect:
         serializedVersion: 2
         x: 6
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e755fff6799a82e41b2fc7755d308a91
-      internalID: 480369993
+      spriteID: 9de13a55443acc64c8ab8edba158330b
+      internalID: 391093335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buff_Immovable_2
+      name: Buff_Might_2
       rect:
         serializedVersion: 2
         x: 12
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30606c9dc358d3542bec62fc57d5221c
-      internalID: 191159804
+      spriteID: 1cd4288c117f1ca4d8a3cbb9b868ef63
+      internalID: -341012314
       vertices: []
       indices: 
       edges: []
@@ -196,9 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Buff_Immovable_0: 317532290
-      Buff_Immovable_1: 480369993
-      Buff_Immovable_2: 191159804
+      Buff_Might_0: 1073321380
+      Buff_Might_1: 391093335
+      Buff_Might_2: -341012314
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

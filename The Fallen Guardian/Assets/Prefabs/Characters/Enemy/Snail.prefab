@@ -12,6 +12,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snail
       objectReference: {fileID: 0}
+    - target: {fileID: 4616942287934324812, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnHasted.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616942287934324812, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnHasteEnd.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616942287934324812, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnHasted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5504511316471867309}
+    - target: {fileID: 4616942287934324812, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnHasted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616942287934324812, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnHasteEnd.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4712730711871785507, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: enemy
       value: 
