@@ -33,6 +33,7 @@ public class Snail : Enemy
     public float specialCastTime;
     public float specialRange;
     public float specialCoolDown;
+    public float durationOfShell;
 
     [Header("KnockBack")]
     [SerializeField] float knockBackForce;
@@ -43,6 +44,9 @@ public class Snail : Enemy
     bool canRecovery = false;
     Vector2 directionToTarget;
     Vector2 dashDirection;
+
+    //Telegraph
+    [SerializeField] GameObject specialTelegraph;
 
     protected override void FixedUpdate()
     {
@@ -299,6 +303,12 @@ public class Snail : Enemy
             // Calculate the direction from the enemy to the target
             directionToTarget = (target.position - transform.position).normalized;
 
+            // Calculate the angle in degrees from the direction
+            float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+
+            // Instantiate the telegraph object at the enemy position with the appropriate rotation
+            Instantiate(specialTelegraph, transform.position, Quaternion.Euler(0f, 0f, angle));
+
             // Set animator parameters based on the direction
             enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
             enemyAnimator.SetFloat("Vertical", directionToTarget.y);
@@ -318,15 +328,9 @@ public class Snail : Enemy
 
                 enemyAnimator.Play("Special Impact");
 
-                // Calculate the direction from the enemy to the target
-                directionToTarget = (target.position - transform.position).normalized;
-
                 // Set animator parameters based on the direction
                 enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
                 enemyAnimator.SetFloat("Vertical", directionToTarget.y);
-
-                // Store the dash direction and angle
-                dashDirection = directionToTarget;
 
                 GameObject shell = Instantiate(specialPrefab, transform.position, Quaternion.identity);
 
@@ -334,7 +338,7 @@ public class Snail : Enemy
 
                 shellRB.AddForce(directionToTarget * specialRange, ForceMode2D.Impulse);
 
-                Destroy(shell, 1.5f);
+                Destroy(shell, durationOfShell);
 
                 DamageOnTrigger damageOnTrigger = shell.GetComponent<DamageOnTrigger>();
                 if (damageOnTrigger != null)
