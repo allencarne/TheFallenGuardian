@@ -2026,8 +2026,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffs: {fileID: 7868813878733217427}
   ccBar: {fileID: 3112332154145750330}
-  cc_KnockBack: {fileID: 8932589641119965354, guid: 641893366e9ca9345aa051bca3d8deb9, type: 3}
-  cc_Stun: {fileID: 7936525235414805521, guid: ffa19195fb4a84b4c84df0228c81d195, type: 3}
+  cc_KnockBack: {fileID: 8932589641119965354, guid: 87134ee68dace9d4383d1eb85dbcb4ff, type: 3}
+  cc_Stun: {fileID: 7936525235414805521, guid: 0747d1f7ce2daea4d82b8ed69f9c1fa7, type: 3}
   IsImmobilized: 0
   IsInterrupted: 0
   IsDisarmed: 0
