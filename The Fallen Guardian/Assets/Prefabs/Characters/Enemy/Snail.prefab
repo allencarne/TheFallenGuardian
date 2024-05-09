@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snail
       objectReference: {fileID: 0}
+    - target: {fileID: 4340976279146842905, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 415464689696531612}
     - target: {fileID: 4616942287934324812, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: OnHasted.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -302,7 +306,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 0
   MaxHealth: 10
-  baseSpeed: 3
+  BaseSpeed: 0
+  CurrentSpeed: 0
   damage: 1
   expToGive: 2
   wanderRadius: 5

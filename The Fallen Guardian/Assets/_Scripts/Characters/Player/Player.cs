@@ -140,23 +140,6 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    public void HandleSlow()
-    {
-        // Calculate the final speed, ensuring it doesn't drop below 0
-        Stats.CurrentSpeed = Mathf.Max(Stats.BaseSpeed - debuffs.SlowAmount, 0);
-    }
-
-    public void HandleHaste()
-    {
-        // Calculate the final speed, ensuring it doesn't drop below 0
-        Stats.CurrentSpeed = Mathf.Max(Stats.BaseSpeed + Buffs.HasteAmount, 0);
-    }
-
-    public void ResetPlayerSpeed()
-    {
-        Stats.CurrentSpeed = Stats.BaseSpeed;
-    }
-
     public void Regeneration(float heal)
     {
         if (Stats.Health >= Stats.MaxHealth)

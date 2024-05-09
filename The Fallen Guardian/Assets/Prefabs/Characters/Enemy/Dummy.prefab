@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dummy
       objectReference: {fileID: 0}
+    - target: {fileID: 4340976279146842905, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 8645626093764817777}
     - target: {fileID: 4616942287934324812, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: buff_Regeneration
       value: 
@@ -279,7 +283,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 9999
   MaxHealth: 9999
-  baseSpeed: 0
+  BaseSpeed: 0
+  CurrentSpeed: 0
   damage: 0
   expToGive: 0
   wanderRadius: 0
@@ -310,6 +315,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
   OnDummyDammaged:
     m_PersistentCalls:
       m_Calls:

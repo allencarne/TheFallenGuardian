@@ -3,26 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Buffs : MonoBehaviour, IHasteable
+public class Buffs : MonoBehaviour
 {
     [Header("Buff Bar")]
     [SerializeField] GameObject buffBar;
 
     [Header("Buff")]
     [SerializeField] GameObject buff_Might;
-    [SerializeField] GameObject buff_Haste;
+    //[SerializeField] GameObject buff_Haste;
     [SerializeField] GameObject buff_Agility;
     [SerializeField] GameObject buff_Alacrity;
     [SerializeField] GameObject buff_Protection;
     [SerializeField] GameObject buff_Immovable;
     [SerializeField] GameObject buff_Regeneration;
 
-    [Header("Haste")]
-    public bool IsHasted;
-    public UnityEvent OnHasted;
-    public UnityEvent OnHasteEnd;
-    public float HasteAmount;
-    float currentHasteDuration = 0f;
+    //[Header("Haste")]
+    //public bool IsHasted;
+    //public UnityEvent OnHasted;
+    //public UnityEvent OnHasteEnd;
+    //public float HasteAmount;
+    //float currentHasteDuration = 0f;
 
     public bool IsImmovable;
     float currentImmovableDuration = 0f;
@@ -73,7 +73,7 @@ public class Buffs : MonoBehaviour, IHasteable
 
         currentBuffDuration = 0;
     }
-
+    /*
     public void Haste(float amount, float duration)
     {
         HasteAmount = amount;
@@ -108,4 +108,5 @@ public class Buffs : MonoBehaviour, IHasteable
 
         currentHasteDuration = 0f;
     }
+    */
 }

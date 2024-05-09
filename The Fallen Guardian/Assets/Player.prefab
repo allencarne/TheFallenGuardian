@@ -1255,6 +1255,7 @@ GameObject:
   - component: {fileID: 3668015608117301615}
   - component: {fileID: 4879207451902047104}
   - component: {fileID: 6967247431417826392}
+  - component: {fileID: 4009082293973101659}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1926,44 +1927,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffBar: {fileID: 119541469203478924}
   buff_Might: {fileID: 4486305157485082496, guid: 33205e44c20730a499ce4a2889fe044c, type: 3}
-  buff_Haste: {fileID: 5898953976647163639, guid: 496a2a4d5d60793418ce9a4a8f1cd41a, type: 3}
   buff_Agility: {fileID: 5308563003022945098, guid: 40f461b226a99c945b33070df193e0bb, type: 3}
   buff_Alacrity: {fileID: 5308563003022945098, guid: 40f461b226a99c945b33070df193e0bb, type: 3}
   buff_Protection: {fileID: 8627039820005768832, guid: 65e5551e3069e3a46b72d8dd357bef16, type: 3}
   buff_Immovable: {fileID: 2852665012809533500, guid: 241180ef6e6c05b4bacfd7411bc15870, type: 3}
   buff_Regeneration: {fileID: 1488373734654657567, guid: a3905943ca281ec40bea07389bfa4749, type: 3}
-  IsHasted: 0
-  OnHasted:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7150002324481854805}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: HandleHaste
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnHasteEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7150002324481854805}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: ResetPlayerSpeed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  HasteAmount: 0
   IsImmovable: 0
   IsRegeneration: 0
 --- !u!114 &3668015608117301615
@@ -2059,6 +2027,23 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   gameObjectRuntimeSet: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
+--- !u!114 &4009082293973101659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab54aede98b001446b2831f354a87d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffBar: {fileID: 119541469203478924}
+  buff_Haste: {fileID: 5898953976647163639, guid: 496a2a4d5d60793418ce9a4a8f1cd41a, type: 3}
+  IsHasted: 0
+  isPlayer: 1
+  playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
 --- !u!1 &8027861156446152564
 GameObject:
   m_ObjectHideFlags: 0

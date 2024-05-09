@@ -10,8 +10,8 @@ public class Enemy : MonoBehaviour, IDamageable
     public float Health;
     public float MaxHealth;
 
-    public float baseSpeed; 
-    private float currentSpeed;
+    public float BaseSpeed; 
+    public float CurrentSpeed;
 
     public int damage;
     public float expToGive;
@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour, IDamageable
         startingPosition = transform.position;
 
         // Set Speed
-        currentSpeed = baseSpeed;
+        CurrentSpeed = BaseSpeed;
     }
 
     private void Update()
@@ -196,7 +196,7 @@ public class Enemy : MonoBehaviour, IDamageable
             Vector2 moveDirection = (newWanderPosition - (Vector2)transform.position).normalized;
 
             // Calculate the desired velocity to reach the new wander position
-            Vector2 desiredVelocity = moveDirection * currentSpeed;
+            Vector2 desiredVelocity = moveDirection * CurrentSpeed;
 
             // Apply the desired velocity to the rigidbody
             enemyRB.velocity = desiredVelocity;
@@ -211,7 +211,7 @@ public class Enemy : MonoBehaviour, IDamageable
             {
                 Vector2 moveDirection = (target.position - transform.position).normalized;
 
-                Vector2 desiredVelocity = moveDirection * currentSpeed;
+                Vector2 desiredVelocity = moveDirection * CurrentSpeed;
 
                 enemyRB.velocity = desiredVelocity;
 
@@ -226,7 +226,7 @@ public class Enemy : MonoBehaviour, IDamageable
             Vector2 moveDirection = (startingPosition - (Vector2)transform.position).normalized;
 
             // Calculate the desired velocity to reach the new wander position
-            Vector2 desiredVelocity = moveDirection * currentSpeed;
+            Vector2 desiredVelocity = moveDirection * CurrentSpeed;
 
             // Apply the desired velocity to the rigidbody
             enemyRB.velocity = desiredVelocity;
@@ -613,12 +613,12 @@ public class Enemy : MonoBehaviour, IDamageable
     public void HandleSlow()
     {
         // Calculate the final speed, ensuring it doesn't drop below 0
-        currentSpeed = Mathf.Max(baseSpeed - debuffs.SlowAmount, 0);
+        CurrentSpeed = Mathf.Max(BaseSpeed - debuffs.SlowAmount, 0);
     }
 
     public void HandleSlowEnd()
     {
-        currentSpeed = baseSpeed;
+        CurrentSpeed = BaseSpeed;
     }
 
     private void UpdatePatienceBar()
