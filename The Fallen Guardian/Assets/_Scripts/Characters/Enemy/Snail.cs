@@ -47,6 +47,7 @@ public class Snail : Enemy
 
     //Telegraph
     [SerializeField] GameObject specialTelegraph;
+    [SerializeField] GameObject shmackTelegraph;
 
     protected override void FixedUpdate()
     {
@@ -102,6 +103,12 @@ public class Snail : Enemy
 
             // Calculate the direction from the enemy to the target
             directionToTarget = (target.position - transform.position).normalized;
+
+            // Calculate the angle in degrees from the direction
+            float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+
+            // Instantiate the telegraph object at the enemy position with the appropriate rotation
+            Instantiate(shmackTelegraph, transform.position, Quaternion.Euler(0f, 0f, angle));
 
             // Set animator parameters based on the direction
             enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
