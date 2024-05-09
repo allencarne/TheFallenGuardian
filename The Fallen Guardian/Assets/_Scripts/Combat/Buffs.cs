@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Buffs : MonoBehaviour
+public class Buffs : MonoBehaviour, IHasteable
 {
     [Header("Buff Bar")]
     [SerializeField] GameObject buffBar;
@@ -10,6 +11,13 @@ public class Buffs : MonoBehaviour
     [Header("Buff")]
     [SerializeField] GameObject buff_Immovable;
     [SerializeField] GameObject buff_Regeneration;
+
+    [Header("Haste")]
+    public bool IsHasted;
+    public UnityEvent OnHasted;
+    public UnityEvent OnHasteEnd;
+    public float HasteAmount;
+    float currentHasteDuration = 0f;
 
     public bool IsImmovable;
     float currentImmovableDuration = 0f;
@@ -59,5 +67,40 @@ public class Buffs : MonoBehaviour
         buffBool = true;
 
         currentBuffDuration = 0;
+    }
+
+    public void Haste(float amount, float duration)
+    {
+        HasteAmount = amount;
+
+        if (IsHasted)
+        {
+            currentHasteDuration += duration;
+        }
+        else
+        {
+            StartCoroutine(SlowDuration(duration));
+        }
+    }
+
+    IEnumerator SlowDuration(float duration)
+    {
+        OnHasted?.Invoke();
+
+        IsHasted = true;
+
+        //GameObject debuffIcon = Instantiate(debuff_Slow);
+        //debuffIcon.transform.SetParent(debuffBar.transform);
+        //debuffIcon.transform.localScale = new Vector3(1, 1, 1);
+
+        yield return new WaitForSeconds(duration);
+
+        //Destroy(debuffIcon);
+
+        OnHasteEnd?.Invoke();
+
+        IsHasted = false;
+
+        currentHasteDuration = 0f;
     }
 }

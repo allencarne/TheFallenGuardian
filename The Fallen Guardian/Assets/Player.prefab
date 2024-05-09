@@ -1927,6 +1927,38 @@ MonoBehaviour:
   buffBar: {fileID: 119541469203478924}
   buff_Immovable: {fileID: 2852665012809533500, guid: 241180ef6e6c05b4bacfd7411bc15870, type: 3}
   buff_Regeneration: {fileID: 1488373734654657567, guid: a3905943ca281ec40bea07389bfa4749, type: 3}
+  IsHasted: 0
+  OnHasted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7150002324481854805}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: HandleHaste
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHasteEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7150002324481854805}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: ResetPlayerSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  HasteAmount: 0
   IsImmovable: 0
   IsRegeneration: 0
 --- !u!114 &3668015608117301615
@@ -1964,7 +1996,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7150002324481854805}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: HandleSlowEnd
+        m_MethodName: ResetPlayerSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
