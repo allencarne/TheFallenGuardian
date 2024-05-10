@@ -11,7 +11,10 @@ public class Buff_Haste : MonoBehaviour, IHasteable
     [SerializeField] GameObject buff_Haste;
 
     [Header("Haste")]
+    bool isHasted = false;
+    float currentDuration = 0;
     int hasteStacks = 0;
+    GameObject buffIcon;
 
     public bool isPlayer;
     [SerializeField] PlayerStats playerStats;
@@ -33,35 +36,42 @@ public class Buff_Haste : MonoBehaviour, IHasteable
         }
     }
 
-    public void Haste(int stacks, float duration)
+    private void Update()
     {
-        // Always stop the existing coroutine to ensure the current buff is reset
-        StopCoroutine("HasteDuration");
+        // If haste buff is active, decrement the duration
+        if (isHasted)
+        {
+            currentDuration -= Time.deltaTime;
+            if (currentDuration <= 0)
+            {
+                EndHaste();
 
-        // Apply the new buff immediately, even if it's shorter than the current buff's remaining duration
-        StartCoroutine(HasteDuration(stacks, duration));
+                if (buffIcon)
+                {
+                    Destroy(buffIcon);
+                }
+            }
+        }
     }
 
-    IEnumerator HasteDuration(int stacks, float duration)
+    public void Haste(int stacks, float duration)
     {
-        // Set Stacks
+        // Start or reset the haste buff
         hasteStacks = stacks;
+        currentDuration = duration;
+        isHasted = true;
 
-        // Icon
-        GameObject debuffIcon = Instantiate(buff_Haste);
-        debuffIcon.transform.SetParent(buffBar.transform);
-        debuffIcon.transform.localScale = new Vector3(1, 1, 1);
-
-        // Logic for adjusting speed based on stacks
+        // Apply haste effect on speed
         float hasteAmount = 0.1f * hasteStacks; // Adjust this multiplier as needed
         ApplyHaste(hasteAmount);
 
-        yield return new WaitForSeconds(duration);
-
-        Destroy(debuffIcon);
-
-        ResetHaste();
-        hasteStacks = 0;
+        // Icon
+        if (!buffIcon)
+        {
+            buffIcon = Instantiate(buff_Haste);
+            buffIcon.transform.SetParent(buffBar.transform);
+            buffIcon.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     void ApplyHaste(float amount)
@@ -76,6 +86,17 @@ public class Buff_Haste : MonoBehaviour, IHasteable
         {
             enemy.CurrentSpeed = CurrentSpeed;
         }
+    }
+
+    public void EndHaste()
+    {
+        // Reset haste-related variables
+        isHasted = false;
+        hasteStacks = 0;
+        currentDuration = 0f;
+
+        // Reset the speed
+        ResetHaste();
     }
 
     void ResetHaste()
