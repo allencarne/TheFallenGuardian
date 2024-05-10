@@ -71,8 +71,11 @@ public class Snail : Enemy
 
     protected override void AttackState()
     {
+        // Adjust the cast time based on attack speed
+        float modifiedAttackCastTime = attackCastTime / CurrentAttackSpeed;
+
         castTime += Time.deltaTime;
-        UpdateCastBar(castTime, attackCastTime);
+        UpdateCastBar(castTime, CurrentAttackSpeed);
 
         if (crowdControl.IsInterrupted)
         {
@@ -118,7 +121,7 @@ public class Snail : Enemy
             StartCoroutine(AttackCoolDown());
         }
 
-        if (castTime > attackCastTime)
+        if (castTime > modifiedAttackCastTime)
         {
             if (canImpact)
             {
@@ -176,8 +179,11 @@ public class Snail : Enemy
 
     protected override void MobilityState()
     {
+        // Adjust the cast time based on attack speed
+        float modifiedAttackCastTime = mobilityCastTime / CurrentAttackSpeed;
+
         castTime += Time.deltaTime;
-        UpdateCastBar(castTime, mobilityCastTime);
+        UpdateCastBar(castTime, modifiedAttackCastTime);
 
         if (crowdControl.IsInterrupted)
         {
@@ -213,7 +219,7 @@ public class Snail : Enemy
             StartCoroutine(MobilityCoolDown());
         }
 
-        if (castTime > mobilityCastTime)
+        if (castTime > modifiedAttackCastTime)
         {
             if (canImpact && target != null)
             {
@@ -278,8 +284,11 @@ public class Snail : Enemy
 
     protected override void SpecialState()
     {
+        // Adjust the cast time based on attack speed
+        float modifiedAttackCastTime = specialCastTime / CurrentAttackSpeed;
+
         castTime += Time.deltaTime;
-        UpdateCastBar(castTime, mobilityCastTime);
+        UpdateCastBar(castTime, modifiedAttackCastTime);
 
         if (crowdControl.IsInterrupted)
         {
@@ -325,7 +334,7 @@ public class Snail : Enemy
             StartCoroutine(SpecialCoolDown());
         }
 
-        if (castTime > specialCastTime)
+        if (castTime > modifiedAttackCastTime)
         {
             if (canImpact && target != null)
             {
