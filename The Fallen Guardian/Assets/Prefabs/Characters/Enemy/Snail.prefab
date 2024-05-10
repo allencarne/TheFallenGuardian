@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7160922041131653701, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 415464689696531612}
     - target: {fileID: 7575085488464457606, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -308,7 +312,8 @@ MonoBehaviour:
   MaxHealth: 10
   BaseSpeed: 0
   CurrentSpeed: 0
-  damage: 1
+  BaseDamage: 0
+  CurrentDamage: 0
   expToGive: 2
   wanderRadius: 5
   attackRadius: 1

@@ -136,7 +136,7 @@ public class Snail : Enemy
                 if (damageOnTrigger != null)
                 {
                     damageOnTrigger.AbilityDamage = attackDamage;
-                    damageOnTrigger.CharacterDamage = damage;
+                    damageOnTrigger.CharacterDamage = CurrentDamage;
                     damageOnTrigger.HitEffect = attackHitEffect;
                 }
             }
@@ -351,7 +351,7 @@ public class Snail : Enemy
                 if (damageOnTrigger != null)
                 {
                     damageOnTrigger.AbilityDamage = specialDamage;
-                    damageOnTrigger.CharacterDamage = damage;
+                    damageOnTrigger.CharacterDamage = CurrentDamage;
                     damageOnTrigger.HitEffect = specialHitEffect;
 
                     damageOnTrigger.DestroyAfterDamage = true;

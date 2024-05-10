@@ -13,7 +13,9 @@ public class Enemy : MonoBehaviour, IDamageable
     public float BaseSpeed; 
     public float CurrentSpeed;
 
-    public int damage;
+    public int BaseDamage;
+    public int CurrentDamage;
+
     public float expToGive;
 
     [Header("Radius")]

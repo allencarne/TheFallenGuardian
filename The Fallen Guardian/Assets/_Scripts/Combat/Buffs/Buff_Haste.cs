@@ -10,7 +10,7 @@ public class Buff_Haste : MonoBehaviour, IHasteable
 
     [Header("Icon")]
     [SerializeField] GameObject buff_Haste;
-    [SerializeField] TextMeshProUGUI stacksText;
+    TextMeshProUGUI stacksText;
 
     [Header("Haste")]
     float speedPerStack = 3f;
