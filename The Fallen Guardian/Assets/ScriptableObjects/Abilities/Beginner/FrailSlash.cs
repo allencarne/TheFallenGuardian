@@ -85,7 +85,7 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
         if (damageOnTrigger != null)
         {
             damageOnTrigger.AbilityDamage = damage;
-            damageOnTrigger.CharacterDamage = stateMachine.Player.Stats.BaseDamage;
+            damageOnTrigger.CharacterDamage = stateMachine.Player.Stats.CurrentDamage;
             damageOnTrigger.HitEffect = hitEffect;
         }
 

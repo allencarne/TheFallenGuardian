@@ -87,7 +87,7 @@ public class Buff_Might : MonoBehaviour, IMightable
             ApplyMight(mightStacks);
 
             // Stacks Text
-            stacksText.text = stacks.ToString();
+            stacksText.text = mightStacks.ToString();
         }
     }
 

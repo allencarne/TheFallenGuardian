@@ -87,7 +87,7 @@ public class Buff_Haste : MonoBehaviour, IHasteable
             ApplyHaste(hasteStacks);
 
             // Stacks Text
-            stacksText.text = stacks.ToString();
+            stacksText.text = hasteStacks.ToString();
         }
     }
 
