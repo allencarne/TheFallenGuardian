@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 5245249597603853144}
   - component: {fileID: 4340976279146842905}
   - component: {fileID: 7160922041131653701}
+  - component: {fileID: 3538787198285182242}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -346,7 +347,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffBar: {fileID: 493039623141738153}
   buff_Haste: {fileID: 5898953976647163639, guid: 496a2a4d5d60793418ce9a4a8f1cd41a, type: 3}
-  stacksText: {fileID: 0}
   isPlayer: 0
   playerStats: {fileID: 0}
   enemy: {fileID: 0}
@@ -364,7 +364,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffBar: {fileID: 493039623141738153}
   buff_Might: {fileID: 4486305157485082496, guid: 33205e44c20730a499ce4a2889fe044c, type: 3}
-  stacksText: {fileID: 0}
+  isPlayer: 0
+  playerStats: {fileID: 0}
+  enemy: {fileID: 0}
+--- !u!114 &3538787198285182242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168808411849726535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73733337286e8d478f5482a541791d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffBar: {fileID: 493039623141738153}
+  buff_Swiftness: {fileID: 7434068705413786477, guid: fc840d70f5921f74e97abd0008873ef4, type: 3}
   isPlayer: 0
   playerStats: {fileID: 0}
   enemy: {fileID: 0}

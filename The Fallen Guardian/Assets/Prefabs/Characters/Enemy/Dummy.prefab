@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dummy
       objectReference: {fileID: 0}
+    - target: {fileID: 3538787198285182242, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 8645626093764817777}
     - target: {fileID: 4340976279146842905, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: enemy
       value: 
@@ -291,18 +295,20 @@ MonoBehaviour:
   CurrentSpeed: 0
   BaseDamage: 0
   CurrentDamage: 0
+  BaseAttackSpeed: 0
+  CurrentAttackSpeed: 0
   expToGive: 0
   wanderRadius: 0
   attackRadius: 0
   mobilityRadius: 0
   specialRadius: 0
   deAggroRadius: 0
-  EnemySpawner: {fileID: 0}
   patienceBar: {fileID: 88677911671152900}
   castBar: {fileID: 1344765896259153991}
   spriteRenderer: {fileID: 1982509487361492714}
   shadow: {fileID: 6553285107288546293}
   healthBar: {fileID: 2989804749614204065}
+  EnemySpawner: {fileID: 0}
   enemyCollider2D: {fileID: 6490559976150798771}
   patience: 5
   OnHealthChanged:

@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("Damage")]
     public int BaseDamage;
     public int CurrentDamage;
+    [Header("AttackSpeed")]
+    public float BaseAttackSpeed;
+    public float CurrentAttackSpeed;
     [Header("Exp")]
     public float expToGive;
 
@@ -112,6 +115,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
         // Set Damage
         CurrentDamage = BaseDamage;
+
+        // Set Attack Speed
+        CurrentAttackSpeed = BaseAttackSpeed;
     }
 
     private void Update()
