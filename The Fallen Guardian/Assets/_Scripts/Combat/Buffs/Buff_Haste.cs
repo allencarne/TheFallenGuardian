@@ -49,10 +49,7 @@ public class Buff_Haste : MonoBehaviour, IHasteable
             {
                 EndHaste();
 
-                if (buffIcon)
-                {
-                    Destroy(buffIcon);
-                }
+                if (buffIcon) Destroy(buffIcon);
             }
         }
     }
@@ -63,7 +60,7 @@ public class Buff_Haste : MonoBehaviour, IHasteable
         {
             // Start or reset the haste buff
             hasteStacks = stacks;
-            currentDuration = duration;
+            //currentDuration = duration;
             isHasted = true;
 
             ApplyHaste(stacks);
@@ -81,6 +78,12 @@ public class Buff_Haste : MonoBehaviour, IHasteable
 
             // Stacks Text
             stacksText.text = stacks.ToString();
+        }
+
+        if (duration > currentDuration)
+        {
+            // Update duration if it's larger
+            currentDuration = duration;
         }
     }
 
