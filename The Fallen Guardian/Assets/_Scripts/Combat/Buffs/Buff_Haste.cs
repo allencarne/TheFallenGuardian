@@ -13,6 +13,7 @@ public class Buff_Haste : MonoBehaviour, IHasteable
     [SerializeField] TextMeshProUGUI stacksText;
 
     [Header("Haste")]
+    float speedPerStack = 3f;
     bool isHasted = false;
     float currentDuration = 0;
     int hasteStacks = 0;
@@ -65,9 +66,7 @@ public class Buff_Haste : MonoBehaviour, IHasteable
             currentDuration = duration;
             isHasted = true;
 
-            // Apply haste effect on speed
-            float hasteAmount = 0.1f * hasteStacks; // Adjust this multiplier as needed
-            ApplyHaste(hasteAmount);
+            ApplyHaste(stacks);
 
             // Icon
             if (!buffIcon)
@@ -85,9 +84,12 @@ public class Buff_Haste : MonoBehaviour, IHasteable
         }
     }
 
-    void ApplyHaste(float amount)
+    void ApplyHaste(int stacks)
     {
-        CurrentSpeed = Mathf.Max(BaseSpeed + amount, 0);
+        // Calculate the haste amount based on the number of stacks
+        float hasteAmount = speedPerStack * stacks; // Increase movement speed by 1 for each stack
+
+        CurrentSpeed = BaseSpeed + hasteAmount;
 
         if (isPlayer)
         {
