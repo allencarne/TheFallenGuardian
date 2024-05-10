@@ -13,7 +13,7 @@ public class Buff_Swiftness : MonoBehaviour, ISwiftnessable
     TextMeshProUGUI stacksText;
 
     [Header("Swiftness")]
-    float attackSpeedPerStack = 3f;
+    float attackSpeedPerStack = .5f;
     int swiftnessStacks = 0;
     GameObject buffIcon;
 

@@ -59,7 +59,9 @@ public class SpinningSlash : ScriptableObject, IAbilityBehaviour
 
     IEnumerator AttackImpact(PlayerStateMachine stateMachine)
     {
-        yield return new WaitForSeconds(castTime);
+        float modifiedCastTime = castTime / stateMachine.Player.Stats.CurrentAttackSpeed;
+
+        yield return new WaitForSeconds(modifiedCastTime);
 
         // Calculate the direction of the attack
         Vector3 direction = stateMachine.AbilityDir * Vector3.right;
