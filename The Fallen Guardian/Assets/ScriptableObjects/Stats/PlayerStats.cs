@@ -34,6 +34,14 @@ public class PlayerStats : ScriptableObject
     public float BaseCoolDown;
     public float CurrentCoolDown;
 
+    [Header("Attributes")]
+    public float Vitality; // Increase Health
+    // Movement Speed is not an attribute
+    public float Power; // Increase Damage
+    public float Toughness; // Increase Armor (reduce damage taken)
+    public float Quickness; // Increase Attack Speed
+    public float Recharge; // Increase Cool Down Reduction
+
     [Header("Currency")]
     public int Gold;
 }
