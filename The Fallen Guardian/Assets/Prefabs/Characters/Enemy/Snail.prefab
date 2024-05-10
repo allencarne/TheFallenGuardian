@@ -310,9 +310,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 0
   MaxHealth: 10
-  BaseSpeed: 0
+  BaseSpeed: 3
   CurrentSpeed: 0
-  BaseDamage: 0
+  BaseDamage: 1
   CurrentDamage: 0
   expToGive: 2
   wanderRadius: 5

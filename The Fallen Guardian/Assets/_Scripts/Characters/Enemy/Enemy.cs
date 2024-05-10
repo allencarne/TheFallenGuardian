@@ -6,16 +6,16 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    [Header("Stats")]
+    [Header("Health")]
     public float Health;
     public float MaxHealth;
-
+    [Header("Speed")]
     public float BaseSpeed; 
     public float CurrentSpeed;
-
+    [Header("Damage")]
     public int BaseDamage;
     public int CurrentDamage;
-
+    [Header("Exp")]
     public float expToGive;
 
     [Header("Radius")]
@@ -26,12 +26,12 @@ public class Enemy : MonoBehaviour, IDamageable
     public float deAggroRadius;
 
     [Header("Components")]
-    [HideInInspector] public EnemySpawner EnemySpawner;
     [SerializeField] protected Image patienceBar;
     [SerializeField] protected Image castBar;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] GameObject shadow;
     [SerializeField] EnemyHealthBar healthBar;
+    [HideInInspector] public EnemySpawner EnemySpawner;
 
     protected Buffs buffs;
     protected Debuffs debuffs;
@@ -109,6 +109,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
         // Set Speed
         CurrentSpeed = BaseSpeed;
+
+        // Set Damage
+        CurrentDamage = BaseDamage;
     }
 
     private void Update()
