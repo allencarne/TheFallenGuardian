@@ -14,8 +14,6 @@ public class Buff_Haste : MonoBehaviour, IHasteable
 
     [Header("Haste")]
     float speedPerStack = 3f;
-    bool isHasted = false;
-    float currentDuration = 0;
     int hasteStacks = 0;
     GameObject buffIcon;
 
@@ -39,51 +37,54 @@ public class Buff_Haste : MonoBehaviour, IHasteable
         }
     }
 
-    private void Update()
-    {
-        // If haste buff is active, decrement the duration
-        if (isHasted)
-        {
-            currentDuration -= Time.deltaTime;
-            if (currentDuration <= 0)
-            {
-                EndHaste();
-
-                if (buffIcon) Destroy(buffIcon);
-            }
-        }
-    }
-
     public void Haste(int stacks, float duration)
     {
-        if (stacks > hasteStacks || !isHasted)
+        // Increase Stack Amount Based on the New Buff
+        hasteStacks += stacks;
+
+        // Cap the hasteStacks at 25
+        hasteStacks = Mathf.Min(hasteStacks, 25);
+
+        // Gain Haste Based on Stack Amount
+        ApplyHaste(hasteStacks);
+
+        // Icon
+        if (!buffIcon)
         {
-            // Start or reset the haste buff
-            hasteStacks = stacks;
-            //currentDuration = duration;
-            isHasted = true;
+            buffIcon = Instantiate(buff_Haste);
+            buffIcon.transform.SetParent(buffBar.transform);
+            buffIcon.transform.localScale = new Vector3(1, 1, 1);
 
-            ApplyHaste(stacks);
-
-            // Icon
-            if (!buffIcon)
-            {
-                buffIcon = Instantiate(buff_Haste);
-                buffIcon.transform.SetParent(buffBar.transform);
-                buffIcon.transform.localScale = new Vector3(1, 1, 1);
-
-                // Get Stacks Text
-                stacksText = buffIcon.GetComponentInChildren<TextMeshProUGUI>();
-            }
-
-            // Stacks Text
-            stacksText.text = stacks.ToString();
+            // Get Stacks Text
+            stacksText = buffIcon.GetComponentInChildren<TextMeshProUGUI>();
         }
 
-        if (duration > currentDuration)
+        // Stacks Text
+        stacksText.text = hasteStacks.ToString();
+
+        // Start a Timer for Each Instance of the Buff
+        StartCoroutine(Stack(stacks, duration));
+    }
+
+    IEnumerator Stack(int stacks, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        // Subtrack the Stack from our HasteStacks
+        hasteStacks -= stacks;
+
+        // Ensure hasteStacks doesn't go below zero
+        hasteStacks = Mathf.Max(hasteStacks, 0);
+
+        if (hasteStacks == 0)
         {
-            // Update duration if it's larger
-            currentDuration = duration;
+            EndHaste();
+            Destroy(buffIcon);
+        }
+        else
+        {
+            // Stacks Text
+            stacksText.text = stacks.ToString();
         }
     }
 
@@ -106,10 +107,7 @@ public class Buff_Haste : MonoBehaviour, IHasteable
 
     public void EndHaste()
     {
-        // Reset haste-related variables
-        isHasted = false;
         hasteStacks = 0;
-        currentDuration = 0f;
 
         // Reset the speed
         ResetHaste();
