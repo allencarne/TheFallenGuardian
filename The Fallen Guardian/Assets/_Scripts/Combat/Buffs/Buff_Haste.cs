@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Buff_Haste : MonoBehaviour, IHasteable
 {
@@ -9,6 +10,7 @@ public class Buff_Haste : MonoBehaviour, IHasteable
 
     [Header("Icon")]
     [SerializeField] GameObject buff_Haste;
+    [SerializeField] TextMeshProUGUI stacksText;
 
     [Header("Haste")]
     bool isHasted = false;
@@ -34,6 +36,9 @@ public class Buff_Haste : MonoBehaviour, IHasteable
             CurrentSpeed = enemy.CurrentSpeed;
             BaseSpeed = enemy.BaseSpeed;
         }
+
+        // Get Stacks Text
+        stacksText = buff_Haste.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void Update()
@@ -56,22 +61,28 @@ public class Buff_Haste : MonoBehaviour, IHasteable
 
     public void Haste(int stacks, float duration)
     {
-        // Start or reset the haste buff
-        hasteStacks = stacks;
-        currentDuration = duration;
-        isHasted = true;
-
-        // Apply haste effect on speed
-        float hasteAmount = 0.1f * hasteStacks; // Adjust this multiplier as needed
-        ApplyHaste(hasteAmount);
-
-        // Icon
-        if (!buffIcon)
+        if (stacks > hasteStacks || !isHasted)
         {
-            buffIcon = Instantiate(buff_Haste);
-            buffIcon.transform.SetParent(buffBar.transform);
-            buffIcon.transform.localScale = new Vector3(1, 1, 1);
+            // Start or reset the haste buff
+            hasteStacks = stacks;
+            currentDuration = duration;
+            isHasted = true;
+
+            // Apply haste effect on speed
+            float hasteAmount = 0.1f * hasteStacks; // Adjust this multiplier as needed
+            ApplyHaste(hasteAmount);
+
+            // Icon
+            if (!buffIcon)
+            {
+                buffIcon = Instantiate(buff_Haste);
+                buffIcon.transform.SetParent(buffBar.transform);
+                buffIcon.transform.localScale = new Vector3(1, 1, 1);
+            }
         }
+
+        // Stacks Text
+        stacksText.text = stacks.ToString();
     }
 
     void ApplyHaste(float amount)

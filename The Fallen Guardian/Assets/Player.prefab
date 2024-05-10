@@ -1951,34 +1951,10 @@ MonoBehaviour:
   IsSlowed: 0
   OnSlowed:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7150002324481854805}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: HandleSlow
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnSlowEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7150002324481854805}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: ResetPlayerSpeed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   SlowAmount: 0
 --- !u!114 &4879207451902047104
 MonoBehaviour:
@@ -2041,9 +2017,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffBar: {fileID: 119541469203478924}
   buff_Haste: {fileID: 5898953976647163639, guid: 496a2a4d5d60793418ce9a4a8f1cd41a, type: 3}
-  IsHasted: 0
+  stacksText: {fileID: 0}
   isPlayer: 1
   playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
+  enemy: {fileID: 0}
 --- !u!1 &8027861156446152564
 GameObject:
   m_ObjectHideFlags: 0
