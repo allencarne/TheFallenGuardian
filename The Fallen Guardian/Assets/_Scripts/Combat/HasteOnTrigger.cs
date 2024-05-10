@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HasteOnTrigger : MonoBehaviour
 {
-    public float HasteAmount;
-    public float HasteDuration;
+    public int Stacks;
+    public float Duration;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,7 +14,7 @@ public class HasteOnTrigger : MonoBehaviour
 
         if (hasteable != null)
         {
-            hasteable.Haste(HasteAmount, HasteDuration);
+            hasteable.Haste(Stacks, Duration);
         }
     }
 }

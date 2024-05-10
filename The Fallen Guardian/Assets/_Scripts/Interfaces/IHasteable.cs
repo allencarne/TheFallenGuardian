@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IHasteable
 {
-    void Haste(float amount, float duration);
+    void Haste(int stacks, float duration);
 }

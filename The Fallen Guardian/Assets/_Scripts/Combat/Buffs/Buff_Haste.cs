@@ -11,8 +11,7 @@ public class Buff_Haste : MonoBehaviour, IHasteable
     [SerializeField] GameObject buff_Haste;
 
     [Header("Haste")]
-    public bool IsHasted;
-    float currentHasteDuration = 0f;
+    int hasteStacks = 0;
 
     public bool isPlayer;
     [SerializeField] PlayerStats playerStats;
@@ -34,41 +33,35 @@ public class Buff_Haste : MonoBehaviour, IHasteable
         }
     }
 
-    public void Haste(float amount, float duration)
+    public void Haste(int stacks, float duration)
     {
-        if (IsHasted)
-        {
-            currentHasteDuration += duration;
-        }
-        else
-        {
-            StartCoroutine(HasteDuration(amount, duration));
-        }
+        // Always stop the existing coroutine to ensure the current buff is reset
+        StopCoroutine("HasteDuration");
+
+        // Apply the new buff immediately, even if it's shorter than the current buff's remaining duration
+        StartCoroutine(HasteDuration(stacks, duration));
     }
 
-    IEnumerator HasteDuration(float amount, float duration)
+    IEnumerator HasteDuration(int stacks, float duration)
     {
-        // Bool
-        IsHasted = true;
+        // Set Stacks
+        hasteStacks = stacks;
 
         // Icon
         GameObject debuffIcon = Instantiate(buff_Haste);
         debuffIcon.transform.SetParent(buffBar.transform);
         debuffIcon.transform.localScale = new Vector3(1, 1, 1);
 
-        // Apply haste
-        ApplyHaste(amount);
+        // Logic for adjusting speed based on stacks
+        float hasteAmount = 0.1f * hasteStacks; // Adjust this multiplier as needed
+        ApplyHaste(hasteAmount);
 
         yield return new WaitForSeconds(duration);
 
-        // Reset haste
-        ResetHaste(amount);
-
         Destroy(debuffIcon);
 
-        currentHasteDuration = 0f;
-
-        IsHasted = false;
+        ResetHaste();
+        hasteStacks = 0;
     }
 
     void ApplyHaste(float amount)
@@ -85,7 +78,7 @@ public class Buff_Haste : MonoBehaviour, IHasteable
         }
     }
 
-    void ResetHaste(float amount)
+    void ResetHaste()
     {
         if (isPlayer)
         {
