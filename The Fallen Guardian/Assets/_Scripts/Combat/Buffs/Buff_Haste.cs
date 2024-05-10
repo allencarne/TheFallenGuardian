@@ -36,9 +36,6 @@ public class Buff_Haste : MonoBehaviour, IHasteable
             CurrentSpeed = enemy.CurrentSpeed;
             BaseSpeed = enemy.BaseSpeed;
         }
-
-        // Get Stacks Text
-        stacksText = buff_Haste.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void Update()
@@ -78,11 +75,14 @@ public class Buff_Haste : MonoBehaviour, IHasteable
                 buffIcon = Instantiate(buff_Haste);
                 buffIcon.transform.SetParent(buffBar.transform);
                 buffIcon.transform.localScale = new Vector3(1, 1, 1);
-            }
-        }
 
-        // Stacks Text
-        stacksText.text = stacks.ToString();
+                // Get Stacks Text
+                stacksText = buffIcon.GetComponentInChildren<TextMeshProUGUI>();
+            }
+
+            // Stacks Text
+            stacksText.text = stacks.ToString();
+        }
     }
 
     void ApplyHaste(float amount)
