@@ -12,10 +12,8 @@ public class Buff_Might : MonoBehaviour, IMightable
     [SerializeField] GameObject buff_Might;
     TextMeshProUGUI stacksText;
 
-    [Header("Haste")]
-    int mightPerStack = 3;
-    bool isMighted = false;
-    float currentDuration = 0;
+    [Header("Might")]
+    int damagePerStack = 3;
     int mightStacks = 0;
     GameObject buffIcon;
 
@@ -39,60 +37,66 @@ public class Buff_Might : MonoBehaviour, IMightable
         }
     }
 
-    private void Update()
-    {
-        // If haste buff is active, decrement the duration
-        if (isMighted)
-        {
-            currentDuration -= Time.deltaTime;
-            if (currentDuration <= 0)
-            {
-                EndMight();
-
-                if (buffIcon) Destroy(buffIcon);
-            }
-        }
-    }
-
     public void Might(int stacks, float duration)
     {
-        if (stacks > mightStacks || !isMighted)
+        // Increase Stack Amount Based on the New Buff
+        mightStacks += stacks;
+
+        // Cap the hasteStacks at 25
+        mightStacks = Mathf.Min(mightStacks, 25);
+
+        // Gain Haste Based on Stack Amount
+        ApplyMight(mightStacks);
+
+        // Icon
+        if (!buffIcon)
         {
-            // Start or reset the haste buff
-            mightStacks = stacks;
-            //currentDuration = duration;
-            isMighted = true;
+            buffIcon = Instantiate(buff_Might);
+            buffIcon.transform.SetParent(buffBar.transform);
+            buffIcon.transform.localScale = new Vector3(1, 1, 1);
 
-            ApplyMight(stacks);
+            // Get Stacks Text
+            stacksText = buffIcon.GetComponentInChildren<TextMeshProUGUI>();
+        }
 
-            // Icon
-            if (!buffIcon)
-            {
-                buffIcon = Instantiate(buff_Might);
-                buffIcon.transform.SetParent(buffBar.transform);
-                buffIcon.transform.localScale = new Vector3(1, 1, 1);
+        // Stacks Text
+        stacksText.text = mightStacks.ToString();
 
-                // Get Stacks Text
-                stacksText = buffIcon.GetComponentInChildren<TextMeshProUGUI>();
-            }
+        // Start a Timer for Each Instance of the Buff
+        StartCoroutine(Stack(stacks, duration));
+    }
+
+    IEnumerator Stack(int stacks, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        // Subtrack the Stack from our HasteStacks
+        mightStacks -= stacks;
+
+        // Ensure hasteStacks doesn't go below zero
+        mightStacks = Mathf.Max(mightStacks, 0);
+
+        if (mightStacks == 0)
+        {
+            mightStacks = 0;
+            ResetMight();
+            Destroy(buffIcon);
+        }
+        else
+        {
+            ApplyMight(mightStacks);
 
             // Stacks Text
             stacksText.text = stacks.ToString();
-        }
-
-        if (duration > currentDuration)
-        {
-            // Update duration if it's larger
-            currentDuration = duration;
         }
     }
 
     void ApplyMight(int stacks)
     {
         // Calculate the haste amount based on the number of stacks
-        int mightAmount = mightPerStack * stacks; // Increase movement speed by 1 for each stack
+        int MightAmount = damagePerStack * stacks; // Increase movement speed by 1 for each stack
 
-        CurrentDamage = BaseDamage + mightAmount;
+        CurrentDamage = BaseDamage + MightAmount;
 
         if (isPlayer)
         {
@@ -102,17 +106,6 @@ public class Buff_Might : MonoBehaviour, IMightable
         {
             enemy.CurrentDamage = CurrentDamage;
         }
-    }
-
-    public void EndMight()
-    {
-        // Reset haste-related variables
-        isMighted = false;
-        mightStacks = 0;
-        currentDuration = 0f;
-
-        // Reset the speed
-        ResetMight();
     }
 
     void ResetMight()

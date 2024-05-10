@@ -78,11 +78,14 @@ public class Buff_Haste : MonoBehaviour, IHasteable
 
         if (hasteStacks == 0)
         {
-            EndHaste();
+            hasteStacks = 0;
+            ResetHaste();
             Destroy(buffIcon);
         }
         else
         {
+            ApplyHaste(hasteStacks);
+
             // Stacks Text
             stacksText.text = stacks.ToString();
         }
@@ -103,14 +106,6 @@ public class Buff_Haste : MonoBehaviour, IHasteable
         {
             enemy.CurrentSpeed = CurrentSpeed;
         }
-    }
-
-    public void EndHaste()
-    {
-        hasteStacks = 0;
-
-        // Reset the speed
-        ResetHaste();
     }
 
     void ResetHaste()
