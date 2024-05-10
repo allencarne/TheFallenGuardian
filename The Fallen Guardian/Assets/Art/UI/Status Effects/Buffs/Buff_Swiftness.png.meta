@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 574bb15aa6b6b5344a28fefa71998197
+guid: 56a8d6c405e601c44970898f942ac4af
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Buff_Agility_0
+      name: Buff_Swiftness_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c20f9e6e5315b14f96398bf6415b006
-      internalID: 14090740
+      spriteID: 0dd54998d954f0b479bd69b6e33f5db5
+      internalID: 1810358424
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buff_Agility_1
+      name: Buff_Swiftness_1
       rect:
         serializedVersion: 2
         x: 6
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4758419b4e5737c4a88caa0dfa3560c2
-      internalID: 151192749
+      spriteID: 35df5ffbcdbc6be4d97078510f2d5502
+      internalID: 1457408570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buff_Agility_2
+      name: Buff_Swiftness_2
       rect:
         serializedVersion: 2
         x: 12
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 430931fcee450a448a103cf6c3fa2d52
-      internalID: 689938526
+      spriteID: da6fe4a9e8c172f479fec4015848523f
+      internalID: -1249956071
       vertices: []
       indices: 
       edges: []
@@ -196,9 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Buff_Agility_0: 14090740
-      Buff_Agility_1: 151192749
-      Buff_Agility_2: 689938526
+      Buff_Swiftness_0: 1810358424
+      Buff_Swiftness_1: 1457408570
+      Buff_Swiftness_2: -1249956071
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

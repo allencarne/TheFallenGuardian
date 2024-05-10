@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 7870028751676459778}
   - component: {fileID: 8273741280507671608}
   m_Layer: 3
-  m_Name: Buff_Agility
+  m_Name: Buff_Swiftness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 14090740, guid: 574bb15aa6b6b5344a28fefa71998197, type: 3}
+  m_Sprite: {fileID: 1810358424, guid: 56a8d6c405e601c44970898f942ac4af, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -224,6 +224,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationFrames:
-  - {fileID: 14090740, guid: 574bb15aa6b6b5344a28fefa71998197, type: 3}
-  - {fileID: 151192749, guid: 574bb15aa6b6b5344a28fefa71998197, type: 3}
-  - {fileID: 689938526, guid: 574bb15aa6b6b5344a28fefa71998197, type: 3}
+  - {fileID: 1810358424, guid: 56a8d6c405e601c44970898f942ac4af, type: 3}
+  - {fileID: 1457408570, guid: 56a8d6c405e601c44970898f942ac4af, type: 3}
+  - {fileID: -1249956071, guid: 56a8d6c405e601c44970898f942ac4af, type: 3}

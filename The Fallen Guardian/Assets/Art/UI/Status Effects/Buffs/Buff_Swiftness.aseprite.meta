@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8adf493132838c24ab4bf725b1561ee8
+guid: 58a352e6b957f374ab1ced5f4a10a4d3
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,7 +121,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Buff_Agility_Frame_0
+  - name: Buff_Swiftness_Frame_0
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 4
       width: 6
       height: 6
-    spriteID: f6a82c22b3a60f449a481e8ea8a0a835
+    spriteID: 490fbe546668f794ba1a38d79302e220
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,7 +141,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Buff_Agility_Frame_1
+  - name: Buff_Swiftness_Frame_1
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -152,7 +152,7 @@ ScriptedImporter:
       y: 18
       width: 6
       height: 6
-    spriteID: 09b51044f8d56ee449bbd38c1a94e3f1
+    spriteID: 2fb034689033c59479526a7801a23c95
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -161,7 +161,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 18}
-  - name: Buff_Agility_Frame_2
+  - name: Buff_Swiftness_Frame_2
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -172,7 +172,7 @@ ScriptedImporter:
       y: 4
       width: 6
       height: 6
-    spriteID: dde058521322cbb4ea6f92c3dce85dd0
+    spriteID: 169a6aa742f46b448bc42fc871d2b87a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -184,36 +184,36 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 701212603
-    name: Buff_Agility
+    guid: 1533971896
+    name: Buff_Swiftness
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Buff_Agility_Frame_0
+    - name: Buff_Swiftness_Frame_0
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
         width: 6
         height: 6
-      spriteId: f6a82c22b3a60f449a481e8ea8a0a835
-    - name: Buff_Agility_Frame_1
+      spriteId: 490fbe546668f794ba1a38d79302e220
+    - name: Buff_Swiftness_Frame_1
       frameIndex: 1
       cellRect:
         x: 0
         y: 0
         width: 6
         height: 6
-      spriteId: 09b51044f8d56ee449bbd38c1a94e3f1
-    - name: Buff_Agility_Frame_2
+      spriteId: 2fb034689033c59479526a7801a23c95
+    - name: Buff_Swiftness_Frame_2
       frameIndex: 2
       cellRect:
         x: 0
         y: 0
         width: 6
         height: 6
-      spriteId: dde058521322cbb4ea6f92c3dce85dd0
+      spriteId: 169a6aa742f46b448bc42fc871d2b87a
     linkedCells: []
     parentIndex: -1
   platformSettings: []
