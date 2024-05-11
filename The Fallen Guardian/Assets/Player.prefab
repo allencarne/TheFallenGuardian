@@ -1258,6 +1258,7 @@ GameObject:
   - component: {fileID: 4009082293973101659}
   - component: {fileID: 6570711290415484158}
   - component: {fileID: 8259647482174317175}
+  - component: {fileID: 7270183990721013515}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2053,6 +2054,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffBar: {fileID: 119541469203478924}
   buff_Swiftness: {fileID: 7434068705413786477, guid: fc840d70f5921f74e97abd0008873ef4, type: 3}
+  isPlayer: 1
+  playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
+  enemy: {fileID: 0}
+--- !u!114 &7270183990721013515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5520827e24d7b34e9a0c84167af38f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffBar: {fileID: 119541469203478924}
+  buff_Alacrity: {fileID: 5308563003022945098, guid: 40f461b226a99c945b33070df193e0bb, type: 3}
   isPlayer: 1
   playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
   enemy: {fileID: 0}

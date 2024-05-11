@@ -31,8 +31,8 @@ public class PlayerStats : ScriptableObject
     public float CurrentAttackSpeed;
 
     [Header("Cool Down Reduction")]
-    public float BaseCoolDown;
-    public float CurrentCoolDown;
+    public float BaseCDR;
+    public float CurrentCDR;
 
     [Header("Attributes")]
     public float Vitality; // Increase Health

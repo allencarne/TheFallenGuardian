@@ -25,12 +25,12 @@ MonoBehaviour:
   BaseDamage: 1
   CurrentDamage: 1
   BaseAttackSpeed: 1
-  CurrentAttackSpeed: 0
-  BaseCoolDown: 1
-  CurrentCoolDown: 0
-  Might: 0
-  Haste: 0
-  Agility: 0
-  Alacrity: 0
-  Protection: 0
+  CurrentAttackSpeed: 1
+  BaseCDR: 1
+  CurrentCDR: 1
+  Vitality: 0
+  Power: 0
+  Toughness: 0
+  Quickness: 0
+  Recharge: 0
   Gold: 0

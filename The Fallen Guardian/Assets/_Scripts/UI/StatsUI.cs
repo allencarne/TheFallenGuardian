@@ -30,6 +30,6 @@ public class StatsUI : MonoBehaviour
         text_Damage.text = stats.CurrentDamage.ToString();
         text_Speed.text = stats.CurrentSpeed.ToString();
         text_AttackSpeed.text = stats.CurrentAttackSpeed.ToString();
-        text_CoolDown.text = stats.CurrentCoolDown.ToString();
+        text_CoolDown.text = stats.CurrentCDR.ToString();
     }
 }

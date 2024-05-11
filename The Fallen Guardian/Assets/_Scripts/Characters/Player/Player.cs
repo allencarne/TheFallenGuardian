@@ -55,6 +55,9 @@ public class Player : MonoBehaviour, IDamageable
 
         // Set Attack Speed
         Stats.CurrentAttackSpeed = Stats.BaseAttackSpeed;
+
+        // Set CDR
+        Stats.CurrentCDR = Stats.BaseCDR;
     }
 
     private void Update()

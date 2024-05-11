@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snail
       objectReference: {fileID: 0}
+    - target: {fileID: 2027561816777149345, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 415464689696531612}
     - target: {fileID: 3538787198285182242, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: enemy
       value: 
@@ -320,6 +324,8 @@ MonoBehaviour:
   CurrentDamage: 0
   BaseAttackSpeed: 1
   CurrentAttackSpeed: 0
+  BaseCDR: 0
+  CurrentCDR: 0
   expToGive: 2
   wanderRadius: 5
   attackRadius: 1
