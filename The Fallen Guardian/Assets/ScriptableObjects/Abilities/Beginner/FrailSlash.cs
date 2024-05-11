@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/Beginner/FrailSlash")]
 public class FrailSlash : ScriptableObject, IAbilityBehaviour
@@ -30,6 +31,8 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
     [SerializeField] float slowAmount;
     [SerializeField] float slowDuration;
 
+    bool canReset = false;
+
     public void BehaviourUpdate(PlayerStateMachine stateMachine)
     {
         if (stateMachine.CanBasicAbility)
@@ -47,17 +50,14 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
             stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Attack", direction);
 
             stateMachine.StartCoroutine(AttackImpact(stateMachine));
+            stateMachine.StartCoroutine(CoolDown(stateMachine));
         }
 
-        coolDownTime += Time.deltaTime;
-
-        if (coolDownTime >= coolDown)
+        if (canReset)
         {
-            coolDownTime = 0;
+            canReset = false;
 
             stateMachine.SetState(new PlayerIdleState(stateMachine));
-
-            stateMachine.CanBasicAbility = true;
         }
     }
 
@@ -105,5 +105,20 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
             slowOnTrigger.SlowAmount = slowAmount;
             slowOnTrigger.SlowDuration = slowDuration;
         }
+    }
+
+    IEnumerator CoolDown(PlayerStateMachine stateMachine)
+    {
+        // Adjust cooldown time based on cooldown reduction
+        float modifiedCooldown = coolDown / stateMachine.Player.Stats.CurrentCDR;
+
+        yield return new WaitForSeconds(modifiedCooldown);
+
+        stateMachine.CanBasicAbility = true;
+    }
+
+    public void AE_RecoveryEnd()
+    {
+        canReset = true;
     }
 }

@@ -45,9 +45,12 @@ public class SplittingSwing : ScriptableObject, IAbilityBehaviour
             stateMachine.StartCoroutine(AttackImpact(stateMachine));
         }
 
+        // Adjust cooldown time based on cooldown reduction
+        float modifiedCooldown = coolDown / stateMachine.Player.Stats.CurrentCDR;
+
         coolDownTime += Time.deltaTime;
 
-        if (coolDownTime >= coolDown)
+        if (coolDownTime >= modifiedCooldown)
         {
             coolDownTime = 0;
 

@@ -38,9 +38,12 @@ public class LightDash : ScriptableObject, IAbilityBehaviour
             stateMachine.Player.Buffs.Immovable(dashDuration);
         }
 
+        // Adjust cooldown time based on cooldown reduction
+        float modifiedCooldown = coolDown / stateMachine.Player.Stats.CurrentCDR;
+
         coolDownTime += Time.deltaTime;
 
-        if (coolDownTime >= coolDown)
+        if (coolDownTime >= modifiedCooldown)
         {
             coolDownTime = 0;
 
