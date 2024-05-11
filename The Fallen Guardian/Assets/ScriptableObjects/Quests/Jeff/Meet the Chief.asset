@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7254e9835c65dc24da7ca318174ac021, type: 3}
-  m_Name: Meet the Cheif
+  m_Name: Meet the Chief
   m_EditorClassIdentifier: 
-  QuestName: Meet the Cheif
-  QuestDialogue: "Hey now that you are ready, go meet the Cheif. \nHe's located at
+  QuestName: Meet the Chief
+  QuestDialogue: "Hey now that you are ready, go meet the Chief. \nHe's located at
     the center of town."
-  QuestObjective1: Meet the Cheif At the Center of Town
+  QuestObjective1: Meet the Chief At the Center of Town
   QuestObjective2: 
   QuestObjective3: 
   QuestObjective4: 
   QuestObjective5: 
-  amountOfObjectives: 1
   QuestReward1: + 3
   QuestReward1Prefab: {fileID: 0}
   QuestReward1Icon: {fileID: 21300000, guid: 4f4b8311ff7e5304cb2e119a627c39d9, type: 3}

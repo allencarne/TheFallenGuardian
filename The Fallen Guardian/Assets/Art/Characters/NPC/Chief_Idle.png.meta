@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2d059824b097e584ca5e2b14ba1cf6bf
+guid: e4f5f67ab12d06645a35e968ac1c007b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cheif_0
+      name: Chief_Idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9dc005a8728b6b14f813f260d831e7f5
-      internalID: 1366023484
+      spriteID: bbb25fb8990148f4cb597d864f14622b
+      internalID: -419237730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cheif_1
+      name: Chief_Idle_1
       rect:
         serializedVersion: 2
         x: 48
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf46930a3b02c0a41843c8ff9fd5661f
-      internalID: -1767069568
+      spriteID: 2f1099b7210879b4dbcc359f43fb71e8
+      internalID: 2019286709
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cheif_2
+      name: Chief_Idle_2
       rect:
         serializedVersion: 2
         x: 96
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4278bcd60db5ba746a4efa7de6f9f0b3
-      internalID: -991516156
+      spriteID: 118a6a6cfc944fc40845b7315cea1566
+      internalID: -1625783001
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cheif_3
+      name: Chief_Idle_3
       rect:
         serializedVersion: 2
         x: 144
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e09f9cc3474ce04e9df361d716cf655
-      internalID: 1783862674
+      spriteID: c275d8ea200a2254881bf399721382c7
+      internalID: 952518385
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cheif_4
+      name: Chief_Idle_4
       rect:
         serializedVersion: 2
         x: 192
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adfd39898155ac34aaab0325f2e10e99
-      internalID: -96935641
+      spriteID: 547a10fcebb19ed47a2800b15155065c
+      internalID: 1349802385
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cheif_5
+      name: Chief_Idle_5
       rect:
         serializedVersion: 2
         x: 240
@@ -242,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0b74e26e6bac8e46b6c39817648ba3b
-      internalID: -1166856789
+      spriteID: 67e09465875f133478206b82921b0b79
+      internalID: -1519370724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cheif_6
+      name: Chief_Idle_6
       rect:
         serializedVersion: 2
         x: 288
@@ -263,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6ea022a672ca7d4d83826f63690108f
-      internalID: 1772302614
+      spriteID: d0581aebc7fa04146b6039e8f975e910
+      internalID: -771628764
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cheif_7
+      name: Chief_Idle_7
       rect:
         serializedVersion: 2
         x: 336
@@ -284,8 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0049d2ca2e0ee8047ae03d6591d33f2e
-      internalID: 1737990048
+      spriteID: d6708ecd6957e8747b04c9057f45b4bb
+      internalID: -1428465117
       vertices: []
       indices: 
       edges: []
@@ -301,14 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cheif_0: 1366023484
-      Cheif_1: -1767069568
-      Cheif_2: -991516156
-      Cheif_3: 1783862674
-      Cheif_4: -96935641
-      Cheif_5: -1166856789
-      Cheif_6: 1772302614
-      Cheif_7: 1737990048
+      Chief_Idle_0: -419237730
+      Chief_Idle_1: 2019286709
+      Chief_Idle_2: -1625783001
+      Chief_Idle_3: 952518385
+      Chief_Idle_4: 1349802385
+      Chief_Idle_5: -1519370724
+      Chief_Idle_6: -771628764
+      Chief_Idle_7: -1428465117
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
