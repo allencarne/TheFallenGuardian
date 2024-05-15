@@ -6,8 +6,10 @@ public class PlayerMoveState : PlayerState
 
     public override void Update()
     {
-        stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player", "Move", stateMachine.InputHandler.MoveInput.normalized);
-        stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Move", stateMachine.InputHandler.MoveInput.normalized);
+        stateMachine.BodyAnimator.Play("Move");
+
+        //stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player", "Move", stateMachine.InputHandler.MoveInput.normalized);
+        //stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Move", stateMachine.InputHandler.MoveInput.normalized);
 
         // Transitions
         stateMachine.BasicAbility(stateMachine.InputHandler.BasicAbilityInput);
@@ -33,5 +35,11 @@ public class PlayerMoveState : PlayerState
     {
         Vector2 movement = moveInput.normalized * stateMachine.Player.Stats.CurrentSpeed;
         stateMachine.Rigidbody.velocity = movement;
+
+        if (movement != Vector2.zero)
+        {
+            stateMachine.BodyAnimator.SetFloat("Horizontal", movement.x);
+            stateMachine.BodyAnimator.SetFloat("Vertical", movement.y);
+        }
     }
 }

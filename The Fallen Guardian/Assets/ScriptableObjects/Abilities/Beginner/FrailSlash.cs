@@ -46,8 +46,8 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
             stateMachine.CanBasicAbility = false;
 
             // Use the calculated direction for handling animations
-            stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player_Sword", "Attack", direction);
-            stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Attack", direction);
+            //stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player_Sword", "Attack", direction);
+            //stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Attack", direction);
 
             stateMachine.StartCoroutine(AttackImpact(stateMachine));
             stateMachine.StartCoroutine(CoolDown(stateMachine));

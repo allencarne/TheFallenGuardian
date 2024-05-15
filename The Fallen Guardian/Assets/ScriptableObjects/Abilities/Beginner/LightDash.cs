@@ -31,8 +31,8 @@ public class LightDash : ScriptableObject, IAbilityBehaviour
             stateMachine.HandleSlideForward(stateMachine.AbilityDir.eulerAngles.z, rangeBeforeSlide, dashForce, dashDuration);
 
             // Use the calculated direction for handling animations
-            stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player", "Move", direction);
-            stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Move", direction);
+            //stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player", "Move", direction);
+            //stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Move", direction);
 
             // Buff
             stateMachine.Player.Buffs.Immovable(dashDuration);
