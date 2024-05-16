@@ -8,6 +8,7 @@ public class PlayerIdleState : PlayerState
     {
         stateMachine.BodyAnimator.Play("Idle");
 
+        stateMachine.SwordAnimator.Play("Idle");
         //stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player", "Idle", stateMachine.InputHandler.MoveInput.normalized);
         //stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Idle", stateMachine.InputHandler.MoveInput.normalized);
 

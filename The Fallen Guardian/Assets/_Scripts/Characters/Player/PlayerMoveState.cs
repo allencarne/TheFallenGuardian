@@ -8,6 +8,8 @@ public class PlayerMoveState : PlayerState
     {
         stateMachine.BodyAnimator.Play("Move");
 
+        stateMachine.SwordAnimator.Play("Move");
+
         //stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player", "Move", stateMachine.InputHandler.MoveInput.normalized);
         //stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Move", stateMachine.InputHandler.MoveInput.normalized);
 
@@ -40,6 +42,9 @@ public class PlayerMoveState : PlayerState
         {
             stateMachine.BodyAnimator.SetFloat("Horizontal", movement.x);
             stateMachine.BodyAnimator.SetFloat("Vertical", movement.y);
+
+            stateMachine.SwordAnimator.SetFloat("Horizontal", movement.x);
+            stateMachine.SwordAnimator.SetFloat("Vertical", movement.y);
         }
     }
 }
