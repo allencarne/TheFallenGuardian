@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/Beginner/FrailSlash")]
 public class FrailSlash : ScriptableObject, IAbilityBehaviour
@@ -11,11 +10,14 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
     [SerializeField] GameObject SlashPrefab;
     [SerializeField] GameObject hitEffect;
 
-    [Header("Stats")]
-    [SerializeField] int damage;
+    [Header("Time")]
+    [SerializeField] float castTime;
+    [SerializeField] float recoveryTime;
     public float coolDown;
     public float coolDownTime;
-    [SerializeField] float castTime;
+
+    [Header("Stats")]
+    [SerializeField] int damage;
     [SerializeField] float attackRange;
 
     [Header("Slide")]
@@ -31,12 +33,15 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
     [SerializeField] float slowAmount;
     [SerializeField] float slowDuration;
 
-    bool canReset = false;
+    bool canImpact = false;
+    bool hasAttacked = false;
 
     public void BehaviourUpdate(PlayerStateMachine stateMachine)
     {
-        if (stateMachine.CanBasicAbility)
+        if (stateMachine.CanBasicAbility && !hasAttacked)
         {
+            hasAttacked = true;
+
             stateMachine.AbilityDir = stateMachine.Aimer.rotation;
 
             // Calculate direction based on Aimer rotation
@@ -46,6 +51,10 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
             stateMachine.CanBasicAbility = false;
 
             // Use the calculated direction for handling animations
+            stateMachine.BodyAnimator.Play("Sword_Attack_C");
+            stateMachine.BodyAnimator.SetFloat("Horizontal", direction.x);
+            stateMachine.BodyAnimator.SetFloat("Vertical", direction.y);
+
             //stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player_Sword", "Attack", direction);
             //stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Attack", direction);
 
@@ -53,11 +62,12 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
             stateMachine.StartCoroutine(CoolDown(stateMachine));
         }
 
-        if (canReset)
+        if (canImpact)
         {
-            canReset = false;
+            canImpact = false;
 
-            stateMachine.SetState(new PlayerIdleState(stateMachine));
+            stateMachine.BodyAnimator.Play("Sword_Attack_R");
+            stateMachine.StartCoroutine(RecoveryTime(stateMachine));
         }
     }
 
@@ -66,6 +76,12 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
         float modifiedCastTime = castTime / stateMachine.Player.Stats.CurrentAttackSpeed;
 
         yield return new WaitForSeconds(modifiedCastTime);
+
+        Debug.Log(modifiedCastTime);
+
+        stateMachine.BodyAnimator.Play("Sword_Attack_I");
+
+        stateMachine.StartCoroutine(ImpactDelay());
 
         // Calculate the direction of the attack
         Vector3 direction = stateMachine.AbilityDir * Vector3.right;
@@ -107,6 +123,23 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
         }
     }
 
+    IEnumerator ImpactDelay()
+    {
+        yield return new WaitForSeconds(.1f);
+
+        canImpact = true;
+    }
+
+    IEnumerator RecoveryTime(PlayerStateMachine stateMachine)
+    {
+        float modifiedRecoveryTime = recoveryTime / stateMachine.Player.Stats.CurrentAttackSpeed;
+
+        yield return new WaitForSeconds(modifiedRecoveryTime);
+
+        hasAttacked = false;
+        stateMachine.SetState(new PlayerIdleState(stateMachine));
+    }
+
     IEnumerator CoolDown(PlayerStateMachine stateMachine)
     {
         // Adjust cooldown time based on cooldown reduction
@@ -115,10 +148,5 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
         yield return new WaitForSeconds(modifiedCooldown);
 
         stateMachine.CanBasicAbility = true;
-    }
-
-    public void AE_RecoveryEnd()
-    {
-        canReset = true;
     }
 }

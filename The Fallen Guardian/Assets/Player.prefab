@@ -518,7 +518,6 @@ GameObject:
   - component: {fileID: 9077570094821675407}
   - component: {fileID: 6348204392684985540}
   - component: {fileID: 7406391039671905879}
-  - component: {fileID: 2178100175388353084}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -614,48 +613,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2178100175388353084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3495556486617417682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f80b8fd3924c5445b0182b14d373280, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnImpactEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 76e19195019d0034ababdef2e5b33a66, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnRecoveryEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 33f309fd16e1c2143adf8e8b47c5de68, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &3802473145910324290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,6 +1847,7 @@ MonoBehaviour:
   equipment: {fileID: 7237820433538653136}
   abilities: {fileID: 239699257640095505}
   player: {fileID: 7150002324481854805}
+  LastMoveDirection: {x: 0, y: 0}
   CanBasicAbility: 1
   AbilityDir: {x: 0, y: 0, z: 0, w: 0}
   canOffensiveAbility: 1
