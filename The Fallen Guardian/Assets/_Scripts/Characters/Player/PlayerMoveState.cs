@@ -7,11 +7,7 @@ public class PlayerMoveState : PlayerState
     public override void Update()
     {
         stateMachine.BodyAnimator.Play("Move");
-
         stateMachine.SwordAnimator.Play("Move");
-
-        //stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player", "Move", stateMachine.InputHandler.MoveInput.normalized);
-        //stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Move", stateMachine.InputHandler.MoveInput.normalized);
 
         // Transitions
         stateMachine.BasicAbility(stateMachine.InputHandler.BasicAbilityInput);

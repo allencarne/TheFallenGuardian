@@ -7,10 +7,7 @@ public class PlayerIdleState : PlayerState
     public override void Update()
     {
         stateMachine.BodyAnimator.Play("Idle");
-
         stateMachine.SwordAnimator.Play("Idle");
-        //stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player", "Idle", stateMachine.InputHandler.MoveInput.normalized);
-        //stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Idle", stateMachine.InputHandler.MoveInput.normalized);
 
         // Transitions
         stateMachine.BasicAbility(stateMachine.InputHandler.BasicAbilityInput);

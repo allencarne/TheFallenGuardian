@@ -55,6 +55,10 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
             stateMachine.BodyAnimator.SetFloat("Horizontal", direction.x);
             stateMachine.BodyAnimator.SetFloat("Vertical", direction.y);
 
+            stateMachine.SwordAnimator.Play("Sword_Attack_C");
+            stateMachine.SwordAnimator.SetFloat("Horizontal", direction.x);
+            stateMachine.SwordAnimator.SetFloat("Vertical", direction.y);
+
             //stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player_Sword", "Attack", direction);
             //stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Attack", direction);
 
@@ -67,6 +71,8 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
             canImpact = false;
 
             stateMachine.BodyAnimator.Play("Sword_Attack_R");
+            stateMachine.SwordAnimator.Play("Sword_Attack_R");
+
             stateMachine.StartCoroutine(RecoveryTime(stateMachine));
         }
     }
@@ -80,6 +86,7 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
         Debug.Log(modifiedCastTime);
 
         stateMachine.BodyAnimator.Play("Sword_Attack_I");
+        stateMachine.SwordAnimator.Play("Sword_Attack_I");
 
         stateMachine.StartCoroutine(ImpactDelay());
 

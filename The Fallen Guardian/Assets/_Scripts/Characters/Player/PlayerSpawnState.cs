@@ -16,7 +16,6 @@ public class PlayerSpawnState : PlayerState
 
             // State Logic
             stateMachine.BodyAnimator.Play("Spawn");
-            //stateMachine.ClubAnimator.Play("Spawn");
             stateMachine.SwordAnimator.Play("Spawn");
 
             stateMachine.Player.OnHealthChanged?.Invoke();
