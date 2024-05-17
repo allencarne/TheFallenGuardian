@@ -40,27 +40,24 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
         if (stateMachine.CanBasicAbility && !stateMachine.hasAttacked)
         {
             stateMachine.hasAttacked = true;
-
-            stateMachine.AbilityDir = stateMachine.Aimer.rotation;
-
-            // Calculate direction based on Aimer rotation
-            float angle = stateMachine.Aimer.rotation.eulerAngles.z * Mathf.Deg2Rad;
-            Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-
             stateMachine.CanBasicAbility = false;
 
-            // Use the calculated direction for handling animations
+            // Get Angle and Direction
+            stateMachine.AbilityDir = stateMachine.Aimer.rotation;
+            float angle = stateMachine.Aimer.rotation.eulerAngles.z;
+            Vector2 direction = stateMachine.HandleDirection(angle);
+
+            // Animate Body
             stateMachine.BodyAnimator.Play("Sword_Attack_C");
             stateMachine.BodyAnimator.SetFloat("Horizontal", direction.x);
             stateMachine.BodyAnimator.SetFloat("Vertical", direction.y);
 
+            // Animate Sword
             stateMachine.SwordAnimator.Play("Sword_Attack_C");
             stateMachine.SwordAnimator.SetFloat("Horizontal", direction.x);
             stateMachine.SwordAnimator.SetFloat("Vertical", direction.y);
 
-            //stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player_Sword", "Attack", direction);
-            //stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Attack", direction);
-
+            // Timers
             stateMachine.StartCoroutine(AttackImpact(stateMachine));
             stateMachine.StartCoroutine(CoolDown(stateMachine));
         }

@@ -149,87 +149,28 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     #endregion
-    /*
-    public void HandleAnimation(Animator animator, string type, string state, Vector2 direction)
+    public Vector2 HandleDirection(float angle)
     {
-        string animationName = $"{type}_{state}";
+        Vector2 direction;
 
-        if (direction != Vector2.zero)
+        if (angle >= 45 && angle < 135) // Up
         {
-            // Update last move direction
-            LastMoveDirection = direction.normalized;
+            direction = new Vector2(0, 1);
+        }
+        else if (angle >= 135 && angle < 225) // Left
+        {
+            direction = new Vector2(-1, 0);
+        }
+        else if (angle >= 225 && angle < 315) // Down
+        {
+            direction = new Vector2(0, -1);
+        }
+        else // Right (covers 315 to 44.999 degrees)
+        {
+            direction = new Vector2(1, 0);
+        }
 
-            // Character is moving or attacking
-            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-            {
-                // Moving horizontally
-                animator.Play($"{animationName}_{(direction.x > 0 ? "Right" : "Left")}");
-            }
-            else
-            {
-                // Moving vertically
-                animator.Play($"{animationName}_{(direction.y > 0 ? "Up" : "Down")}");
-            }
-        }
-        else
-        {
-            // Character is not moving or attacking, play idle animation
-            if (LastMoveDirection != Vector2.zero)
-            {
-                // Determine idle animation direction based on last move direction
-                if (Mathf.Abs(LastMoveDirection.x) > Mathf.Abs(LastMoveDirection.y))
-                {
-                    // Last move was horizontal
-                    animator.Play($"{animationName}_{(LastMoveDirection.x > 0 ? "Right" : "Left")}");
-                }
-                else
-                {
-                    // Last move was vertical
-                    animator.Play($"{animationName}_{(LastMoveDirection.y > 0 ? "Up" : "Down")}");
-                }
-            }
-            else
-            {
-                // Character is idle and last move direction is zero, play default idle animation
-                animator.Play($"{animationName}_Down");
-            }
-        }
-    }
-    */
-
-    public void HandleAnimation(Animator animator, string animationName, Vector2 direction)
-    {
-        // Update last move direction
-        LastMoveDirection = direction.normalized;
-
-        if (direction != Vector2.zero)
-        {
-            // Character is moving or attacking
-            animator.Play(animationName);
-        }
-        else
-        {
-            // Character is not moving or attacking, play idle animation
-            if (LastMoveDirection != Vector2.zero)
-            {
-                // Determine idle animation direction based on last move direction
-                if (Mathf.Abs(LastMoveDirection.x) > Mathf.Abs(LastMoveDirection.y))
-                {
-                    // Last move was horizontal
-                    animator.Play($"{animationName}_{(LastMoveDirection.x > 0 ? "Right" : "Left")}");
-                }
-                else
-                {
-                    // Last move was vertical
-                    animator.Play($"{animationName}_{(LastMoveDirection.y > 0 ? "Up" : "Down")}");
-                }
-            }
-            else
-            {
-                // Character is idle and last move direction is zero, play default idle animation
-                animator.Play($"{animationName}_Down");
-            }
-        }
+        return direction;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
