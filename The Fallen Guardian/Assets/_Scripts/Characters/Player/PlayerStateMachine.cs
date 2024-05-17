@@ -196,28 +196,38 @@ public class PlayerStateMachine : MonoBehaviour
     }
     */
 
-    public void HandleAnimation(Animator animator, string weapon, string state, string action, Vector2 direction)
+    public void HandleAnimation(Animator animator, string animationName, Vector2 direction)
     {
-        // Normalize the movement vector to get the direction
-        direction.Normalize();
+        // Update last move direction
+        LastMoveDirection = direction.normalized;
 
-        // Animate based on the direction of movement
-        if (direction.y > 0)
+        if (direction != Vector2.zero)
         {
-            animator.Play(weapon + "_" + state + "_Up_" + action);
+            // Character is moving or attacking
+            animator.Play(animationName);
         }
-        else if (direction.y < 0)
+        else
         {
-            animator.Play(weapon + "_" + state + "_Down_" + action);
-        }
-
-        if (direction.x > 0)
-        {
-            animator.Play(weapon + "_" + state + "_Right_" + action);
-        }
-        else if (direction.x < 0)
-        {
-            animator.Play(weapon + "_" + state + "_Left_" + action);
+            // Character is not moving or attacking, play idle animation
+            if (LastMoveDirection != Vector2.zero)
+            {
+                // Determine idle animation direction based on last move direction
+                if (Mathf.Abs(LastMoveDirection.x) > Mathf.Abs(LastMoveDirection.y))
+                {
+                    // Last move was horizontal
+                    animator.Play($"{animationName}_{(LastMoveDirection.x > 0 ? "Right" : "Left")}");
+                }
+                else
+                {
+                    // Last move was vertical
+                    animator.Play($"{animationName}_{(LastMoveDirection.y > 0 ? "Up" : "Down")}");
+                }
+            }
+            else
+            {
+                // Character is idle and last move direction is zero, play default idle animation
+                animator.Play($"{animationName}_Down");
+            }
         }
     }
 

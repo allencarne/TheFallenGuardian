@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/Beginner/FrailSlash")]
 public class FrailSlash : ScriptableObject, IAbilityBehaviour
@@ -43,30 +42,13 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
         {
             hasAttacked = true;
 
-            stateMachine.CanBasicAbility = false;
             stateMachine.AbilityDir = stateMachine.Aimer.rotation;
 
             // Calculate direction based on Aimer rotation
-            float angle = stateMachine.Aimer.rotation.eulerAngles.z;
+            float angle = stateMachine.Aimer.rotation.eulerAngles.z * Mathf.Deg2Rad;
+            Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
 
-            Vector2 direction;
-
-            if (angle >= 45 && angle < 135) // Up
-            {
-                direction = new Vector2(0, 1);
-            }
-            else if (angle >= 135 && angle < 225) // Left
-            {
-                direction = new Vector2(-1, 0);
-            }
-            else if (angle >= 225 && angle < 315) // Down
-            {
-                direction = new Vector2(0, -1);
-            }
-            else // Right (covers 315 to 44.999 degrees)
-            {
-                direction = new Vector2(1, 0);
-            }
+            stateMachine.CanBasicAbility = false;
 
             // Use the calculated direction for handling animations
             stateMachine.BodyAnimator.Play("Sword_Attack_C");
@@ -76,6 +58,9 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
             stateMachine.SwordAnimator.Play("Sword_Attack_C");
             stateMachine.SwordAnimator.SetFloat("Horizontal", direction.x);
             stateMachine.SwordAnimator.SetFloat("Vertical", direction.y);
+
+            //stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player_Sword", "Attack", direction);
+            //stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Attack", direction);
 
             stateMachine.StartCoroutine(AttackImpact(stateMachine));
             stateMachine.StartCoroutine(CoolDown(stateMachine));
@@ -97,6 +82,8 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
         float modifiedCastTime = castTime / stateMachine.Player.Stats.CurrentAttackSpeed;
 
         yield return new WaitForSeconds(modifiedCastTime);
+
+        Debug.Log(modifiedCastTime);
 
         stateMachine.BodyAnimator.Play("Sword_Attack_I");
         stateMachine.SwordAnimator.Play("Sword_Attack_I");
