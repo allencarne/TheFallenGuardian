@@ -34,13 +34,12 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
     [SerializeField] float slowDuration;
 
     bool canImpact = false;
-    bool hasAttacked = false;
 
     public void BehaviourUpdate(PlayerStateMachine stateMachine)
     {
-        if (stateMachine.CanBasicAbility && !hasAttacked)
+        if (stateMachine.CanBasicAbility && !stateMachine.hasAttacked)
         {
-            hasAttacked = true;
+            stateMachine.hasAttacked = true;
 
             stateMachine.AbilityDir = stateMachine.Aimer.rotation;
 
@@ -82,8 +81,6 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
         float modifiedCastTime = castTime / stateMachine.Player.Stats.CurrentAttackSpeed;
 
         yield return new WaitForSeconds(modifiedCastTime);
-
-        Debug.Log(modifiedCastTime);
 
         stateMachine.BodyAnimator.Play("Sword_Attack_I");
         stateMachine.SwordAnimator.Play("Sword_Attack_I");
@@ -143,7 +140,7 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
 
         yield return new WaitForSeconds(modifiedRecoveryTime);
 
-        hasAttacked = false;
+        stateMachine.hasAttacked = false;
         stateMachine.SetState(new PlayerIdleState(stateMachine));
     }
 

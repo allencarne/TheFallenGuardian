@@ -31,6 +31,7 @@ public class PlayerStateMachine : MonoBehaviour
     [Header("Basic Ability")]
     [HideInInspector] public bool CanBasicAbility = true;
     [HideInInspector] public Quaternion AbilityDir;
+    [HideInInspector] public bool hasAttacked = false;
 
     [Header("Offensive Ability")]
     [HideInInspector] public bool canOffensiveAbility = true;
