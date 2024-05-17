@@ -28,4 +28,3 @@ MonoBehaviour:
   knockBackDuration: 0.2
   slowAmount: 2
   slowDuration: 1
-  hasAttacked: 1
