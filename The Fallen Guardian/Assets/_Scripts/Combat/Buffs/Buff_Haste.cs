@@ -6,6 +6,8 @@ using TMPro;
 public class Buff_Haste : MonoBehaviour, IHasteable
 {
     [Header("Buff Bar")]
+    [SerializeField] GameObject speedParticlePrefab;
+    GameObject speedParticle;
     [SerializeField] GameObject buffBar;
 
     [Header("Icon")]
@@ -59,6 +61,11 @@ public class Buff_Haste : MonoBehaviour, IHasteable
             stacksText = buffIcon.GetComponentInChildren<TextMeshProUGUI>();
         }
 
+        if (!speedParticle)
+        {
+            speedParticle = Instantiate(speedParticlePrefab, transform);
+        }
+
         // Stacks Text
         stacksText.text = hasteStacks.ToString();
 
@@ -81,6 +88,7 @@ public class Buff_Haste : MonoBehaviour, IHasteable
             hasteStacks = 0;
             ResetHaste();
             Destroy(buffIcon);
+            Destroy(speedParticle);
         }
         else
         {

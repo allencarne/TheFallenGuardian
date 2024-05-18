@@ -1850,6 +1850,7 @@ MonoBehaviour:
   LastMoveDirection: {x: 0, y: 0}
   CanBasicAbility: 1
   AbilityDir: {x: 0, y: 0, z: 0, w: 0}
+  hasAttacked: 0
   canOffensiveAbility: 1
   canMobilityAbility: 1
 --- !u!114 &239699257640095505
@@ -2019,6 +2020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab54aede98b001446b2831f354a87d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedParticlePrefab: {fileID: 1349626072189494229, guid: 3f29f8e5dfb46ba4d83bae58383bb03a, type: 3}
   buffBar: {fileID: 119541469203478924}
   buff_Haste: {fileID: 5898953976647163639, guid: 496a2a4d5d60793418ce9a4a8f1cd41a, type: 3}
   isPlayer: 1
