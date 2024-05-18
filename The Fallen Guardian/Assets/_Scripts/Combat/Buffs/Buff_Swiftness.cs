@@ -7,6 +7,8 @@ public class Buff_Swiftness : MonoBehaviour, ISwiftnessable
 {
     [Header("Buff Bar")]
     [SerializeField] GameObject buffBar;
+    [SerializeField] GameObject swiftnessParticlePrefab;
+    GameObject swiftnessParticle;
 
     [Header("Icon")]
     [SerializeField] GameObject buff_Swiftness;
@@ -59,6 +61,11 @@ public class Buff_Swiftness : MonoBehaviour, ISwiftnessable
             stacksText = buffIcon.GetComponentInChildren<TextMeshProUGUI>();
         }
 
+        if (!swiftnessParticle)
+        {
+            swiftnessParticle = Instantiate(swiftnessParticlePrefab, transform);
+        }
+
         // Stacks Text
         stacksText.text = swiftnessStacks.ToString();
 
@@ -81,6 +88,7 @@ public class Buff_Swiftness : MonoBehaviour, ISwiftnessable
             swiftnessStacks = 0;
             ResetSwiftness();
             Destroy(buffIcon);
+            Destroy(swiftnessParticle);
         }
         else
         {

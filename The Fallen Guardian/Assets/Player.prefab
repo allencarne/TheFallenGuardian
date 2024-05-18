@@ -2057,6 +2057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffBar: {fileID: 119541469203478924}
+  swiftnessParticlePrefab: {fileID: 7607025901083696547, guid: 15589c9682c77aa43a608106c84734cb, type: 3}
   buff_Swiftness: {fileID: 7434068705413786477, guid: fc840d70f5921f74e97abd0008873ef4, type: 3}
   isPlayer: 1
   playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
