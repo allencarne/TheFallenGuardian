@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3282837912107798175}
   - component: {fileID: 8963155094801067023}
   m_Layer: 0
-  m_Name: 2DSpeedEffect+PS
+  m_Name: HasteBuff_Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

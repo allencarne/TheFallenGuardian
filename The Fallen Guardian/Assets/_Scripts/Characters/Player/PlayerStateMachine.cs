@@ -105,7 +105,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         slideForce = nSlideForce;
         slideDuration = nSlideDuration;
-
+        /*
         PlayerInput controlScheme = GetComponent<PlayerInput>();
 
         if (controlScheme.currentControlScheme == "Keyboard")
@@ -116,7 +116,7 @@ public class PlayerStateMachine : MonoBehaviour
                 canSlideForward = true;
             }
         }
-
+        */
         if (inputHandler.MoveInput != Vector2.zero)
         {
             canSlideForward = true;
