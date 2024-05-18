@@ -2039,6 +2039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffBar: {fileID: 119541469203478924}
+  mightParticlePrefab: {fileID: 1015319669647688435, guid: 9b6df7731f7172b43a147f09ce0feae3, type: 3}
   buff_Might: {fileID: 4486305157485082496, guid: 33205e44c20730a499ce4a2889fe044c, type: 3}
   isPlayer: 1
   playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}

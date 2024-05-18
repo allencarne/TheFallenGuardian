@@ -7,6 +7,8 @@ public class Buff_Might : MonoBehaviour, IMightable
 {
     [Header("Buff Bar")]
     [SerializeField] GameObject buffBar;
+    [SerializeField] GameObject mightParticlePrefab;
+    GameObject mightParticle;
 
     [Header("Icon")]
     [SerializeField] GameObject buff_Might;
@@ -59,6 +61,11 @@ public class Buff_Might : MonoBehaviour, IMightable
             stacksText = buffIcon.GetComponentInChildren<TextMeshProUGUI>();
         }
 
+        if (!mightParticle)
+        {
+            mightParticle = Instantiate(mightParticlePrefab, transform);
+        }
+
         // Stacks Text
         stacksText.text = mightStacks.ToString();
 
@@ -81,6 +88,7 @@ public class Buff_Might : MonoBehaviour, IMightable
             mightStacks = 0;
             ResetMight();
             Destroy(buffIcon);
+            Destroy(mightParticle);
         }
         else
         {
