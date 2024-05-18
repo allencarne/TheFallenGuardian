@@ -581,7 +581,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1060054541, guid: c0e13f9efbb00aa4ba938fda613de1f0, type: 3}
+  m_Sprite: {fileID: 1451595686, guid: 4ea0d8760a308624e88d7a70f569a33f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2074,6 +2074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffBar: {fileID: 119541469203478924}
+  alacrityParticlePrefab: {fileID: 1473861340042521172, guid: d35a49b9705d68644b94a7d118205fac, type: 3}
   buff_Alacrity: {fileID: 5308563003022945098, guid: 40f461b226a99c945b33070df193e0bb, type: 3}
   isPlayer: 1
   playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}

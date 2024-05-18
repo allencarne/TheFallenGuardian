@@ -400,6 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffBar: {fileID: 493039623141738153}
+  alacrityParticlePrefab: {fileID: 1473861340042521172, guid: d35a49b9705d68644b94a7d118205fac, type: 3}
   buff_Alacrity: {fileID: 5308563003022945098, guid: 40f461b226a99c945b33070df193e0bb, type: 3}
   isPlayer: 0
   playerStats: {fileID: 0}

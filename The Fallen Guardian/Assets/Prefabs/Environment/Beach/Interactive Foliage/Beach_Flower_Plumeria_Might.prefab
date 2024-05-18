@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4205150833429222287, guid: 9a5949de645933943968e91fdb8079da, type: 3}
       propertyPath: m_Name
-      value: Beach_Flower_Plumeria_Might Variant
+      value: Beach_Flower_Plumeria_Might
       objectReference: {fileID: 0}
     - target: {fileID: 6415502010777956691, guid: 9a5949de645933943968e91fdb8079da, type: 3}
       propertyPath: m_Size.y
@@ -59,7 +59,7 @@ PrefabInstance:
     - target: {fileID: 6415502010777956691, guid: 9a5949de645933943968e91fdb8079da, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e15888e2bf1c2be45a21a58fc3f2976e, type: 3}
+      objectReference: {fileID: 21300000, guid: 27bf347ca208c0740aefe2cb3fed7087, type: 3}
     - target: {fileID: 6415502010777956691, guid: 9a5949de645933943968e91fdb8079da, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1

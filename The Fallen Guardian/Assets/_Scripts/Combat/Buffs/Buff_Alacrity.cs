@@ -7,6 +7,8 @@ public class Buff_Alacrity : MonoBehaviour, IAlacrityable
 {
     [Header("Buff Bar")]
     [SerializeField] GameObject buffBar;
+    [SerializeField] GameObject alacrityParticlePrefab;
+    GameObject alacrityParticle;
 
     [Header("Icon")]
     [SerializeField] GameObject buff_Alacrity;
@@ -59,6 +61,11 @@ public class Buff_Alacrity : MonoBehaviour, IAlacrityable
             stacksText = buffIcon.GetComponentInChildren<TextMeshProUGUI>();
         }
 
+        if (!alacrityParticle)
+        {
+            alacrityParticle = Instantiate(alacrityParticlePrefab, transform);
+        }
+
         // Stacks Text
         stacksText.text = alacrityStacks.ToString();
 
@@ -81,6 +88,7 @@ public class Buff_Alacrity : MonoBehaviour, IAlacrityable
             alacrityStacks = 0;
             ResetAlacrity();
             Destroy(buffIcon);
+            Destroy(alacrityParticle);
         }
         else
         {
