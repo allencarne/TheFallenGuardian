@@ -12,7 +12,8 @@ public class LevelSystem : MonoBehaviour
     [SerializeField] Player player;
 
     [Header("Effects")]
-    [SerializeField] GameObject levelUpEffect;
+    [SerializeField] GameObject levelUpEffectPrefab;
+    GameObject levelUpEffect;
     [SerializeField] GameObject floatingText;
 
     [Header("UI")]
@@ -113,7 +114,8 @@ public class LevelSystem : MonoBehaviour
 
         // Effects
         ShowLevelUpText(Color.white);
-        Instantiate(levelUpEffect, transform.position, Quaternion.identity, transform);
+        levelUpEffect = Instantiate(levelUpEffectPrefab, transform.position, Quaternion.identity, transform);
+        Destroy(levelUpEffect, 2);
 
         OnPlayerLevelUp?.Invoke();
     }

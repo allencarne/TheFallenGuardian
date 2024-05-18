@@ -1897,7 +1897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
   player: {fileID: 7150002324481854805}
-  levelUpEffect: {fileID: 3661200886135729816, guid: fea5548eacf583e4f9f24e1235d73cbf, type: 3}
+  levelUpEffectPrefab: {fileID: 6336280507956231873, guid: a1c677c6015c0464286840ccf2cef5bd, type: 3}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
   levelText: {fileID: 5709352083387614229}
   additionMultiplier: 10
