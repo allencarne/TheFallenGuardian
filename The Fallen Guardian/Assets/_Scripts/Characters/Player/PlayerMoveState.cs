@@ -34,19 +34,16 @@ public class PlayerMoveState : PlayerState
         Vector2 movement = moveInput.normalized * stateMachine.Player.Stats.CurrentSpeed;
         stateMachine.Rigidbody.velocity = movement;
 
-        // Determine the direction based on the angle of movement
-        float angle = Mathf.Atan2(moveInput.y, moveInput.x) * Mathf.Rad2Deg;
-        Vector2 direction = stateMachine.HandleDirection(angle);
-
-        Debug.Log(direction);
-
         if (movement != Vector2.zero)
         {
-            stateMachine.BodyAnimator.SetFloat("Horizontal", movement.x);
-            stateMachine.BodyAnimator.SetFloat("Vertical", movement.y);
+            // Snap the movement direction
+            Vector2 snappedDirection = stateMachine.SnapDirection(movement);
 
-            stateMachine.SwordAnimator.SetFloat("Horizontal", movement.x);
-            stateMachine.SwordAnimator.SetFloat("Vertical", movement.y);
+            stateMachine.BodyAnimator.SetFloat("Horizontal", snappedDirection.x);
+            stateMachine.BodyAnimator.SetFloat("Vertical", snappedDirection.y);
+
+            stateMachine.SwordAnimator.SetFloat("Horizontal", snappedDirection.x);
+            stateMachine.SwordAnimator.SetFloat("Vertical", snappedDirection.y);
         }
     }
 }
