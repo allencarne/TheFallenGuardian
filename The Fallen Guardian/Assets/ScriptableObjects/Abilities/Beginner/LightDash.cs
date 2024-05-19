@@ -33,12 +33,12 @@ public class LightDash : ScriptableObject, IAbilityBehaviour
             Vector2 direction = stateMachine.HandleDirection(angle);
 
             // Animate Body
-            stateMachine.BodyAnimator.Play("Sword_Attack_C");
+            stateMachine.BodyAnimator.Play("Dash");
             stateMachine.BodyAnimator.SetFloat("Horizontal", direction.x);
             stateMachine.BodyAnimator.SetFloat("Vertical", direction.y);
 
             // Animate Sword
-            stateMachine.SwordAnimator.Play("Sword_Attack_C");
+            stateMachine.SwordAnimator.Play("Dash");
             stateMachine.SwordAnimator.SetFloat("Horizontal", direction.x);
             stateMachine.SwordAnimator.SetFloat("Vertical", direction.y);
 
