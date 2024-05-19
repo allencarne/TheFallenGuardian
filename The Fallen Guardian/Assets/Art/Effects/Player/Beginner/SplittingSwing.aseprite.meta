@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: SplittingSwing_Frame_0
     originalName: 
-    pivot: {x: 0.5714286, y: -0.8333334}
+    pivot: {x: 0.5, y: -1.7857144}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
+      y: 108
       width: 112
-      height: 24
+      height: 14
     spriteID: 5e409506d1be96c4ab314b164eccd589
     spriteBone: []
     spriteOutline: []
@@ -140,7 +140,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 4, y: 108}
   - name: SplittingSwing_Frame_1
     originalName: 
     pivot: {x: 0.5714286, y: -0.9545455}
@@ -149,7 +149,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 36
+      y: 78
       width: 112
       height: 22
     spriteID: 4dc55d12c8fd99445a0cddff0564dd36
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 36}
+    uvTransform: {x: 4, y: 78}
   - name: SplittingSwing_Frame_2
     originalName: 
-    pivot: {x: 0.5714286, y: -1.1}
+    pivot: {x: 0.5, y: -0.7307693}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 66
+      y: 44
       width: 112
-      height: 20
+      height: 26
     spriteID: 06204cfa43003f7439a795154017f5b0
     spriteBone: []
     spriteOutline: []
@@ -180,18 +180,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 66}
+    uvTransform: {x: 4, y: 44}
   - name: SplittingSwing_Frame_3
     originalName: 
-    pivot: {x: 0.5714286, y: -1.5}
+    pivot: {x: 0.5, y: -0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 94
+      y: 4
       width: 112
-      height: 16
+      height: 32
     spriteID: 08c46f089bacc8f47be985aaa763167a
     spriteBone: []
     spriteOutline: []
@@ -200,7 +200,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 94}
+    uvTransform: {x: 4, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -214,9 +214,9 @@ ScriptedImporter:
       frameIndex: 0
       cellRect:
         x: 0
-        y: 20
+        y: 25
         width: 112
-        height: 24
+        height: 14
       spriteId: 5e409506d1be96c4ab314b164eccd589
     - name: SplittingSwing_Frame_1
       frameIndex: 1
@@ -230,17 +230,17 @@ ScriptedImporter:
       frameIndex: 2
       cellRect:
         x: 0
-        y: 22
+        y: 19
         width: 112
-        height: 20
+        height: 26
       spriteId: 06204cfa43003f7439a795154017f5b0
     - name: SplittingSwing_Frame_3
       frameIndex: 3
       cellRect:
         x: 0
-        y: 24
+        y: 16
         width: 112
-        height: 16
+        height: 32
       spriteId: 08c46f089bacc8f47be985aaa763167a
     linkedCells: []
     parentIndex: -1
