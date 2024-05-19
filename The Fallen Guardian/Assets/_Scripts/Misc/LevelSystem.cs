@@ -15,6 +15,7 @@ public class LevelSystem : MonoBehaviour
     [SerializeField] GameObject levelUpEffectPrefab;
     GameObject levelUpEffect;
     [SerializeField] GameObject floatingText;
+    [SerializeField] GameObject levelUpText;
 
     [Header("UI")]
     [SerializeField] TextMeshProUGUI levelText;
@@ -84,7 +85,7 @@ public class LevelSystem : MonoBehaviour
 
     public void GainExperienceFlatRate(float xpGained)
     {
-        ShowFloatingText(xpGained, Color.yellow);
+        ShowFloatingText(xpGained, floatingText);
 
         stats.CurrentExperience += xpGained;
         lerpTimer = 0f;
@@ -130,17 +131,16 @@ public class LevelSystem : MonoBehaviour
         return solveForRequiredXp / 4;
     }
 
-    void ShowFloatingText(float amount, Color color)
+    void ShowFloatingText(float amount, GameObject text)
     {
         Vector3 offset = new Vector3(0f, 1, 0);
 
-        if (floatingText)
+        if (text)
         {
-            GameObject textPrefab = Instantiate(floatingText, transform.position + offset, Quaternion.identity);
+            GameObject textPrefab = Instantiate(text, transform.position + offset, Quaternion.identity);
             TextMeshPro textMesh = textPrefab.GetComponentInChildren<TextMeshPro>();
             textMesh.text = "+" + amount.ToString() + " Exp";
             textMesh.fontSize = 4;
-            textMesh.color = color; // Set the color of the text
             Destroy(textPrefab, 1.5f);
         }
     }
@@ -149,11 +149,11 @@ public class LevelSystem : MonoBehaviour
     {
         Vector3 offset = new Vector3(0f, 2, 0);
 
-        if (floatingText)
+        if (levelUpText)
         {
-            GameObject textPrefab = Instantiate(floatingText, transform.position + offset, Quaternion.identity);
+            GameObject textPrefab = Instantiate(levelUpText, transform.position + offset, Quaternion.identity);
             TextMeshPro textMesh = textPrefab.GetComponentInChildren<TextMeshPro>();
-            textMesh.text = "Level Up";
+            textMesh.text = "Level Up!";
             textMesh.color = color;
             Destroy(textPrefab, 2f);
         }

@@ -23,6 +23,9 @@ public class HealthBar : MonoBehaviour
     [SerializeField] TextMeshProUGUI playerName;
     [SerializeField] SpriteRenderer bodySprite;
     public GameObject floatingText;
+    public GameObject floatingDamageText;
+    public GameObject floatingHealingText;
+
     public Image CastBar;
 
     private void Awake()
@@ -120,16 +123,15 @@ public class HealthBar : MonoBehaviour
         bodySprite.color = Color.white;
     }
 
-    public void ShowFloatingText(float amount, Color color)
+    public void ShowFloatingText(float amount, GameObject text)
     {
         Vector3 offset = new Vector3(0f, -1f, 0);
 
-        if (floatingText)
+        if (text)
         {
-            GameObject textPrefab = Instantiate(floatingText, transform.position + offset, Quaternion.identity);
+            GameObject textPrefab = Instantiate(text, transform.position + offset, Quaternion.identity);
             TextMeshPro textMesh = textPrefab.GetComponentInChildren<TextMeshPro>();
             textMesh.text = amount.ToString();
-            textMesh.color = color; // Set the color of the text
             Destroy(textPrefab, 1);
         }
     }
