@@ -1,20 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/Beginner/SpinningSlash")]
 public class SpinningSlash : ScriptableObject, IAbilityBehaviour
 {
+    public UnityEvent OnOffensiveCoolDownStarted;
+
     [Header("Setup")]
     public Sprite icon;
     [SerializeField] GameObject SlashPrefab;
     [SerializeField] GameObject hitEffect;
 
+    [Header("Time")]
+    [SerializeField] float castTime;
+    [SerializeField] float recoveryTime;
+    public float CoolDown;
+
     [Header("Stats")]
     [SerializeField] int damage;
-    public float coolDown;
-    public float coolDownTime;
-    [SerializeField] float castTime;
     [SerializeField] float attackRange;
 
     [Header("Slide")]
@@ -26,37 +31,43 @@ public class SpinningSlash : ScriptableObject, IAbilityBehaviour
     [SerializeField] float knockBackForce;
     [SerializeField] float knockBackDuration;
 
+    bool canImpact = false;
+
     public void BehaviourUpdate(PlayerStateMachine stateMachine)
     {
-        if (stateMachine.CanBasicAbility)
+        if (stateMachine.canOffensiveAbility && !stateMachine.hasAttacked)
         {
+            stateMachine.hasAttacked = true;
+            stateMachine.canOffensiveAbility = false;
+
+            // Get Angle and Direction
             stateMachine.AbilityDir = stateMachine.Aimer.rotation;
+            float angle = stateMachine.Aimer.rotation.eulerAngles.z;
+            Vector2 direction = stateMachine.HandleDirection(angle);
 
-            // Calculate direction based on Aimer rotation
-            float angle = stateMachine.Aimer.rotation.eulerAngles.z * Mathf.Deg2Rad;
-            Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+            // Animate Body
+            stateMachine.BodyAnimator.Play("Sword_Attack_C");
+            stateMachine.BodyAnimator.SetFloat("Horizontal", direction.x);
+            stateMachine.BodyAnimator.SetFloat("Vertical", direction.y);
 
-            stateMachine.CanBasicAbility = false;
+            // Animate Sword
+            stateMachine.SwordAnimator.Play("Sword_Attack_C");
+            stateMachine.SwordAnimator.SetFloat("Horizontal", direction.x);
+            stateMachine.SwordAnimator.SetFloat("Vertical", direction.y);
 
-            // Use the calculated direction for handling animations
-            //stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player_Sword", "Attack", direction);
-            //stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Attack", direction);
-
+            // Timers
             stateMachine.StartCoroutine(AttackImpact(stateMachine));
+            stateMachine.StartCoroutine(CoolDownTime(stateMachine));
         }
 
-        // Adjust cooldown time based on cooldown reduction
-        float modifiedCooldown = coolDown / stateMachine.Player.Stats.CurrentCDR;
-
-        coolDownTime += Time.deltaTime;
-
-        if (coolDownTime >= modifiedCooldown)
+        if (canImpact)
         {
-            coolDownTime = 0;
+            canImpact = false;
 
-            stateMachine.SetState(new PlayerIdleState(stateMachine));
+            stateMachine.BodyAnimator.Play("Sword_Attack_R");
+            stateMachine.SwordAnimator.Play("Sword_Attack_R");
 
-            stateMachine.CanBasicAbility = true;
+            stateMachine.StartCoroutine(RecoveryTime(stateMachine));
         }
     }
 
@@ -65,6 +76,11 @@ public class SpinningSlash : ScriptableObject, IAbilityBehaviour
         float modifiedCastTime = castTime / stateMachine.Player.Stats.CurrentAttackSpeed;
 
         yield return new WaitForSeconds(modifiedCastTime);
+
+        stateMachine.BodyAnimator.Play("Sword_Attack_I");
+        stateMachine.SwordAnimator.Play("Sword_Attack_I");
+
+        stateMachine.StartCoroutine(ImpactDelay());
 
         // Calculate the direction of the attack
         Vector3 direction = stateMachine.AbilityDir * Vector3.right;
@@ -97,5 +113,34 @@ public class SpinningSlash : ScriptableObject, IAbilityBehaviour
             knockbackOnTrigger.KnockBackDuration = knockBackDuration;
             knockbackOnTrigger.KnockBackDirection = direction;
         }
+    }
+
+    IEnumerator ImpactDelay()
+    {
+        yield return new WaitForSeconds(.1f);
+
+        canImpact = true;
+    }
+
+    IEnumerator RecoveryTime(PlayerStateMachine stateMachine)
+    {
+        float modifiedRecoveryTime = recoveryTime / stateMachine.Player.Stats.CurrentAttackSpeed;
+
+        yield return new WaitForSeconds(modifiedRecoveryTime);
+
+        stateMachine.hasAttacked = false;
+        stateMachine.SetState(new PlayerIdleState(stateMachine));
+    }
+
+    IEnumerator CoolDownTime(PlayerStateMachine stateMachine)
+    {
+        OnOffensiveCoolDownStarted?.Invoke();
+
+        // Adjust cooldown time based on cooldown reduction
+        float modifiedCooldown = CoolDown / stateMachine.Player.Stats.CurrentCDR;
+
+        yield return new WaitForSeconds(modifiedCooldown);
+
+        stateMachine.canOffensiveAbility = true;
     }
 }

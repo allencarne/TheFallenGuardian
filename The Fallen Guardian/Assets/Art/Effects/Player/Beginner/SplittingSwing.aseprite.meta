@@ -123,14 +123,14 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: SplittingSwing_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: -0.8333334}
+    pivot: {x: 0.5714286, y: -0.8333334}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 64
+      width: 112
       height: 24
     spriteID: 5e409506d1be96c4ab314b164eccd589
     spriteBone: []
@@ -143,14 +143,14 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: SplittingSwing_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: -0.9545455}
+    pivot: {x: 0.5714286, y: -0.9545455}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 36
-      width: 64
+      width: 112
       height: 22
     spriteID: 4dc55d12c8fd99445a0cddff0564dd36
     spriteBone: []
@@ -163,14 +163,14 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 36}
   - name: SplittingSwing_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: -1.1}
+    pivot: {x: 0.5714286, y: -1.1}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 66
-      width: 64
+      width: 112
       height: 20
     spriteID: 06204cfa43003f7439a795154017f5b0
     spriteBone: []
@@ -183,14 +183,14 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 66}
   - name: SplittingSwing_Frame_3
     originalName: 
-    pivot: {x: 0.5, y: -1.5}
+    pivot: {x: 0.5714286, y: -1.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 94
-      width: 64
+      width: 112
       height: 16
     spriteID: 08c46f089bacc8f47be985aaa763167a
     spriteBone: []
@@ -215,7 +215,7 @@ ScriptedImporter:
       cellRect:
         x: 0
         y: 20
-        width: 64
+        width: 112
         height: 24
       spriteId: 5e409506d1be96c4ab314b164eccd589
     - name: SplittingSwing_Frame_1
@@ -223,7 +223,7 @@ ScriptedImporter:
       cellRect:
         x: 0
         y: 21
-        width: 64
+        width: 112
         height: 22
       spriteId: 4dc55d12c8fd99445a0cddff0564dd36
     - name: SplittingSwing_Frame_2
@@ -231,7 +231,7 @@ ScriptedImporter:
       cellRect:
         x: 0
         y: 22
-        width: 64
+        width: 112
         height: 20
       spriteId: 06204cfa43003f7439a795154017f5b0
     - name: SplittingSwing_Frame_3
@@ -239,7 +239,7 @@ ScriptedImporter:
       cellRect:
         x: 0
         y: 24
-        width: 64
+        width: 112
         height: 16
       spriteId: 08c46f089bacc8f47be985aaa763167a
     linkedCells: []
@@ -248,4 +248,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 64, y: 64}
+  canvasSize: {x: 112, y: 64}

@@ -12,15 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eca207e8ec49f74fab001c772bbdab4, type: 3}
   m_Name: Splitting Swing
   m_EditorClassIdentifier: 
+  OnOffensiveCoolDownStarted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 1eba7af828b551d46b8e99ce5f7b884d, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   icon: {fileID: 158528910, guid: 65fa1bf13e57dbe4481387393b1b04ad, type: 3}
   SlashPrefab: {fileID: 1266080243454318042, guid: 0bec8708b337bd54d9e755926d9f0242, type: 3}
   hitEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
-  damage: 1
-  coolDown: 0.8
   castTime: 0.3
+  recoveryTime: 0.4
+  CoolDown: 3
+  damage: 2
   attackRange: 0.5
-  slideForce: 0
-  slideDuration: 0
-  rangeBeforeSlide: 0
+  slideForce: 20
+  slideDuration: 0.15
+  rangeBeforeSlide: 2
   knockBackForce: 0
   knockBackDuration: 0

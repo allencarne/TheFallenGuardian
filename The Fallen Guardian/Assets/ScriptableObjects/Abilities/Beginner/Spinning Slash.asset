@@ -12,14 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c5b4c584f146145a521cd59b94aac3, type: 3}
   m_Name: Spinning Slash
   m_EditorClassIdentifier: 
+  OnOffensiveCoolDownStarted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 1eba7af828b551d46b8e99ce5f7b884d, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   icon: {fileID: -290554742, guid: 9722862b9d8ec0c48a8c80b6237ef04b, type: 3}
   SlashPrefab: {fileID: 2799994805762484302, guid: 466e7b4fc604cf140908c95a8f9f1bb6, type: 3}
   hitEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
-  damage: 1
-  coolDown: 0.8
-  castTime: 0.3
+  castTime: 0
+  recoveryTime: 0.3
+  CoolDown: 3
+  damage: 2
   attackRange: 0
-  slideForce: 20
+  slideForce: 50
   slideDuration: 0.15
   rangeBeforeSlide: 2
   knockBackForce: 10

@@ -54,51 +54,6 @@ public class AbilityBarCoolDowns : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (playerAbilities != null)
-        {
-            offensiveAbility = playerAbilities.offensiveAbilityReference;
-
-            if (offensiveAbility != null)
-            {
-                UpdateCooldownUI(playerAbilities.offensiveAbilityReference, offensiveFill, offensiveText);
-            }
-        }
-
-        if (playerAbilities != null)
-        {
-            mobilityAbility = playerAbilities.mobilityAbilityReference;
-
-            if (mobilityAbility != null)
-            {
-                UpdateCooldownUI(playerAbilities.mobilityAbilityReference, mobilityFill, mobilityText);
-            }
-        }
-    }
-
-    private void UpdateCooldownUI(ScriptableObject ability, Image fillImage, TextMeshProUGUI cooldownText)
-    {
-        if (ability != null)
-        {
-            float coolDown = (float)ability.GetType().GetField("coolDown").GetValue(ability);
-            float coolDownTime = (float)ability.GetType().GetField("coolDownTime").GetValue(ability);
-
-            if (coolDownTime > 0)
-            {
-                // Format cooldown time to show one decimal place if it's greater than 0
-                cooldownText.text = coolDownTime.ToString("F1");
-            }
-            else
-            {
-                // Set text to empty if cooldown time is 0 or less
-                cooldownText.text = "";
-            }
-
-            fillImage.fillAmount = coolDownTime / coolDown;
-        }
-    }
-
     public void BasicCoolDownStarted()
     {
         if (playerAbilities != null)
@@ -108,6 +63,32 @@ public class AbilityBarCoolDowns : MonoBehaviour
             if (basicAbility != null)
             {
                 StartCoroutine(CooldownRoutine(basicAbility, basicFill, basicText));
+            }
+        }
+    }
+
+    public void OffensiveCoolDownStarted()
+    {
+        if (playerAbilities != null)
+        {
+            offensiveAbility = playerAbilities.offensiveAbilityReference;
+
+            if (offensiveAbility != null)
+            {
+                StartCoroutine(CooldownRoutine(offensiveAbility, offensiveFill, offensiveText));
+            }
+        }
+    }
+
+    public void MobilityCoolDownStarted()
+    {
+        if (playerAbilities != null)
+        {
+            mobilityAbility = playerAbilities.mobilityAbilityReference;
+
+            if (mobilityAbility != null)
+            {
+                StartCoroutine(CooldownRoutine(mobilityAbility, mobilityFill, mobilityText));
             }
         }
     }
