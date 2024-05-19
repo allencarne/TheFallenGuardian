@@ -12,12 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f91986ecef44994882cf94be11ae448, type: 3}
   m_Name: Frail Slash
   m_EditorClassIdentifier: 
+  OnBasicCoolDownStarted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: be01b8c73a0f4fd40a25af1b4d463136, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   icon: {fileID: 21300000, guid: 2cff0bb85114d444e8d0381f238fd68d, type: 3}
   SlashPrefab: {fileID: 8519781629614858604, guid: 5bf2320aaeaa6aa44830cd808ade3670, type: 3}
   hitEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   castTime: 0.3
   recoveryTime: 0.4
-  coolDown: 0
+  coolDown: 0.8
   coolDownTime: 0
   damage: 1
   attackRange: 1

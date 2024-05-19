@@ -58,16 +58,6 @@ public class AbilityBarCoolDowns : MonoBehaviour
     {
         if (playerAbilities != null)
         {
-            basicAbility = playerAbilities.basicAbilityReference;
-
-            if (basicAbility != null)
-            {
-                UpdateCooldownUI(playerAbilities.basicAbilityReference, basicFill, basicText);
-            }
-        }
-
-        if (playerAbilities != null)
-        {
             offensiveAbility = playerAbilities.offensiveAbilityReference;
 
             if (offensiveAbility != null)
@@ -106,6 +96,38 @@ public class AbilityBarCoolDowns : MonoBehaviour
             }
 
             fillImage.fillAmount = coolDownTime / coolDown;
+        }
+    }
+
+    public void BasicCoolDownStarted()
+    {
+        if (playerAbilities != null)
+        {
+            basicAbility = playerAbilities.basicAbilityReference;
+
+            if (basicAbility != null)
+            {
+                StartCoroutine(CooldownRoutine(basicAbility, basicFill, basicText));
+            }
+        }
+    }
+
+    private IEnumerator CooldownRoutine(ScriptableObject ability, Image fillImage, TextMeshProUGUI cooldownText)
+    {
+        float coolDown = (float)ability.GetType().GetField("coolDown").GetValue(ability);
+        float coolDownTime = coolDown;
+
+        while (coolDownTime > 0)
+        {
+            coolDownTime -= Time.deltaTime;
+            if (coolDownTime < 0)
+                coolDownTime = 0;
+
+            // Format cooldown time to show one decimal place if it's greater than 0
+            cooldownText.text = coolDownTime > 0 ? coolDownTime.ToString("F1") : "";
+            fillImage.fillAmount = coolDownTime / coolDown;
+
+            yield return null;
         }
     }
 }

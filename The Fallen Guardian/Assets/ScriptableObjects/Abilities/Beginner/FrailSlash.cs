@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/Beginner/FrailSlash")]
 public class FrailSlash : ScriptableObject, IAbilityBehaviour
 {
+    public UnityEvent OnBasicCoolDownStarted;
+
     [Header("Setup")]
     public Sprite icon;
     [SerializeField] GameObject SlashPrefab;
@@ -143,6 +146,8 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
 
     IEnumerator CoolDown(PlayerStateMachine stateMachine)
     {
+        OnBasicCoolDownStarted?.Invoke();
+
         // Adjust cooldown time based on cooldown reduction
         float modifiedCooldown = coolDown / stateMachine.Player.Stats.CurrentCDR;
 
