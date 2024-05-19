@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Player_Spawn_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: -1.3333334}
+    pivot: {x: 0.5, y: -44}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 22
-      y: 43
-      width: 6
-      height: 12
+      x: 4
+      y: 4
+      width: 8
+      height: 1
     spriteID: b346bc3a9b28b5542aa0ee10f0ac3295
     spriteBone: []
     spriteOutline: []
@@ -140,87 +140,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 22, y: 43}
-  - name: Player_Spawn_Frame_2
-    originalName: 
-    pivot: {x: 0.5, y: -1.0666667}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 43
-      width: 10
-      height: 15
-    spriteID: 8468fbbbf561de04694c644ed5e74bbd
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 43}
-  - name: Player_Spawn_Frame_3
-    originalName: 
-    pivot: {x: 0.5, y: -0.72727275}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 40
-      y: 4
-      width: 10
-      height: 22
-    spriteID: 819b27ec1f8e53543b1251c1b12988a6
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 40, y: 4}
-  - name: Player_Spawn_Frame_4
-    originalName: 
-    pivot: {x: 0.5, y: -0.516129}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 4
-      width: 10
-      height: 31
-    spriteID: d64cd83dd7991384aa9850f79a00283e
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Player_Spawn_Frame_5
-    originalName: 
-    pivot: {x: 0.5, y: -0.516129}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 22
-      y: 4
-      width: 10
-      height: 31
-    spriteID: ad8f11a0f107fa34193c52d734f32977
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 22, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -230,46 +150,14 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: Player_Spawn_Frame_1
-      frameIndex: 1
-      cellRect:
-        x: 29
-        y: 16
-        width: 6
-        height: 12
-      spriteId: b346bc3a9b28b5542aa0ee10f0ac3295
-    - name: Player_Spawn_Frame_2
-      frameIndex: 2
-      cellRect:
-        x: 27
-        y: 16
-        width: 10
-        height: 15
-      spriteId: 8468fbbbf561de04694c644ed5e74bbd
-    - name: Player_Spawn_Frame_3
-      frameIndex: 3
-      cellRect:
-        x: 27
-        y: 16
-        width: 10
-        height: 22
-      spriteId: 819b27ec1f8e53543b1251c1b12988a6
-    - name: Player_Spawn_Frame_4
-      frameIndex: 4
-      cellRect:
-        x: 27
-        y: 16
-        width: 10
-        height: 31
-      spriteId: d64cd83dd7991384aa9850f79a00283e
-    - name: Player_Spawn_Frame_5
+    - name: Player_Spawn
       frameIndex: 5
       cellRect:
-        x: 27
-        y: 16
-        width: 10
-        height: 31
-      spriteId: ad8f11a0f107fa34193c52d734f32977
+        x: 28
+        y: 44
+        width: 8
+        height: 1
+      spriteId: b346bc3a9b28b5542aa0ee10f0ac3295
     linkedCells: []
     parentIndex: -1
   platformSettings: []
