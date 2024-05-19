@@ -203,7 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5719107988270609607}
   m_Layer: 0
-  m_Name: FloatingTextParent
+  m_Name: _TextParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

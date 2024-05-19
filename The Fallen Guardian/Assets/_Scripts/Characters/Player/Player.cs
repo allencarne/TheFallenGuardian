@@ -98,7 +98,7 @@ public class Player : MonoBehaviour, IDamageable
         Stats.Health -= damage;
 
         StartCoroutine(healthBar.FlashEffect(Color.red));
-        healthBar.ShowFloatingText(damage, healthBar.floatingText);
+        healthBar.ShowFloatingText(damage, healthBar.floatingDamageText);
 
         OnHealthChanged?.Invoke();
 

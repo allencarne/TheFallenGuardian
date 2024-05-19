@@ -22,7 +22,6 @@ public class HealthBar : MonoBehaviour
     [Header("Components")]
     [SerializeField] TextMeshProUGUI playerName;
     [SerializeField] SpriteRenderer bodySprite;
-    public GameObject floatingText;
     public GameObject floatingDamageText;
     public GameObject floatingHealingText;
 

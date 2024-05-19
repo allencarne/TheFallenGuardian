@@ -14,7 +14,7 @@ public class LevelSystem : MonoBehaviour
     [Header("Effects")]
     [SerializeField] GameObject levelUpEffectPrefab;
     GameObject levelUpEffect;
-    [SerializeField] GameObject floatingText;
+    [SerializeField] GameObject expText;
     [SerializeField] GameObject levelUpText;
 
     [Header("UI")]
@@ -85,7 +85,7 @@ public class LevelSystem : MonoBehaviour
 
     public void GainExperienceFlatRate(float xpGained)
     {
-        ShowFloatingText(xpGained, floatingText);
+        ShowFloatingText(xpGained, expText);
 
         stats.CurrentExperience += xpGained;
         lerpTimer = 0f;

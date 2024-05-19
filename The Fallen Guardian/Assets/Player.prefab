@@ -1898,7 +1898,7 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
   player: {fileID: 7150002324481854805}
   levelUpEffectPrefab: {fileID: 6336280507956231873, guid: a1c677c6015c0464286840ccf2cef5bd, type: 3}
-  floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
+  expText: {fileID: 4490218395100199182, guid: fc12e96c09fb6764cbc0ab9a7818c1ff, type: 3}
   levelUpText: {fileID: 1354872939244299792, guid: 67b6bb71d924e494289c01908d8bae71, type: 3}
   levelText: {fileID: 5709352083387614229}
   additionMultiplier: 10
@@ -2219,8 +2219,7 @@ MonoBehaviour:
   healthBarBack: {fileID: 4716448829981364878}
   playerName: {fileID: 9134760330706367091}
   bodySprite: {fileID: 6348204392684985540}
-  floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
-  floatingDamageText: {fileID: 2906830363803065163, guid: 61ce97c54fe2fa543b5740e1d4f73d59, type: 3}
+  floatingDamageText: {fileID: 5891360512559457938, guid: 68ba340aaaf2f794c9fb08e123a44736, type: 3}
   floatingHealingText: {fileID: 6681784218910640972, guid: b11db7ebde936ca4ab971f3887e27405, type: 3}
   CastBar: {fileID: 2187327653616484548}
 --- !u!1 &8727468340536375276

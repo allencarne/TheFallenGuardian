@@ -535,7 +535,7 @@ public class Enemy : MonoBehaviour, IDamageable
         idleTime = 0;
 
         StartCoroutine(healthBar.FlashEffect(Color.red));
-        healthBar.ShowFloatingText(damage, Color.red);
+        healthBar.ShowFloatingText(damage, healthBar.DamageText);
 
         OnHealthChanged?.Invoke();
 
@@ -551,7 +551,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (Health >= MaxHealth)
         {
-            healthBar.ShowFloatingText(0, Color.green);
+            healthBar.ShowFloatingText(0, healthBar.HealText);
 
             return;
         }
@@ -565,7 +565,7 @@ public class Enemy : MonoBehaviour, IDamageable
             idleTime = 0;
 
             StartCoroutine(healthBar.FlashEffect(Color.green));
-            healthBar.ShowFloatingText(heal, Color.green);
+            healthBar.ShowFloatingText(heal, healthBar.HealText);
 
             OnHealthChanged?.Invoke();
         }
@@ -577,7 +577,7 @@ public class Enemy : MonoBehaviour, IDamageable
             idleTime = 0;
 
             StartCoroutine(healthBar.FlashEffect(Color.green));
-            healthBar.ShowFloatingText(overheal, Color.green);
+            healthBar.ShowFloatingText(overheal, healthBar.HealText);
 
             OnHealthChanged?.Invoke();
         }
@@ -587,7 +587,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (Health >= MaxHealth)
         {
-            healthBar.ShowFloatingText(0, Color.green);
+            healthBar.ShowFloatingText(0, healthBar.HealText);
 
             return;
         }
@@ -599,7 +599,7 @@ public class Enemy : MonoBehaviour, IDamageable
             Health += heal;
 
             StartCoroutine(healthBar.FlashEffect(Color.green));
-            healthBar.ShowFloatingText(heal, Color.green);
+            healthBar.ShowFloatingText(heal, healthBar.HealText);
 
             OnHealthChanged?.Invoke();
         }
@@ -609,7 +609,7 @@ public class Enemy : MonoBehaviour, IDamageable
             Health += overheal;
 
             StartCoroutine(healthBar.FlashEffect(Color.green));
-            healthBar.ShowFloatingText(overheal, Color.green);
+            healthBar.ShowFloatingText(overheal, healthBar.HealText);
 
             OnHealthChanged?.Invoke();
         }
