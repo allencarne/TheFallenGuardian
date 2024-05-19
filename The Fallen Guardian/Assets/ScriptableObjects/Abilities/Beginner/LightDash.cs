@@ -1,55 +1,81 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/Beginner/LightDash")]
 public class LightDash : ScriptableObject, IAbilityBehaviour
 {
+    public UnityEvent OnMobilityCoolDownStarted;
+
+    [Header("Setup")]
     public Sprite icon;
+    [SerializeField] GameObject dashEffect;
 
-    [SerializeField] int damage;
-    public float coolDown;
-    public float coolDownTime;
-    [SerializeField] float castTime;
+    [Header("Time")]
+    public float CoolDown;
 
+    [Header("Dash")]
     [SerializeField] float dashForce;
     [SerializeField] float dashDuration;
     [SerializeField] float rangeBeforeSlide;
 
     public void BehaviourUpdate(PlayerStateMachine stateMachine)
     {
-        if (stateMachine.canMobilityAbility)
-        {   
-            stateMachine.AbilityDir = stateMachine.Aimer.rotation;
-
-            // Calculate direction based on Aimer rotation
-            float angle = stateMachine.Aimer.rotation.eulerAngles.z * Mathf.Deg2Rad;
-            Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-
+        if (stateMachine.canMobilityAbility && !stateMachine.hasAttacked)
+        {
+            stateMachine.hasAttacked = true;
             stateMachine.canMobilityAbility = false;
 
+            // Get Angle and Direction
+            stateMachine.AbilityDir = stateMachine.Aimer.rotation;
+            float angle = stateMachine.Aimer.rotation.eulerAngles.z;
+            Vector2 direction = stateMachine.HandleDirection(angle);
+
+            // Animate Body
+            stateMachine.BodyAnimator.Play("Sword_Attack_C");
+            stateMachine.BodyAnimator.SetFloat("Horizontal", direction.x);
+            stateMachine.BodyAnimator.SetFloat("Vertical", direction.y);
+
+            // Animate Sword
+            stateMachine.SwordAnimator.Play("Sword_Attack_C");
+            stateMachine.SwordAnimator.SetFloat("Horizontal", direction.x);
+            stateMachine.SwordAnimator.SetFloat("Vertical", direction.y);
+
+            // Handle Dash
             stateMachine.HandleSlideForward(stateMachine.AbilityDir.eulerAngles.z, rangeBeforeSlide, dashForce, dashDuration);
 
-            // Use the calculated direction for handling animations
-            //stateMachine.HandleAnimation(stateMachine.BodyAnimator, "Player", "Move", direction);
-            //stateMachine.HandleAnimation(stateMachine.SwordAnimator, "Sword", "Move", direction);
+            // Spawn Particle
+            Instantiate(dashEffect, stateMachine.transform.position, stateMachine.AbilityDir);
 
             // Buff
             stateMachine.Player.Buffs.Immovable(dashDuration);
+
+            // Timers
+            stateMachine.StartCoroutine(CoolDownTime(stateMachine));
+            stateMachine.StartCoroutine(RecoveryTime(stateMachine));
         }
+    }
+
+    IEnumerator RecoveryTime(PlayerStateMachine stateMachine)
+    {
+        //float modifiedRecoveryTime = recoveryTime / stateMachine.Player.Stats.CurrentAttackSpeed;
+
+        yield return new WaitForSeconds(dashDuration);
+
+        stateMachine.hasAttacked = false;
+        stateMachine.SetState(new PlayerIdleState(stateMachine));
+    }
+
+    IEnumerator CoolDownTime(PlayerStateMachine stateMachine)
+    {
+        OnMobilityCoolDownStarted?.Invoke();
 
         // Adjust cooldown time based on cooldown reduction
-        float modifiedCooldown = coolDown / stateMachine.Player.Stats.CurrentCDR;
+        float modifiedCooldown = CoolDown / stateMachine.Player.Stats.CurrentCDR;
 
-        coolDownTime += Time.deltaTime;
+        yield return new WaitForSeconds(modifiedCooldown);
 
-        if (coolDownTime >= modifiedCooldown)
-        {
-            coolDownTime = 0;
-
-            stateMachine.SetState(new PlayerIdleState(stateMachine));
-
-            stateMachine.canMobilityAbility = true;
-        }
+        stateMachine.canMobilityAbility = true;
     }
 }

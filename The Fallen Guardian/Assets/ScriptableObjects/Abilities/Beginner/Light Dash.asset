@@ -12,11 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b126c28c2cfd824c8ea2e50d7d054e8, type: 3}
   m_Name: Light Dash
   m_EditorClassIdentifier: 
-  icon: {fileID: 2105995544, guid: 671557a9655025a44948436d2ec515fa, type: 3}
-  damage: 0
-  coolDown: 0.3
-  coolDownTime: 0
+  OnMobilityCoolDownStarted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 7750d02e12b553b489fe1ddb8be1df86, type: 2}
+        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  icon: {fileID: -65041625, guid: 70fea94e9b8560044bfe8742d2192fc7, type: 3}
+  dashEffect: {fileID: 7732355178594915599, guid: 0f1026a38df256b46875bb1ea92a701d, type: 3}
   castTime: 0
-  dashForce: 35
+  recoveryTime: 0.3
+  CoolDown: 2
+  damage: 0
+  attackRange: 0
+  dashForce: 50
   dashDuration: 0.3
   rangeBeforeSlide: 0
