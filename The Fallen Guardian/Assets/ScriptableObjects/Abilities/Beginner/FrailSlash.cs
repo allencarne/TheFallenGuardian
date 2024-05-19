@@ -16,8 +16,7 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
     [Header("Time")]
     [SerializeField] float castTime;
     [SerializeField] float recoveryTime;
-    public float coolDown;
-    public float coolDownTime;
+    public float CoolDown;
 
     [Header("Stats")]
     [SerializeField] int damage;
@@ -62,7 +61,7 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
 
             // Timers
             stateMachine.StartCoroutine(AttackImpact(stateMachine));
-            stateMachine.StartCoroutine(CoolDown(stateMachine));
+            stateMachine.StartCoroutine(CoolDownTime(stateMachine));
         }
 
         if (canImpact)
@@ -144,12 +143,12 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
         stateMachine.SetState(new PlayerIdleState(stateMachine));
     }
 
-    IEnumerator CoolDown(PlayerStateMachine stateMachine)
+    IEnumerator CoolDownTime(PlayerStateMachine stateMachine)
     {
         OnBasicCoolDownStarted?.Invoke();
 
         // Adjust cooldown time based on cooldown reduction
-        float modifiedCooldown = coolDown / stateMachine.Player.Stats.CurrentCDR;
+        float modifiedCooldown = CoolDown / stateMachine.Player.Stats.CurrentCDR;
 
         yield return new WaitForSeconds(modifiedCooldown);
 

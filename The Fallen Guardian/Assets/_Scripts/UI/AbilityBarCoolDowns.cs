@@ -7,7 +7,7 @@ using TMPro;
 public class AbilityBarCoolDowns : MonoBehaviour
 {
     [SerializeField] AbilityBar abilityBar;
-
+    [SerializeField] PlayerStats playerStats;
     [SerializeField] GameObjectRuntimeSet playerReference;
     PlayerAbilities playerAbilities;
 
@@ -114,8 +114,9 @@ public class AbilityBarCoolDowns : MonoBehaviour
 
     private IEnumerator CooldownRoutine(ScriptableObject ability, Image fillImage, TextMeshProUGUI cooldownText)
     {
-        float coolDown = (float)ability.GetType().GetField("coolDown").GetValue(ability);
-        float coolDownTime = coolDown;
+        float coolDown = (float)ability.GetType().GetField("CoolDown").GetValue(ability);
+        float modifiedCooldown = coolDown / playerStats.CurrentCDR;
+        float coolDownTime = modifiedCooldown;
 
         while (coolDownTime > 0)
         {
@@ -125,7 +126,7 @@ public class AbilityBarCoolDowns : MonoBehaviour
 
             // Format cooldown time to show one decimal place if it's greater than 0
             cooldownText.text = coolDownTime > 0 ? coolDownTime.ToString("F1") : "";
-            fillImage.fillAmount = coolDownTime / coolDown;
+            fillImage.fillAmount = coolDownTime / modifiedCooldown;
 
             yield return null;
         }
