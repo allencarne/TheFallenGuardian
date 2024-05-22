@@ -19,6 +19,8 @@ MonoBehaviour:
   quantity: 0
   isStackable: 0
   cost: 1
+  isCurrency: 0
+  itemIndex: 1
   equipmentType: 0
   healthModifier: 2
   damageModifier: 0

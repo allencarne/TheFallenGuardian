@@ -1201,7 +1201,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7019382126730802799}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1950,6 +1950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordAnimator: {fileID: 7796180083115903274}
   bodyAnimator: {fileID: 7406391039671905879}
+  headAnimator: {fileID: 3006431878683685815}
   rb: {fileID: 5663583307712945941}
   aimer: {fileID: 1333201046459341400}
   inputHandler: {fileID: 754719381540065433}
@@ -1986,6 +1987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2767d1431d71bea498d33cecd14c4615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headAnimator: {fileID: 3006431878683685815}
   IsWeaponEquipt: 0
   playerInventoryReference: {fileID: 11400000, guid: c98477aab8ca1a1408840530c75bc3ed, type: 2}
   Sword: {fileID: 9193951340240387399}
@@ -2230,7 +2232,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7996015745871743870}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -2574,7 +2576,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9009677450219083178}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

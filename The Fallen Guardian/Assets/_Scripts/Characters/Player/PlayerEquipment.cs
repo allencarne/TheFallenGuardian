@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerEquipment : MonoBehaviour
 {
+    [SerializeField] Animator headAnimator;
+
     [HideInInspector] public bool IsWeaponEquipt = false;
 
     [SerializeField] GameObjectRuntimeSet playerInventoryReference;
@@ -22,6 +24,9 @@ public class PlayerEquipment : MonoBehaviour
 
     void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
     {
+        // Reset all helmet layers
+        ResetHelmetLayers();
+
         // Equipped a new item
         if (newItem != null)
         {
@@ -30,6 +35,25 @@ public class PlayerEquipment : MonoBehaviour
             {
                 IsWeaponEquipt = true;
                 UpdateWeaponSprite(newWeapon);
+            }
+
+            if (newItem.equipmentType == EquipmentType.Head)
+            {
+                switch (newItem.itemIndex)
+                {
+                    case 0:
+                        // Tattered Headband Equipped
+                        Debug.Log("Tattered Headband Equipped");
+                        headAnimator.SetLayerWeight(newItem.itemIndex - 1, 0);
+                        headAnimator.SetLayerWeight(newItem.itemIndex, 1);
+                        break;
+                    case 1:
+                        // Leaf Headband Eqipped
+                        Debug.Log("Leaf Headband Eqipped");
+                        headAnimator.SetLayerWeight(newItem.itemIndex + 1, 0);
+                        headAnimator.SetLayerWeight(newItem.itemIndex, 1);
+                        break;
+                }
             }
         }
         else
@@ -71,5 +95,14 @@ public class PlayerEquipment : MonoBehaviour
         //Staff.enabled = false;
         //Bow.enabled = false;
         //Dagger.enabled = false;
+    }
+
+    void ResetHelmetLayers()
+    {
+        // Reset all helmet layers to weight 0
+        for (int i = 0; i < headAnimator.layerCount; i++)
+        {
+            headAnimator.SetLayerWeight(i, 0);
+        }
     }
 }

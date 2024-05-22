@@ -5,9 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Equipment", menuName = "ScriptableObjects/Inventory/Equipment")]
 public class Equipment : Item
 {
+    [Header("Index")]
+    public int itemIndex;
+
+    [Header("Equipment")]
     EquipmentManager equipmentManager;
     public EquipmentType equipmentType;
 
+    [Header("Modifiers")]
     public int healthModifier;
     public int damageModifier;
 

@@ -15,6 +15,7 @@ public class PlayerSpawnState : PlayerState
             canSpawn = false;
 
             // State Logic
+            stateMachine.HeadAnimator.Play("Spawn");
             stateMachine.BodyAnimator.Play("Spawn");
             stateMachine.SwordAnimator.Play("Spawn");
 

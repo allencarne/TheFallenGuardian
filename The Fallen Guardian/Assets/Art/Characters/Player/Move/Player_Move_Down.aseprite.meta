@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Player_Move_Down_Frame_0
     originalName: 
-    pivot: {x: 0.45454547, y: -0.516129}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 86
-      width: 11
-      height: 31
+      y: 4
+      width: 64
+      height: 64
     spriteID: a9651adcfb1567f4c95bc07c3dd4990d
     spriteBone: []
     spriteOutline: []
@@ -140,18 +140,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 86}
+    uvTransform: {x: 4, y: 4}
   - name: Player_Move_Down_Frame_1
     originalName: 
-    pivot: {x: 0.4166667, y: -0.6}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 23
-      y: 4
-      width: 12
-      height: 30
+      x: 4
+      y: 76
+      width: 64
+      height: 64
     spriteID: c27a9589aef352c4c9d78f71d253743d
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 23, y: 4}
+    uvTransform: {x: 4, y: 76}
   - name: Player_Move_Down_Frame_2
     originalName: 
-    pivot: {x: 0.45454547, y: -0.4848485}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
-      width: 11
-      height: 33
+      y: 148
+      width: 64
+      height: 64
     spriteID: 2ff780b4c540c11458e787253a018775
     spriteBone: []
     spriteOutline: []
@@ -180,18 +180,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 4, y: 148}
   - name: Player_Move_Down_Frame_3
     originalName: 
-    pivot: {x: 0.5, y: -0.5}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 43
+      x: 76
       y: 4
-      width: 10
-      height: 32
+      width: 64
+      height: 64
     spriteID: 76ddcf6c3600fe94a9ed859815856292
     spriteBone: []
     spriteOutline: []
@@ -200,18 +200,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 43, y: 4}
+    uvTransform: {x: 76, y: 4}
   - name: Player_Move_Down_Frame_4
     originalName: 
-    pivot: {x: 0.54545456, y: -0.516129}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 23
-      y: 80
-      width: 11
-      height: 31
+      x: 76
+      y: 76
+      width: 64
+      height: 64
     spriteID: e9733306ec920344888d840280b39006
     spriteBone: []
     spriteOutline: []
@@ -220,18 +220,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 23, y: 80}
+    uvTransform: {x: 76, y: 76}
   - name: Player_Move_Down_Frame_5
     originalName: 
-    pivot: {x: 0.5833334, y: -0.6}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 23
-      y: 42
-      width: 12
-      height: 30
+      x: 76
+      y: 148
+      width: 64
+      height: 64
     spriteID: fb0eda238eb56724cbeba4979b21a0db
     spriteBone: []
     spriteOutline: []
@@ -240,18 +240,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 23, y: 42}
+    uvTransform: {x: 76, y: 148}
   - name: Player_Move_Down_Frame_6
     originalName: 
-    pivot: {x: 0.54545456, y: -0.4848485}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 45
-      width: 11
-      height: 33
+      x: 148
+      y: 4
+      width: 64
+      height: 64
     spriteID: e17d5b0555685a749ac358d5e2d1b1a6
     spriteBone: []
     spriteOutline: []
@@ -260,18 +260,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 45}
+    uvTransform: {x: 148, y: 4}
   - name: Player_Move_Down_Frame_7
     originalName: 
-    pivot: {x: 0.5, y: -0.5}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 43
-      y: 44
-      width: 10
-      height: 32
+      x: 148
+      y: 76
+      width: 64
+      height: 64
     spriteID: 26c41f203b8ee2e40b7d47b38bb93ca8
     spriteBone: []
     spriteOutline: []
@@ -280,7 +280,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 43, y: 44}
+    uvTransform: {x: 148, y: 76}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -293,66 +293,66 @@ ScriptedImporter:
     - name: Player_Move_Down_Frame_0
       frameIndex: 0
       cellRect:
-        x: 27
-        y: 16
-        width: 11
-        height: 31
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       spriteId: a9651adcfb1567f4c95bc07c3dd4990d
     - name: Player_Move_Down_Frame_1
       frameIndex: 1
       cellRect:
-        x: 27
-        y: 18
-        width: 12
-        height: 30
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       spriteId: c27a9589aef352c4c9d78f71d253743d
     - name: Player_Move_Down_Frame_2
       frameIndex: 2
       cellRect:
-        x: 27
-        y: 16
-        width: 11
-        height: 33
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       spriteId: 2ff780b4c540c11458e787253a018775
     - name: Player_Move_Down_Frame_3
       frameIndex: 3
       cellRect:
-        x: 27
-        y: 16
-        width: 10
-        height: 32
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       spriteId: 76ddcf6c3600fe94a9ed859815856292
     - name: Player_Move_Down_Frame_4
       frameIndex: 4
       cellRect:
-        x: 26
-        y: 16
-        width: 11
-        height: 31
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       spriteId: e9733306ec920344888d840280b39006
     - name: Player_Move_Down_Frame_5
       frameIndex: 5
       cellRect:
-        x: 25
-        y: 18
-        width: 12
-        height: 30
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       spriteId: fb0eda238eb56724cbeba4979b21a0db
     - name: Player_Move_Down_Frame_6
       frameIndex: 6
       cellRect:
-        x: 26
-        y: 16
-        width: 11
-        height: 33
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       spriteId: e17d5b0555685a749ac358d5e2d1b1a6
     - name: Player_Move_Down_Frame_7
       frameIndex: 7
       cellRect:
-        x: 27
-        y: 16
-        width: 10
-        height: 32
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       spriteId: 26c41f203b8ee2e40b7d47b38bb93ca8
     linkedCells: []
     parentIndex: -1
