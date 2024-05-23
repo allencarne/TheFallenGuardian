@@ -6,6 +6,7 @@ public class PlayerMoveState : PlayerState
 
     public override void Update()
     {
+        stateMachine.HeadAnimator.Play(stateMachine.Equipment.HeadIndex + "_Move");
         stateMachine.BodyAnimator.Play("Move");
         stateMachine.SwordAnimator.Play("Move");
 
@@ -38,6 +39,9 @@ public class PlayerMoveState : PlayerState
         {
             // Snap the movement direction
             Vector2 snappedDirection = stateMachine.SnapDirection(movement);
+
+            stateMachine.HeadAnimator.SetFloat("Horizontal", snappedDirection.x);
+            stateMachine.HeadAnimator.SetFloat("Vertical", snappedDirection.y);
 
             stateMachine.BodyAnimator.SetFloat("Horizontal", snappedDirection.x);
             stateMachine.BodyAnimator.SetFloat("Vertical", snappedDirection.y);

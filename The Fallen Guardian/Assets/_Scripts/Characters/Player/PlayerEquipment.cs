@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerEquipment : MonoBehaviour
 {
     [SerializeField] Animator headAnimator;
+    public int HeadIndex;
 
     [HideInInspector] public bool IsWeaponEquipt = false;
 
@@ -44,14 +45,12 @@ public class PlayerEquipment : MonoBehaviour
                     case 0:
                         // Tattered Headband Equipped
                         Debug.Log("Tattered Headband Equipped");
-                        headAnimator.SetLayerWeight(newItem.itemIndex - 1, 0);
-                        headAnimator.SetLayerWeight(newItem.itemIndex, 1);
+                        HeadIndex = newItem.itemIndex;
                         break;
                     case 1:
                         // Leaf Headband Eqipped
                         Debug.Log("Leaf Headband Eqipped");
-                        headAnimator.SetLayerWeight(newItem.itemIndex + 1, 0);
-                        headAnimator.SetLayerWeight(newItem.itemIndex, 1);
+                        HeadIndex = newItem.itemIndex;
                         break;
                 }
             }
