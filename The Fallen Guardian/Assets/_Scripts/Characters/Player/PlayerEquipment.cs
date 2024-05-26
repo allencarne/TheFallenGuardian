@@ -41,58 +41,8 @@ public class PlayerEquipment : MonoBehaviour
                 UpdateWeaponSprite(newWeapon);
             }
 
-            if (newItem.equipmentType == EquipmentType.Head)
-            {
-                switch (newItem.itemIndex)
-                {
-                    case 1:
-                        // Tattered Headband Equipped
-                        HeadIndex = newItem.itemIndex;
-                        //isHeadEquipped = true;
-                        headSprite.enabled = true;
-                        break;
-                    case 2:
-                        // Leaf Headband Eqipped
-                        HeadIndex = newItem.itemIndex;
-                        //isHeadEquipped = true;
-                        headSprite.enabled = true;
-                        break;
-                }
-            }
-
-            if (newItem.equipmentType == EquipmentType.Chest)
-            {
-                switch (newItem.itemIndex)
-                {
-                    case 1:
-                        // Tattered Shirt Equipped
-                        ChestIndex = newItem.itemIndex;
-                        chestSprite.enabled = true;
-                        break;
-                    case 2:
-                        // Leaf Armband Eqipped
-                        ChestIndex = newItem.itemIndex;
-                        chestSprite.enabled = true;
-                        break;
-                }
-            }
-
-            if (newItem.equipmentType == EquipmentType.Legs)
-            {
-                switch (newItem.itemIndex)
-                {
-                    case 1:
-                        // Tattered Shorts Equipped
-                        LegsIndex = newItem.itemIndex;
-                        legsSprite.enabled = true;
-                        break;
-                    case 2:
-                        // Leaf Skirt Eqipped
-                        LegsIndex = newItem.itemIndex;
-                        legsSprite.enabled = true;
-                        break;
-                }
-            }
+            // Handle armor equip
+            EquipArmor(newItem);
         }
         else
         {
@@ -100,9 +50,8 @@ public class PlayerEquipment : MonoBehaviour
             IsWeaponEquipt = false;
             ResetWeaponSprites(); // Call method to disable all weapon sprites
 
-            headSprite.enabled = false;
-            chestSprite.enabled = false;
-            legsSprite.enabled = false;
+            // Handle armor unequip
+            UnequipArmor(oldItem);
         }
     }
 
@@ -137,5 +86,138 @@ public class PlayerEquipment : MonoBehaviour
         //Staff.enabled = false;
         //Bow.enabled = false;
         //Dagger.enabled = false;
+    }
+
+    void EquipArmor(Equipment newItem)
+    {
+        switch (newItem.equipmentType)
+        {
+            case EquipmentType.Head:
+                switch (newItem.itemIndex)
+                {
+                    case 1:
+                        // Tattered Headband Equipped
+                        HeadIndex = newItem.itemIndex;
+                        //isHeadEquipped = true;
+                        headSprite.enabled = true;
+                        break;
+                    case 2:
+                        // Leaf Headband Eqipped
+                        HeadIndex = newItem.itemIndex;
+                        //isHeadEquipped = true;
+                        headSprite.enabled = true;
+                        break;
+                }
+                break;
+            case EquipmentType.Chest:
+                switch (newItem.itemIndex)
+                {
+                    case 1:
+                        // Tattered Shirt Equipped
+                        ChestIndex = newItem.itemIndex;
+                        chestSprite.enabled = true;
+                        break;
+                    case 2:
+                        // Leaf Armband Eqipped
+                        ChestIndex = newItem.itemIndex;
+                        chestSprite.enabled = true;
+                        break;
+                }
+                break;
+            case EquipmentType.Legs:
+                switch (newItem.itemIndex)
+                {
+                    case 1:
+                        // Tattered Shorts Equipped
+                        LegsIndex = newItem.itemIndex;
+                        legsSprite.enabled = true;
+                        break;
+                    case 2:
+                        // Leaf Skirt Eqipped
+                        LegsIndex = newItem.itemIndex;
+                        legsSprite.enabled = true;
+                        break;
+                }
+                break;
+                /*
+            case EquipmentType.Ring:
+                break;
+            case EquipmentType.Necklace:
+                break;
+            case EquipmentType.Weapon:
+                break;
+            case EquipmentType.Shoulder:
+                break;
+            case EquipmentType.Back:
+                break;
+                */
+        }
+    }
+
+    void UnequipArmor(Equipment oldItem)
+    {
+        if (oldItem != null)
+        {
+            switch (oldItem.equipmentType)
+            {
+                case EquipmentType.Head:
+                    switch (oldItem.itemIndex)
+                    {
+                        case 1:
+                            // Tattered Headband Unequipped
+                            HeadIndex = 0; // Indicate that no headgear is equipped
+                            headSprite.enabled = false;
+                            break;
+                        case 2:
+                            // Leaf Headband Unequipped
+                            HeadIndex = 0; // Indicate that no headgear is equipped
+                            headSprite.enabled = false;
+                            break;
+                    }
+                    break;
+                case EquipmentType.Chest:
+                    switch (oldItem.itemIndex)
+                    {
+                        case 1:
+                            // Tattered Headband Unequipped
+                            ChestIndex = 0; // Indicate that no headgear is equipped
+                            chestSprite.enabled = false;
+                            break;
+                        case 2:
+                            // Leaf Headband Unequipped
+                            ChestIndex = 0; // Indicate that no headgear is equipped
+                            chestSprite.enabled = false;
+                            break;
+                    }
+                    break;
+                case EquipmentType.Legs:
+                    switch (oldItem.itemIndex)
+                    {
+                        case 1:
+                            // Tattered Headband Unequipped
+                            LegsIndex = 0; // Indicate that no headgear is equipped
+                            legsSprite.enabled = false;
+                            break;
+                        case 2:
+                            // Leaf Headband Unequipped
+                            LegsIndex = 0; // Indicate that no headgear is equipped
+                            legsSprite.enabled = false;
+                            break;
+                    }
+                    break;
+                    /*
+                case EquipmentType.Ring:
+                    break;
+                case EquipmentType.Necklace:
+                    break;
+                case EquipmentType.Weapon:
+                    break;
+                case EquipmentType.Shoulder:
+                    break;
+                case EquipmentType.Back:
+                    break;
+                    */
+            }
+        }
     }
 }
