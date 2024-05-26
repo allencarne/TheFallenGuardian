@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class PlayerEquipment : MonoBehaviour
 {
-    [SerializeField] Animator headAnimator;
-    public int HeadIndex;
-    public int ChestIndex;
-    public int LegsIndex;
-
-    [HideInInspector] public bool IsWeaponEquipt = false;
-
+    [Header("Setup")]
     [SerializeField] GameObjectRuntimeSet playerInventoryReference;
     EquipmentManager equipmentManager;
 
+    [Header("Armor")]
+    [SerializeField] SpriteRenderer headSprite;
+    public int HeadIndex;
+    [SerializeField] SpriteRenderer chestSprite;
+    public int ChestIndex;
+    [SerializeField] SpriteRenderer legsSprite;
+    public int LegsIndex;
+
+    [Header("Weapons")]
+    [HideInInspector] public bool IsWeaponEquipt = false;
     [SerializeField] SpriteRenderer Sword;
     [SerializeField] SpriteRenderer Staff;
     [SerializeField] SpriteRenderer Bow;
@@ -44,10 +48,14 @@ public class PlayerEquipment : MonoBehaviour
                     case 1:
                         // Tattered Headband Equipped
                         HeadIndex = newItem.itemIndex;
+                        //isHeadEquipped = true;
+                        headSprite.enabled = true;
                         break;
                     case 2:
                         // Leaf Headband Eqipped
                         HeadIndex = newItem.itemIndex;
+                        //isHeadEquipped = true;
+                        headSprite.enabled = true;
                         break;
                 }
             }
@@ -59,10 +67,12 @@ public class PlayerEquipment : MonoBehaviour
                     case 1:
                         // Tattered Shirt Equipped
                         ChestIndex = newItem.itemIndex;
+                        chestSprite.enabled = true;
                         break;
                     case 2:
                         // Leaf Armband Eqipped
                         ChestIndex = newItem.itemIndex;
+                        chestSprite.enabled = true;
                         break;
                 }
             }
@@ -74,10 +84,12 @@ public class PlayerEquipment : MonoBehaviour
                     case 1:
                         // Tattered Shorts Equipped
                         LegsIndex = newItem.itemIndex;
+                        legsSprite.enabled = true;
                         break;
                     case 2:
                         // Leaf Skirt Eqipped
                         LegsIndex = newItem.itemIndex;
+                        legsSprite.enabled = true;
                         break;
                 }
             }
@@ -87,6 +99,10 @@ public class PlayerEquipment : MonoBehaviour
             // Unequipped the current item
             IsWeaponEquipt = false;
             ResetWeaponSprites(); // Call method to disable all weapon sprites
+
+            headSprite.enabled = false;
+            chestSprite.enabled = false;
+            legsSprite.enabled = false;
         }
     }
 
