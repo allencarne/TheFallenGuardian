@@ -6,6 +6,8 @@ public class PlayerEquipment : MonoBehaviour
 {
     [SerializeField] Animator headAnimator;
     public int HeadIndex;
+    public int ChestIndex;
+    public int LegsIndex;
 
     [HideInInspector] public bool IsWeaponEquipt = false;
 
@@ -25,9 +27,6 @@ public class PlayerEquipment : MonoBehaviour
 
     void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
     {
-        // Reset all helmet layers
-        ResetHelmetLayers();
-
         // Equipped a new item
         if (newItem != null)
         {
@@ -42,15 +41,43 @@ public class PlayerEquipment : MonoBehaviour
             {
                 switch (newItem.itemIndex)
                 {
-                    case 0:
+                    case 1:
                         // Tattered Headband Equipped
-                        Debug.Log("Tattered Headband Equipped");
                         HeadIndex = newItem.itemIndex;
                         break;
-                    case 1:
+                    case 2:
                         // Leaf Headband Eqipped
-                        Debug.Log("Leaf Headband Eqipped");
                         HeadIndex = newItem.itemIndex;
+                        break;
+                }
+            }
+
+            if (newItem.equipmentType == EquipmentType.Chest)
+            {
+                switch (newItem.itemIndex)
+                {
+                    case 1:
+                        // Tattered Shirt Equipped
+                        ChestIndex = newItem.itemIndex;
+                        break;
+                    case 2:
+                        // Leaf Armband Eqipped
+                        ChestIndex = newItem.itemIndex;
+                        break;
+                }
+            }
+
+            if (newItem.equipmentType == EquipmentType.Legs)
+            {
+                switch (newItem.itemIndex)
+                {
+                    case 1:
+                        // Tattered Shorts Equipped
+                        LegsIndex = newItem.itemIndex;
+                        break;
+                    case 2:
+                        // Leaf Skirt Eqipped
+                        LegsIndex = newItem.itemIndex;
                         break;
                 }
             }
@@ -94,14 +121,5 @@ public class PlayerEquipment : MonoBehaviour
         //Staff.enabled = false;
         //Bow.enabled = false;
         //Dagger.enabled = false;
-    }
-
-    void ResetHelmetLayers()
-    {
-        // Reset all helmet layers to weight 0
-        for (int i = 0; i < headAnimator.layerCount; i++)
-        {
-            headAnimator.SetLayerWeight(i, 0);
-        }
     }
 }

@@ -11,6 +11,8 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] Animator swordAnimator; public Animator SwordAnimator => swordAnimator;
     [SerializeField] Animator bodyAnimator; public Animator BodyAnimator => bodyAnimator;
     [SerializeField] Animator headAnimator; public Animator HeadAnimator => headAnimator;
+    [SerializeField] Animator chestAnimator; public Animator ChestAnimator => chestAnimator;
+    [SerializeField] Animator legsAnimator; public Animator LegsAnimator => legsAnimator;
     [SerializeField] Rigidbody2D rb; public Rigidbody2D Rigidbody => rb;
     [SerializeField] Transform aimer; public Transform Aimer => aimer;
 

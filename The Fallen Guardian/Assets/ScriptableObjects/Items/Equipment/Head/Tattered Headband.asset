@@ -18,6 +18,9 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 5e7f6dbb78b4d8445a6402e257797069, type: 3}
   quantity: 0
   isStackable: 0
+  cost: 0
+  isCurrency: 0
+  itemIndex: 1
   equipmentType: 0
   healthModifier: 1
   damageModifier: 0

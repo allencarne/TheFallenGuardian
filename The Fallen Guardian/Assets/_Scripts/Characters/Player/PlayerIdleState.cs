@@ -7,6 +7,8 @@ public class PlayerIdleState : PlayerState
     public override void Update()
     {
         stateMachine.HeadAnimator.Play(stateMachine.Equipment.HeadIndex + "_Idle");
+        stateMachine.ChestAnimator.Play(stateMachine.Equipment.ChestIndex + "_Idle");
+        stateMachine.LegsAnimator.Play(stateMachine.Equipment.LegsIndex + "_Idle");
         stateMachine.BodyAnimator.Play("Idle");
         stateMachine.SwordAnimator.Play("Idle");
 

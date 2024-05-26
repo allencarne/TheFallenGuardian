@@ -7,6 +7,8 @@ public class PlayerMoveState : PlayerState
     public override void Update()
     {
         stateMachine.HeadAnimator.Play(stateMachine.Equipment.HeadIndex + "_Move");
+        stateMachine.ChestAnimator.Play(stateMachine.Equipment.ChestIndex + "_Move");
+        stateMachine.LegsAnimator.Play(stateMachine.Equipment.LegsIndex + "_Move");
         stateMachine.BodyAnimator.Play("Move");
         stateMachine.SwordAnimator.Play("Move");
 
@@ -42,6 +44,12 @@ public class PlayerMoveState : PlayerState
 
             stateMachine.HeadAnimator.SetFloat("Horizontal", snappedDirection.x);
             stateMachine.HeadAnimator.SetFloat("Vertical", snappedDirection.y);
+
+            stateMachine.ChestAnimator.SetFloat("Horizontal", snappedDirection.x);
+            stateMachine.ChestAnimator.SetFloat("Vertical", snappedDirection.y);
+
+            stateMachine.LegsAnimator.SetFloat("Horizontal", snappedDirection.x);
+            stateMachine.LegsAnimator.SetFloat("Vertical", snappedDirection.y);
 
             stateMachine.BodyAnimator.SetFloat("Horizontal", snappedDirection.x);
             stateMachine.BodyAnimator.SetFloat("Vertical", snappedDirection.y);
