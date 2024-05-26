@@ -38,7 +38,7 @@ public class PlayerEquipment : MonoBehaviour
             if (newWeapon != null)
             {
                 IsWeaponEquipt = true;
-                UpdateWeaponSprite(newWeapon);
+                EquipWeapon(newWeapon);
             }
 
             // Handle armor equip
@@ -46,46 +46,64 @@ public class PlayerEquipment : MonoBehaviour
         }
         else
         {
-            // Unequipped the current item
-            IsWeaponEquipt = false;
-            ResetWeaponSprites(); // Call method to disable all weapon sprites
+            Weapon oldWeapon = oldItem as Weapon;
+            if (oldWeapon != null)
+            {
+                IsWeaponEquipt = false;
+                UnequipWeapon(oldWeapon); // Call method to disable all weapon sprites
+            }
 
             // Handle armor unequip
             UnequipArmor(oldItem);
         }
     }
 
-    void UpdateWeaponSprite(Weapon equippedWeapon)
+    void EquipWeapon(Weapon newWeapon)
     {
-        ResetWeaponSprites(); // Reset all weapon sprites before enabling the new one
+        //ResetWeaponSprites(); // Reset all weapon sprites before enabling the new one
 
-        switch (equippedWeapon.weaponType)
+        switch (newWeapon.weaponType)
         {
             case WeaponType.Sword:
                 Sword.enabled = true;
-                Sword.sprite = equippedWeapon.weaponSprite;
+                Sword.sprite = newWeapon.weaponSprite;
                 break;
             case WeaponType.Staff:
                 Staff.enabled = true;
-                Staff.sprite = equippedWeapon.weaponSprite;
+                Staff.sprite = newWeapon.weaponSprite;
                 break;
             case WeaponType.Bow:
                 Bow.enabled = true;
-                Bow.sprite = equippedWeapon.weaponSprite;
+                Bow.sprite = newWeapon.weaponSprite;
                 break;
             case WeaponType.Dagger:
                 Dagger.enabled = true;
-                Dagger.sprite = equippedWeapon.weaponSprite;
+                Dagger.sprite = newWeapon.weaponSprite;
                 break;
         }
     }
 
-    void ResetWeaponSprites()
+    void UnequipWeapon(Weapon oldWeapon)
     {
-        Sword.enabled = false;
-        //Staff.enabled = false;
-        //Bow.enabled = false;
-        //Dagger.enabled = false;
+        switch (oldWeapon.weaponType)
+        {
+            case WeaponType.Sword:
+                Sword.enabled = false;
+                //Sword.sprite = equippedWeapon.weaponSprite;
+                break;
+            case WeaponType.Staff:
+                Staff.enabled = false;
+                //Staff.sprite = equippedWeapon.weaponSprite;
+                break;
+            case WeaponType.Bow:
+                Bow.enabled = false;
+                //Bow.sprite = equippedWeapon.weaponSprite;
+                break;
+            case WeaponType.Dagger:
+                Dagger.enabled = false;
+                //Dagger.sprite = equippedWeapon.weaponSprite;
+                break;
+        }
     }
 
     void EquipArmor(Equipment newItem)
