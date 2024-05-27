@@ -2226,7 +2226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b19ab76905a724c986ea31bf337374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
+  armorParticlePrefab: {fileID: 1628643618540244654, guid: 768ac4fe94217414b99824672926cbd5, type: 3}
   buffBar: {fileID: 119541469203478924}
   buff_Protection: {fileID: 8627039820005768832, guid: 65e5551e3069e3a46b72d8dd357bef16, type: 3}
   isPlayer: 1
