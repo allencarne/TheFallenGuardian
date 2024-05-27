@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 415464689696531612}
+    - target: {fileID: 3028831653607600619, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 415464689696531612}
     - target: {fileID: 3538787198285182242, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: enemy
       value: 
@@ -326,6 +330,8 @@ MonoBehaviour:
   CurrentAttackSpeed: 0
   BaseCDR: 0
   CurrentCDR: 0
+  BaseArmor: 0
+  CurrentArmor: 0
   expToGive: 2
   wanderRadius: 5
   attackRadius: 1

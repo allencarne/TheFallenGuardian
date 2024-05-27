@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 7160922041131653701}
   - component: {fileID: 3538787198285182242}
   - component: {fileID: 2027561816777149345}
+  - component: {fileID: 3028831653607600619}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -403,6 +404,24 @@ MonoBehaviour:
   buffBar: {fileID: 493039623141738153}
   alacrityParticlePrefab: {fileID: 1473861340042521172, guid: d35a49b9705d68644b94a7d118205fac, type: 3}
   buff_Alacrity: {fileID: 5308563003022945098, guid: 40f461b226a99c945b33070df193e0bb, type: 3}
+  isPlayer: 0
+  playerStats: {fileID: 0}
+  enemy: {fileID: 0}
+--- !u!114 &3028831653607600619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168808411849726535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b19ab76905a724c986ea31bf337374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armorParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
+  buffBar: {fileID: 493039623141738153}
+  buff_Protection: {fileID: 8627039820005768832, guid: 65e5551e3069e3a46b72d8dd357bef16, type: 3}
   isPlayer: 0
   playerStats: {fileID: 0}
   enemy: {fileID: 0}
