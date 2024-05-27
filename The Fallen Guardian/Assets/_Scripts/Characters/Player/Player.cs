@@ -95,10 +95,14 @@ public class Player : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        Stats.Health -= damage;
+        // Calculate damage after applying armor
+        float damageAfterArmor = Mathf.Max(damage - Stats.CurrentArmor, 0);
+
+        // Apply the reduced damage to the player's health
+        Stats.Health -= damageAfterArmor;
 
         StartCoroutine(healthBar.FlashEffect(Color.red));
-        healthBar.ShowFloatingText(damage, healthBar.floatingDamageText);
+        healthBar.ShowFloatingText(damageAfterArmor, healthBar.floatingDamageText);
 
         OnHealthChanged?.Invoke();
 

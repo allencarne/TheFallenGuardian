@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/PlayerStats")]
 public class PlayerStats : ScriptableObject
@@ -33,6 +32,10 @@ public class PlayerStats : ScriptableObject
     [Header("Cool Down Reduction")]
     public float BaseCDR;
     public float CurrentCDR;
+
+    [Header("Armor")]
+    public float BaseArmor;
+    public float CurrentArmor;
 
     [Header("Attributes")]
     public float Vitality; // Increase Health

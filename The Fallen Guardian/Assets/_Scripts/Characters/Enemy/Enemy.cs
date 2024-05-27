@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -21,6 +22,9 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("CDR")]
     public float BaseCDR;
     public float CurrentCDR;
+    [Header("Armor")]
+    public float BaseArmor;
+    public float CurrentArmor;
     [Header("Exp")]
     public float expToGive;
 
@@ -530,12 +534,16 @@ public class Enemy : MonoBehaviour, IDamageable
             return;
         }
 
-        Health -= damage;
+        // Calculate damage after applying armor
+        float damageAfterArmor = Mathf.Max(damage - CurrentArmor, 0);
+
+        // Apply the reduced damage to the player's health
+        Health -= damageAfterArmor;
 
         idleTime = 0;
 
         StartCoroutine(healthBar.FlashEffect(Color.red));
-        healthBar.ShowFloatingText(damage, healthBar.DamageText);
+        healthBar.ShowFloatingText(damageAfterArmor, healthBar.DamageText);
 
         OnHealthChanged?.Invoke();
 
