@@ -58,6 +58,9 @@ public class Player : MonoBehaviour, IDamageable
 
         // Set CDR
         Stats.CurrentCDR = Stats.BaseCDR;
+
+        // Set Armor
+        Stats.CurrentArmor = Stats.BaseArmor;
     }
 
     private void Update()

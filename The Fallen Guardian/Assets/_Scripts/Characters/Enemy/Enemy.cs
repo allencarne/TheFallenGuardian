@@ -128,6 +128,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
         // Set CDR
         CurrentCDR = BaseCDR;
+
+        // Set Armor
+        CurrentArmor = BaseArmor;
     }
 
     private void Update()
