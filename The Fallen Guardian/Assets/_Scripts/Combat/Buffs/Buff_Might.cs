@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Buff_Might : MonoBehaviour, IMightable
 {
+    [SerializeField] Debuff_Weakness weakness;
+
     [Header("Buff Bar")]
     [SerializeField] GameObject buffBar;
     [SerializeField] GameObject mightParticlePrefab;
@@ -16,7 +18,7 @@ public class Buff_Might : MonoBehaviour, IMightable
 
     [Header("Might")]
     int damagePerStack = 3;
-    int mightStacks = 0;
+    public int MightStacks = 0;
     GameObject buffIcon;
 
     public bool isPlayer;
@@ -25,30 +27,16 @@ public class Buff_Might : MonoBehaviour, IMightable
     int CurrentDamage;
     int BaseDamage;
 
-    private void Start()
-    {
-        if (isPlayer)
-        {
-            CurrentDamage = playerStats.CurrentDamage;
-            BaseDamage = playerStats.BaseDamage;
-        }
-        else
-        {
-            CurrentDamage = enemy.CurrentDamage;
-            BaseDamage = enemy.BaseDamage;
-        }
-    }
-
     public void Might(int stacks, float duration)
     {
         // Increase Stack Amount Based on the New Buff
-        mightStacks += stacks;
+        MightStacks += stacks;
 
-        // Cap the hasteStacks at 25
-        mightStacks = Mathf.Min(mightStacks, 25);
+        // Cap the Stacks at 25
+        MightStacks = Mathf.Min(MightStacks, 25);
 
-        // Gain Haste Based on Stack Amount
-        ApplyMight(mightStacks);
+        // Gain Based on Stack Amount
+        ApplyMight(MightStacks);
 
         // Icon
         if (!buffIcon)
@@ -67,7 +55,7 @@ public class Buff_Might : MonoBehaviour, IMightable
         }
 
         // Stacks Text
-        stacksText.text = mightStacks.ToString();
+        stacksText.text = MightStacks.ToString();
 
         // Start a Timer for Each Instance of the Buff
         StartCoroutine(Stack(stacks, duration));
@@ -77,34 +65,36 @@ public class Buff_Might : MonoBehaviour, IMightable
     {
         yield return new WaitForSeconds(duration);
 
-        // Subtrack the Stack from our HasteStacks
-        mightStacks -= stacks;
+        // Subtrack the Stack from our Stacks
+        MightStacks -= stacks;
 
-        // Ensure hasteStacks doesn't go below zero
-        mightStacks = Mathf.Max(mightStacks, 0);
+        // Ensure Stacks doesn't go below zero
+        MightStacks = Mathf.Max(MightStacks, 0);
 
-        if (mightStacks == 0)
+        if (MightStacks == 0)
         {
-            mightStacks = 0;
+            MightStacks = 0;
             ResetMight();
             Destroy(buffIcon);
             Destroy(mightParticle);
         }
         else
         {
-            ApplyMight(mightStacks);
+            ApplyMight(MightStacks);
 
             // Stacks Text
-            stacksText.text = mightStacks.ToString();
+            stacksText.text = MightStacks.ToString();
         }
     }
 
     void ApplyMight(int stacks)
     {
-        // Calculate the haste amount based on the number of stacks
-        int MightAmount = damagePerStack * stacks; // Increase movement speed by 1 for each stack
+        SetValues();
 
-        CurrentDamage = BaseDamage + MightAmount;
+        // Calculate the amount based on the number of stacks
+        int MightAmount = damagePerStack * stacks;
+
+        CurrentDamage = CurrentDamage + MightAmount;
 
         if (isPlayer)
         {
@@ -125,6 +115,20 @@ public class Buff_Might : MonoBehaviour, IMightable
         else
         {
             enemy.CurrentDamage = enemy.BaseDamage;
+        }
+    }
+
+    void SetValues()
+    {
+        if (isPlayer)
+        {
+            CurrentDamage = playerStats.CurrentDamage;
+            BaseDamage = playerStats.BaseDamage;
+        }
+        else
+        {
+            CurrentDamage = enemy.CurrentDamage;
+            BaseDamage = enemy.BaseDamage;
         }
     }
 }
