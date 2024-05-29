@@ -2173,9 +2173,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96853ee8a55990b4ba16ae05d92b070e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weakness: {fileID: 1355826886231515272}
   buffBar: {fileID: 119541469203478924}
   mightParticlePrefab: {fileID: 1015319669647688435, guid: 9b6df7731f7172b43a147f09ce0feae3, type: 3}
   buff_Might: {fileID: 4486305157485082496, guid: 33205e44c20730a499ce4a2889fe044c, type: 3}
+  DamagePerStack: 3
+  MightStacks: 0
   isPlayer: 1
   playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
   enemy: {fileID: 0}
@@ -2245,9 +2248,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c11536d9ffa424ea9dfff73eb6f198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  might: {fileID: 6570711290415484158}
   deBuffBar: {fileID: 3112332154145750330}
   weaknessParticlePrefab: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
   deBuff_Weakness: {fileID: 1322856919444573643, guid: 7a2cbb8d57d592a40a7c4e185cf34af7, type: 3}
+  DamagePerStack: 3
+  WeaknessStacks: 0
   isPlayer: 1
   playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
   enemy: {fileID: 0}

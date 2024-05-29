@@ -17,7 +17,7 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
     TextMeshProUGUI stacksText;
 
     [Header("Weakness")]
-    int damagePerStack = 3;
+    public int DamagePerStack = 3;
     public int WeaknessStacks = 0;
     GameObject buffIcon;
 
@@ -92,9 +92,10 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
         SetValues();
 
         // Calculate the amount based on the number of stacks
-        int weaknessAmount = damagePerStack * stacks;
+        int WeaknessAmount = DamagePerStack * stacks;
 
-        CurrentDamage = CurrentDamage - weaknessAmount;
+        // Directly apply the damage decrease without considering the Might buff
+        CurrentDamage = CurrentDamage - WeaknessAmount;
 
         if (isPlayer)
         {
@@ -110,10 +111,12 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
     {
         if (isPlayer)
         {
+            // Simply reset the current damage to the base damage
             playerStats.CurrentDamage = playerStats.BaseDamage;
         }
         else
         {
+            // Similar logic for enemies
             enemy.CurrentDamage = enemy.BaseDamage;
         }
     }

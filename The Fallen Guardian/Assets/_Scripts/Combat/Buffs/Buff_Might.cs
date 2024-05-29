@@ -17,7 +17,7 @@ public class Buff_Might : MonoBehaviour, IMightable
     TextMeshProUGUI stacksText;
 
     [Header("Might")]
-    int damagePerStack = 3;
+    public int DamagePerStack = 3;
     public int MightStacks = 0;
     GameObject buffIcon;
 
@@ -92,9 +92,12 @@ public class Buff_Might : MonoBehaviour, IMightable
         SetValues();
 
         // Calculate the amount based on the number of stacks
-        int MightAmount = damagePerStack * stacks;
+        int MightAmount = DamagePerStack * stacks;
 
-        CurrentDamage = CurrentDamage + MightAmount;
+        // Calculate the total damage increase considering the Weakness debuff
+        int totalDamageIncrease = MightAmount - (weakness.WeaknessStacks * weakness.DamagePerStack);
+
+        CurrentDamage = BaseDamage + totalDamageIncrease;
 
         if (isPlayer)
         {
@@ -110,11 +113,16 @@ public class Buff_Might : MonoBehaviour, IMightable
     {
         if (isPlayer)
         {
-            playerStats.CurrentDamage = playerStats.BaseDamage;
+            // Calculate the remaining effect of the Weakness debuff
+            int remainingWeaknessEffect = weakness.WeaknessStacks * weakness.DamagePerStack;
+
+            // Revert the current damage back to the base level minus the remaining Weakness effect
+            playerStats.CurrentDamage = playerStats.BaseDamage - remainingWeaknessEffect;
         }
         else
         {
-            enemy.CurrentDamage = enemy.BaseDamage;
+            // Similar logic for enemies, but you might need to adjust based on your game's design
+            //enemy.CurrentDamage = enemy.BaseDamage - remainingWeaknessEffect;
         }
     }
 
