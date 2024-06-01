@@ -52,29 +52,26 @@ public class Buff_Regeneration : MonoBehaviour, IRegenerationable
         stacksText.text = regenerationStacks.ToString();
 
         // Start a Timer for Each Instance of the Buff
-        StartCoroutine(Stack(duration));
+        StartCoroutine(Stack(stacks, duration));
     }
 
-    IEnumerator Stack(float duration)
+    IEnumerator Stack(int stacks, float duration)
     {
-        float elapsed = 0f;
-
-        while (elapsed < duration)
+        int seconds = Mathf.CeilToInt(duration);
+        for (int i = 0; i < seconds; i++)
         {
-            ApplyRegeneration(regenerationStacks);
+            ApplyRegeneration(stacks);
             yield return new WaitForSeconds(1f);
-            elapsed += 1f;
         }
 
         // Subtract the Stack from our Stacks
-        regenerationStacks -= regenerationStacks;
+        regenerationStacks -= stacks;
 
         // Ensure Stacks doesn't go below zero
         regenerationStacks = Mathf.Max(regenerationStacks, 0);
 
         if (regenerationStacks == 0)
         {
-            ResetRegeneration();
             Destroy(buffIcon);
             Destroy(healthParticle);
         }
@@ -99,18 +96,6 @@ public class Buff_Regeneration : MonoBehaviour, IRegenerationable
         {
             // Apply Heal to enemy if necessary
             enemy.Heal(regenAmount);
-        }
-    }
-
-    void ResetRegeneration()
-    {
-        if (isPlayer)
-        {
-            playerStats.CurrentRegen = playerStats.BaseRegen;
-        }
-        else
-        {
-            enemy.CurrentRegen = enemy.BaseRegen;
         }
     }
 }
