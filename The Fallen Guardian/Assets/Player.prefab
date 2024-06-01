@@ -1915,8 +1915,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Buffs: {fileID: 0}
-  debuffs: {fileID: 0}
   CrowdControl: {fileID: 0}
   InCombat: 0
   IdleTime: 0
@@ -2230,6 +2228,7 @@ MonoBehaviour:
   buff_Regeneration: {fileID: 1488373734654657567, guid: a3905943ca281ec40bea07389bfa4749, type: 3}
   isPlayer: 1
   playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
+  player: {fileID: 7150002324481854805}
   enemy: {fileID: 0}
 --- !u!1 &7996015745871743870
 GameObject:

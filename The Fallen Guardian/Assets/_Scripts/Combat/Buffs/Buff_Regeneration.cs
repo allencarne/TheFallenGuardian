@@ -15,15 +15,14 @@ public class Buff_Regeneration : MonoBehaviour, IRegenerationable
     TextMeshProUGUI stacksText;
 
     [Header("Regeneration")]
-    float healthPerStack = 3f;
+    float healthPerStack = 1f;
     int regenerationStacks = 0;
     GameObject buffIcon;
 
     public bool isPlayer;
     [SerializeField] PlayerStats playerStats;
+    [SerializeField] Player player;
     [SerializeField] Enemy enemy;
-    float CurrentRegen;
-    float MaxRegen;
 
     public void Regenerate(int stacks, float duration)
     {
@@ -32,9 +31,6 @@ public class Buff_Regeneration : MonoBehaviour, IRegenerationable
 
         // Cap the Stacks at 25
         regenerationStacks = Mathf.Min(regenerationStacks, 25);
-
-        // Gain Based on Stack Amount
-        ApplyRegeneration(regenerationStacks);
 
         // Icon
         if (!buffIcon)
@@ -56,51 +52,53 @@ public class Buff_Regeneration : MonoBehaviour, IRegenerationable
         stacksText.text = regenerationStacks.ToString();
 
         // Start a Timer for Each Instance of the Buff
-        StartCoroutine(Stack(stacks, duration));
+        StartCoroutine(Stack(duration));
     }
 
-    IEnumerator Stack(int stacks, float duration)
+    IEnumerator Stack(float duration)
     {
-        yield return new WaitForSeconds(duration);
+        float elapsed = 0f;
 
-        // Subtrack the Stack from our Stacks
-        regenerationStacks -= stacks;
+        while (elapsed < duration)
+        {
+            ApplyRegeneration(regenerationStacks);
+            yield return new WaitForSeconds(1f);
+            elapsed += 1f;
+        }
+
+        // Subtract the Stack from our Stacks
+        regenerationStacks -= regenerationStacks;
 
         // Ensure Stacks doesn't go below zero
         regenerationStacks = Mathf.Max(regenerationStacks, 0);
 
         if (regenerationStacks == 0)
         {
-            regenerationStacks = 0;
             ResetRegeneration();
             Destroy(buffIcon);
             Destroy(healthParticle);
         }
         else
         {
-            ApplyRegeneration(regenerationStacks);
-
-            // Stacks Text
+            // Update stacks text
             stacksText.text = regenerationStacks.ToString();
         }
     }
 
     void ApplyRegeneration(int stacks)
     {
-        SetValues();
-
         // Calculate the amount based on the number of stacks
         float regenAmount = healthPerStack * stacks;
 
-        CurrentRegen = MaxRegen + regenAmount;
-
         if (isPlayer)
         {
-            playerStats.CurrentRegen = CurrentRegen;
+            // Apply Heal Repeatedly once per second
+            player.Heal(regenAmount);
         }
         else
         {
-            enemy.CurrentRegen = CurrentRegen;
+            // Apply Heal to enemy if necessary
+            enemy.Heal(regenAmount);
         }
     }
 
@@ -113,20 +111,6 @@ public class Buff_Regeneration : MonoBehaviour, IRegenerationable
         else
         {
             enemy.CurrentRegen = enemy.BaseRegen;
-        }
-    }
-
-    void SetValues()
-    {
-        if (isPlayer)
-        {
-            CurrentRegen = playerStats.CurrentRegen;
-            MaxRegen = playerStats.BaseRegen;
-        }
-        else
-        {
-            CurrentRegen = enemy.CurrentRegen;
-            MaxRegen = enemy.BaseRegen;
         }
     }
 }

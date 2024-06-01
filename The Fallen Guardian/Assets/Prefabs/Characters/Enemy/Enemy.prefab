@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 3538787198285182242}
   - component: {fileID: 2027561816777149345}
   - component: {fileID: 3028831653607600619}
+  - component: {fileID: 8767221679893831347}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -382,6 +383,25 @@ MonoBehaviour:
   buff_Protection: {fileID: 8627039820005768832, guid: 65e5551e3069e3a46b72d8dd357bef16, type: 3}
   isPlayer: 0
   playerStats: {fileID: 0}
+  enemy: {fileID: 0}
+--- !u!114 &8767221679893831347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168808411849726535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a42bf5435ae6c44fabcc5d1cd6a75d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
+  buffBar: {fileID: 493039623141738153}
+  buff_Regeneration: {fileID: 1488373734654657567, guid: a3905943ca281ec40bea07389bfa4749, type: 3}
+  isPlayer: 0
+  playerStats: {fileID: 0}
+  player: {fileID: 0}
   enemy: {fileID: 0}
 --- !u!1 &1986819680607824093
 GameObject:

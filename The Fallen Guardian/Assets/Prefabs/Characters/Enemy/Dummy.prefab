@@ -168,6 +168,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8767221679893831347, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 8645626093764817777}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -309,6 +313,8 @@ MonoBehaviour:
   CurrentCDR: 0
   BaseArmor: 0
   CurrentArmor: 0
+  BaseRegen: 0
+  CurrentRegen: 0
   expToGive: 0
   wanderRadius: 0
   attackRadius: 0
