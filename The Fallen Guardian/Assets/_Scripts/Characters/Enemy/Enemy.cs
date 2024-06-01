@@ -25,6 +25,11 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("Armor")]
     public float BaseArmor;
     public float CurrentArmor;
+    [Header("Regen")]
+    public float BaseRegen;
+    public float CurrentRegen;
+
+
     [Header("Exp")]
     public float expToGive;
 
@@ -43,8 +48,6 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] EnemyHealthBar healthBar;
     [HideInInspector] public EnemySpawner EnemySpawner;
 
-    protected Buffs buffs;
-    protected Debuffs debuffs;
     protected CrowdControl crowdControl;
 
     protected Animator enemyAnimator;
@@ -104,8 +107,6 @@ public class Enemy : MonoBehaviour, IDamageable
         enemyAnimator = GetComponentInChildren<Animator>();
         enemyRB = GetComponent<Rigidbody2D>();
 
-        buffs = GetComponent<Buffs>();
-        debuffs = GetComponent<Debuffs>();
         crowdControl = GetComponent<CrowdControl>();
     }
 
@@ -131,6 +132,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
         // Set Armor
         CurrentArmor = BaseArmor;
+
+        // Set Regen
+        CurrentRegen = BaseRegen;
     }
 
     private void Update()
@@ -184,8 +188,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
         if (target == null && Health < MaxHealth)
         {
-            buffs.IsRegeneration = true;
-            buffs.Regeneration();
+            //buffs.IsRegeneration = true;
+            //buffs.Regeneration();
 
             regenTimer += Time.deltaTime;
 
@@ -197,8 +201,8 @@ public class Enemy : MonoBehaviour, IDamageable
         }
         else
         {
-            buffs.IsRegeneration = false;
-            buffs.Regeneration();
+            //buffs.IsRegeneration = false;
+            //buffs.Regeneration();
         }
     }
 
@@ -641,7 +645,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public void HandleSlow()
     {
         // Calculate the final speed, ensuring it doesn't drop below 0
-        CurrentSpeed = Mathf.Max(BaseSpeed - debuffs.SlowAmount, 0);
+        //CurrentSpeed = Mathf.Max(BaseSpeed - debuffs.SlowAmount, 0);
     }
 
     public void HandleSlowEnd()

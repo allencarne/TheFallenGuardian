@@ -37,6 +37,10 @@ public class PlayerStats : ScriptableObject
     public float BaseArmor;
     public float CurrentArmor;
 
+    [Header("Regen")]
+    public float BaseRegen;
+    public float CurrentRegen;
+
     [Header("Attributes")]
     public float Vitality; // Increase Health
     // Movement Speed is not an attribute

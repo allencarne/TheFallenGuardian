@@ -73,40 +73,4 @@ public class Buffs : MonoBehaviour
 
         currentBuffDuration = 0;
     }
-    /*
-    public void Haste(float amount, float duration)
-    {
-        HasteAmount = amount;
-
-        if (IsHasted)
-        {
-            currentHasteDuration += duration;
-        }
-        else
-        {
-            StartCoroutine(HasteDuration(duration));
-        }
-    }
-
-    IEnumerator HasteDuration(float duration)
-    {
-        OnHasted?.Invoke();
-
-        IsHasted = true;
-
-        GameObject debuffIcon = Instantiate(buff_Haste);
-        debuffIcon.transform.SetParent(buffBar.transform);
-        debuffIcon.transform.localScale = new Vector3(1, 1, 1);
-
-        yield return new WaitForSeconds(duration);
-
-        Destroy(debuffIcon);
-
-        OnHasteEnd?.Invoke();
-
-        IsHasted = false;
-
-        currentHasteDuration = 0f;
-    }
-    */
 }

@@ -213,7 +213,7 @@ public class Snail : Enemy
             enemyAnimator.Play("Chase");
 
             // Immovable
-            buffs.Immovable(durationOfMobility);
+            //buffs.Immovable(durationOfMobility);
 
             StartCoroutine(DurationOfMobility());
             StartCoroutine(MobilityCoolDown());

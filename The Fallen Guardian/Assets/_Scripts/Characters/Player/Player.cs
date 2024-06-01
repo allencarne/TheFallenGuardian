@@ -17,8 +17,6 @@ public class Player : MonoBehaviour, IDamageable
     public UnityEvent OnPlayerDeath;
 
     // Status Effects
-    [HideInInspector] public Buffs Buffs;
-    [HideInInspector] public Debuffs debuffs;
     [HideInInspector] public CrowdControl CrowdControl;
 
     // Combat
@@ -35,8 +33,6 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        Buffs = GetComponent<Buffs>();
-        debuffs = GetComponent<Debuffs>();
         CrowdControl = GetComponent<CrowdControl>();
     }
 
@@ -61,6 +57,9 @@ public class Player : MonoBehaviour, IDamageable
 
         // Set Armor
         Stats.CurrentArmor = Stats.BaseArmor;
+
+        // Set Regen
+        Stats.CurrentRegen = Stats.BaseRegen;
     }
 
     private void Update()
@@ -74,24 +73,25 @@ public class Player : MonoBehaviour, IDamageable
                 PlayerLeaveCombat();
             }
         }
-        else
+
+        if (!InCombat)
         {
             if (Stats.Health < Stats.MaxHealth)
             {
-                Buffs.IsRegeneration = true;
-                Buffs.Regeneration();
+                //Buffs.IsRegeneration = true;
+                //Buffs.Regeneration();
                 regenTimer += Time.deltaTime;
 
                 if (regenTimer >= regenInterval)
                 {
-                    Regeneration(1); // Heal by 1
+                    //Regeneration(1); // Heal by 1
                     regenTimer = 0; // Reset the timer after healing
                 }
             }
             else
             {
-                Buffs.IsRegeneration = false;
-                Buffs.Regeneration();
+                //Buffs.IsRegeneration = false;
+                //Buffs.Regeneration();
             }
         }
     }
@@ -152,7 +152,7 @@ public class Player : MonoBehaviour, IDamageable
             OnHealthChanged?.Invoke();
         }
     }
-
+    /*
     public void Regeneration(float heal)
     {
         if (Stats.Health >= Stats.MaxHealth)
@@ -184,7 +184,7 @@ public class Player : MonoBehaviour, IDamageable
             OnHealthChanged?.Invoke();
         }
     }
-
+    */
     public void PlayerEnterCombat()
     {
         IdleTime = 0;
