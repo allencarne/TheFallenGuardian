@@ -16,10 +16,6 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("Damage")]
     public int BaseDamage;
     public int CurrentDamage;
-
-    public int activeMightAmount; // New variable for might amount
-    public int activeWeaknessAmount; // New variable for weakness amount
-
     [Header("AttackSpeed")]
     public float BaseAttackSpeed;
     public float CurrentAttackSpeed;

@@ -24,8 +24,6 @@ public class PlayerStats : ScriptableObject
     [Header("Attack Damage")]
     public int BaseDamage;
     public int CurrentDamage;
-    public int activeMightAmount; // New variable for might amount
-    public int activeWeaknessAmount; // New variable for weakness amount
 
     [Header("Attack Speed")]
     public float BaseAttackSpeed;

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Debuff_Weakness : MonoBehaviour, IWeaknessable
 {
+    [SerializeField] Buff_Might might;
+
     [Header("DeBuff Bar")]
     [SerializeField] GameObject deBuffBar;
     [SerializeField] GameObject weaknessParticlePrefab;
@@ -19,6 +21,7 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
     public int WeaknessStacks = 0;
     GameObject buffIcon;
     int weaknessAmount = 0;
+    public int activeWeaknessAmount = 0;
 
     public bool isPlayer;
     [SerializeField] PlayerStats playerStats;
@@ -90,11 +93,11 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
         // Update the active weakness amount in the PlayerStats or Enemy
         if (isPlayer)
         {
-            playerStats.activeWeaknessAmount = weaknessAmount;
+            activeWeaknessAmount = weaknessAmount;
         }
         else
         {
-            enemy.activeWeaknessAmount = weaknessAmount;
+            activeWeaknessAmount = weaknessAmount;
         }
 
         // Recalculate damage
@@ -105,11 +108,11 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
     {
         if (isPlayer)
         {
-            playerStats.CurrentDamage = playerStats.BaseDamage + playerStats.activeMightAmount - playerStats.activeWeaknessAmount;
+            playerStats.CurrentDamage = playerStats.BaseDamage + might.activeMightAmount - activeWeaknessAmount;
         }
         else
         {
-            enemy.CurrentDamage = enemy.BaseDamage + enemy.activeMightAmount - enemy.activeWeaknessAmount;
+            enemy.CurrentDamage = enemy.BaseDamage + might.activeMightAmount - activeWeaknessAmount;
         }
     }
 
@@ -118,11 +121,11 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
         // Reset active weakness amount to zero in PlayerStats or Enemy
         if (isPlayer)
         {
-            playerStats.activeWeaknessAmount = 0;
+            activeWeaknessAmount = 0;
         }
         else
         {
-            enemy.activeWeaknessAmount = 0;
+            activeWeaknessAmount = 0;
         }
 
         // Recalculate damage

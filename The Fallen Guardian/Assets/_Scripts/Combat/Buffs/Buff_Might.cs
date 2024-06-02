@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Buff_Might : MonoBehaviour, IMightable
 {
+    [SerializeField] Debuff_Weakness weakness;
+
     [Header("Buff Bar")]
     [SerializeField] GameObject buffBar;
     [SerializeField] GameObject mightParticlePrefab;
@@ -19,6 +21,7 @@ public class Buff_Might : MonoBehaviour, IMightable
     public int MightStacks = 0;
     GameObject buffIcon;
     int mightAmount = 0;
+    public int activeMightAmount = 0;
 
     public bool isPlayer;
     [SerializeField] PlayerStats playerStats;
@@ -90,11 +93,11 @@ public class Buff_Might : MonoBehaviour, IMightable
         // Update the active might amount in the PlayerStats or Enemy
         if (isPlayer)
         {
-            playerStats.activeMightAmount = mightAmount;
+            activeMightAmount = mightAmount;
         }
         else
         {
-            enemy.activeMightAmount = mightAmount;
+            activeMightAmount = mightAmount;
         }
 
         // Recalculate damage
@@ -105,11 +108,11 @@ public class Buff_Might : MonoBehaviour, IMightable
     {
         if (isPlayer)
         {
-            playerStats.CurrentDamage = playerStats.BaseDamage + playerStats.activeMightAmount - playerStats.activeWeaknessAmount;
+            playerStats.CurrentDamage = playerStats.BaseDamage + activeMightAmount - weakness.activeWeaknessAmount;
         }
         else
         {
-            enemy.CurrentDamage = enemy.BaseDamage + enemy.activeMightAmount - enemy.activeWeaknessAmount;
+            enemy.CurrentDamage = enemy.BaseDamage + activeMightAmount - weakness.activeWeaknessAmount;
         }
     }
 
@@ -118,11 +121,11 @@ public class Buff_Might : MonoBehaviour, IMightable
         // Reset active might amount to zero in PlayerStats or Enemy
         if (isPlayer)
         {
-            playerStats.activeMightAmount = 0;
+            activeMightAmount = 0;
         }
         else
         {
-            enemy.activeMightAmount = 0;
+            activeMightAmount = 0;
         }
 
         // Recalculate damage
