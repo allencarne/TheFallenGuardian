@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Dubuff_Bleed_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.42857146, y: -0.125}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 19
-      width: 6
-      height: 6
+      x: 19
+      y: 4
+      width: 7
+      height: 8
     spriteID: d60db3fd6df11e148bf9756df3031586
     spriteBone: []
     spriteOutline: []
@@ -140,18 +140,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 19}
+    uvTransform: {x: 19, y: 4}
   - name: Dubuff_Bleed_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: 0.14285715}
+    pivot: {x: 0.42857146, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 4
-      width: 6
-      height: 7
+      x: 19
+      y: 20
+      width: 7
+      height: 8
     spriteID: 2f4747220c3108040a2e9f03c5ceb90a
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 19, y: 20}
   - name: Dubuff_Bleed_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: 0.14285715}
+    pivot: {x: 0.42857146, y: 0.1}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 18
+      x: 4
       y: 4
-      width: 6
-      height: 7
+      width: 7
+      height: 10
     spriteID: 3f7bb5a935e3197428a17fba4a4e752f
     spriteBone: []
     spriteOutline: []
@@ -180,7 +180,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 18, y: 4}
+    uvTransform: {x: 4, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -193,26 +193,26 @@ ScriptedImporter:
     - name: Dubuff_Bleed_Frame_0
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 6
-        height: 6
+        x: 1
+        y: 1
+        width: 7
+        height: 8
       spriteId: d60db3fd6df11e148bf9756df3031586
     - name: Dubuff_Bleed_Frame_1
       frameIndex: 1
       cellRect:
-        x: 0
-        y: -1
-        width: 6
-        height: 7
+        x: 1
+        y: 0
+        width: 7
+        height: 8
       spriteId: 2f4747220c3108040a2e9f03c5ceb90a
     - name: Dubuff_Bleed_Frame_2
       frameIndex: 2
       cellRect:
-        x: 0
+        x: 1
         y: -1
-        width: 6
-        height: 7
+        width: 7
+        height: 10
       spriteId: 3f7bb5a935e3197428a17fba4a4e752f
     linkedCells: []
     parentIndex: -1
@@ -220,4 +220,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 6, y: 6}
+  canvasSize: {x: 8, y: 8}

@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Debuff_Impede_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.42857146, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 6
-      height: 7
+      width: 7
+      height: 9
     spriteID: 90faa22f6a0e929429b86e75e825b614
     spriteBone: []
     spriteOutline: []
@@ -143,15 +143,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Debuff_Impede_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.42857146, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 19
-      width: 6
-      height: 6
+      y: 38
+      width: 7
+      height: 8
     spriteID: 6c05930f4dedb2347a3e32939be27b29
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 19}
+    uvTransform: {x: 4, y: 38}
   - name: Debuff_Impede_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.42857146, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 18
-      y: 4
-      width: 6
-      height: 7
+      x: 4
+      y: 21
+      width: 7
+      height: 9
     spriteID: f3392400bb2a8404084a2d811ababedc
     spriteBone: []
     spriteOutline: []
@@ -180,7 +180,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 18, y: 4}
+    uvTransform: {x: 4, y: 21}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -193,26 +193,26 @@ ScriptedImporter:
     - name: Debuff_Impede_Frame_0
       frameIndex: 0
       cellRect:
-        x: 0
+        x: 1
         y: 0
-        width: 6
-        height: 7
+        width: 7
+        height: 9
       spriteId: 90faa22f6a0e929429b86e75e825b614
     - name: Debuff_Impede_Frame_1
       frameIndex: 1
       cellRect:
-        x: 0
+        x: 1
         y: 0
-        width: 6
-        height: 6
+        width: 7
+        height: 8
       spriteId: 6c05930f4dedb2347a3e32939be27b29
     - name: Debuff_Impede_Frame_2
       frameIndex: 2
       cellRect:
-        x: 0
+        x: 1
         y: 0
-        width: 6
-        height: 7
+        width: 7
+        height: 9
       spriteId: f3392400bb2a8404084a2d811ababedc
     linkedCells: []
     parentIndex: -1
@@ -220,4 +220,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 6, y: 6}
+  canvasSize: {x: 8, y: 8}
