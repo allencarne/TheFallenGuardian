@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Body
       objectReference: {fileID: 0}
+    - target: {fileID: 6380443292160699531, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 415464689696531612}
     - target: {fileID: 7033479432317929364, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -84,6 +88,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -176397717, guid: f18b7aa5a334b094498ccb33f932a44b, type: 3}
+    - target: {fileID: 8622056740904828425, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 415464689696531612}
     - target: {fileID: 8644066537717050504, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: OnSlowed.m_PersistentCalls.m_Calls.Array.size
       value: 1

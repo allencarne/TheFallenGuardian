@@ -186,6 +186,8 @@ GameObject:
   - component: {fileID: 2027561816777149345}
   - component: {fileID: 3028831653607600619}
   - component: {fileID: 8767221679893831347}
+  - component: {fileID: 6380443292160699531}
+  - component: {fileID: 8622056740904828425}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -321,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96853ee8a55990b4ba16ae05d92b070e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weakness: {fileID: 0}
+  weakness: {fileID: 6380443292160699531}
   buffBar: {fileID: 493039623141738153}
   mightParticlePrefab: {fileID: 1015319669647688435, guid: 9b6df7731f7172b43a147f09ce0feae3, type: 3}
   buff_Might: {fileID: 4486305157485082496, guid: 33205e44c20730a499ce4a2889fe044c, type: 3}
@@ -399,6 +401,46 @@ MonoBehaviour:
   healthParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   buffBar: {fileID: 493039623141738153}
   buff_Regeneration: {fileID: 1488373734654657567, guid: a3905943ca281ec40bea07389bfa4749, type: 3}
+  isPlayer: 0
+  playerStats: {fileID: 0}
+  player: {fileID: 0}
+  enemy: {fileID: 0}
+--- !u!114 &6380443292160699531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168808411849726535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75c11536d9ffa424ea9dfff73eb6f198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  might: {fileID: 7160922041131653701}
+  deBuffBar: {fileID: 4584005647302555774}
+  weaknessParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
+  deBuff_Weakness: {fileID: 1322856919444573643, guid: 7a2cbb8d57d592a40a7c4e185cf34af7, type: 3}
+  DamagePerStack: 3
+  WeaknessStacks: 0
+  isPlayer: 0
+  playerStats: {fileID: 0}
+  enemy: {fileID: 0}
+--- !u!114 &8622056740904828425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168808411849726535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89cefc6d9e35f149a55df8748c44aca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bleedParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
+  deBuffBar: {fileID: 4584005647302555774}
+  deBuff_Bleed: {fileID: 2579781284245811376, guid: bca458b9df3e0b44e926333ebf941866, type: 3}
   isPlayer: 0
   playerStats: {fileID: 0}
   player: {fileID: 0}

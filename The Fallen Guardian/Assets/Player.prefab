@@ -1383,6 +1383,7 @@ GameObject:
   - component: {fileID: 5518317710793362010}
   - component: {fileID: 1355826886231515272}
   - component: {fileID: 1044126145904910317}
+  - component: {fileID: 6961547851827590427}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2226,6 +2227,25 @@ MonoBehaviour:
   healthParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   buffBar: {fileID: 119541469203478924}
   buff_Regeneration: {fileID: 1488373734654657567, guid: a3905943ca281ec40bea07389bfa4749, type: 3}
+  isPlayer: 1
+  playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
+  player: {fileID: 7150002324481854805}
+  enemy: {fileID: 0}
+--- !u!114 &6961547851827590427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89cefc6d9e35f149a55df8748c44aca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bleedParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
+  deBuffBar: {fileID: 3112332154145750330}
+  deBuff_Bleed: {fileID: 2579781284245811376, guid: bca458b9df3e0b44e926333ebf941866, type: 3}
   isPlayer: 1
   playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
   player: {fileID: 7150002324481854805}
