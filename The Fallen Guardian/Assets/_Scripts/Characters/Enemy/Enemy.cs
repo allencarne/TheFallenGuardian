@@ -195,7 +195,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
             if (regenTimer >= regenInterval)
             {
-                Regeneration(1); // Heal by 1
+                //Regeneration(1); // Heal by 1
                 regenTimer = 0; // Reset the timer after healing
             }
         }
