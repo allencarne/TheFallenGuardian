@@ -84,29 +84,48 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
 
     void ApplyWeakness(int stacks)
     {
-        // Calculate the amount based on the number of stacks
+        // Calculate the new weakness amount based on the number of stacks
         weaknessAmount = DamagePerStack * stacks;
 
+        // Update the active weakness amount in the PlayerStats or Enemy
         if (isPlayer)
         {
-            int newDamage = playerStats.BaseDamage - weaknessAmount;
-            playerStats.CurrentDamage = newDamage;
+            playerStats.activeWeaknessAmount = weaknessAmount;
         }
         else
         {
-            enemy.CurrentDamage += weaknessAmount;
+            enemy.activeWeaknessAmount = weaknessAmount;
+        }
+
+        // Recalculate damage
+        RecalculateDamage();
+    }
+
+    void RecalculateDamage()
+    {
+        if (isPlayer)
+        {
+            playerStats.CurrentDamage = playerStats.BaseDamage + playerStats.activeMightAmount - playerStats.activeWeaknessAmount;
+        }
+        else
+        {
+            enemy.CurrentDamage = enemy.BaseDamage + enemy.activeMightAmount - enemy.activeWeaknessAmount;
         }
     }
 
     void ResetWeakness()
     {
+        // Reset active weakness amount to zero in PlayerStats or Enemy
         if (isPlayer)
         {
-            playerStats.CurrentDamage += weaknessAmount;
+            playerStats.activeWeaknessAmount = 0;
         }
         else
         {
-            enemy.CurrentDamage += weaknessAmount;
+            enemy.activeWeaknessAmount = 0;
         }
+
+        // Recalculate damage
+        RecalculateDamage();
     }
 }

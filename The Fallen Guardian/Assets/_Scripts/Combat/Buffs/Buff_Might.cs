@@ -84,29 +84,48 @@ public class Buff_Might : MonoBehaviour, IMightable
 
     void ApplyMight(int stacks)
     {
-        // Calculate the amount based on the number of stacks
+        // Calculate the new might amount based on the number of stacks
         mightAmount = DamagePerStack * stacks;
 
+        // Update the active might amount in the PlayerStats or Enemy
         if (isPlayer)
         {
-            int newDamage = playerStats.BaseDamage + mightAmount;
-            playerStats.CurrentDamage = newDamage;
+            playerStats.activeMightAmount = mightAmount;
         }
         else
         {
-            enemy.CurrentDamage += mightAmount;
+            enemy.activeMightAmount = mightAmount;
+        }
+
+        // Recalculate damage
+        RecalculateDamage();
+    }
+
+    void RecalculateDamage()
+    {
+        if (isPlayer)
+        {
+            playerStats.CurrentDamage = playerStats.BaseDamage + playerStats.activeMightAmount - playerStats.activeWeaknessAmount;
+        }
+        else
+        {
+            enemy.CurrentDamage = enemy.BaseDamage + enemy.activeMightAmount - enemy.activeWeaknessAmount;
         }
     }
 
     void ResetMight()
     {
+        // Reset active might amount to zero in PlayerStats or Enemy
         if (isPlayer)
         {
-            playerStats.CurrentDamage -= mightAmount;
+            playerStats.activeMightAmount = 0;
         }
         else
         {
-            enemy.CurrentDamage -= mightAmount;
+            enemy.activeMightAmount = 0;
         }
+
+        // Recalculate damage
+        RecalculateDamage();
     }
 }
