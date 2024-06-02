@@ -23,7 +23,6 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
     public bool isPlayer;
     [SerializeField] PlayerStats playerStats;
     [SerializeField] Enemy enemy;
-    int CurrentDamage;
 
     public void Weakness(int stacks, float duration)
     {
@@ -39,8 +38,7 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
         // Icon
         if (!buffIcon)
         {
-            buffIcon = Instantiate(deBuff_Weakness);
-            buffIcon.transform.SetParent(deBuffBar.transform);
+            buffIcon = Instantiate(deBuff_Weakness, deBuffBar.transform);
             buffIcon.transform.localScale = new Vector3(1, 1, 1);
 
             // Get Stacks Text
@@ -71,7 +69,6 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
 
         if (WeaknessStacks == 0)
         {
-            WeaknessStacks = 0;
             ResetWeakness();
             Destroy(buffIcon);
             Destroy(weaknessParticle);
@@ -87,20 +84,17 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
 
     void ApplyWeakness(int stacks)
     {
-        SetValues();
-
         // Calculate the amount based on the number of stacks
         weaknessAmount = DamagePerStack * stacks;
 
-        CurrentDamage -= weaknessAmount;
-
         if (isPlayer)
         {
-            playerStats.CurrentDamage = CurrentDamage;
+            int newDamage = playerStats.BaseDamage - weaknessAmount;
+            playerStats.CurrentDamage = newDamage;
         }
         else
         {
-            enemy.CurrentDamage = CurrentDamage;
+            enemy.CurrentDamage += weaknessAmount;
         }
     }
 
@@ -113,18 +107,6 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
         else
         {
             enemy.CurrentDamage += weaknessAmount;
-        }
-    }
-
-    void SetValues()
-    {
-        if (isPlayer)
-        {
-            CurrentDamage = playerStats.CurrentDamage;
-        }
-        else
-        {
-            CurrentDamage = enemy.CurrentDamage;
         }
     }
 }

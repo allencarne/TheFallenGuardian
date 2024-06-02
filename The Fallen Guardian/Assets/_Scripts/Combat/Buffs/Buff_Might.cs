@@ -69,7 +69,6 @@ public class Buff_Might : MonoBehaviour, IMightable
 
         if (MightStacks == 0)
         {
-            //MightStacks = 0;
             ResetMight();
             Destroy(buffIcon);
             Destroy(mightParticle);
