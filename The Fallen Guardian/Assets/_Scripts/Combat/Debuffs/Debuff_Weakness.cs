@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Debuff_Weakness : MonoBehaviour, IWeaknessable
 {
-    [SerializeField] Buff_Might might;
-
     [Header("DeBuff Bar")]
     [SerializeField] GameObject deBuffBar;
     [SerializeField] GameObject weaknessParticlePrefab;
@@ -20,12 +18,12 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
     public int DamagePerStack = 3;
     public int WeaknessStacks = 0;
     GameObject buffIcon;
+    int weaknessAmount = 0;
 
     public bool isPlayer;
     [SerializeField] PlayerStats playerStats;
     [SerializeField] Enemy enemy;
     int CurrentDamage;
-    int BaseDamage;
 
     public void Weakness(int stacks, float duration)
     {
@@ -92,10 +90,9 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
         SetValues();
 
         // Calculate the amount based on the number of stacks
-        int WeaknessAmount = DamagePerStack * stacks;
+        weaknessAmount = DamagePerStack * stacks;
 
-        // Directly apply the damage decrease without considering the Might buff
-        CurrentDamage = CurrentDamage - WeaknessAmount;
+        CurrentDamage -= weaknessAmount;
 
         if (isPlayer)
         {
@@ -111,13 +108,11 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
     {
         if (isPlayer)
         {
-            // Simply reset the current damage to the base damage
-            playerStats.CurrentDamage = playerStats.BaseDamage;
+            playerStats.CurrentDamage += weaknessAmount;
         }
         else
         {
-            // Similar logic for enemies
-            enemy.CurrentDamage = enemy.BaseDamage;
+            enemy.CurrentDamage += weaknessAmount;
         }
     }
 
@@ -126,12 +121,10 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
         if (isPlayer)
         {
             CurrentDamage = playerStats.CurrentDamage;
-            BaseDamage = playerStats.BaseDamage;
         }
         else
         {
             CurrentDamage = enemy.CurrentDamage;
-            BaseDamage = enemy.BaseDamage;
         }
     }
 }

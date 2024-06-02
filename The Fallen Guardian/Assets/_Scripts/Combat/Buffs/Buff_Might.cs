@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Buff_Might : MonoBehaviour, IMightable
 {
-    [SerializeField] Debuff_Weakness weakness;
-
     [Header("Buff Bar")]
     [SerializeField] GameObject buffBar;
     [SerializeField] GameObject mightParticlePrefab;
@@ -20,12 +18,11 @@ public class Buff_Might : MonoBehaviour, IMightable
     public int DamagePerStack = 3;
     public int MightStacks = 0;
     GameObject buffIcon;
+    int mightAmount = 0;
 
     public bool isPlayer;
     [SerializeField] PlayerStats playerStats;
     [SerializeField] Enemy enemy;
-    int CurrentDamage;
-    int BaseDamage;
 
     public void Might(int stacks, float duration)
     {
@@ -41,8 +38,7 @@ public class Buff_Might : MonoBehaviour, IMightable
         // Icon
         if (!buffIcon)
         {
-            buffIcon = Instantiate(buff_Might);
-            buffIcon.transform.SetParent(buffBar.transform);
+            buffIcon = Instantiate(buff_Might, buffBar.transform);
             buffIcon.transform.localScale = new Vector3(1, 1, 1);
 
             // Get Stacks Text
@@ -73,7 +69,7 @@ public class Buff_Might : MonoBehaviour, IMightable
 
         if (MightStacks == 0)
         {
-            MightStacks = 0;
+            //MightStacks = 0;
             ResetMight();
             Destroy(buffIcon);
             Destroy(mightParticle);
@@ -89,23 +85,17 @@ public class Buff_Might : MonoBehaviour, IMightable
 
     void ApplyMight(int stacks)
     {
-        SetValues();
-
         // Calculate the amount based on the number of stacks
-        int MightAmount = DamagePerStack * stacks;
-
-        // Calculate the total damage increase considering the Weakness debuff
-        int totalDamageIncrease = MightAmount - (weakness.WeaknessStacks * weakness.DamagePerStack);
-
-        CurrentDamage = BaseDamage + totalDamageIncrease;
+        mightAmount = DamagePerStack * stacks;
 
         if (isPlayer)
         {
-            playerStats.CurrentDamage = CurrentDamage;
+            int newDamage = playerStats.BaseDamage + mightAmount;
+            playerStats.CurrentDamage = newDamage;
         }
         else
         {
-            enemy.CurrentDamage = CurrentDamage;
+            enemy.CurrentDamage += mightAmount;
         }
     }
 
@@ -113,30 +103,11 @@ public class Buff_Might : MonoBehaviour, IMightable
     {
         if (isPlayer)
         {
-            // Calculate the remaining effect of the Weakness debuff
-            int remainingWeaknessEffect = weakness.WeaknessStacks * weakness.DamagePerStack;
-
-            // Revert the current damage back to the base level minus the remaining Weakness effect
-            playerStats.CurrentDamage = playerStats.BaseDamage - remainingWeaknessEffect;
+            playerStats.CurrentDamage -= mightAmount;
         }
         else
         {
-            // Similar logic for enemies, but you might need to adjust based on your game's design
-            //enemy.CurrentDamage = enemy.BaseDamage - remainingWeaknessEffect;
-        }
-    }
-
-    void SetValues()
-    {
-        if (isPlayer)
-        {
-            CurrentDamage = playerStats.CurrentDamage;
-            BaseDamage = playerStats.BaseDamage;
-        }
-        else
-        {
-            CurrentDamage = enemy.CurrentDamage;
-            BaseDamage = enemy.BaseDamage;
+            enemy.CurrentDamage -= mightAmount;
         }
     }
 }
