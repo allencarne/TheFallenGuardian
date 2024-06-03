@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 415464689696531612}
+    - target: {fileID: 6056039518232562950, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 415464689696531612}
     - target: {fileID: 6220495270013819316, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: m_Name
       value: Body

@@ -5,39 +5,28 @@ using UnityEngine;
 
 public class Buff_Swiftness : MonoBehaviour, ISwiftnessable
 {
+    [SerializeField] Debuff_Exhaust exhaust;
+
     [Header("Buff Bar")]
     [SerializeField] GameObject buffBar;
     [SerializeField] GameObject swiftnessParticlePrefab;
     GameObject swiftnessParticle;
 
     [Header("Icon")]
-    [SerializeField] GameObject buff_Swiftness;
+    [SerializeField] GameObject buffPrefab;
     TextMeshProUGUI stacksText;
-
-    [Header("Swiftness")]
-    float attackSpeedPerStack = .5f;
-    int swiftnessStacks = 0;
     GameObject buffIcon;
 
+    [Header("Swiftness")]
+    public float activeSwitfnessAmount = 0;
+    float swiftnessPerStack = .1f;
+    int swiftnessStacks = 0;
+    float swiftnessAmount = 0;
+
+    [Header("Character")]
     public bool isPlayer;
     [SerializeField] PlayerStats playerStats;
     [SerializeField] Enemy enemy;
-    float CurrentAttackSpeed;
-    float BaseAttackSpeed;
-
-    private void Start()
-    {
-        if (isPlayer)
-        {
-            CurrentAttackSpeed = playerStats.CurrentAttackSpeed;
-            BaseAttackSpeed = playerStats.BaseAttackSpeed;
-        }
-        else
-        {
-            CurrentAttackSpeed = enemy.CurrentAttackSpeed;
-            BaseAttackSpeed = enemy.BaseAttackSpeed;
-        }
-    }
 
     public void Swiftness(int stacks, float duration)
     {
@@ -53,7 +42,7 @@ public class Buff_Swiftness : MonoBehaviour, ISwiftnessable
         // Icon
         if (!buffIcon)
         {
-            buffIcon = Instantiate(buff_Swiftness);
+            buffIcon = Instantiate(buffPrefab);
             buffIcon.transform.SetParent(buffBar.transform);
             buffIcon.transform.localScale = new Vector3(1, 1, 1);
 
@@ -85,7 +74,6 @@ public class Buff_Swiftness : MonoBehaviour, ISwiftnessable
 
         if (swiftnessStacks == 0)
         {
-            swiftnessStacks = 0;
             ResetSwiftness();
             Destroy(buffIcon);
             Destroy(swiftnessParticle);
@@ -101,18 +89,29 @@ public class Buff_Swiftness : MonoBehaviour, ISwiftnessable
 
     void ApplySwiftness(int stacks)
     {
-        // Calculate the haste amount based on the number of stacks
-        float swiftnessAmount = attackSpeedPerStack * stacks; // Increase movement speed by 1 for each stack
-
-        CurrentAttackSpeed = BaseAttackSpeed + swiftnessAmount;
+        swiftnessAmount = swiftnessPerStack * stacks;
 
         if (isPlayer)
         {
-            playerStats.CurrentAttackSpeed = CurrentAttackSpeed;
+            activeSwitfnessAmount = swiftnessAmount;
         }
         else
         {
-            enemy.CurrentAttackSpeed = CurrentAttackSpeed;
+            activeSwitfnessAmount = swiftnessAmount;
+        }
+
+        RecalculateSwiftness();
+    }
+
+    void RecalculateSwiftness()
+    {
+        if (isPlayer)
+        {
+            playerStats.CurrentAttackSpeed = playerStats.BaseAttackSpeed + activeSwitfnessAmount - exhaust.activeExhaustAmount;
+        }
+        else
+        {
+            enemy.CurrentAttackSpeed = enemy.BaseAttackSpeed + activeSwitfnessAmount - exhaust.activeExhaustAmount;
         }
     }
 
@@ -120,11 +119,13 @@ public class Buff_Swiftness : MonoBehaviour, ISwiftnessable
     {
         if (isPlayer)
         {
-            playerStats.CurrentAttackSpeed = playerStats.BaseAttackSpeed;
+            activeSwitfnessAmount = 0;
         }
         else
         {
-            enemy.CurrentAttackSpeed = enemy.BaseAttackSpeed;
+            activeSwitfnessAmount = 0;
         }
+
+        RecalculateSwiftness();
     }
 }

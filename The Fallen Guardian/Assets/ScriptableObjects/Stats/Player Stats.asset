@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Player Stats
   m_EditorClassIdentifier: 
   PlayerName: Jeff
-  PlayerLevel: 1
+  PlayerLevel: 2
   CurrentExperience: 0
-  RequiredExperience: 3
+  RequiredExperience: 6
   PlayerClass: 0
   PlayerClassIcon: {fileID: 21300000, guid: 25cceeefb83d1ac4dbef261773cde123, type: 3}
-  Health: 10
-  MaxHealth: 10
+  Health: 13
+  MaxHealth: 13
   BaseSpeed: 8
   CurrentSpeed: 8
-  BaseDamage: 1
-  CurrentDamage: 1
+  BaseDamage: 3
+  CurrentDamage: 3
   BaseAttackSpeed: 1
   CurrentAttackSpeed: 1
   BaseCDR: 1

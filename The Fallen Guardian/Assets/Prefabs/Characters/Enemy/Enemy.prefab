@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 4340976279146842905}
   - component: {fileID: 2524824449037648167}
   - component: {fileID: 3538787198285182242}
+  - component: {fileID: 6056039518232562950}
   - component: {fileID: 2027561816777149345}
   - component: {fileID: 3028831653607600619}
   - component: {fileID: 8767221679893831347}
@@ -349,7 +350,7 @@ MonoBehaviour:
   slow: {fileID: 2524824449037648167}
   buffBar: {fileID: 493039623141738153}
   speedParticlePrefab: {fileID: 1349626072189494229, guid: 3f29f8e5dfb46ba4d83bae58383bb03a, type: 3}
-  BuffPrefab: {fileID: 0}
+  BuffPrefab: {fileID: 5898953976647163639, guid: 496a2a4d5d60793418ce9a4a8f1cd41a, type: 3}
   activeHasteAmount: 0
   isPlayer: 0
   playerStats: {fileID: 0}
@@ -386,9 +387,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73733337286e8d478f5482a541791d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exhaust: {fileID: 6056039518232562950}
   buffBar: {fileID: 493039623141738153}
   swiftnessParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
-  buff_Swiftness: {fileID: 7434068705413786477, guid: fc840d70f5921f74e97abd0008873ef4, type: 3}
+  buffPrefab: {fileID: 7434068705413786477, guid: fc840d70f5921f74e97abd0008873ef4, type: 3}
+  activeSwitfnessAmount: 0
+  isPlayer: 0
+  playerStats: {fileID: 0}
+  enemy: {fileID: 0}
+--- !u!114 &6056039518232562950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168808411849726535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bb18c8e274ff04eac2f75566c62d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swiftness: {fileID: 3538787198285182242}
+  deBuffBar: {fileID: 4584005647302555774}
+  exhaustParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
+  debuffPrefab: {fileID: 6994343258720248508, guid: 2df4efb2327b89b4dbef1311d9cfdd3f, type: 3}
+  activeExhaustAmount: 0
   isPlayer: 0
   playerStats: {fileID: 0}
   enemy: {fileID: 0}
