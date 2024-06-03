@@ -2113,7 +2113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weakness: {fileID: 1355826886231515272}
   buffBar: {fileID: 119541469203478924}
-  mightParticlePrefab: {fileID: 1015319669647688435, guid: 9b6df7731f7172b43a147f09ce0feae3, type: 3}
+  mightParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   buffPrefab: {fileID: 4486305157485082496, guid: 33205e44c20730a499ce4a2889fe044c, type: 3}
   activeMightAmount: 0
   isPlayer: 1
@@ -2133,7 +2133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   might: {fileID: 6570711290415484158}
   deBuffBar: {fileID: 3112332154145750330}
-  weaknessParticlePrefab: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
+  weaknessParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   debuffPrefab: {fileID: 1322856919444573643, guid: 7a2cbb8d57d592a40a7c4e185cf34af7, type: 3}
   activeWeaknessAmount: 0
   isPlayer: 1
@@ -2192,7 +2192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffBar: {fileID: 119541469203478924}
-  swiftnessParticlePrefab: {fileID: 7607025901083696547, guid: 15589c9682c77aa43a608106c84734cb, type: 3}
+  swiftnessParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   buff_Swiftness: {fileID: 7434068705413786477, guid: fc840d70f5921f74e97abd0008873ef4, type: 3}
   isPlayer: 1
   playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
@@ -2210,7 +2210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffBar: {fileID: 119541469203478924}
-  alacrityParticlePrefab: {fileID: 1473861340042521172, guid: d35a49b9705d68644b94a7d118205fac, type: 3}
+  alacrityParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   buff_Alacrity: {fileID: 5308563003022945098, guid: 40f461b226a99c945b33070df193e0bb, type: 3}
   isPlayer: 1
   playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
@@ -2227,7 +2227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b19ab76905a724c986ea31bf337374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorParticlePrefab: {fileID: 1628643618540244654, guid: 768ac4fe94217414b99824672926cbd5, type: 3}
+  armorParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   buffBar: {fileID: 119541469203478924}
   buff_Protection: {fileID: 8627039820005768832, guid: 65e5551e3069e3a46b72d8dd357bef16, type: 3}
   isPlayer: 1
