@@ -1376,12 +1376,13 @@ GameObject:
   - component: {fileID: 4447316120299245786}
   - component: {fileID: 4879207451902047104}
   - component: {fileID: 6967247431417826392}
-  - component: {fileID: 4009082293973101659}
   - component: {fileID: 6570711290415484158}
+  - component: {fileID: 1355826886231515272}
+  - component: {fileID: 4009082293973101659}
+  - component: {fileID: 493944840020315455}
   - component: {fileID: 8259647482174317175}
   - component: {fileID: 7270183990721013515}
   - component: {fileID: 5518317710793362010}
-  - component: {fileID: 1355826886231515272}
   - component: {fileID: 1044126145904910317}
   - component: {fileID: 6961547851827590427}
   m_Layer: 0
@@ -2098,24 +2099,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   gameObjectRuntimeSet: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
---- !u!114 &4009082293973101659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7550517957279444385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab54aede98b001446b2831f354a87d78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedParticlePrefab: {fileID: 1349626072189494229, guid: 3f29f8e5dfb46ba4d83bae58383bb03a, type: 3}
-  buffBar: {fileID: 119541469203478924}
-  buff_Haste: {fileID: 5898953976647163639, guid: 496a2a4d5d60793418ce9a4a8f1cd41a, type: 3}
-  isPlayer: 1
-  playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
-  enemy: {fileID: 0}
 --- !u!114 &6570711290415484158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2131,9 +2114,68 @@ MonoBehaviour:
   weakness: {fileID: 1355826886231515272}
   buffBar: {fileID: 119541469203478924}
   mightParticlePrefab: {fileID: 1015319669647688435, guid: 9b6df7731f7172b43a147f09ce0feae3, type: 3}
-  buff_Might: {fileID: 4486305157485082496, guid: 33205e44c20730a499ce4a2889fe044c, type: 3}
-  DamagePerStack: 3
-  MightStacks: 0
+  buffPrefab: {fileID: 4486305157485082496, guid: 33205e44c20730a499ce4a2889fe044c, type: 3}
+  activeMightAmount: 0
+  isPlayer: 1
+  playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
+  enemy: {fileID: 0}
+--- !u!114 &1355826886231515272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75c11536d9ffa424ea9dfff73eb6f198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  might: {fileID: 6570711290415484158}
+  deBuffBar: {fileID: 3112332154145750330}
+  weaknessParticlePrefab: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
+  debuffPrefab: {fileID: 1322856919444573643, guid: 7a2cbb8d57d592a40a7c4e185cf34af7, type: 3}
+  activeWeaknessAmount: 0
+  isPlayer: 1
+  playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
+  enemy: {fileID: 0}
+--- !u!114 &4009082293973101659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab54aede98b001446b2831f354a87d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slow: {fileID: 493944840020315455}
+  buffBar: {fileID: 119541469203478924}
+  speedParticlePrefab: {fileID: 1349626072189494229, guid: 3f29f8e5dfb46ba4d83bae58383bb03a, type: 3}
+  BuffPrefab: {fileID: 5898953976647163639, guid: 496a2a4d5d60793418ce9a4a8f1cd41a, type: 3}
+  activeHasteAmount: 0
+  isPlayer: 1
+  playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
+  enemy: {fileID: 0}
+--- !u!114 &493944840020315455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bdcc3e9f4625e84a8ddf1e400da293a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  haste: {fileID: 4009082293973101659}
+  deBuffBar: {fileID: 3112332154145750330}
+  slowParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
+  debuffPrefab: {fileID: 2560695082681248231, guid: a7fa6850110b7fe4d9b48173fa0925d0, type: 3}
+  activeSlowAmount: 0
   isPlayer: 1
   playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
   enemy: {fileID: 0}
@@ -2188,27 +2230,6 @@ MonoBehaviour:
   armorParticlePrefab: {fileID: 1628643618540244654, guid: 768ac4fe94217414b99824672926cbd5, type: 3}
   buffBar: {fileID: 119541469203478924}
   buff_Protection: {fileID: 8627039820005768832, guid: 65e5551e3069e3a46b72d8dd357bef16, type: 3}
-  isPlayer: 1
-  playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
-  enemy: {fileID: 0}
---- !u!114 &1355826886231515272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7550517957279444385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75c11536d9ffa424ea9dfff73eb6f198, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  might: {fileID: 6570711290415484158}
-  deBuffBar: {fileID: 3112332154145750330}
-  weaknessParticlePrefab: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
-  deBuff_Weakness: {fileID: 1322856919444573643, guid: 7a2cbb8d57d592a40a7c4e185cf34af7, type: 3}
-  DamagePerStack: 3
-  WeaknessStacks: 0
   isPlayer: 1
   playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
   enemy: {fileID: 0}

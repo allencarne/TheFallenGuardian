@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4282278270899152795, guid: b161acc997b21414bbeb4d302b0828d3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.42
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282278270899152795, guid: b161acc997b21414bbeb4d302b0828d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.07
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282278270899152795, guid: b161acc997b21414bbeb4d302b0828d3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -58,10 +58,32 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: fa5054ac5b2b7424683dbca27ea0f88b, type: 3}
     - target: {fileID: 6665735354994727975, guid: b161acc997b21414bbeb4d302b0828d3, type: 3}
       propertyPath: m_Name
-      value: Beach_Flower_SeaHolly_Yellow Variant
+      value: Beach_Flower_SeaHolly_Yellow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6665735354994727975, guid: b161acc997b21414bbeb4d302b0828d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2435362606664965770}
   m_SourcePrefab: {fileID: 100100000, guid: b161acc997b21414bbeb4d302b0828d3, type: 3}
+--- !u!1 &3680947023441421523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6665735354994727975, guid: b161acc997b21414bbeb4d302b0828d3, type: 3}
+  m_PrefabInstance: {fileID: 8040098709594765556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2435362606664965770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3680947023441421523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f06e954fe064fc4a9c9741e84961f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SlowAmount: 1
+  SlowDuration: 5

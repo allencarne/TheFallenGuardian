@@ -13,16 +13,17 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
     GameObject weaknessParticle;
 
     [Header("Icon")]
-    [SerializeField] GameObject deBuff_Weakness;
+    [SerializeField] GameObject debuffPrefab;
     TextMeshProUGUI stacksText;
+    GameObject buffIcon;
 
     [Header("Weakness")]
-    public int DamagePerStack = 3;
-    public int WeaknessStacks = 0;
-    GameObject buffIcon;
-    int weaknessAmount = 0;
     public int activeWeaknessAmount = 0;
+    int damagePerStack = 3;
+    int weaknessStacks = 0;
+    int weaknessAmount = 0;
 
+    [Header("Character")]
     public bool isPlayer;
     [SerializeField] PlayerStats playerStats;
     [SerializeField] Enemy enemy;
@@ -30,18 +31,18 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
     public void Weakness(int stacks, float duration)
     {
         // Increase Stack Amount Based on the New Buff
-        WeaknessStacks += stacks;
+        weaknessStacks += stacks;
 
         // Cap the Stacks at 25
-        WeaknessStacks = Mathf.Min(WeaknessStacks, 25);
+        weaknessStacks = Mathf.Min(weaknessStacks, 25);
 
         // Gain Based on Stack Amount
-        ApplyWeakness(WeaknessStacks);
+        ApplyWeakness(weaknessStacks);
 
         // Icon
         if (!buffIcon)
         {
-            buffIcon = Instantiate(deBuff_Weakness, deBuffBar.transform);
+            buffIcon = Instantiate(debuffPrefab, deBuffBar.transform);
             buffIcon.transform.localScale = new Vector3(1, 1, 1);
 
             // Get Stacks Text
@@ -54,7 +55,7 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
         }
 
         // Stacks Text
-        stacksText.text = WeaknessStacks.ToString();
+        stacksText.text = weaknessStacks.ToString();
 
         // Start a Timer for Each Instance of the Buff
         StartCoroutine(Stack(stacks, duration));
@@ -65,12 +66,12 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
         yield return new WaitForSeconds(duration);
 
         // Subtrack the Stack from our Stacks
-        WeaknessStacks -= stacks;
+        weaknessStacks -= stacks;
 
         // Ensure Stacks doesn't go below zero
-        WeaknessStacks = Mathf.Max(WeaknessStacks, 0);
+        weaknessStacks = Mathf.Max(weaknessStacks, 0);
 
-        if (WeaknessStacks == 0)
+        if (weaknessStacks == 0)
         {
             ResetWeakness();
             Destroy(buffIcon);
@@ -78,17 +79,17 @@ public class Debuff_Weakness : MonoBehaviour, IWeaknessable
         }
         else
         {
-            ApplyWeakness(WeaknessStacks);
+            ApplyWeakness(weaknessStacks);
 
             // Stacks Text
-            stacksText.text = WeaknessStacks.ToString();
+            stacksText.text = weaknessStacks.ToString();
         }
     }
 
     void ApplyWeakness(int stacks)
     {
         // Calculate the new weakness amount based on the number of stacks
-        weaknessAmount = DamagePerStack * stacks;
+        weaknessAmount = damagePerStack * stacks;
 
         // Update the active weakness amount in the PlayerStats or Enemy
         if (isPlayer)

@@ -32,7 +32,7 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
     [SerializeField] float knockBackDuration;
 
     [Header("Slow")]
-    [SerializeField] float slowAmount;
+    [SerializeField] int slowAmount;
     [SerializeField] float slowDuration;
 
     bool canImpact = false;

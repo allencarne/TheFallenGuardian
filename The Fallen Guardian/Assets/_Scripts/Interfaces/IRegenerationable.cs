@@ -1,5 +1,5 @@
 
 public interface IRegenerationable
 {
-    void Regenerate(int stack, float duration);
+    void Regenerate(int stacks, float duration);
 }

@@ -22,7 +22,7 @@ public class Snail : Enemy
     public float mobilityCoolDown;
 
     [Header("Slow")]
-    public float mobilitySlowAmount;
+    public int mobilitySlowAmount;
     public float mobilitySlowDuration;
 
     [Header("Special")]

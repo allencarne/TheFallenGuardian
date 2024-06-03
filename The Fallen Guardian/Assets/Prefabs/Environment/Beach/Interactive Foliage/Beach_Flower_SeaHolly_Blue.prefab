@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4282278270899152795, guid: b161acc997b21414bbeb4d302b0828d3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282278270899152795, guid: b161acc997b21414bbeb4d302b0828d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4282278270899152795, guid: b161acc997b21414bbeb4d302b0828d3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6665735354994727975, guid: b161acc997b21414bbeb4d302b0828d3, type: 3}
       propertyPath: m_Name
-      value: Beach_Flower_SeaHolly_Blue Variant
+      value: Beach_Flower_SeaHolly_Blue
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

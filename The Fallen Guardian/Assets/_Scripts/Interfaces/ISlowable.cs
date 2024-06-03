@@ -1,5 +1,5 @@
 
 public interface ISlowable
 {
-    void Slow(float amount, float duration);
+    void Slow(int stacks, float duration);
 }

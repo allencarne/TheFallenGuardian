@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SlowOnTrigger : MonoBehaviour
 {
-    [HideInInspector] public float SlowAmount;
-    [HideInInspector] public float SlowDuration;
+    public int SlowAmount;
+    public float SlowDuration;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

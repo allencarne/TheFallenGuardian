@@ -5,56 +5,44 @@ using TMPro;
 
 public class Buff_Haste : MonoBehaviour, IHasteable
 {
+    [SerializeField] Debuff_Slow slow;
+
     [Header("Buff Bar")]
+    [SerializeField] GameObject buffBar;
     [SerializeField] GameObject speedParticlePrefab;
     GameObject speedParticle;
-    [SerializeField] GameObject buffBar;
 
     [Header("Icon")]
-    [SerializeField] GameObject buff_Haste;
+    [SerializeField] GameObject BuffPrefab;
     TextMeshProUGUI stacksText;
-
-    [Header("Haste")]
-    float speedPerStack = 3f;
-    int hasteStacks = 0;
     GameObject buffIcon;
 
+    [Header("Haste")]
+    public int activeHasteAmount = 0;
+    int hastePerStack = 1;
+    int hasteStacks = 0;
+    int hasteAmount = 0;
+
+    [Header("Character")]
     public bool isPlayer;
     [SerializeField] PlayerStats playerStats;
     [SerializeField] Enemy enemy;
-    float CurrentSpeed;
-    float BaseSpeed;
-
-    private void Start()
-    {
-        if (isPlayer)
-        {
-            CurrentSpeed = playerStats.CurrentSpeed;
-            BaseSpeed = playerStats.BaseSpeed;
-        }
-        else
-        {
-            CurrentSpeed = enemy.CurrentSpeed;
-            BaseSpeed = enemy.BaseSpeed;
-        }
-    }
 
     public void Haste(int stacks, float duration)
     {
-        // Increase Stack Amount Based on the New Buff
+        // Increase Amount Based on the New Buff
         hasteStacks += stacks;
 
-        // Cap the hasteStacks at 25
+        // Cap the Stacks at 25
         hasteStacks = Mathf.Min(hasteStacks, 25);
 
-        // Gain Haste Based on Stack Amount
+        // Gain Based on Stack Amount
         ApplyHaste(hasteStacks);
 
         // Icon
         if (!buffIcon)
         {
-            buffIcon = Instantiate(buff_Haste);
-            buffIcon.transform.SetParent(buffBar.transform);
+            buffIcon = Instantiate(BuffPrefab, buffBar.transform);
             buffIcon.transform.localScale = new Vector3(1, 1, 1);
 
             // Get Stacks Text
@@ -77,15 +65,14 @@ public class Buff_Haste : MonoBehaviour, IHasteable
     {
         yield return new WaitForSeconds(duration);
 
-        // Subtrack the Stack from our HasteStacks
+        // Subtrack the Stack from our Stacks
         hasteStacks -= stacks;
 
-        // Ensure hasteStacks doesn't go below zero
+        // Ensure Stacks doesn't go below zero
         hasteStacks = Mathf.Max(hasteStacks, 0);
 
         if (hasteStacks == 0)
         {
-            hasteStacks = 0;
             ResetHaste();
             Destroy(buffIcon);
             Destroy(speedParticle);
@@ -101,18 +88,29 @@ public class Buff_Haste : MonoBehaviour, IHasteable
 
     void ApplyHaste(int stacks)
     {
-        // Calculate the haste amount based on the number of stacks
-        float hasteAmount = speedPerStack * stacks; // Increase movement speed by 1 for each stack
-
-        CurrentSpeed = BaseSpeed + hasteAmount;
+        hasteAmount = hastePerStack * stacks;
 
         if (isPlayer)
         {
-            playerStats.CurrentSpeed = CurrentSpeed;
+            activeHasteAmount = hasteAmount;
         }
         else
         {
-            enemy.CurrentSpeed = CurrentSpeed;
+            activeHasteAmount = hasteAmount;
+        }
+
+        RecalculateSpeed();
+    }
+
+    void RecalculateSpeed()
+    {
+        if (isPlayer)
+        {
+            playerStats.CurrentSpeed = playerStats.BaseSpeed + activeHasteAmount - slow.activeSlowAmount;
+        }
+        else
+        {
+            enemy.CurrentSpeed = enemy.BaseSpeed + activeHasteAmount - slow.activeSlowAmount;
         }
     }
 
@@ -120,11 +118,13 @@ public class Buff_Haste : MonoBehaviour, IHasteable
     {
         if (isPlayer)
         {
-            playerStats.CurrentSpeed = playerStats.BaseSpeed;
+            activeHasteAmount = 0;
         }
         else
         {
-            enemy.CurrentSpeed = enemy.BaseSpeed;
+            activeHasteAmount = 0;
         }
+
+        RecalculateSpeed();
     }
 }

@@ -1,5 +1,5 @@
 
 public interface IBleedable
 {
-    void Bleed(int stack, float duration);
+    void Bleed(int stacks, float duration);
 }
