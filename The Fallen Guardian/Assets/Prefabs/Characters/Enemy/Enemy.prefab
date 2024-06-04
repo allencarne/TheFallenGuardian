@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 3538787198285182242}
   - component: {fileID: 6056039518232562950}
   - component: {fileID: 2027561816777149345}
+  - component: {fileID: 4042615840481205260}
   - component: {fileID: 3028831653607600619}
   - component: {fileID: 8767221679893831347}
   - component: {fileID: 8622056740904828425}
@@ -427,9 +428,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5520827e24d7b34e9a0c84167af38f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impede: {fileID: 4042615840481205260}
   buffBar: {fileID: 493039623141738153}
   alacrityParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
-  buff_Alacrity: {fileID: 5308563003022945098, guid: 40f461b226a99c945b33070df193e0bb, type: 3}
+  buffPrefab: {fileID: 5308563003022945098, guid: 40f461b226a99c945b33070df193e0bb, type: 3}
+  activeAlacrityAmount: 0
+  isPlayer: 0
+  playerStats: {fileID: 0}
+  enemy: {fileID: 0}
+--- !u!114 &4042615840481205260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168808411849726535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1481ab38a3f9b41abe1965c4f99d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alacrity: {fileID: 2027561816777149345}
+  deBuffBar: {fileID: 4584005647302555774}
+  impedeParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
+  debuffPrefab: {fileID: 7297777850910554646, guid: eaf007c1de96a714bb9f9379733f8482, type: 3}
+  activeImpedeAmount: 0
   isPlayer: 0
   playerStats: {fileID: 0}
   enemy: {fileID: 0}

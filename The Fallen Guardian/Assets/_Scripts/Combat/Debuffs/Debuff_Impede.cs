@@ -108,11 +108,11 @@ public class Debuff_Impede : MonoBehaviour, IImpedable
     {
         if (isPlayer)
         {
-            playerStats.CurrentCDR = playerStats.BaseCDR + alacrity.activeAlacrityAmount - activeImpedeAmount;
+            playerStats.CurrentCDR = Mathf.Max(1, playerStats.BaseCDR + alacrity.activeAlacrityAmount - activeImpedeAmount);
         }
         else
         {
-            enemy.CurrentCDR = enemy.BaseCDR + alacrity.activeAlacrityAmount - activeImpedeAmount;
+            enemy.CurrentCDR = Mathf.Max(1,enemy.BaseCDR + alacrity.activeAlacrityAmount - activeImpedeAmount);
         }
     }
 
