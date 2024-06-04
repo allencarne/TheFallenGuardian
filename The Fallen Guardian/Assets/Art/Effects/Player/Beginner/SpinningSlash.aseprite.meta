@@ -128,8 +128,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 4
+      x: 146
+      y: 75
       width: 63
       height: 63
     spriteID: e8ee837fb8ac28d499b622a38f21d005
@@ -140,17 +140,17 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 146, y: 75}
   - name: SpinningSlash_Frame_1
     originalName: 
-    pivot: {x: 0.49206352, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 75
-      width: 63
+      y: 4
+      width: 64
       height: 63
     spriteID: 0605cb42093050b499d954295ba8bb55
     spriteBone: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 75}
+    uvTransform: {x: 4, y: 4}
   - name: SpinningSlash_Frame_2
     originalName: 
-    pivot: {x: 0.49206352, y: -0.015873017}
+    pivot: {x: 0.49206352, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 146
+      y: 75
       width: 63
-      height: 63
+      height: 64
     spriteID: c69921a2e90a32e429054d93966ff35f
     spriteBone: []
     spriteOutline: []
@@ -180,17 +180,17 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 146}
+    uvTransform: {x: 4, y: 75}
   - name: SpinningSlash_Frame_3
     originalName: 
-    pivot: {x: 0.50793654, y: -0.015873017}
+    pivot: {x: 0.5, y: -0.015873017}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 75
+      x: 76
       y: 4
-      width: 63
+      width: 64
       height: 63
     spriteID: 1208725eba3a8b04bae9058fb3d526cc
     spriteBone: []
@@ -200,7 +200,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 75, y: 4}
+    uvTransform: {x: 76, y: 4}
   - name: SpinningSlash_Frame_4
     originalName: 
     pivot: {x: 0.50793654, y: 0}
@@ -211,7 +211,7 @@ ScriptedImporter:
       x: 75
       y: 75
       width: 63
-      height: 63
+      height: 64
     spriteID: 530b881a0696a2d4cb2a5ca877fbaba5
     spriteBone: []
     spriteOutline: []
@@ -223,14 +223,14 @@ ScriptedImporter:
     uvTransform: {x: 75, y: 75}
   - name: SpinningSlash_Frame_5
     originalName: 
-    pivot: {x: 0.49206352, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 75
-      y: 146
-      width: 63
+      x: 148
+      y: 4
+      width: 64
       height: 63
     spriteID: 77e256cccb86ba144bed858582b3d36b
     spriteBone: []
@@ -240,7 +240,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 75, y: 146}
+    uvTransform: {x: 148, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -261,25 +261,25 @@ ScriptedImporter:
     - name: SpinningSlash_Frame_1
       frameIndex: 1
       cellRect:
-        x: 1
+        x: 0
         y: 0
-        width: 63
+        width: 64
         height: 63
       spriteId: 0605cb42093050b499d954295ba8bb55
     - name: SpinningSlash_Frame_2
       frameIndex: 2
       cellRect:
         x: 1
-        y: 1
+        y: 0
         width: 63
-        height: 63
+        height: 64
       spriteId: c69921a2e90a32e429054d93966ff35f
     - name: SpinningSlash_Frame_3
       frameIndex: 3
       cellRect:
         x: 0
         y: 1
-        width: 63
+        width: 64
         height: 63
       spriteId: 1208725eba3a8b04bae9058fb3d526cc
     - name: SpinningSlash_Frame_4
@@ -288,14 +288,14 @@ ScriptedImporter:
         x: 0
         y: 0
         width: 63
-        height: 63
+        height: 64
       spriteId: 530b881a0696a2d4cb2a5ca877fbaba5
     - name: SpinningSlash_Frame_5
       frameIndex: 5
       cellRect:
-        x: 1
+        x: 0
         y: 0
-        width: 63
+        width: 64
         height: 63
       spriteId: 77e256cccb86ba144bed858582b3d36b
     linkedCells: []
