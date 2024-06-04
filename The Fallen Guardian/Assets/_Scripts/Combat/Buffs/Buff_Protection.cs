@@ -5,39 +5,28 @@ using UnityEngine;
 
 public class Buff_Protection : MonoBehaviour, IProtectionable
 {
+    [SerializeField] Debuff_Vulnerability vulnerability;
+
     [Header("Buff Bar")]
-    [SerializeField] GameObject armorParticlePrefab;
-    GameObject armorParticle;
     [SerializeField] GameObject buffBar;
+    [SerializeField] GameObject protectionParticlePrefab;
+    GameObject protectionParticle;
 
     [Header("Icon")]
-    [SerializeField] GameObject buff_Protection;
+    [SerializeField] GameObject buffPrefab;
     TextMeshProUGUI stacksText;
-
-    [Header("Haste")]
-    float armorPerStack = 3f;
-    int protectionStacks = 0;
     GameObject buffIcon;
 
+    [Header("Protection")]
+    public int activeProtectionAmount = 0;
+    int armorPerStack = 1;
+    int protectionStacks = 0;
+    int protectionAmount = 0;
+
+    [Header("Character")]
     public bool isPlayer;
     [SerializeField] PlayerStats playerStats;
     [SerializeField] Enemy enemy;
-    float CurrentArmor;
-    float BaseArmor;
-
-    private void Start()
-    {
-        if (isPlayer)
-        {
-            CurrentArmor = playerStats.CurrentArmor;
-            BaseArmor = playerStats.BaseArmor;
-        }
-        else
-        {
-            CurrentArmor = enemy.CurrentArmor;
-            BaseArmor = enemy.BaseArmor;
-        }
-    }
 
     public void Protection(int stacks, float duration)
     {
@@ -48,22 +37,21 @@ public class Buff_Protection : MonoBehaviour, IProtectionable
         protectionStacks = Mathf.Min(protectionStacks, 25);
 
         // Gain Based on Stack Amount
-        ApplyHaste(protectionStacks);
+        ApplyProtection(protectionStacks);
 
         // Icon
         if (!buffIcon)
         {
-            buffIcon = Instantiate(buff_Protection);
-            buffIcon.transform.SetParent(buffBar.transform);
+            buffIcon = Instantiate(buffPrefab, buffBar.transform);
             buffIcon.transform.localScale = new Vector3(1, 1, 1);
 
             // Get Stacks Text
             stacksText = buffIcon.GetComponentInChildren<TextMeshProUGUI>();
         }
 
-        if (!armorParticle)
+        if (!protectionParticle)
         {
-            armorParticle = Instantiate(armorParticlePrefab, transform);
+            protectionParticle = Instantiate(protectionParticlePrefab, transform);
         }
 
         // Stacks Text
@@ -84,44 +72,57 @@ public class Buff_Protection : MonoBehaviour, IProtectionable
 
         if (protectionStacks == 0)
         {
-            protectionStacks = 0;
-            ResetHaste();
+            ResetProtection();
             Destroy(buffIcon);
-            Destroy(armorParticle);
+            Destroy(protectionParticle);
         }
         else
         {
-            ApplyHaste(protectionStacks);
+            ApplyProtection(protectionStacks);
 
             stacksText.text = protectionStacks.ToString();
         }
     }
 
-    void ApplyHaste(int stacks)
+    void ApplyProtection(int stacks)
     {
-        float protectionAmount = armorPerStack * stacks;
-
-        CurrentArmor = BaseArmor + protectionAmount;
+        protectionAmount = armorPerStack * stacks;
 
         if (isPlayer)
         {
-            playerStats.CurrentArmor = CurrentArmor;
+            activeProtectionAmount = protectionAmount;
         }
         else
         {
-            enemy.CurrentArmor = CurrentArmor;
+            activeProtectionAmount = protectionAmount;
+        }
+
+        Calculate();
+    }
+
+    void Calculate()
+    {
+        if (isPlayer)
+        {
+            playerStats.CurrentArmor = playerStats.BaseArmor + activeProtectionAmount - vulnerability.activeVulnerabilityAmount;
+        }
+        else
+        {
+            enemy.CurrentArmor = enemy.BaseArmor + activeProtectionAmount - vulnerability.activeVulnerabilityAmount;
         }
     }
 
-    void ResetHaste()
+    void ResetProtection()
     {
         if (isPlayer)
         {
-            playerStats.CurrentArmor = playerStats.BaseArmor;
+            activeProtectionAmount = 0;
         }
         else
         {
-            enemy.CurrentArmor = enemy.BaseArmor;
+            activeProtectionAmount = 0;
         }
+
+        Calculate();
     }
 }

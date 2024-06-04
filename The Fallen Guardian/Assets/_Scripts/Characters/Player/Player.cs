@@ -57,9 +57,6 @@ public class Player : MonoBehaviour, IDamageable
 
         // Set Armor
         Stats.CurrentArmor = Stats.BaseArmor;
-
-        // Set Regen
-        Stats.CurrentRegen = Stats.BaseRegen;
     }
 
     private void Update()

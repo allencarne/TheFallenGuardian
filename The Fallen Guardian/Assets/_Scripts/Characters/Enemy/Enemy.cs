@@ -25,9 +25,6 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("Armor")]
     public float BaseArmor;
     public float CurrentArmor;
-    [Header("Regen")]
-    public float BaseRegen;
-    public float CurrentRegen;
 
 
     [Header("Exp")]
@@ -132,9 +129,6 @@ public class Enemy : MonoBehaviour, IDamageable
 
         // Set Armor
         CurrentArmor = BaseArmor;
-
-        // Set Regen
-        CurrentRegen = BaseRegen;
     }
 
     private void Update()

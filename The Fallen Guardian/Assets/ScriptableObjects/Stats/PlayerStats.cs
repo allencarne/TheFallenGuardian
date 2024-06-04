@@ -14,32 +14,28 @@ public class PlayerStats : ScriptableObject
     public Sprite PlayerClassIcon;
 
     [Header("Health")]
-    public float Health;
-    public float MaxHealth;
+    public float Health = 10;
+    public float MaxHealth = 10;
 
     [Header("Movement Speed")]
-    public float BaseSpeed;
-    public float CurrentSpeed;
+    public float BaseSpeed = 8;
+    public float CurrentSpeed = 8;
 
     [Header("Attack Damage")]
-    public int BaseDamage;
-    public int CurrentDamage;
+    public int BaseDamage = 1;
+    public int CurrentDamage = 1;
 
     [Header("Attack Speed")]
-    public float BaseAttackSpeed;
-    public float CurrentAttackSpeed;
+    public float BaseAttackSpeed = 1;
+    public float CurrentAttackSpeed = 1;
 
     [Header("Cool Down Reduction")]
-    public float BaseCDR;
-    public float CurrentCDR;
+    public float BaseCDR = 1;
+    public float CurrentCDR = 1;
 
     [Header("Armor")]
-    public float BaseArmor;
-    public float CurrentArmor;
-
-    [Header("Regen")]
-    public float BaseRegen;
-    public float CurrentRegen;
+    public float BaseArmor = 0;
+    public float CurrentArmor = 0;
 
     [Header("Attributes")]
     public float Vitality; // Increase Health
