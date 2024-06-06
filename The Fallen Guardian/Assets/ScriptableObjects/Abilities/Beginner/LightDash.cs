@@ -32,6 +32,21 @@ public class LightDash : ScriptableObject, IAbilityBehaviour
             float angle = stateMachine.Aimer.rotation.eulerAngles.z;
             Vector2 direction = stateMachine.HandleDirection(angle);
 
+            // Head
+            stateMachine.HeadAnimator.Play(stateMachine.Equipment.HeadIndex + "_Dash");
+            stateMachine.HeadAnimator.SetFloat("Horizontal", direction.x);
+            stateMachine.HeadAnimator.SetFloat("Vertical", direction.y);
+
+            // Chest
+            stateMachine.ChestAnimator.Play(stateMachine.Equipment.ChestIndex + "_Dash");
+            stateMachine.ChestAnimator.SetFloat("Horizontal", direction.x);
+            stateMachine.ChestAnimator.SetFloat("Vertical", direction.y);
+
+            // Legs
+            stateMachine.LegsAnimator.Play(stateMachine.Equipment.LegsIndex + "_Dash");
+            stateMachine.LegsAnimator.SetFloat("Horizontal", direction.x);
+            stateMachine.LegsAnimator.SetFloat("Vertical", direction.y);
+
             // Animate Body
             stateMachine.BodyAnimator.Play("Dash");
             stateMachine.BodyAnimator.SetFloat("Horizontal", direction.x);
