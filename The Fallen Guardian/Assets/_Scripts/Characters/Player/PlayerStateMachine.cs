@@ -203,4 +203,9 @@ public class PlayerStateMachine : MonoBehaviour
             }
         }
     }
+
+    public void EquipmentUpdated()
+    {
+        SetState(new PlayerSpawnState(this));
+    }
 }

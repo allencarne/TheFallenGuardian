@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerEquipment : MonoBehaviour
 {
+    public UnityEvent OnEquipmentUpdated;
+
     [Header("Setup")]
     [SerializeField] GameObjectRuntimeSet playerInventoryReference;
     EquipmentManager equipmentManager;
@@ -39,10 +42,12 @@ public class PlayerEquipment : MonoBehaviour
             {
                 IsWeaponEquipt = true;
                 EquipWeapon(newWeapon);
+                OnEquipmentUpdated?.Invoke();
             }
 
             // Handle armor equip
             EquipArmor(newItem);
+            OnEquipmentUpdated?.Invoke();
         }
         else
         {
@@ -60,8 +65,6 @@ public class PlayerEquipment : MonoBehaviour
 
     void EquipWeapon(Weapon newWeapon)
     {
-        //ResetWeaponSprites(); // Reset all weapon sprites before enabling the new one
-
         switch (newWeapon.weaponType)
         {
             case WeaponType.Sword:
