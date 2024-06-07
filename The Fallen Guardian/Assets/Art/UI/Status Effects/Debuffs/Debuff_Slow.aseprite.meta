@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Debuff_Slow_Frame_0
     originalName: 
-    pivot: {x: 0.33333334, y: -0.125}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 6
-      height: 8
+      width: 8
+      height: 9
     spriteID: bf88a5d24d73c394c8577b15271847a3
     spriteBone: []
     spriteOutline: []
@@ -143,15 +143,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Debuff_Slow_Frame_1
     originalName: 
-    pivot: {x: 0.33333334, y: -0.14285715}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 20
-      width: 6
-      height: 7
+      y: 38
+      width: 8
+      height: 8
     spriteID: 1ddb47534ccb0c340b01580e46adc7c1
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 20}
+    uvTransform: {x: 4, y: 38}
   - name: Debuff_Slow_Frame_2
     originalName: 
-    pivot: {x: 0.33333334, y: -0.125}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 18
-      y: 4
-      width: 6
-      height: 8
+      x: 4
+      y: 21
+      width: 8
+      height: 9
     spriteID: 5c4dbcaa505ff824baf6338b4653e92d
     spriteBone: []
     spriteOutline: []
@@ -180,7 +180,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 18, y: 4}
+    uvTransform: {x: 4, y: 21}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -193,26 +193,26 @@ ScriptedImporter:
     - name: Debuff_Slow_Frame_0
       frameIndex: 0
       cellRect:
-        x: 2
-        y: 1
-        width: 6
-        height: 8
+        x: 0
+        y: 0
+        width: 8
+        height: 9
       spriteId: bf88a5d24d73c394c8577b15271847a3
     - name: Debuff_Slow_Frame_1
       frameIndex: 1
       cellRect:
-        x: 2
-        y: 1
-        width: 6
-        height: 7
+        x: 0
+        y: 0
+        width: 8
+        height: 8
       spriteId: 1ddb47534ccb0c340b01580e46adc7c1
     - name: Debuff_Slow_Frame_2
       frameIndex: 2
       cellRect:
-        x: 2
-        y: 1
-        width: 6
-        height: 8
+        x: 0
+        y: 0
+        width: 8
+        height: 9
       spriteId: 5c4dbcaa505ff824baf6338b4653e92d
     linkedCells: []
     parentIndex: -1

@@ -123,14 +123,14 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Debuff_Exhaust_Frame_0
     originalName: 
-    pivot: {x: 0.42857146, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 7
+      width: 8
       height: 9
     spriteID: c963e2a8676850b4cbbc57c2dda83537
     spriteBone: []
@@ -143,16 +143,16 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Debuff_Exhaust_Frame_1
     originalName: 
-    pivot: {x: 0.42857146, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 38
-      width: 7
+      width: 8
       height: 8
-    spriteID: 5f442a99d89ee5845a3ef30c17bcc916
+    spriteID: bfdc594f671682447a08a30b87d64e15
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -163,16 +163,16 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 38}
   - name: Debuff_Exhaust_Frame_2
     originalName: 
-    pivot: {x: 0.42857146, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 21
-      width: 7
+      width: 8
       height: 9
-    spriteID: 60f7be315d019fa4f98476466c3369b3
+    spriteID: 1d6370a029585964fb87b1ea2abc51fa
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -193,27 +193,27 @@ ScriptedImporter:
     - name: Debuff_Exhaust_Frame_0
       frameIndex: 0
       cellRect:
-        x: 1
+        x: 0
         y: 0
-        width: 7
+        width: 8
         height: 9
       spriteId: c963e2a8676850b4cbbc57c2dda83537
     - name: Debuff_Exhaust_Frame_1
       frameIndex: 1
       cellRect:
-        x: 1
+        x: 0
         y: 0
-        width: 7
+        width: 8
         height: 8
-      spriteId: 5f442a99d89ee5845a3ef30c17bcc916
+      spriteId: bfdc594f671682447a08a30b87d64e15
     - name: Debuff_Exhaust_Frame_2
       frameIndex: 2
       cellRect:
-        x: 1
+        x: 0
         y: 0
-        width: 7
+        width: 8
         height: 9
-      spriteId: 60f7be315d019fa4f98476466c3369b3
+      spriteId: 1d6370a029585964fb87b1ea2abc51fa
     linkedCells: []
     parentIndex: -1
   platformSettings: []
