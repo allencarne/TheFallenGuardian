@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Equipment", menuName = "ScriptableObjects/Inventory/Equipment")]
 public class Equipment : Item
 {
+    public GameObjectRuntimeSet playerReference;
+    Player player;
+
     [Header("Index")]
     public int itemIndex;
 
@@ -20,10 +23,19 @@ public class Equipment : Item
     {
         base.Use();
 
-        equipmentManager = playerInventoryReference.GetItemIndex(0).GetComponent<EquipmentManager>();
+        player = playerReference.GetItemIndex(0).GetComponent<Player>();
 
-        equipmentManager.Equip(this);
-        RemoveFromInventory();
+        if (!player.InCombat)
+        {
+            equipmentManager = playerInventoryReference.GetItemIndex(0).GetComponent<EquipmentManager>();
+
+            equipmentManager.Equip(this);
+            RemoveFromInventory();
+        }
+        else
+        {
+            Debug.Log("Player is in combat");
+        }
     }
 }
 

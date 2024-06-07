@@ -90,7 +90,7 @@ public class Buff_Regeneration : MonoBehaviour, IRegenerationable
         if (isPlayer)
         {
             // Apply Heal Repeatedly once per second
-            player.Heal(regenAmount);
+            player.Heal(regenAmount, false);
         }
         else
         {

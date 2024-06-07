@@ -20,6 +20,7 @@ MonoBehaviour:
   isStackable: 0
   cost: 1
   isCurrency: 0
+  playerReference: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
   itemIndex: 2
   equipmentType: 2
   healthModifier: 2

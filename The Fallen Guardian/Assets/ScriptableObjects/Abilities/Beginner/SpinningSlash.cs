@@ -45,6 +45,21 @@ public class SpinningSlash : ScriptableObject, IAbilityBehaviour
             float angle = stateMachine.Aimer.rotation.eulerAngles.z;
             Vector2 direction = stateMachine.HandleDirection(angle);
 
+            // Head
+            stateMachine.HeadAnimator.Play(stateMachine.Equipment.HeadIndex + "_Sword_Attack_C");
+            stateMachine.HeadAnimator.SetFloat("Horizontal", direction.x);
+            stateMachine.HeadAnimator.SetFloat("Vertical", direction.y);
+
+            // Chest
+            stateMachine.ChestAnimator.Play(stateMachine.Equipment.ChestIndex + "_Sword_Attack_C");
+            stateMachine.ChestAnimator.SetFloat("Horizontal", direction.x);
+            stateMachine.ChestAnimator.SetFloat("Vertical", direction.y);
+
+            // Legs
+            stateMachine.LegsAnimator.Play(stateMachine.Equipment.LegsIndex + "_Sword_Attack_C");
+            stateMachine.LegsAnimator.SetFloat("Horizontal", direction.x);
+            stateMachine.LegsAnimator.SetFloat("Vertical", direction.y);
+
             // Animate Body
             stateMachine.BodyAnimator.Play("Sword_Attack_C");
             stateMachine.BodyAnimator.SetFloat("Horizontal", direction.x);
@@ -64,6 +79,10 @@ public class SpinningSlash : ScriptableObject, IAbilityBehaviour
         {
             canImpact = false;
 
+            stateMachine.HeadAnimator.Play(stateMachine.Equipment.HeadIndex + "_Sword_Attack_R");
+            stateMachine.ChestAnimator.Play(stateMachine.Equipment.ChestIndex + "_Sword_Attack_R");
+            stateMachine.LegsAnimator.Play(stateMachine.Equipment.LegsIndex + "_Sword_Attack_R");
+
             stateMachine.BodyAnimator.Play("Sword_Attack_R");
             stateMachine.SwordAnimator.Play("Sword_Attack_R");
 
@@ -76,6 +95,10 @@ public class SpinningSlash : ScriptableObject, IAbilityBehaviour
         float modifiedCastTime = castTime / stateMachine.Player.Stats.CurrentAttackSpeed;
 
         yield return new WaitForSeconds(modifiedCastTime);
+
+        stateMachine.HeadAnimator.Play(stateMachine.Equipment.HeadIndex + "_Sword_Attack_I");
+        stateMachine.ChestAnimator.Play(stateMachine.Equipment.ChestIndex + "_Sword_Attack_I");
+        stateMachine.LegsAnimator.Play(stateMachine.Equipment.LegsIndex + "_Sword_Attack_I");
 
         stateMachine.BodyAnimator.Play("Sword_Attack_I");
         stateMachine.SwordAnimator.Play("Sword_Attack_I");

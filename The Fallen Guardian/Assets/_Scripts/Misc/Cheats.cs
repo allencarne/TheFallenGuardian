@@ -34,7 +34,7 @@ public class Cheats : MonoBehaviour
 
     public void OnHealCheatPressed()
     {
-        player.Heal(1);
+        player.Heal(1, false);
     }
 
     public void OnDamageChatPressed()

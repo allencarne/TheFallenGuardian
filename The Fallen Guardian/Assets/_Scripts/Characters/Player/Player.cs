@@ -114,7 +114,7 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    public void Heal(float heal)
+    public void Heal(float heal, bool enterCombat)
     {
         if (Stats.Health >= Stats.MaxHealth)
         {
@@ -132,7 +132,10 @@ public class Player : MonoBehaviour, IDamageable
             StartCoroutine(healthBar.FlashEffect(Color.green));
             healthBar.ShowFloatingText(heal, healthBar.floatingHealingText);
 
-            PlayerEnterCombat();
+            if (enterCombat)
+            {
+                PlayerEnterCombat();
+            }
 
             OnHealthChanged?.Invoke();
         }
