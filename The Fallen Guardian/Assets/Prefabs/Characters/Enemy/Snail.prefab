@@ -215,9 +215,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1168808411849726535, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       insertIndex: 3
       addedObject: {fileID: 415464689696531612}
-    - targetCorrespondingSourceObject: {fileID: 989500593750718045, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8894059137336976080}
     - targetCorrespondingSourceObject: {fileID: 6220495270013819316, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2351145017860122857}
@@ -360,8 +357,6 @@ MonoBehaviour:
   CurrentCDR: 0
   BaseArmor: 0
   CurrentArmor: 0
-  BaseRegen: 0
-  CurrentRegen: 0
   expToGive: 2
   wanderRadius: 5
   attackRadius: 1
@@ -433,46 +428,6 @@ MonoBehaviour:
   knockBackDuration: 0.3
   specialTelegraph: {fileID: 6953225355496230734, guid: 26b2a36cdfad86b4e9d6b6934b684fab, type: 3}
   shmackTelegraph: {fileID: 5230691123992083274, guid: eff9ff37ba9ec4049a4ab1b6cfe79098, type: 3}
---- !u!1 &5899974318618201015 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 989500593750718045, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
-  m_PrefabInstance: {fileID: 6655056833195474410}
-  m_PrefabAsset: {fileID: 0}
---- !u!58 &8894059137336976080
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5899974318618201015}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 6
 --- !u!70 &7949850666712048347 stripped
 CapsuleCollider2D:
   m_CorrespondingSourceObject: {fileID: 3605142366507294513, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
