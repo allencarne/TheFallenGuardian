@@ -23,8 +23,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // Set initial game state
-        playerSelectPanel.SetActive(true);
+        // Detect if we are playing on a mobile device
+        if (Application.isMobilePlatform)
+        {
+            Debug.Log("test");
+        }
+        else
+        {
+            playerSelectPanel.SetActive(true);
+        }
     }
 
     public void OnPlayerJoined()
