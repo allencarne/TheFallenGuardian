@@ -1,42 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Hermit : Enemy
 {
     [Header("Variables")]
-    float castTime = 0;
-    bool canImpact = true;
-    bool canRecovery = false;
+    bool hasAttacked = false;
+    bool canImpact = false;
+    //float castTime = 0;
+    //bool canRecovery = false;
     Vector2 directionToTarget;
     Vector2 dashDirection;
+
+    #region Basic
 
     [Header("Attack")]
     [SerializeField] GameObject basicPrefab;
     [SerializeField] GameObject basicHitEffect;
     [SerializeField] GameObject basicTelegraph;
-    public int basicDamage;
-    public float basicCastTime;
-    public float basicRange;
-    public float basicCoolDown;
+
+    [Header("Stats")]
+    [SerializeField] int basicDamage;
+    [SerializeField] float basicRange;
+
+    [Header("Time")]
+    [SerializeField] float basicCastTime;
+    [SerializeField] float basicRecoveryTime;
+    [SerializeField] float basicCoolDown;
 
     protected override void AttackState()
     {
-        // Adjust the cast time based on attack speed
-        float modifiedAttackCastTime = basicCastTime / CurrentAttackSpeed;
-
-        castTime += Time.deltaTime;
-        UpdateCastBar(castTime, CurrentAttackSpeed);
-
         if (crowdControl.IsInterrupted)
         {
             if (castBar.color != Color.green)
             {
                 // ResetCast Time
-                castTime = 0;
+                //castTime = 0;
 
                 // Set Cast Bar Color
-                castBar.color = Color.red;
+                //castBar.color = Color.red;
 
                 // State Transition
                 enemyState = EnemyState.Idle;
@@ -46,14 +49,14 @@ public class Hermit : Enemy
             }
         }
 
-        if (canAttack && target != null)
+        if (canAttack && target != null && !hasAttacked)
         {
+            hasAttacked = true;
             canAttack = false;
 
-            castBar.color = Color.yellow;
+            Debug.Log("Attacking");
 
-            // Play attack animation
-            enemyAnimator.Play("Attack Cast");
+            //castBar.color = Color.yellow;
 
             // Calculate the direction from the enemy to the target
             directionToTarget = (target.position - transform.position).normalized;
@@ -61,70 +64,103 @@ public class Hermit : Enemy
             // Calculate the angle in degrees from the direction
             float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
 
-            // Instantiate the telegraph object at the enemy position with the appropriate rotation
-            Instantiate(basicTelegraph, transform.position, Quaternion.Euler(0f, 0f, angle), transform);
-
-            // Set animator parameters based on the direction
+            // Play attack animation
+            enemyAnimator.Play("Attack Cast");
             enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
             enemyAnimator.SetFloat("Vertical", directionToTarget.y);
 
-            // Start Cooldown
+            // Instantiate the telegraph object at the enemy position with the appropriate rotation
+            Instantiate(basicTelegraph, transform.position, Quaternion.Euler(0f, 0f, angle), transform);
+
+            // Timers
+            StartCoroutine(BasicImpact());
             StartCoroutine(AttackCoolDown());
         }
 
-        if (castTime > modifiedAttackCastTime)
+        if (canImpact)
         {
-            if (canImpact)
-            {
-                canImpact = false;
+            canImpact = false;
 
-                castBar.color = Color.green;
-                enemyAnimator.Play("Attack Impact");
+            StartCoroutine(RecoveryTime());
+        }
+    }
 
-                // Calculate the position for the attackPrefab
-                Vector2 attackPosition = (Vector2)transform.position + directionToTarget * basicRange;
+    IEnumerator BasicImpact()
+    {
+        float modifiedCastTime = basicCastTime / CurrentAttackSpeed;
 
-                GameObject attack = Instantiate(basicPrefab, attackPosition, Quaternion.identity);
+        yield return new WaitForSeconds(modifiedCastTime);
 
-                DamageOnTrigger damageOnTrigger = attack.GetComponent<DamageOnTrigger>();
-                if (damageOnTrigger != null)
-                {
-                    damageOnTrigger.AbilityDamage = basicDamage;
-                    damageOnTrigger.CharacterDamage = CurrentDamage;
-                    damageOnTrigger.HitEffect = basicHitEffect;
-                }
-            }
+        // Cast bar
+        //castBar.color = Color.green;
+
+        // Animate
+        enemyAnimator.Play("Attack Impact");
+
+        // Calculate the position for the basicPrefab
+        Vector2 basicPosition = (Vector2)transform.position + directionToTarget * basicRange;
+
+        GameObject basic = Instantiate(basicPrefab, basicPosition, Quaternion.identity);
+
+        DamageOnTrigger damageOnTrigger = basic.GetComponent<DamageOnTrigger>();
+        if (damageOnTrigger != null)
+        {
+            damageOnTrigger.AbilityDamage = basicDamage;
+            damageOnTrigger.CharacterDamage = CurrentDamage;
+            damageOnTrigger.HitEffect = basicHitEffect;
         }
 
-        if (canRecovery)
-        {
-            canRecovery = false;
+        // Delay
+        StartCoroutine(ImpactDelay());
+    }
 
-            enemyAnimator.Play("Attack Recovery");
-        }
+    IEnumerator ImpactDelay()
+    {
+        yield return new WaitForSeconds(.1f);
+
+        canImpact = true;
+    }
+
+    IEnumerator RecoveryTime()
+    {
+        // Animate
+        enemyAnimator.Play("Attack Recovery");
+
+        float modifiedRecoveryTime = basicRecoveryTime / CurrentAttackSpeed;
+
+        yield return new WaitForSeconds(modifiedRecoveryTime);
+
+        hasAttacked = false;
+
+        enemyState = EnemyState.Idle;
     }
 
     IEnumerator AttackCoolDown()
     {
-        yield return new WaitForSeconds(basicCoolDown);
+        // Adjust cooldown time based on cooldown reduction
+        float modifiedCooldown = basicCoolDown / CurrentCDR;
+
+        yield return new WaitForSeconds(modifiedCooldown);
 
         canAttack = true;
     }
 
+    #endregion
+
     public void AE_EndOfImpact()
     {
-        canRecovery = true;
+        //canRecovery = true;
     }
 
     public void AE_EndOfRecovery()
     {
-        canImpact = true;
+        //canImpact = true;
 
-        castBar.color = Color.yellow;
-        castTime = 0;
-        UpdateCastBar(0, basicCastTime);
+        //castBar.color = Color.yellow;
+        //castTime = 0;
+        //UpdateCastBar(0, basicCastTime);
 
         // State Transition
-        enemyState = EnemyState.Idle;
+        //enemyState = EnemyState.Idle;
     }
 }
