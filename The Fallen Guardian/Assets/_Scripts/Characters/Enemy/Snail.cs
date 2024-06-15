@@ -39,7 +39,6 @@ public class Snail : Enemy
     [SerializeField] float knockBackForce;
     [SerializeField] float knockBackDuration;
 
-    float castTime = 0;
     bool canRecovery = false;
     Vector2 dashDirection;
 
@@ -53,7 +52,7 @@ public class Snail : Enemy
 
         if (enemyState == EnemyState.Mobility)
         {
-            if (castTime > mobilityCastTime)
+            if (castBarTime > mobilityCastTime)
             {
                 if (target != null)
                 {
@@ -72,15 +71,15 @@ public class Snail : Enemy
         // Adjust the cast time based on attack speed
         float modifiedAttackCastTime = attackCastTime / CurrentAttackSpeed;
 
-        castTime += Time.deltaTime;
-        UpdateCastBar(castTime, CurrentAttackSpeed);
+        castBarTime += Time.deltaTime;
+        UpdateCastBar(castBarTime, CurrentAttackSpeed);
 
         if (crowdControl.IsInterrupted)
         {
             if (castBar.color != Color.green)
             {
                 // ResetCast Time
-                castTime = 0;
+                castBarTime = 0;
 
                 // Set Cast Bar Color
                 castBar.color = Color.red;
@@ -119,7 +118,7 @@ public class Snail : Enemy
             StartCoroutine(AttackCoolDown());
         }
 
-        if (castTime > modifiedAttackCastTime)
+        if (castBarTime > modifiedAttackCastTime)
         {
             if (canImpact)
             {
@@ -161,7 +160,7 @@ public class Snail : Enemy
         canImpact = true;
 
         castBar.color = Color.yellow;
-        castTime = 0;
+        castBarTime = 0;
         UpdateCastBar(0, attackCastTime);
 
         // State Transition
@@ -180,15 +179,15 @@ public class Snail : Enemy
         // Adjust the cast time based on attack speed
         float modifiedAttackCastTime = mobilityCastTime / CurrentAttackSpeed;
 
-        castTime += Time.deltaTime;
-        UpdateCastBar(castTime, modifiedAttackCastTime);
+        castBarTime += Time.deltaTime;
+        UpdateCastBar(castBarTime, modifiedAttackCastTime);
 
         if (crowdControl.IsInterrupted)
         {
             if (castBar.color != Color.green)
             {
                 // ResetCast Time
-                castTime = 0;
+                castBarTime = 0;
 
                 // Set Cast Bar Color
                 castBar.color = Color.red;
@@ -217,7 +216,7 @@ public class Snail : Enemy
             StartCoroutine(MobilityCoolDown());
         }
 
-        if (castTime > modifiedAttackCastTime)
+        if (castBarTime > modifiedAttackCastTime)
         {
             if (canImpact && target != null)
             {
@@ -261,7 +260,7 @@ public class Snail : Enemy
         canImpact = true;
 
         castBar.color = Color.yellow;
-        castTime = 0;
+        castBarTime = 0;
         UpdateCastBar(0, mobilityCastTime);
 
         if (target != null)
@@ -285,15 +284,15 @@ public class Snail : Enemy
         // Adjust the cast time based on attack speed
         float modifiedAttackCastTime = specialCastTime / CurrentAttackSpeed;
 
-        castTime += Time.deltaTime;
-        UpdateCastBar(castTime, modifiedAttackCastTime);
+        castBarTime += Time.deltaTime;
+        UpdateCastBar(castBarTime, modifiedAttackCastTime);
 
         if (crowdControl.IsInterrupted)
         {
             if (castBar.color != Color.green)
             {
                 // ResetCast Time
-                castTime = 0;
+                castBarTime = 0;
 
                 // Set Cast Bar Color
                 castBar.color = Color.red;
@@ -332,7 +331,7 @@ public class Snail : Enemy
             StartCoroutine(SpecialCoolDown());
         }
 
-        if (castTime > modifiedAttackCastTime)
+        if (castBarTime > modifiedAttackCastTime)
         {
             if (canImpact && target != null)
             {

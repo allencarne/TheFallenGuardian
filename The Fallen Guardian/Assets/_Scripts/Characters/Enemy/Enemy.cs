@@ -40,31 +40,29 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected Image patienceBar;
     [SerializeField] protected Image castBar;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Collider2D enemyCollider2D;
     [SerializeField] GameObject shadow;
     [SerializeField] EnemyHealthBar healthBar;
     [HideInInspector] public EnemySpawner EnemySpawner;
-
     protected CrowdControl crowdControl;
-
     protected Animator enemyAnimator;
     protected Rigidbody2D enemyRB;
-    [SerializeField] Collider2D enemyCollider2D;
 
-    // Idle
+    [Header("Idle")]
     protected float idleTime;
     protected Vector2 startingPosition;
     int attemptsCount;
 
-    // Wander
+    [Header("Wander")]
     Vector2 newWanderPosition;
 
-    // Chase
+    [Header("Chase")]
     protected Transform target;
     bool playerInRange;
     public float patience;
     float patienceTime;
 
-    // Bools
+    [Header("Bools")]
     bool canSpawn = true;
     bool canWander = true;
     protected bool canAttack = true;
@@ -73,16 +71,18 @@ public class Enemy : MonoBehaviour, IDamageable
     bool canReset = true;
     bool canDeath = true;
 
-    [Header("Variables")]
+    [Header("Attack")]
     protected bool hasAttacked = false;
     protected bool canImpact = false; // bug with snail
     protected Vector2 directionToTarget;
 
-    // Regen
+    protected float castBarTime = 0;
+
+    [Header("Regeneration")]
     private float regenTimer = 0f;
     private float regenInterval = 3f;
 
-    // Events
+    [Header("Events")]
     public UnityEvent OnHealthChanged;
     public UnityEvent OnDeath;
 
@@ -698,6 +698,15 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             yield return new WaitForSeconds(.2f);
             castBar.color = Color.yellow;
+            castBar.fillAmount = 0;
+        }
+    }
+
+    public IEnumerator EndCastBar()
+    {
+        if (castBar != null)
+        {
+            yield return new WaitForSeconds(.2f);
             castBar.fillAmount = 0;
         }
     }

@@ -20,17 +20,31 @@ public class Hermit : Enemy
     [SerializeField] float basicRecoveryTime;
     [SerializeField] float basicCoolDown;
 
+    float modifiedCastTime;
+
     protected override void AttackState()
     {
+        modifiedCastTime = basicCastTime / CurrentAttackSpeed;
+
+
+        if (castBar.color == Color.yellow)
+        {
+            // Increase cast bar time once per second
+            castBarTime += Time.deltaTime;
+
+            // If we are not interrupted, Update the cast bar
+            UpdateCastBar(castBarTime, modifiedCastTime);
+        }
+
         if (crowdControl.IsInterrupted)
         {
             if (castBar.color != Color.green)
             {
                 // ResetCast Time
-                //castTime = 0;
+                castBarTime = 0;
 
                 // Set Cast Bar Color
-                //castBar.color = Color.red;
+                castBar.color = Color.red;
 
                 // State Transition
                 enemyState = EnemyState.Idle;
@@ -44,6 +58,9 @@ public class Hermit : Enemy
         {
             hasAttacked = true;
             canAttack = false;
+
+            // Set Cast Bar Color
+            castBar.color = Color.yellow;
 
             // Calculate the direction from the enemy to the target
             directionToTarget = (target.position - transform.position).normalized;
@@ -74,12 +91,15 @@ public class Hermit : Enemy
 
     IEnumerator BasicImpact()
     {
-        float modifiedCastTime = basicCastTime / CurrentAttackSpeed;
+        UpdateCastBar(castBarTime, modifiedCastTime);
 
         yield return new WaitForSeconds(modifiedCastTime);
 
         // Animate
         enemyAnimator.Play("Basic Impact");
+
+        // Set Cast Bar Color
+        castBar.color = Color.green;
 
         // Calculate the position for the basicPrefab
         Vector2 basicPosition = (Vector2)transform.position + directionToTarget * basicRange;
@@ -103,6 +123,9 @@ public class Hermit : Enemy
         yield return new WaitForSeconds(.1f);
 
         canImpact = true;
+
+        castBarTime = 0;
+        StartCoroutine(EndCastBar());
     }
 
     IEnumerator RecoveryTime()
@@ -128,6 +151,44 @@ public class Hermit : Enemy
 
         canAttack = true;
     }
+
+    #endregion
+
+    #region Mobility
+
+    [Header("Mobility")]
+    [SerializeField] GameObject mobilityPrefab;
+    [SerializeField] GameObject mobilityHitEffect;
+    [SerializeField] GameObject mobilitTelegraph;
+
+    [Header("Stats")]
+    [SerializeField] int mobilityDamage;
+    [SerializeField] float mobilityRange;
+
+    [Header("Time")]
+    [SerializeField] float mobilityCastTime;
+    [SerializeField] float mobilityRecoveryTime;
+    [SerializeField] float mobilityCoolDown;
+
+
+
+    #endregion
+
+    #region Special
+
+    [Header("Special")]
+    [SerializeField] GameObject specialPrefab;
+    [SerializeField] GameObject specialHitEffect;
+    [SerializeField] GameObject specialTelegraph;
+
+    [Header("Stats")]
+    [SerializeField] int specialDamage;
+    [SerializeField] float specialRange;
+
+    [Header("Time")]
+    [SerializeField] float specialCastTime;
+    [SerializeField] float specialRecoveryTime;
+    [SerializeField] float specialCoolDown;
 
     #endregion
 }
