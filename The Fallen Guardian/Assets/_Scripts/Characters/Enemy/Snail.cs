@@ -40,9 +40,7 @@ public class Snail : Enemy
     [SerializeField] float knockBackDuration;
 
     float castTime = 0;
-    bool canImpact = true;
     bool canRecovery = false;
-    Vector2 directionToTarget;
     Vector2 dashDirection;
 
     //Telegraph

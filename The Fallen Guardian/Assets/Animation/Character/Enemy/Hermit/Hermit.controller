@@ -273,7 +273,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack Cast
+  m_Name: Basic Cast
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -411,7 +411,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack Recovery
+  m_Name: Basic Recovery
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -559,7 +559,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack Impact
+  m_Name: Basic Impact
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

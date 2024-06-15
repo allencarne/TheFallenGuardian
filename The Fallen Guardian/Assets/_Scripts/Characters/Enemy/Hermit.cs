@@ -1,21 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Hermit : Enemy
 {
-    [Header("Variables")]
-    bool hasAttacked = false;
-    bool canImpact = false;
-    //float castTime = 0;
-    //bool canRecovery = false;
-    Vector2 directionToTarget;
-    Vector2 dashDirection;
-
     #region Basic
 
-    [Header("Attack")]
+    [Header("Basic")]
     [SerializeField] GameObject basicPrefab;
     [SerializeField] GameObject basicHitEffect;
     [SerializeField] GameObject basicTelegraph;
@@ -54,10 +45,6 @@ public class Hermit : Enemy
             hasAttacked = true;
             canAttack = false;
 
-            Debug.Log("Attacking");
-
-            //castBar.color = Color.yellow;
-
             // Calculate the direction from the enemy to the target
             directionToTarget = (target.position - transform.position).normalized;
 
@@ -65,7 +52,7 @@ public class Hermit : Enemy
             float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
 
             // Play attack animation
-            enemyAnimator.Play("Attack Cast");
+            enemyAnimator.Play("Basic Cast");
             enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
             enemyAnimator.SetFloat("Vertical", directionToTarget.y);
 
@@ -91,11 +78,8 @@ public class Hermit : Enemy
 
         yield return new WaitForSeconds(modifiedCastTime);
 
-        // Cast bar
-        //castBar.color = Color.green;
-
         // Animate
-        enemyAnimator.Play("Attack Impact");
+        enemyAnimator.Play("Basic Impact");
 
         // Calculate the position for the basicPrefab
         Vector2 basicPosition = (Vector2)transform.position + directionToTarget * basicRange;
@@ -124,7 +108,7 @@ public class Hermit : Enemy
     IEnumerator RecoveryTime()
     {
         // Animate
-        enemyAnimator.Play("Attack Recovery");
+        enemyAnimator.Play("Basic Recovery");
 
         float modifiedRecoveryTime = basicRecoveryTime / CurrentAttackSpeed;
 
@@ -146,21 +130,4 @@ public class Hermit : Enemy
     }
 
     #endregion
-
-    public void AE_EndOfImpact()
-    {
-        //canRecovery = true;
-    }
-
-    public void AE_EndOfRecovery()
-    {
-        //canImpact = true;
-
-        //castBar.color = Color.yellow;
-        //castTime = 0;
-        //UpdateCastBar(0, basicCastTime);
-
-        // State Transition
-        //enemyState = EnemyState.Idle;
-    }
 }

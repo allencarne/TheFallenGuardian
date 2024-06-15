@@ -50,7 +50,6 @@ public class Enemy : MonoBehaviour, IDamageable
     protected Rigidbody2D enemyRB;
     [SerializeField] Collider2D enemyCollider2D;
 
-
     // Idle
     protected float idleTime;
     protected Vector2 startingPosition;
@@ -73,6 +72,11 @@ public class Enemy : MonoBehaviour, IDamageable
     protected bool canSpecial = true;
     bool canReset = true;
     bool canDeath = true;
+
+    [Header("Variables")]
+    protected bool hasAttacked = false;
+    protected bool canImpact = false; // bug with snail
+    protected Vector2 directionToTarget;
 
     // Regen
     private float regenTimer = 0f;
