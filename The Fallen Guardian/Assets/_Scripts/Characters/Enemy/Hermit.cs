@@ -9,7 +9,7 @@ public class Hermit : Enemy
     bool canImpact = true;
     bool canRecovery = false;
     Vector2 directionToTarget;
-    //Vector2 dashDirection;
+    Vector2 dashDirection;
 
     [Header("Attack")]
     [SerializeField] GameObject basicPrefab;
@@ -104,6 +104,13 @@ public class Hermit : Enemy
         }
     }
 
+    IEnumerator AttackCoolDown()
+    {
+        yield return new WaitForSeconds(basicCoolDown);
+
+        canAttack = true;
+    }
+
     public void AE_EndOfImpact()
     {
         canRecovery = true;
@@ -119,12 +126,5 @@ public class Hermit : Enemy
 
         // State Transition
         enemyState = EnemyState.Idle;
-    }
-
-    IEnumerator AttackCoolDown()
-    {
-        yield return new WaitForSeconds(basicCoolDown);
-
-        canAttack = true;
     }
 }
