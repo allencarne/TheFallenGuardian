@@ -123,14 +123,14 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Player_Dash_Left
     originalName: 
-    pivot: {x: 0.36842105, y: -0.19999999}
+    pivot: {x: 0.30434784, y: -0.19999999}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 19
+      width: 23
       height: 25
     spriteID: 69140eea13bba4f4fba9dd7933f8c9c7
     spriteBone: []
@@ -155,7 +155,7 @@ ScriptedImporter:
       cellRect:
         x: 9
         y: 5
-        width: 19
+        width: 23
         height: 25
       spriteId: 69140eea13bba4f4fba9dd7933f8c9c7
     linkedCells: []
