@@ -186,6 +186,7 @@ public class Hermit : Enemy
     [SerializeField] float specialImpactTime;
     [SerializeField] float specialRecoveryTime;
     [SerializeField] float specialCoolDown;
+    [SerializeField] float specialAttackRate;
 
     protected override void SpecialState()
     {
@@ -255,6 +256,7 @@ public class Hermit : Enemy
     {
         UpdateCastBar(castBarTime, modifiedCastTime);
 
+        // Wait for the modifiedCastTime duration
         yield return new WaitForSeconds(modifiedCastTime);
 
         // Animate
@@ -263,6 +265,28 @@ public class Hermit : Enemy
         // Set Cast Bar Color
         castBar.color = Color.green;
 
+        // Delay
+        StartCoroutine(SpecialImpactDelay());
+    }
+
+    IEnumerator SpecialImpactDelay()
+    {
+        // Start invoking the SpawnSpecialPrefab method every second
+        InvokeRepeating("SpawnSpecialPrefab", 0f, specialAttackRate);
+
+        yield return new WaitForSeconds(specialImpactTime);
+
+        // Stop invoking the SpawnSpecialPrefab method
+        CancelInvoke("SpawnSpecialPrefab");
+
+        canImpact = true;
+
+        castBarTime = 0;
+        StartCoroutine(EndCastBar());
+    }
+
+    void SpawnSpecialPrefab()
+    {
         GameObject special = Instantiate(specialPrefab, transform.position, Quaternion.identity, transform);
 
         DamageOnTrigger damageOnTrigger = special.GetComponent<DamageOnTrigger>();
@@ -272,19 +296,6 @@ public class Hermit : Enemy
             damageOnTrigger.CharacterDamage = CurrentDamage;
             damageOnTrigger.HitEffect = specialHitEffect;
         }
-
-        // Delay
-        StartCoroutine(SpecialImpactDelay());
-    }
-
-    IEnumerator SpecialImpactDelay()
-    {
-        yield return new WaitForSeconds(specialImpactTime);
-
-        canImpact = true;
-
-        castBarTime = 0;
-        StartCoroutine(EndCastBar());
     }
 
     IEnumerator SpecialRecoveryTime()
