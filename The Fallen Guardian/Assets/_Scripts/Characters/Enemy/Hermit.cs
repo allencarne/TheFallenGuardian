@@ -62,8 +62,8 @@ public class Hermit : Enemy
             // Calculate the direction from the enemy to the target
             directionToTarget = (target.position - transform.position).normalized;
 
-            // Calculate the angle in degrees from the direction
-            float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+            // Calculate the position for the basicPrefab
+            vectorToTarget = (Vector2)transform.position + directionToTarget * basicRange;
 
             // Play attack animation
             enemyAnimator.Play("Basic Cast");
@@ -71,7 +71,13 @@ public class Hermit : Enemy
             enemyAnimator.SetFloat("Vertical", directionToTarget.y);
 
             // Instantiate the telegraph object at the enemy position with the appropriate rotation
-            Instantiate(basicTelegraph, transform.position, Quaternion.Euler(0f, 0f, angle), transform);
+            GameObject telegraph = Instantiate(basicTelegraph, vectorToTarget, Quaternion.identity, transform);
+
+            FillTelegraph fillTelegraph = telegraph.GetComponent<FillTelegraph>();
+            if (fillTelegraph != null)
+            {
+                fillTelegraph.FillSpeed = modifiedCastTime;
+            }
 
             // Timers
             StartCoroutine(BasicImpact());
@@ -98,10 +104,10 @@ public class Hermit : Enemy
         // Set Cast Bar Color
         castBar.color = Color.green;
 
-        // Calculate the position for the basicPrefab
-        Vector2 basicPosition = (Vector2)transform.position + directionToTarget * basicRange;
+        GameObject basic = Instantiate(basicPrefab, vectorToTarget, Quaternion.identity);
 
-        GameObject basic = Instantiate(basicPrefab, basicPosition, Quaternion.identity);
+        // Cannot Hit Self with Attack
+        Physics2D.IgnoreCollision(basic.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
 
         DamageOnTrigger damageOnTrigger = basic.GetComponent<DamageOnTrigger>();
         if (damageOnTrigger != null)
