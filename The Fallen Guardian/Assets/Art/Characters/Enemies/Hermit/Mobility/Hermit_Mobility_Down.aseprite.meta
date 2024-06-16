@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Hermit_Mobility_Down_Frame_0
     originalName: 
-    pivot: {x: 0.53333336, y: -0.31578946}
+    pivot: {x: 0.53333336, y: -0.4117647}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 60
+      y: 4
       width: 15
-      height: 19
+      height: 17
     spriteID: fabb4d55b2b160f4084fc4b4d60c0ea9
     spriteBone: []
     spriteOutline: []
@@ -140,18 +140,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 60}
+    uvTransform: {x: 4, y: 4}
   - name: Hermit_Mobility_Down_Frame_1
     originalName: 
-    pivot: {x: 0.53333336, y: -0.2}
+    pivot: {x: 0.53333336, y: -0.4375}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
+      y: 54
       width: 15
-      height: 20
+      height: 16
     spriteID: 590c57c1bdaa170408d0e2000298c865
     spriteBone: []
     spriteOutline: []
@@ -160,17 +160,17 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 4, y: 54}
   - name: Hermit_Mobility_Down_Frame_2
     originalName: 
-    pivot: {x: 0.53333336, y: -0.21052632}
+    pivot: {x: 0.54545456, y: -0.47368422}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 87
-      width: 15
+      x: 27
+      y: 4
+      width: 11
       height: 19
     spriteID: 70271e77293330c4786570ca642e1fd1
     spriteBone: []
@@ -180,18 +180,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 87}
+    uvTransform: {x: 27, y: 4}
   - name: Hermit_Mobility_Down_Frame_3
     originalName: 
-    pivot: {x: 0.53333336, y: -0.1}
+    pivot: {x: 0.54545456, y: -0.6315789}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 32
-      width: 15
-      height: 20
+      x: 27
+      y: 31
+      width: 11
+      height: 19
     spriteID: 52660782e48a34d44a1eec56b901ec9b
     spriteBone: []
     spriteOutline: []
@@ -200,18 +200,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 32}
+    uvTransform: {x: 27, y: 31}
   - name: Hermit_Mobility_Down_Frame_5
     originalName: 
-    pivot: {x: 0.54545456, y: -0.6315789}
+    pivot: {x: 0.54545456, y: -0.55}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 27
-      y: 53
+      x: 4
+      y: 102
       width: 11
-      height: 19
+      height: 20
     spriteID: 89a214aeaf9d071418276e5efc33b4f3
     spriteBone: []
     spriteOutline: []
@@ -220,16 +220,16 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 27, y: 53}
+    uvTransform: {x: 4, y: 102}
   - name: Hermit_Mobility_Down_Frame_6
     originalName: 
-    pivot: {x: 0.54545456, y: -0.47368422}
+    pivot: {x: 0.54545456, y: -0.6315789}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 27
-      y: 80
+      y: 58
       width: 11
       height: 19
     spriteID: 2755b9f2443cdd94e8b894066fcdc861
@@ -240,18 +240,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 27, y: 80}
+    uvTransform: {x: 27, y: 58}
   - name: Hermit_Mobility_Down_Frame_7
     originalName: 
-    pivot: {x: 0.53333336, y: -0.4375}
+    pivot: {x: 0.54545456, y: -0.47368422}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 27
-      y: 29
-      width: 15
-      height: 16
+      y: 85
+      width: 11
+      height: 19
     spriteID: f63d77323126607428ce857dbcd8388f
     spriteBone: []
     spriteOutline: []
@@ -260,18 +260,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 27, y: 29}
+    uvTransform: {x: 27, y: 85}
   - name: Hermit_Mobility_Down_Frame_8
     originalName: 
-    pivot: {x: 0.53333336, y: -0.4117647}
+    pivot: {x: 0.53333336, y: -0.4375}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 27
-      y: 4
+      x: 4
+      y: 78
       width: 15
-      height: 17
+      height: 16
     spriteID: a9feec032955e0048a2fb86ed9c4c1ff
     spriteBone: []
     spriteOutline: []
@@ -280,7 +280,27 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 27, y: 4}
+    uvTransform: {x: 4, y: 78}
+  - name: Hermit_Mobility_Down_Frame_8
+    originalName: 
+    pivot: {x: 0.53333336, y: -0.4117647}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 29
+      width: 15
+      height: 17
+    spriteID: 4d0cf3e91b36ab64ebc33f5b45bb6234
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 29}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -294,34 +314,42 @@ ScriptedImporter:
       frameIndex: 0
       cellRect:
         x: 8
-        y: 6
+        y: 7
         width: 15
-        height: 19
+        height: 17
       spriteId: fabb4d55b2b160f4084fc4b4d60c0ea9
     - name: Hermit_Mobility_Down_Frame_1
       frameIndex: 1
       cellRect:
         x: 8
-        y: 4
+        y: 7
         width: 15
-        height: 20
+        height: 16
       spriteId: 590c57c1bdaa170408d0e2000298c865
     - name: Hermit_Mobility_Down_Frame_2
       frameIndex: 2
       cellRect:
-        x: 8
-        y: 4
-        width: 15
+        x: 10
+        y: 9
+        width: 11
         height: 19
       spriteId: 70271e77293330c4786570ca642e1fd1
     - name: Hermit_Mobility_Down_Frame_3
       frameIndex: 3
       cellRect:
-        x: 8
-        y: 2
-        width: 15
-        height: 20
+        x: 10
+        y: 12
+        width: 11
+        height: 19
       spriteId: 52660782e48a34d44a1eec56b901ec9b
+    - name: Hermit_Mobility_Down_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 10
+        y: 11
+        width: 11
+        height: 20
+      spriteId: 89a214aeaf9d071418276e5efc33b4f3
     - name: Hermit_Mobility_Down_Frame_5
       frameIndex: 5
       cellRect:
@@ -329,7 +357,7 @@ ScriptedImporter:
         y: 12
         width: 11
         height: 19
-      spriteId: 89a214aeaf9d071418276e5efc33b4f3
+      spriteId: 2755b9f2443cdd94e8b894066fcdc861
     - name: Hermit_Mobility_Down_Frame_6
       frameIndex: 6
       cellRect:
@@ -337,7 +365,7 @@ ScriptedImporter:
         y: 9
         width: 11
         height: 19
-      spriteId: 2755b9f2443cdd94e8b894066fcdc861
+      spriteId: f63d77323126607428ce857dbcd8388f
     - name: Hermit_Mobility_Down_Frame_7
       frameIndex: 7
       cellRect:
@@ -345,7 +373,7 @@ ScriptedImporter:
         y: 7
         width: 15
         height: 16
-      spriteId: f63d77323126607428ce857dbcd8388f
+      spriteId: a9feec032955e0048a2fb86ed9c4c1ff
     - name: Hermit_Mobility_Down_Frame_8
       frameIndex: 8
       cellRect:
@@ -353,7 +381,7 @@ ScriptedImporter:
         y: 7
         width: 15
         height: 17
-      spriteId: a9feec032955e0048a2fb86ed9c4c1ff
+      spriteId: 4d0cf3e91b36ab64ebc33f5b45bb6234
     linkedCells: []
     parentIndex: -1
   platformSettings: []

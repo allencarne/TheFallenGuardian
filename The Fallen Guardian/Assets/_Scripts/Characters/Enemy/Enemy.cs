@@ -75,6 +75,7 @@ public class Enemy : MonoBehaviour, IDamageable
     protected bool hasAttacked = false;
     protected bool canImpact = false; // bug with snail
     protected Vector2 directionToTarget;
+    protected float modifiedCastTime;
 
     protected float castBarTime = 0;
 

@@ -20,12 +20,9 @@ public class Hermit : Enemy
     [SerializeField] float basicRecoveryTime;
     [SerializeField] float basicCoolDown;
 
-    float modifiedCastTime;
-
     protected override void AttackState()
     {
         modifiedCastTime = basicCastTime / CurrentAttackSpeed;
-
 
         if (castBar.color == Color.yellow)
         {
@@ -183,12 +180,136 @@ public class Hermit : Enemy
 
     [Header("Stats")]
     [SerializeField] int specialDamage;
-    [SerializeField] float specialRange;
 
     [Header("Time")]
     [SerializeField] float specialCastTime;
+    [SerializeField] float specialImpactTime;
     [SerializeField] float specialRecoveryTime;
     [SerializeField] float specialCoolDown;
+
+    protected override void SpecialState()
+    {
+        modifiedCastTime = specialCastTime / CurrentAttackSpeed;
+
+        if (castBar.color == Color.yellow)
+        {
+            // Increase cast bar time once per second
+            castBarTime += Time.deltaTime;
+
+            // If we are not interrupted, Update the cast bar
+            UpdateCastBar(castBarTime, modifiedCastTime);
+        }
+
+        if (crowdControl.IsInterrupted)
+        {
+            if (castBar.color != Color.green)
+            {
+                // ResetCast Time
+                castBarTime = 0;
+
+                // Set Cast Bar Color
+                castBar.color = Color.red;
+
+                // State Transition
+                enemyState = EnemyState.Idle;
+
+                StartCoroutine(ResetCastBar());
+                return;
+            }
+        }
+
+        if (canSpecial && target != null && !hasAttacked)
+        {
+            hasAttacked = true;
+            canSpecial = false;
+
+            // Set Cast Bar Color
+            castBar.color = Color.yellow;
+
+            // Play attack animation
+            enemyAnimator.Play("Special Cast");
+
+            // Instantiate the telegraph object at the enemy position with the appropriate rotation
+            GameObject telegraph = Instantiate(specialTelegraph, transform.position, Quaternion.identity, transform);
+
+            FillTelegraph fillTelegraph = telegraph.GetComponent<FillTelegraph>();
+            if (fillTelegraph != null)
+            {
+                fillTelegraph.FillSpeed = modifiedCastTime;
+            }
+
+            // Timers
+            StartCoroutine(SpecialImpact());
+            StartCoroutine(SpecialCoolDown());
+        }
+
+        if (canImpact)
+        {
+            canImpact = false;
+
+            StartCoroutine(SpecialRecoveryTime());
+        }
+    }
+
+    IEnumerator SpecialImpact()
+    {
+        UpdateCastBar(castBarTime, modifiedCastTime);
+
+        yield return new WaitForSeconds(modifiedCastTime);
+
+        // Animate
+        enemyAnimator.Play("Special Impact");
+
+        // Set Cast Bar Color
+        castBar.color = Color.green;
+
+        GameObject special = Instantiate(specialPrefab, transform.position, Quaternion.identity, transform);
+
+        DamageOnTrigger damageOnTrigger = special.GetComponent<DamageOnTrigger>();
+        if (damageOnTrigger != null)
+        {
+            damageOnTrigger.AbilityDamage = specialDamage;
+            damageOnTrigger.CharacterDamage = CurrentDamage;
+            damageOnTrigger.HitEffect = specialHitEffect;
+        }
+
+        // Delay
+        StartCoroutine(SpecialImpactDelay());
+    }
+
+    IEnumerator SpecialImpactDelay()
+    {
+        yield return new WaitForSeconds(specialImpactTime);
+
+        canImpact = true;
+
+        castBarTime = 0;
+        StartCoroutine(EndCastBar());
+    }
+
+    IEnumerator SpecialRecoveryTime()
+    {
+        // Animate
+        enemyAnimator.Play("Special Recovery");
+
+        float modifiedRecoveryTime = specialRecoveryTime / CurrentAttackSpeed;
+
+        yield return new WaitForSeconds(modifiedRecoveryTime);
+
+        hasAttacked = false;
+
+        enemyState = EnemyState.Idle;
+    }
+
+    IEnumerator SpecialCoolDown()
+    {
+        // Adjust cooldown time based on cooldown reduction
+        float modifiedCooldown = specialCoolDown / CurrentCDR;
+
+        yield return new WaitForSeconds(modifiedCooldown);
+
+        canSpecial = true;
+    }
 
     #endregion
 }
