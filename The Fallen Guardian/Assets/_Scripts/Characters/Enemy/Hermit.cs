@@ -244,10 +244,20 @@ public class Hermit : Enemy
             // Calculate the direction from the enemy to the target
             directionToTarget = (target.position - transform.position).normalized;
 
-            // Calculate the Range required to hit the target
+            // Calculate the distance to the target
+            float distanceToTarget = Vector2.Distance(transform.position, target.position);
 
-            // Calculate the position for the basicPrefab
-            vectorToTarget = (Vector2)transform.position + directionToTarget * mobilityRange;
+            // Check if the target is within mobilityRange
+            if (distanceToTarget > mobilityRange)
+            {
+                // If the target is beyond mobilityRange, set the target position to the maximum range
+                vectorToTarget = (Vector2)transform.position + directionToTarget * mobilityRange;
+            }
+            else
+            {
+                // If the target is within mobilityRange, set the target position to the target's position
+                vectorToTarget = target.position;
+            }
 
             // Play attack animation
             enemyAnimator.Play("Mobility Cast");
