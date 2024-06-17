@@ -79,6 +79,8 @@ public class Enemy : MonoBehaviour, IDamageable
     protected Vector2 vectorToTarget;
     //protected float angleToTarget;
     protected float modifiedCastTime;
+    protected float modifiedImpactTime;
+    protected float modifiedRecoveryTime;
 
     protected float castBarTime = 0;
 

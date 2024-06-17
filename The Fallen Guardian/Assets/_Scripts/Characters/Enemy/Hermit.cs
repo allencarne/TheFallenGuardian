@@ -217,13 +217,17 @@ public class Hermit : Enemy
 
     protected override void MobilityState()
     {
+        modifiedCastTime = mobilityCastTime / CurrentAttackSpeed;
+        modifiedImpactTime = mobilityImpactTime / CurrentAttackSpeed;
+        modifiedRecoveryTime = mobilityRecoveryTime / CurrentAttackSpeed;
+
         if (castBar.color == Color.yellow)
         {
             // Increase cast bar time once per second
             castBarTime += Time.deltaTime;
 
             // If we are not interrupted, Update the cast bar
-            UpdateCastBar(castBarTime, mobilityCastTime);
+            UpdateCastBar(castBarTime, modifiedCastTime);
         }
 
         if (crowdControl.IsInterrupted)
@@ -288,7 +292,7 @@ public class Hermit : Enemy
             FillTelegraph fillTelegraph = mobilityTelegraqphInstance.GetComponent<FillTelegraph>();
             if (fillTelegraph != null)
             {
-                fillTelegraph.FillSpeed = mobilityCastTime + mobilityImpactTime + mobilityRecoveryTime;
+                fillTelegraph.FillSpeed = modifiedCastTime + modifiedImpactTime + modifiedRecoveryTime;
             }
 
             // Timers
@@ -306,9 +310,9 @@ public class Hermit : Enemy
 
     IEnumerator MobilityImpact()
     {
-        UpdateCastBar(castBarTime, mobilityCastTime);
+        UpdateCastBar(castBarTime, modifiedCastTime);
 
-        yield return new WaitForSeconds(mobilityCastTime);
+        yield return new WaitForSeconds(modifiedCastTime);
 
         if (!wasInterrupted)
         {
@@ -333,7 +337,7 @@ public class Hermit : Enemy
 
     IEnumerator MobilityImpactDelay()
     {
-        yield return new WaitForSeconds(mobilityImpactTime);
+        yield return new WaitForSeconds(modifiedImpactTime);
 
         canImpact = true;
 
@@ -346,7 +350,7 @@ public class Hermit : Enemy
         // Animate
         enemyAnimator.Play("Mobility Recovery");
 
-        yield return new WaitForSeconds(mobilityRecoveryTime);
+        yield return new WaitForSeconds(modifiedRecoveryTime);
 
         canDash = false;
 
