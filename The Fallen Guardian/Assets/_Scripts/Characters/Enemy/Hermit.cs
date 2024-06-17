@@ -318,6 +318,8 @@ public class Hermit : Enemy
         {
             canDash = true;
 
+            Instantiate(mobilityStartPrefab, transform.position, transform.rotation);
+
             // Animate
             enemyAnimator.Play("Mobility Impact");
 
@@ -356,7 +358,8 @@ public class Hermit : Enemy
 
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
 
-        GameObject mobility = Instantiate(mobilityStartPrefab, vectorToTarget, Quaternion.identity);
+        GameObject mobility = Instantiate(mobilityEndPrefab, vectorToTarget, Quaternion.identity);
+        Instantiate(mobilityStartPrefab, transform.position, transform.rotation);
 
         // Cannot Hit Self with Attack
         Physics2D.IgnoreCollision(mobility.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
