@@ -78,9 +78,9 @@ public class Hermit : Enemy
             }
         }
 
-        if (canAttack && target != null && !hasAttacked)
+        if (canAttack && target != null)
         {
-            hasAttacked = true;
+            //hasAttacked = true;
             canAttack = false;
 
             // Set Cast Bar Color
@@ -98,7 +98,7 @@ public class Hermit : Enemy
             enemyAnimator.SetFloat("Vertical", directionToTarget.y);
 
             // Instantiate the telegraph
-            basicTelegraphInstance = Instantiate(basicTelegraph, vectorToTarget, Quaternion.identity, transform);
+            basicTelegraphInstance = Instantiate(basicTelegraph, vectorToTarget, Quaternion.identity);
 
             FillTelegraph fillTelegraph = basicTelegraphInstance.GetComponent<FillTelegraph>();
             if (fillTelegraph != null)
@@ -152,8 +152,6 @@ public class Hermit : Enemy
         else
         {
             wasInterrupted = false;
-
-            hasAttacked = false;
         }
     }
 
@@ -172,11 +170,13 @@ public class Hermit : Enemy
         // Animate
         enemyAnimator.Play("Basic Recovery");
 
-        float modifiedRecoveryTime = basicRecoveryTime / CurrentAttackSpeed;
+        float _modifiedRecoveryTime = basicRecoveryTime / CurrentAttackSpeed;
 
-        yield return new WaitForSeconds(modifiedRecoveryTime);
+        yield return new WaitForSeconds(_modifiedRecoveryTime);
 
-        hasAttacked = false;
+        //hasAttacked = false;
+
+        wasInterrupted = false;
 
         enemyState = EnemyState.Idle;
     }
@@ -255,9 +255,8 @@ public class Hermit : Enemy
             }
         }
 
-        if (canMobility && target != null && !hasAttacked)
+        if (canMobility && target != null)
         {
-            hasAttacked = true;
             canMobility = false;
 
             // Set Cast Bar Color
@@ -332,8 +331,6 @@ public class Hermit : Enemy
         else
         {
             wasInterrupted = false;
-
-            hasAttacked = false;
         }
     }
 
@@ -372,7 +369,7 @@ public class Hermit : Enemy
             damageOnTrigger.HitEffect = mobilityHitEffect;
         }
 
-        hasAttacked = false;
+        wasInterrupted = false;
 
         enemyState = EnemyState.Idle;
     }
@@ -447,9 +444,8 @@ public class Hermit : Enemy
             }
         }
 
-        if (canSpecial && target != null && !hasAttacked)
+        if (canSpecial && target != null)
         {
-            hasAttacked = true;
             canSpecial = false;
 
             // Set Cast Bar Color
@@ -501,8 +497,6 @@ public class Hermit : Enemy
         else
         {
             wasInterrupted = false;
-
-            hasAttacked = false;
         }
     }
 
@@ -540,11 +534,11 @@ public class Hermit : Enemy
         // Animate
         enemyAnimator.Play("Special Recovery");
 
-        float modifiedRecoveryTime = specialRecoveryTime / CurrentAttackSpeed;
+        float _modifiedRecoveryTime = specialRecoveryTime / CurrentAttackSpeed;
 
-        yield return new WaitForSeconds(modifiedRecoveryTime);
+        yield return new WaitForSeconds(_modifiedRecoveryTime);
 
-        hasAttacked = false;
+        wasInterrupted = false;
 
         enemyState = EnemyState.Idle;
     }

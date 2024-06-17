@@ -73,7 +73,6 @@ public class Enemy : MonoBehaviour, IDamageable
     protected bool wasInterrupted = false;
 
     [Header("Attack")]
-    protected bool hasAttacked = false;
     protected bool canImpact = false; // bug with snail
     protected Vector2 directionToTarget;
     protected Vector2 vectorToTarget;
