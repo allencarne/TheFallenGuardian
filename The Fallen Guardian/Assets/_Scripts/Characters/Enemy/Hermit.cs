@@ -7,9 +7,11 @@ public class Hermit : Enemy
     #region Basic
 
     [Header("Basic")]
+    [SerializeField] GameObject basicTelegraph;
+    GameObject basicTelegraphInstance;
+
     [SerializeField] GameObject basicPrefab;
     [SerializeField] GameObject basicHitEffect;
-    [SerializeField] GameObject basicTelegraph;
 
     [Header("Stats")]
     [SerializeField] int basicDamage;
@@ -19,6 +21,8 @@ public class Hermit : Enemy
     [SerializeField] float basicCastTime;
     [SerializeField] float basicRecoveryTime;
     [SerializeField] float basicCoolDown;
+
+    bool wasInterrupted = false;
 
     protected override void AttackState()
     {
@@ -35,6 +39,13 @@ public class Hermit : Enemy
 
         if (crowdControl.IsInterrupted)
         {
+            wasInterrupted = true;
+
+            if (basicTelegraphInstance)
+            {
+                Destroy(basicTelegraphInstance);
+            }
+
             if (castBar.color != Color.green)
             {
                 // ResetCast Time
@@ -71,9 +82,9 @@ public class Hermit : Enemy
             enemyAnimator.SetFloat("Vertical", directionToTarget.y);
 
             // Instantiate the telegraph object at the enemy position with the appropriate rotation
-            GameObject telegraph = Instantiate(basicTelegraph, vectorToTarget, Quaternion.identity, transform);
+            basicTelegraphInstance = Instantiate(basicTelegraph, vectorToTarget, Quaternion.identity, transform);
 
-            FillTelegraph fillTelegraph = telegraph.GetComponent<FillTelegraph>();
+            FillTelegraph fillTelegraph = basicTelegraphInstance.GetComponent<FillTelegraph>();
             if (fillTelegraph != null)
             {
                 fillTelegraph.FillSpeed = modifiedCastTime;
@@ -98,27 +109,36 @@ public class Hermit : Enemy
 
         yield return new WaitForSeconds(modifiedCastTime);
 
-        // Animate
-        enemyAnimator.Play("Basic Impact");
-
-        // Set Cast Bar Color
-        castBar.color = Color.green;
-
-        GameObject basic = Instantiate(basicPrefab, vectorToTarget, Quaternion.identity);
-
-        // Cannot Hit Self with Attack
-        Physics2D.IgnoreCollision(basic.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
-
-        DamageOnTrigger damageOnTrigger = basic.GetComponent<DamageOnTrigger>();
-        if (damageOnTrigger != null)
+        if (!wasInterrupted)
         {
-            damageOnTrigger.AbilityDamage = basicDamage;
-            damageOnTrigger.CharacterDamage = CurrentDamage;
-            damageOnTrigger.HitEffect = basicHitEffect;
-        }
+            // Animate
+            enemyAnimator.Play("Basic Impact");
 
-        // Delay
-        StartCoroutine(ImpactDelay());
+            // Set Cast Bar Color
+            castBar.color = Color.green;
+
+            GameObject basic = Instantiate(basicPrefab, vectorToTarget, Quaternion.identity, transform);
+
+            // Cannot Hit Self with Attack
+            Physics2D.IgnoreCollision(basic.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+
+            DamageOnTrigger damageOnTrigger = basic.GetComponent<DamageOnTrigger>();
+            if (damageOnTrigger != null)
+            {
+                damageOnTrigger.AbilityDamage = basicDamage;
+                damageOnTrigger.CharacterDamage = CurrentDamage;
+                damageOnTrigger.HitEffect = basicHitEffect;
+            }
+
+            // Delay
+            StartCoroutine(ImpactDelay());
+        }
+        else
+        {
+            wasInterrupted = false;
+
+            hasAttacked = false;
+        }
     }
 
     IEnumerator ImpactDelay()
