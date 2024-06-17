@@ -70,6 +70,7 @@ public class Enemy : MonoBehaviour, IDamageable
     protected bool canSpecial = true;
     bool canReset = true;
     bool canDeath = true;
+    protected bool wasInterrupted = false;
 
     [Header("Attack")]
     protected bool hasAttacked = false;

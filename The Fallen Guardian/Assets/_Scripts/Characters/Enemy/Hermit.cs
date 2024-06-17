@@ -22,8 +22,6 @@ public class Hermit : Enemy
     [SerializeField] float basicRecoveryTime;
     [SerializeField] float basicCoolDown;
 
-    bool wasInterrupted = false;
-
     protected override void AttackState()
     {
         modifiedCastTime = basicCastTime / CurrentAttackSpeed;
@@ -81,7 +79,7 @@ public class Hermit : Enemy
             enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
             enemyAnimator.SetFloat("Vertical", directionToTarget.y);
 
-            // Instantiate the telegraph object at the enemy position with the appropriate rotation
+            // Instantiate the telegraph
             basicTelegraphInstance = Instantiate(basicTelegraph, vectorToTarget, Quaternion.identity, transform);
 
             FillTelegraph fillTelegraph = basicTelegraphInstance.GetComponent<FillTelegraph>();
@@ -200,9 +198,11 @@ public class Hermit : Enemy
     #region Special
 
     [Header("Special")]
+    [SerializeField] GameObject specialTelegraph;
+    GameObject specialTelegraphInstance;
+
     [SerializeField] GameObject specialPrefab;
     [SerializeField] GameObject specialHitEffect;
-    [SerializeField] GameObject specialTelegraph;
 
     [Header("Stats")]
     [SerializeField] int specialDamage;
@@ -212,6 +212,7 @@ public class Hermit : Enemy
     [SerializeField] float specialImpactTime;
     [SerializeField] float specialRecoveryTime;
     [SerializeField] float specialCoolDown;
+
     [SerializeField] float specialAttackRate;
 
     protected override void SpecialState()
@@ -229,6 +230,13 @@ public class Hermit : Enemy
 
         if (crowdControl.IsInterrupted)
         {
+            wasInterrupted = true;
+
+            if (specialTelegraphInstance)
+            {
+                Destroy(specialTelegraphInstance);
+            }
+
             if (castBar.color != Color.green)
             {
                 // ResetCast Time
@@ -256,10 +264,10 @@ public class Hermit : Enemy
             // Play attack animation
             enemyAnimator.Play("Special Cast");
 
-            // Instantiate the telegraph object at the enemy position with the appropriate rotation
-            GameObject telegraph = Instantiate(specialTelegraph, transform.position, Quaternion.identity, transform);
+            // Instantiate the telegraph
+            specialTelegraphInstance = Instantiate(specialTelegraph, transform.position, Quaternion.identity, transform);
 
-            FillTelegraph fillTelegraph = telegraph.GetComponent<FillTelegraph>();
+            FillTelegraph fillTelegraph = specialTelegraphInstance.GetComponent<FillTelegraph>();
             if (fillTelegraph != null)
             {
                 fillTelegraph.FillSpeed = modifiedCastTime;
@@ -285,14 +293,23 @@ public class Hermit : Enemy
         // Wait for the modifiedCastTime duration
         yield return new WaitForSeconds(modifiedCastTime);
 
-        // Animate
-        enemyAnimator.Play("Special Impact");
+        if (!wasInterrupted)
+        {
+            // Animate
+            enemyAnimator.Play("Special Impact");
 
-        // Set Cast Bar Color
-        castBar.color = Color.green;
+            // Set Cast Bar Color
+            castBar.color = Color.green;
 
-        // Delay
-        StartCoroutine(SpecialImpactDelay());
+            // Delay
+            StartCoroutine(SpecialImpactDelay());
+        }
+        else
+        {
+            wasInterrupted = false;
+
+            hasAttacked = false;
+        }
     }
 
     IEnumerator SpecialImpactDelay()
