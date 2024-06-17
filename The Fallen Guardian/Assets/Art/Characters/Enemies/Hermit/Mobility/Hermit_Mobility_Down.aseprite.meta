@@ -163,15 +163,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 54}
   - name: Hermit_Mobility_Down_Frame_2
     originalName: 
-    pivot: {x: 0.54545456, y: -0.47368422}
+    pivot: {x: 0.53333336, y: -0.4375}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 27
-      y: 4
-      width: 11
-      height: 19
+      x: 4
+      y: 78
+      width: 15
+      height: 16
     spriteID: 70271e77293330c4786570ca642e1fd1
     spriteBone: []
     spriteOutline: []
@@ -180,18 +180,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 27, y: 4}
+    uvTransform: {x: 4, y: 78}
   - name: Hermit_Mobility_Down_Frame_3
     originalName: 
-    pivot: {x: 0.54545456, y: -0.6315789}
+    pivot: {x: 0.53333336, y: -0.4375}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 27
-      y: 31
-      width: 11
-      height: 19
+      x: 4
+      y: 102
+      width: 15
+      height: 16
     spriteID: 52660782e48a34d44a1eec56b901ec9b
     spriteBone: []
     spriteOutline: []
@@ -200,16 +200,16 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 27, y: 31}
+    uvTransform: {x: 4, y: 102}
   - name: Hermit_Mobility_Down_Frame_5
     originalName: 
-    pivot: {x: 0.54545456, y: -0.55}
+    pivot: {x: 0.54545456, y: -0.6}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 102
+      x: 27
+      y: 28
       width: 11
       height: 20
     spriteID: 89a214aeaf9d071418276e5efc33b4f3
@@ -220,7 +220,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 102}
+    uvTransform: {x: 27, y: 28}
   - name: Hermit_Mobility_Down_Frame_6
     originalName: 
     pivot: {x: 0.54545456, y: -0.6315789}
@@ -229,7 +229,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 27
-      y: 58
+      y: 56
       width: 11
       height: 19
     spriteID: 2755b9f2443cdd94e8b894066fcdc861
@@ -240,7 +240,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 27, y: 58}
+    uvTransform: {x: 27, y: 56}
   - name: Hermit_Mobility_Down_Frame_7
     originalName: 
     pivot: {x: 0.54545456, y: -0.47368422}
@@ -249,7 +249,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 27
-      y: 85
+      y: 83
       width: 11
       height: 19
     spriteID: f63d77323126607428ce857dbcd8388f
@@ -260,7 +260,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 27, y: 85}
+    uvTransform: {x: 27, y: 83}
   - name: Hermit_Mobility_Down_Frame_8
     originalName: 
     pivot: {x: 0.53333336, y: -0.4375}
@@ -268,8 +268,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 78
+      x: 27
+      y: 4
       width: 15
       height: 16
     spriteID: a9feec032955e0048a2fb86ed9c4c1ff
@@ -280,7 +280,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 78}
+    uvTransform: {x: 27, y: 4}
   - name: Hermit_Mobility_Down_Frame_8
     originalName: 
     pivot: {x: 0.53333336, y: -0.4117647}
@@ -329,24 +329,24 @@ ScriptedImporter:
     - name: Hermit_Mobility_Down_Frame_2
       frameIndex: 2
       cellRect:
-        x: 10
-        y: 9
-        width: 11
-        height: 19
+        x: 8
+        y: 7
+        width: 15
+        height: 16
       spriteId: 70271e77293330c4786570ca642e1fd1
     - name: Hermit_Mobility_Down_Frame_3
       frameIndex: 3
       cellRect:
-        x: 10
-        y: 12
-        width: 11
-        height: 19
+        x: 8
+        y: 7
+        width: 15
+        height: 16
       spriteId: 52660782e48a34d44a1eec56b901ec9b
     - name: Hermit_Mobility_Down_Frame_4
       frameIndex: 4
       cellRect:
         x: 10
-        y: 11
+        y: 12
         width: 11
         height: 20
       spriteId: 89a214aeaf9d071418276e5efc33b4f3

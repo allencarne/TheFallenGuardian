@@ -217,15 +217,13 @@ public class Hermit : Enemy
 
     protected override void MobilityState()
     {
-        modifiedCastTime = mobilityCastTime / CurrentAttackSpeed;
-
         if (castBar.color == Color.yellow)
         {
             // Increase cast bar time once per second
             castBarTime += Time.deltaTime;
 
             // If we are not interrupted, Update the cast bar
-            UpdateCastBar(castBarTime, modifiedCastTime);
+            UpdateCastBar(castBarTime, mobilityCastTime);
         }
 
         if (crowdControl.IsInterrupted)
@@ -308,9 +306,9 @@ public class Hermit : Enemy
 
     IEnumerator MobilityImpact()
     {
-        UpdateCastBar(castBarTime, modifiedCastTime);
+        UpdateCastBar(castBarTime, mobilityCastTime);
 
-        yield return new WaitForSeconds(modifiedCastTime);
+        yield return new WaitForSeconds(mobilityCastTime);
 
         if (!wasInterrupted)
         {
@@ -348,9 +346,7 @@ public class Hermit : Enemy
         // Animate
         enemyAnimator.Play("Mobility Recovery");
 
-        float modifiedRecoveryTime = mobilityRecoveryTime / CurrentAttackSpeed;
-
-        yield return new WaitForSeconds(modifiedRecoveryTime);
+        yield return new WaitForSeconds(mobilityRecoveryTime);
 
         canDash = false;
 
