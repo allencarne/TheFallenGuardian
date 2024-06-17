@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class Hermit : Enemy
 {
+
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+
+        if (enemyState == EnemyState.Mobility && target != null)
+        {
+            if (canDash)
+            {
+                // Disable collision between enemy and player
+                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), true);
+
+                // Interpolate the enemy's position towards the target
+                transform.position = Vector2.Lerp(transform.position, vectorToTarget, Time.fixedDeltaTime * 5);
+            }
+        }
+    }
+
     #region Basic
 
     [Header("Basic")]
@@ -195,6 +213,8 @@ public class Hermit : Enemy
     [SerializeField] float mobilityRecoveryTime;
     [SerializeField] float mobilityCoolDown;
 
+    bool canDash = false;
+
     protected override void MobilityState()
     {
         modifiedCastTime = mobilityCastTime / CurrentAttackSpeed;
@@ -265,7 +285,7 @@ public class Hermit : Enemy
             enemyAnimator.SetFloat("Vertical", directionToTarget.y);
 
             // Instantiate the telegraph
-            mobilityTelegraqphInstance = Instantiate(mobilitTelegraph, vectorToTarget, Quaternion.identity, transform);
+            mobilityTelegraqphInstance = Instantiate(mobilitTelegraph, vectorToTarget, Quaternion.identity);
 
             FillTelegraph fillTelegraph = mobilityTelegraqphInstance.GetComponent<FillTelegraph>();
             if (fillTelegraph != null)
@@ -294,6 +314,8 @@ public class Hermit : Enemy
 
         if (!wasInterrupted)
         {
+            canDash = true;
+
             // Animate
             enemyAnimator.Play("Mobility Impact");
 
@@ -329,6 +351,10 @@ public class Hermit : Enemy
         float modifiedRecoveryTime = mobilityRecoveryTime / CurrentAttackSpeed;
 
         yield return new WaitForSeconds(modifiedRecoveryTime);
+
+        canDash = false;
+
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
 
         GameObject mobility = Instantiate(mobilityStartPrefab, vectorToTarget, Quaternion.identity);
 
