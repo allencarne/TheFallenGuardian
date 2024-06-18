@@ -78,10 +78,10 @@ public class Hermit : Enemy
             }
         }
 
-        if (canAttack && target != null)
+        if (canAttack && target != null && !hasAttacked)
         {
-            //hasAttacked = true;
             canAttack = false;
+            hasAttacked = true;
 
             // Set Cast Bar Color
             castBar.color = Color.yellow;
@@ -121,6 +121,7 @@ public class Hermit : Enemy
 
     IEnumerator BasicImpact()
     {
+        // Remove this?
         UpdateCastBar(castBarTime, modifiedCastTime);
 
         yield return new WaitForSeconds(modifiedCastTime);
@@ -152,6 +153,7 @@ public class Hermit : Enemy
         else
         {
             wasInterrupted = false;
+            hasAttacked = false;
         }
     }
 
@@ -174,9 +176,8 @@ public class Hermit : Enemy
 
         yield return new WaitForSeconds(_modifiedRecoveryTime);
 
-        //hasAttacked = false;
-
         wasInterrupted = false;
+        hasAttacked = false;
 
         enemyState = EnemyState.Idle;
     }
@@ -255,9 +256,10 @@ public class Hermit : Enemy
             }
         }
 
-        if (canMobility && target != null)
+        if (canMobility && target != null && !hasAttacked)
         {
             canMobility = false;
+            hasAttacked = true;
 
             // Set Cast Bar Color
             castBar.color = Color.yellow;
@@ -331,6 +333,7 @@ public class Hermit : Enemy
         else
         {
             wasInterrupted = false;
+            hasAttacked = false;
         }
     }
 
@@ -353,7 +356,10 @@ public class Hermit : Enemy
 
         canDash = false;
 
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
+        if (target != null)
+        {
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
+        }
 
         GameObject mobility = Instantiate(mobilityEndPrefab, vectorToTarget, Quaternion.identity);
         Instantiate(mobilityStartPrefab, transform.position, transform.rotation);
@@ -370,6 +376,7 @@ public class Hermit : Enemy
         }
 
         wasInterrupted = false;
+        hasAttacked = false;
 
         enemyState = EnemyState.Idle;
     }
@@ -444,9 +451,10 @@ public class Hermit : Enemy
             }
         }
 
-        if (canSpecial && target != null)
+        if (canSpecial && target != null && !hasAttacked)
         {
             canSpecial = false;
+            hasAttacked = true;
 
             // Set Cast Bar Color
             castBar.color = Color.yellow;
@@ -497,6 +505,7 @@ public class Hermit : Enemy
         else
         {
             wasInterrupted = false;
+            hasAttacked = false;
         }
     }
 
@@ -539,6 +548,7 @@ public class Hermit : Enemy
         yield return new WaitForSeconds(_modifiedRecoveryTime);
 
         wasInterrupted = false;
+        hasAttacked = false;
 
         enemyState = EnemyState.Idle;
     }
