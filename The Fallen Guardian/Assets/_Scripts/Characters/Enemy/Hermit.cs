@@ -37,12 +37,15 @@ public class Hermit : Enemy
 
     [Header("Time")]
     [SerializeField] float basicCastTime;
+    [SerializeField] float basicImpactTime;
     [SerializeField] float basicRecoveryTime;
     [SerializeField] float basicCoolDown;
 
     protected override void AttackState()
     {
         modifiedCastTime = basicCastTime / CurrentAttackSpeed;
+        modifiedImpactTime = basicImpactTime / CurrentAttackSpeed;
+        modifiedRecoveryTime = basicRecoveryTime / CurrentAttackSpeed;
 
         if (castBar.color == Color.yellow)
         {
@@ -100,30 +103,20 @@ public class Hermit : Enemy
             // Instantiate the telegraph
             basicTelegraphInstance = Instantiate(basicTelegraph, vectorToTarget, Quaternion.identity);
 
-            FillTelegraph fillTelegraph = basicTelegraphInstance.GetComponent<FillTelegraph>();
-            if (fillTelegraph != null)
+            FillTelegraph _fillTelegraph = basicTelegraphInstance.GetComponent<FillTelegraph>();
+            if (_fillTelegraph != null)
             {
-                fillTelegraph.FillSpeed = modifiedCastTime;
+                _fillTelegraph.FillSpeed = modifiedCastTime;
             }
 
             // Timers
-            StartCoroutine(BasicImpact());
+            StartCoroutine(BasicCast());
             StartCoroutine(AttackCoolDown());
-        }
-
-        if (canImpact)
-        {
-            canImpact = false;
-
-            StartCoroutine(RecoveryTime());
         }
     }
 
-    IEnumerator BasicImpact()
+    IEnumerator BasicCast()
     {
-        // Remove this?
-        UpdateCastBar(castBarTime, modifiedCastTime);
-
         yield return new WaitForSeconds(modifiedCastTime);
 
         if (!wasInterrupted)
@@ -134,21 +127,21 @@ public class Hermit : Enemy
             // Set Cast Bar Color
             castBar.color = Color.green;
 
-            GameObject basic = Instantiate(basicPrefab, vectorToTarget, Quaternion.identity);
+            GameObject _basic = Instantiate(basicPrefab, vectorToTarget, Quaternion.identity);
 
             // Cannot Hit Self with Attack
-            Physics2D.IgnoreCollision(basic.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+            Physics2D.IgnoreCollision(_basic.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
 
-            DamageOnTrigger damageOnTrigger = basic.GetComponent<DamageOnTrigger>();
-            if (damageOnTrigger != null)
+            DamageOnTrigger _damageOnTrigger = _basic.GetComponent<DamageOnTrigger>();
+            if (_damageOnTrigger != null)
             {
-                damageOnTrigger.AbilityDamage = basicDamage;
-                damageOnTrigger.CharacterDamage = CurrentDamage;
-                damageOnTrigger.HitEffect = basicHitEffect;
+                _damageOnTrigger.AbilityDamage = basicDamage;
+                _damageOnTrigger.CharacterDamage = CurrentDamage;
+                _damageOnTrigger.HitEffect = basicHitEffect;
             }
 
             // Delay
-            StartCoroutine(ImpactDelay());
+            StartCoroutine(BasicImpact());
         }
         else
         {
@@ -157,24 +150,23 @@ public class Hermit : Enemy
         }
     }
 
-    IEnumerator ImpactDelay()
+    IEnumerator BasicImpact()
     {
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(modifiedImpactTime);
 
-        canImpact = true;
-
+        // Cast bar
         castBarTime = 0;
         StartCoroutine(EndCastBar());
-    }
 
-    IEnumerator RecoveryTime()
-    {
         // Animate
         enemyAnimator.Play("Basic Recovery");
 
-        float _modifiedRecoveryTime = basicRecoveryTime / CurrentAttackSpeed;
+        StartCoroutine(BasicRecovery());
+    }
 
-        yield return new WaitForSeconds(_modifiedRecoveryTime);
+    IEnumerator BasicRecovery()
+    {
+        yield return new WaitForSeconds(modifiedRecoveryTime);
 
         wasInterrupted = false;
         hasAttacked = false;
@@ -185,9 +177,9 @@ public class Hermit : Enemy
     IEnumerator AttackCoolDown()
     {
         // Adjust cooldown time based on cooldown reduction
-        float modifiedCooldown = basicCoolDown / CurrentCDR;
+        float _modifiedCooldown = basicCoolDown / CurrentCDR;
 
-        yield return new WaitForSeconds(modifiedCooldown);
+        yield return new WaitForSeconds(_modifiedCooldown);
 
         canAttack = true;
     }
