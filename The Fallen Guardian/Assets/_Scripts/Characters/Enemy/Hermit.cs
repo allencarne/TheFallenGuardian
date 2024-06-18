@@ -28,7 +28,7 @@ public class Hermit : Enemy
     [SerializeField] GameObject basicTelegraph;
     GameObject basicTelegraphInstance;
 
-    [SerializeField] GameObject basicPrefab;
+    [SerializeField] GameObject basicEffect;
     [SerializeField] GameObject basicHitEffect;
 
     [Header("Stats")]
@@ -127,7 +127,7 @@ public class Hermit : Enemy
             // Set Cast Bar Color
             castBar.color = Color.green;
 
-            GameObject _basic = Instantiate(basicPrefab, vectorToTarget, Quaternion.identity);
+            GameObject _basic = Instantiate(basicEffect, vectorToTarget, Quaternion.identity);
 
             // Cannot Hit Self with Attack
             Physics2D.IgnoreCollision(_basic.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
@@ -189,11 +189,11 @@ public class Hermit : Enemy
     #region Mobility
 
     [Header("Mobility")]
-    [SerializeField] GameObject mobilitTelegraph;
-    GameObject mobilityTelegraqphInstance;
+    [SerializeField] GameObject mobilityTelegraph;
+    GameObject mobilityTelegraphInstance;
 
-    [SerializeField] GameObject mobilityStartPrefab;
-    [SerializeField] GameObject mobilityEndPrefab;
+    [SerializeField] GameObject mobilityStartEffect;
+    [SerializeField] GameObject mobilityEndEffect;
     [SerializeField] GameObject mobilityHitEffect;
 
     [Header("Stats")]
@@ -227,9 +227,9 @@ public class Hermit : Enemy
         {
             wasInterrupted = true;
 
-            if (mobilityTelegraqphInstance)
+            if (mobilityTelegraphInstance)
             {
-                Destroy(mobilityTelegraqphInstance);
+                Destroy(mobilityTelegraphInstance);
             }
 
             if (castBar.color != Color.green)
@@ -260,10 +260,10 @@ public class Hermit : Enemy
             directionToTarget = (target.position - transform.position).normalized;
 
             // Calculate the distance to the target
-            float distanceToTarget = Vector2.Distance(transform.position, target.position);
+            float _distanceToTarget = Vector2.Distance(transform.position, target.position);
 
             // Check if the target is within mobilityRange
-            if (distanceToTarget > mobilityRange)
+            if (_distanceToTarget > mobilityRange)
             {
                 // If the target is beyond mobilityRange, set the target position to the maximum range
                 vectorToTarget = (Vector2)transform.position + directionToTarget * mobilityRange;
@@ -280,47 +280,40 @@ public class Hermit : Enemy
             enemyAnimator.SetFloat("Vertical", directionToTarget.y);
 
             // Instantiate the telegraph
-            mobilityTelegraqphInstance = Instantiate(mobilitTelegraph, vectorToTarget, Quaternion.identity);
+            mobilityTelegraphInstance = Instantiate(mobilityTelegraph, vectorToTarget, Quaternion.identity);
 
-            FillTelegraph fillTelegraph = mobilityTelegraqphInstance.GetComponent<FillTelegraph>();
-            if (fillTelegraph != null)
+            FillTelegraph _fillTelegraph = mobilityTelegraphInstance.GetComponent<FillTelegraph>();
+            if (_fillTelegraph != null)
             {
-                fillTelegraph.FillSpeed = modifiedCastTime + modifiedImpactTime + modifiedRecoveryTime;
+                _fillTelegraph.FillSpeed = modifiedCastTime + modifiedImpactTime + modifiedRecoveryTime;
             }
 
             // Timers
-            StartCoroutine(MobilityImpact());
+            StartCoroutine(MobilityCast());
             StartCoroutine(MobilityCoolDown());
-        }
-
-        if (canImpact)
-        {
-            canImpact = false;
-
-            StartCoroutine(MobilityRecoveryTime());
         }
     }
 
-    IEnumerator MobilityImpact()
+    IEnumerator MobilityCast()
     {
-        UpdateCastBar(castBarTime, modifiedCastTime);
-
         yield return new WaitForSeconds(modifiedCastTime);
 
         if (!wasInterrupted)
         {
-            canDash = true;
-
-            Instantiate(mobilityStartPrefab, transform.position, transform.rotation);
-
             // Animate
             enemyAnimator.Play("Mobility Impact");
 
             // Set Cast Bar Color
             castBar.color = Color.green;
 
+            // Dust Effect
+            Instantiate(mobilityStartEffect, transform.position, transform.rotation);
+
+            // Bool for FixedUpdate
+            canDash = true;
+
             // Delay
-            StartCoroutine(MobilityImpactDelay());
+            StartCoroutine(MobilityImpact());
         }
         else
         {
@@ -329,42 +322,48 @@ public class Hermit : Enemy
         }
     }
 
-    IEnumerator MobilityImpactDelay()
+    IEnumerator MobilityImpact()
     {
         yield return new WaitForSeconds(modifiedImpactTime);
 
-        canImpact = true;
-
+        // Cast Bar
         castBarTime = 0;
         StartCoroutine(EndCastBar());
-    }
 
-    IEnumerator MobilityRecoveryTime()
-    {
         // Animate
         enemyAnimator.Play("Mobility Recovery");
 
+        StartCoroutine(MobilityRecovery());
+    }
+
+    IEnumerator MobilityRecovery()
+    {
         yield return new WaitForSeconds(modifiedRecoveryTime);
 
+        // Bool for FixedUpdate
         canDash = false;
 
+        // Enemy can collide with Target
         if (target != null)
         {
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
         }
 
-        GameObject mobility = Instantiate(mobilityEndPrefab, vectorToTarget, Quaternion.identity);
-        Instantiate(mobilityStartPrefab, transform.position, transform.rotation);
+        // Damage Effect
+        GameObject _mobility = Instantiate(mobilityEndEffect, vectorToTarget, Quaternion.identity);
+        
+        // Dust Effect
+        Instantiate(mobilityStartEffect, transform.position, transform.rotation);
 
         // Cannot Hit Self with Attack
-        Physics2D.IgnoreCollision(mobility.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(_mobility.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
 
-        DamageOnTrigger damageOnTrigger = mobility.GetComponent<DamageOnTrigger>();
-        if (damageOnTrigger != null)
+        DamageOnTrigger _damageOnTrigger = _mobility.GetComponent<DamageOnTrigger>();
+        if (_damageOnTrigger != null)
         {
-            damageOnTrigger.AbilityDamage = mobilityDamage;
-            damageOnTrigger.CharacterDamage = CurrentDamage;
-            damageOnTrigger.HitEffect = mobilityHitEffect;
+            _damageOnTrigger.AbilityDamage = mobilityDamage;
+            _damageOnTrigger.CharacterDamage = CurrentDamage;
+            _damageOnTrigger.HitEffect = mobilityHitEffect;
         }
 
         wasInterrupted = false;
