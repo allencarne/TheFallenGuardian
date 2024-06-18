@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6374572710234972931}
   - component: {fileID: 4924110723934713631}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Buffs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4115915258327971849}
   - component: {fileID: 6023813917871646727}
   - component: {fileID: 8304957375955149610}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Back Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,7 +580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8411813158114890715}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Status Effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -618,7 +618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8499856432009416426}
   - component: {fileID: 4712730711871785507}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,7 +766,7 @@ GameObject:
   - component: {fileID: 3006004411200827127}
   - component: {fileID: 5038779214469984118}
   - component: {fileID: 3348239617551532894}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Enemy UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -866,7 +866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5484441517178504192}
   - component: {fileID: 2770836722382967088}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Debuffs & CC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -927,7 +927,7 @@ GameObject:
   - component: {fileID: 8773572401122566075}
   - component: {fileID: 73340314466334585}
   - component: {fileID: 7575085488464457606}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: PatienceBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1002,7 +1002,7 @@ GameObject:
   - component: {fileID: 6109367840003138670}
   - component: {fileID: 1614551723712641317}
   - component: {fileID: 1807412682409367898}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Front Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1161,7 +1161,7 @@ GameObject:
   - component: {fileID: 7693483214266424212}
   - component: {fileID: 7435393423915932803}
   - component: {fileID: 8841271389989174981}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Cast Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1236,7 +1236,7 @@ GameObject:
   - component: {fileID: 1414504981118071696}
   - component: {fileID: 1420243993085457361}
   - component: {fileID: 1667362944768939012}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}

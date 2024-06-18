@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 545795529724323809}
   - component: {fileID: 7055358155300076418}
   - component: {fileID: 2210466641130472041}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hermit_Basic_Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

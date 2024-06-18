@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 8677472369047748134}
   - component: {fileID: 6110092973362048063}
   - component: {fileID: 7018560274398936399}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Snail_Shell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
