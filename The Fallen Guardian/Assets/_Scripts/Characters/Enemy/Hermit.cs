@@ -422,7 +422,6 @@ public class Hermit : Enemy
     protected override void SpecialState()
     {
         modifiedCastTime = specialCastTime / CurrentAttackSpeed;
-        modifiedImpactTime = specialImpactTime / CurrentAttackSpeed;
         modifiedRecoveryTime = specialRecoveryTime / CurrentAttackSpeed;
 
         if (castBar.color == Color.yellow)
@@ -501,18 +500,7 @@ public class Hermit : Enemy
             // Set Cast Bar Color
             castBar.color = Color.green;
 
-            GameObject _special = Instantiate(specialEffect, transform.position, Quaternion.identity, transform);
-
-            // Cannot Hit Self with Attack
-            Physics2D.IgnoreCollision(_special.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
-
-            DamageOnTrigger _damageOnTrigger = _special.GetComponent<DamageOnTrigger>();
-            if (_damageOnTrigger != null)
-            {
-                _damageOnTrigger.AbilityDamage = specialDamage;
-                _damageOnTrigger.CharacterDamage = CurrentDamage;
-                _damageOnTrigger.HitEffect = specialHitEffect;
-            }
+            StartCoroutine(AttackRate());
 
             // Delay
             StartCoroutine(SpecialImpact());
@@ -528,9 +516,36 @@ public class Hermit : Enemy
         }
     }
 
+    IEnumerator AttackRate()
+    {
+        Attack();
+        yield return new WaitForSeconds(specialAttackRate);
+        Attack();
+        yield return new WaitForSeconds(specialAttackRate);
+        Attack();
+        yield return new WaitForSeconds(specialAttackRate);
+        Attack();
+    }
+
+    void Attack()
+    {
+        GameObject _special = Instantiate(specialEffect, transform.position, Quaternion.identity, transform);
+
+        // Cannot Hit Self with Attack
+        Physics2D.IgnoreCollision(_special.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+
+        DamageOnTrigger _damageOnTrigger = _special.GetComponent<DamageOnTrigger>();
+        if (_damageOnTrigger != null)
+        {
+            _damageOnTrigger.AbilityDamage = specialDamage;
+            _damageOnTrigger.CharacterDamage = CurrentDamage;
+            _damageOnTrigger.HitEffect = specialHitEffect;
+        }
+    }
+
     IEnumerator SpecialImpact()
     {
-        yield return new WaitForSeconds(modifiedImpactTime);
+        yield return new WaitForSeconds(specialImpactTime);
 
         // Cast Bar
         castBarTime = 0;
