@@ -57,30 +57,30 @@ public class Hermit : Enemy
 
         if (crowdControl.IsInterrupted)
         {
+            crowdControl.IsInterrupted = false;
             wasInterrupted = true;
-        }
 
-        if (wasInterrupted)
-        {
-            if (basicTelegraphInstance)
+            if (wasInterrupted)
             {
-                Destroy(basicTelegraphInstance);
-            }
+                if (castBar.color != Color.green)
+                {
+                    if (basicTelegraphInstance)
+                    {
+                        Destroy(basicTelegraphInstance);
+                    }
 
-            if (castBar.color != Color.green)
-            {
-                // ResetCast Time
-                castBarTime = 0;
+                    // ResetCast Time
+                    castBarTime = 0;
 
-                // Set Cast Bar Color
-                castBar.color = Color.red;
+                    // Set Cast Bar Color
+                    castBar.color = Color.red;
 
-                StartCoroutine(ResetCastBar());
+                    // State Transition
+                    enemyState = EnemyState.Idle;
 
-                // State Transition
-                enemyState = EnemyState.Idle;
-
-                return;
+                    StartCoroutine(ResetCastBar());
+                    return;
+                }
             }
         }
 
@@ -148,12 +148,19 @@ public class Hermit : Enemy
         }
         else
         {
+            Debug.Log("Basic Cast - Was Interrupted");
+
             // Cast bar
             castBarTime = 0;
             StartCoroutine(EndCastBar());
 
             wasInterrupted = false;
             hasAttacked = false;
+
+            // State Transition
+            enemyState = EnemyState.Idle;
+
+            StartCoroutine(ResetCastBar());
         }
     }
 
@@ -232,30 +239,30 @@ public class Hermit : Enemy
 
         if (crowdControl.IsInterrupted)
         {
+            crowdControl.IsInterrupted = false;
             wasInterrupted = true;
-        }
 
-        if (wasInterrupted)
-        {
-            if (mobilityTelegraphInstance)
+            if (wasInterrupted)
             {
-                Destroy(mobilityTelegraphInstance);
-            }
+                if (castBar.color != Color.green)
+                {
+                    if (mobilityTelegraphInstance)
+                    {
+                        Destroy(mobilityTelegraphInstance);
+                    }
 
-            if (castBar.color != Color.green)
-            {
-                // ResetCast Time
-                castBarTime = 0;
+                    // ResetCast Time
+                    castBarTime = 0;
 
-                // Set Cast Bar Color
-                castBar.color = Color.red;
+                    // Set Cast Bar Color
+                    castBar.color = Color.red;
 
-                StartCoroutine(ResetCastBar());
+                    // State Transition
+                    enemyState = EnemyState.Idle;
 
-                // State Transition
-                enemyState = EnemyState.Idle;
-
-                return;
+                    StartCoroutine(ResetCastBar());
+                    return;
+                }
             }
         }
 
@@ -328,12 +335,19 @@ public class Hermit : Enemy
         }
         else
         {
+            Debug.Log("Mob Cast - Was Interrupted");
+
             // Cast bar
             castBarTime = 0;
             StartCoroutine(EndCastBar());
 
             wasInterrupted = false;
             hasAttacked = false;
+
+            // State Transition
+            enemyState = EnemyState.Idle;
+
+            StartCoroutine(ResetCastBar());
         }
     }
 
@@ -435,30 +449,30 @@ public class Hermit : Enemy
 
         if (crowdControl.IsInterrupted)
         {
+            crowdControl.IsInterrupted = false;
             wasInterrupted = true;
-        }
 
-        if (wasInterrupted)
-        {
-            if (specialTelegraphInstance)
+            if (wasInterrupted)
             {
-                Destroy(specialTelegraphInstance);
-            }
+                if (castBar.color != Color.green)
+                {
+                    if (specialTelegraphInstance)
+                    {
+                        Destroy(specialTelegraphInstance);
+                    }
 
-            if (castBar.color != Color.green)
-            {
-                // ResetCast Time
-                castBarTime = 0;
+                    // ResetCast Time
+                    castBarTime = 0;
 
-                // Set Cast Bar Color
-                castBar.color = Color.red;
+                    // Set Cast Bar Color
+                    castBar.color = Color.red;
 
-                StartCoroutine(ResetCastBar());
+                    // State Transition
+                    enemyState = EnemyState.Idle;
 
-                // State Transition
-                enemyState = EnemyState.Idle;
-
-                return;
+                    StartCoroutine(ResetCastBar());
+                    return;
+                }
             }
         }
 
@@ -507,12 +521,19 @@ public class Hermit : Enemy
         }
         else
         {
+            Debug.Log("Special Cast - Was Interrupted");
+
             // Cast bar
             castBarTime = 0;
             StartCoroutine(EndCastBar());
 
             wasInterrupted = false;
             hasAttacked = false;
+
+            // State Transition
+            enemyState = EnemyState.Idle;
+
+            StartCoroutine(ResetCastBar());
         }
     }
 
