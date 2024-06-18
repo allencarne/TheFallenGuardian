@@ -58,7 +58,10 @@ public class Hermit : Enemy
         if (crowdControl.IsInterrupted)
         {
             wasInterrupted = true;
+        }
 
+        if (wasInterrupted)
+        {
             if (basicTelegraphInstance)
             {
                 Destroy(basicTelegraphInstance);
@@ -72,10 +75,11 @@ public class Hermit : Enemy
                 // Set Cast Bar Color
                 castBar.color = Color.red;
 
+                StartCoroutine(ResetCastBar());
+
                 // State Transition
                 enemyState = EnemyState.Idle;
 
-                StartCoroutine(ResetCastBar());
                 return;
             }
         }
@@ -229,7 +233,10 @@ public class Hermit : Enemy
         if (crowdControl.IsInterrupted)
         {
             wasInterrupted = true;
+        }
 
+        if (wasInterrupted)
+        {
             if (mobilityTelegraphInstance)
             {
                 Destroy(mobilityTelegraphInstance);
@@ -243,10 +250,11 @@ public class Hermit : Enemy
                 // Set Cast Bar Color
                 castBar.color = Color.red;
 
+                StartCoroutine(ResetCastBar());
+
                 // State Transition
                 enemyState = EnemyState.Idle;
 
-                StartCoroutine(ResetCastBar());
                 return;
             }
         }
@@ -429,7 +437,10 @@ public class Hermit : Enemy
         if (crowdControl.IsInterrupted)
         {
             wasInterrupted = true;
+        }
 
+        if (wasInterrupted)
+        {
             if (specialTelegraphInstance)
             {
                 Destroy(specialTelegraphInstance);
@@ -443,10 +454,11 @@ public class Hermit : Enemy
                 // Set Cast Bar Color
                 castBar.color = Color.red;
 
+                StartCoroutine(ResetCastBar());
+
                 // State Transition
                 enemyState = EnemyState.Idle;
 
-                StartCoroutine(ResetCastBar());
                 return;
             }
         }
