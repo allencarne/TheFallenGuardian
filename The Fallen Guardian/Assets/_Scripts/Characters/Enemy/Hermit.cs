@@ -46,14 +46,7 @@ public class Hermit : Enemy
         modifiedImpactTime = basicImpactTime / CurrentAttackSpeed;
         modifiedRecoveryTime = basicRecoveryTime / CurrentAttackSpeed;
 
-        if (castBar.color == Color.yellow)
-        {
-            // Increase cast bar time once per second
-            castBarTime += Time.deltaTime;
-
-            // If we are not interrupted, Update the cast bar
-            UpdateCastBar(castBarTime, modifiedCastTime);
-        }
+        UpdateCastBar(castBarTime, modifiedCastTime);
 
         if (crowdControl.IsInterrupted)
         {
@@ -69,16 +62,10 @@ public class Hermit : Enemy
                         Destroy(basicTelegraphInstance);
                     }
 
-                    // ResetCast Time
-                    castBarTime = 0;
-
-                    // Set Cast Bar Color
-                    castBar.color = Color.red;
-
                     // State Transition
                     enemyState = EnemyState.Idle;
 
-                    StartCoroutine(ResetCastBar());
+                    StartCoroutine(InterruptCastBar());
                     return;
                 }
             }
@@ -148,16 +135,9 @@ public class Hermit : Enemy
         }
         else
         {
-            Debug.Log("Basic Cast - Was Interrupted");
-
-            // Cast bar
-            castBarTime = 0;
-            StartCoroutine(EndCastBar());
-
             wasInterrupted = false;
             hasAttacked = false;
 
-            // State Transition
             enemyState = EnemyState.Idle;
 
             StartCoroutine(ResetCastBar());
@@ -168,13 +148,10 @@ public class Hermit : Enemy
     {
         yield return new WaitForSeconds(modifiedImpactTime);
 
-        // Cast bar
-        castBarTime = 0;
-        StartCoroutine(EndCastBar());
-
         // Animate
         enemyAnimator.Play("Basic Recovery");
 
+        StartCoroutine(EndCastBar());
         StartCoroutine(BasicRecovery());
     }
 
@@ -228,14 +205,7 @@ public class Hermit : Enemy
         modifiedImpactTime = mobilityImpactTime / CurrentAttackSpeed;
         modifiedRecoveryTime = mobilityRecoveryTime / CurrentAttackSpeed;
 
-        if (castBar.color == Color.yellow)
-        {
-            // Increase cast bar time once per second
-            castBarTime += Time.deltaTime;
-
-            // If we are not interrupted, Update the cast bar
-            UpdateCastBar(castBarTime, modifiedCastTime);
-        }
+        UpdateCastBar(castBarTime, modifiedCastTime);
 
         if (crowdControl.IsInterrupted)
         {
@@ -251,16 +221,10 @@ public class Hermit : Enemy
                         Destroy(mobilityTelegraphInstance);
                     }
 
-                    // ResetCast Time
-                    castBarTime = 0;
-
-                    // Set Cast Bar Color
-                    castBar.color = Color.red;
-
                     // State Transition
                     enemyState = EnemyState.Idle;
 
-                    StartCoroutine(ResetCastBar());
+                    StartCoroutine(InterruptCastBar());
                     return;
                 }
             }
@@ -335,16 +299,9 @@ public class Hermit : Enemy
         }
         else
         {
-            Debug.Log("Mob Cast - Was Interrupted");
-
-            // Cast bar
-            castBarTime = 0;
-            StartCoroutine(EndCastBar());
-
             wasInterrupted = false;
             hasAttacked = false;
 
-            // State Transition
             enemyState = EnemyState.Idle;
 
             StartCoroutine(ResetCastBar());
@@ -355,13 +312,10 @@ public class Hermit : Enemy
     {
         yield return new WaitForSeconds(modifiedImpactTime);
 
-        // Cast Bar
-        castBarTime = 0;
-        StartCoroutine(EndCastBar());
-
         // Animate
         enemyAnimator.Play("Mobility Recovery");
 
+        StartCoroutine(EndCastBar());
         StartCoroutine(MobilityRecovery());
     }
 
@@ -438,14 +392,7 @@ public class Hermit : Enemy
         modifiedCastTime = specialCastTime / CurrentAttackSpeed;
         modifiedRecoveryTime = specialRecoveryTime / CurrentAttackSpeed;
 
-        if (castBar.color == Color.yellow)
-        {
-            // Increase cast bar time once per second
-            castBarTime += Time.deltaTime;
-
-            // If we are not interrupted, Update the cast bar
-            UpdateCastBar(castBarTime, modifiedCastTime);
-        }
+        UpdateCastBar(castBarTime, modifiedCastTime);
 
         if (crowdControl.IsInterrupted)
         {
@@ -461,16 +408,10 @@ public class Hermit : Enemy
                         Destroy(specialTelegraphInstance);
                     }
 
-                    // ResetCast Time
-                    castBarTime = 0;
-
-                    // Set Cast Bar Color
-                    castBar.color = Color.red;
-
                     // State Transition
                     enemyState = EnemyState.Idle;
 
-                    StartCoroutine(ResetCastBar());
+                    StartCoroutine(InterruptCastBar());
                     return;
                 }
             }
@@ -521,16 +462,9 @@ public class Hermit : Enemy
         }
         else
         {
-            Debug.Log("Special Cast - Was Interrupted");
-
-            // Cast bar
-            castBarTime = 0;
-            StartCoroutine(EndCastBar());
-
             wasInterrupted = false;
             hasAttacked = false;
 
-            // State Transition
             enemyState = EnemyState.Idle;
 
             StartCoroutine(ResetCastBar());
@@ -568,13 +502,10 @@ public class Hermit : Enemy
     {
         yield return new WaitForSeconds(specialImpactTime);
 
-        // Cast Bar
-        castBarTime = 0;
-        StartCoroutine(EndCastBar());
-
         // Animate
         enemyAnimator.Play("Special Recovery");
 
+        StartCoroutine(EndCastBar());
         StartCoroutine(SpecialRecovery());
     }
 

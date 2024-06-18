@@ -690,11 +690,37 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (castBar != null)
         {
-            // Calculate the percentage of the cast time that has elapsed
-            float fillAmount = Mathf.Clamp01(castTime / attackCastTime);
+            if (castBar.color == Color.yellow)
+            {
+                // Increase cast bar time once per second
+                castBarTime += Time.deltaTime;
 
-            // Set the fillAmount of the cast bar
-            castBar.fillAmount = fillAmount;
+                // Calculate the percentage of the cast time that has elapsed
+                float fillAmount = Mathf.Clamp01(castTime / attackCastTime);
+
+                // Set the fillAmount of the cast bar
+                castBar.fillAmount = fillAmount;
+            }
+        }
+    }
+
+    public IEnumerator InterruptCastBar()
+    {
+        if (castBar != null)
+        {
+            // ResetCast Time
+            castBarTime = 0;
+
+            // Set Cast Bar Color
+            castBar.color = Color.red;
+
+            yield return new WaitForSeconds(.2f);
+
+            // Reset Cast Bar Color
+            castBar.color = Color.yellow;
+
+            // Reset Fill
+            castBar.fillAmount = 0;
         }
     }
 
@@ -702,8 +728,15 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (castBar != null)
         {
+            // Cast bar
+            castBarTime = 0;
+
             yield return new WaitForSeconds(.2f);
+
+            // Reset Cast Bar Color
             castBar.color = Color.yellow;
+
+            // Reset Fill
             castBar.fillAmount = 0;
         }
     }
@@ -712,7 +745,12 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (castBar != null)
         {
+            // Cast bar
+            castBarTime = 0;
+
             yield return new WaitForSeconds(.2f);
+
+            // Reset Fill
             castBar.fillAmount = 0;
         }
     }
