@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Hermit : Enemy
 {
-
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -145,6 +144,10 @@ public class Hermit : Enemy
         }
         else
         {
+            // Cast bar
+            castBarTime = 0;
+            StartCoroutine(EndCastBar());
+
             wasInterrupted = false;
             hasAttacked = false;
         }
@@ -317,6 +320,10 @@ public class Hermit : Enemy
         }
         else
         {
+            // Cast bar
+            castBarTime = 0;
+            StartCoroutine(EndCastBar());
+
             wasInterrupted = false;
             hasAttacked = false;
         }
@@ -375,9 +382,9 @@ public class Hermit : Enemy
     IEnumerator MobilityCoolDown()
     {
         // Adjust cooldown time based on cooldown reduction
-        float modifiedCooldown = mobilityCoolDown / CurrentCDR;
+        float _modifiedCooldown = mobilityCoolDown / CurrentCDR;
 
-        yield return new WaitForSeconds(modifiedCooldown);
+        yield return new WaitForSeconds(_modifiedCooldown);
 
         canMobility = true;
     }
@@ -390,7 +397,7 @@ public class Hermit : Enemy
     [SerializeField] GameObject specialTelegraph;
     GameObject specialTelegraphInstance;
 
-    [SerializeField] GameObject specialPrefab;
+    [SerializeField] GameObject specialEffect;
     [SerializeField] GameObject specialHitEffect;
 
     [Header("Stats")]
@@ -407,6 +414,8 @@ public class Hermit : Enemy
     protected override void SpecialState()
     {
         modifiedCastTime = specialCastTime / CurrentAttackSpeed;
+        modifiedImpactTime = specialImpactTime / CurrentAttackSpeed;
+        modifiedRecoveryTime = specialRecoveryTime / CurrentAttackSpeed;
 
         if (castBar.color == Color.yellow)
         {
@@ -456,30 +465,20 @@ public class Hermit : Enemy
             // Instantiate the telegraph
             specialTelegraphInstance = Instantiate(specialTelegraph, transform.position, Quaternion.identity, transform);
 
-            FillTelegraph fillTelegraph = specialTelegraphInstance.GetComponent<FillTelegraph>();
-            if (fillTelegraph != null)
+            FillTelegraph _fillTelegraph = specialTelegraphInstance.GetComponent<FillTelegraph>();
+            if (_fillTelegraph != null)
             {
-                fillTelegraph.FillSpeed = modifiedCastTime;
+                _fillTelegraph.FillSpeed = modifiedCastTime;
             }
 
             // Timers
-            StartCoroutine(SpecialImpact());
+            StartCoroutine(SpecialCast());
             StartCoroutine(SpecialCoolDown());
-        }
-
-        if (canImpact)
-        {
-            canImpact = false;
-
-            StartCoroutine(SpecialRecoveryTime());
         }
     }
 
-    IEnumerator SpecialImpact()
+    IEnumerator SpecialCast()
     {
-        UpdateCastBar(castBarTime, modifiedCastTime);
-
-        // Wait for the modifiedCastTime duration
         yield return new WaitForSeconds(modifiedCastTime);
 
         if (!wasInterrupted)
@@ -490,53 +489,50 @@ public class Hermit : Enemy
             // Set Cast Bar Color
             castBar.color = Color.green;
 
+            GameObject _special = Instantiate(specialEffect, transform.position, Quaternion.identity, transform);
+
+            // Cannot Hit Self with Attack
+            Physics2D.IgnoreCollision(_special.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+
+            DamageOnTrigger _damageOnTrigger = _special.GetComponent<DamageOnTrigger>();
+            if (_damageOnTrigger != null)
+            {
+                _damageOnTrigger.AbilityDamage = specialDamage;
+                _damageOnTrigger.CharacterDamage = CurrentDamage;
+                _damageOnTrigger.HitEffect = specialHitEffect;
+            }
+
             // Delay
-            StartCoroutine(SpecialImpactDelay());
+            StartCoroutine(SpecialImpact());
         }
         else
         {
+            // Cast bar
+            castBarTime = 0;
+            StartCoroutine(EndCastBar());
+
             wasInterrupted = false;
             hasAttacked = false;
         }
     }
 
-    IEnumerator SpecialImpactDelay()
+    IEnumerator SpecialImpact()
     {
-        // Start invoking the SpawnSpecialPrefab method every second
-        InvokeRepeating("SpawnSpecialPrefab", 0f, specialAttackRate);
+        yield return new WaitForSeconds(modifiedImpactTime);
 
-        yield return new WaitForSeconds(specialImpactTime);
-
-        // Stop invoking the SpawnSpecialPrefab method
-        CancelInvoke("SpawnSpecialPrefab");
-
-        canImpact = true;
-
+        // Cast Bar
         castBarTime = 0;
         StartCoroutine(EndCastBar());
-    }
 
-    void SpawnSpecialPrefab()
-    {
-        GameObject special = Instantiate(specialPrefab, transform.position, Quaternion.identity, transform);
-
-        DamageOnTrigger damageOnTrigger = special.GetComponent<DamageOnTrigger>();
-        if (damageOnTrigger != null)
-        {
-            damageOnTrigger.AbilityDamage = specialDamage;
-            damageOnTrigger.CharacterDamage = CurrentDamage;
-            damageOnTrigger.HitEffect = specialHitEffect;
-        }
-    }
-
-    IEnumerator SpecialRecoveryTime()
-    {
         // Animate
         enemyAnimator.Play("Special Recovery");
 
-        float _modifiedRecoveryTime = specialRecoveryTime / CurrentAttackSpeed;
+        StartCoroutine(SpecialRecovery());
+    }
 
-        yield return new WaitForSeconds(_modifiedRecoveryTime);
+    IEnumerator SpecialRecovery()
+    {
+        yield return new WaitForSeconds(modifiedRecoveryTime);
 
         wasInterrupted = false;
         hasAttacked = false;
@@ -547,9 +543,9 @@ public class Hermit : Enemy
     IEnumerator SpecialCoolDown()
     {
         // Adjust cooldown time based on cooldown reduction
-        float modifiedCooldown = specialCoolDown / CurrentCDR;
+        float _modifiedCooldown = specialCoolDown / CurrentCDR;
 
-        yield return new WaitForSeconds(modifiedCooldown);
+        yield return new WaitForSeconds(_modifiedCooldown);
 
         canSpecial = true;
     }
