@@ -4,6 +4,23 @@ using UnityEngine;
 
 public class Hermit : Enemy
 {
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+
+        if (enemyState == EnemyState.Mobility && target != null)
+        {
+            if (canDash)
+            {
+                // Disable collision between enemy and player
+                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), true);
+
+                // Interpolate the enemy's position towards the target
+                transform.position = Vector2.Lerp(transform.position, vectorToTarget, Time.fixedDeltaTime * 5);
+            }
+        }
+    }
+
     protected override void HandleInterrupt()
     {
         if (castBar.color == Color.yellow)
@@ -42,23 +59,6 @@ public class Hermit : Enemy
         }
     }
 
-    protected override void FixedUpdate()
-    {
-        base.FixedUpdate();
-
-        if (enemyState == EnemyState.Mobility && target != null)
-        {
-            if (canDash)
-            {
-                // Disable collision between enemy and player
-                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), true);
-
-                // Interpolate the enemy's position towards the target
-                transform.position = Vector2.Lerp(transform.position, vectorToTarget, Time.fixedDeltaTime * 5);
-            }
-        }
-    }
-
     #region Basic
 
     [Header("Basic")]
@@ -91,8 +91,6 @@ public class Hermit : Enemy
         if (castBar.color == Color.white)
         {
             StartCoroutine(InterruptCastBar());
-
-            Debug.Log("Interrupt");
 
             // State Transition
             enemyState = EnemyState.Idle;
@@ -249,8 +247,20 @@ public class Hermit : Enemy
 
         UpdateCastBar(castBarTime, modifiedCastTime);
 
+        // Interrupt
+        if (castBar.color == Color.white)
+        {
+            StartCoroutine(InterruptCastBar());
+
+            // State Transition
+            enemyState = EnemyState.Idle;
+            return;
+        }
+
+        // Cast
         if (canMobility && target != null && !hasAttacked)
         {
+            // Set Bools
             canMobility = false;
             hasAttacked = true;
 
@@ -283,142 +293,99 @@ public class Hermit : Enemy
             // Instantiate the telegraph
             mobilityTelegraphInstance = Instantiate(mobilityTelegraph, vectorToTarget, Quaternion.identity);
 
+            // Set Fill Speed
             FillTelegraph _fillTelegraph = mobilityTelegraphInstance.GetComponent<FillTelegraph>();
             if (_fillTelegraph != null)
             {
                 _fillTelegraph.FillSpeed = modifiedCastTime + modifiedImpactTime + modifiedRecoveryTime;
             }
 
-            // Timers
-            StartCoroutine(MobilityCast());
+            // Cool Down
             StartCoroutine(MobilityCoolDown());
         }
-    }
 
-    IEnumerator MobilityCast()
-    {
-        yield return new WaitForSeconds(modifiedCastTime);
-
-        if (isEnemyDead)
+        // Impact
+        if (castBarTime >= modifiedCastTime)
         {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            yield break; // Exit the coroutine early
-        }
-
-        if (wasInterrupted)
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            enemyState = EnemyState.Idle;
-            yield break; // Exit the coroutine early
-        }
-        else
-        {
-            // Animate
-            enemyAnimator.Play("Mobility Impact");
-
-            // Set Cast Bar Color
-            castBar.color = Color.green;
-
-            // Dust Effect
-            Instantiate(mobilityStartEffect, transform.position, transform.rotation);
-
-            // Bool for FixedUpdate
-            canDash = true;
-
-            // Delay
-            StartCoroutine(MobilityImpact());
-        }
-    }
-
-    IEnumerator MobilityImpact()
-    {
-        yield return new WaitForSeconds(modifiedImpactTime);
-
-        if (isEnemyDead)
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            yield break; // Exit the coroutine early
-        }
-
-        if (wasInterrupted)
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            enemyState = EnemyState.Idle;
-            yield break; // Exit the coroutine early
-        }
-        else
-        {
-            // Animate
-            enemyAnimator.Play("Mobility Recovery");
-
-            StartCoroutine(EndCastBar());
-            StartCoroutine(MobilityRecovery());
-        }
-    }
-
-    IEnumerator MobilityRecovery()
-    {
-        yield return new WaitForSeconds(modifiedRecoveryTime);
-
-        if (isEnemyDead)
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            yield break; // Exit the coroutine early
-        }
-
-        if (wasInterrupted)
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            enemyState = EnemyState.Idle;
-            yield break; // Exit the coroutine early
-        }
-        else
-        {
-            // Bool for FixedUpdate
-            canDash = false;
-
-            // Enemy can collide with Target
-            if (target != null)
+            if (castBar.color == Color.yellow)
             {
-                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
+                // Set Cast Bar Color
+                castBar.color = Color.green;
+
+                // Reset Timer
+                castBarTime = 0;
+
+                // Animate
+                enemyAnimator.Play("Mobility Impact");
+
+                // Dust Effect
+                Instantiate(mobilityStartEffect, transform.position, transform.rotation);
+
+                // Bool for FixedUpdate
+                canDash = true;
             }
+        }
 
-            // Damage Effect
-            mobilityEndEffectInstance = Instantiate(mobilityEndEffect, vectorToTarget, Quaternion.identity);
+        // Recovery
+        if (castBar.color == Color.green)
+        {
+            impactTime += Time.deltaTime;
 
-            // Dust Effect
-            Instantiate(mobilityStartEffect, transform.position, transform.rotation);
-
-            DamageOnTrigger _damageOnTrigger = mobilityEndEffectInstance.GetComponent<DamageOnTrigger>();
-            if (_damageOnTrigger != null)
+            if (impactTime >= modifiedImpactTime)
             {
-                _damageOnTrigger.AbilityDamage = mobilityDamage;
-                _damageOnTrigger.CharacterDamage = CurrentDamage;
-                _damageOnTrigger.HitEffect = mobilityHitEffect;
+                // Set Cast Bar Color
+                castBar.color = Color.blue;
+
+                // Reset Timer
+                impactTime = 0f;
+
+                // Animate
+                enemyAnimator.Play("Mobility Recovery");
             }
+        }
 
-            wasInterrupted = false;
-            hasAttacked = false;
+        // End
+        if (castBar.color == Color.blue)
+        {
+            recoveryTime += Time.deltaTime;
 
-            enemyState = EnemyState.Idle;
+            if (recoveryTime >= modifiedRecoveryTime)
+            {
+                // Set Cast Bar Color
+                castBar.color = Color.black;
+
+                // Reset Timer
+                recoveryTime = 0f;
+
+                // Reset Cast Bar
+                castBar.fillAmount = 0;
+
+                // Set bool
+                hasAttacked = false;
+
+                // Bool for FixedUpdate
+                canDash = false;
+
+                // Enemy can collide with Target
+                if (target != null)
+                {
+                    Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
+                }
+
+                // Damage Effect
+                mobilityEndEffectInstance = Instantiate(mobilityEndEffect, vectorToTarget, Quaternion.identity);
+
+                DamageOnTrigger _damageOnTrigger = mobilityEndEffectInstance.GetComponent<DamageOnTrigger>();
+                if (_damageOnTrigger != null)
+                {
+                    _damageOnTrigger.AbilityDamage = mobilityDamage;
+                    _damageOnTrigger.CharacterDamage = CurrentDamage;
+                    _damageOnTrigger.HitEffect = mobilityHitEffect;
+                }
+
+                // Set State
+                enemyState = EnemyState.Idle;
+            }
         }
     }
 
