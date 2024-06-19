@@ -267,8 +267,8 @@ MonoBehaviour:
   expToGive: 4
   wanderRadius: 5
   attackRadius: 0
-  mobilityRadius: 5
-  specialRadius: 0
+  mobilityRadius: 0
+  specialRadius: 1.2
   deAggroRadius: 12
   patienceBar: {fileID: 2325305239789557552}
   castBar: {fileID: 3735658555118831219}
@@ -311,7 +311,7 @@ MonoBehaviour:
   mobilityHitEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   mobilityDamage: 1
   mobilityRange: 5
-  mobilityCastTime: 1
+  mobilityCastTime: 0.4
   mobilityImpactTime: 0.4
   mobilityRecoveryTime: 0.4
   mobilityCoolDown: 4
@@ -319,7 +319,7 @@ MonoBehaviour:
   specialEffect: {fileID: 5144617197477731316, guid: d670148b3f21b074ab26ec9d8f9faf57, type: 3}
   specialHitEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   specialDamage: 1
-  specialCastTime: 0.4
+  specialCastTime: 1
   specialImpactTime: 2
   specialRecoveryTime: 0.4
   specialCoolDown: 6

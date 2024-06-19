@@ -430,8 +430,20 @@ public class Hermit : Enemy
 
         UpdateCastBar(castBarTime, modifiedCastTime);
 
+        // Interrupt
+        if (castBar.color == Color.white)
+        {
+            StartCoroutine(InterruptCastBar());
+
+            // State Transition
+            enemyState = EnemyState.Idle;
+            return;
+        }
+
+        // Cast
         if (canSpecial && target != null && !hasAttacked)
         {
+            // Set Bools
             canSpecial = false;
             hasAttacked = true;
 
@@ -450,155 +462,78 @@ public class Hermit : Enemy
                 _fillTelegraph.FillSpeed = modifiedCastTime;
             }
 
-            // Timers
-            StartCoroutine(SpecialCast());
+            // Cool Down
             StartCoroutine(SpecialCoolDown());
         }
-    }
 
-    IEnumerator SpecialCast()
-    {
-        yield return new WaitForSeconds(modifiedCastTime);
-
-        if (isEnemyDead)
+        // Impact
+        if (castBarTime >= modifiedCastTime)
         {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
+            if (castBar.color == Color.yellow)
+            {
+                // Set Cast Bar Color
+                castBar.color = Color.green;
 
-            yield break; // Exit the coroutine early
+                // Reset Timer
+                castBarTime = 0;
+
+                // Animate
+                enemyAnimator.Play("Special Impact");
+
+                // Spawn Effect
+                specialEffectInstance = Instantiate(specialEffect, transform.position, Quaternion.identity, transform);
+
+                // Deal Damage
+                DamageOnTrigger _damageOnTrigger = specialEffectInstance.GetComponent<DamageOnTrigger>();
+                if (_damageOnTrigger != null)
+                {
+                    _damageOnTrigger.AbilityDamage = specialDamage;
+                    _damageOnTrigger.CharacterDamage = CurrentDamage;
+                    _damageOnTrigger.HitEffect = specialHitEffect;
+                }
+            }
         }
 
-        if (wasInterrupted)
+        // Recovery
+        if (castBar.color == Color.green)
         {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
+            impactTime += Time.deltaTime;
 
-            enemyState = EnemyState.Idle;
-            yield break; // Exit the coroutine early
-        }
-        else
-        {
-            // Animate
-            enemyAnimator.Play("Special Impact");
+            if (impactTime >= specialImpactTime)
+            {
+                // Set Cast Bar Color
+                castBar.color = Color.blue;
 
-            // Set Cast Bar Color
-            castBar.color = Color.green;
+                // Reset Timer
+                impactTime = 0f;
 
-            StartCoroutine(AttackRate());
-
-            // Delay
-            StartCoroutine(SpecialImpact());
-        }
-    }
-
-    IEnumerator AttackRate()
-    {
-        if (isEnemyDead)
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            yield break; // Exit the coroutine early
+                // Animate
+                enemyAnimator.Play("Special Recovery");
+            }
         }
 
-        if (wasInterrupted)
+        // End
+        if (castBar.color == Color.blue)
         {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
+            recoveryTime += Time.deltaTime;
 
-            enemyState = EnemyState.Idle;
-            yield break; // Exit the coroutine early
-        }
-        else
-        {
-            Attack();
-            yield return new WaitForSeconds(specialAttackRate);
-            Attack();
-            yield return new WaitForSeconds(specialAttackRate);
-            Attack();
-            yield return new WaitForSeconds(specialAttackRate);
-            Attack();
-        }
+            if (recoveryTime >= modifiedRecoveryTime)
+            {
+                // Set Cast Bar Color
+                castBar.color = Color.black;
 
-    }
+                // Reset Timer
+                recoveryTime = 0f;
 
-    void Attack()
-    {
-        specialEffectInstance = Instantiate(specialEffect, transform.position, Quaternion.identity, transform);
+                // Reset Cast Bar
+                castBar.fillAmount = 0;
 
-        DamageOnTrigger _damageOnTrigger = specialEffectInstance.GetComponent<DamageOnTrigger>();
-        if (_damageOnTrigger != null)
-        {
-            _damageOnTrigger.AbilityDamage = specialDamage;
-            _damageOnTrigger.CharacterDamage = CurrentDamage;
-            _damageOnTrigger.HitEffect = specialHitEffect;
-        }
-    }
+                // Set bool
+                hasAttacked = false;
 
-    IEnumerator SpecialImpact()
-    {
-        yield return new WaitForSeconds(specialImpactTime);
-
-        if (isEnemyDead)
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            yield break; // Exit the coroutine early
-        }
-
-        if (wasInterrupted)
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            enemyState = EnemyState.Idle;
-            yield break; // Exit the coroutine early
-        }
-        else
-        {
-            // Animate
-            enemyAnimator.Play("Special Recovery");
-
-            StartCoroutine(EndCastBar());
-            StartCoroutine(SpecialRecovery());
-        }
-    }
-
-    IEnumerator SpecialRecovery()
-    {
-        yield return new WaitForSeconds(modifiedRecoveryTime);
-
-        if (isEnemyDead)
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            yield break; // Exit the coroutine early
-        }
-
-        if (wasInterrupted)
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            enemyState = EnemyState.Idle;
-            yield break; // Exit the coroutine early
-        }
-        else
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-
-            enemyState = EnemyState.Idle;
+                // Set State
+                enemyState = EnemyState.Idle;
+            }
         }
     }
 

@@ -483,6 +483,9 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             canReset = false;
 
+            // Reset Cast Bar
+            castBar.fillAmount = 0;
+
             enemyAnimator.Play("Wander");
 
             attemptsCount = 0;
@@ -756,20 +759,6 @@ public class Enemy : MonoBehaviour, IDamageable
 
             // Reset Cast Bar Color
             castBar.color = Color.yellow;
-
-            // Reset Fill
-            castBar.fillAmount = 0;
-        }
-    }
-
-    public IEnumerator EndCastBar()
-    {
-        if (castBar != null)
-        {
-            // Cast bar
-            castBarTime = 0;
-
-            yield return new WaitForSeconds(.2f);
 
             // Reset Fill
             castBar.fillAmount = 0;
