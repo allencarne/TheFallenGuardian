@@ -25,7 +25,6 @@ public class Enemy : MonoBehaviour, IDamageable
     public float BaseArmor;
     public float CurrentArmor;
 
-
     [Header("Exp")]
     public float expToGive;
 
@@ -37,16 +36,19 @@ public class Enemy : MonoBehaviour, IDamageable
     public float deAggroRadius;
 
     [Header("Components")]
-    [SerializeField] protected Image patienceBar;
-    [SerializeField] protected Image castBar;
+    [HideInInspector] public EnemySpawner EnemySpawner;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Collider2D enemyCollider2D;
     [SerializeField] GameObject shadow;
-    [SerializeField] EnemyHealthBar healthBar;
-    [HideInInspector] public EnemySpawner EnemySpawner;
+    protected Rigidbody2D enemyRB;
     protected CrowdControl crowdControl;
     protected Animator enemyAnimator;
-    protected Rigidbody2D enemyRB;
+    Buff_Regeneration regeneration;
+
+    [Header("Bars")]
+    [SerializeField] EnemyHealthBar healthBar;
+    [SerializeField] protected Image patienceBar;
+    [SerializeField] protected Image castBar;
 
     [Header("Idle")]
     protected float idleTime;
@@ -66,13 +68,14 @@ public class Enemy : MonoBehaviour, IDamageable
     bool Immobilized = false;
 
     [Header("Bools")]
-    bool canSpawn = true;
-    bool canWander = true;
     protected bool canAttack = true;
     protected bool canMobility = true;
     protected bool canSpecial = true;
+    bool canSpawn = true;
+    bool canWander = true;
     bool canReset = true;
     bool canDeath = true;
+    bool isRegenerating = false;
 
     [Header("Attack")]
     protected bool hasAttacked = false;
@@ -88,10 +91,6 @@ public class Enemy : MonoBehaviour, IDamageable
     protected float castBarTime = 0;
     protected float impactTime = 0f;
     protected float recoveryTime = 0f;
-
-    [Header("Regeneration")]
-    private float regenTimer = 0f;
-    private float regenInterval = 3f;
 
     [Header("Events")]
     public UnityEvent OnHealthChanged;
@@ -119,6 +118,7 @@ public class Enemy : MonoBehaviour, IDamageable
         enemyRB = GetComponent<Rigidbody2D>();
 
         crowdControl = GetComponent<CrowdControl>();
+        regeneration = GetComponent<Buff_Regeneration>();
     }
 
     private void Start()
@@ -189,32 +189,13 @@ public class Enemy : MonoBehaviour, IDamageable
             {
                 if (player.Stats.Health <= 0)
                 {
-                    StartCoroutine(ShortDelay());
+                    StartCoroutine(DropTarget());
                 }
             }
         }
-
-        if (target == null && Health < MaxHealth)
-        {
-            //buffs.IsRegeneration = true;
-            //buffs.Regeneration();
-
-            regenTimer += Time.deltaTime;
-
-            if (regenTimer >= regenInterval)
-            {
-                //Regeneration(1); // Heal by 1
-                regenTimer = 0; // Reset the timer after healing
-            }
-        }
-        else
-        {
-            //buffs.IsRegeneration = false;
-            //buffs.Regeneration();
-        }
     }
 
-    IEnumerator ShortDelay()
+    IEnumerator DropTarget()
     {
         target = null;
         playerInRange = false;
@@ -369,24 +350,6 @@ public class Enemy : MonoBehaviour, IDamageable
         canReset = true;
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(startingPosition, wanderRadius);
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRadius);
-
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(transform.position, mobilityRadius);
-
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, specialRadius);
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(startingPosition, deAggroRadius);
-    }
-
     private Vector2 GetRandomPointInCircle(Vector2 center, float radius)
     {
         // Generate a random angle
@@ -483,23 +446,58 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         UpdatePatienceBar();
 
+        if (Health < MaxHealth && !isRegenerating)
+        {
+            isRegenerating = true;
+
+            // Calculate Missing Health
+            float missingHealth = MaxHealth - Health;
+
+            // Start CoRoutine
+            StartCoroutine(RegenMissingHealth(missingHealth));
+        }
+
         if (canReset)
         {
+            // Set Bool
             canReset = false;
 
             // Reset Cast Bar
             castBar.fillAmount = 0;
 
+            // Animate
             enemyAnimator.Play("Wander");
 
+            // Reset for Wander State
             attemptsCount = 0;
 
+            // Drop Target
             playerInRange = false;
+
+            // Drop Target
             target = null;
 
             // Check if the enemy has reached the destination
             StartCoroutine(CheckReachedDestination(startingPosition));
         }
+    }
+
+    IEnumerator RegenMissingHealth(float missingHealth)
+    {
+        int regenInterval = 1;
+        int regenAmount = 5;
+        float regeneratedHealth = 0f;
+
+        while (regeneratedHealth < missingHealth && Health < MaxHealth)
+        {
+            yield return new WaitForSeconds(regenInterval);
+
+            regeneration.Regenerate(regenAmount, regenInterval);
+
+            regeneratedHealth += regenAmount;
+        }
+
+        isRegenerating = false;
     }
 
     protected virtual void HurtState()
@@ -617,38 +615,6 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void Regeneration(float heal)
-    {
-        if (Health >= MaxHealth)
-        {
-            healthBar.ShowFloatingText(0, healthBar.HealText);
-
-            return;
-        }
-
-        float newHealth = Health + heal;
-
-        if (newHealth <= MaxHealth)
-        {
-            Health += heal;
-
-            StartCoroutine(healthBar.FlashEffect(Color.green));
-            healthBar.ShowFloatingText(heal, healthBar.HealText);
-
-            OnHealthChanged?.Invoke();
-        }
-        else
-        {
-            float overheal = newHealth - MaxHealth;
-            Health += overheal;
-
-            StartCoroutine(healthBar.FlashEffect(Color.green));
-            healthBar.ShowFloatingText(overheal, healthBar.HealText);
-
-            OnHealthChanged?.Invoke();
-        }
-    }
-
     #region Crowd Control
 
     public void Immobilize()
@@ -664,28 +630,6 @@ public class Enemy : MonoBehaviour, IDamageable
     protected virtual void HandleInterrupt()
     {
 
-    }
-
-    #endregion
-
-    #region Triggers
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            target = other.transform;
-            playerInRange = true;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            //target = null;
-            //playerInRange = false;
-        }
     }
 
     #endregion
@@ -765,5 +709,45 @@ public class Enemy : MonoBehaviour, IDamageable
             // Update the patience bar fill amount
             patienceBar.fillAmount = fillAmount;
         }
+    }
+
+    #region Triggers
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            target = other.transform;
+            playerInRange = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            //target = null;
+            //playerInRange = false;
+        }
+    }
+
+    #endregion
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(startingPosition, wanderRadius);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
+
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, mobilityRadius);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, specialRadius);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(startingPosition, deAggroRadius);
     }
 }

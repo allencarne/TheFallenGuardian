@@ -43,11 +43,6 @@ public class Buff_Regeneration : MonoBehaviour, IRegenerationable
             stacksText = buffIcon.GetComponentInChildren<TextMeshProUGUI>();
         }
 
-        if (!healthParticle)
-        {
-            healthParticle = Instantiate(healthParticlePrefab, transform);
-        }
-
         // Stacks Text
         stacksText.text = regenerationStacks.ToString();
 
@@ -91,11 +86,21 @@ public class Buff_Regeneration : MonoBehaviour, IRegenerationable
         {
             // Apply Heal Repeatedly once per second
             player.Heal(regenAmount, false);
+
+            if (!healthParticle)
+            {
+                healthParticle = Instantiate(healthParticlePrefab, transform);
+            }
         }
         else
         {
             // Apply Heal to enemy if necessary
             enemy.Heal(regenAmount);
+
+            if (!healthParticle)
+            {
+                healthParticle = Instantiate(healthParticlePrefab, transform);
+            }
         }
     }
 }

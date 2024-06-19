@@ -560,7 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a42bf5435ae6c44fabcc5d1cd6a75d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthParticlePrefab: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
+  healthParticlePrefab: {fileID: 5565326487960527843, guid: 794c88f5340d14f4885d985995b50026, type: 3}
   buffBar: {fileID: 493039623141738153}
   buff_Regeneration: {fileID: 1488373734654657567, guid: a3905943ca281ec40bea07389bfa4749, type: 3}
   isPlayer: 0
