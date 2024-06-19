@@ -1388,6 +1388,7 @@ GameObject:
   - component: {fileID: 2706319403802098195}
   - component: {fileID: 1044126145904910317}
   - component: {fileID: 6961547851827590427}
+  - component: {fileID: 2427192153735491497}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2358,6 +2359,22 @@ MonoBehaviour:
   playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
   player: {fileID: 7150002324481854805}
   enemy: {fileID: 0}
+--- !u!114 &2427192153735491497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550517957279444385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd75a69972758d4ca3c1846f356ff57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffBar: {fileID: 119541469203478924}
+  ImmovableEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
+  buffPrefab: {fileID: 2852665012809533500, guid: 241180ef6e6c05b4bacfd7411bc15870, type: 3}
+  isImmovable: 0
 --- !u!1 &7996015745871743870
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,10 +41,13 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] Collider2D enemyCollider2D;
     [SerializeField] GameObject shadow;
     protected Rigidbody2D enemyRB;
-    protected CrowdControl crowdControl;
     protected Animator enemyAnimator;
+
+    [Header("Status Effects")]
+    protected CrowdControl crowdControl;
     Buff_Regeneration regeneration;
     protected Buff_Protection protection;
+    protected Buff_Immovable immovable;
 
     [Header("Bars")]
     [SerializeField] EnemyHealthBar healthBar;
@@ -121,6 +124,7 @@ public class Enemy : MonoBehaviour, IDamageable
         crowdControl = GetComponent<CrowdControl>();
         regeneration = GetComponent<Buff_Regeneration>();
         protection = GetComponent<Buff_Protection>();
+        immovable = GetComponent<Buff_Immovable>();
     }
 
     private void Start()

@@ -170,7 +170,7 @@ public class Hermit : Enemy
             if (impactTime >= basicImpactTime)
             {
                 // Set Cast Bar Color
-                castBar.color = Color.blue;
+                castBar.color = Color.grey;
 
                 // Reset Timer
                 impactTime = 0f;
@@ -181,7 +181,7 @@ public class Hermit : Enemy
         }
 
         // End
-        if (castBar.color == Color.blue)
+        if (castBar.color == Color.grey)
         {
             recoveryTime += Time.deltaTime;
 
@@ -326,6 +326,9 @@ public class Hermit : Enemy
                 // Animate
                 enemyAnimator.Play("Mobility Impact");
 
+                // Immovable
+                immovable.Immovable(mobilityImpactTime + .2f);
+
                 // Dust Effect
                 Instantiate(mobilityStartEffect, transform.position, transform.rotation);
 
@@ -342,7 +345,7 @@ public class Hermit : Enemy
             if (impactTime >= modifiedImpactTime)
             {
                 // Set Cast Bar Color
-                castBar.color = Color.blue;
+                castBar.color = Color.grey;
 
                 // Reset Timer
                 impactTime = 0f;
@@ -353,7 +356,7 @@ public class Hermit : Enemy
         }
 
         // End
-        if (castBar.color == Color.blue)
+        if (castBar.color == Color.grey)
         {
             recoveryTime += Time.deltaTime;
 
@@ -498,7 +501,7 @@ public class Hermit : Enemy
                 enemyAnimator.Play("Special Impact");
 
                 // Protection
-                protection.Protection(4,5);
+                protection.Protection(4,3);
 
                 // Spawn Effect
                 specialEffectInstance = Instantiate(specialEffect, transform.position, Quaternion.identity, transform);
@@ -522,7 +525,7 @@ public class Hermit : Enemy
             if (impactTime >= specialImpactTime)
             {
                 // Set Cast Bar Color
-                castBar.color = Color.blue;
+                castBar.color = Color.grey;
 
                 // Reset Timer
                 impactTime = 0f;
@@ -533,7 +536,7 @@ public class Hermit : Enemy
         }
 
         // End
-        if (castBar.color == Color.blue)
+        if (castBar.color == Color.grey)
         {
             recoveryTime += Time.deltaTime;
 

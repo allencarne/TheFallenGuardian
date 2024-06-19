@@ -26,6 +26,12 @@ public class CrowdControl : MonoBehaviour, IKnockbackable
     private Rigidbody2D opponentRB;
 
     public UnityEvent OnInterrupt;
+    Buff_Immovable immovable;
+
+    private void Awake()
+    {
+        immovable = GetComponent<Buff_Immovable>();
+    }
 
     public void Interrupt()
     {
@@ -71,12 +77,11 @@ public class CrowdControl : MonoBehaviour, IKnockbackable
 
     public void KnockBack(Rigidbody2D opponentRB, float knockBackAmount, float knockBackDuration, Vector2 knockBackDirection)
     {
-        /*
-        if (buffs.IsImmovable)
+        if (immovable.isImmovable)
         {
+            // Don't knock back if we are Immovable
             return;
         }
-        */
 
         // Assign Variables
         this.opponentRB = opponentRB;
