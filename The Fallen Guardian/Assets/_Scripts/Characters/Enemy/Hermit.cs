@@ -77,16 +77,21 @@ public class Hermit : Enemy
     [SerializeField] float basicRecoveryTime;
     [SerializeField] float basicCoolDown;
 
+    float impactTimer = 0f;
+    float recoveryTimer = 0f;
+
     protected override void AttackState()
     {
         modifiedCastTime = basicCastTime / CurrentAttackSpeed;
-        modifiedImpactTime = basicImpactTime / CurrentAttackSpeed;
+        //modifiedImpactTime = basicImpactTime / CurrentAttackSpeed;
         modifiedRecoveryTime = basicRecoveryTime / CurrentAttackSpeed;
 
         UpdateCastBar(castBarTime, modifiedCastTime);
 
         if (canAttack && target != null && !hasAttacked)
         {
+            Debug.Log("Start Cast");
+
             canAttack = false;
             hasAttacked = true;
 
@@ -113,117 +118,74 @@ public class Hermit : Enemy
                 _fillTelegraph.FillSpeed = modifiedCastTime;
             }
 
-            // Timers
-            StartCoroutine(BasicCast());
+            // Cool Down
             StartCoroutine(AttackCoolDown());
         }
-    }
 
-    IEnumerator BasicCast()
-    {
-        yield return new WaitForSeconds(modifiedCastTime);
-
-        if (isEnemyDead)
+        if (castBarTime >= modifiedCastTime)
         {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            yield break; // Exit the coroutine early
-        }
-
-        if (wasInterrupted)
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            enemyState = EnemyState.Idle;
-            yield break; // Exit the coroutine early
-        }
-        else
-        {
-            // Animate
-            enemyAnimator.Play("Basic Impact");
-
-            // Set Cast Bar Color
-            castBar.color = Color.green;
-
-            basicEffectInstance = Instantiate(basicEffect, vectorToTarget, Quaternion.identity);
-
-            DamageOnTrigger _damageOnTrigger = basicEffectInstance.GetComponent<DamageOnTrigger>();
-            if (_damageOnTrigger != null)
+            if (castBar.color == Color.yellow)
             {
-                _damageOnTrigger.AbilityDamage = basicDamage;
-                _damageOnTrigger.CharacterDamage = CurrentDamage;
-                _damageOnTrigger.HitEffect = basicHitEffect;
+                // Set Cast Bar Color
+                castBar.color = Color.green;
+
+                // Reset Timer
+                castBarTime = 0;
+
+                // Animate
+                enemyAnimator.Play("Basic Impact");
+
+                // Spawn Effect
+                basicEffectInstance = Instantiate(basicEffect, vectorToTarget, Quaternion.identity);
+
+                // Deal Damage
+                DamageOnTrigger _damageOnTrigger = basicEffectInstance.GetComponent<DamageOnTrigger>();
+                if (_damageOnTrigger != null)
+                {
+                    _damageOnTrigger.AbilityDamage = basicDamage;
+                    _damageOnTrigger.CharacterDamage = CurrentDamage;
+                    _damageOnTrigger.HitEffect = basicHitEffect;
+                }
             }
-
-            // Delay
-            StartCoroutine(BasicImpact());
-        }
-    }
-
-    IEnumerator BasicImpact()
-    {
-        yield return new WaitForSeconds(modifiedImpactTime);
-
-        if (isEnemyDead)
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            yield break; // Exit the coroutine early
         }
 
-        if (wasInterrupted)
+        if (castBar.color == Color.green)
         {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
+            impactTimer += Time.deltaTime;
 
-            enemyState = EnemyState.Idle;
-            yield break; // Exit the coroutine early
-        }
-        else
-        {
-            // Animate
-            enemyAnimator.Play("Basic Recovery");
+            if (impactTimer >= basicImpactTime)
+            {
+                // Set Cast Bar Color
+                castBar.color = Color.blue;
 
-            StartCoroutine(EndCastBar());
-            StartCoroutine(BasicRecovery());
-        }
-    }
+                // Reset Timer
+                impactTimer = 0f;
 
-    IEnumerator BasicRecovery()
-    {
-        yield return new WaitForSeconds(modifiedRecoveryTime);
-
-        if (isEnemyDead)
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            yield break; // Exit the coroutine early
+                // Animate
+                enemyAnimator.Play("Basic Recovery");
+            }
         }
 
-        if (wasInterrupted)
+        if (castBar.color == Color.blue)
         {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
+            recoveryTimer += Time.deltaTime;
 
-            enemyState = EnemyState.Idle;
-            yield break; // Exit the coroutine early
-        }
-        else
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
+            if (recoveryTimer >= modifiedRecoveryTime)
+            {
+                // Set Cast Bar Color
+                castBar.color = Color.black;
 
-            enemyState = EnemyState.Idle;
+                // Reset Timer
+                recoveryTimer = 0f;
+
+                // Reset Cast Bar
+                castBar.fillAmount = 0;
+
+                wasInterrupted = false;
+                hasAttacked = false;
+
+                enemyState = EnemyState.Idle;
+            }
         }
     }
 
