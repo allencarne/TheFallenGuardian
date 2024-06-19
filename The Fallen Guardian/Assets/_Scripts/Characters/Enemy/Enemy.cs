@@ -515,9 +515,17 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (canDeath)
         {
+            // Bools
             canDeath = false;
+            isEnemyDead = true;
 
+            // Event
+            OnDeath?.Invoke();
+
+            // Animator
             enemyAnimator.Play("Death");
+
+            // Components
             enemyCollider2D.enabled = false;
             shadow.SetActive(false);
 
@@ -535,6 +543,7 @@ public class Enemy : MonoBehaviour, IDamageable
                 }
             }
 
+            // Target
             target = null;
             playerInRange = false;
 
@@ -573,10 +582,6 @@ public class Enemy : MonoBehaviour, IDamageable
 
         if (Health <= 0)
         {
-            isEnemyDead = true;
-
-            OnDeath?.Invoke();
-
             enemyState = EnemyState.Death;
         }
     }

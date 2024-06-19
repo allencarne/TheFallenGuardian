@@ -123,7 +123,25 @@ public class Hermit : Enemy
     {
         yield return new WaitForSeconds(modifiedCastTime);
 
-        if (!wasInterrupted || !isEnemyDead)
+        if (isEnemyDead)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
+
+            yield break; // Exit the coroutine early
+        }
+
+        if (wasInterrupted)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
+
+            enemyState = EnemyState.Idle;
+            yield break; // Exit the coroutine early
+        }
+        else
         {
             // Animate
             enemyAnimator.Play("Basic Impact");
@@ -132,9 +150,6 @@ public class Hermit : Enemy
             castBar.color = Color.green;
 
             basicEffectInstance = Instantiate(basicEffect, vectorToTarget, Quaternion.identity);
-
-            // Cannot Hit Self with Attack
-            Physics2D.IgnoreCollision(basicEffectInstance.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
 
             DamageOnTrigger _damageOnTrigger = basicEffectInstance.GetComponent<DamageOnTrigger>();
             if (_damageOnTrigger != null)
@@ -147,35 +162,69 @@ public class Hermit : Enemy
             // Delay
             StartCoroutine(BasicImpact());
         }
-        else
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-            StartCoroutine(ResetCastBar());
-
-            enemyState = EnemyState.Idle;
-        }
     }
 
     IEnumerator BasicImpact()
     {
         yield return new WaitForSeconds(modifiedImpactTime);
 
-        // Animate
-        enemyAnimator.Play("Basic Recovery");
+        if (isEnemyDead)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
 
-        StartCoroutine(EndCastBar());
-        StartCoroutine(BasicRecovery());
+            yield break; // Exit the coroutine early
+        }
+
+        if (wasInterrupted)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
+
+            enemyState = EnemyState.Idle;
+            yield break; // Exit the coroutine early
+        }
+        else
+        {
+            // Animate
+            enemyAnimator.Play("Basic Recovery");
+
+            StartCoroutine(EndCastBar());
+            StartCoroutine(BasicRecovery());
+        }
     }
 
     IEnumerator BasicRecovery()
     {
         yield return new WaitForSeconds(modifiedRecoveryTime);
 
-        wasInterrupted = false;
-        hasAttacked = false;
+        if (isEnemyDead)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
 
-        enemyState = EnemyState.Idle;
+            yield break; // Exit the coroutine early
+        }
+
+        if (wasInterrupted)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
+
+            enemyState = EnemyState.Idle;
+            yield break; // Exit the coroutine early
+        }
+        else
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+
+            enemyState = EnemyState.Idle;
+        }
     }
 
     IEnumerator AttackCoolDown()
@@ -272,7 +321,25 @@ public class Hermit : Enemy
     {
         yield return new WaitForSeconds(modifiedCastTime);
 
-        if (!wasInterrupted || !isEnemyDead)
+        if (isEnemyDead)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
+
+            yield break; // Exit the coroutine early
+        }
+
+        if (wasInterrupted)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
+
+            enemyState = EnemyState.Idle;
+            yield break; // Exit the coroutine early
+        }
+        else
         {
             // Animate
             enemyAnimator.Play("Mobility Impact");
@@ -289,62 +356,92 @@ public class Hermit : Enemy
             // Delay
             StartCoroutine(MobilityImpact());
         }
-        else
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-
-            StartCoroutine(ResetCastBar());
-
-            enemyState = EnemyState.Idle;
-        }
     }
 
     IEnumerator MobilityImpact()
     {
         yield return new WaitForSeconds(modifiedImpactTime);
 
-        // Animate
-        enemyAnimator.Play("Mobility Recovery");
+        if (isEnemyDead)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
 
-        StartCoroutine(EndCastBar());
-        StartCoroutine(MobilityRecovery());
+            yield break; // Exit the coroutine early
+        }
+
+        if (wasInterrupted)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
+
+            enemyState = EnemyState.Idle;
+            yield break; // Exit the coroutine early
+        }
+        else
+        {
+            // Animate
+            enemyAnimator.Play("Mobility Recovery");
+
+            StartCoroutine(EndCastBar());
+            StartCoroutine(MobilityRecovery());
+        }
     }
 
     IEnumerator MobilityRecovery()
     {
         yield return new WaitForSeconds(modifiedRecoveryTime);
 
-        // Bool for FixedUpdate
-        canDash = false;
-
-        // Enemy can collide with Target
-        if (target != null)
+        if (isEnemyDead)
         {
-            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
+
+            yield break; // Exit the coroutine early
         }
 
-        // Damage Effect
-        mobilityEndEffectInstance = Instantiate(mobilityEndEffect, vectorToTarget, Quaternion.identity);
-        
-        // Dust Effect
-        Instantiate(mobilityStartEffect, transform.position, transform.rotation);
-
-        // Cannot Hit Self with Attack
-        Physics2D.IgnoreCollision(mobilityEndEffectInstance.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
-
-        DamageOnTrigger _damageOnTrigger = mobilityEndEffectInstance.GetComponent<DamageOnTrigger>();
-        if (_damageOnTrigger != null)
+        if (wasInterrupted)
         {
-            _damageOnTrigger.AbilityDamage = mobilityDamage;
-            _damageOnTrigger.CharacterDamage = CurrentDamage;
-            _damageOnTrigger.HitEffect = mobilityHitEffect;
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
+
+            enemyState = EnemyState.Idle;
+            yield break; // Exit the coroutine early
         }
+        else
+        {
+            // Bool for FixedUpdate
+            canDash = false;
 
-        wasInterrupted = false;
-        hasAttacked = false;
+            // Enemy can collide with Target
+            if (target != null)
+            {
+                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
+            }
 
-        enemyState = EnemyState.Idle;
+            // Damage Effect
+            mobilityEndEffectInstance = Instantiate(mobilityEndEffect, vectorToTarget, Quaternion.identity);
+
+            // Dust Effect
+            Instantiate(mobilityStartEffect, transform.position, transform.rotation);
+
+            DamageOnTrigger _damageOnTrigger = mobilityEndEffectInstance.GetComponent<DamageOnTrigger>();
+            if (_damageOnTrigger != null)
+            {
+                _damageOnTrigger.AbilityDamage = mobilityDamage;
+                _damageOnTrigger.CharacterDamage = CurrentDamage;
+                _damageOnTrigger.HitEffect = mobilityHitEffect;
+            }
+
+            wasInterrupted = false;
+            hasAttacked = false;
+
+            enemyState = EnemyState.Idle;
+        }
     }
 
     IEnumerator MobilityCoolDown()
@@ -418,7 +515,25 @@ public class Hermit : Enemy
     {
         yield return new WaitForSeconds(modifiedCastTime);
 
-        if (!wasInterrupted || !isEnemyDead)
+        if (isEnemyDead)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
+
+            yield break; // Exit the coroutine early
+        }
+
+        if (wasInterrupted)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
+
+            enemyState = EnemyState.Idle;
+            yield break; // Exit the coroutine early
+        }
+        else
         {
             // Animate
             enemyAnimator.Play("Special Impact");
@@ -431,34 +546,44 @@ public class Hermit : Enemy
             // Delay
             StartCoroutine(SpecialImpact());
         }
-        else
-        {
-            wasInterrupted = false;
-            hasAttacked = false;
-
-            StartCoroutine(ResetCastBar());
-
-            enemyState = EnemyState.Idle;
-        }
     }
 
     IEnumerator AttackRate()
     {
-        Attack();
-        yield return new WaitForSeconds(specialAttackRate);
-        Attack();
-        yield return new WaitForSeconds(specialAttackRate);
-        Attack();
-        yield return new WaitForSeconds(specialAttackRate);
-        Attack();
+        if (isEnemyDead)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
+
+            yield break; // Exit the coroutine early
+        }
+
+        if (wasInterrupted)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
+
+            enemyState = EnemyState.Idle;
+            yield break; // Exit the coroutine early
+        }
+        else
+        {
+            Attack();
+            yield return new WaitForSeconds(specialAttackRate);
+            Attack();
+            yield return new WaitForSeconds(specialAttackRate);
+            Attack();
+            yield return new WaitForSeconds(specialAttackRate);
+            Attack();
+        }
+
     }
 
     void Attack()
     {
         specialEffectInstance = Instantiate(specialEffect, transform.position, Quaternion.identity, transform);
-
-        // Cannot Hit Self with Attack
-        Physics2D.IgnoreCollision(specialEffectInstance.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
 
         DamageOnTrigger _damageOnTrigger = specialEffectInstance.GetComponent<DamageOnTrigger>();
         if (_damageOnTrigger != null)
@@ -473,21 +598,63 @@ public class Hermit : Enemy
     {
         yield return new WaitForSeconds(specialImpactTime);
 
-        // Animate
-        enemyAnimator.Play("Special Recovery");
+        if (isEnemyDead)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
 
-        StartCoroutine(EndCastBar());
-        StartCoroutine(SpecialRecovery());
+            yield break; // Exit the coroutine early
+        }
+
+        if (wasInterrupted)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
+
+            enemyState = EnemyState.Idle;
+            yield break; // Exit the coroutine early
+        }
+        else
+        {
+            // Animate
+            enemyAnimator.Play("Special Recovery");
+
+            StartCoroutine(EndCastBar());
+            StartCoroutine(SpecialRecovery());
+        }
     }
 
     IEnumerator SpecialRecovery()
     {
         yield return new WaitForSeconds(modifiedRecoveryTime);
 
-        wasInterrupted = false;
-        hasAttacked = false;
+        if (isEnemyDead)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
 
-        enemyState = EnemyState.Idle;
+            yield break; // Exit the coroutine early
+        }
+
+        if (wasInterrupted)
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+            StartCoroutine(ResetCastBar());
+
+            enemyState = EnemyState.Idle;
+            yield break; // Exit the coroutine early
+        }
+        else
+        {
+            wasInterrupted = false;
+            hasAttacked = false;
+
+            enemyState = EnemyState.Idle;
+        }
     }
 
     IEnumerator SpecialCoolDown()
