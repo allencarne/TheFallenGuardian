@@ -266,8 +266,8 @@ MonoBehaviour:
   CurrentArmor: 0
   expToGive: 4
   wanderRadius: 5
-  attackRadius: 0
-  mobilityRadius: 0
+  attackRadius: 1.8
+  mobilityRadius: 5
   specialRadius: 1.2
   deAggroRadius: 12
   patienceBar: {fileID: 2325305239789557552}
@@ -314,15 +314,15 @@ MonoBehaviour:
   mobilityCastTime: 0.4
   mobilityImpactTime: 0.4
   mobilityRecoveryTime: 0.4
-  mobilityCoolDown: 4
+  mobilityCoolDown: 6
   specialTelegraph: {fileID: 7926034399656016517, guid: dc76bb65ce7b826469e44f49c65f5975, type: 3}
   specialEffect: {fileID: 5144617197477731316, guid: d670148b3f21b074ab26ec9d8f9faf57, type: 3}
   specialHitEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   specialDamage: 1
-  specialCastTime: 1
+  specialCastTime: 0.4
   specialImpactTime: 2
   specialRecoveryTime: 0.4
-  specialCoolDown: 6
+  specialCoolDown: 8
   specialAttackRate: 0.5
 --- !u!70 &8893818938656417671 stripped
 CapsuleCollider2D:
