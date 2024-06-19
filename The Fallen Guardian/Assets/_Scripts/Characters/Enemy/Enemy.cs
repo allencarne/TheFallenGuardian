@@ -71,13 +71,14 @@ public class Enemy : MonoBehaviour, IDamageable
     bool canReset = true;
     bool canDeath = true;
     protected bool wasInterrupted = false;
+    protected bool isEnemyDead = false;
 
     [Header("Attack")]
     protected bool hasAttacked = false;
     protected bool canImpact = false; // bug with snail
     protected Vector2 directionToTarget;
     protected Vector2 vectorToTarget;
-    //protected float angleToTarget;
+
     protected float modifiedCastTime;
     protected float modifiedImpactTime;
     protected float modifiedRecoveryTime;
@@ -91,6 +92,19 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("Events")]
     public UnityEvent OnHealthChanged;
     public UnityEvent OnDeath;
+
+    protected virtual void HandleInterrupt()
+    {
+        if (castBar.color == Color.yellow)
+        {
+            wasInterrupted = true;
+
+            StartCoroutine(InterruptCastBar());
+
+            // State Transition
+            enemyState = EnemyState.Idle;
+        }
+    }
 
     protected enum EnemyState 
     { 
@@ -559,6 +573,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
         if (Health <= 0)
         {
+            isEnemyDead = true;
+
             OnDeath?.Invoke();
 
             enemyState = EnemyState.Death;
@@ -717,7 +733,7 @@ public class Enemy : MonoBehaviour, IDamageable
             yield return new WaitForSeconds(.2f);
 
             // Reset Cast Bar Color
-            castBar.color = Color.yellow;
+            //castBar.color = Color.yellow;
 
             // Reset Fill
             castBar.fillAmount = 0;

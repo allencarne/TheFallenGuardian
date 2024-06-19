@@ -2089,6 +2089,9 @@ MonoBehaviour:
   IsImmobilized: 0
   IsInterrupted: 0
   IsDisarmed: 0
+  OnInterrupt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6967247431417826392
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -64,6 +64,38 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 415464689696531612}
+    - target: {fileID: 5245249597603853144, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnInterrupt.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245249597603853144, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnInterrupt.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245249597603853144, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnInterrupt.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 415464689696531612}
+    - target: {fileID: 5245249597603853144, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnInterrupt.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5504511316471867309}
+    - target: {fileID: 5245249597603853144, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnInterrupt.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245249597603853144, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnInterrupt.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleInterrupt
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245249597603853144, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnInterrupt.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Enemy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245249597603853144, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnInterrupt.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6056039518232562950, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: enemy
       value: 
@@ -366,10 +398,10 @@ MonoBehaviour:
   patienceBar: {fileID: 3853848659867538028}
   castBar: {fileID: 2803776170586669871}
   spriteRenderer: {fileID: 3441835576944637314}
+  enemyCollider2D: {fileID: 7949850666712048347}
   shadow: {fileID: 7976263011152865437}
   healthBar: {fileID: 2106973735601305545}
   EnemySpawner: {fileID: 0}
-  enemyCollider2D: {fileID: 7949850666712048347}
   patience: 3
   OnHealthChanged:
     m_PersistentCalls:

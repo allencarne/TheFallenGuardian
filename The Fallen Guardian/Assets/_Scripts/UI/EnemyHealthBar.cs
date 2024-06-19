@@ -22,17 +22,20 @@ public class EnemyHealthBar : MonoBehaviour
 
     public void UpdateHealthUI()
     {
-        if (isLerping)
+        if (healthBar.activeInHierarchy) // Check if the GameObject is active
         {
-            StopCoroutine(lerpingCoroutine);
-            isLerping = false;
-        }
+            if (isLerping)
+            {
+                StopCoroutine(lerpingCoroutine);
+                isLerping = false;
+            }
 
-        lerpingCoroutine = StartCoroutine(LerpHealthBar());
+            lerpingCoroutine = StartCoroutine(LerpHealthBar());
 
-        if (enemy.Health <= 0)
-        {
-            healthBar.SetActive(false);
+            if (enemy.Health <= 0)
+            {
+                healthBar.SetActive(false);
+            }
         }
     }
 

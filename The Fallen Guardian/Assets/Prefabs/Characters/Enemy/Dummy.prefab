@@ -64,6 +64,26 @@ PrefabInstance:
       propertyPath: healthBarFront
       value: 
       objectReference: {fileID: 8146493080464070616}
+    - target: {fileID: 5245249597603853144, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnInterrupt.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245249597603853144, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnInterrupt.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8645626093764817777}
+    - target: {fileID: 5245249597603853144, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnInterrupt.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HandleInterrupt
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245249597603853144, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnInterrupt.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Enemy, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5245249597603853144, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
+      propertyPath: OnInterrupt.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6056039518232562950, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: enemy
       value: 
@@ -337,8 +357,6 @@ MonoBehaviour:
   CurrentCDR: 0
   BaseArmor: 0
   CurrentArmor: 0
-  BaseRegen: 0
-  CurrentRegen: 0
   expToGive: 0
   wanderRadius: 0
   attackRadius: 0
@@ -348,10 +366,10 @@ MonoBehaviour:
   patienceBar: {fileID: 88677911671152900}
   castBar: {fileID: 1344765896259153991}
   spriteRenderer: {fileID: 1982509487361492714}
+  enemyCollider2D: {fileID: 6490559976150798771}
   shadow: {fileID: 6553285107288546293}
   healthBar: {fileID: 2989804749614204065}
   EnemySpawner: {fileID: 0}
-  enemyCollider2D: {fileID: 6490559976150798771}
   patience: 5
   OnHealthChanged:
     m_PersistentCalls:

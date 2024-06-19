@@ -4,6 +4,41 @@ using UnityEngine;
 
 public class Hermit : Enemy
 {
+    protected override void HandleInterrupt()
+    {
+        base.HandleInterrupt();
+
+        if (basicTelegraphInstance)
+        {
+            Destroy(basicTelegraphInstance);
+        }
+
+        if (basicEffectInstance)
+        {
+            Destroy(basicEffectInstance);
+        }
+
+        if (mobilityTelegraphInstance)
+        {
+            Destroy(mobilityTelegraphInstance);
+        }
+
+        if (mobilityEndEffectInstance)
+        {
+            Destroy(mobilityTelegraphInstance);
+        }
+
+        if (specialTelegraphInstance)
+        {
+            Destroy(specialTelegraphInstance);
+        }
+
+        if (specialEffectInstance)
+        {
+            Destroy(specialEffectInstance);
+        }
+    }
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -28,6 +63,8 @@ public class Hermit : Enemy
     GameObject basicTelegraphInstance;
 
     [SerializeField] GameObject basicEffect;
+    GameObject basicEffectInstance;
+
     [SerializeField] GameObject basicHitEffect;
 
     [Header("Stats")]
@@ -47,29 +84,6 @@ public class Hermit : Enemy
         modifiedRecoveryTime = basicRecoveryTime / CurrentAttackSpeed;
 
         UpdateCastBar(castBarTime, modifiedCastTime);
-
-        if (crowdControl.IsInterrupted)
-        {
-            crowdControl.IsInterrupted = false;
-            wasInterrupted = true;
-
-            if (wasInterrupted)
-            {
-                if (castBar.color != Color.green)
-                {
-                    if (basicTelegraphInstance)
-                    {
-                        Destroy(basicTelegraphInstance);
-                    }
-
-                    // State Transition
-                    enemyState = EnemyState.Idle;
-
-                    StartCoroutine(InterruptCastBar());
-                    return;
-                }
-            }
-        }
 
         if (canAttack && target != null && !hasAttacked)
         {
@@ -109,7 +123,7 @@ public class Hermit : Enemy
     {
         yield return new WaitForSeconds(modifiedCastTime);
 
-        if (!wasInterrupted)
+        if (!wasInterrupted || !isEnemyDead)
         {
             // Animate
             enemyAnimator.Play("Basic Impact");
@@ -117,12 +131,12 @@ public class Hermit : Enemy
             // Set Cast Bar Color
             castBar.color = Color.green;
 
-            GameObject _basic = Instantiate(basicEffect, vectorToTarget, Quaternion.identity);
+            basicEffectInstance = Instantiate(basicEffect, vectorToTarget, Quaternion.identity);
 
             // Cannot Hit Self with Attack
-            Physics2D.IgnoreCollision(_basic.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+            Physics2D.IgnoreCollision(basicEffectInstance.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
 
-            DamageOnTrigger _damageOnTrigger = _basic.GetComponent<DamageOnTrigger>();
+            DamageOnTrigger _damageOnTrigger = basicEffectInstance.GetComponent<DamageOnTrigger>();
             if (_damageOnTrigger != null)
             {
                 _damageOnTrigger.AbilityDamage = basicDamage;
@@ -137,10 +151,9 @@ public class Hermit : Enemy
         {
             wasInterrupted = false;
             hasAttacked = false;
+            StartCoroutine(ResetCastBar());
 
             enemyState = EnemyState.Idle;
-
-            StartCoroutine(ResetCastBar());
         }
     }
 
@@ -185,6 +198,8 @@ public class Hermit : Enemy
 
     [SerializeField] GameObject mobilityStartEffect;
     [SerializeField] GameObject mobilityEndEffect;
+    GameObject mobilityEndEffectInstance;
+
     [SerializeField] GameObject mobilityHitEffect;
 
     [Header("Stats")]
@@ -206,29 +221,6 @@ public class Hermit : Enemy
         modifiedRecoveryTime = mobilityRecoveryTime / CurrentAttackSpeed;
 
         UpdateCastBar(castBarTime, modifiedCastTime);
-
-        if (crowdControl.IsInterrupted)
-        {
-            crowdControl.IsInterrupted = false;
-            wasInterrupted = true;
-
-            if (wasInterrupted)
-            {
-                if (castBar.color != Color.green)
-                {
-                    if (mobilityTelegraphInstance)
-                    {
-                        Destroy(mobilityTelegraphInstance);
-                    }
-
-                    // State Transition
-                    enemyState = EnemyState.Idle;
-
-                    StartCoroutine(InterruptCastBar());
-                    return;
-                }
-            }
-        }
 
         if (canMobility && target != null && !hasAttacked)
         {
@@ -280,7 +272,7 @@ public class Hermit : Enemy
     {
         yield return new WaitForSeconds(modifiedCastTime);
 
-        if (!wasInterrupted)
+        if (!wasInterrupted || !isEnemyDead)
         {
             // Animate
             enemyAnimator.Play("Mobility Impact");
@@ -302,9 +294,9 @@ public class Hermit : Enemy
             wasInterrupted = false;
             hasAttacked = false;
 
-            enemyState = EnemyState.Idle;
-
             StartCoroutine(ResetCastBar());
+
+            enemyState = EnemyState.Idle;
         }
     }
 
@@ -333,15 +325,15 @@ public class Hermit : Enemy
         }
 
         // Damage Effect
-        GameObject _mobility = Instantiate(mobilityEndEffect, vectorToTarget, Quaternion.identity);
+        mobilityEndEffectInstance = Instantiate(mobilityEndEffect, vectorToTarget, Quaternion.identity);
         
         // Dust Effect
         Instantiate(mobilityStartEffect, transform.position, transform.rotation);
 
         // Cannot Hit Self with Attack
-        Physics2D.IgnoreCollision(_mobility.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(mobilityEndEffectInstance.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
 
-        DamageOnTrigger _damageOnTrigger = _mobility.GetComponent<DamageOnTrigger>();
+        DamageOnTrigger _damageOnTrigger = mobilityEndEffectInstance.GetComponent<DamageOnTrigger>();
         if (_damageOnTrigger != null)
         {
             _damageOnTrigger.AbilityDamage = mobilityDamage;
@@ -374,6 +366,8 @@ public class Hermit : Enemy
     GameObject specialTelegraphInstance;
 
     [SerializeField] GameObject specialEffect;
+    GameObject specialEffectInstance;
+
     [SerializeField] GameObject specialHitEffect;
 
     [Header("Stats")]
@@ -393,29 +387,6 @@ public class Hermit : Enemy
         modifiedRecoveryTime = specialRecoveryTime / CurrentAttackSpeed;
 
         UpdateCastBar(castBarTime, modifiedCastTime);
-
-        if (crowdControl.IsInterrupted)
-        {
-            crowdControl.IsInterrupted = false;
-            wasInterrupted = true;
-
-            if (wasInterrupted)
-            {
-                if (castBar.color != Color.green)
-                {
-                    if (specialTelegraphInstance)
-                    {
-                        Destroy(specialTelegraphInstance);
-                    }
-
-                    // State Transition
-                    enemyState = EnemyState.Idle;
-
-                    StartCoroutine(InterruptCastBar());
-                    return;
-                }
-            }
-        }
 
         if (canSpecial && target != null && !hasAttacked)
         {
@@ -447,7 +418,7 @@ public class Hermit : Enemy
     {
         yield return new WaitForSeconds(modifiedCastTime);
 
-        if (!wasInterrupted)
+        if (!wasInterrupted || !isEnemyDead)
         {
             // Animate
             enemyAnimator.Play("Special Impact");
@@ -465,9 +436,9 @@ public class Hermit : Enemy
             wasInterrupted = false;
             hasAttacked = false;
 
-            enemyState = EnemyState.Idle;
-
             StartCoroutine(ResetCastBar());
+
+            enemyState = EnemyState.Idle;
         }
     }
 
@@ -484,12 +455,12 @@ public class Hermit : Enemy
 
     void Attack()
     {
-        GameObject _special = Instantiate(specialEffect, transform.position, Quaternion.identity, transform);
+        specialEffectInstance = Instantiate(specialEffect, transform.position, Quaternion.identity, transform);
 
         // Cannot Hit Self with Attack
-        Physics2D.IgnoreCollision(_special.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(specialEffectInstance.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
 
-        DamageOnTrigger _damageOnTrigger = _special.GetComponent<DamageOnTrigger>();
+        DamageOnTrigger _damageOnTrigger = specialEffectInstance.GetComponent<DamageOnTrigger>();
         if (_damageOnTrigger != null)
         {
             _damageOnTrigger.AbilityDamage = specialDamage;

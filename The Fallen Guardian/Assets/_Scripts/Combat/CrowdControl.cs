@@ -2,6 +2,7 @@ using Newtonsoft.Json.Bson;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CrowdControl : MonoBehaviour, IKnockbackable
 {
@@ -23,6 +24,8 @@ public class CrowdControl : MonoBehaviour, IKnockbackable
     private Vector2 knockBackVelocity;
     private float knockBackDuration;
     private Rigidbody2D opponentRB;
+
+    public UnityEvent OnInterrupt;
 
     public void Interrupt()
     {
@@ -81,7 +84,7 @@ public class CrowdControl : MonoBehaviour, IKnockbackable
         knockBackVelocity = knockBackDirection * knockBackAmount;
 
         // CC
-        Interrupt();
+        OnInterrupt?.Invoke();
         Immobilize(knockBackDuration);
         Disarm(knockBackDuration);
 
