@@ -6,36 +6,39 @@ public class Hermit : Enemy
 {
     protected override void HandleInterrupt()
     {
-        base.HandleInterrupt();
-
-        if (basicTelegraphInstance)
+        if (castBar.color == Color.yellow)
         {
-            Destroy(basicTelegraphInstance);
-        }
+            castBar.color = Color.white;
 
-        if (basicEffectInstance)
-        {
-            Destroy(basicEffectInstance);
-        }
+            if (basicTelegraphInstance)
+            {
+                Destroy(basicTelegraphInstance);
+            }
 
-        if (mobilityTelegraphInstance)
-        {
-            Destroy(mobilityTelegraphInstance);
-        }
+            if (basicEffectInstance)
+            {
+                Destroy(basicEffectInstance);
+            }
 
-        if (mobilityEndEffectInstance)
-        {
-            Destroy(mobilityTelegraphInstance);
-        }
+            if (mobilityTelegraphInstance)
+            {
+                Destroy(mobilityTelegraphInstance);
+            }
 
-        if (specialTelegraphInstance)
-        {
-            Destroy(specialTelegraphInstance);
-        }
+            if (mobilityEndEffectInstance)
+            {
+                Destroy(mobilityTelegraphInstance);
+            }
 
-        if (specialEffectInstance)
-        {
-            Destroy(specialEffectInstance);
+            if (specialTelegraphInstance)
+            {
+                Destroy(specialTelegraphInstance);
+            }
+
+            if (specialEffectInstance)
+            {
+                Destroy(specialEffectInstance);
+            }
         }
     }
 

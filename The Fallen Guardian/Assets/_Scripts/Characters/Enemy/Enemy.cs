@@ -95,14 +95,6 @@ public class Enemy : MonoBehaviour, IDamageable
     public UnityEvent OnHealthChanged;
     public UnityEvent OnDeath;
 
-    protected virtual void HandleInterrupt()
-    {
-        if (castBar.color == Color.yellow)
-        {
-            castBar.color = Color.white;
-        }
-    }
-
     protected enum EnemyState 
     { 
         Spawn,
@@ -746,6 +738,11 @@ public class Enemy : MonoBehaviour, IDamageable
             // Reset Fill
             castBar.fillAmount = 0;
         }
+    }
+
+    protected virtual void HandleInterrupt()
+    {
+
     }
 
     public IEnumerator ResetCastBar()
