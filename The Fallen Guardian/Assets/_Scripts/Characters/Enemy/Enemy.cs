@@ -84,6 +84,8 @@ public class Enemy : MonoBehaviour, IDamageable
     protected float modifiedRecoveryTime;
 
     protected float castBarTime = 0;
+    protected float impactTime = 0f;
+    protected float recoveryTime = 0f;
 
     [Header("Regeneration")]
     private float regenTimer = 0f;
@@ -97,12 +99,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (castBar.color == Color.yellow)
         {
-            wasInterrupted = true;
-
-            StartCoroutine(InterruptCastBar());
-
-            // State Transition
-            enemyState = EnemyState.Idle;
+            castBar.color = Color.white;
         }
     }
 
@@ -729,16 +726,22 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (castBar != null)
         {
-            // ResetCast Time
-            castBarTime = 0;
-
             // Set Cast Bar Color
             castBar.color = Color.red;
 
-            yield return new WaitForSeconds(.2f);
+            // Reset Timer
+            castBarTime = 0;
 
-            // Reset Cast Bar Color
-            //castBar.color = Color.yellow;
+            // Reset Timer
+            impactTime = 0f;
+
+            // Reset Timer
+            recoveryTime = 0f;
+
+            // Reset Bool
+            hasAttacked = false;
+
+            yield return new WaitForSeconds(.2f);
 
             // Reset Fill
             castBar.fillAmount = 0;

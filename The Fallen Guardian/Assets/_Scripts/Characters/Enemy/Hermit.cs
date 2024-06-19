@@ -77,21 +77,29 @@ public class Hermit : Enemy
     [SerializeField] float basicRecoveryTime;
     [SerializeField] float basicCoolDown;
 
-    float impactTimer = 0f;
-    float recoveryTimer = 0f;
-
     protected override void AttackState()
     {
         modifiedCastTime = basicCastTime / CurrentAttackSpeed;
-        //modifiedImpactTime = basicImpactTime / CurrentAttackSpeed;
         modifiedRecoveryTime = basicRecoveryTime / CurrentAttackSpeed;
 
         UpdateCastBar(castBarTime, modifiedCastTime);
 
+        // Interrupt
+        if (castBar.color == Color.white)
+        {
+            StartCoroutine(InterruptCastBar());
+
+            Debug.Log("Interrupt");
+
+            // State Transition
+            enemyState = EnemyState.Idle;
+            return;
+        }
+
+        // Cast
         if (canAttack && target != null && !hasAttacked)
         {
-            Debug.Log("Start Cast");
-
+            // Set Bools
             canAttack = false;
             hasAttacked = true;
 
@@ -112,6 +120,7 @@ public class Hermit : Enemy
             // Instantiate the telegraph
             basicTelegraphInstance = Instantiate(basicTelegraph, vectorToTarget, Quaternion.identity);
 
+            // Set Fill Speed
             FillTelegraph _fillTelegraph = basicTelegraphInstance.GetComponent<FillTelegraph>();
             if (_fillTelegraph != null)
             {
@@ -122,6 +131,7 @@ public class Hermit : Enemy
             StartCoroutine(AttackCoolDown());
         }
 
+        // Impact
         if (castBarTime >= modifiedCastTime)
         {
             if (castBar.color == Color.yellow)
@@ -149,41 +159,44 @@ public class Hermit : Enemy
             }
         }
 
+        // Recovery
         if (castBar.color == Color.green)
         {
-            impactTimer += Time.deltaTime;
+            impactTime += Time.deltaTime;
 
-            if (impactTimer >= basicImpactTime)
+            if (impactTime >= basicImpactTime)
             {
                 // Set Cast Bar Color
                 castBar.color = Color.blue;
 
                 // Reset Timer
-                impactTimer = 0f;
+                impactTime = 0f;
 
                 // Animate
                 enemyAnimator.Play("Basic Recovery");
             }
         }
 
+        // End
         if (castBar.color == Color.blue)
         {
-            recoveryTimer += Time.deltaTime;
+            recoveryTime += Time.deltaTime;
 
-            if (recoveryTimer >= modifiedRecoveryTime)
+            if (recoveryTime >= modifiedRecoveryTime)
             {
                 // Set Cast Bar Color
                 castBar.color = Color.black;
 
                 // Reset Timer
-                recoveryTimer = 0f;
+                recoveryTime = 0f;
 
                 // Reset Cast Bar
                 castBar.fillAmount = 0;
 
-                wasInterrupted = false;
+                // Set bool
                 hasAttacked = false;
 
+                // Set State
                 enemyState = EnemyState.Idle;
             }
         }
