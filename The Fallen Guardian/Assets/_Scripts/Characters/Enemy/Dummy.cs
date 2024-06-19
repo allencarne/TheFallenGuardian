@@ -16,7 +16,7 @@ public class Dummy : Enemy
             idleTime += 1 * Time.deltaTime;
         }
 
-        UpdatePatienceBar();
+        UpdateDummyPatienceBar();
 
         if (idleTime >= patience)
         {
@@ -31,7 +31,7 @@ public class Dummy : Enemy
 
         idleTime = 0;
 
-        UpdatePatienceBar();
+        UpdateDummyPatienceBar();
 
         StartCoroutine(ResetDuration());
     }
@@ -40,11 +40,12 @@ public class Dummy : Enemy
     {
         yield return new WaitForSeconds(.6f);
 
+        enemyRB.velocity = Vector3.zero;
         enemyRB.position = startingPosition;
         enemyState = EnemyState.Spawn;
     }
 
-    void UpdatePatienceBar()
+    void UpdateDummyPatienceBar()
     {
         if (patienceBar != null)
         {
