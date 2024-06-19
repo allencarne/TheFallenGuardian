@@ -25,8 +25,8 @@ public class Player : MonoBehaviour, IDamageable
     public float LoseCombatTime;
 
     // Regen
-    private float regenTimer = 0f;
-    private float regenInterval = 3f;
+    Buff_Regeneration regeneration;
+    bool isRegenerating = false;
 
     public UnityEvent OnPlayerEnterCombat;
     public UnityEvent OnPlayerLeaveCombat;
@@ -34,6 +34,7 @@ public class Player : MonoBehaviour, IDamageable
     private void Awake()
     {
         CrowdControl = GetComponent<CrowdControl>();
+        regeneration = GetComponent<Buff_Regeneration>();
     }
 
     private void Start()
@@ -71,26 +72,37 @@ public class Player : MonoBehaviour, IDamageable
             }
         }
 
-        if (!InCombat)
+        if (!InCombat && !isRegenerating)
         {
             if (Stats.Health < Stats.MaxHealth)
             {
-                //Buffs.IsRegeneration = true;
-                //Buffs.Regeneration();
-                regenTimer += Time.deltaTime;
+                isRegenerating = true;
 
-                if (regenTimer >= regenInterval)
-                {
-                    //Regeneration(1); // Heal by 1
-                    regenTimer = 0; // Reset the timer after healing
-                }
-            }
-            else
-            {
-                //Buffs.IsRegeneration = false;
-                //Buffs.Regeneration();
+                // Calculate Missing Health
+                float missingHealth = Stats.MaxHealth - Stats.Health;
+
+                // Start CoRoutine
+                StartCoroutine(RegenMissingHealth(missingHealth));
             }
         }
+    }
+
+    IEnumerator RegenMissingHealth(float missingHealth)
+    {
+        int regenInterval = 1;
+        int regenAmount = 5;
+        float regeneratedHealth = 0f;
+
+        while (regeneratedHealth < missingHealth && Stats.Health < Stats.MaxHealth)
+        {
+            yield return new WaitForSeconds(regenInterval);
+
+            regeneration.Regenerate(regenAmount, regenInterval);
+
+            regeneratedHealth += regenAmount;
+        }
+
+        isRegenerating = false;
     }
 
     public void TakeDamage(float damage)
