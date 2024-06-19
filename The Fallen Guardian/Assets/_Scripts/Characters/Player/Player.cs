@@ -18,6 +18,7 @@ public class Player : MonoBehaviour, IDamageable
 
     // Status Effects
     [HideInInspector] public CrowdControl CrowdControl;
+    public Buff_Immovable Immovable;
 
     // Combat
     public bool InCombat = false;

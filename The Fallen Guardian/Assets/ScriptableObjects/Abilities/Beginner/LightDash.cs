@@ -64,7 +64,7 @@ public class LightDash : ScriptableObject, IAbilityBehaviour
             Instantiate(dashEffect, stateMachine.transform.position, stateMachine.AbilityDir);
 
             // Buff
-            //stateMachine.Player.Buffs.Immovable(dashDuration);
+            stateMachine.Player.Immovable.Immovable(dashDuration);
 
             // Timers
             stateMachine.StartCoroutine(CoolDownTime(stateMachine));

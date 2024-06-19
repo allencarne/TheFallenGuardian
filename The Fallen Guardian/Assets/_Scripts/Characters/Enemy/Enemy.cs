@@ -86,7 +86,7 @@ public class Enemy : MonoBehaviour, IDamageable
     protected Vector2 directionToTarget;
     protected Vector2 vectorToTarget;
 
-    protected bool canImpact = false; // bug with snail
+    protected bool canImpact = true; // bug with snail
 
     [Header("Timers")]
     protected float modifiedCastTime;

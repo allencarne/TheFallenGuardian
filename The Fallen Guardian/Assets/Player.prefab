@@ -1922,6 +1922,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   CrowdControl: {fileID: 0}
+  Immovable: {fileID: 2427192153735491497}
   InCombat: 0
   IdleTime: 0
   LoseCombatTime: 5
