@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour, IDamageable
     protected CrowdControl crowdControl;
     protected Animator enemyAnimator;
     Buff_Regeneration regeneration;
+    protected Buff_Protection protection;
 
     [Header("Bars")]
     [SerializeField] EnemyHealthBar healthBar;
@@ -119,6 +120,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
         crowdControl = GetComponent<CrowdControl>();
         regeneration = GetComponent<Buff_Regeneration>();
+        protection = GetComponent<Buff_Protection>();
     }
 
     private void Start()

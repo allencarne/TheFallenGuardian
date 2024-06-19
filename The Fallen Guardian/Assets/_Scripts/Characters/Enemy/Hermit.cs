@@ -497,6 +497,9 @@ public class Hermit : Enemy
                 // Animate
                 enemyAnimator.Play("Special Impact");
 
+                // Protection
+                protection.Protection(4,5);
+
                 // Spawn Effect
                 specialEffectInstance = Instantiate(specialEffect, transform.position, Quaternion.identity, transform);
 
