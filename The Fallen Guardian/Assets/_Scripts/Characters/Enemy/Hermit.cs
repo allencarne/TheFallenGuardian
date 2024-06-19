@@ -61,13 +61,15 @@ public class Hermit : Enemy
 
     #region Basic
 
-    [Header("Basic")]
+    [Header("Telegraph")]
     [SerializeField] GameObject basicTelegraph;
     GameObject basicTelegraphInstance;
 
+    [Header("Effect")]
     [SerializeField] GameObject basicEffect;
     GameObject basicEffectInstance;
 
+    [Header("Hit Effect")]
     [SerializeField] GameObject basicHitEffect;
 
     [Header("Stats")]
@@ -217,14 +219,16 @@ public class Hermit : Enemy
 
     #region Mobility
 
-    [Header("Mobility")]
+    [Header("Telegraph")]
     [SerializeField] GameObject mobilityTelegraph;
     GameObject mobilityTelegraphInstance;
 
+    [Header("Effect")]
     [SerializeField] GameObject mobilityStartEffect;
     [SerializeField] GameObject mobilityEndEffect;
     GameObject mobilityEndEffectInstance;
 
+    [Header("Hit Effect")]
     [SerializeField] GameObject mobilityHitEffect;
 
     [Header("Stats")]
@@ -403,13 +407,15 @@ public class Hermit : Enemy
 
     #region Special
 
-    [Header("Special")]
+    [Header("Telegraph")]
     [SerializeField] GameObject specialTelegraph;
     GameObject specialTelegraphInstance;
 
+    [Header("Effect")]
     [SerializeField] GameObject specialEffect;
     GameObject specialEffectInstance;
 
+    [Header("Hit Effect")]
     [SerializeField] GameObject specialHitEffect;
 
     [Header("Stats")]
@@ -420,8 +426,6 @@ public class Hermit : Enemy
     [SerializeField] float specialImpactTime;
     [SerializeField] float specialRecoveryTime;
     [SerializeField] float specialCoolDown;
-
-    [SerializeField] float specialAttackRate;
 
     protected override void SpecialState()
     {
