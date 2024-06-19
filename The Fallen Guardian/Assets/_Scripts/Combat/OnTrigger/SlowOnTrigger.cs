@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SlowOnTrigger : MonoBehaviour
 {
-    public int SlowAmount;
-    public float SlowDuration;
+    public int Stacks;
+    public float Duration;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,7 +13,7 @@ public class SlowOnTrigger : MonoBehaviour
 
         if (slowable != null)
         {
-            slowable.Slow(SlowAmount, SlowDuration);
+            slowable.Slow(Stacks, Duration);
         }
     }
 }

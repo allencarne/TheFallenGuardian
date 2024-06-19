@@ -32,7 +32,7 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
     [SerializeField] float knockBackDuration;
 
     [Header("Slow")]
-    [SerializeField] int slowAmount;
+    [SerializeField] int slowStacks;
     [SerializeField] float slowDuration;
 
     bool canImpact = false;
@@ -144,8 +144,8 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
         SlowOnTrigger slowOnTrigger = slash.GetComponent<SlowOnTrigger>();
         if (slowOnTrigger != null)
         {
-            slowOnTrigger.SlowAmount = slowAmount;
-            slowOnTrigger.SlowDuration = slowDuration;
+            slowOnTrigger.Stacks = slowStacks;
+            slowOnTrigger.Duration = slowDuration;
         }
     }
 

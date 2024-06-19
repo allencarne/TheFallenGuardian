@@ -244,8 +244,8 @@ public class Snail : Enemy
                 SlowOnTrigger slowOnTrigger = trail.GetComponent<SlowOnTrigger>();
                 if (slowOnTrigger != null)
                 {
-                    slowOnTrigger.SlowAmount = mobilitySlowAmount;
-                    slowOnTrigger.SlowDuration = mobilitySlowDuration;
+                    slowOnTrigger.Stacks = mobilitySlowAmount;
+                    slowOnTrigger.Duration = mobilitySlowDuration;
                 }
 
                 Destroy(trail, 3f);

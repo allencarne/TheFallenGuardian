@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9063727941214626812}
   - component: {fileID: 7125303101142641129}
   - component: {fileID: 9173631730703018978}
+  - component: {fileID: 8675778317775026567}
   m_Layer: 7
   m_Name: Hermit_MobilityEnd_Effect
   m_TagString: Untagged
@@ -172,3 +173,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b293a40c804cb734682c77fccb554a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8675778317775026567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4212668421408196016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f06e954fe064fc4a9c9741e84961f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SlowAmount: 0
+  SlowDuration: 0

@@ -241,6 +241,10 @@ public class Hermit : Enemy
     [SerializeField] float mobilityRecoveryTime;
     [SerializeField] float mobilityCoolDown;
 
+    [Header("Slow")]
+    [SerializeField] int slowStacks;
+    [SerializeField] float slowDuration;
+
     bool canDash = false;
 
     protected override void MobilityState()
@@ -379,12 +383,21 @@ public class Hermit : Enemy
                 // Damage Effect
                 mobilityEndEffectInstance = Instantiate(mobilityEndEffect, vectorToTarget, Quaternion.identity);
 
+                // Damage
                 DamageOnTrigger _damageOnTrigger = mobilityEndEffectInstance.GetComponent<DamageOnTrigger>();
                 if (_damageOnTrigger != null)
                 {
                     _damageOnTrigger.AbilityDamage = mobilityDamage;
                     _damageOnTrigger.CharacterDamage = CurrentDamage;
                     _damageOnTrigger.HitEffect = mobilityHitEffect;
+                }
+
+                // Slow
+                SlowOnTrigger slowOnTrigger = mobilityEndEffectInstance.GetComponent<SlowOnTrigger>();
+                if (slowOnTrigger != null)
+                {
+                    slowOnTrigger.Stacks = slowStacks;
+                    slowOnTrigger.Duration = slowDuration;
                 }
 
                 // Set State

@@ -62,6 +62,9 @@ public class Enemy : MonoBehaviour, IDamageable
     public float patience;
     float patienceTime;
 
+    // Remove?
+    bool Immobilized = false;
+
     [Header("Bools")]
     bool canSpawn = true;
     bool canWander = true;
@@ -70,19 +73,18 @@ public class Enemy : MonoBehaviour, IDamageable
     protected bool canSpecial = true;
     bool canReset = true;
     bool canDeath = true;
-    protected bool wasInterrupted = false;
-    protected bool isEnemyDead = false;
 
     [Header("Attack")]
     protected bool hasAttacked = false;
-    protected bool canImpact = false; // bug with snail
     protected Vector2 directionToTarget;
     protected Vector2 vectorToTarget;
 
+    protected bool canImpact = false; // bug with snail
+
+    [Header("Timers")]
     protected float modifiedCastTime;
     protected float modifiedImpactTime;
     protected float modifiedRecoveryTime;
-
     protected float castBarTime = 0;
     protected float impactTime = 0f;
     protected float recoveryTime = 0f;
@@ -285,6 +287,8 @@ public class Enemy : MonoBehaviour, IDamageable
     IEnumerator SpawnDuration()
     {
         yield return new WaitForSeconds(.6f);
+
+        enemyCollider2D.enabled = true;
 
         enemyState = EnemyState.Idle;
 
@@ -507,9 +511,8 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (canDeath)
         {
-            // Bools
+            // Bool
             canDeath = false;
-            isEnemyDead = true;
 
             // Event
             OnDeath?.Invoke();
@@ -646,7 +649,7 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    bool Immobilized = false;
+    #region Crowd Control
 
     public void Immobilize()
     {
@@ -658,28 +661,14 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void HandleSlow()
+    protected virtual void HandleInterrupt()
     {
-        // Calculate the final speed, ensuring it doesn't drop below 0
-        //CurrentSpeed = Mathf.Max(BaseSpeed - debuffs.SlowAmount, 0);
+
     }
 
-    public void HandleSlowEnd()
-    {
-        CurrentSpeed = BaseSpeed;
-    }
+    #endregion
 
-    private void UpdatePatienceBar()
-    {
-        if (patienceBar != null)
-        {
-            // Calculate the fill amount
-            float fillAmount = Mathf.Clamp01(patienceTime / patience);
-
-            // Update the patience bar fill amount
-            patienceBar.fillAmount = fillAmount;
-        }
-    }
+    #region Triggers
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -698,6 +687,10 @@ public class Enemy : MonoBehaviour, IDamageable
             //playerInRange = false;
         }
     }
+
+    #endregion
+
+    #region Cast Bar
 
     public void UpdateCastBar(float castTime, float attackCastTime)
     {
@@ -743,11 +736,6 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    protected virtual void HandleInterrupt()
-    {
-
-    }
-
     public IEnumerator ResetCastBar()
     {
         if (castBar != null)
@@ -762,6 +750,20 @@ public class Enemy : MonoBehaviour, IDamageable
 
             // Reset Fill
             castBar.fillAmount = 0;
+        }
+    }
+
+    #endregion
+
+    private void UpdatePatienceBar()
+    {
+        if (patienceBar != null)
+        {
+            // Calculate the fill amount
+            float fillAmount = Mathf.Clamp01(patienceTime / patience);
+
+            // Update the patience bar fill amount
+            patienceBar.fillAmount = fillAmount;
         }
     }
 }
