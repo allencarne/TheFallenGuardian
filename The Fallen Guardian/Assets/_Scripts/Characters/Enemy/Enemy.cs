@@ -86,8 +86,6 @@ public class Enemy : MonoBehaviour, IDamageable
     protected Vector2 directionToTarget;
     protected Vector2 vectorToTarget;
 
-    protected bool canImpact = true; // bug with snail
-
     [Header("Timers")]
     protected float modifiedCastTime;
     protected float modifiedImpactTime;
@@ -692,23 +690,6 @@ public class Enemy : MonoBehaviour, IDamageable
             hasAttacked = false;
 
             yield return new WaitForSeconds(.2f);
-
-            // Reset Fill
-            castBar.fillAmount = 0;
-        }
-    }
-
-    public IEnumerator ResetCastBar()
-    {
-        if (castBar != null)
-        {
-            // Cast bar
-            castBarTime = 0;
-
-            yield return new WaitForSeconds(.2f);
-
-            // Reset Cast Bar Color
-            castBar.color = Color.yellow;
 
             // Reset Fill
             castBar.fillAmount = 0;
