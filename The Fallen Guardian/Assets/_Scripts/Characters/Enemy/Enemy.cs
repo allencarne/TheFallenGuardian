@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour, IDamageable
     bool Immobilized = false;
 
     [Header("Bools")]
-    protected bool canAttack = true;
+    protected bool canBasic = true;
     protected bool canMobility = true;
     protected bool canSpecial = true;
     bool canSpawn = true;
@@ -379,7 +379,7 @@ public class Enemy : MonoBehaviour, IDamageable
             // Transition to Attack
             if (distanceToTarget <= attackRadius && !crowdControl.IsDisarmed)
             {
-                if (canAttack)
+                if (canBasic)
                 {
                     enemyState = EnemyState.Attack;
                 }
@@ -636,6 +636,18 @@ public class Enemy : MonoBehaviour, IDamageable
     protected virtual void HandleInterrupt()
     {
 
+    }
+
+    protected virtual void Interrupt()
+    {
+        if (castBar.color == Color.white)
+        {
+            StartCoroutine(InterruptCastBar());
+
+            // State Transition
+            enemyState = EnemyState.Idle;
+            return;
+        }
     }
 
     #endregion

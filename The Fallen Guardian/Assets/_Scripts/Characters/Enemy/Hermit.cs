@@ -44,7 +44,7 @@ public class Hermit : Enemy
 
             if (mobilityEndEffectInstance)
             {
-                Destroy(mobilityTelegraphInstance);
+                Destroy(mobilityEndEffectInstance);
             }
 
             if (specialTelegraphInstance)
@@ -89,21 +89,13 @@ public class Hermit : Enemy
 
         UpdateCastBar(castBarTime, modifiedCastTime);
 
-        // Interrupt
-        if (castBar.color == Color.white)
-        {
-            StartCoroutine(InterruptCastBar());
-
-            // State Transition
-            enemyState = EnemyState.Idle;
-            return;
-        }
+        Interrupt();
 
         // Cast
-        if (canAttack && target != null && !hasAttacked)
+        if (canBasic && target != null && !hasAttacked)
         {
             // Set Bools
-            canAttack = false;
+            canBasic = false;
             hasAttacked = true;
 
             // Set Cast Bar Color
@@ -131,7 +123,7 @@ public class Hermit : Enemy
             }
 
             // Cool Down
-            StartCoroutine(AttackCoolDown());
+            StartCoroutine(BasicCoolDown());
         }
 
         // Impact
@@ -205,14 +197,14 @@ public class Hermit : Enemy
         }
     }
 
-    IEnumerator AttackCoolDown()
+    IEnumerator BasicCoolDown()
     {
         // Adjust cooldown time based on cooldown reduction
         float _modifiedCooldown = basicCoolDown / CurrentCDR;
 
         yield return new WaitForSeconds(_modifiedCooldown);
 
-        canAttack = true;
+        canBasic = true;
     }
 
     #endregion
@@ -255,15 +247,7 @@ public class Hermit : Enemy
 
         UpdateCastBar(castBarTime, modifiedCastTime);
 
-        // Interrupt
-        if (castBar.color == Color.white)
-        {
-            StartCoroutine(InterruptCastBar());
-
-            // State Transition
-            enemyState = EnemyState.Idle;
-            return;
-        }
+        Interrupt();
 
         // Cast
         if (canMobility && target != null && !hasAttacked)
@@ -450,15 +434,7 @@ public class Hermit : Enemy
 
         UpdateCastBar(castBarTime, modifiedCastTime);
 
-        // Interrupt
-        if (castBar.color == Color.white)
-        {
-            StartCoroutine(InterruptCastBar());
-
-            // State Transition
-            enemyState = EnemyState.Idle;
-            return;
-        }
+        Interrupt();
 
         // Cast
         if (canSpecial && target != null && !hasAttacked)

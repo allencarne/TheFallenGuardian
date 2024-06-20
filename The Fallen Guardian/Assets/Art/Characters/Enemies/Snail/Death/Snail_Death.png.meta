@@ -131,7 +131,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.21875}
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,7 +152,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.21875}
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,7 +173,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.21875}
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,7 +194,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.21875}
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,7 +215,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.21875}
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,7 +236,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.21875}
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -257,7 +257,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.21875}
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -265,27 +265,6 @@ TextureImporter:
       bones: []
       spriteID: 3ebc50c7f250f88489603ddc68045f77
       internalID: -1469952554
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Snail_Death_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.21875}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: edbba4835b7287941be5357c751f1b50
-      internalID: 1908895097
       vertices: []
       indices: 
       edges: []
@@ -308,7 +287,6 @@ TextureImporter:
       Snail_Death_4: 1472720860
       Snail_Death_5: -1915766303
       Snail_Death_6: -1469952554
-      Snail_Death_7: 1908895097
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

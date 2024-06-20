@@ -1,275 +1,385 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Snail : Enemy
 {
-    [Header("Attack")]
-    [SerializeField] GameObject attackPrefab;
-    [SerializeField] GameObject attackHitEffect;
-    public int attackDamage;
-    public float attackCastTime;
-    public float attackRange;
-    public float attackCoolDown;
-
-    [Header("Mobility")]
-    [SerializeField] GameObject mobilityPrefab;
-    [SerializeField] GameObject mobilityHitEffect;
-    public int mobilityDamage;
-    public float durationOfMobility;
-    public float mobilityCastTime;
-    public float mobilityRange;
-    public float mobilityCoolDown;
-
-    [Header("Slow")]
-    public int mobilitySlowAmount;
-    public float mobilitySlowDuration;
-
-    [Header("Special")]
-    [SerializeField] GameObject specialPrefab;
-    [SerializeField] GameObject specialHitEffect;
-    public int specialDamage;
-    public float durationOfSpecial;
-    public float specialCastTime;
-    public float specialRange;
-    public float specialCoolDown;
-    public float durationOfShell;
-
-    [Header("KnockBack")]
-    [SerializeField] float knockBackForce;
-    [SerializeField] float knockBackDuration;
-
-    bool canRecovery = false;
-    Vector2 dashDirection;
-
-    //Telegraph
-    [SerializeField] GameObject specialTelegraph;
-    [SerializeField] GameObject shmackTelegraph;
-
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
 
-        if (enemyState == EnemyState.Mobility)
+        if (enemyState == EnemyState.Mobility && target != null)
         {
-            if (castBarTime > mobilityCastTime)
+            if (canDash)
             {
-                if (target != null)
-                {
-                    // Disable collision between enemy and player
-                    Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), true);
+                // Disable collision between enemy and player
+                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), true);
 
-                    // Use the stored dash direction for the enemy's velocity
-                    enemyRB.velocity = dashDirection * mobilityRange;
-                }
+                // Use the stored dash direction for the enemy's velocity
+                enemyRB.velocity = dashDirection * mobilityRange;
             }
+
         }
     }
 
+    protected override void HandleInterrupt()
+    {
+        if (castBar.color == Color.yellow)
+        {
+            castBar.color = Color.white;
+
+            if (basicTelegraphInstance)
+            {
+                Destroy(basicTelegraphInstance);
+            }
+
+            if (basicEffectInstance)
+            {
+                Destroy(basicEffectInstance);
+            }
+            
+            if (mobilityTelegraphInstance)
+            {
+                Destroy(mobilityTelegraphInstance);
+            }
+
+            if (mobilityEffectInstance)
+            {
+                Destroy(mobilityEffectInstance);
+            }
+            
+            if (specialTelegraphInstance)
+            {
+                Destroy(specialTelegraphInstance);
+            }
+
+            if (specialEffectInstance)
+            {
+                Destroy(specialEffectInstance);
+            }
+            
+        }
+    }
+
+    #region Basic
+
+    [Header("Telegraph")]
+    [SerializeField] GameObject basicTelegraph;
+    GameObject basicTelegraphInstance;
+
+    [Header("Effect")]
+    [SerializeField] GameObject basicEffect;
+    GameObject basicEffectInstance;
+
+    [Header("Hit Effect")]
+    [SerializeField] GameObject basicHitEffect;
+
+    [Header("Stats")]
+    [SerializeField] int basicDamage;
+    [SerializeField] float basicRange;
+
+    [Header("Time")]
+    [SerializeField] float basicCastTime;
+    [SerializeField] float basicImpactTime;
+    [SerializeField] float basicRecoveryTime;
+    [SerializeField] float basicCoolDown;
+
     protected override void AttackState()
     {
-        // Adjust the cast time based on attack speed
-        float modifiedAttackCastTime = attackCastTime / CurrentAttackSpeed;
+        modifiedCastTime = basicCastTime / CurrentAttackSpeed;
+        modifiedRecoveryTime = basicRecoveryTime / CurrentAttackSpeed;
 
-        castBarTime += Time.deltaTime;
-        UpdateCastBar(castBarTime, CurrentAttackSpeed);
+        UpdateCastBar(castBarTime, modifiedCastTime);
 
-        if (crowdControl.IsInterrupted)
+        Interrupt();
+
+        // Cast
+        if (canBasic && target != null && !hasAttacked)
         {
-            if (castBar.color != Color.green)
-            {
-                // ResetCast Time
-                castBarTime = 0;
+            // Set Bools
+            canBasic = false;
+            hasAttacked = true;
 
-                // Set Cast Bar Color
-                castBar.color = Color.red;
-
-                // State Transition
-                enemyState = EnemyState.Idle;
-
-                StartCoroutine(ResetCastBar());
-                return;
-            }
-        }
-
-        if (canAttack && target != null)
-        {
-            canAttack = false;
-
+            // Set Cast Bar Color
             castBar.color = Color.yellow;
-
-            // Play attack animation
-            enemyAnimator.Play("Attack Cast");
 
             // Calculate the direction from the enemy to the target
             directionToTarget = (target.position - transform.position).normalized;
 
-            // Calculate the angle in degrees from the direction
-            float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+            // Calculate the position for the basicPrefab
+            vectorToTarget = (Vector2)transform.position + directionToTarget * basicRange;
 
-            // Instantiate the telegraph object at the enemy position with the appropriate rotation
-            Instantiate(shmackTelegraph, transform.position, Quaternion.Euler(0f, 0f, angle), transform);
-
-            // Set animator parameters based on the direction
+            // Play attack animation
+            enemyAnimator.Play("Basic Cast");
             enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
             enemyAnimator.SetFloat("Vertical", directionToTarget.y);
 
-            // Start Cooldown
-            StartCoroutine(AttackCoolDown());
+            // Instantiate the telegraph
+            basicTelegraphInstance = Instantiate(basicTelegraph, vectorToTarget, Quaternion.identity);
+
+            // Set Fill Speed
+            FillTelegraph _fillTelegraph = basicTelegraphInstance.GetComponent<FillTelegraph>();
+            if (_fillTelegraph != null)
+            {
+                _fillTelegraph.FillSpeed = modifiedCastTime;
+            }
+
+            // Cool Down
+            StartCoroutine(BasicCoolDown());
         }
 
-        if (castBarTime > modifiedAttackCastTime)
+        // Impact
+        if (castBarTime >= modifiedCastTime)
         {
-            if (canImpact)
+            if (castBar.color == Color.yellow)
             {
-                canImpact = false;
-
+                // Set Cast Bar Color
                 castBar.color = Color.green;
-                enemyAnimator.Play("Attack Impact");
 
-                // Calculate the position for the attackPrefab
-                Vector2 attackPosition = (Vector2)transform.position + directionToTarget * attackRange;
+                // Reset Timer
+                castBarTime = 0;
 
-                GameObject attack = Instantiate(attackPrefab, attackPosition, Quaternion.identity);
+                // Animate
+                enemyAnimator.Play("Basic Impact");
 
-                DamageOnTrigger damageOnTrigger = attack.GetComponent<DamageOnTrigger>();
-                if (damageOnTrigger != null)
+                // Spawn Effect
+                basicEffectInstance = Instantiate(basicEffect, vectorToTarget, Quaternion.identity);
+
+                // Deal Damage
+                DamageOnTrigger _damageOnTrigger = basicEffectInstance.GetComponent<DamageOnTrigger>();
+                if (_damageOnTrigger != null)
                 {
-                    damageOnTrigger.AbilityDamage = attackDamage;
-                    damageOnTrigger.CharacterDamage = CurrentDamage;
-                    damageOnTrigger.HitEffect = attackHitEffect;
+                    _damageOnTrigger.AbilityDamage = basicDamage;
+                    _damageOnTrigger.CharacterDamage = CurrentDamage;
+                    _damageOnTrigger.HitEffect = basicHitEffect;
                 }
             }
         }
 
-        if (canRecovery)
+        // Recovery
+        if (castBar.color == Color.green)
         {
-            canRecovery = false;
+            impactTime += Time.deltaTime;
 
-            enemyAnimator.Play("Attack Recovery");
+            if (impactTime >= basicImpactTime)
+            {
+                // Set Cast Bar Color
+                castBar.color = Color.grey;
+
+                // Reset Timer
+                impactTime = 0f;
+
+                // Animate
+                enemyAnimator.Play("Basic Recovery");
+            }
+        }
+
+        // End
+        if (castBar.color == Color.grey)
+        {
+            recoveryTime += Time.deltaTime;
+
+            if (recoveryTime >= modifiedRecoveryTime)
+            {
+                // Set Cast Bar Color
+                castBar.color = Color.black;
+
+                // Reset Timer
+                recoveryTime = 0f;
+
+                // Reset Cast Bar
+                castBar.fillAmount = 0;
+
+                // Set bool
+                hasAttacked = false;
+
+                // Set State
+                enemyState = EnemyState.Idle;
+            }
         }
     }
 
-    public void AE_EndOfImpact()
+    IEnumerator BasicCoolDown()
     {
-        canRecovery = true;
+        // Adjust cooldown time based on cooldown reduction
+        float _modifiedCooldown = basicCoolDown / CurrentCDR;
+
+        yield return new WaitForSeconds(_modifiedCooldown);
+
+        canBasic = true;
     }
 
-    public void AE_EndOfRecovery()
-    {
-        canImpact = true;
+    #endregion
 
-        castBar.color = Color.yellow;
-        castBarTime = 0;
-        UpdateCastBar(0, attackCastTime);
+    #region Mobility
 
-        // State Transition
-        enemyState = EnemyState.Idle;
-    }
+    [Header("Telegraph")]
+    [SerializeField] GameObject mobilityTelegraph;
+    GameObject mobilityTelegraphInstance;
 
-    IEnumerator AttackCoolDown()
-    {
-        yield return new WaitForSeconds(attackCoolDown);
+    [Header("Effect")]
+    [SerializeField] GameObject mobilityEffect;
+    GameObject mobilityEffectInstance;
 
-        canAttack = true;
-    }
+    [Header("Hit Effect")]
+    [SerializeField] GameObject mobilityHitEffect;
+
+    [Header("Stats")]
+    [SerializeField] int mobilityDamage;
+    [SerializeField] float mobilityRange;
+
+    [Header("Time")]
+    [SerializeField] float mobilityCastTime;
+    [SerializeField] float mobilityImpactTime;
+    [SerializeField] float mobilityRecoveryTime;
+    [SerializeField] float mobilityCoolDown;
+
+    [Header("Slow")]
+    [SerializeField] int slowStacks;
+    [SerializeField] float slowDuration;
+
+    Vector2 dashDirection;
+    Quaternion rotation;
+    bool canDash = false;
 
     protected override void MobilityState()
     {
-        // Adjust the cast time based on attack speed
-        float modifiedAttackCastTime = mobilityCastTime / CurrentAttackSpeed;
+        modifiedCastTime = mobilityCastTime / CurrentAttackSpeed;
+        modifiedImpactTime = mobilityImpactTime / CurrentAttackSpeed;
+        modifiedRecoveryTime = mobilityRecoveryTime / CurrentAttackSpeed;
 
-        castBarTime += Time.deltaTime;
-        UpdateCastBar(castBarTime, modifiedAttackCastTime);
+        UpdateCastBar(castBarTime, modifiedCastTime);
 
-        if (crowdControl.IsInterrupted)
+        Interrupt();
+
+        // Cast
+        if (canMobility && target != null && !hasAttacked)
         {
-            if (castBar.color != Color.green)
-            {
-                // ResetCast Time
-                castBarTime = 0;
-
-                // Set Cast Bar Color
-                castBar.color = Color.red;
-
-                // State Transition
-                enemyState = EnemyState.Idle;
-
-                StartCoroutine(ResetCastBar());
-                return;
-            }
-        }
-
-        if (canMobility)
-        {
+            // Set Bools
             canMobility = false;
+            hasAttacked = true;
 
+            // Set Cast Bar Color
             castBar.color = Color.yellow;
 
+            // Calculate the direction from the enemy to the target
+            directionToTarget = (target.position - transform.position).normalized;
+
+            // Calculate the rotation towards the target
+            float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+            rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            // Store the dash direction and angle
+            dashDirection = directionToTarget;
+
             // Play attack animation
-            enemyAnimator.Play("Chase");
+            enemyAnimator.Play("Mobility Cast");
+            enemyAnimator.SetFloat("Horizontal", dashDirection.x);
+            enemyAnimator.SetFloat("Vertical", dashDirection.y);
 
-            // Immovable
-            //buffs.Immovable(durationOfMobility);
+            mobilityTelegraphInstance = Instantiate(mobilityTelegraph, transform.position, rotation);
 
-            StartCoroutine(DurationOfMobility());
+            // Set Fill Speed
+            FillTelegraph _fillTelegraph = mobilityTelegraphInstance.GetComponent<FillTelegraph>();
+            if (_fillTelegraph != null)
+            {
+                _fillTelegraph.FillSpeed = modifiedCastTime + modifiedImpactTime + modifiedRecoveryTime;
+            }
+
+            // Cool Down
             StartCoroutine(MobilityCoolDown());
         }
 
-        if (castBarTime > modifiedAttackCastTime)
+        // Impact
+        if (castBarTime >= modifiedCastTime)
         {
-            if (canImpact && target != null)
+            if (castBar.color == Color.yellow)
             {
-                canImpact = false;
-
+                // Set Cast Bar Color
                 castBar.color = Color.green;
 
-                // Calculate the direction from the enemy to the target
-                directionToTarget = (target.position - transform.position).normalized;
+                // Reset Timer
+                castBarTime = 0;
 
-                // Calculate the rotation towards the target
-                float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
-                Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                // Animate
+                enemyAnimator.Play("Mobility Impact");
 
-                // Store the dash direction and angle
-                dashDirection = directionToTarget;
+                // Immovable
+                immovable.Immovable(mobilityImpactTime + .2f);
 
-                // Set animator parameters based on the direction
-                enemyAnimator.SetFloat("Horizontal", dashDirection.x);
-                enemyAnimator.SetFloat("Vertical", dashDirection.y);
+                // Protection
+                protection.Protection(2, 3);
 
-                // Instantiate
-                GameObject trail = Instantiate(mobilityPrefab, transform.position, rotation);
+                // Effect
+                mobilityEffectInstance = Instantiate(mobilityEffect, transform.position, rotation);
 
-                SlowOnTrigger slowOnTrigger = trail.GetComponent<SlowOnTrigger>();
+                // Destroy
+                Destroy(mobilityEffectInstance, 3f);
+
+                // Slow
+                SlowOnTrigger slowOnTrigger = mobilityEffectInstance.GetComponent<SlowOnTrigger>();
                 if (slowOnTrigger != null)
                 {
-                    slowOnTrigger.Stacks = mobilitySlowAmount;
-                    slowOnTrigger.Duration = mobilitySlowDuration;
+                    slowOnTrigger.Stacks = slowStacks;
+                    slowOnTrigger.Duration = slowDuration;
                 }
 
-                Destroy(trail, 3f);
+                // Bool for FixedUpdate
+                canDash = true;
             }
         }
-    }
 
-    IEnumerator DurationOfMobility()
-    {
-        yield return new WaitForSeconds(durationOfMobility);
-
-        canImpact = true;
-
-        castBar.color = Color.yellow;
-        castBarTime = 0;
-        UpdateCastBar(0, mobilityCastTime);
-
-        if (target != null)
+        // Recovery
+        if (castBar.color == Color.green)
         {
-            // Turn Back on collisions between enemy and player
-            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
+            impactTime += Time.deltaTime;
+
+            if (impactTime >= modifiedImpactTime)
+            {
+                // Set Cast Bar Color
+                castBar.color = Color.grey;
+
+                // Reset Timer
+                impactTime = 0f;
+
+                // Animate
+                enemyAnimator.Play("Mobility Recovery");
+            }
         }
 
-        enemyState = EnemyState.Idle;
+        // End
+        if (castBar.color == Color.grey)
+        {
+            recoveryTime += Time.deltaTime;
+
+            if (recoveryTime >= modifiedRecoveryTime)
+            {
+                // Set Cast Bar Color
+                castBar.color = Color.black;
+
+                // Reset Timer
+                recoveryTime = 0f;
+
+                // Reset Cast Bar
+                castBar.fillAmount = 0;
+
+                // Set bool
+                hasAttacked = false;
+
+                // Bool for FixedUpdate
+                canDash = false;
+
+                // Enemy can collide with Target
+                if (target != null)
+                {
+                    Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
+                }
+
+                // Set State
+                enemyState = EnemyState.Idle;
+            }
+        }
     }
 
     IEnumerator MobilityCoolDown()
@@ -279,39 +389,55 @@ public class Snail : Enemy
         canMobility = true;
     }
 
+    #endregion
+
+    #region Special
+
+    [Header("Telegraph")]
+    [SerializeField] GameObject specialTelegraph;
+    GameObject specialTelegraphInstance;
+
+    [Header("Effect")]
+    [SerializeField] GameObject specialEffect;
+    GameObject specialEffectInstance;
+
+    [Header("Hit Effect")]
+    [SerializeField] GameObject specialHitEffect;
+
+    [Header("Stats")]
+    [SerializeField] int specialDamage;
+
+    [Header("Time")]
+    [SerializeField] float specialCastTime;
+    [SerializeField] float specialImpactTime;
+    [SerializeField] float specialRecoveryTime;
+    [SerializeField] float specialCoolDown;
+
+    [SerializeField] float durationOfShell;
+    [SerializeField] float shellSpeed;
+
+    [Header("Knock Back")]
+    [SerializeField] float knockBackForce;
+    [SerializeField] float knockBackDuration;
+
     protected override void SpecialState()
     {
-        // Adjust the cast time based on attack speed
-        float modifiedAttackCastTime = specialCastTime / CurrentAttackSpeed;
+        modifiedCastTime = specialCastTime / CurrentAttackSpeed;
+        modifiedRecoveryTime = specialRecoveryTime / CurrentAttackSpeed;
 
-        castBarTime += Time.deltaTime;
-        UpdateCastBar(castBarTime, modifiedAttackCastTime);
+        UpdateCastBar(castBarTime, modifiedCastTime);
 
-        if (crowdControl.IsInterrupted)
+        Interrupt();
+
+        // Cast
+        if (canSpecial && target != null && !hasAttacked)
         {
-            if (castBar.color != Color.green)
-            {
-                // ResetCast Time
-                castBarTime = 0;
-
-                // Set Cast Bar Color
-                castBar.color = Color.red;
-
-                // State Transition
-                enemyState = EnemyState.Idle;
-
-                StartCoroutine(ResetCastBar());
-                return;
-            }
-        }
-
-        if (canSpecial && target != null)
-        {
+            // Set Bools
             canSpecial = false;
+            hasAttacked = true;
 
+            // Set Cast Bar Color
             castBar.color = Color.yellow;
-
-            enemyAnimator.Play("Special Cast");
 
             // Calculate the direction from the enemy to the target
             directionToTarget = (target.position - transform.position).normalized;
@@ -319,51 +445,60 @@ public class Snail : Enemy
             // Calculate the angle in degrees from the direction
             float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
 
-            // Instantiate the telegraph object at the enemy position with the appropriate rotation
-            Instantiate(specialTelegraph, transform.position, Quaternion.Euler(0f, 0f, angle), transform);
-
-            // Set animator parameters based on the direction
+            // Play attack animation
+            enemyAnimator.Play("Special Cast");
             enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
             enemyAnimator.SetFloat("Vertical", directionToTarget.y);
 
-            //StartCoroutine(SpecialCastTime());
-            //StartCoroutine (DurationOfSpecial());
+            // Instantiate the telegraph
+            specialTelegraphInstance = Instantiate(specialTelegraph, transform.position, Quaternion.Euler(0f, 0f, angle));
+
+            FillTelegraph _fillTelegraph = specialTelegraphInstance.GetComponent<FillTelegraph>();
+            if (_fillTelegraph != null)
+            {
+                _fillTelegraph.FillSpeed = modifiedCastTime;
+            }
+
+            // Cool Down
             StartCoroutine(SpecialCoolDown());
         }
 
-        if (castBarTime > modifiedAttackCastTime)
+        // Impact
+        if (castBarTime >= modifiedCastTime)
         {
-            if (canImpact && target != null)
+            if (castBar.color == Color.yellow)
             {
-                canImpact = false;
-
+                // Set Cast Bar Color
                 castBar.color = Color.green;
 
+                // Reset Timer
+                castBarTime = 0;
+
+                // Animate
                 enemyAnimator.Play("Special Impact");
 
-                // Set animator parameters based on the direction
-                enemyAnimator.SetFloat("Horizontal", directionToTarget.x);
-                enemyAnimator.SetFloat("Vertical", directionToTarget.y);
+                // Spawn Effect
+                specialEffectInstance = Instantiate(specialEffect, transform.position, Quaternion.identity);
 
-                GameObject shell = Instantiate(specialPrefab, transform.position, Quaternion.identity);
+                // Get RB
+                Rigidbody2D shellRB = specialEffectInstance.GetComponent<Rigidbody2D>();
 
-                Rigidbody2D shellRB = shell.GetComponent<Rigidbody2D>();
+                // Add Force
+                shellRB.AddForce(directionToTarget * shellSpeed, ForceMode2D.Impulse);
 
-                shellRB.AddForce(directionToTarget * specialRange, ForceMode2D.Impulse);
+                // Destroy
+                Destroy(specialEffectInstance, durationOfShell);
 
-                Destroy(shell, durationOfShell);
-
-                DamageOnTrigger damageOnTrigger = shell.GetComponent<DamageOnTrigger>();
-                if (damageOnTrigger != null)
+                // Deal Damage
+                DamageOnTrigger _damageOnTrigger = specialEffectInstance.GetComponent<DamageOnTrigger>();
+                if (_damageOnTrigger != null)
                 {
-                    damageOnTrigger.AbilityDamage = specialDamage;
-                    damageOnTrigger.CharacterDamage = CurrentDamage;
-                    damageOnTrigger.HitEffect = specialHitEffect;
-
-                    damageOnTrigger.DestroyAfterDamage = true;
+                    _damageOnTrigger.AbilityDamage = specialDamage;
+                    _damageOnTrigger.CharacterDamage = CurrentDamage;
+                    _damageOnTrigger.HitEffect = specialHitEffect;
                 }
 
-                KnockbackOnTrigger knockbackOnTrigger = shell.GetComponent<KnockbackOnTrigger>();
+                KnockbackOnTrigger knockbackOnTrigger = specialEffectInstance.GetComponent<KnockbackOnTrigger>();
                 if (knockbackOnTrigger != null)
                 {
                     knockbackOnTrigger.KnockBackForce = knockBackForce;
@@ -373,18 +508,58 @@ public class Snail : Enemy
             }
         }
 
-        if (canRecovery)
+        // Recovery
+        if (castBar.color == Color.green)
         {
-            canRecovery = false;
+            impactTime += Time.deltaTime;
 
-            enemyAnimator.Play("Special Recovery");
+            if (impactTime >= specialImpactTime)
+            {
+                // Set Cast Bar Color
+                castBar.color = Color.grey;
+
+                // Reset Timer
+                impactTime = 0f;
+
+                // Animate
+                enemyAnimator.Play("Special Recovery");
+            }
+        }
+
+        // End
+        if (castBar.color == Color.grey)
+        {
+            recoveryTime += Time.deltaTime;
+
+            if (recoveryTime >= modifiedRecoveryTime)
+            {
+                // Set Cast Bar Color
+                castBar.color = Color.black;
+
+                // Reset Timer
+                recoveryTime = 0f;
+
+                // Reset Cast Bar
+                castBar.fillAmount = 0;
+
+                // Set bool
+                hasAttacked = false;
+
+                // Set State
+                enemyState = EnemyState.Idle;
+            }
         }
     }
 
     IEnumerator SpecialCoolDown()
     {
-        yield return new WaitForSeconds(specialCoolDown);
+        // Adjust cooldown time based on cooldown reduction
+        float _modifiedCooldown = specialCoolDown / CurrentCDR;
+
+        yield return new WaitForSeconds(_modifiedCooldown);
 
         canSpecial = true;
     }
+
+    #endregion
 }

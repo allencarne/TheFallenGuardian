@@ -123,7 +123,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Snail_Wander_Right_Frame_0
     originalName: 
-    pivot: {x: 0.47368422, y: -0.4117647}
+    pivot: {x: 0.47368422, y: -0.47058824}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -143,7 +143,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Snail_Wander_Right_Frame_1
     originalName: 
-    pivot: {x: 0.47368422, y: -0.4375}
+    pivot: {x: 0.47368422, y: -0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -163,7 +163,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 29}
   - name: Snail_Wander_Right_Frame_2
     originalName: 
-    pivot: {x: 0.47368422, y: -0.4666667}
+    pivot: {x: 0.47368422, y: -0.53333336}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -183,7 +183,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 53}
   - name: Snail_Wander_Right_Frame_3
     originalName: 
-    pivot: {x: 0.47368422, y: -0.5}
+    pivot: {x: 0.47368422, y: -0.5714286}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -203,7 +203,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 99}
   - name: Snail_Wander_Right_Frame_4
     originalName: 
-    pivot: {x: 0.47368422, y: -0.5}
+    pivot: {x: 0.47368422, y: -0.5714286}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -223,7 +223,7 @@ ScriptedImporter:
     uvTransform: {x: 31, y: 4}
   - name: Snail_Wander_Right_Frame_5
     originalName: 
-    pivot: {x: 0.47368422, y: -0.5}
+    pivot: {x: 0.47368422, y: -0.5714286}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -243,7 +243,7 @@ ScriptedImporter:
     uvTransform: {x: 31, y: 26}
   - name: Snail_Wander_Right_Frame_6
     originalName: 
-    pivot: {x: 0.47368422, y: -0.5}
+    pivot: {x: 0.47368422, y: -0.5714286}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -263,7 +263,7 @@ ScriptedImporter:
     uvTransform: {x: 31, y: 48}
   - name: Snail_Wander_Right_Frame_7
     originalName: 
-    pivot: {x: 0.47368422, y: -0.4666667}
+    pivot: {x: 0.47368422, y: -0.53333336}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -294,7 +294,7 @@ ScriptedImporter:
       frameIndex: 0
       cellRect:
         x: 7
-        y: 7
+        y: 8
         width: 19
         height: 17
       spriteId: 8ac750d8dbf41d64ca9f5a9c2fc0cc80
@@ -302,7 +302,7 @@ ScriptedImporter:
       frameIndex: 1
       cellRect:
         x: 7
-        y: 7
+        y: 8
         width: 19
         height: 16
       spriteId: cb929b5104113d44f9e8fd4c46a4ab33
@@ -310,7 +310,7 @@ ScriptedImporter:
       frameIndex: 2
       cellRect:
         x: 7
-        y: 7
+        y: 8
         width: 19
         height: 15
       spriteId: 8b63572eb2e77c94db0c039d84beda55
@@ -318,7 +318,7 @@ ScriptedImporter:
       frameIndex: 3
       cellRect:
         x: 7
-        y: 7
+        y: 8
         width: 19
         height: 14
       spriteId: d42499b9c85049a419e09aaf78532915
@@ -326,7 +326,7 @@ ScriptedImporter:
       frameIndex: 4
       cellRect:
         x: 7
-        y: 7
+        y: 8
         width: 19
         height: 14
       spriteId: 5248323a2252a1b439ecda45299938e6
@@ -334,7 +334,7 @@ ScriptedImporter:
       frameIndex: 5
       cellRect:
         x: 7
-        y: 7
+        y: 8
         width: 19
         height: 14
       spriteId: 939df2df934bf5745886f38d37426970
@@ -342,7 +342,7 @@ ScriptedImporter:
       frameIndex: 6
       cellRect:
         x: 7
-        y: 7
+        y: 8
         width: 19
         height: 14
       spriteId: 22c6ff6ac00e4bb468a7d19cf25fd0b1
@@ -350,7 +350,7 @@ ScriptedImporter:
       frameIndex: 7
       cellRect:
         x: 7
-        y: 7
+        y: 8
         width: 19
         height: 15
       spriteId: 7fb0c9f3b188de24ea138399e57f405c

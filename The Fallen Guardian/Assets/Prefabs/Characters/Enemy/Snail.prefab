@@ -385,7 +385,7 @@ MonoBehaviour:
   CurrentDamage: 0
   BaseAttackSpeed: 1
   CurrentAttackSpeed: 0
-  BaseCDR: 0
+  BaseCDR: 1
   CurrentCDR: 0
   BaseArmor: 0
   CurrentArmor: 0
@@ -395,13 +395,13 @@ MonoBehaviour:
   mobilityRadius: 5
   specialRadius: 8
   deAggroRadius: 12
-  patienceBar: {fileID: 3853848659867538028}
-  castBar: {fileID: 2803776170586669871}
+  EnemySpawner: {fileID: 0}
   spriteRenderer: {fileID: 3441835576944637314}
   enemyCollider2D: {fileID: 7949850666712048347}
   shadow: {fileID: 7976263011152865437}
   healthBar: {fileID: 2106973735601305545}
-  EnemySpawner: {fileID: 0}
+  patienceBar: {fileID: 3853848659867538028}
+  castBar: {fileID: 2803776170586669871}
   patience: 3
   OnHealthChanged:
     m_PersistentCalls:
@@ -433,33 +433,38 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  attackPrefab: {fileID: 7461344068309084465, guid: 2efb12dae9b87624a968e92eeb7f102f, type: 3}
-  attackHitEffect: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
-  attackDamage: 1
-  attackCastTime: 0.6
-  attackRange: 1
-  attackCoolDown: 1.4
-  mobilityPrefab: {fileID: 8215458080498781041, guid: bd0bfc28234901745ae9f0c63e3a2633, type: 3}
-  mobilityHitEffect: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
+  basicTelegraph: {fileID: 5230691123992083274, guid: eff9ff37ba9ec4049a4ab1b6cfe79098, type: 3}
+  basicEffect: {fileID: 7461344068309084465, guid: 2efb12dae9b87624a968e92eeb7f102f, type: 3}
+  basicHitEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
+  basicDamage: 1
+  basicRange: 1
+  basicCastTime: 0.6
+  basicImpactTime: 0.1
+  basicRecoveryTime: 0.6
+  basicCoolDown: 2
+  mobilityTelegraph: {fileID: 6953225355496230734, guid: 26b2a36cdfad86b4e9d6b6934b684fab, type: 3}
+  mobilityEffect: {fileID: 8215458080498781041, guid: bd0bfc28234901745ae9f0c63e3a2633, type: 3}
+  mobilityHitEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   mobilityDamage: 0
-  durationOfMobility: 0.6
-  mobilityCastTime: 0.3
   mobilityRange: 10
+  mobilityCastTime: 0.3
+  mobilityImpactTime: 0.1
+  mobilityRecoveryTime: 0.3
   mobilityCoolDown: 5
-  mobilitySlowAmount: 4
-  mobilitySlowDuration: 0.5
-  specialPrefab: {fileID: 9178998900622273337, guid: 1139518a2dda7ca4797a6df28c79efd9, type: 3}
-  specialHitEffect: {fileID: 9195477665921721739, guid: 92b945cc2a931794d811c5dbcf51421b, type: 3}
+  slowStacks: 5
+  slowDuration: 2
+  specialTelegraph: {fileID: 6953225355496230734, guid: 26b2a36cdfad86b4e9d6b6934b684fab, type: 3}
+  specialEffect: {fileID: 9178998900622273337, guid: 1139518a2dda7ca4797a6df28c79efd9, type: 3}
+  specialHitEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   specialDamage: 2
-  durationOfSpecial: 1.2
   specialCastTime: 0.6
-  specialRange: 10
-  specialCoolDown: 7
+  specialImpactTime: 0.1
+  specialRecoveryTime: 0.6
+  specialCoolDown: 5
   durationOfShell: 0.8
+  shellSpeed: 10
   knockBackForce: 10
   knockBackDuration: 0.3
-  specialTelegraph: {fileID: 6953225355496230734, guid: 26b2a36cdfad86b4e9d6b6934b684fab, type: 3}
-  shmackTelegraph: {fileID: 5230691123992083274, guid: eff9ff37ba9ec4049a4ab1b6cfe79098, type: 3}
 --- !u!70 &7949850666712048347 stripped
 CapsuleCollider2D:
   m_CorrespondingSourceObject: {fileID: 3605142366507294513, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
