@@ -311,7 +311,7 @@ public class Hermit : Enemy
                 enemyAnimator.Play("Mobility Impact");
 
                 // Immovable
-                immovable.Immovable(mobilityImpactTime + .2f);
+                immovable.Immovable(modifiedImpactTime + .2f);
 
                 // Dust Effect
                 Instantiate(mobilityStartEffect, transform.position, transform.rotation);

@@ -270,13 +270,13 @@ MonoBehaviour:
   mobilityRadius: 5
   specialRadius: 1.2
   deAggroRadius: 12
-  patienceBar: {fileID: 2325305239789557552}
-  castBar: {fileID: 3735658555118831219}
+  EnemySpawner: {fileID: 0}
   spriteRenderer: {fileID: 4250660289131966686}
   enemyCollider2D: {fileID: 8893818938656417671}
   shadow: {fileID: 8903575547294870977}
   healthBar: {fileID: 577519894125359765}
-  EnemySpawner: {fileID: 0}
+  patienceBar: {fileID: 2325305239789557552}
+  castBar: {fileID: 3735658555118831219}
   patience: 3
   OnHealthChanged:
     m_PersistentCalls:

@@ -284,7 +284,7 @@ public class Snail : Enemy
             FillTelegraph _fillTelegraph = mobilityTelegraphInstance.GetComponent<FillTelegraph>();
             if (_fillTelegraph != null)
             {
-                _fillTelegraph.FillSpeed = modifiedCastTime + modifiedImpactTime + modifiedRecoveryTime;
+                _fillTelegraph.FillSpeed = modifiedCastTime;
             }
 
             // Cool Down
@@ -306,7 +306,7 @@ public class Snail : Enemy
                 enemyAnimator.Play("Mobility Impact");
 
                 // Immovable
-                immovable.Immovable(mobilityImpactTime + .2f);
+                immovable.Immovable(modifiedImpactTime + .2f);
 
                 // Protection
                 protection.Protection(2, 3);
@@ -345,6 +345,15 @@ public class Snail : Enemy
 
                 // Animate
                 enemyAnimator.Play("Mobility Recovery");
+
+                // Bool for FixedUpdate
+                canDash = false;
+
+                // Enemy can collide with Target
+                if (target != null)
+                {
+                    Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
+                }
             }
         }
 
@@ -366,15 +375,6 @@ public class Snail : Enemy
 
                 // Set bool
                 hasAttacked = false;
-
-                // Bool for FixedUpdate
-                canDash = false;
-
-                // Enemy can collide with Target
-                if (target != null)
-                {
-                    Physics2D.IgnoreCollision(GetComponent<Collider2D>(), target.GetComponent<Collider2D>(), false);
-                }
 
                 // Set State
                 enemyState = EnemyState.Idle;

@@ -433,7 +433,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  basicTelegraph: {fileID: 5230691123992083274, guid: eff9ff37ba9ec4049a4ab1b6cfe79098, type: 3}
+  basicTelegraph: {fileID: 414831344016686563, guid: b66d09d105b81c14b98f73ffed8a1a44, type: 3}
   basicEffect: {fileID: 7461344068309084465, guid: 2efb12dae9b87624a968e92eeb7f102f, type: 3}
   basicHitEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   basicDamage: 1
@@ -442,18 +442,18 @@ MonoBehaviour:
   basicImpactTime: 0.1
   basicRecoveryTime: 0.6
   basicCoolDown: 2
-  mobilityTelegraph: {fileID: 6953225355496230734, guid: 26b2a36cdfad86b4e9d6b6934b684fab, type: 3}
+  mobilityTelegraph: {fileID: 3104723136175509857, guid: f1a75c200683aa242b2608ec88c48175, type: 3}
   mobilityEffect: {fileID: 8215458080498781041, guid: bd0bfc28234901745ae9f0c63e3a2633, type: 3}
   mobilityHitEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   mobilityDamage: 0
   mobilityRange: 10
-  mobilityCastTime: 0.3
-  mobilityImpactTime: 0.1
+  mobilityCastTime: 0.2
+  mobilityImpactTime: 0.5
   mobilityRecoveryTime: 0.3
   mobilityCoolDown: 5
   slowStacks: 5
   slowDuration: 2
-  specialTelegraph: {fileID: 6953225355496230734, guid: 26b2a36cdfad86b4e9d6b6934b684fab, type: 3}
+  specialTelegraph: {fileID: 2167635573597907463, guid: 93d46f7cb9c38ed44a93396ff49245d1, type: 3}
   specialEffect: {fileID: 9178998900622273337, guid: 1139518a2dda7ca4797a6df28c79efd9, type: 3}
   specialHitEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   specialDamage: 2
