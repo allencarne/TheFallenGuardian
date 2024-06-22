@@ -207,6 +207,8 @@ MonoBehaviour:
   healthBarBack: {fileID: 6046410864157426411}
   bodySprite: {fileID: 0}
   floatingText: {fileID: 1603807423817817544, guid: e694105018ce10740aea3c72251b9171, type: 3}
+  DamageText: {fileID: 0}
+  HealText: {fileID: 0}
 --- !u!1 &967854449797437396
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,7 +914,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -22
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.47058824}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.2509804}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

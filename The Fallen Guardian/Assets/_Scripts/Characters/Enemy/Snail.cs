@@ -308,9 +308,6 @@ public class Snail : Enemy
                 // Immovable
                 immovable.Immovable(modifiedImpactTime + .2f);
 
-                // Protection
-                protection.Protection(2, 3);
-
                 // Effect
                 mobilityEffectInstance = Instantiate(mobilityEffect, transform.position, rotation);
 

@@ -451,8 +451,8 @@ MonoBehaviour:
   mobilityImpactTime: 0.5
   mobilityRecoveryTime: 0.3
   mobilityCoolDown: 5
-  slowStacks: 5
-  slowDuration: 2
+  slowStacks: 3
+  slowDuration: 1.5
   specialTelegraph: {fileID: 2167635573597907463, guid: 93d46f7cb9c38ed44a93396ff49245d1, type: 3}
   specialEffect: {fileID: 9178998900622273337, guid: 1139518a2dda7ca4797a6df28c79efd9, type: 3}
   specialHitEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
