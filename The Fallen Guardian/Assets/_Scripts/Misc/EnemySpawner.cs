@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [Header("Enemy")]
+    [SerializeField] GameObject enemyPrefab;
+
+    [Header("Box Size")]
     [SerializeField] Vector2 size;
 
-    [SerializeField] GameObject enemyPrefab;
+    [Header("Enemy Count")]
     [SerializeField] int maxEnemyCount;
-    [SerializeField] int currentEnemyCount;
-    [SerializeField] float spawnDelay;
 
+    [Header("Color")]
+    [SerializeField] Color color;
+
+    int currentEnemyCount;
+    float spawnDelay = 6;
     bool canSpawn = true;
 
     private void Update()
@@ -52,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = color;
         Gizmos.DrawWireCube(transform.position, size);
     }
 }
