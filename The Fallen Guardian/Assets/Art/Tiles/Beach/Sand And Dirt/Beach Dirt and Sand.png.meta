@@ -416,6 +416,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Beach Dirt and Sand_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04189520d47eba64fbd2b41fd323a1c4
+      internalID: 80339107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -433,6 +454,7 @@ TextureImporter:
       Beach Dirt and Sand_11: -1521113080
       Beach Dirt and Sand_12: -1121573920
       Beach Dirt and Sand_13: 1663069809
+      Beach Dirt and Sand_14: 80339107
       Beach Dirt and Sand_2: 172427549
       Beach Dirt and Sand_3: 1563595611
       Beach Dirt and Sand_4: -176747335

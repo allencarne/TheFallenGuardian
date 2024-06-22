@@ -123,14 +123,14 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Beach Dirt and Sand
     originalName: 
-    pivot: {x: 0.44444448, y: 0}
+    pivot: {x: 0.45454547, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 72
+      width: 88
       height: 48
     spriteID: 50a8bab96131577418195dee1d6a9eb7
     spriteBone: []
@@ -155,7 +155,7 @@ ScriptedImporter:
       cellRect:
         x: 8
         y: 0
-        width: 72
+        width: 88
         height: 48
       spriteId: 50a8bab96131577418195dee1d6a9eb7
     linkedCells: []
