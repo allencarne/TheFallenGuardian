@@ -17,9 +17,9 @@ MonoBehaviour:
 
     Buy a Club from the
     Vendor and put it on.'
-  QuestObjective1: Buy A Club
+  QuestObjective1: Purchase a Club
   QuestObjective2: Equip the Club
-  QuestObjective3: 
+  QuestObjective3: Sell Wooden Stick
   QuestObjective4: 
   QuestObjective5: 
   QuestReward1: 
@@ -31,6 +31,12 @@ MonoBehaviour:
   QuestReward3: 
   QuestReward3Prefab: {fileID: 0}
   QuestReward3Icon: {fileID: 0}
-  QuestRewardDialogue: 
-  EXPReward: 0
-  GoldReward: 0
+  QuestReward4: 
+  QuestReward4Prefab: {fileID: 0}
+  QuestReward4Icon: {fileID: 0}
+  QuestRewardDialogue: Perfect, your power is increasing!
+  EXPReward: 3
+  EXPRewardIcon: {fileID: 21300000, guid: 4f4b8311ff7e5304cb2e119a627c39d9, type: 3}
+  GoldReward: 2
+  GoldRewardIcon: {fileID: 21300000, guid: bfd7358b12cab704a905090323a87cb5, type: 3}
+  GoldRewardPrefab: {fileID: 1362635029312417765, guid: d6dd294bca4c8794b8a61fe2b28a121a, type: 3}

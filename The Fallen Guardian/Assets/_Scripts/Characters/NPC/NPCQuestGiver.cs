@@ -183,7 +183,10 @@ public class NPCQuestGiver : MonoBehaviour
 
         if (Quests[QuestIndex].GoldRewardPrefab != null)
         {
-            Instantiate(Quests[QuestIndex].GoldRewardPrefab, RewardPosition);
+            for (int i = 0; i < Quests[QuestIndex].GoldReward; i++)
+            {
+                Instantiate(Quests[QuestIndex].GoldRewardPrefab, RewardPosition);
+            }
         }
 
         IsQuestAccepted = false;

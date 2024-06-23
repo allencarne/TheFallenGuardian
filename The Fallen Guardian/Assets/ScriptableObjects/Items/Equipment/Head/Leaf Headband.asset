@@ -19,7 +19,7 @@ MonoBehaviour:
   quantity: 0
   cost: 2
   sellValue: 0
-  dropChance: 0
+  dropChance: 10
   isStackable: 0
   isCurrency: 0
   playerReference: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
