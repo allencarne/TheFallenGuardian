@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] GameObject shadow;
     protected Rigidbody2D enemyRB;
     protected Animator enemyAnimator;
+    EnemyDrop enemyDrop;
 
     [Header("Status Effects")]
     protected CrowdControl crowdControl;
@@ -118,6 +119,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         enemyAnimator = GetComponentInChildren<Animator>();
         enemyRB = GetComponent<Rigidbody2D>();
+        enemyDrop = GetComponent<EnemyDrop>();
 
         crowdControl = GetComponent<CrowdControl>();
         regeneration = GetComponent<Buff_Regeneration>();

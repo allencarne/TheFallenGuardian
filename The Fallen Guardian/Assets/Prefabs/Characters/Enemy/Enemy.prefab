@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 8767221679893831347}
   - component: {fileID: 8622056740904828425}
   - component: {fileID: 5728394255601227415}
+  - component: {fileID: 2452615720156857822}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -603,6 +604,19 @@ MonoBehaviour:
   ImmovableEffect: {fileID: 489158165733796501, guid: ef56f4b7241b8d6429b9862b8f3d48d6, type: 3}
   buffPrefab: {fileID: 2852665012809533500, guid: 241180ef6e6c05b4bacfd7411bc15870, type: 3}
   isImmovable: 0
+--- !u!114 &2452615720156857822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168808411849726535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4724c7271eeb6214f9d6ef67004d4770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppableItems: []
 --- !u!1 &1986819680607824093
 GameObject:
   m_ObjectHideFlags: 0
