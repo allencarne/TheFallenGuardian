@@ -22,7 +22,6 @@ MonoBehaviour:
   QuestObjective3: Learn Frail Slash
   QuestObjective4: 
   QuestObjective5: 
-  amountOfObjectives: 3
   QuestReward1: + 3
   QuestReward1Prefab: {fileID: 0}
   QuestReward1Icon: {fileID: 21300000, guid: 4f4b8311ff7e5304cb2e119a627c39d9, type: 3}
@@ -32,6 +31,9 @@ MonoBehaviour:
   QuestReward3: 
   QuestReward3Prefab: {fileID: 0}
   QuestReward3Icon: {fileID: 0}
-  QuestRewardDialogue: Great Job! You're a natural.
+  QuestRewardDialogue: 'Great Job! You''re a natural.
+
+    This is just one of many
+    abilities you can learn.'
   EXPReward: 3
   GoldReward: 0

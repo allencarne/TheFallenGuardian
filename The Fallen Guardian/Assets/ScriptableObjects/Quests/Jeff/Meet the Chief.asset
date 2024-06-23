@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Meet the Chief
   m_EditorClassIdentifier: 
   QuestName: Meet the Chief
-  QuestDialogue: "Hey now that you are ready, go meet the Chief. \nHe's located at
-    the center of town."
+  QuestDialogue: 'I think you should meet the Cheif of this town.
+
+    He would be
+    very happy to meet you.
+
+    He''s located at the center of town.'
   QuestObjective1: Meet the Chief At the Center of Town
   QuestObjective2: 
   QuestObjective3: 
@@ -29,6 +33,8 @@ MonoBehaviour:
   QuestReward3: 
   QuestReward3Prefab: {fileID: 0}
   QuestReward3Icon: {fileID: 0}
-  QuestRewardDialogue: Welcome!
+  QuestRewardDialogue: 'Hello traveler and welcome to our island!
+
+'
   EXPReward: 3
   GoldReward: 0
