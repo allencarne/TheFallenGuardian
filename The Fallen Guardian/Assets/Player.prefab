@@ -630,6 +630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSmoke: {fileID: 5330495876675381051, guid: fe5537523b0d34942bb46c3945e8aec4, type: 3}
+  footStep: {fileID: 765358490596712715, guid: f37427b0ccdbd554994df9db351b1464, type: 3}
 --- !u!1 &3802473145910324290
 GameObject:
   m_ObjectHideFlags: 0
