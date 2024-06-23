@@ -528,6 +528,8 @@ public class Enemy : MonoBehaviour, IDamageable
             enemyCollider2D.enabled = false;
             shadow.SetActive(false);
 
+            enemyDrop.DropItem();
+
             if (EnemySpawner != null)
             {
                 EnemySpawner.DecreaseEnemyCount();

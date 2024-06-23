@@ -17,8 +17,10 @@ MonoBehaviour:
   name: Leaf Armband
   icon: {fileID: 21300000, guid: ba5eece6c0490144abb229fade977c1b, type: 3}
   quantity: 0
+  cost: 2
+  sellValue: 0
+  dropChance: 0
   isStackable: 0
-  cost: 1
   isCurrency: 0
   playerReference: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
   itemIndex: 2

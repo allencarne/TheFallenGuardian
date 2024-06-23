@@ -17,6 +17,8 @@ MonoBehaviour:
   name: Coin
   icon: {fileID: 21300000, guid: bfd7358b12cab704a905090323a87cb5, type: 3}
   quantity: 1
-  isStackable: 1
   cost: 0
+  sellValue: 0
+  dropChance: 10
+  isStackable: 1
   isCurrency: 1

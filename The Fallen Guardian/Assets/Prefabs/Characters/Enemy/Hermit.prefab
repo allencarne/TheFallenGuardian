@@ -27,7 +27,7 @@ PrefabInstance:
     - target: {fileID: 2452615720156857822, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: droppableItems.Array.data[0]
       value: 
-      objectReference: {fileID: 1362635029312417765, guid: d6dd294bca4c8794b8a61fe2b28a121a, type: 3}
+      objectReference: {fileID: 11400000, guid: 42388727a5097ef43a71ca5d944087f7, type: 2}
     - target: {fileID: 2524824449037648167, guid: 1f4ecc67d13b803498b75601a574a8c3, type: 3}
       propertyPath: enemy
       value: 
