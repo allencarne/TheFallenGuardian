@@ -27,15 +27,21 @@ MonoBehaviour:
   QuestReward1: Green Wooden Stick
   QuestReward1Prefab: {fileID: 8154717546460386717, guid: 523d34a0319965540932f78f9b16a6a8, type: 3}
   QuestReward1Icon: {fileID: 21300000, guid: bfd044f154e08194ebb140c89500c445, type: 3}
-  QuestReward2: + 3
+  QuestReward2: 
   QuestReward2Prefab: {fileID: 0}
-  QuestReward2Icon: {fileID: 21300000, guid: 4f4b8311ff7e5304cb2e119a627c39d9, type: 3}
+  QuestReward2Icon: {fileID: 0}
   QuestReward3: 
   QuestReward3Prefab: {fileID: 0}
   QuestReward3Icon: {fileID: 0}
+  QuestReward4: 
+  QuestReward4Prefab: {fileID: 0}
+  QuestReward4Icon: {fileID: 0}
   QuestRewardDialogue: 'Okay that''s much better. Thank you.
 
     I found this stick
     on the floor, you can have it.'
   EXPReward: 3
+  EXPRewardIcon: {fileID: 21300000, guid: 4f4b8311ff7e5304cb2e119a627c39d9, type: 3}
   GoldReward: 0
+  GoldRewardIcon: {fileID: 0}
+  GoldRewardPrefab: {fileID: 0}

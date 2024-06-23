@@ -31,10 +31,21 @@ public class Quest : ScriptableObject
     public GameObject QuestReward3Prefab;
     public Sprite QuestReward3Icon;
 
+    [Header("Quest Reward 4")]
+    public string QuestReward4;
+    public GameObject QuestReward4Prefab;
+    public Sprite QuestReward4Icon;
+
     [Header("Reward Dialogue")]
     [Multiline]
     public string QuestRewardDialogue;
 
+    [Header("EXP")]
     public int EXPReward;
+    public Sprite EXPRewardIcon;
+
+    [Header("Gold")]
     public int GoldReward;
+    public Sprite GoldRewardIcon;
+    public GameObject GoldRewardPrefab;
 }

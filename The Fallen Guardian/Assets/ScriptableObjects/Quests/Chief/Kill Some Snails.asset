@@ -25,16 +25,21 @@ MonoBehaviour:
   QuestObjective3: 
   QuestObjective4: 
   QuestObjective5: 
-  amountOfObjectives: 1
   QuestReward1: Tattered Headband
   QuestReward1Prefab: {fileID: 7086044739819504598, guid: 445d1a32b95db3a48b53ad7d3fca7c4e, type: 3}
   QuestReward1Icon: {fileID: 21300000, guid: 5e7f6dbb78b4d8445a6402e257797069, type: 3}
-  QuestReward2: + 3
+  QuestReward2: 
   QuestReward2Prefab: {fileID: 0}
-  QuestReward2Icon: {fileID: 21300000, guid: 4f4b8311ff7e5304cb2e119a627c39d9, type: 3}
+  QuestReward2Icon: {fileID: 0}
   QuestReward3: 
   QuestReward3Prefab: {fileID: 0}
   QuestReward3Icon: {fileID: 0}
+  QuestReward4: 
+  QuestReward4Prefab: {fileID: 0}
+  QuestReward4Icon: {fileID: 0}
   QuestRewardDialogue: You killed them? No Cap? Big ups my guy. What a beast.
   EXPReward: 3
+  EXPRewardIcon: {fileID: 21300000, guid: 4f4b8311ff7e5304cb2e119a627c39d9, type: 3}
   GoldReward: 0
+  GoldRewardIcon: {fileID: 0}
+  GoldRewardPrefab: {fileID: 0}

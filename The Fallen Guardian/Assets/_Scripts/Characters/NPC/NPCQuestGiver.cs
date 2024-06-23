@@ -166,6 +166,26 @@ public class NPCQuestGiver : MonoBehaviour
             Instantiate(Quests[QuestIndex].QuestReward1Prefab, RewardPosition);
         }
 
+        if (Quests[QuestIndex].QuestReward2Prefab != null)
+        {
+            Instantiate(Quests[QuestIndex].QuestReward2Prefab, RewardPosition);
+        }
+
+        if (Quests[QuestIndex].QuestReward3Prefab != null)
+        {
+            Instantiate(Quests[QuestIndex].QuestReward3Prefab, RewardPosition);
+        }
+
+        if (Quests[QuestIndex].QuestReward4Prefab != null)
+        {
+            Instantiate(Quests[QuestIndex].QuestReward4Prefab, RewardPosition);
+        }
+
+        if (Quests[QuestIndex].GoldRewardPrefab != null)
+        {
+            Instantiate(Quests[QuestIndex].GoldRewardPrefab, RewardPosition);
+        }
+
         IsQuestAccepted = false;
         IsQuestCompleted = false;
         QuestIndex++;

@@ -32,6 +32,18 @@ public class NPCQuestUI : MonoBehaviour
     public TextMeshProUGUI QuestReward3;
     public Image QuestReward3Icon;
 
+    [Header("Quest Reward 4")]
+    public TextMeshProUGUI QuestReward4;
+    public Image QuestReward4Icon;
+
+    [Header("Quest Reward EXP")]
+    public TextMeshProUGUI QuestRewardExp;
+    public Image QuestRewardExpIcon;
+
+    [Header("Quest Reward Gold")]
+    public TextMeshProUGUI QuestRewardGold;
+    public Image QuestRewardGoldIcon;
+
     [Header("Quest Reward UI")]
     public GameObject QuestRewardUI;
 
@@ -50,6 +62,18 @@ public class NPCQuestUI : MonoBehaviour
     [Header("Return Quest Reward 3")]
     public TextMeshProUGUI ReturnReward3;
     public Image ReturnReward3Icon;
+
+    [Header("Return Quest Reward 4")]
+    public TextMeshProUGUI ReturnReward4;
+    public Image ReturnReward4Icon;
+
+    [Header("Return Quest Reward EXP")]
+    public TextMeshProUGUI ReturnQuestRewardExp;
+    public Image ReturnQuestRewardExpIcon;
+
+    [Header("Return Quest Reward Gold")]
+    public TextMeshProUGUI ReturnQuestRewardGold;
+    public Image ReturnQuestRewardGoldIcon;
 
     public void SetupUI(Quest quest)
     {
@@ -71,6 +95,15 @@ public class NPCQuestUI : MonoBehaviour
         // Quest Reward 3
         QuestReward3.text = quest.QuestReward3;
         QuestReward3Icon.sprite = quest.QuestReward3Icon;
+        // Quest Reward 4
+        QuestReward4.text = quest.QuestReward4;
+        QuestReward4Icon.sprite = quest.QuestReward4Icon;
+        // Quest Exp Reward
+        QuestRewardExp.text = "+ " + quest.EXPReward.ToString();
+        QuestRewardExpIcon.sprite = quest.EXPRewardIcon;
+        // Quest Gold Reward
+        QuestRewardGold.text = "+ " + quest.GoldReward.ToString();
+        QuestRewardGoldIcon.sprite = quest.GoldRewardIcon;
 
         // Return Quest
         ReturnQuestName.text = quest.QuestName;
@@ -84,7 +117,29 @@ public class NPCQuestUI : MonoBehaviour
         // Quest Reward 3
         ReturnReward3.text = quest.QuestReward3;
         ReturnReward3Icon.sprite = quest.QuestReward3Icon;
+        // Quest Reward 4
+        ReturnReward4.text = quest.QuestReward4;
+        ReturnReward4Icon.sprite = quest.QuestReward4Icon;
+        // Quest Exp Reward
+        ReturnQuestRewardExp.text = "+ " + quest.EXPReward.ToString();
+        ReturnQuestRewardExpIcon.sprite = quest.EXPRewardIcon;
+        // Quest Gold Reward
+        ReturnQuestRewardGold.text = "+ " + quest.GoldReward.ToString();
+        ReturnQuestRewardGoldIcon.sprite = quest.GoldRewardIcon;
 
+        // 1
+        if (quest.QuestReward1Icon == null)
+        {
+            QuestReward1Icon.enabled = false;
+            ReturnReward1Icon.enabled = false;
+        }
+        else
+        {
+            QuestReward1Icon.enabled = enabled;
+            ReturnReward1Icon.enabled = enabled;
+        }
+
+        // 2
         if (quest.QuestReward2Icon == null)
         {
             QuestReward2Icon.enabled = false;
@@ -96,6 +151,7 @@ public class NPCQuestUI : MonoBehaviour
             ReturnReward2Icon.enabled = enabled;
         }
 
+        // 3
         if (quest.QuestReward3Icon == null)
         {
             QuestReward3Icon.enabled = false;
@@ -105,6 +161,46 @@ public class NPCQuestUI : MonoBehaviour
         {
             QuestReward3Icon.enabled = enabled;
             ReturnReward3Icon.enabled = enabled;
+        }
+
+        // 4
+        if (quest.QuestReward4Icon == null)
+        {
+            QuestReward4Icon.enabled = false;
+            ReturnReward4Icon.enabled = false;
+        }
+        else
+        {
+            QuestReward4Icon.enabled = enabled;
+            ReturnReward4Icon.enabled = enabled;
+        }
+
+        // Exp
+        if (quest.EXPRewardIcon == null)
+        {
+            QuestRewardExpIcon.enabled = false;
+            ReturnQuestRewardExpIcon.enabled = false;
+        }
+        else
+        {
+            QuestRewardExpIcon.enabled = enabled;
+            ReturnQuestRewardExpIcon.enabled = enabled;
+        }
+
+        // Gold
+        if (quest.GoldRewardIcon == null)
+        {
+            QuestRewardGoldIcon.enabled = false;
+            ReturnQuestRewardGoldIcon.enabled = false;
+            QuestRewardGold.enabled = false;
+            ReturnQuestRewardGold.enabled = false;
+        }
+        else
+        {
+            QuestRewardGoldIcon.enabled = enabled;
+            ReturnQuestRewardGoldIcon.enabled = enabled;
+            QuestRewardGold.enabled = true;
+            ReturnQuestRewardGold.enabled = true;
         }
     }
 }
