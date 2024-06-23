@@ -89,5 +89,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f7b5207da468d42b904d5e8551d4f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Stacks: 1
+  Stacks: 3
   Duration: 5

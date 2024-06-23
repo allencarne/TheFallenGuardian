@@ -21,7 +21,7 @@ public class RandomizePrefab : MonoBehaviour
             int randomIndex = Random.Range(0, prefabs.Length);
 
             GameObject selectedPrefab = prefabs[randomIndex];
-            GameObject instance = Instantiate(selectedPrefab, transform.position, Quaternion.identity);
+            GameObject instance = Instantiate(selectedPrefab, transform.position, Quaternion.identity, transform);
 
             if (flip)
             {
