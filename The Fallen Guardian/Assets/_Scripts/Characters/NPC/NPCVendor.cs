@@ -23,6 +23,7 @@ public class NPCVendor : MonoBehaviour
     Item selectedItem;
 
     public UnityEvent OnItemPurchased;
+    public UnityEvent OnClubPurchased;
 
     private void Start()
     {
@@ -116,6 +117,12 @@ public class NPCVendor : MonoBehaviour
             OnItemPurchased?.Invoke();
 
             confirmVendorUI.SetActive(false);
+
+            // Buy a club quest
+            if (selectedItem.name == "Club")
+            {
+                OnClubPurchased?.Invoke();
+            }
         }
     }
 
