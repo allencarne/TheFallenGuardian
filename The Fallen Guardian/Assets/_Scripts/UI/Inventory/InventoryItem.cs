@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -12,6 +13,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public Image dropArea;
 
+    public UnityEvent OnBeginDragging;
+    public UnityEvent OnEndDragging;
+
     public void Start()
     {
         dropArea = GameObject.FindGameObjectWithTag("Drop Area").GetComponent<Image>();
@@ -19,6 +23,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        OnBeginDragging?.Invoke();
+
         image.raycastTarget = false;
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
@@ -36,6 +42,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        OnEndDragging?.Invoke();
+
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
         transform.localPosition = Vector3.zero; // Reset position in case drop was unsuccessful

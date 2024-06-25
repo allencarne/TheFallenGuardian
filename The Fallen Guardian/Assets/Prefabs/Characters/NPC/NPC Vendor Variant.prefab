@@ -3137,7 +3137,7 @@ GameObject:
   - component: {fileID: 3787024809685838892}
   m_Layer: 0
   m_Name: VendorUI
-  m_TagString: Untagged
+  m_TagString: Sell Area
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6865,6 +6865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
   vendorUI: {fileID: 4858479914202947717}
+  ShopUIImage: {fileID: 3787024809685838892}
   interactText: {fileID: 4678637611157283734}
   itemPosition: {fileID: 6744260632789408793}
   items: []
@@ -6874,5 +6875,8 @@ MonoBehaviour:
   confirmVendorUI: {fileID: 1408116841733505331}
   confirmVendorText: {fileID: 1175795508081050932}
   OnItemPurchased:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClubPurchased:
     m_PersistentCalls:
       m_Calls: []

@@ -10,6 +10,7 @@ public class NPCVendor : MonoBehaviour
     [SerializeField] PlayerStats playerStats;
 
     [SerializeField] GameObject vendorUI;
+    [SerializeField] Image ShopUIImage;
     [SerializeField] TextMeshProUGUI interactText;
     [SerializeField] Transform itemPosition;
 
@@ -134,5 +135,15 @@ public class NPCVendor : MonoBehaviour
     public void CloseVendorUIButton()
     {
         vendorUI.SetActive(false);
+    }
+
+    public void BeginDragging()
+    {
+        ShopUIImage.color = Color.green;
+    }
+
+    public void EndDragging()
+    {
+        ShopUIImage.color = Color.white;
     }
 }
