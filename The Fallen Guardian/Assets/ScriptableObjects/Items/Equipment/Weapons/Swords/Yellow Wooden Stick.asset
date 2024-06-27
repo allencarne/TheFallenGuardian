@@ -17,8 +17,10 @@ MonoBehaviour:
   name: Yellow Wooden Stick
   icon: {fileID: 21300000, guid: 0532026b945488b4caf352c02c6559c2, type: 3}
   quantity: 0
-  isStackable: 0
   cost: 0
+  sellValue: 1
+  dropChance: 0
+  isStackable: 0
   isCurrency: 0
   playerReference: {fileID: 11400000, guid: ec849e1112f02a146b5fc11ed29d65b7, type: 2}
   itemIndex: 0

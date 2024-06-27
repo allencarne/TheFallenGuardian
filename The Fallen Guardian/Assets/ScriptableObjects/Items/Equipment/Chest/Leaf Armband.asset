@@ -16,9 +16,9 @@ MonoBehaviour:
   prefab: {fileID: 2842238533031593812, guid: 2d24b4d55d02c304694903bf5f1248e0, type: 3}
   name: Leaf Armband
   icon: {fileID: 21300000, guid: ba5eece6c0490144abb229fade977c1b, type: 3}
-  quantity: 0
+  quantity: 1
   cost: 2
-  sellValue: 0
+  sellValue: 1
   dropChance: 10
   isStackable: 0
   isCurrency: 0

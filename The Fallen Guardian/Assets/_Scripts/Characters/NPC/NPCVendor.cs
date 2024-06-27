@@ -23,6 +23,8 @@ public class NPCVendor : MonoBehaviour
     [SerializeField] TextMeshProUGUI confirmVendorText;
     Item selectedItem;
 
+    [SerializeField] GameObject coinPrefab;
+
     public UnityEvent OnItemPurchased;
     public UnityEvent OnClubPurchased;
 
@@ -112,7 +114,12 @@ public class NPCVendor : MonoBehaviour
     {
         if (selectedItem != null)
         {
-            Instantiate(selectedItem.prefab, itemPosition);
+            float randomX = Random.Range(-.7f, .7f);
+            float randomY = Random.Range(-.7f, .7f);
+
+            Vector3 randomPosition = new Vector3(randomX, randomY, 0f);
+
+            Instantiate(selectedItem.prefab, itemPosition.position + randomPosition, Quaternion.identity);
             playerStats.Gold -= selectedItem.cost;
 
             OnItemPurchased?.Invoke();
@@ -145,5 +152,15 @@ public class NPCVendor : MonoBehaviour
     public void EndDragging()
     {
         ShopUIImage.color = Color.white;
+    }
+
+    public void EndOnSellArea()
+    {
+        float randomX = Random.Range(-.7f, .7f);
+        float randomY = Random.Range(-.7f, .7f);
+
+        Vector3 randomPosition = new Vector3(randomX, randomY, 0f);
+
+        Instantiate(coinPrefab, itemPosition.position + randomPosition, Quaternion.identity);
     }
 }

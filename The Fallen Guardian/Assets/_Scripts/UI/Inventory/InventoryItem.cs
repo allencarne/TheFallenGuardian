@@ -15,6 +15,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public UnityEvent OnBeginDragging;
     public UnityEvent OnEndDragging;
+    public UnityEvent OnEndDragOnSellArea;
 
     public void Start()
     {
@@ -70,5 +71,23 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
 
         dropArea.color = new Color(dropArea.color.r, dropArea.color.g, dropArea.color.b, .0f);
+
+        if (eventData.pointerEnter != null && eventData.pointerEnter.CompareTag("Sell Area"))
+        {
+            if (item.sellValue == 0)
+            {
+                Debug.Log("Can't sell this item");
+                return;
+            }
+
+            // Invoke this method the number of times as the item.sellValue
+            for (int i = 0; i < item.sellValue; i++)
+            {
+                OnEndDragOnSellArea?.Invoke();
+            }
+
+            // Remove the Sold Item
+            item.RemoveFromInventory();
+        }
     }
 }

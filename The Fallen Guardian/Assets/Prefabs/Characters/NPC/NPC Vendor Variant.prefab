@@ -6874,6 +6874,7 @@ MonoBehaviour:
   itemPrices: []
   confirmVendorUI: {fileID: 1408116841733505331}
   confirmVendorText: {fileID: 1175795508081050932}
+  coinPrefab: {fileID: 1362635029312417765, guid: d6dd294bca4c8794b8a61fe2b28a121a, type: 3}
   OnItemPurchased:
     m_PersistentCalls:
       m_Calls: []
