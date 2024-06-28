@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 0
-  MaxHealth: 20
+  MaxHealth: 30
   BaseSpeed: 3
   CurrentSpeed: 0
   BaseDamage: 2

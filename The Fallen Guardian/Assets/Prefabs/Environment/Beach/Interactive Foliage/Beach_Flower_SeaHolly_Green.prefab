@@ -86,4 +86,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stacks: 1
-  Duration: 5
+  Duration: 10

@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 0
-  MaxHealth: 10
+  MaxHealth: 15
   BaseSpeed: 3
   CurrentSpeed: 0
   BaseDamage: 1
@@ -459,7 +459,7 @@ MonoBehaviour:
   mobilityImpactTime: 0.5
   mobilityRecoveryTime: 0.3
   mobilityCoolDown: 5
-  slowStacks: 3
+  slowStacks: 1
   slowDuration: 1.5
   specialTelegraph: {fileID: 2167635573597907463, guid: 93d46f7cb9c38ed44a93396ff49245d1, type: 3}
   specialEffect: {fileID: 9178998900622273337, guid: 1139518a2dda7ca4797a6df28c79efd9, type: 3}
