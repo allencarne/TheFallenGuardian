@@ -16,6 +16,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public UnityEvent OnBeginDragging;
     public UnityEvent OnEndDragging;
     public UnityEvent OnEndDragOnSellArea;
+    public UnityEvent OnGreenWoodenStickSold;
 
     public void Start()
     {
@@ -84,6 +85,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             for (int i = 0; i < item.sellValue; i++)
             {
                 OnEndDragOnSellArea?.Invoke();
+            }
+
+            if (item.name == "Green Wooden Stick")
+            {
+                OnGreenWoodenStickSold?.Invoke();
             }
 
             // Remove the Sold Item
