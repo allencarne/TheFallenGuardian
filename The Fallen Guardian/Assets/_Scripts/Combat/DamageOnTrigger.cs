@@ -9,6 +9,7 @@ public class DamageOnTrigger : MonoBehaviour
     [HideInInspector] public int AbilityDamage;
 
     [HideInInspector] public bool DestroyAfterDamage = false;
+    [HideInInspector] public PlayerStateMachine stateMachine;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,6 +23,8 @@ public class DamageOnTrigger : MonoBehaviour
             {
                 Instantiate(HitEffect, collision.transform.position, collision.transform.rotation);
             }
+
+            stateMachine.Player.GainFury(5);  // Adjust the amount as needed
         }
 
         // For Quest

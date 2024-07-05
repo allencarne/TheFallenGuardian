@@ -132,7 +132,7 @@ public class FrailSlash : ScriptableObject, IAbilityBehaviour
             damageOnTrigger.CharacterDamage = stateMachine.Player.Stats.CurrentDamage;
             damageOnTrigger.HitEffect = hitEffect;
 
-            stateMachine.Player.GainFury(5);
+            damageOnTrigger.stateMachine = stateMachine;
         }
 
         KnockbackOnTrigger knockbackOnTrigger = slash.GetComponent<KnockbackOnTrigger>();
