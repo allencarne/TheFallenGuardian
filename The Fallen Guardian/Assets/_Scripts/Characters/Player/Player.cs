@@ -59,6 +59,9 @@ public class Player : MonoBehaviour, IDamageable
 
         // Set Armor
         Stats.CurrentArmor = Stats.BaseArmor;
+
+        // Set Fury
+        Stats.Fury = 0;
     }
 
     private void Update()
@@ -165,39 +168,12 @@ public class Player : MonoBehaviour, IDamageable
             OnHealthChanged?.Invoke();
         }
     }
-    /*
-    public void Regeneration(float heal)
+
+    public void GainFury(float amount)
     {
-        if (Stats.Health >= Stats.MaxHealth)
-        {
-            healthBar.ShowFloatingText(0, healthBar.floatingHealingText);
-
-            return;
-        }
-
-        float newHealth = Stats.Health + heal;
-
-        if (newHealth <= Stats.MaxHealth)
-        {
-            Stats.Health += heal;
-
-            StartCoroutine(healthBar.FlashEffect(Color.green));
-            healthBar.ShowFloatingText(heal, healthBar.floatingHealingText);
-
-            OnHealthChanged?.Invoke();
-        }
-        else
-        {
-            float overheal = newHealth - Stats.MaxHealth;
-            Stats.Health += overheal;
-
-            StartCoroutine(healthBar.FlashEffect(Color.green));
-            healthBar.ShowFloatingText(overheal, healthBar.floatingHealingText);
-
-            OnHealthChanged?.Invoke();
-        }
+        Stats.Fury += amount;
     }
-    */
+
     public void PlayerEnterCombat()
     {
         IdleTime = 0;

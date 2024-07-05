@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1342437616879030152}
   - component: {fileID: 6818144197589041930}
+  - component: {fileID: 3157503413563605962}
   m_Layer: 0
   m_Name: Beach_Plant_0
   m_TagString: Untagged
@@ -30,8 +31,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5194142333428445493}
   - {fileID: 2794825433602420134}
+  - {fileID: 5194142333428445493}
   - {fileID: 3904612134795215097}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -70,6 +71,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.065
+--- !u!210 &3157503413563605962
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393955378048397790}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &1497736057883612188
 GameObject:
   m_ObjectHideFlags: 0

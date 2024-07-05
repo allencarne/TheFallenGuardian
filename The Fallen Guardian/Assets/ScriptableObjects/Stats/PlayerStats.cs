@@ -47,6 +47,10 @@ public class PlayerStats : ScriptableObject
 
     [Header("Currency")]
     public int Gold;
+
+    [Header("Fury")]
+    public float Fury = 0;
+    public float MaxFury = 100;
 }
 
 public enum PlayerClass 

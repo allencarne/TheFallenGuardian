@@ -2581,6 +2581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1361071663261445160}
   - component: {fileID: 6699961322957047184}
+  - component: {fileID: 1981936816322983317}
   m_Layer: 3
   m_Name: HealthBar
   m_TagString: Untagged
@@ -2637,6 +2638,21 @@ MonoBehaviour:
   floatingDamageText: {fileID: 5891360512559457938, guid: 68ba340aaaf2f794c9fb08e123a44736, type: 3}
   floatingHealingText: {fileID: 6681784218910640972, guid: b11db7ebde936ca4ab971f3887e27405, type: 3}
   CastBar: {fileID: 2187327653616484548}
+--- !u!114 &1981936816322983317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8324031750687829038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5a6ecf6ad49fa47895bda26189591e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 6b68d1b4e7d57b5478bfb0f4df2a8fc1, type: 2}
+  barFront: {fileID: 7361326123087152862}
+  barBack: {fileID: 2344240186063676834}
 --- !u!1 &8727468340536375276
 GameObject:
   m_ObjectHideFlags: 0
