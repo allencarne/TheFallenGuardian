@@ -29,6 +29,10 @@ public class Player : MonoBehaviour, IDamageable
     Buff_Regeneration regeneration;
     bool isRegenerating = false;
 
+    // Fury
+    bool isFuryTimerActive = false;
+    bool isDecreasingFury = false;
+
     public UnityEvent OnPlayerEnterCombat;
     public UnityEvent OnPlayerLeaveCombat;
 
@@ -171,7 +175,42 @@ public class Player : MonoBehaviour, IDamageable
 
     public void GainFury(float amount)
     {
-        Stats.Fury += amount;
+        // Ensure Fury does not exceed MaxFury
+        Stats.Fury = Mathf.Min(Stats.Fury + amount, Stats.MaxFury);
+
+        if (isFuryTimerActive)
+        {
+            CancelInvoke("FuryTimerExpired");
+        }
+
+        if (isDecreasingFury)
+        {
+            CancelInvoke("DecreaseFury");
+            isDecreasingFury = false;
+        }
+
+        isFuryTimerActive = true;
+        Invoke("FuryTimerExpired", 8.0f);
+    }
+
+    private void FuryTimerExpired()
+    {
+        isFuryTimerActive = false;
+        isDecreasingFury = true;
+        InvokeRepeating("DecreaseFury", 0f, 1f);
+    }
+
+    private void DecreaseFury()
+    {
+        if (Stats.Fury > 0)
+        {
+            Stats.Fury -= 1;
+        }
+        else
+        {
+            CancelInvoke("DecreaseFury");
+            isDecreasingFury = false;
+        }
     }
 
     public void PlayerEnterCombat()
