@@ -24,7 +24,10 @@ public class DamageOnTrigger : MonoBehaviour
                 Instantiate(HitEffect, collision.transform.position, collision.transform.rotation);
             }
 
-            stateMachine.Player.GainFury(5);  // Adjust the amount as needed
+            if (stateMachine)
+            {
+                stateMachine.Player.GainFury(5);  // Adjust the amount as needed
+            }
         }
 
         // For Quest

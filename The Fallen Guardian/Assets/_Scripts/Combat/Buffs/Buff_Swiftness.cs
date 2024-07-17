@@ -115,14 +115,20 @@ public class Buff_Swiftness : MonoBehaviour, ISwiftnessable
         }
     }
 
-    void ResetSwiftness()
+    public void ResetSwiftness()
     {
         if (isPlayer)
         {
+            Destroy(buffIcon);
+            Destroy(swiftnessParticle);
+
             activeSwitfnessAmount = 0;
         }
         else
         {
+            Destroy(buffIcon);
+            Destroy(swiftnessParticle);
+
             activeSwitfnessAmount = 0;
         }
 

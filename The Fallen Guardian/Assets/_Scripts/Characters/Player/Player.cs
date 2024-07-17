@@ -19,6 +19,7 @@ public class Player : MonoBehaviour, IDamageable
     // Status Effects
     [HideInInspector] public CrowdControl CrowdControl;
     public Buff_Immovable Immovable;
+    public Buff_Swiftness Swiftness;
 
     // Combat
     public bool InCombat = false;
@@ -173,10 +174,21 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
+    private bool isSwiftnessActive = false;
+
     public void GainFury(float amount)
     {
         // Ensure Fury does not exceed MaxFury
         Stats.Fury = Mathf.Min(Stats.Fury + amount, Stats.MaxFury);
+
+        // Apply or remove Swiftness buff based on Fury level
+        if (Stats.Fury >= 50 && !isSwiftnessActive)
+        {
+            Debug.Log("more than 50");
+
+            Swiftness.Swiftness(2, 999);
+            isSwiftnessActive = true;
+        }
 
         if (isFuryTimerActive)
         {
@@ -205,6 +217,15 @@ public class Player : MonoBehaviour, IDamageable
         if (Stats.Fury > 0)
         {
             Stats.Fury -= 1;
+
+
+            if (Stats.Fury < 50 && isSwiftnessActive)
+            {
+                Debug.Log("less than 50");
+
+                Swiftness.ResetSwiftness();
+                isSwiftnessActive = false;
+            }
         }
         else
         {

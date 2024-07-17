@@ -1937,6 +1937,7 @@ MonoBehaviour:
         m_CallState: 2
   CrowdControl: {fileID: 0}
   Immovable: {fileID: 2427192153735491497}
+  Swiftness: {fileID: 8259647482174317175}
   InCombat: 0
   IdleTime: 0
   LoseCombatTime: 5
