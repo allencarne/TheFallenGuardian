@@ -186,7 +186,7 @@ public class Player : MonoBehaviour, IDamageable
         {
             Debug.Log("more than 50");
 
-            Swiftness.Swiftness(2, 999);
+            Swiftness.ApplyConditionalSwiftness(2);
             isSwiftnessActive = true;
         }
 
@@ -222,6 +222,8 @@ public class Player : MonoBehaviour, IDamageable
             if (Stats.Fury < 50 && isSwiftnessActive)
             {
                 Debug.Log("less than 50");
+
+                Swiftness.RemoveConditionalSwiftness(2);
 
                 Swiftness.ResetSwiftness();
                 isSwiftnessActive = false;

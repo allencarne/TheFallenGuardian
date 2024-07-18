@@ -134,4 +134,56 @@ public class Buff_Swiftness : MonoBehaviour, ISwiftnessable
 
         RecalculateSwiftness();
     }
+
+    public void ApplyConditionalSwiftness(int stacks)
+    {
+        // Increase Stack Amount Based on the New Buff
+        swiftnessStacks += stacks;
+
+        // Cap the swiftnessStacks at 25
+        swiftnessStacks = Mathf.Min(swiftnessStacks, 25);
+
+        // Gain Swiftness Based on Stack Amount
+        ApplySwiftness(swiftnessStacks);
+
+        // Icon
+        if (!buffIcon)
+        {
+            buffIcon = Instantiate(buffPrefab);
+            buffIcon.transform.SetParent(buffBar.transform);
+            buffIcon.transform.localScale = new Vector3(1, 1, 1);
+
+            // Get Stacks Text
+            stacksText = buffIcon.GetComponentInChildren<TextMeshProUGUI>();
+        }
+
+        if (!swiftnessParticle)
+        {
+            swiftnessParticle = Instantiate(swiftnessParticlePrefab, transform);
+        }
+
+        // Stacks Text
+        stacksText.text = swiftnessStacks.ToString();
+    }
+
+    public void RemoveConditionalSwiftness(int stacks)
+    {
+        // Subtract the Stack from our swiftnessStacks
+        swiftnessStacks -= stacks;
+
+        // Ensure swiftnessStacks doesn't go below zero
+        swiftnessStacks = Mathf.Max(swiftnessStacks, 0);
+
+        if (swiftnessStacks == 0)
+        {
+            ResetSwiftness();
+        }
+        else
+        {
+            ApplySwiftness(swiftnessStacks);
+
+            // Stacks Text
+            stacksText.text = swiftnessStacks.ToString();
+        }
+    }
 }
