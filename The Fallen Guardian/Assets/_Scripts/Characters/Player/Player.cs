@@ -174,21 +174,14 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    private bool isSwiftnessActive = false;
+    int currentSwiftness = 0;
 
     public void GainFury(float amount)
     {
         // Ensure Fury does not exceed MaxFury
         Stats.Fury = Mathf.Min(Stats.Fury + amount, Stats.MaxFury);
 
-        // Apply or remove Swiftness buff based on Fury level
-        if (Stats.Fury >= 50 && !isSwiftnessActive)
-        {
-            Debug.Log("more than 50");
-
-            Swiftness.ApplyConditionalSwiftness(2);
-            isSwiftnessActive = true;
-        }
+        UpdateSwiftness();
 
         if (isFuryTimerActive)
         {
@@ -217,17 +210,7 @@ public class Player : MonoBehaviour, IDamageable
         if (Stats.Fury > 0)
         {
             Stats.Fury -= 1;
-
-
-            if (Stats.Fury < 50 && isSwiftnessActive)
-            {
-                Debug.Log("less than 50");
-
-                Swiftness.RemoveConditionalSwiftness(2);
-
-                Swiftness.ResetSwiftness();
-                isSwiftnessActive = false;
-            }
+            UpdateSwiftness();
         }
         else
         {
@@ -236,7 +219,55 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    public void PlayerEnterCombat()
+    private void UpdateSwiftness()
+    {
+        int newSwiftness = 0;
+
+        if (Stats.Fury >= 100)
+        {
+            newSwiftness = 10;
+        }
+        else if (Stats.Fury >= 80)
+        {
+            newSwiftness = 8;
+        }
+        else if (Stats.Fury >= 60)
+        {
+            newSwiftness = 6;
+        }
+        else if (Stats.Fury >= 40)
+        {
+            newSwiftness = 4;
+        }
+        else if (Stats.Fury >= 20)
+        {
+            newSwiftness = 2;
+        }
+
+        if (newSwiftness != currentSwiftness)
+        {
+            int swiftnessDifference = newSwiftness - currentSwiftness;
+
+            if (swiftnessDifference > 0)
+            {
+                Swiftness.ApplyConditionalSwiftness(swiftnessDifference);
+            }
+            else
+            {
+                Swiftness.RemoveConditionalSwiftness(-swiftnessDifference);
+            }
+
+            currentSwiftness = newSwiftness;
+        }
+
+        // If currentSwiftness is 0, reset Swiftness completely
+        if (currentSwiftness == 0)
+        {
+            Swiftness.ResetSwiftness();
+        }
+    }
+
+        public void PlayerEnterCombat()
     {
         IdleTime = 0;
 
