@@ -267,7 +267,7 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-        public void PlayerEnterCombat()
+    public void PlayerEnterCombat()
     {
         IdleTime = 0;
 
