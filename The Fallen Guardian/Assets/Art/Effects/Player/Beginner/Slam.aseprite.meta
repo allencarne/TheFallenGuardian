@@ -123,15 +123,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Slam_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: -0.049019612}
+    pivot: {x: 0.49999997, y: -0.640625}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
-      width: 102
-      height: 102
+      y: 444
+      width: 64
+      height: 64
     spriteID: f64593104ffbc9640a909b3d7d2dc190
     spriteBone: []
     spriteOutline: []
@@ -140,18 +140,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 4, y: 444}
   - name: Slam_Frame_1
     originalName: 
-    pivot: {x: 0.5, y: -0.049019612}
+    pivot: {x: 0.5, y: -0.4}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 114
-      width: 102
-      height: 102
+      x: 292
+      y: 4
+      width: 80
+      height: 80
     spriteID: 96a313d76cbf38944b2fc4421b575248
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 114}
+    uvTransform: {x: 292, y: 4}
   - name: Slam_Frame_2
     originalName: 
-    pivot: {x: 0.5, y: -0.049019612}
+    pivot: {x: 0.49999997, y: -0.26041666}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 114
-      y: 4
-      width: 102
-      height: 102
+      x: 156
+      y: 260
+      width: 96
+      height: 96
     spriteID: 59e4af1378fd91a409b73b7f4615412a
     spriteBone: []
     spriteOutline: []
@@ -180,7 +180,147 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 114, y: 4}
+    uvTransform: {x: 156, y: 260}
+  - name: Slam_Frame_3
+    originalName: 
+    pivot: {x: 0.5, y: -0.14285715}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 156
+      y: 140
+      width: 112
+      height: 112
+    spriteID: 19db24c1c3d310c4c8db876e02b4faef
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 156, y: 140}
+  - name: Slam_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: -0.0703125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 308
+      width: 128
+      height: 128
+    spriteID: 09bb6d0763fbd4c4582d5b2c15de6923
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 308}
+  - name: Slam_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 144
+      height: 144
+    spriteID: 50743261f96fbd949a19721da661fe6a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Slam_Frame_7
+    originalName: 
+    pivot: {x: 0.49999997, y: -0.640625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 76
+      y: 444
+      width: 64
+      height: 64
+    spriteID: dc551bab3383abb4887764e4de96f3d3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 76, y: 444}
+  - name: Slam_Frame_8
+    originalName: 
+    pivot: {x: 0.49999997, y: -0.26041666}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 156
+      y: 364
+      width: 96
+      height: 96
+    spriteID: 938d3004819f4d845886f72fef66eb1e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 156, y: 364}
+  - name: Slam_Frame_9
+    originalName: 
+    pivot: {x: 0.5, y: -0.0703125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 156
+      y: 4
+      width: 128
+      height: 128
+    spriteID: c9838b59045a4f04b91d71c7e1a7574c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 156, y: 4}
+  - name: Slam_Frame_10
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 156
+      width: 144
+      height: 144
+    spriteID: 8707ebb6b67c2454d87ba0e4e8f34123
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 156}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -193,31 +333,87 @@ ScriptedImporter:
     - name: Slam_Frame_0
       frameIndex: 0
       cellRect:
-        x: 5
-        y: 5
-        width: 102
-        height: 102
+        x: 40
+        y: 41
+        width: 64
+        height: 64
       spriteId: f64593104ffbc9640a909b3d7d2dc190
     - name: Slam_Frame_1
       frameIndex: 1
       cellRect:
-        x: 5
-        y: 5
-        width: 102
-        height: 102
+        x: 32
+        y: 32
+        width: 80
+        height: 80
       spriteId: 96a313d76cbf38944b2fc4421b575248
     - name: Slam_Frame_2
       frameIndex: 2
       cellRect:
-        x: 5
-        y: 5
-        width: 102
-        height: 102
+        x: 24
+        y: 25
+        width: 96
+        height: 96
       spriteId: 59e4af1378fd91a409b73b7f4615412a
+    - name: Slam_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 16
+        y: 16
+        width: 112
+        height: 112
+      spriteId: 19db24c1c3d310c4c8db876e02b4faef
+    - name: Slam_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 8
+        y: 9
+        width: 128
+        height: 128
+      spriteId: 09bb6d0763fbd4c4582d5b2c15de6923
+    - name: Slam_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 0
+        y: 0
+        width: 144
+        height: 144
+      spriteId: 50743261f96fbd949a19721da661fe6a
+    - name: Slam_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 40
+        y: 41
+        width: 64
+        height: 64
+      spriteId: dc551bab3383abb4887764e4de96f3d3
+    - name: Slam_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 24
+        y: 25
+        width: 96
+        height: 96
+      spriteId: 938d3004819f4d845886f72fef66eb1e
+    - name: Slam_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 8
+        y: 9
+        width: 128
+        height: 128
+      spriteId: c9838b59045a4f04b91d71c7e1a7574c
+    - name: Slam_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 0
+        y: 0
+        width: 144
+        height: 144
+      spriteId: 8707ebb6b67c2454d87ba0e4e8f34123
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 112, y: 112}
+  canvasSize: {x: 144, y: 144}
